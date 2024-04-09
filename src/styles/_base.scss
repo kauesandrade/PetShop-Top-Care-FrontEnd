@@ -1,4 +1,3 @@
-@import "variables";
 @import "mixins";
 
 * {
@@ -23,9 +22,9 @@ h5 {
   @include heading(h5);
 }
 h6 {
-  @include heading;
+  @include heading();
 }
 
 p {
-  @include text;
+  @include text();
 }
