@@ -1,0 +1,27 @@
+@import "../../assets/styles/styles.scss";
+
+section {
+  @include grid-container;
+  background: $background-primary;
+  height: 200px;
+}
+
+div {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: span 12 / span 12;
+}
+
+a:first-child {
+  @include text(large, bold);
+  color: $primary;
+  grid-column: 11 / 12;
+  justify-self: end;
+}
+
+a {
+  @include text(large, bold);
+  color: $primary;
+  grid-column: 0 / 2;
+  justify-self: end;
+}
