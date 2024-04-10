@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ButtonComponent {
   @Input() color: string = 'primary';
   @Input() disabled: boolean = false;
+  @Input() width: string = '0';
 
   @Input() iconOnly: boolean = false;
 

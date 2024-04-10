@@ -1,6 +1,7 @@
 <button
   class="btn"
-  [ngClass]="'btn-' + color"
+  [ngClass]="color"
+  [ngStyle]="{ width: width !== '0' ? width + 'rem' : 'auto' }"
   [class.icon]="iconOnly"
   [disabled]="disabled"
   (click)="onClick()"

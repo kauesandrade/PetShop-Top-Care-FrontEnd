@@ -10,9 +10,7 @@
   border: 1px solid;
   border-radius: 0.5rem;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex();
 
   text-transform: uppercase;
   word-break: break-all;
@@ -20,7 +18,7 @@
 
   cursor: pointer;
 
-  &-primary {
+  &.primary {
     background-color: $primary;
     border-color: $primary;
     color: $white;
@@ -31,7 +29,7 @@
     }
   }
 
-  &-secondary {
+  &.secondary {
     background-color: $secondary;
     border-color: $secondary;
     color: $black1;
