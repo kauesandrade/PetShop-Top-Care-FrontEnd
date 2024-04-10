@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
+const Components: any[] = [];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  exports: [...Components],
+  declarations: [...Components],
+  imports: [CommonModule],
 })
-export class CoreModule { }
+export class CoreModule {}
