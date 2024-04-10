@@ -1,0 +1,10 @@
+<button
+  class="btn"
+  [ngClass]="color"
+  [ngStyle]="{ width: width !== '0' ? width + 'rem' : 'auto' }"
+  [class.icon]="iconOnly"
+  [disabled]="disabled"
+  (click)="onClick()"
+>
+  <ng-content></ng-content>
+</button>
