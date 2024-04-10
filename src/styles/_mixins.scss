@@ -1,2 +1,6 @@
 @import "variables";
 @import "typography";
+
+@mixin transition() {
+  transition: all 0.2s ease-out;
+}
