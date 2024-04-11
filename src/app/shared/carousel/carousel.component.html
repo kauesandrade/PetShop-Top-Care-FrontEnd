@@ -1,24 +1,16 @@
-<section class="embla">
-  <div class="embla__viewport">
-    <div class="embla__container">
-      <div class="embla__slide">
-        <div class="embla__slide__number">1</div>
-      </div>
-      <div class="embla__slide">
-        <div class="embla__slide__number">2</div>
-      </div>
-      <div class="embla__slide">
-        <div class="embla__slide__number">3</div>
-      </div>
-      <div class="embla__slide">
-        <div class="embla__slide__number">4</div>
-      </div>
-      <div class="embla__slide">
-        <div class="embla__slide__number">5</div>
+<div class="carousel">
+  <button class="embla__button--prev" (click)="prevSlide()"> back </button>
+  <section class="embla">
+    <div class="embla__viewport">
+      <div class="embla__container">
+        <div class="embla__slide" *ngFor="let item of itens; index as i">
+          <div class="slide">
+            <img src="https://www.esker.com/sites/default/files/cp_2-docdel.jpg" alt="dasdasd">  
+            <!-- <img src="" alt="">   -->
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
-<button class="embla__button--prev" (click)="prevSlide()"> back </button>
-<button class="embla__button--next" (click)="nextSlide()"> next </button>
+  </section>
+  <button class="embla__button--next" (click)="nextSlide()"> next </button>
+</div>
