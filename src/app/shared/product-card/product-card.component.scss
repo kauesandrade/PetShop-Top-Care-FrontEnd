@@ -20,8 +20,9 @@
 
   .product-image {
     border-radius: 0.5rem;
+    width: 80%;
     height: 7.5rem;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   .product-title {
@@ -100,5 +101,9 @@
   .buttons-container {
     @include flex();
     gap: 0.5rem;
+
+    .shopping-cart-icon {
+      font-size: 1rem;
+    }
   }
 }
