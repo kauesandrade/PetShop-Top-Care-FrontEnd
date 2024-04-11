@@ -1,0 +1,41 @@
+<div class="card-container">
+  <ng-container *ngIf="product.favorite">
+    <fa-icon [icon]="faHeart" class="favorite-heart"></fa-icon>
+  </ng-container>
+  <img [src]="product.imgSrc" alt="Product image" class="product-image" />
+  <p class="product-title">{{ product.title }}</p>
+  <div class="brand-rating">
+    <p class="product-brand">{{ product.brand }}</p>
+    <div class="product-rating">
+      <fa-icon [icon]="faStar" class="rating-star"></fa-icon>
+      <p class="product-rating-value">{{ product.rating }}</p>
+    </div>
+  </div>
+  <div class="main-pricing">
+    <div class="pricing-values">
+      <ng-container *ngIf="product.discountPrice !== 0">
+        <p class="price">
+          {{ product.discountPrice | currency : "BRL" : "symbol" : "1.2-2" }}
+        </p>
+      </ng-container>
+      <p [ngClass]="{ 'before-discount': product.discountPrice !== 0 }">
+        {{ product.price | currency : "BRL" : "symbol" : "1.2-2" }}
+      </p>
+    </div>
+    <ng-container *ngIf="product!.maxInterestFreeParcels > 1">
+      <p class="parcels">até {{ product.maxInterestFreeParcels }}x sem juros</p>
+    </ng-container>
+  </div>
+  <div class="subscribers-pricing">
+    <p class="subscribers-price">
+      {{ product.subscribersPrice | currency : "BRL" : "symbol" : "1.2-2" }}
+    </p>
+    <p class="subscribers-text">Apenas para assinantes</p>
+  </div>
+  <div class="buttons-container">
+    <app-button (click)="onClick()">Comprar agora</app-button>
+    <app-button width="2.726" color="secondary" (click)="onClick()">
+      <fa-icon [icon]="faShoppingCart" class="shopping-cart-icon"></fa-icon>
+    </app-button>
+  </div>
+</div>

@@ -4,9 +4,11 @@ import { MainCarousel } from './shared/interfaces/main-carousel';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+
+  constructor() {}
   itens: Array<MainCarousel> = 
   [{
     imgSrc: "https://www.esker.com/sites/default/files/cp_2-docdel.jpg",

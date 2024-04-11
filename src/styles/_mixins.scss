@@ -1,2 +1,12 @@
 @import "variables";
-@import "typography";
+
+@mixin transition() {
+  transition: all 0.2s ease-out;
+}
+
+@mixin flex($direction: row, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
