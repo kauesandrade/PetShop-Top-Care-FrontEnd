@@ -5,11 +5,11 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-carousel',
-  templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss']
+  selector: 'app-main-carousel',
+  templateUrl: './main-carousel.component.html',
+  styleUrls: ['./main-carousel.component.scss']
 })
-export class CarouselComponent implements AfterViewInit, OnDestroy {
+export class MainCarouselComponent implements AfterViewInit, OnDestroy {
 
   constructor(private elementRef: ElementRef) { }
   
