@@ -1,6 +1,6 @@
-import { Component, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, OnDestroy, Input } from '@angular/core';
 import EmblaCarousel, { EmblaOptionsType } from 'embla-carousel';
-import { AxisOptionType } from 'embla-carousel/components/Axis';
+import { MainCarousel } from '../interfaces/main-carousel';
 
 @Component({
   selector: 'app-carousel',
@@ -13,14 +13,13 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   
   ngAfterViewInit(): void {
     const viewportNode = this.elementRef.nativeElement.querySelector('.embla__viewport');
-    const OPTIONS: EmblaOptionsType = {axis: 'x', loop: true }
+    const OPTIONS: EmblaOptionsType = {axis: 'x', loop: true };
     
     this.embla = EmblaCarousel(viewportNode, OPTIONS);
   }
   
   embla: any = null;
-
-  itens: Array<string> = ['1','2','3']
+  @Input() itensCarousel?: Array<MainCarousel>;
 
   ngOnDestroy(): void {
     if (this.embla) {

@@ -1,16 +1,17 @@
-<div class="carousel">
-  <button class="embla__button--prev" (click)="prevSlide()"> back </button>
+<ng-container *ngIf="itensCarousel?.length">
   <section class="embla">
+    <button class="embla__button--next" (click)="nextSlide()">></button>
+    <button class="embla__button--prev" (click)="prevSlide()"><</button>
     <div class="embla__viewport">
       <div class="embla__container">
-        <div class="embla__slide" *ngFor="let item of itens; index as i">
+        <div class="embla__slide" *ngFor="let item of itensCarousel; index as i">
           <div class="slide">
-            <img src="https://www.esker.com/sites/default/files/cp_2-docdel.jpg" alt="dasdasd">  
-            <!-- <img src="" alt="">   -->
+            <a href={{item.link}}>
+              <img src={{item.imgSrc}} alt="dasdasd">
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <button class="embla__button--next" (click)="nextSlide()"> next </button>
-</div>
+</ng-container>
