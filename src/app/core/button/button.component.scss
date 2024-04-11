@@ -11,6 +11,7 @@
   border-radius: 0.5rem;
 
   @include flex();
+  gap: 0.5rem;
 
   text-transform: uppercase;
   word-break: break-all;
