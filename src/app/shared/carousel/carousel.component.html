@@ -1,7 +1,7 @@
 <ng-container *ngIf="itensCarousel?.length">
   <section class="embla">
-    <button class="embla__button--next" (click)="nextSlide()">></button>
-    <button class="embla__button--prev" (click)="prevSlide()"><</button>
+    <button class="embla__button--next" (click)="nextSlide()"><fa-icon [icon]="faAngleRight"></fa-icon></button>
+    <button class="embla__button--prev" (click)="prevSlide()"><fa-icon [icon]="faAngleLeft"></fa-icon></button>
     <div class="embla__viewport">
       <div class="embla__container">
         <div class="embla__slide" *ngFor="let item of itensCarousel; index as i">
