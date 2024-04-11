@@ -1,0 +1,101 @@
+@import "styles";
+
+.card-container {
+  @include flex(column);
+  width: 16rem;
+  padding: 1rem;
+  background-color: $white;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  position: relative;
+
+  .favorite-heart {
+    color: $error;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .product-image {
+    border-radius: 0.5rem;
+    height: 7.5rem;
+    object-fit: contain;
+  }
+
+  .product-title {
+    @include text(medium, bold);
+    color: $primary;
+    width: 100%;
+  }
+
+  .brand-rating {
+    @include flex(row, center, space-between);
+    width: 100%;
+
+    .product-brand {
+      @include text();
+      color: $grey2;
+      text-decoration: underline;
+    }
+
+    .product-rating {
+      @include flex();
+      gap: 0.5rem;
+
+      .rating-star {
+        color: $secondary;
+        font-size: 1rem;
+      }
+
+      &-value {
+        @include text(small, bold);
+        color: $secondary;
+      }
+    }
+  }
+
+  .main-pricing {
+    @include flex(column, flex-start);
+    align-self: flex-start;
+
+    .pricing-values {
+      @include flex($align: items-center, $justify: space-between);
+      gap: 0.5rem;
+
+      .price {
+        @include text();
+        color: $grey2;
+      }
+
+      .before-discount {
+        @include text(small, regular);
+        color: $grey4;
+        text-decoration: line-through;
+      }
+    }
+
+    .parcels {
+      @include text(small);
+      color: $grey2;
+    }
+  }
+
+  .subscribers-pricing {
+    @include flex(column, flex-start);
+    align-self: flex-start;
+    color: $primary;
+
+    .subscribers-price {
+      @include text(medium, bold);
+    }
+    .subscribers-text {
+      @include text(small);
+    }
+  }
+
+  .buttons-container {
+    @include flex();
+    gap: 0.5rem;
+  }
+}

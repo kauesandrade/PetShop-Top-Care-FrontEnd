@@ -1,9 +1,15 @@
 @import "mixins";
+@import "layout";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: $background-primary;
+  @include grid-container();
 }
 
 h1 {
