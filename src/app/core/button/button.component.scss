@@ -24,7 +24,7 @@
     border-color: $primary;
     color: $white;
 
-    &:hover {
+    &:hover:enabled {
       background-color: $light-primary;
       color: $black1;
     }
@@ -35,7 +35,7 @@
     border-color: $secondary;
     color: $black1;
 
-    &:hover {
+    &:hover:enabled {
       background-color: $light-secondary;
       color: $black1;
     }
