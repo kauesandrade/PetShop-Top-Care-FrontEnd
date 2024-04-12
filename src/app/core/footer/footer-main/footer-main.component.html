@@ -1,7 +1,78 @@
 <div class="footer-main">
-  <div class="our-politics"></div>
-  <div class="contacts"></div>
-  <div class="vertical-info">
-    <div class="payment-methods"></div>
+  <div class="our-politics" [ngStyle]="{ display: 'none' }">
+    <h6>Nossas políticas</h6>
+    <div class="our-politics-items">
+      <a href="#">Trocas e devoluções</a>
+      <a href="#">Entregas e Fretes</a>
+      <a href="#">Pagamentos</a>
+      <a href="#">Campanhas e Promoções</a>
+      <a href="#">Políticas de Privacidade</a>
+    </div>
   </div>
+  <div class="contacts">
+    <h6>Contatos</h6>
+    <div class="contacts-items">
+      <a href="#"><fa-icon [icon]="faWhatsapp"></fa-icon>(00) 00000-0000</a>
+      <a href="#"
+        ><fa-icon [icon]="faEnvelope"></fa-icon>TopCare@suportetopcare.com</a
+      >
+      <a href="#"><fa-icon [icon]="faPhone"></fa-icon>0800 000 0000</a>
+      <a href="#"><fa-icon [icon]="faCommentDots"></fa-icon>Chat on-line</a>
+    </div>
+  </div>
+  <div class="vertical-info">
+    <div class="payment-methods" [ngStyle]="{ display: 'none' }">
+      <h6>Métodos de pagamento</h6>
+      <div class="payment-methods-items">
+        <img
+          src="https://www.advocacianunes.com.br/wp-content/uploads/2022/04/logo-pix-icone-1024.png"
+          alt="PIX image"
+        />
+        <img
+          src="https://laboratoriowestrupp.com.br/wp-content/uploads/2014/07/boleto.png"
+          alt="Boleto image"
+        />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png"
+          alt="Mastercard image"
+        />
+        <img
+          src="https://logosmarcas.net/wp-content/uploads/2020/05/Visa-Logo.png"
+          alt="Visa image"
+        />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Hipercard_logo.svg/2000px-Hipercard_logo.svg.png"
+          alt="Hipercard image"
+        />
+        <img
+          src="https://demonstre.com/wp-content/uploads/2022/11/elo.png"
+          alt="Elo image"
+        />
+      </div>
+    </div>
+    <div class="social-media">
+      <h6>Redes Sociais</h6>
+      <div class="social-media-items">
+        <a target="_blank" href="facebook.com">
+          <fa-icon [icon]="faFacebook"></fa-icon>
+        </a>
+        <a target="_blank" href="instagram.com">
+          <fa-icon [icon]="faInstagram"></fa-icon>
+        </a>
+        <a target="_blank" href="linkedin.com">
+          <fa-icon [icon]="faLinkedin"></fa-icon>
+        </a>
+        <a target="_blank" href="youtube.com">
+          <fa-icon [icon]="faYoutube"></fa-icon>
+        </a>
+        <a target="_blank" href="pinterest.com">
+          <fa-icon [icon]="faPinterest"></fa-icon>
+        </a>
+        <a target="_blank" href="x.com">
+          <fa-icon [icon]="faTwitter"></fa-icon>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="about-us"></div>
 </div>
