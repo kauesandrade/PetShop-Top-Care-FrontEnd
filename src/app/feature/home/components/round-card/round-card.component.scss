@@ -1,0 +1,15 @@
+.round-card {
+    text-align: center;
+    margin: 10px;
+
+    img {
+        border-radius: 8px;  
+        width: 100px;        
+        height: 100px;       
+    }
+
+    p {
+        margin-top: 5px; 
+        font-weight: bold;
+    }
+}
