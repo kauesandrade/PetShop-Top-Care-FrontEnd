@@ -10,10 +10,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
+import { HomeComponent } from './home/home.component';
 registerLocaleData(ptBr);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
