@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MainCarouselComponent } from './main-carousel/main-carousel.component';
-import { SharedModule } from '../shared.module';
+import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
+import { MainCarouselComponent } from '../main-carousel/main-carousel.component';
 
 const Components = [
   MainCarouselComponent,
+  ProductCarouselComponent,
 ]
 
 @NgModule({
   exports: [...Components],
-  declarations: [...Components],
+  declarations: [...Components, ProductCarouselComponent],
   imports: [
     CommonModule,
     FontAwesomeModule,
