@@ -1,12 +1,14 @@
 @import "styles";
 
 select {
-    width: 100%;
     max-width: 28rem;
-    height: 2.875rem;
+    max-height: 2.875rem;
+
     border-radius: 8px;
-    background-color: $light-primary;
-    font-family: $rubik;
-    color: $grey3;
     border: 0px;
+
+    background-color: $light-primary;
+    color: $grey3;
+
+    font-family: $rubik;
 }
