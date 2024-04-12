@@ -10,6 +10,4 @@ export class SelectInputComponent {
 
   @Input() opcoes: string[] = ['Homem', 'Mulher', 'Prefiro não dizer'];
 
-  constructor() { }
-
 }
