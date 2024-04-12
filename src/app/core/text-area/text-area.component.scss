@@ -1,4 +1,11 @@
-input {
-    width: 736px;
-    height: 127px;
+@import 'styles';
+
+textarea {
+    max-width: 58rem;
+    height: 7.938rem;
+
+    resize: none;
+
+    border: 2px solid $primary;
+    border-radius: 0.5rem;
 }
