@@ -1,5 +1,4 @@
-<select [ngStyle]="{ width: width !== '0' ? width + 'rem' : 'auto' }"
-        [ngStyle]="{ height: height !== '0' ? height + 'rem' : '2.875em' }">
+<select [ngStyle]="{ width: width !== '0' ? width + 'rem' : '28' + 'rem'}">
     <option disabled>Escolha uma opção</option>
     <option *ngFor="let opcao of opcoes" value="opcao">{{opcao}}</option>
 </select>
