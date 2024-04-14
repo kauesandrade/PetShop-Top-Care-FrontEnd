@@ -13,6 +13,7 @@ export class TextInputComponent {
   @Input() height: string = ""
  
   @Input() disabled: boolean = false
+
   constructor() { }
 
 }
