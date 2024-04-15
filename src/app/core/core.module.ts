@@ -8,14 +8,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const Components = [
   ButtonComponent,
-  FooterComponent,
-  FooterMainComponent,
-  FooterCopyrightComponent,
+  FooterComponent
 ];
 
 @NgModule({
   exports: [...Components],
-  declarations: [...Components],
+  declarations: [...Components, FooterMainComponent, FooterCopyrightComponent],
   imports: [CommonModule, FontAwesomeModule],
 })
 export class CoreModule {}
