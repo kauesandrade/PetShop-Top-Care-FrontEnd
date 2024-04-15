@@ -18,17 +18,24 @@
     right: 1rem;
   }
 
-  .product-image {
-    border-radius: 0.5rem;
-    height: 7.5rem;
-    object-fit: contain;
-  }
-
-  .product-title {
-    @include text(medium, bold);
-    color: $primary;
+  .redirect-product {
+    text-decoration: none;
     width: 100%;
-    min-height: 2.75rem;
+    @include flex(column, center);
+    gap: 0.5rem;
+
+    .product-image {
+      border-radius: 0.5rem;
+      height: 7.5rem;
+      object-fit: contain;
+    }
+
+    .product-title {
+      @include text(medium, bold);
+      color: $primary;
+      width: 100%;
+      min-height: 2.75rem;
+    }
   }
 
   .brand-rating {
@@ -37,6 +44,7 @@
 
     .product-brand {
       @include text();
+      text-align: left;
       color: $grey2;
       text-decoration: underline;
     }

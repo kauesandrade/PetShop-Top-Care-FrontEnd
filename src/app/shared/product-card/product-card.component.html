@@ -2,10 +2,12 @@
   <ng-container *ngIf="product.favorite">
     <fa-icon [icon]="faHeart" class="favorite-heart"></fa-icon>
   </ng-container>
-  <img [src]="product.imgSrc" alt="Product image" class="product-image" />
-  <p class="product-title">{{ product.title }}</p>
+  <a href="#" class="redirect-product">
+    <img [src]="product.imgSrc" alt="Product image" class="product-image" />
+    <p class="product-title">{{ product.title }}</p>
+  </a>
   <div class="brand-rating">
-    <p class="product-brand">{{ product.brand }}</p>
+    <a href="#" class="product-brand">{{ product.brand }}</a>
     <div class="product-rating">
       <fa-icon [icon]="faStar" class="rating-star"></fa-icon>
       <p class="product-rating-value">{{ product.rating }}</p>
