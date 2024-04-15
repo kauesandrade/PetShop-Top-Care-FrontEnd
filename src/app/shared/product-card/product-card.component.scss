@@ -37,7 +37,7 @@
 
     .product-brand {
       @include text();
-      color: $grey2;
+      color: $gray2;
       text-decoration: underline;
     }
 
@@ -68,19 +68,19 @@
 
       .price {
         @include text();
-        color: $grey2;
+        color: $gray2;
       }
 
       .before-discount {
         @include text(small, regular);
-        color: $grey4;
+        color: $gray4;
         text-decoration: line-through;
       }
     }
 
     .parcels {
       @include text(small);
-      color: $grey2;
+      color: $gray2;
     }
   }
 
