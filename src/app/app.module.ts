@@ -10,16 +10,18 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
-import { HomeComponent } from './home/home.component';
+import { FeatureModule } from './feature/feature.module';
+
 registerLocaleData(ptBr);
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
     SharedModule,
+    FeatureModule,
     FontAwesomeModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],

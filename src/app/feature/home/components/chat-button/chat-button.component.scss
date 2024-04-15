@@ -1,28 +1,30 @@
 .chat-button {
     position: fixed; 
-    bottom: 20px;
-    right: 20px;
-    background-color: #007BFF; /* Azul */
-    color: white; 
-    border-radius: 50%; /* Forma circular */
+    bottom: 50%; 
+    right: 50%; 
+    transform: translate(50%, 50%); 
+    background-color: #007BFF; 
+    color: white;
+    border-radius: 50%;
     width: 50px; 
     height: 50px; 
-    display: flex; 
+    display: flex;
     justify-content: center; 
     align-items: center; 
     cursor: pointer; 
+    border: 2px solid white; 
 
     .icon {
-        font-size: 24px; /* Tamanho do ícone */
+        font-size: 24px; 
     }
 
     .notification-badge {
-        position: absolute; 
-        top: -5px; 
-        right: -5px; 
-        background-color: yellow; /* Cor da notificação */
+        position: absolute;
+        top: 2px; 
+        right: -1px; 
+        background-color: rgb(255, 187, 0); 
         border-radius: 50%; 
         width: 10px; 
-        height: 10px;
+        height: 10px; 
     }
 }

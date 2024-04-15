@@ -4,8 +4,8 @@ import { ChatButtonComponent } from './components/chat-button/chat-button.compon
 import { HomeComponent } from './home.component';
 
 @NgModule({
-    declarations: [ChatButtonComponent, HomeComponent],
-    imports: [CommonModule],
     exports: [ChatButtonComponent, HomeComponent],
+    declarations: [ChatButtonComponent, HomeComponent],
+    imports: [CommonModule]
 })
 export class HomeModule { }

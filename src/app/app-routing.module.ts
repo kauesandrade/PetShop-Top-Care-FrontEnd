@@ -4,7 +4,7 @@ import { HomeComponent } from './feature/home/home.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent }
-    // outras rotas...
+  
 ];
 
 @NgModule({
