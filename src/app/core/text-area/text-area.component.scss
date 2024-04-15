@@ -1,13 +1,14 @@
 @import 'styles';
 
 textarea {
-    padding: 10px;
+    padding: 1rem;
 
     max-width: 58rem;
     height: 7.938rem;
 
     resize: none;
 
+    outline: none;
     border: 2px solid $primary;
     border-radius: 0.5rem;
 
