@@ -4,8 +4,9 @@ import { ButtonComponent } from './button/button.component';
 import { SelectInputComponent } from './select-input/select-input.component';
 import { TextAreaComponent } from './text-area/text-area.component';
 import { TextInputComponent } from './text-input/text-input.component';
+import { DateInputComponent } from './date-input/date-input.component';
 
-const Components = [ButtonComponent, SelectInputComponent, TextAreaComponent, TextInputComponent];
+const Components = [ButtonComponent, SelectInputComponent, TextAreaComponent, TextInputComponent, DateInputComponent];
 
 @NgModule({
   exports: [...Components],
