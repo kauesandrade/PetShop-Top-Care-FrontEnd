@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
+import { FeatureModule } from './feature/feature.module';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -17,6 +18,7 @@ registerLocaleData(ptBr);
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    FeatureModule,
     SharedModule,
     FontAwesomeModule,
   ],
