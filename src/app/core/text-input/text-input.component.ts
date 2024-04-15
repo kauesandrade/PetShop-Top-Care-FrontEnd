@@ -13,6 +13,9 @@ export class TextInputComponent {
   @Input() height: string = ""
  
   @Input() disabled: boolean = false
+  @Input() borderless: boolean = false
+
+  @Input() withIcon: boolean = false
 
   constructor() { }
 

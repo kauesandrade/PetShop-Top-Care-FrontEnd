@@ -1,15 +1,37 @@
 @import 'styles';
 
 .input {
-    padding: 10px;
-    max-width: 46.063rem;
+    display: flex;
+    align-items: center;
+
+    max-width: 70rem;
     max-height: 2.875rem;
 
     border: 2px solid $primary;
     border-radius: 0.5rem;
 
+
+    &.borderless {
+        border: none;
+    }
+
+    &.withIcon {
+        padding-right: 1rem;
+    }
+
+}
+
+.input input {
+    padding-left: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    outline: none;
+
+    width: 100%;
+
+    font-family: $rubik;
+    
     &:disabled {
         background-color: $light-primary;
-        border: none;
     }
 }

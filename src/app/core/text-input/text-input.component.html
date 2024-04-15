@@ -1,7 +1,23 @@
-<input class="input"
+<!-- <input class="input"
     type="text"
     [placeholder]="placeholder"
     [ngStyle]="{ width: width !== '0' ? width + 'rem' : '46.063rem', 
     height: height !== '0' ? height + 'rem' : '2.875rem' }"
     [disabled]="disabled"
+    [class.borderless]="borderless"
+> -->
+
+<div class="input"
+    [ngStyle]="{ width: width !== '0' ? width + 'rem' : '46.063rem', 
+    height: height !== '0' ? height + 'rem' : '2.875rem' }"
+    [class.borderless]="borderless"
+    [class.withIcon]="withIcon"
 >
+    <input
+    type="text"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+>
+<ng-content></ng-content>
+
+</div>
