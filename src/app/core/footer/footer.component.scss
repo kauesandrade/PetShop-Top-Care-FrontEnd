@@ -1,0 +1,7 @@
+@import "styles";
+
+app-footer-copyright {
+  @media (max-width: 320px) {
+    display: none;
+  }
+}

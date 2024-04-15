@@ -5,7 +5,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from '../core/core.module';
 
-const Components: any[] = [ProductCardComponent,CarouselComponent];
+const Components: any[] = [ProductCardComponent, CarouselComponent];
 
 @NgModule({
   exports: [...Components],
