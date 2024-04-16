@@ -7,6 +7,7 @@
   border-radius: 1.5rem;
 
   @media (max-width: 320px) {
+    padding: 1rem 0;
   }
 
   h1 {
@@ -29,7 +30,7 @@
 
     @media (max-width: 320px) {
       flex-direction: column;
-      padding: 1rem 1.25rem 1.5rem 1.25rem;
+      padding: 1rem 1.25rem;
       gap: 1rem;
     }
 
@@ -38,9 +39,8 @@
       height: 100%;
       background-color: $gray2;
       @media (max-width: 320px) {
-        grid-column: 1 / -1;
         place-self: center;
-        width: calc(100% - 6.25rem);
+        width: calc(100% - 3.75rem);
         height: 1px;
       }
     }
@@ -50,15 +50,22 @@
       gap: 1.5rem;
       max-width: 31rem;
 
+      p {
+        @include text(medium);
+      }
+
       @media (max-width: 320px) {
         justify-content: center;
         align-items: center;
-        padding: 1rem 1.25rem 1.5rem 1.25rem;
-        gap: 1rem;
-      }
+        gap: 0.5rem;
 
-      p {
-        @include text(medium);
+        h4 {
+          @include text(medium, bold);
+        }
+
+        p {
+          @include text(small);
+        }
       }
     }
   }
@@ -70,12 +77,21 @@
     height: 1px;
     background-color: $gray2;
     margin: 1.5rem 0;
+    @media (max-width: 320px) {
+      width: calc(100% - 6.25rem);
+      margin: 0 0 1rem 0;
+    }
   }
 
   .column {
     grid-column: 1 /-1;
     @include flex(column);
     gap: 1.5rem;
+
+    @media (max-width: 320px) {
+      width: 100%;
+      gap: 1rem;
+    }
 
     .text {
       @include flex(column);
@@ -84,11 +100,28 @@
       p {
         @include text(medium);
       }
+
+      @media (max-width: 320px) {
+        gap: 0.25rem;
+
+        h4 {
+          @include text(medium, bold);
+        }
+
+        p {
+          @include text(small);
+        }
+      }
     }
 
     .buttons {
       @include flex();
       gap: 1.5rem;
+
+      @media (max-width: 320px) {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
     }
   }
 }

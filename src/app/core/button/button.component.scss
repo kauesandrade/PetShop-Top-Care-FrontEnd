@@ -6,6 +6,10 @@
 
   max-width: 12.5rem;
   padding: 0.5rem 1rem;
+  @media (max-width: 320px) {
+    padding: 0.5rem 0.5rem;
+    @include text(small, bold);
+  }
 
   border: 1px solid;
   border-radius: 0.5rem;
