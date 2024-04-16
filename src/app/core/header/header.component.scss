@@ -1,0 +1,7 @@
+@import "styles";
+
+app-header-top {
+  @media (max-width: 320px) {
+    display: none;
+  }
+}
