@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-    selector: 'app-round-card',
-    templateUrl: './round-card.component.html',
-    styleUrls: ['./round-card.component.scss']
+  selector: 'app-round-card',
+  templateUrl: './round-card.component.html',
+  styleUrls: ['./round-card.component.scss'],
 })
 export class RoundCardComponent {
-    @Input() imageSrc: string = ''; 
-    @Input() description: string = ''; 
+  @Input() imageSrc: string = '';
+  @Input() title: string = '';
 }

@@ -4,8 +4,8 @@ import { RoundCardComponent } from './components/round-card/round-card.component
 import { HomeComponent } from './home.component';
 
 @NgModule({
-    declarations: [RoundCardComponent, HomeComponent],
-    imports: [CommonModule],
-    exports: [RoundCardComponent, HomeComponent],
+  exports: [HomeComponent],
+  declarations: [RoundCardComponent, HomeComponent],
+  imports: [CommonModule],
 })
-export class HomeModule { }
+export class HomeModule {}
