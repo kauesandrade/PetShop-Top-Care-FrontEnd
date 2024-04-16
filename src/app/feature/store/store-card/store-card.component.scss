@@ -21,7 +21,7 @@ a{
     }
 
     .sectionName, .sectionServices{
-        @include flex(column, none, space-between);
+        @include flex(column, flex-start, space-between);
         height: 80%;
     }
 
@@ -51,10 +51,11 @@ p{
 
 @media (max-width: 320px) {
     a{
-        @include flex(row, start, none);
+        @include flex(row, flex-start, flex-start);
         padding: 16px 16px;
         height: 100px;
-        gap: 1rem;
+        gap: 0 1rem;
+        border-radius: 8px;
         .none{
             display: none;
         }
