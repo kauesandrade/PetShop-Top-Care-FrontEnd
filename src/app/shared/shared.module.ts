@@ -4,8 +4,13 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from '../core/core.module';
+import { ProductSectionComponent } from './product-section/product-section.component';
 
-const Components: any[] = [ProductCardComponent,CarouselComponent];
+const Components = [
+  ProductCardComponent,
+  ProductSectionComponent,
+  CarouselComponent,
+];
 
 @NgModule({
   exports: [...Components],
