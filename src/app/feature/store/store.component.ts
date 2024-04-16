@@ -17,7 +17,7 @@ export class StoreComponent implements OnInit {
     {
     imgSrc: "https://classic.exame.com/wp-content/uploads/2021/07/pet-shop-sao-paulo.jpg?quality=70&strip=info&w=1024",
     link: "",
-    name: "TopCare Jaraguá do Sul - SC",
+    name: "TopCare Jaraguá do Sul",
     location: "Av. Barão do Rio Branco, Nº 5102",
     number: "(99) 9 9999-9999",
     opening_hours: "7:00 ás 22:00",
@@ -31,7 +31,7 @@ export class StoreComponent implements OnInit {
     {
       imgSrc: "https://classic.exame.com/wp-content/uploads/2021/07/pet-shop-sao-paulo.jpg?quality=70&strip=info&w=1024",
       link: "",
-      name: "TopCare Joinville - SC",
+      name: "TopCare Joinville",
       location: "Av. Jetulio vargas, Nº 51",
       number: "(99) 9 9999-9999",
       opening_hours: "7:00 ás 21:00",
