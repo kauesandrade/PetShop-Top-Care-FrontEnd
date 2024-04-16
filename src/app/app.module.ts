@@ -21,6 +21,7 @@ registerLocaleData(ptBr);
     CoreModule,
     FeatureModule,
     SharedModule,
+    FeatureModule,
     FontAwesomeModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
