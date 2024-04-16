@@ -5,7 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from '../core/core.module';
 import { ProductSectionComponent } from './product-section/product-section.component';
 
-const Components: any[] = [ProductCardComponent, ProductSectionComponent];
+const Components = [ProductCardComponent, ProductSectionComponent];
 
 @NgModule({
   exports: [...Components],
