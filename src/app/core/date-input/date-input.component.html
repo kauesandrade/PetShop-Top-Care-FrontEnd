@@ -1,1 +1,6 @@
-<input type="date" >
+<input type="date" 
+    [ngStyle]="{ width: width !== '0' ? width + 'rem' : '28' + 'rem', 
+    height: height !== '0' ? height + 'rem' : '2.875rem' }"
+    [disabled]="disabled"
+    value="00/00/0000"
+>

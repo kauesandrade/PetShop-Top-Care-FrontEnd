@@ -19,6 +19,10 @@
         padding-right: 1rem;
     }
 
+    &.disabled {
+        background-color: $light-primary;
+    }
+
 }
 
 .input input {
@@ -30,7 +34,7 @@
     width: 100%;
 
     font-family: $rubik;
-    
+
     &:disabled {
         background-color: $light-primary;
     }

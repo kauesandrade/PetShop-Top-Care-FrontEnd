@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class TextAreaComponent {
 
   @Input() width: string = "0"
+  @Input() height: string = "0"
 
   @Input() placeholder: string = ""
 
