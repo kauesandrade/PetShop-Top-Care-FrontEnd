@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-text-area',
@@ -12,6 +12,10 @@ export class TextAreaComponent {
 
   @Input() placeholder: string = ""
 
-  constructor() { }
+  @Output() ricardo: EventEmitter<string> = new EventEmitter();
+
+  getValue(value: string){
+    this.ricardo.emit(value)
+  }
 
 }

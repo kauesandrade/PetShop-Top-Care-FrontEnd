@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-radio-input',
@@ -10,6 +10,10 @@ export class RadioInputComponent {
   @Input() name: string = ""
   @Input() value: string = ""
 
-  constructor() { }
+  @Output() ricardo: EventEmitter<string> = new EventEmitter();
+
+  getValue(value: string){
+    this.ricardo.emit(value)
+  }
 
 }

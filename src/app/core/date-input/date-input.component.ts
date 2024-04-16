@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-date-input',
@@ -12,6 +12,10 @@ export class DateInputComponent {
 
   @Input() disabled: boolean = false
 
-  constructor() { }
+  @Output() ricardo: EventEmitter<string> = new EventEmitter();
+
+  getValue(value: string){
+    this.ricardo.emit(value)
+  }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-text-input',
@@ -17,6 +17,10 @@ export class TextInputComponent {
 
   @Input() withIcon: boolean = false
 
-  constructor() { }
+  @Output() ricardo: EventEmitter<string> = new EventEmitter();
+
+  getValue(value: string){
+    this.ricardo.emit(value)
+  }
 
 }

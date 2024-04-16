@@ -9,6 +9,8 @@
     type="text"
     [placeholder]="placeholder"
     [disabled]="disabled"
+    #textInput
+    (change)="getValue(textInput.value)"
 >
 <ng-content></ng-content>
 

@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-checkbox-input',
@@ -9,9 +9,13 @@ export class CheckboxInputComponent {
 
   @Output() check: boolean = false;
 
+  @Output() ricardo: EventEmitter<boolean> = new EventEmitter();
+
   onClick(){
-    this.check = !this.check
+    this.check = !this.check;
+    this.ricardo.emit(this.check)
   }
-  constructor() { }
+  
+ 
 
 }

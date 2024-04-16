@@ -1,4 +1,6 @@
 <input type="radio"
     [name]="name"
     [value]="value"
+    #radioInput
+    (change)="getValue(radioInput.value)"
 >

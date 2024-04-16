@@ -13,5 +13,10 @@ export class AppComponent {
     onSelect(event: string) {
       console.log(event)
     } 
+    
+    getValue(event: string | boolean) {
+      console.log(event)
+    } 
+
 
 }
