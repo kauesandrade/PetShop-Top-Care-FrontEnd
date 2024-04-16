@@ -1,4 +1,4 @@
-@mixin grid-container {
+@mixin grid-container() {
   display: grid;
   grid-template-columns: repeat(12, 4rem);
   gap: 2rem;
@@ -12,4 +12,10 @@
     width: 100%;
     justify-content: center;
   }
+}
+
+@mixin subgrid() {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
 }
