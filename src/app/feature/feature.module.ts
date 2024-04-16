@@ -4,16 +4,9 @@ import { HomeModule } from './home/home.module';
 import { ContactModule } from './contact/contact.module';
 import { StoreModule } from './store/store.module';
 
-
-
 @NgModule({
-  declarations: [
-  ],
-  imports: [
-    CommonModule,
-    HomeModule,
-    ContactModule,
-    StoreModule
-  ]
+  exports: [HomeModule, ContactModule, StoreModule],
+  declarations: [],
+  imports: [CommonModule, HomeModule, ContactModule, StoreModule],
 })
-export class FeatureModule { }
+export class FeatureModule {}
