@@ -1,6 +1,10 @@
-<input type="radio"
+<label [for]="id">
+    <input type="radio"
     [name]="name"
     [value]="value"
     #radioInput
     (change)="getValue(radioInput.value)"
->
+    [id]="id"
+    >
+    <p inputTitle="inputTitle">{{inputTitle}}</p>
+</label>

@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-checkbox-input',
@@ -6,6 +6,8 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./checkbox-input.component.scss']
 })
 export class CheckboxInputComponent {
+
+  @Input() inputTitle: string = ""
 
   @Output() check: boolean = false;
 
@@ -16,6 +18,4 @@ export class CheckboxInputComponent {
     this.ricardo.emit(this.check)
   }
   
- 
-
 }

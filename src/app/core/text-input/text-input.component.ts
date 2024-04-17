@@ -1,3 +1,4 @@
+import { InvokeFunctionExpr } from '@angular/compiler';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -8,6 +9,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class TextInputComponent {
 
   @Input() placeholder: string = ""
+  @Input() inputTitle: string = ""
 
   @Input() width: string = ""
   @Input() height: string = ""

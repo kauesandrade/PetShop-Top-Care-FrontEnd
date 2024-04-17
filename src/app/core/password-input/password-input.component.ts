@@ -11,7 +11,7 @@ export class PasswordInputComponent {
   eyeIcon = faEye
 
   @Input() placeholder: string = ""
-  @Input() title: string = ""
+  @Input() inputTitle: string = ""
 
   @Input() width: string = ""
   @Input() height: string = ""

@@ -1,9 +1,13 @@
-<select [ngStyle]="{ width: width !== '0' ? width + 'rem' : '28' + 'rem', 
-height: height !== '0' ? height + 'rem' : '2.875rem' }"
-[disabled]="disabled"
-#mySelect
-(change)="onSelect(mySelect.value)"
->
+<label for="selectInput">
+    <p inputTitle="inputTitle">{{inputTitle}}</p>
+    <select [ngStyle]="{ width: width !== '0' ? width + 'rem' : '28' + 'rem', 
+        height: height !== '0' ? height + 'rem' : '2.875rem' }"
+    [disabled]="disabled"
+    #mySelect
+    (change)="onSelect(mySelect.value)"
+    id="selectInput"
+    >
     <option disabled>Escolha uma opção</option>
     <option *ngFor="let opcao of opcoes" [value]="opcao">{{opcao}}</option>
 </select>
+</label>

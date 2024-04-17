@@ -1,7 +1,11 @@
-<input type="date" 
+<label for="inputDate">
+    <p inputTitle="inputTitle">{{inputTitle}}</p>
+    <input type="date" 
     [ngStyle]="{ width: width !== '0' ? width + 'rem' : '28' + 'rem', 
     height: height !== '0' ? height + 'rem' : '2.875rem' }"
     [disabled]="disabled"
     #dateInput
     (change)="getValue(dateInput.value)"
+    id="inputDate"
 >
+</label>

@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class SelectInputComponent {
 
   @Input() opcoes: string[] = ['Homem', 'Mulher', 'Prefiro não dizer'];
+  @Input() inputTitle: string = ""
 
   @Input() width: string = "0"
   @Input() height: string = "0"

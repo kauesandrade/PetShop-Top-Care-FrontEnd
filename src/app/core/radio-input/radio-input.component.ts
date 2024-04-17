@@ -10,6 +10,9 @@ export class RadioInputComponent {
   @Input() name: string = ""
   @Input() value: string = ""
 
+  @Input() inputTitle: string = ""
+  @Input() id: string = ""
+
   @Output() ricardo: EventEmitter<string> = new EventEmitter();
 
   getValue(value: string){

@@ -11,6 +11,7 @@ export class TextAreaComponent {
   @Input() height: string = "0"
 
   @Input() placeholder: string = ""
+  @Input() inputTitle: string = ""
 
   @Output() ricardo: EventEmitter<string> = new EventEmitter();
 

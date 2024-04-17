@@ -12,6 +12,8 @@ export class DateInputComponent {
 
   @Input() disabled: boolean = false
 
+  @Input() inputTitle: string = ""
+
   @Output() ricardo: EventEmitter<string> = new EventEmitter();
 
   getValue(value: string){

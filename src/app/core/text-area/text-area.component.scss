@@ -14,3 +14,9 @@ textarea {
 
     font-family: $rubik;
 }
+
+label {
+    @include flex(column, flex-start, flex-start);
+    gap: 0.5rem;
+    @include text(small);
+}
