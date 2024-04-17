@@ -1,0 +1,122 @@
+@use "sass:color";
+@import "styles";
+
+.header-main {
+  @include grid-container();
+  background-color: $primary;
+
+  &-content {
+    @include flex();
+    grid-column: 1 / span 12;
+    width: 100%;
+    padding: 0.75rem;
+
+    @media (max-width: 320px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column: 1 / span 1;
+    }
+
+    .hamburger-drawer {
+      background-color: transparent;
+      color: $white;
+      border: none;
+      display: none;
+      font-size: 1.25rem;
+
+      @media (max-width: 320px) {
+        display: inline-flex;
+      }
+    }
+
+    a {
+      @include flex();
+      gap: 1.5rem;
+      text-decoration: none;
+
+      @media (max-width: 320px) {
+        gap: 0.5rem;
+
+        img {
+          width: 2.5rem;
+        }
+
+        h3 {
+          @include text(normal, medium);
+        }
+
+        p {
+          @include text(small);
+        }
+      }
+
+      .brand-name {
+        @include flex(column);
+        color: $white;
+      }
+    }
+  }
+}
+
+.drawer-overlay {
+  position: fixed;
+  height: 100%;
+  width: 0;
+  transition: 0.5s ease-in-out;
+
+  .drawer-menu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: $white;
+    overflow-x: hidden;
+    transition: 0.3s ease-in-out;
+
+    .close-btn {
+      position: absolute;
+      width: 2rem;
+      height: 2rem;
+      top: 1rem;
+      right: 1rem;
+      border: none;
+      background-color: $secondary;
+      border-radius: 0.25rem;
+    }
+
+    &-items {
+      margin: 1rem;
+      @include flex(column, flex-start);
+      gap: 1rem;
+      a {
+        @include heading();
+        color: $black1;
+        text-decoration: none;
+        width: 10rem;
+        overflow: hidden;
+      }
+    }
+  }
+
+  &.open {
+    width: 100%;
+    transition: 0.3s ease-in-out;
+    .drawer-menu {
+      width: 75%;
+      transition: 0.5s ease-in-out;
+    }
+    .drawer-background {
+      width: 100%;
+      transition: 0.3s ease-in-out;
+    }
+  }
+
+  .drawer-background {
+    width: 0;
+    height: 100%;
+    background-color: color.scale($black1, $alpha: -50%);
+    transition: 0.5s ease-in-out;
+  }
+}

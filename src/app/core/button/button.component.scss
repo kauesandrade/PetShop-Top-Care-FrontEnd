@@ -6,14 +6,18 @@
 
   max-width: 12.5rem;
   padding: 0.5rem 1rem;
+  @media (max-width: 320px) {
+    padding: 0.5rem 0.5rem;
+    @include text(small, bold);
+  }
 
   border: 1px solid;
   border-radius: 0.5rem;
 
   @include flex();
+  gap: 0.5rem;
 
   text-transform: uppercase;
-  word-break: break-all;
   word-wrap: break-word;
 
   cursor: pointer;
@@ -23,7 +27,7 @@
     border-color: $primary;
     color: $white;
 
-    &:hover {
+    &:hover:enabled {
       background-color: $light-primary;
       color: $black1;
     }
@@ -34,16 +38,16 @@
     border-color: $secondary;
     color: $black1;
 
-    &:hover {
+    &:hover:enabled {
       background-color: $light-secondary;
       color: $black1;
     }
   }
 
   &:disabled {
-    background-color: $grey2;
-    color: $grey4;
-    border: 1px solid $grey2;
+    background-color: $gray2;
+    color: $gray4;
+    border: 1px solid $gray2;
     cursor: default;
   }
 

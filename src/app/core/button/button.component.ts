@@ -10,7 +10,7 @@ export class ButtonComponent {
   @Input() disabled: boolean = false;
   @Input() width: string = '0';
 
-  @Input() iconOnly: boolean = false;
+  @Input() hasIcon: boolean = false;
 
   @Output() click: EventEmitter<any> = new EventEmitter();
 

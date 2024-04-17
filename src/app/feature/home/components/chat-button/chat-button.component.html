@@ -1,0 +1,4 @@
+<button class="chat-button" (click)="onClick()">
+  <span class="icon"> <fa-icon [icon]="faCommentDots"></fa-icon> </span>
+  <span *ngIf="hasNotification" class="notification-badge"></span>
+</button>

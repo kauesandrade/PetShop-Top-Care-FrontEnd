@@ -1,0 +1,9 @@
+@import "styles";
+
+main {
+  @include grid-container();
+
+  app-home-banner {
+    @include subgrid();
+  }
+}

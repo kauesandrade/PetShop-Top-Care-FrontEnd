@@ -1,0 +1,176 @@
+@import "styles";
+
+.none {
+  display: none !important;
+}
+
+.footer-main {
+  @include grid-container();
+  width: 100%;
+  background-color: $primary;
+  color: $white;
+  a {
+    @include text(small);
+    color: $white;
+    text-decoration: none;
+  }
+
+  &-content {
+    @include flex(row, flex-start);
+
+    @media (max-width: 320px) {
+      flex-direction: column;
+      padding: 1rem 0;
+      gap: 1rem;
+      grid-column: 1 / span 1;
+    }
+
+    gap: 3.25rem;
+    padding: 2.25rem 0;
+    grid-column: 1 / span 12;
+
+    .divider {
+      width: 1px;
+      height: 100%;
+      background-color: $white;
+
+      @media (max-width: 320px) {
+        display: none;
+      }
+    }
+
+    .items-container {
+      @include flex(column, flex-start, flex-start);
+      gap: 1.5rem;
+      a {
+        @include flex();
+        gap: 0.5rem;
+      }
+
+      @media (max-width: 320px) {
+        gap: 0.5rem;
+        padding: 0 1rem;
+      }
+    }
+
+    .our-politics {
+      min-width: 9.125rem;
+
+      &-items {
+        @include flex(column, flex-start, flex-start);
+        gap: 0.5rem;
+      }
+
+      @media (max-width: 320px) {
+        display: none;
+      }
+    }
+
+    .contacts {
+      @media (max-width: 320px) {
+        h6 {
+          @include text(normal, semibold);
+        }
+      }
+
+      &-items {
+        @include flex(column, flex-start, flex-start);
+        gap: 0.5rem;
+        flex-wrap: wrap;
+
+        fa-icon {
+          font-size: 1rem;
+        }
+
+        @media (max-width: 320px) {
+          flex-direction: row;
+
+          &-text {
+            display: none;
+          }
+
+          fa-icon {
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+
+    .vertical-info {
+      @include flex(column, flex-start, flex-start);
+      gap: 2rem;
+      @media (max-width: 320px) {
+        width: 100%;
+      }
+
+      .vertical-divider {
+        height: 1px;
+        width: 100%;
+        background-color: $white;
+        @media (max-width: 320px) {
+          display: none;
+        }
+      }
+
+      .payment-methods {
+        width: 100%;
+
+        &-items {
+          @include flex($justify: flex-start);
+          gap: 1rem;
+          width: 100%;
+
+          img {
+            width: 2rem;
+          }
+        }
+
+        @media (max-width: 320px) {
+          display: none;
+        }
+      }
+
+      .social-media {
+        width: 100%;
+
+        @media (max-width: 320px) {
+          h6 {
+            @include text(normal, semibold);
+          }
+        }
+
+        &-items {
+          @include flex($justify: flex-start);
+          gap: 1rem;
+          flex-wrap: wrap;
+
+          fa-icon {
+            font-size: 2rem;
+          }
+          @media (max-width: 320px) {
+            flex-direction: row;
+
+            &-text {
+              display: none;
+            }
+
+            fa-icon {
+              font-size: 1.25rem;
+            }
+          }
+        }
+      }
+    }
+
+    .about-us {
+      max-width: 10rem;
+      a {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 320px) {
+        display: none;
+      }
+    }
+  }
+}

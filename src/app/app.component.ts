@@ -8,6 +8,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class AppComponent {
 
+  constructor() {}
+
   faIcon = faSearch
 
     onSelect(event: string) {
@@ -17,6 +19,5 @@ export class AppComponent {
     getValue(event: string | boolean) {
       console.log(event)
     } 
-
 
 }

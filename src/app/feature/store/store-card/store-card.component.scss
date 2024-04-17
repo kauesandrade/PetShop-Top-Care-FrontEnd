@@ -1,0 +1,76 @@
+@import "styles";
+
+a{
+    @include flex(row, start, space-between);
+    padding: 20px 56px;
+    max-width: 58rem;
+    width: 100%;
+    height: 16.125rem;
+    border-radius: 20px;
+    background-color: $white;
+
+    .sectionImg{
+        height: 100%;
+        width: 33%;
+        img{
+            border-radius: 20px;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .sectionName, .sectionServices{
+        @include flex(column, flex-start, space-between);
+        height: 80%;
+    }
+
+    .sectionImg, .sectionName, .sectionServices{
+        max-width: 33%;
+        word-break: break-word;
+    }
+    
+
+    .sectionServices{
+        ul{
+            li{
+                list-style-type: none
+            }
+        }
+    }
+
+
+}
+
+h6{
+    color: $primary;
+}
+p{
+    color: $gray3;
+}
+
+@media (max-width: 320px) {
+    a{
+        @include flex(row, flex-start, flex-start);
+        padding: 16px 16px;
+        height: 100px;
+        gap: 0 1rem;
+        border-radius: 8px;
+        .none{
+            display: none;
+        }
+        .sectionImg{
+            width: 30%;
+            img{
+                border-radius: 8px;
+            }
+        }
+        .sectionName{
+            max-width: 70%;
+        }
+    }
+    p, h6{
+        @include text(small)
+    }
+
+}
