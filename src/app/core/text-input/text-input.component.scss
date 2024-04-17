@@ -1,0 +1,41 @@
+@import 'styles';
+
+.input {
+    display: flex;
+    align-items: center;
+
+    max-width: 70rem;
+    max-height: 2.875rem;
+
+    border: 2px solid $primary;
+    border-radius: 0.5rem;
+
+
+    &.borderless {
+        border: none;
+    }
+
+    &.withIcon {
+        padding-right: 1rem;
+    }
+
+    &.disabled {
+        background-color: $light-primary;
+    }
+
+}
+
+.input input {
+    padding: 0rem 1rem 0rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    outline: none;
+
+    width: 100%;
+
+    font-family: $rubik;
+
+    &:disabled {
+        background-color: $light-primary;
+    }
+}
