@@ -11,9 +11,9 @@ select {
     border: 2px solid $primary;
 
     background-color: $white;
-    color: $grey3;
+    color: $gray3;
 
-    font-family: $rubik;
+    @include text(small);
 
     &:disabled {
         background-color: $light-primary;

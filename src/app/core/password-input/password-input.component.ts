@@ -11,6 +11,7 @@ export class PasswordInputComponent {
   eyeIcon = faEye
 
   @Input() placeholder: string = ""
+  @Input() title: string = ""
 
   @Input() width: string = ""
   @Input() height: string = ""
@@ -27,7 +28,6 @@ export class PasswordInputComponent {
 
   changeVisibility() {
     this.showPassword = !this.showPassword;
-    console.log("aus")
   }
 
 }
