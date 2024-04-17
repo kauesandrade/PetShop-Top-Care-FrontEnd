@@ -69,8 +69,11 @@ p{
             max-width: 70%;
         }
     }
-    p, h6{
+    p{
         @include text(small)
+    }
+    h6{
+        @include text(small, semibold)
     }
 
 }
