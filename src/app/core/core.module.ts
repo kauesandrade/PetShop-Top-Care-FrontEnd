@@ -18,18 +18,7 @@ import { SelectInputComponent } from './input/select-input/select-input.componen
 import { TextAreaComponent } from './input/text-area/text-area.component';
 import { TextInputComponent } from './input/text-input/text-input.component';
 
-const Components = [
-  ButtonDirective,
-  HeaderComponent,
-  FooterComponent,
-  SelectInputComponent,
-  TextAreaComponent,
-  TextInputComponent,
-  DateInputComponent,
-  RadioInputComponent,
-  CheckboxInputComponent,
-  PasswordInputComponent,
-];
+const Components = [ButtonDirective, HeaderComponent, FooterComponent];
 @NgModule({
   exports: [...Components, InputModule],
   declarations: [
