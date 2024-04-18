@@ -15,7 +15,7 @@ export class ProductCarouselComponent implements AfterViewInit, OnDestroy {
   
   ngAfterViewInit(): void {
     const viewportNode = this.elementRef.nativeElement.querySelector('.embla__viewport');
-    const OPTIONS: EmblaOptionsType = {align: 'start', axis: 'x', loop: true};
+    const OPTIONS: EmblaOptionsType = {align: 'start', loop: true};
     
     this.embla = EmblaCarousel(viewportNode, OPTIONS);
   }
