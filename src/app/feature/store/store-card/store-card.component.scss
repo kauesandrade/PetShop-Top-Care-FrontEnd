@@ -2,7 +2,7 @@
 
 a{
     @include flex(row, start, space-between);
-    padding: 20px 56px;
+    padding: 20px 20px;
     max-width: 58rem;
     width: 100%;
     height: 16.125rem;
@@ -23,11 +23,12 @@ a{
     .sectionName, .sectionServices{
         @include flex(column, flex-start, space-between);
         height: 80%;
+        width: 25%;
+        word-break: break-word;
     }
 
-    .sectionImg, .sectionName, .sectionServices{
-        max-width: 33%;
-        word-break: break-word;
+    .sectionImg{
+        width: 40%;
     }
     
 
@@ -51,8 +52,8 @@ p{
 
 @media (max-width: 320px) {
     a{
-        @include flex(row, flex-start, flex-start);
-        padding: 16px 16px;
+        @include flex(row, start, space-between);
+        padding: 8px 8px;
         height: 100px;
         gap: 0 1rem;
         border-radius: 8px;
@@ -60,13 +61,13 @@ p{
             display: none;
         }
         .sectionImg{
-            width: 30%;
             img{
-                border-radius: 8px;
+                border-radius: 4px;
             }
         }
         .sectionName{
-            max-width: 70%;
+            width: 60%;
+            height: 100%;
         }
     }
     p{
