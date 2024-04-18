@@ -9,19 +9,12 @@ import { HeaderMainComponent } from './header/header-main/header-main.component'
 import { FooterComponent } from './footer/footer.component';
 import { FooterMainComponent } from './footer/footer-main/footer-main.component';
 import { FooterCopyrightComponent } from './footer/footer-copyright/footer-copyright.component';
-import { SelectInputComponent } from './select-input/select-input.component';
-import { TextAreaComponent } from './text-area/text-area.component';
-import { TextInputComponent } from './text-input/text-input.component';
-import { DateInputComponent } from './date-input/date-input.component';
-import { RadioInputComponent } from './radio-input/radio-input.component';
-import { CheckboxInputComponent } from './checkbox-input/checkbox-input.component';
-import { PasswordInputComponent } from './password-input/password-input.component';
+import { InputModule } from './input/input.module';
 
-const Components = [ButtonComponent, HeaderComponent, FooterComponent, SelectInputComponent, TextAreaComponent, TextInputComponent, 
-                      DateInputComponent, RadioInputComponent, CheckboxInputComponent, PasswordInputComponent];
+const Components = [ButtonComponent, HeaderComponent, FooterComponent];
 
 @NgModule({
-  exports: [...Components],
+  exports: [...Components, InputModule],
   declarations: [
     ...Components,
     HeaderTopComponent,
