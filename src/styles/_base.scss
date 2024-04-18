@@ -1,3 +1,4 @@
+@import "typography";
 @import "mixins";
 @import "layout";
 
@@ -7,13 +8,12 @@
   box-sizing: border-box;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
 body {
   background-color: $background-primary;
-  // @include grid-container();
 }
 
 .btn {

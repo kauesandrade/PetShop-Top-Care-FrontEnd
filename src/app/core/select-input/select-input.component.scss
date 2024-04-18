@@ -1,24 +1,22 @@
 @import "styles";
 
 select {
-    padding-left: 1rem;
+  padding-left: 1rem;
 
-    max-width: 28rem;
-    max-height: 2.875rem;
+  max-width: 28rem;
+  max-height: 2.875rem;
 
-    outline: none;
-    border-radius: 8px;
-    border: 2px solid $primary;
+  outline: none;
+  border-radius: 8px;
+  border: 2px solid $primary;
 
-    background-color: $white;
-    color: $grey3;
+  background-color: $white;
+  color: $gray3;
 
-    font-family: $rubik;
+  font-family: $rubik;
 
-    &:disabled {
-        background-color: $light-primary;
-        border: none;
-    }
+  &:disabled {
+    background-color: $light-primary;
+    border: none;
+  }
 }
-
-  
