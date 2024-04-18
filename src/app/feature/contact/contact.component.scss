@@ -1,0 +1,22 @@
+@import "styles";
+
+main {
+  @include grid-container();
+
+  .contact-section {
+    @include subgrid();
+    background-color: $white;
+    border-radius: 1.25rem;
+    padding: 2rem;
+
+    h2 {
+      grid-column: 1 / -1;
+      place-self: center;
+      color: $primary;
+    }
+
+    app-contact-form {
+      @include subgrid();
+    }
+  }
+}

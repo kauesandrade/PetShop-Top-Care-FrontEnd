@@ -17,8 +17,18 @@ import { RadioInputComponent } from './radio-input/radio-input.component';
 import { CheckboxInputComponent } from './checkbox-input/checkbox-input.component';
 import { PasswordInputComponent } from './password-input/password-input.component';
 
-const Components = [ButtonComponent, HeaderComponent, FooterComponent, SelectInputComponent, TextAreaComponent, TextInputComponent, 
-                      DateInputComponent, RadioInputComponent, CheckboxInputComponent, PasswordInputComponent];
+const Components = [
+  ButtonComponent,
+  HeaderComponent,
+  FooterComponent,
+  SelectInputComponent,
+  TextAreaComponent,
+  TextInputComponent,
+  DateInputComponent,
+  RadioInputComponent,
+  CheckboxInputComponent,
+  PasswordInputComponent,
+];
 
 @NgModule({
   exports: [...Components],
