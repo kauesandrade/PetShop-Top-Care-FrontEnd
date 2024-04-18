@@ -109,8 +109,11 @@
     @include flex();
     gap: 0.5rem;
 
-    .shopping-cart-icon {
-      font-size: 1rem;
+    .icon-button {
+      width: 2.726rem;
+      .shopping-cart-icon {
+        font-size: 1rem;
+      }
     }
   }
 }

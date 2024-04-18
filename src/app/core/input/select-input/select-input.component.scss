@@ -1,30 +1,27 @@
 @import "styles";
 
 select {
-    padding-left: 1rem;
+  padding-left: 1rem;
 
-    max-width: 28rem;
-    max-height: 2.875rem;
+  max-width: 28rem;
+  max-height: 2.875rem;
 
-    outline: none;
-    border-radius: 8px;
-    border: 2px solid $primary;
+  outline: none;
+  border-radius: 8px;
+  border: 2px solid $primary;
+  background-color: $white;
+  color: $gray3;
 
-    background-color: $white;
-    color: $gray3;
-
-
-    &:disabled {
-        background-color: $light-primary;
-        border: none;
-    }
+  &:disabled {
+    background-color: $light-primary;
+    border: none;
+  }
 }
-
 label {
-    @include flex(column, flex-start, flex-start);
-    gap: 0.5rem;
+  @include flex(column, flex-start, flex-start);
+  gap: 0.5rem;
 
-    p {
-        @include text(small);
-    }
-}  
+  p {
+    @include text(small);
+  }
+}

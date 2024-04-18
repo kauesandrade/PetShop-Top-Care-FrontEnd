@@ -118,6 +118,10 @@
       @include flex();
       gap: 1.5rem;
 
+      button {
+        width: 10rem;
+      }
+
       @media (max-width: 320px) {
         flex-direction: column;
         gap: 0.5rem;

@@ -16,7 +16,9 @@
   }
 
   &-content {
-    @include flex(row, flex-start);
+    @include subgrid();
+    gap: 3.25rem;
+    padding: 2.25rem 0;
 
     @media (max-width: 320px) {
       flex-direction: column;
@@ -25,14 +27,12 @@
       grid-column: 1 / span 1;
     }
 
-    gap: 3.25rem;
-    padding: 2.25rem 0;
-    grid-column: 1 / span 12;
-
     .divider {
       width: 1px;
       height: 100%;
       background-color: $white;
+      grid-column: span 1;
+      place-self: center;
 
       @media (max-width: 320px) {
         display: none;
@@ -67,6 +67,8 @@
     }
 
     .contacts {
+      grid-column: 1 / span 3;
+
       @media (max-width: 320px) {
         h6 {
           @include text(normal, semibold);
@@ -99,6 +101,8 @@
     .vertical-info {
       @include flex(column, flex-start, flex-start);
       gap: 2rem;
+      grid-column: 5 / span 4;
+
       @media (max-width: 320px) {
         width: 100%;
       }
@@ -163,7 +167,8 @@
     }
 
     .about-us {
-      max-width: 10rem;
+      grid-column: 10 / -1;
+
       a {
         text-decoration: underline;
       }
