@@ -4,9 +4,11 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from '../core/core.module';
 import { CarouselModule } from './carousel/carousel.module';
+import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
 
 const Components = [
-  ProductCardComponent
+  ProductCardComponent,
+  ProductCarouselComponent
 ];
 
 @NgModule({
