@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonDirective } from './directives/button.directive';
+import { ButtonDirective } from './directives/Button/button.directive';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HeaderComponent } from './header/header.component';
@@ -17,8 +17,14 @@ import { RadioInputComponent } from './input/radio-input/radio-input.component';
 import { SelectInputComponent } from './input/select-input/select-input.component';
 import { TextAreaComponent } from './input/text-area/text-area.component';
 import { TextInputComponent } from './input/text-input/text-input.component';
+import { InputDirective } from './directives/Inputs/input.directive';
 
-const Components = [ButtonDirective, HeaderComponent, FooterComponent];
+const Components = [
+  ButtonDirective,
+  HeaderComponent,
+  FooterComponent,
+  InputDirective,
+];
 @NgModule({
   exports: [...Components, InputModule],
   declarations: [

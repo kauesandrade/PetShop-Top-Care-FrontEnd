@@ -18,18 +18,7 @@
 >
 </app-text-area> -->
 
-<!-- <app-text-input 
-    [disabled]=false
-    width="70" 
-    height="2.875" 
-    placeholder="Procurar"
-    [borderless]=false
-    [withIcon]=true
-    (valueEvent)="getValue($event)"
-    label="title Text"
->
-<fa-icon [icon]="faIcon"></fa-icon>
-</app-text-input> -->
+<!-- <app-text-input></app-text-input> -->
 
 <!-- <app-date-input 
     [disabled]=false
@@ -71,7 +60,7 @@
 >
 </app-checkbox-input> -->
 
-<app-password-input
+<!-- <app-password-input
   placeholder="senha"
   [disabled]="false"
   width="70"
@@ -79,4 +68,41 @@
   (valueEvent)="getValue($event)"
   label="Title password"
 >
-</app-password-input>
+</app-password-input> -->
+
+<input id="name1" type="text" appInput />
+
+<label for="name2" appInput>
+  <p>Teste</p>
+  <input id="name2" type="text" />
+</label>
+
+<label for="name3" appInput>
+  <p>Teste</p>
+  <div>
+    <input id="name3" type="text" />
+    <button><fa-icon [icon]="faIcon"></fa-icon></button>
+  </div>
+</label>
+
+<label for="name4" appInput>
+  <p>Teste</p>
+  <div>
+    <input id="name4" type="text" />
+    <button>Aplicar</button>
+  </div>
+</label>
+
+<label for="name5" appInput>
+  <div>
+    <input id="name5" type="text" />
+    <button><fa-icon [icon]="faIcon"></fa-icon></button>
+  </div>
+</label>
+
+<label for="name6" appInput>
+  <div>
+    <input id="name6" type="text" />
+    <button>Aplicar</button>
+  </div>
+</label>
