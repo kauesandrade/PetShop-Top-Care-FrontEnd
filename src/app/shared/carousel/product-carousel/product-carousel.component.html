@@ -5,7 +5,7 @@
       <div class="embla__viewport">
         <div class="embla__container">
           <div class="embla__slide" *ngFor="let item of itensProduct; index as i">
-                <app-product-carousel></app-product-carousel>
+                <app-product-card [product]="item"></app-product-card>
           </div>
         </div>
       </div>

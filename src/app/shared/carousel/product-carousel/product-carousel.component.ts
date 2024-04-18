@@ -25,15 +25,15 @@ export class ProductCarouselComponent implements AfterViewInit, OnDestroy {
   faAngleRight = faAngleRight
 
   @Input() itensProduct: Array<Product> = [{
-    imgSrc: ;
-    favorite: true;
-    title: "XD";
-    brand: "XD";
-    rating: 5;
-    price: 11;
-    discountPrice: 12;
-    maxInterestFreeParcels: 2;
-    subscribersPrice: 10;
+    imgSrc: "",
+    favorite: true,
+    title: "XD",
+    brand: "XD",
+    rating: 5,
+    price: 11,
+    discountPrice: 12,
+    maxInterestFreeParcels: 2,
+    subscribersPrice: 10,
   }]
 
   ngOnDestroy(): void {

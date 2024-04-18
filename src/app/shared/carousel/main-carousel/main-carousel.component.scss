@@ -1,49 +1,43 @@
 @import "styles";
 
-.embla__button--prev, .embla__button--next{
-  display: flex;
+
+.embla {
+  @include grid-container();
+  // @include subgrid();
+  grid-column: 1 / -1;
   align-items: center;
-  justify-content: center;
-  background-color: $gray2;
-  padding: 1rem;
-  width: 1rem;
-  height: 1rem;
-  outline-style: none;
-  border: none;
-  border-radius: 1rem;
+  justify-items: center;
+  width: 100%;
 
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
+  --slide-height: 15rem;
+  --slide-spacing: 2%;
+  --slide-size: 100%;
 
-  fa-icon{
+  .embla__button--prev, .embla__button--next{
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $white;
-    font-size: 1rem;
-  }
-}
-
-
-.embla {
-  width: 100%;
-  position: relative;
-  --slide-height: 15rem;
-  --slide-spacing: 2%;
-  --slide-size: 80%;
-
-  .embla__button--prev{
-    left: 10.3%;
-  }
-  .embla__button--next{
-    left: 89.7%;
-
+    background-color: $gray2;
+    padding: 1rem;
+    width: 1rem;
+    height: 1rem;
+    outline-style: none;
+    border: none;
+    border-radius: 1rem;
+  
+    fa-icon{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $white;
+      font-size: 1rem;
+    }
   }
 
   .embla__viewport {
     overflow: hidden;
+    grid-column: 2 / span 10;
+    border-radius: 20px;
   
     .embla__container{
       backface-visibility: hidden;
