@@ -4,7 +4,7 @@
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1; 
+  z-index: 1;
 
   display: flex;
   align-items: center;
@@ -27,10 +27,10 @@
 }
 
 .embla__button--prev{
-  right: 118%;
+  left: 11%;
 }
 .embla__button--next{
-  left: 122%;
+  left: 89%;
 }
 
 
@@ -39,8 +39,8 @@
   // @include subgrid();
   position: relative;
 
-  max-width: 48rem;
-  margin: auto;
+  width: 100%;
+
   --slide-height: 100%;
   --slide-spacing: 1rem;
   --slide-size: 25%;
@@ -52,12 +52,11 @@
       backface-visibility: hidden;
       display: flex;
       touch-action: pan-y;
-      margin-left: calc(var(--slide-spacing) * -1);
+      margin: 0 calc(var(--slide-spacing) * -1);
 
       .embla__slide {
         flex: 0 0 var(--slide-size);
-        min-width: 0;
-        padding-left: var(--slide-spacing);
+        padding: 0 var(--slide-spacing);
 
         app-product-card {
           display: flex;
@@ -67,5 +66,11 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 320px) {
+  .embla {
+    --slide-size: 100%;
   }
 }
