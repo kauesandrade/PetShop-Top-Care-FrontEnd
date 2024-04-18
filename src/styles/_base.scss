@@ -30,7 +30,6 @@ body {
   gap: 0.5rem;
 
   text-transform: uppercase;
-  word-break: break-all;
   word-wrap: break-word;
 
   cursor: pointer;
@@ -58,9 +57,9 @@ body {
   }
 
   &:disabled {
-    background-color: $grey2;
-    color: $grey4;
-    border: 1px solid $grey2;
+    background-color: $gray2;
+    color: $gray4;
+    border: 1px solid $gray2;
     cursor: default;
   }
 
