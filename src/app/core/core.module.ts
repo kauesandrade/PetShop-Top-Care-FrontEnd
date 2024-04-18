@@ -9,7 +9,6 @@ import { HeaderMainComponent } from './header/header-main/header-main.component'
 import { FooterComponent } from './footer/footer.component';
 import { FooterMainComponent } from './footer/footer-main/footer-main.component';
 import { FooterCopyrightComponent } from './footer/footer-copyright/footer-copyright.component';
-import { InputModule } from './input/input.module';
 import { InputDirective } from './directives/Inputs/input.directive';
 
 const Components = [
@@ -19,7 +18,7 @@ const Components = [
   InputDirective,
 ];
 @NgModule({
-  exports: [...Components, InputModule],
+  exports: [...Components],
   declarations: [
     ...Components,
     HeaderTopComponent,

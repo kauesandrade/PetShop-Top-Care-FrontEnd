@@ -7,7 +7,10 @@ export class InputDirective {
   constructor(private el: ElementRef) {}
 
   ngOnInit() {
-    if (this.el.nativeElement.children.length == 0) {
+    if (
+      this.el.nativeElement.children.length == 0 ||
+      this.el.nativeElement.nodeName == 'SELECT'
+    ) {
       this.el.nativeElement.classList.add('input');
     } else {
       this.el.nativeElement.classList.add('label');

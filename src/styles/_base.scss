@@ -92,6 +92,51 @@ body {
     color: $gray3;
     border-color: $light-primary;
   }
+
+  &[type="radio"],
+  &[type="checkbox"] {
+    width: 1.875rem;
+    aspect-ratio: 1 / 1;
+    accent-color: $primary;
+    -webkit-appearance: none;
+    @include flex();
+    padding: 0.125rem;
+
+    &:checked {
+      border-color: $primary;
+
+      &::before {
+        transform: scale(1);
+      }
+    }
+
+    &::before {
+      content: "";
+      width: 80%;
+      aspect-ratio: 1 / 1;
+      transform: scale(0);
+      background-color: $primary;
+    }
+  }
+
+  &[type="radio"] {
+    border: 0.1875rem solid $gray3;
+    background-color: $white;
+    border-radius: 100%;
+    &::before {
+      border-radius: 100%;
+    }
+  }
+
+  &[type="checkbox"] {
+    border: 0.1875rem solid $gray2;
+    background-color: $gray5;
+    border-radius: 0.5rem;
+
+    &::before {
+      border-radius: 0.25rem;
+    }
+  }
 }
 
 .label {
