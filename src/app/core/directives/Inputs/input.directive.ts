@@ -12,7 +12,10 @@ export class InputDirective {
     } else {
       this.el.nativeElement.classList.add('label');
       for (let i = 0; i < this.el.nativeElement.children.length; i++) {
-        if (this.el.nativeElement.children[i].nodeName == 'INPUT') {
+        if (
+          this.el.nativeElement.children[i].nodeName == 'INPUT' ||
+          this.el.nativeElement.children[i].nodeName == 'TEXTAREA'
+        ) {
           this.el.nativeElement.children[i].classList.add('input');
           break;
         }
