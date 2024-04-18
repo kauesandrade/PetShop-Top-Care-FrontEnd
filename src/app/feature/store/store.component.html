@@ -1,0 +1,12 @@
+<main>
+  <div>
+    <section>
+      <h1>Nossas Lojas</h1>
+    </section>
+    <section class="sectionStoreCard">
+      <ng-container *ngFor="let store of stores">
+        <app-store-card [store]="store"></app-store-card>
+      </ng-container>
+    </section>
+  </div>
+</main>

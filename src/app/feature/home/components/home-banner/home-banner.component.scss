@@ -1,0 +1,127 @@
+@import "styles";
+
+.banner {
+  @include subgrid();
+  background-color: $white;
+  padding: 2rem 0;
+  border-radius: 1.5rem;
+
+  @media (max-width: 320px) {
+    padding: 1rem 0;
+  }
+
+  h1 {
+    grid-column: 1 / -1;
+    text-align: center;
+    background-color: $primary;
+    color: $white;
+    padding: 0.75rem 0;
+    @media (max-width: 320px) {
+      padding: 0.5rem 0;
+      @include heading();
+    }
+  }
+
+  .row {
+    @include flex(row, flex-start, flex-start);
+    grid-column: 1 / -1;
+    padding: 2rem 2rem 0 2rem;
+    gap: 2rem;
+
+    @media (max-width: 320px) {
+      flex-direction: column;
+      padding: 1rem 1.25rem;
+      gap: 1rem;
+    }
+
+    .vertical-divider {
+      width: 1px;
+      height: 100%;
+      background-color: $gray2;
+      @media (max-width: 320px) {
+        place-self: center;
+        width: calc(100% - 3.75rem);
+        height: 1px;
+      }
+    }
+
+    .text-content {
+      @include flex(column, flex-start, flex-start);
+      gap: 1.5rem;
+      max-width: 31rem;
+
+      p {
+        @include text(medium);
+      }
+
+      @media (max-width: 320px) {
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+
+        h4 {
+          @include text(medium, bold);
+        }
+
+        p {
+          @include text(small);
+        }
+      }
+    }
+  }
+
+  .horizontal-divider {
+    grid-column: 1 / -1;
+    place-self: center;
+    width: calc(100% - 2rem);
+    height: 1px;
+    background-color: $gray2;
+    margin: 1.5rem 0;
+    @media (max-width: 320px) {
+      width: calc(100% - 6.25rem);
+      margin: 0 0 1rem 0;
+    }
+  }
+
+  .column {
+    grid-column: 1 /-1;
+    @include flex(column);
+    gap: 1.5rem;
+
+    @media (max-width: 320px) {
+      width: 100%;
+      gap: 1rem;
+    }
+
+    .text {
+      @include flex(column);
+      gap: 0.5rem;
+
+      p {
+        @include text(medium);
+      }
+
+      @media (max-width: 320px) {
+        gap: 0.25rem;
+
+        h4 {
+          @include text(medium, bold);
+        }
+
+        p {
+          @include text(small);
+        }
+      }
+    }
+
+    .buttons {
+      @include flex();
+      gap: 1.5rem;
+
+      @media (max-width: 320px) {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  }
+}

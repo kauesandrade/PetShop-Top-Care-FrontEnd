@@ -1,0 +1,53 @@
+@import "styles";
+
+
+main{
+    @include grid-container;
+    div{
+        display: grid;
+        grid-template-columns: subgrid;
+        grid-column: 1 / -1;
+        border-radius: 1.5rem;
+        background-color: $white;
+        row-gap: 2.5rem;
+
+        padding: 2rem 0;
+        section{
+            h1{
+                color: $primary;
+                grid-column: 1 / -1;
+                text-align: center;
+            }
+            display: grid;
+            grid-template-columns: subgrid;
+            grid-column: 1 / -1;
+        }
+        .sectionStoreCard{
+            row-gap: 1.5rem;
+            app-store-card{
+                grid-column: 2 / 12;
+            }
+        }
+    }
+}
+
+@media (max-width: 320px){
+    main{
+        div{
+            row-gap: 1rem;
+            border-radius: 0.5rem;
+            padding: 4px;
+            padding-top: 1rem;
+            section{
+                h1{
+                    @include heading(h6)
+                }
+                justify-content: center;
+                grid-column: 1/ span 1;
+            }
+            .sectionStoreCard{
+                row-gap: 0.5rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+<section class="product-section">
+  <h4 class="product-section-title">{{ title }}</h4>
+  <div class="product-section-cards">
+    <ng-container *ngFor="let product of productList">
+      <app-product-card
+        [product]="product"
+        class="product-section-cards-card"
+      ></app-product-card>
+    </ng-container>
+  </div>
+</section>

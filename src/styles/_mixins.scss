@@ -1,61 +1,12 @@
 @import "variables";
-@import "typography";
-
-@mixin heading($type: h6) {
-  font-family: $fredoka;
-  font-weight: 500;
-
-  @if $type == h1 {
-    font-size: 3.5rem;
-    line-height: 4.125rem;
-  } @else if $type == h2 {
-    font-size: 3rem;
-    line-height: 3.5rem;
-  } @else if $type == h3 {
-    font-size: 2.5rem;
-    line-height: 3rem;
-  } @else if $type == h4 {
-    font-size: 2rem;
-    line-height: 2.5rem;
-  } @else if $type == h5 {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  } @else {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
-}
-
-@mixin text($size: normal, $weight: regular) {
-  font-family: $rubik;
-
-  @if $size == large {
-    font-size: 1.125rem;
-  } @else if $size == medium {
-    font-size: 1rem;
-  } @else if $size == small {
-    font-size: 0.75rem;
-  } @else {
-    font-size: 0.875rem;
-  }
-
-  @if $weight == bold {
-    font-weight: 700;
-  } @else if $weight == semibold {
-    font-weight: 600;
-  } @else if $weight == medium {
-    font-weight: 500;
-  } @else {
-    font-weight: 400;
-  }
-}
 
 @mixin transition() {
   transition: all 0.2s ease-out;
 }
 
-@mixin flex($align: center, $justify: center) {
+@mixin flex($direction: row, $align: center, $justify: center) {
   display: flex;
+  flex-direction: $direction;
   align-items: $align;
   justify-content: $justify;
 }

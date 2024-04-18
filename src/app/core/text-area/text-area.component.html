@@ -1,0 +1,9 @@
+<textarea 
+[ngStyle]="{ width: width !== '0' ? width + 'rem' : '58' + 'rem',
+height: height !== '0' ? height + 'rem' : '7.938rem' }" 
+[placeholder]="placeholder" 
+type="text"
+#myTextArea
+(change)="getValue(myTextArea.value)"
+>
+</textarea> 

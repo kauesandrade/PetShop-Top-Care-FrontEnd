@@ -1,0 +1,14 @@
+@import "styles";
+
+.footer {
+  margin-top: 3.5rem;
+  @media (max-width: 320px) {
+    margin-top: 1.5rem;
+  }
+}
+
+app-footer-copyright {
+  @media (max-width: 320px) {
+    display: none;
+  }
+}
