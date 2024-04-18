@@ -7,15 +7,15 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 })
 export class CheckboxInputComponent {
 
-  @Input() inputTitle: string = ""
+  @Input() label: string = ""
 
   @Output() check: boolean = false;
 
-  @Output() ricardo: EventEmitter<boolean> = new EventEmitter();
+  @Output() valueEvent: EventEmitter<boolean> = new EventEmitter();
 
   onClick(){
     this.check = !this.check;
-    this.ricardo.emit(this.check)
+    this.valueEvent.emit(this.check)
   }
   
 }

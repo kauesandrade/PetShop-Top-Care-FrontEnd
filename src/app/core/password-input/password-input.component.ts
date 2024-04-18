@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -8,20 +9,21 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 })
 export class PasswordInputComponent {
 
-  eyeIcon = faEye
+  faEye = faEye
+  faEyeSlash = faEyeSlash
 
   @Input() placeholder: string = ""
-  @Input() inputTitle: string = ""
+  @Input() label: string = ""
 
   @Input() width: string = ""
   @Input() height: string = ""
  
   @Input() disabled: boolean = false
 
-  @Output() ricardo: EventEmitter<string> = new EventEmitter();
+  @Output() valueEvent: EventEmitter<string> = new EventEmitter();
 
   getValue(value: string){
-    this.ricardo.emit(value)
+    this.valueEvent.emit(value)
   }
 
   showPassword: boolean = false;

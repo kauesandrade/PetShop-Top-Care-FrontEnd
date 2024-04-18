@@ -1,5 +1,5 @@
 <label for="inputDate">
-    <p inputTitle="inputTitle">{{inputTitle}}</p>
+    <p *ngIf="label.length > 0" label="label">{{label}}</p>
     <input type="date" 
     [ngStyle]="{ width: width !== '0' ? width + 'rem' : '28' + 'rem', 
     height: height !== '0' ? height + 'rem' : '2.875rem' }"

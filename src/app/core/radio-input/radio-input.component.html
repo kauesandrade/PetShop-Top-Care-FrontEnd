@@ -6,5 +6,5 @@
     (change)="getValue(radioInput.value)"
     [id]="id"
     >
-    <p inputTitle="inputTitle">{{inputTitle}}</p>
+    <p *ngIf="label.length > 0" label="label">{{label}}</p>
 </label>

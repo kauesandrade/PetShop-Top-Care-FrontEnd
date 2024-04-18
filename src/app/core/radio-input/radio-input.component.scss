@@ -12,5 +12,8 @@ input {
 label {
   @include flex(row, center, flex-start);
   gap: 0.5rem;
-  @include text(small);
+
+  p {
+    @include text(small);
+  }
 }

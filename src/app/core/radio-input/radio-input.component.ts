@@ -10,13 +10,13 @@ export class RadioInputComponent {
   @Input() name: string = ""
   @Input() value: string = ""
 
-  @Input() inputTitle: string = ""
+  @Input() label: string = ""
   @Input() id: string = ""
 
-  @Output() ricardo: EventEmitter<string> = new EventEmitter();
+  @Output() valueEvent: EventEmitter<string> = new EventEmitter();
 
   getValue(value: string){
-    this.ricardo.emit(value)
+    this.valueEvent.emit(value)
   }
 
 }

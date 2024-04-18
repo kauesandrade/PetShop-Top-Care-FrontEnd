@@ -13,7 +13,6 @@ select {
     background-color: $white;
     color: $gray3;
 
-    @include text(small);
 
     &:disabled {
         background-color: $light-primary;
@@ -24,5 +23,8 @@ select {
 label {
     @include flex(column, flex-start, flex-start);
     gap: 0.5rem;
-    @include text(small);
+
+    p {
+        @include text(small);
+    }
 }  

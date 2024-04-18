@@ -9,7 +9,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class TextInputComponent {
 
   @Input() placeholder: string = ""
-  @Input() inputTitle: string = ""
+  @Input() label: string = ""
 
   @Input() width: string = ""
   @Input() height: string = ""
@@ -19,10 +19,10 @@ export class TextInputComponent {
 
   @Input() withIcon: boolean = false
 
-  @Output() ricardo: EventEmitter<string> = new EventEmitter();
+  @Output() valueEvent: EventEmitter<string> = new EventEmitter();
 
   getValue(value: string){
-    this.ricardo.emit(value)
+    this.valueEvent.emit(value)
   }
 
 }

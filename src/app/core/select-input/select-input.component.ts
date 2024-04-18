@@ -9,17 +9,17 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class SelectInputComponent {
 
   @Input() opcoes: string[] = ['Homem', 'Mulher', 'Prefiro não dizer'];
-  @Input() inputTitle: string = ""
+  @Input() label: string = ""
 
   @Input() width: string = "0"
   @Input() height: string = "0"
 
   @Input() disabled: boolean = false
 
-  @Output() selectedItem: EventEmitter<string> = new EventEmitter();
+  @Output() valueEvent: EventEmitter<string> = new EventEmitter();
 
   onSelect(value: string) {
-    this.selectedItem.emit(value)
+    this.valueEvent.emit(value)
   }
 
 }

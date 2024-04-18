@@ -1,5 +1,5 @@
 <label for="textArea">
-    <p inputTitle="inputTitle" >{{inputTitle}}</p>
+    <p *ngIf="label.length > 0" label="label" >{{label}}</p>
     <textarea 
     [ngStyle]="{ width: width !== '0' ? width + 'rem' : '58' + 'rem',
         height: height !== '0' ? height + 'rem' : '7.938rem' }" 

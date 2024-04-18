@@ -11,12 +11,12 @@ export class TextAreaComponent {
   @Input() height: string = "0"
 
   @Input() placeholder: string = ""
-  @Input() inputTitle: string = ""
+  @Input() label: string = ""
 
-  @Output() ricardo: EventEmitter<string> = new EventEmitter();
+  @Output() valueEvent: EventEmitter<string> = new EventEmitter();
 
   getValue(value: string){
-    this.ricardo.emit(value)
+    this.valueEvent.emit(value)
   }
 
 }

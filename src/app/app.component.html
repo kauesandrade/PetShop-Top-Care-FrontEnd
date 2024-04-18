@@ -7,15 +7,15 @@
     width="28" 
     [opcoes]="['tartaruga', 'cachorro', 'gato']"
     (selectedItem)="onSelect($event)"
-    inputTitle="title select"
+    label="title select"
 >
 </app-select-input> -->
 
 <!-- <app-text-area 
     placeholder="placeholder"
     width="58"
-    (ricardo)="getValue($event)"
-    inputTitle="tilte Text area"
+    (valueEvent)="getValue($event)"
+    label="tilte Text area"
 >
 </app-text-area> -->
 
@@ -26,24 +26,24 @@
     placeholder="Procurar"
     [borderless]=false
     [withIcon]=true
-    (ricardo)="getValue($event)"
-    inputTitle="title Text"
+    (valueEvent)="getValue($event)"
+    label="title Text"
 >
 <fa-icon [icon]="faIcon"></fa-icon>
 </app-text-input> -->
 
 <!-- <app-date-input 
     [disabled]=false
-    (ricardo)="getValue($event)"
-    inputTitle="Title date"
+    (valueEvent)="getValue($event)"
+    label="Title date"
 >
 </app-date-input> -->
 
 <!-- <app-radio-input
     name="lojas"
     value="Loja Jaraguá"
-    (ricardo)="getValue($event)"
-    inputTitle="Title radio Jaraguá"
+    (valueEvent)="getValue($event)"
+    label="Title radio Jaraguá"
     id="jaragua"
 >
 </app-radio-input> -->
@@ -51,8 +51,8 @@
 <!-- <app-radio-input
     name="lojas"
     value="Loja Joiville"
-    (ricardo)="getValue($event)"
-    inputTitle="Title radio joinville"
+    (valueEvent)="getValue($event)"
+    label="Title radio joinville"
     id="joiville"
 >
 </app-radio-input> -->
@@ -60,15 +60,15 @@
 <!-- <app-radio-input
     name="lojas"
     value="Loja Blumenau"
-    (ricardo)="getValue($event)"
-    inputTitle="Title radio blumenau"
+    (valueEvent)="getValue($event)"
+    label="Title radio blumenau"
     id="blumenau"
 >
 </app-radio-input> -->
 
 <!-- <app-checkbox-input
-    (ricardo)="getValue($event)"
-    inputTitle="Title checkbox"
+    (valueEvent)="getValue($event)"
+    label="Title checkbox"
 >
 </app-checkbox-input> -->
 
@@ -77,7 +77,7 @@
     [disabled]=false
     width="70" 
     height="2.875" 
-    (ricardo)="getValue($event)"
-    inputTitle="Title password"
+    (valueEvent)="getValue($event)"
+    label="Title password"
 >
 </app-password-input> -->
