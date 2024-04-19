@@ -29,5 +29,6 @@ export class ContactService {
       this.services[service.type as keyof typeof this.services];
 
     serviceArray.push(service);
+    console.log(this.services);
   }
 }

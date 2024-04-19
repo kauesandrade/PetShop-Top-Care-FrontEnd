@@ -1,1 +1,67 @@
-<p>contact-form works!</p>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <label for="name" appInput>
+    <p>Nome*</p>
+    <input
+      type="text"
+      id="name"
+      formControlName="name"
+      placeholder="Digite seu nome completo"
+    />
+  </label>
+  <label for="email" appInput>
+    <p>Email*</p>
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      placeholder="Digite seu nome completo"
+    />
+  </label>
+  <img src="assets/images/ContactFormImage.png" alt="" />
+  <label for="type" appInput>
+    <p>Tipo de atendimento*</p>
+    <select
+      id="type"
+      formControlName="type"
+      (change)="selectedType($event)"
+      appInput
+    >
+      <option value="" selected hidden>Escolha o tipo de atendimento</option>
+      <ng-container *ngFor="let service of serviceTypes; let i = index">
+        <option [value]="service">{{ service }}</option>
+      </ng-container>
+    </select>
+  </label>
+  <ng-container *ngIf="this.type?.value == 'Agendamento'">
+    <label for="date" appInput>
+      <p>Data*</p>
+      <input type="date" id="date" formControlName="date" />
+    </label>
+    <label for="time" appInput>
+      <p>Hora*</p>
+      <select id="time" formControlName="time" appInput>
+        <ng-container *ngFor="let hour of availableHours; let i = index">
+          <option [value]="hour">{{ hour }}</option>
+        </ng-container>
+      </select>
+    </label>
+    <label for="filial" appInput>
+      <p>Filial*</p>
+      <select id="filial" formControlName="filial" appInput>
+        <option value="" selected hidden>Escolha a filial</option>
+        <ng-container *ngFor="let filial of filials">
+          <option [value]="filial">{{ filial }}</option>
+        </ng-container>
+      </select>
+    </label>
+  </ng-container>
+  <label for="message" appInput>
+    <p>Escreva sua mensagem*</p>
+    <textarea
+      id="message"
+      formControlName="message"
+      placeholder="Escreva sua mensagem que responderemos assim que possível"
+    ></textarea>
+  </label>
+  <input type="submit" appButton="secondary" value="Enviar" />
+</form>

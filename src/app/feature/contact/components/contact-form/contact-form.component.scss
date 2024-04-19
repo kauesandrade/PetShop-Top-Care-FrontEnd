@@ -1,0 +1,61 @@
+@import "styles";
+
+form {
+  @include subgrid();
+  row-gap: 1rem;
+
+  label {
+    gap: 0;
+    height: 4.375rem;
+
+    input,
+    select,
+    textarea {
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    input,
+    textarea {
+      @include text(medium);
+    }
+
+    select {
+      @include text(medium);
+    }
+  }
+
+  img {
+    grid-column: 10 / span 2;
+    grid-row: 1 / span 2;
+  }
+
+  label[for="name"] {
+    grid-column: 2 / span 4;
+  }
+  label[for="email"] {
+    grid-column: 6 / span 4;
+  }
+  label[for="type"] {
+    grid-column: 2 / span 4;
+  }
+  label[for="date"] {
+    grid-column: 6 / span 2;
+  }
+  label[for="time"] {
+    grid-column: 8 / span 2;
+  }
+  label[for="filial"] {
+    grid-row: 3 / span 1;
+    grid-column: 2 / span 10;
+  }
+  label[for="message"] {
+    height: 9.5rem;
+    grid-row: 4 / span 1;
+    grid-column: 2 / span 10;
+  }
+  input[type="submit"] {
+    grid-row: 5 / span 1;
+    grid-column: 6 / span 2;
+  }
+}

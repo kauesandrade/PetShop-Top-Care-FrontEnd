@@ -5,9 +5,10 @@ main {
 
   .contact-section {
     @include subgrid();
+    row-gap: 2rem;
     background-color: $white;
     border-radius: 1.25rem;
-    padding: 2rem;
+    padding: 2rem 0;
 
     h2 {
       grid-column: 1 / -1;
