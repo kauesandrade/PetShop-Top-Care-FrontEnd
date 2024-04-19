@@ -1,25 +1,30 @@
 import { Component, ElementRef, AfterViewInit, OnDestroy, Input } from '@angular/core';
 import EmblaCarousel, { EmblaOptionsType } from 'embla-carousel';
-import { MainCarousel } from '../interfaces/main-carousel';
+import { Product } from '../interfaces/product';
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-carousel',
-  templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss']
+  selector: 'app-product-carousel',
+  templateUrl: './product-carousel.component.html',
+  styleUrls: ['./product-carousel.component.scss']
 })
-export class CarouselComponent implements AfterViewInit, OnDestroy {
+export class ProductCarouselComponent implements AfterViewInit, OnDestroy {
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef) {}
   
   ngAfterViewInit(): void {
     const viewportNode = this.elementRef.nativeElement.querySelector('.embla__viewport');
-    const OPTIONS: EmblaOptionsType = {axis: 'x', loop: true };
+    const OPTIONS: EmblaOptionsType = {align: 'start', loop: true};
     
     this.embla = EmblaCarousel(viewportNode, OPTIONS);
   }
   
   embla: any = null;
-  @Input() itensCarousel?: Array<MainCarousel>;
+  faAngleLeft = faAngleLeft
+  faAngleRight = faAngleRight
+
+  @Input() itensProduct?: Array<Product>;
 
   ngOnDestroy(): void {
     if (this.embla) {
@@ -40,4 +45,3 @@ export class CarouselComponent implements AfterViewInit, OnDestroy {
   }
 
 }
-
