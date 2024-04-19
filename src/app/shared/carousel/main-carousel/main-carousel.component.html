@@ -7,7 +7,7 @@
         <div class="embla__slide" *ngFor="let item of itensCarousel; index as i">
           <div class="slide">
             <a href={{item.link}}>
-              <img src={{item.imgSrc}} alt="dasdasd">
+              <img src={{item.imgSrc}} alt={{item?.alt}}>
             </a>
           </div>
         </div>

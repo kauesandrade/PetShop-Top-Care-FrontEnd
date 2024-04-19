@@ -24,74 +24,7 @@ export class ProductCarouselComponent implements AfterViewInit, OnDestroy {
   faAngleLeft = faAngleLeft
   faAngleRight = faAngleRight
 
-  @Input() itensProduct: Array<Product> = [
-    {
-    imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
-    favorite: true,
-    title: "XD",
-    brand: "XD",
-    rating: 5,
-    price: 11,
-    discountPrice: 12,
-    maxInterestFreeParcels: 2,
-    subscribersPrice: 10,
-  },
-  {
-    imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
-    favorite: true,
-    title: "XD",
-    brand: "XD",
-    rating: 5,
-    price: 11,
-    discountPrice: 12,
-    maxInterestFreeParcels: 2,
-    subscribersPrice: 10,
-  },
-  {
-    imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
-    favorite: true,
-    title: "XD",
-    brand: "XD",
-    rating: 5,
-    price: 11,
-    discountPrice: 12,
-    maxInterestFreeParcels: 2,
-    subscribersPrice: 10,
-  },
-  {
-    imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
-    favorite: true,
-    title: "XD",
-    brand: "XD",
-    rating: 5,
-    price: 11,
-    discountPrice: 12,
-    maxInterestFreeParcels: 2,
-    subscribersPrice: 10,
-  },
-  {
-    imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
-    favorite: true,
-    title: "XD",
-    brand: "XD",
-    rating: 5,
-    price: 11,
-    discountPrice: 12,
-    maxInterestFreeParcels: 2,
-    subscribersPrice: 10,
-  },
-  {
-    imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
-    favorite: true,
-    title: "XD",
-    brand: "XD",
-    rating: 5,
-    price: 11,
-    discountPrice: 12,
-    maxInterestFreeParcels: 2,
-    subscribersPrice: 10,
-  },
-]
+  @Input() itensProduct?: Array<Product>;
 
   ngOnDestroy(): void {
     if (this.embla) {
