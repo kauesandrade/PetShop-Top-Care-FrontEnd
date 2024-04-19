@@ -27,10 +27,10 @@
 }
 
 .embla__button--prev{
-  left: 11%;
+  grid-column: 1 / 1 
 }
 .embla__button--next{
-  left: 89%;
+  grid-column: 13 / 13 
 }
 
 
@@ -72,5 +72,9 @@
 @media (max-width: 320px) {
   .embla {
     --slide-size: 100%;
+  }
+  .embla__button--next{
+    grid-column: 1 / 1;
+    left: 100%
   }
 }
