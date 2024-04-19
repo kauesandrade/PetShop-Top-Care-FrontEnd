@@ -7,17 +7,20 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
   constructor() {}
 
-  faIcon = faSearch
+  faIcon = faSearch;
+  showPassword = false;
 
-    onSelect(event: string) {
-      console.log(event)
-    } 
-    
-    getValue(event: string | boolean) {
-      console.log(event)
-    } 
+  onSelect(event: string) {
+    console.log(event);
+  }
 
+  getValue(event: string | boolean) {
+    console.log(event);
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
 }

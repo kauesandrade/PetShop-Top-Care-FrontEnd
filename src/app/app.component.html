@@ -1,8 +1,6 @@
-
 <app-header></app-header>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
-
 <!-- <app-select-input 
     width="28" 
     [opcoes]="['tartaruga', 'cachorro', 'gato']"
@@ -69,3 +67,10 @@
     (ricardo)="getValue($event)"
 >
 </app-password-input> -->
+
+<label for="" appInput>
+  <div>
+    <input [type]="'showPassword' ? 'text' : 'password'" />
+    <button>ver</button>
+  </div>
+</label>
