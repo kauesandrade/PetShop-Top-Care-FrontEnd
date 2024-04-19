@@ -11,8 +11,9 @@
 
 
 .embla {
-  @include grid-container();
-  // @include subgrid();
+  // @include grid-container();
+  @include subgrid();
+  grid-column: 1 / -1;
   position: relative;
   width: 100%;
 

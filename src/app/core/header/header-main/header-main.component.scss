@@ -63,12 +63,12 @@
   height: 100%;
   width: 0;
   transition: 0.5s ease-in-out;
+  z-index: 100;
 
   .drawer-menu {
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
     top: 0;
     left: 0;
     background-color: $white;

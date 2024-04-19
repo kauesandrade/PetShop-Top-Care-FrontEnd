@@ -6,6 +6,7 @@ import { ChatButtonComponent } from './components/chat-button/chat-button.compon
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeBannerComponent } from './components/home-banner/home-banner.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   exports: [HomeComponent],
@@ -15,6 +16,6 @@ import { CoreModule } from 'src/app/core/core.module';
     ChatButtonComponent,
     HomeBannerComponent,
   ],
-  imports: [CommonModule, FontAwesomeModule, CoreModule],
+  imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule],
 })
 export class HomeModule {}

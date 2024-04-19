@@ -11,7 +11,6 @@ import { ProductCarouselComponent } from './product-carousel/product-carousel.co
     ProductCardComponent,
     ProductSectionComponent,
     ProductCarouselComponent
-
 ];
 
 @NgModule({

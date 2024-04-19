@@ -2,8 +2,16 @@
 
 main {
   @include grid-container();
+  row-gap: 2rem;
 
+  app-main-carousel{
+    @include subgrid();
+  }
   app-home-banner {
     @include subgrid();
+  }
+
+  @media (max-width: 320px){
+    row-gap: 1rem;
   }
 }
