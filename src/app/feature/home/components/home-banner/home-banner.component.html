@@ -28,24 +28,15 @@
       <p>Aqui estão alguns links úteis</p>
     </div>
     <div class="buttons">
-      <app-button
-        color="secondary"
-        width="10.25"
-        (click)="openPage('sobre-nos')"
-        >Sobre nossa empresa</app-button
-      >
-      <app-button
-        color="secondary"
-        width="10.25"
-        (click)="openPage('nossas-lojas')"
-        >Nossas lojas físicas</app-button
-      >
-      <app-button
-        color="secondary"
-        width="10.25"
-        (click)="openPage('contate-nos')"
-        >Envie sua mensagem</app-button
-      >
+      <button appButton="secondary" (click)="openPage('sobre-nos')">
+        Sobre nossa empresa
+      </button>
+      <button appButton="secondary" (click)="openPage('nossas-lojas')">
+        Nossas lojas físicas
+      </button>
+      <button appButton="secondary" (click)="openPage('contate-nos')">
+        Envie sua mensagem
+      </button>
     </div>
   </div>
 </section>
