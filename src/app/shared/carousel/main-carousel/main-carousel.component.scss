@@ -10,10 +10,17 @@
   --slide-height: 20rem;
   --slide-spacing: 0px;
   --slide-size: 100%;
-  
+
+  @media (max-width: 1024px) {
+    --slide-height: 15rem;
+  }
+  @media (max-width: 768px) {
+    --slide-height: 10rem;
+  }
   @media (max-width: 320px) {
     --slide-height: 5rem;
   }
+  
 
   .embla__button--prev, .embla__button--next {
 
@@ -61,9 +68,8 @@
 
   .embla__button--next{
     grid-column: 13 / 13;
-    @media (max-width: 320px) {
-      left: 100%;
-    }
+    left: 100%;
+
   }
 
   .embla__viewport {
