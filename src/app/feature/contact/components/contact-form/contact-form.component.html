@@ -27,7 +27,7 @@
       appInput
     >
       <option value="" selected hidden>Escolha o tipo de atendimento</option>
-      <ng-container *ngFor="let service of serviceTypes; let i = index">
+      <ng-container *ngFor="let service of serviceTypes.sort(); let i = index">
         <option [value]="service">{{ service }}</option>
       </ng-container>
     </select>
@@ -40,7 +40,7 @@
     <label for="time" appInput>
       <p>Hora*</p>
       <select id="time" formControlName="time" appInput>
-        <ng-container *ngFor="let hour of availableHours; let i = index">
+        <ng-container *ngFor="let hour of availableHours.sort(); let i = index">
           <option [value]="hour">{{ hour }}</option>
         </ng-container>
       </select>
@@ -49,7 +49,7 @@
       <p>Filial*</p>
       <select id="filial" formControlName="filial" appInput>
         <option value="" selected hidden>Escolha a filial</option>
-        <ng-container *ngFor="let filial of filials">
+        <ng-container *ngFor="let filial of filials.sort()">
           <option [value]="filial">{{ filial }}</option>
         </ng-container>
       </select>
@@ -63,5 +63,10 @@
       placeholder="Escreva sua mensagem que responderemos assim que possível"
     ></textarea>
   </label>
-  <input type="submit" appButton="secondary" value="Enviar" />
+  <input
+    type="submit"
+    appButton="secondary"
+    value="Enviar"
+    [disabled]="!isFormValid()"
+  />
 </form>

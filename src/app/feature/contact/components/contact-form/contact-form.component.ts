@@ -54,8 +54,26 @@ export class ContactFormComponent {
     private contactService: ContactService
   ) {}
 
+  get name() {
+    return this.contactForm.get('name');
+  }
+  get email() {
+    return this.contactForm.get('email');
+  }
   get type() {
     return this.contactForm.get('type');
+  }
+  get date() {
+    return this.contactForm.get('date');
+  }
+  get time() {
+    return this.contactForm.get('time');
+  }
+  get filial() {
+    return this.contactForm.get('filial');
+  }
+  get message() {
+    return this.contactForm.get('message');
   }
 
   selectedType(e: Event) {
@@ -65,17 +83,23 @@ export class ContactFormComponent {
     });
 
     if (this.type?.value == 'Agendamento') {
-      this.contactForm.controls.date.setValidators(Validators.required);
-      this.contactForm.controls.time.setValidators(Validators.required);
-      this.contactForm.controls.filial.setValidators(Validators.required);
+      this.date?.setValidators(Validators.required);
+      this.time?.setValidators(Validators.required);
+      this.filial?.setValidators(Validators.required);
     } else {
-      this.contactForm.controls.date.reset();
-      this.contactForm.controls.time.setValue(this.availableHours[0]);
-      this.contactForm.controls.filial.setValue(this.filials[0]);
-      this.contactForm.controls.date.removeValidators(Validators.required);
-      this.contactForm.controls.time.removeValidators(Validators.required);
-      this.contactForm.controls.filial.removeValidators(Validators.required);
+      this.date?.clearValidators();
+      this.time?.clearValidators();
+      this.filial?.clearValidators();
+      this.date?.patchValue('');
+      this.time?.patchValue(this.availableHours[0]);
+      this.filial?.patchValue(this.filials[0]);
     }
+
+    this.date?.updateValueAndValidity();
+  }
+
+  isFormValid() {
+    return this.contactForm.valid;
   }
 
   defineServiceType(type: string | null | undefined) {
@@ -110,18 +134,24 @@ export class ContactFormComponent {
     }
 
     console.log(this.contactForm.errors);
+    let newService: Service;
+    const formValues = this.contactForm.value;
 
-    let newService: Service = {
-      name: this.contactForm.value.name!,
-      email: this.contactForm.value.email!,
-      type: this.defineServiceType(this.contactForm.value.type),
-      date: new Date(this.contactForm.value.date!),
-      time: this.contactForm.value.time!,
-      filial: this.contactForm.value.filial!,
-      message: this.contactForm.value.message!,
+    newService = {
+      name: formValues.name!,
+      email: formValues.email!,
+      type: this.defineServiceType(formValues.type),
+      message: formValues.message!,
     };
+
+    if (formValues.type == 'Agendamento') {
+      newService.date = new Date(formValues.date!);
+      newService.time = formValues.time!;
+      newService.filial = formValues.filial!;
+    }
 
     this.contactService.addService(newService);
     alert('Enviou a mensagem legal dog!');
+    console.table(this.contactService.services);
   }
 }
