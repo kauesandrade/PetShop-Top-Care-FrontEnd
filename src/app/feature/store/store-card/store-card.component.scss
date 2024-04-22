@@ -40,7 +40,7 @@ a{
         }
     }
 
-
+    
 }
 
 h6{
@@ -48,6 +48,29 @@ h6{
 }
 p{
     color: $gray3;
+}
+
+@media (max-width: 768px) {
+    a{
+        padding: 1rem;
+        border-radius: 8px;
+        height: 10rem;
+        .sectionImg{
+            img{
+                border-radius: 4px;
+            }
+        }
+        .sectionName, .sectionServices{
+            height: 100%;
+        }
+    }
+    p{
+        @include text(small)
+    }
+    h6{
+        @include text(small, semibold)
+    }
+
 }
 
 @media (max-width: 320px) {
