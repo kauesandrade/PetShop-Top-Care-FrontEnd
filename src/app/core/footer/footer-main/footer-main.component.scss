@@ -44,10 +44,10 @@
         position: absolute;
         height: 70%;
 
-        &.first{
+        &:nth-of-type(4n){
           left: calc(5rem * 2 + 3rem);
         }
-        &.last{
+        &:nth-of-type(3n){
           right: calc(5rem * 2 + 3rem);
         }
       }
