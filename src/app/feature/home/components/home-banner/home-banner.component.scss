@@ -16,6 +16,12 @@
     background-color: $primary;
     color: $white;
     padding: 0.75rem 0;
+
+    @media (max-width: 768px) {
+      padding: 0.5rem 0;
+      @include heading(h3);
+    }
+
     @media (max-width: 320px) {
       padding: 0.5rem 0;
       @include heading();
@@ -27,6 +33,11 @@
     grid-column: 1 / -1;
     padding: 2rem 2rem 0 2rem;
     gap: 2rem;
+
+    @media (max-width: 768px) {
+      padding: 1.5rem 1.5rem 0 1.5rem;
+      gap: 1rem;
+    }
 
     @media (max-width: 320px) {
       flex-direction: column;
@@ -54,10 +65,23 @@
         @include text(medium);
       }
 
+      @media (max-width: 768px) {
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        width: 17.5rem;
+
+        h4 {
+          align-self: flex-start;
+          @include heading(h5);
+        }
+      }
+
       @media (max-width: 320px) {
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
+        width: auto;
 
         h4 {
           @include text(medium, bold);
@@ -99,6 +123,20 @@
 
       p {
         @include text(medium);
+      }
+
+      @media (max-width: 768px) {
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+
+        p {
+          @include text();
+        }
+
+        h4 {
+          @include heading(h5);
+        }
       }
 
       @media (max-width: 320px) {
