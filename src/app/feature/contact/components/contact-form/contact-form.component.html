@@ -18,7 +18,7 @@
       type="email"
       id="email"
       formControlName="email"
-      placeholder="Digite seu nome completo"
+      placeholder="Digite seu e-mail"
       [class.has-error]="email?.touched && email?.invalid"
     />
     <ng-container *ngIf="email?.touched && email?.invalid">
@@ -97,11 +97,11 @@
     </label>
   </ng-container>
   <label for="message" appInput>
-    <p>Escreva sua mensagem*</p>
+    <p>Mensagem*</p>
     <textarea
       id="message"
       formControlName="message"
-      placeholder="Escreva sua mensagem que responderemos assim que possível"
+      placeholder="Escreva sua mensagem"
       [class.has-error]="message?.touched && message?.invalid"
     ></textarea>
     <span *ngIf="message?.touched && message?.invalid" class="error-message">
