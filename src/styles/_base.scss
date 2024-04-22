@@ -19,19 +19,23 @@ body {
 .btn {
   @include text(normal, bold);
   @include transition();
-
-  padding: 0.5rem 1rem;
-
   border: 1px solid;
   border-radius: 0.5rem;
-
+  padding: 0.5rem 1rem;
   @include flex();
   gap: 0.5rem;
-
   text-transform: uppercase;
   word-wrap: break-word;
-
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    @include text(small, bold);
+    padding: 0.5rem 0.5rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.75rem;
+  }
 
   &.primary {
     background-color: $primary;
@@ -66,6 +70,10 @@ body {
     padding: 0.75rem;
     fa-icon {
       font-size: 1.25rem;
+
+      @media (max-width: 768px) {
+        font-size: 0.75rem;
+      }
     }
   }
 }
@@ -80,8 +88,14 @@ body {
   outline: none;
   color: $black1;
   resize: none;
+  @include text(medium);
 
-  @include text(small, regular);
+  @media (max-width: 768px) {
+    @include text();
+  }
+  @media (max-width: 320px) {
+    @include text(small);
+  }
 
   &::placeholder {
     color: $gray3;
@@ -146,6 +160,13 @@ body {
 
   p {
     @include text();
+
+    @media (max-width: 768px) {
+      @include text(small);
+    }
+    @media (max-width: 320px) {
+      @include text(small);
+    }
   }
 
   div {

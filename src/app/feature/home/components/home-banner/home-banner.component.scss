@@ -158,6 +158,12 @@
 
       button {
         width: 10rem;
+        @media (max-width: 768px) {
+          width: 8rem;
+        }
+        @media (max-width: 320px) {
+          width: 10.25rem;
+        }
       }
 
       @media (max-width: 320px) {
