@@ -37,45 +37,6 @@ p {
   border-radius: 8px;
 }
 
-@media (max-width: 320px) {
-  .about-us-container {
-    padding: 1rem 0;
-    gap: 0.5rem;
-  }
-
-  .title {
-    grid-column: 1 / span 1;
-    @include heading(h6);
-    color: $primary;
-    padding: 0 15px;
-  }
-
-  .content {
-    padding: 0 15px;
-    margin-top: 0;
-  }
-
-  .text-section {
-    order: 1;
-    grid-column: 1 / span 1;
-    @include text(small, regular);
-    width: 100%;
-  }
-
-  .image-section {
-    grid-column: 1 / span 1;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .image-section img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-}
-
 @media (max-width: 768px) {
   .about-us-container {
     padding: 1rem 0;
@@ -103,6 +64,45 @@ p {
 
   .image-section {
     grid-column: 1 / span 6;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .image-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  .about-us-container {
+    padding: 1rem 0;
+    gap: 0.5rem;
+  }
+
+  .title {
+    grid-column: 1 / span 1;
+    @include heading(h6);
+    color: $primary;
+    padding: 0 15px;
+  }
+
+  .content {
+    padding: 0 15px;
+    margin-top: 0;
+  }
+
+  .text-section {
+    order: 1;
+    grid-column: 1 / span 1;
+    @include text(small, regular);
+    width: 100%;
+  }
+
+  .image-section {
+    grid-column: 1 / span 1;
     width: 100%;
     text-align: center;
     margin-bottom: 20px;
