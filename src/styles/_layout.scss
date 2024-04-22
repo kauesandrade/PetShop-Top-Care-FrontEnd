@@ -1,22 +1,22 @@
 @mixin grid-container() {
   display: grid;
-  grid-template-columns: repeat(12, 4rem);
+  grid-template-columns: repeat(12, minmax(auto, 4rem));
   gap: 2rem;
   width: 100%;
   justify-content: center;
 
   @media (max-width: 1024px) {
-    grid-template-columns: repeat(12, 3.5rem);
+    grid-template-columns: repeat(12, minmax(auto, 3.5rem));
     gap: 1.5rem;
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: repeat(6, 5rem);
+    grid-template-columns: repeat(6, minmax(auto, 5rem));
     gap: 2rem;
   }
 
   @media (max-width: 320px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(auto, 1fr);
     padding: 0 1.5rem;
     gap: 0;
   }
