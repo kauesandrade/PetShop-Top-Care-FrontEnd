@@ -6,7 +6,11 @@
       id="name"
       formControlName="name"
       placeholder="Digite seu nome completo"
+      [class.has-error]="name?.touched && name?.invalid"
     />
+    <span *ngIf="name?.touched && name?.invalid" class="error-message">
+      Você deve preencher esse campo!
+    </span>
   </label>
   <label for="email" appInput>
     <p>Email*</p>
@@ -15,7 +19,16 @@
       id="email"
       formControlName="email"
       placeholder="Digite seu nome completo"
+      [class.has-error]="email?.touched && email?.invalid"
     />
+    <ng-container *ngIf="email?.touched && email?.invalid">
+      <span *ngIf="!email?.value" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="email?.value" class="error-message">
+        Deve ser um email válido!
+      </span>
+    </ng-container>
   </label>
   <img src="assets/images/ContactFormImage.png" alt="" />
   <label for="type" appInput>
@@ -25,34 +38,62 @@
       formControlName="type"
       (change)="selectedType($event)"
       appInput
+      [class.has-error]="type?.touched && type?.invalid"
     >
       <option value="" selected hidden>Escolha o tipo de atendimento</option>
       <ng-container *ngFor="let service of serviceTypes.sort(); let i = index">
         <option [value]="service">{{ service }}</option>
       </ng-container>
     </select>
+    <span *ngIf="type?.touched && type?.invalid" class="error-message">
+      Você deve preencher esse campo!
+    </span>
   </label>
   <ng-container *ngIf="this.type?.value == 'Agendamento'">
     <label for="date" appInput>
       <p>Data*</p>
-      <input type="date" id="date" formControlName="date" />
+      <input
+        type="date"
+        id="date"
+        formControlName="date"
+        [class.has-error]="date?.touched && date?.invalid"
+      />
+      <span *ngIf="date?.touched && date?.invalid" class="error-message">
+        Você deve preencher esse campo!
+      </span>
     </label>
     <label for="time" appInput>
       <p>Hora*</p>
-      <select id="time" formControlName="time" appInput>
+      <select
+        id="time"
+        formControlName="time"
+        appInput
+        [class.has-error]="time?.touched && time?.invalid"
+      >
         <ng-container *ngFor="let hour of availableHours.sort(); let i = index">
           <option [value]="hour">{{ hour }}</option>
         </ng-container>
       </select>
+      <span *ngIf="time?.touched && time?.invalid" class="error-message">
+        Você deve preencher esse campo!
+      </span>
     </label>
     <label for="filial" appInput>
       <p>Filial*</p>
-      <select id="filial" formControlName="filial" appInput>
+      <select
+        id="filial"
+        formControlName="filial"
+        appInput
+        [class.has-error]="filial?.touched && filial?.invalid"
+      >
         <option value="" selected hidden>Escolha a filial</option>
         <ng-container *ngFor="let filial of filials.sort()">
           <option [value]="filial">{{ filial }}</option>
         </ng-container>
       </select>
+      <span *ngIf="filial?.touched && filial?.invalid" class="error-message">
+        Você deve preencher esse campo!
+      </span>
     </label>
   </ng-container>
   <label for="message" appInput>
@@ -61,7 +102,11 @@
       id="message"
       formControlName="message"
       placeholder="Escreva sua mensagem que responderemos assim que possível"
+      [class.has-error]="message?.touched && message?.invalid"
     ></textarea>
+    <span *ngIf="message?.touched && message?.invalid" class="error-message">
+      Você deve preencher esse campo!
+    </span>
   </label>
   <input
     type="submit"

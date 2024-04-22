@@ -10,10 +10,19 @@ main {
     border-radius: 1.25rem;
     padding: 2rem 0;
 
+    @media (max-width: 320px) {
+      padding: 1rem 0.5rem;
+    }
+
     h2 {
       grid-column: 1 / -1;
       place-self: center;
       color: $primary;
+      text-align: center;
+
+      @media (max-width: 320px) {
+        @include text(medium, bold);
+      }
     }
 
     app-contact-form {

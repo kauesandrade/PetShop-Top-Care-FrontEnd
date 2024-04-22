@@ -5,6 +5,7 @@ form {
   row-gap: 1rem;
 
   label {
+    position: relative;
     gap: 0;
     height: 4.375rem;
 
@@ -13,21 +14,50 @@ form {
     textarea {
       flex-grow: 1;
       width: 100%;
+
+      &.has-error {
+        border-color: $error;
+      }
     }
 
     input,
-    textarea {
+    textarea,
+    select {
       @include text(medium);
     }
 
-    select {
-      @include text(medium);
+    .error-message {
+      @include text(small);
+      color: $error;
+      position: absolute;
+      top: 100%;
+      left: 0;
     }
   }
 
   img {
     grid-column: 10 / span 2;
     grid-row: 1 / span 2;
+  }
+
+  @media (max-width: 320px) {
+    label {
+      grid-column: 1 / -1;
+
+      p {
+        @include text();
+      }
+
+      input,
+      textarea,
+      select {
+        @include text(small);
+      }
+    }
+
+    img {
+      display: none;
+    }
   }
 
   label[for="name"] {
@@ -57,5 +87,9 @@ form {
   input[type="submit"] {
     grid-row: 5 / span 1;
     grid-column: 6 / span 2;
+    @media (max-width: 320px) {
+      grid-column: 1 / -1;
+      place-self: center;
+    }
   }
 }
