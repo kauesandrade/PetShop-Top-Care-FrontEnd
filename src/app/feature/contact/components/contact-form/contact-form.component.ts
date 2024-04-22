@@ -138,6 +138,7 @@ export class ContactFormComponent {
     }
 
     this.contactService.addService(newService);
+    console.log(this.contactService.getServices());
     this.modal.nativeElement.showModal();
   }
 
