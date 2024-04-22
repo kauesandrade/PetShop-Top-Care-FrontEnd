@@ -17,8 +17,14 @@
 
   &-content {
     @include subgrid();
-    gap: 3.25rem;
     padding: 2.25rem 0;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      padding: 1.5rem 0;
+      grid-column: 1 / -1;
+      position: relative;
+    }
 
     @media (max-width: 320px) {
       flex-direction: column;
@@ -34,6 +40,18 @@
       grid-column: span 1;
       place-self: center;
 
+      @media (max-width: 768px) {
+        position: absolute;
+        height: 70%;
+
+        &:nth-of-type(4n){
+          left: calc(5rem * 2 + 3rem);
+        }
+        &:nth-of-type(3n){
+          right: calc(5rem * 2 + 3rem);
+        }
+      }
+
       @media (max-width: 320px) {
         display: none;
       }
@@ -44,6 +62,10 @@
       gap: 1.5rem;
       a {
         @include flex();
+        gap: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
         gap: 0.5rem;
       }
 
@@ -69,6 +91,13 @@
     .contacts {
       grid-column: 1 / span 3;
 
+      @media (max-width: 768px) {
+        grid-column: 1 / span 2;
+        h6 {
+          @include text(normal, semibold);
+        }
+      }
+
       @media (max-width: 320px) {
         h6 {
           @include text(normal, semibold);
@@ -82,6 +111,15 @@
 
         fa-icon {
           font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+          &-text{
+            @include text(small)
+          }
+          fa-icon {
+            font-size: 1rem;
+          }
         }
 
         @media (max-width: 320px) {
@@ -102,6 +140,10 @@
       @include flex(column, flex-start, flex-start);
       gap: 2rem;
       grid-column: 5 / span 4;
+
+      @media (max-width: 768px) {
+        grid-column: 3 / span 2;
+      }
 
       @media (max-width: 320px) {
         width: 100%;
@@ -137,6 +179,13 @@
       .social-media {
         width: 100%;
 
+        @media (max-width: 768px) {
+          justify-content: center;
+          h6 {
+            @include text(normal, semibold);
+          }
+        }
+
         @media (max-width: 320px) {
           h6 {
             @include text(normal, semibold);
@@ -151,6 +200,14 @@
           fa-icon {
             font-size: 2rem;
           }
+
+          @media (max-width: 768px) {
+            gap: 0.5rem;
+            fa-icon {
+              font-size: 1.25rem;
+            }
+          }
+
           @media (max-width: 320px) {
             flex-direction: row;
 
@@ -171,6 +228,16 @@
 
       a {
         text-decoration: underline;
+      }
+      
+      @media (max-width: 768px) {
+        grid-column: 5 / -1;
+        h6 {
+          @include text(normal, semibold);
+        }
+        p,a{
+          @include text(small);
+        }
       }
 
       @media (max-width: 320px) {

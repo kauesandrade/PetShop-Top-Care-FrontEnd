@@ -11,6 +11,12 @@
     width: 100%;
     padding: 0.75rem;
 
+    @media (max-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column: 1 / -1;
+    }
+
     @media (max-width: 320px) {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -22,10 +28,14 @@
       color: $white;
       border: none;
       display: none;
-      font-size: 1.25rem;
 
+      @media (max-width: 768px) {
+        display: inline-flex;
+        font-size: 2rem;
+      }
       @media (max-width: 320px) {
         display: inline-flex;
+        font-size: 1.25rem;
       }
     }
 
@@ -33,6 +43,21 @@
       @include flex();
       gap: 1.5rem;
       text-decoration: none;
+
+      @media (max-width: 768px) {
+        gap: 0.5rem;
+
+        img {
+          width: 4.5rem;
+        }
+        h3 {
+          @include heading(h4);
+        }
+
+        p {
+          @include text(normal, medium);
+        }
+      }
 
       @media (max-width: 320px) {
         gap: 0.5rem;
@@ -84,6 +109,7 @@
       border: none;
       background-color: $secondary;
       border-radius: 0.25rem;
+      font-weight: bolder;
     }
 
     &-items {
