@@ -115,3 +115,13 @@
     [disabled]="!isFormValid()"
   />
 </form>
+<dialog #modal>
+  <div>
+    <h3>Mensagem enviada com sucesso!</h3>
+    <p>
+      Agradecemos o seu contato! Dentro de uma semana responderemos por meio do
+      seu e-mail, então fique atento!
+    </p>
+    <button appButton="secondary" (click)="closeModal()">Ok</button>
+  </div>
+</dialog>

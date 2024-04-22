@@ -1,10 +1,6 @@
-import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Service } from '../../interfaces/service';
 import { ContactService } from '../../services/contact.service';
 
@@ -37,6 +33,8 @@ export class ContactFormComponent {
     '17:30',
   ];
 
+  @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
+
   filials = ['Jaraguá do Sul', 'Blumenau'];
 
   contactForm = this.formBuilder.group({
@@ -50,8 +48,9 @@ export class ContactFormComponent {
   });
 
   constructor(
-    public formBuilder: FormBuilder,
-    private contactService: ContactService
+    private formBuilder: FormBuilder,
+    private contactService: ContactService,
+    private router: Router
   ) {}
 
   get name() {
@@ -90,12 +89,12 @@ export class ContactFormComponent {
       this.date?.clearValidators();
       this.time?.clearValidators();
       this.filial?.clearValidators();
-      this.date?.patchValue('');
-      this.time?.patchValue(this.availableHours[0]);
-      this.filial?.patchValue(this.filials[0]);
     }
 
     this.date?.updateValueAndValidity();
+    this.time?.updateValueAndValidity();
+    this.filial?.updateValueAndValidity();
+    this.contactForm?.updateValueAndValidity();
   }
 
   isFormValid() {
@@ -122,18 +121,6 @@ export class ContactFormComponent {
   }
 
   onSubmit() {
-    console.log(this.contactForm.valid);
-
-    if (!this.contactForm.valid) {
-      if (!this.contactForm.touched) {
-        alert('Tu nem tocou no baguio cara!');
-        return;
-      }
-      alert('Tá com erro aí!');
-      return;
-    }
-
-    console.log(this.contactForm.errors);
     let newService: Service;
     const formValues = this.contactForm.value;
 
@@ -151,7 +138,11 @@ export class ContactFormComponent {
     }
 
     this.contactService.addService(newService);
-    alert('Enviou a mensagem legal dog!');
-    console.table(this.contactService.services);
+    this.modal.nativeElement.showModal();
+  }
+
+  closeModal() {
+    this.modal.nativeElement.close();
+    this.router.navigate(['']);
   }
 }
