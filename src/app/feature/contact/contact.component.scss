@@ -10,6 +10,11 @@ main {
     border-radius: 1.25rem;
     padding: 2rem 0;
 
+    @media (max-width: 768px) {
+      padding: 1.5rem 1rem;
+      row-gap: 1.5rem;
+    }
+
     @media (max-width: 320px) {
       padding: 1rem 1.25rem;
       row-gap: 1rem;
@@ -20,6 +25,10 @@ main {
       place-self: center;
       color: $primary;
       text-align: center;
+
+      @media (max-width: 768px) {
+        @include heading(h4);
+      }
 
       @media (max-width: 320px) {
         @include heading();

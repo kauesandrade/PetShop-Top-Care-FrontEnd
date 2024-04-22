@@ -8,6 +8,8 @@ form {
     position: relative;
     gap: 0;
     height: 4.375rem;
+    @media (max-width: 768px) {
+    }
 
     input,
     select,
@@ -40,6 +42,26 @@ form {
     grid-row: 1 / span 2;
   }
 
+  @media (max-width: 768px) {
+    label {
+      grid-column: auto / span 3 !important;
+    }
+
+    label[for="message"] {
+      grid-column: 1 / -1 !important;
+      grid-row: auto / span 2 !important;
+    }
+
+    input[type="submit"] {
+      grid-column: 3 / span 2 !important;
+      grid-row: auto / span 1 !important;
+    }
+
+    img {
+      display: none;
+    }
+  }
+
   @media (max-width: 320px) {
     grid-auto-flow: row;
 
@@ -65,6 +87,9 @@ form {
 
   label[for="name"] {
     grid-column: 2 / span 4;
+    @media (max-width: 768px) {
+      grid-column: 1 / span 3;
+    }
   }
   label[for="email"] {
     grid-column: 6 / span 4;
