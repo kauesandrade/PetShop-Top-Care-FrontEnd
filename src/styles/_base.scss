@@ -28,12 +28,12 @@ body {
   word-wrap: break-word;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: $tablet) {
     @include text(small, bold);
     padding: 0.5rem 0.5rem;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: $mobile) {
     font-size: 0.75rem;
   }
 
@@ -71,7 +71,7 @@ body {
     fa-icon {
       font-size: 1.25rem;
 
-      @media (max-width: 768px) {
+      @media (max-width: $tablet) {
         font-size: 0.75rem;
       }
     }
@@ -90,10 +90,10 @@ body {
   resize: none;
   @include text(medium);
 
-  @media (max-width: 768px) {
+  @media (max-width: $tablet) {
     @include text();
   }
-  @media (max-width: 320px) {
+  @media (max-width: $mobile) {
     @include text(small);
   }
 
@@ -161,10 +161,10 @@ body {
   p {
     @include text();
 
-    @media (max-width: 768px) {
+    @media (max-width: $tablet) {
       @include text(small);
     }
-    @media (max-width: 320px) {
+    @media (max-width: $mobile) {
       @include text(small);
     }
   }

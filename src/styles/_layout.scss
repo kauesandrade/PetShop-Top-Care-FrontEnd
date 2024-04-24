@@ -5,17 +5,17 @@
   width: 100%;
   justify-content: center;
 
-  @media (max-width: 1024px) {
+  @media (max-width: $desktop) {
     grid-template-columns: repeat(12, minmax(auto, 3.5rem));
     gap: 1.5rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: $tablet) {
     grid-template-columns: repeat(6, minmax(auto, 5rem));
     gap: 2rem;
   }
 
-  @media (max-width: 320px) {
+  @media (max-width: $mobile) {
     grid-template-columns: minmax(auto, 1fr);
     padding: 0 1.5rem;
     gap: 0;

@@ -19,14 +19,14 @@
     @include subgrid();
     padding: 2.25rem 0;
 
-    @media (max-width: 768px) {
+    @media (max-width: $tablet) {
       flex-direction: column;
       padding: 1.5rem 0;
       grid-column: 1 / -1;
       position: relative;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: $mobile) {
       flex-direction: column;
       padding: 1rem 0;
       gap: 1rem;
@@ -40,19 +40,19 @@
       grid-column: span 1;
       place-self: center;
 
-      @media (max-width: 768px) {
+      @media (max-width: $tablet) {
         position: absolute;
         height: 70%;
 
-        &:nth-of-type(4n){
+        &:nth-of-type(4n) {
           left: calc(5rem * 2 + 3rem);
         }
-        &:nth-of-type(3n){
+        &:nth-of-type(3n) {
           right: calc(5rem * 2 + 3rem);
         }
       }
 
-      @media (max-width: 320px) {
+      @media (max-width: $mobile) {
         display: none;
       }
     }
@@ -65,11 +65,11 @@
         gap: 0.5rem;
       }
 
-      @media (max-width: 768px) {
+      @media (max-width: $tablet) {
         gap: 0.5rem;
       }
 
-      @media (max-width: 320px) {
+      @media (max-width: $mobile) {
         gap: 0.5rem;
         padding: 0 1rem;
       }
@@ -83,7 +83,7 @@
         gap: 0.5rem;
       }
 
-      @media (max-width: 320px) {
+      @media (max-width: $mobile) {
         display: none;
       }
     }
@@ -91,14 +91,14 @@
     .contacts {
       grid-column: 1 / span 3;
 
-      @media (max-width: 768px) {
+      @media (max-width: $tablet) {
         grid-column: 1 / span 2;
         h6 {
           @include text(normal, semibold);
         }
       }
 
-      @media (max-width: 320px) {
+      @media (max-width: $mobile) {
         h6 {
           @include text(normal, semibold);
         }
@@ -113,16 +113,16 @@
           font-size: 1rem;
         }
 
-        @media (max-width: 768px) {
-          &-text{
-            @include text(small)
+        @media (max-width: $tablet) {
+          &-text {
+            @include text(small);
           }
           fa-icon {
             font-size: 1rem;
           }
         }
 
-        @media (max-width: 320px) {
+        @media (max-width: $mobile) {
           flex-direction: row;
 
           &-text {
@@ -141,11 +141,11 @@
       gap: 2rem;
       grid-column: 5 / span 4;
 
-      @media (max-width: 768px) {
+      @media (max-width: $tablet) {
         grid-column: 3 / span 2;
       }
 
-      @media (max-width: 320px) {
+      @media (max-width: $mobile) {
         width: 100%;
       }
 
@@ -153,7 +153,7 @@
         height: 1px;
         width: 100%;
         background-color: $white;
-        @media (max-width: 320px) {
+        @media (max-width: $mobile) {
           display: none;
         }
       }
@@ -171,7 +171,7 @@
           }
         }
 
-        @media (max-width: 320px) {
+        @media (max-width: $mobile) {
           display: none;
         }
       }
@@ -179,14 +179,14 @@
       .social-media {
         width: 100%;
 
-        @media (max-width: 768px) {
+        @media (max-width: $tablet) {
           justify-content: center;
           h6 {
             @include text(normal, semibold);
           }
         }
 
-        @media (max-width: 320px) {
+        @media (max-width: $mobile) {
           h6 {
             @include text(normal, semibold);
           }
@@ -201,14 +201,14 @@
             font-size: 2rem;
           }
 
-          @media (max-width: 768px) {
+          @media (max-width: $tablet) {
             gap: 0.5rem;
             fa-icon {
               font-size: 1.25rem;
             }
           }
 
-          @media (max-width: 320px) {
+          @media (max-width: $mobile) {
             flex-direction: row;
 
             &-text {
@@ -229,18 +229,19 @@
       a {
         text-decoration: underline;
       }
-      
-      @media (max-width: 768px) {
+
+      @media (max-width: $tablet) {
         grid-column: 5 / -1;
         h6 {
           @include text(normal, semibold);
         }
-        p,a{
+        p,
+        a {
           @include text(small);
         }
       }
 
-      @media (max-width: 320px) {
+      @media (max-width: $mobile) {
         display: none;
       }
     }

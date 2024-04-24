@@ -1,103 +1,100 @@
 @import "styles";
 
-a{
+a {
+  @include flex(row, start, space-between);
+  padding: 20px 20px;
+  max-width: 58rem;
+  width: 100%;
+  height: 16.125rem;
+  border-radius: 1.5rem;
+  background-color: $light-primary;
+
+  .sectionImg {
+    height: 100%;
+    width: 33%;
+    img {
+      border-radius: 0.5rem;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .sectionName,
+  .sectionServices {
+    @include flex(column, flex-start, space-between);
+    height: 80%;
+    width: 25%;
+    word-break: break-word;
+  }
+
+  .sectionImg {
+    width: 40%;
+  }
+
+  .sectionServices {
+    ul {
+      li {
+        list-style-type: none;
+      }
+    }
+  }
+}
+
+h6 {
+  color: $primary;
+}
+p {
+  color: $gray3;
+}
+
+@media (max-width: $tablet) {
+  a {
+    padding: 1rem;
+    border-radius: 8px;
+    height: 10rem;
+    .sectionImg {
+      img {
+        border-radius: 4px;
+      }
+    }
+    .sectionName,
+    .sectionServices {
+      height: 100%;
+    }
+  }
+  p {
+    @include text(small);
+  }
+  h6 {
+    @include text(small, semibold);
+  }
+}
+
+@media (max-width: $mobile) {
+  a {
     @include flex(row, start, space-between);
-    padding: 20px 20px;
-    max-width: 58rem;
-    width: 100%;
-    height: 16.125rem;
-    border-radius: 1.5rem;
-    background-color: $light-primary;
-
-    .sectionImg{
-        height: 100%;
-        width: 33%;
-        img{
-            border-radius: 0.5rem;
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-        }
+    padding: 8px 8px;
+    height: 100px;
+    gap: 0 1rem;
+    border-radius: 8px;
+    .none {
+      display: none;
     }
-
-    .sectionName, .sectionServices{
-        @include flex(column, flex-start, space-between);
-        height: 80%;
-        width: 25%;
-        word-break: break-word;
+    .sectionImg {
+      img {
+        border-radius: 4px;
+      }
     }
-
-    .sectionImg{
-        width: 40%;
+    .sectionName {
+      width: 60%;
+      height: 100%;
     }
-    
-
-    .sectionServices{
-        ul{
-            li{
-                list-style-type: none
-            }
-        }
-    }
-
-    
-}
-
-h6{
-    color: $primary;
-}
-p{
-    color: $gray3;
-}
-
-@media (max-width: 768px) {
-    a{
-        padding: 1rem;
-        border-radius: 8px;
-        height: 10rem;
-        .sectionImg{
-            img{
-                border-radius: 4px;
-            }
-        }
-        .sectionName, .sectionServices{
-            height: 100%;
-        }
-    }
-    p{
-        @include text(small)
-    }
-    h6{
-        @include text(small, semibold)
-    }
-
-}
-
-@media (max-width: 320px) {
-    a{
-        @include flex(row, start, space-between);
-        padding: 8px 8px;
-        height: 100px;
-        gap: 0 1rem;
-        border-radius: 8px;
-        .none{
-            display: none;
-        }
-        .sectionImg{
-            img{
-                border-radius: 4px;
-            }
-        }
-        .sectionName{
-            width: 60%;
-            height: 100%;
-        }
-    }
-    p{
-        @include text(small)
-    }
-    h6{
-        @include text(small, semibold)
-    }
-
+  }
+  p {
+    @include text(small);
+  }
+  h6 {
+    @include text(small, semibold);
+  }
 }

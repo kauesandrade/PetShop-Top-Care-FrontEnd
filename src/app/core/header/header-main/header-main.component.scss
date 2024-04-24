@@ -11,13 +11,13 @@
     width: 100%;
     padding: 0.75rem;
 
-    @media (max-width: 768px) {
+    @media (max-width: $tablet) {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-column: 1 / -1;
     }
 
-    @media (max-width: 320px) {
+    @media (max-width: $mobile) {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-column: 1 / span 1;
@@ -29,11 +29,11 @@
       border: none;
       display: none;
 
-      @media (max-width: 768px) {
+      @media (max-width: $tablet) {
         display: inline-flex;
         font-size: 2rem;
       }
-      @media (max-width: 320px) {
+      @media (max-width: $mobile) {
         display: inline-flex;
         font-size: 1.25rem;
       }
@@ -44,7 +44,7 @@
       gap: 1.5rem;
       text-decoration: none;
 
-      @media (max-width: 768px) {
+      @media (max-width: $tablet) {
         gap: 0.5rem;
 
         img {
@@ -59,7 +59,7 @@
         }
       }
 
-      @media (max-width: 320px) {
+      @media (max-width: $mobile) {
         gap: 0.5rem;
 
         img {
