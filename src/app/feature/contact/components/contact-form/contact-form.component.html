@@ -7,6 +7,7 @@
       formControlName="name"
       placeholder="Digite seu nome completo"
       [class.has-error]="name?.touched && name?.invalid"
+      required
     />
     <span *ngIf="name?.touched && name?.invalid" class="error-message">
       Você deve preencher esse campo!
@@ -20,12 +21,13 @@
       formControlName="email"
       placeholder="Digite seu e-mail"
       [class.has-error]="email?.touched && email?.invalid"
+      required
     />
     <ng-container *ngIf="email?.touched && email?.invalid">
-      <span *ngIf="!email?.value" class="error-message">
+      <span *ngIf="!email?.value?.trim()" class="error-message">
         Você deve preencher esse campo!
       </span>
-      <span *ngIf="email?.value" class="error-message">
+      <span *ngIf="email?.value?.trim()" class="error-message">
         Deve ser um email válido!
       </span>
     </ng-container>
@@ -39,6 +41,7 @@
       (change)="selectedType($event)"
       appInput
       [class.has-error]="type?.touched && type?.invalid"
+      required
     >
       <option value="" selected hidden>Escolha o tipo de atendimento</option>
       <ng-container *ngFor="let service of serviceTypes.sort(); let i = index">
@@ -55,11 +58,16 @@
       <input
         type="date"
         id="date"
+        [min]="tomorrow"
         formControlName="date"
         [class.has-error]="date?.touched && date?.invalid"
+        required
       />
-      <span *ngIf="date?.touched && date?.invalid" class="error-message">
-        Você deve preencher esse campo!
+      <span
+        *ngIf="date?.touched && date?.invalid && date?.errors"
+        class="error-message"
+      >
+        Não trabalhamos no final de semana
       </span>
     </label>
     <label for="time" appInput>
@@ -69,6 +77,7 @@
         formControlName="time"
         appInput
         [class.has-error]="time?.touched && time?.invalid"
+        required
       >
         <ng-container *ngFor="let hour of availableHours.sort(); let i = index">
           <option [value]="hour">{{ hour }}</option>
@@ -85,6 +94,7 @@
         formControlName="filial"
         appInput
         [class.has-error]="filial?.touched && filial?.invalid"
+        required
       >
         <option value="" selected hidden>Escolha a filial</option>
         <ng-container *ngFor="let filial of filials.sort()">
@@ -103,6 +113,7 @@
       formControlName="message"
       placeholder="Escreva sua mensagem"
       [class.has-error]="message?.touched && message?.invalid"
+      required
     ></textarea>
     <span *ngIf="message?.touched && message?.invalid" class="error-message">
       Você deve preencher esse campo!

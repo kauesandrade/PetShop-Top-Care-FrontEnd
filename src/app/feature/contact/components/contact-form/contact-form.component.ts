@@ -1,6 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DateValidator } from 'src/app/core/validators/date.validator';
+import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { Service } from '../../interfaces/service';
 import { ContactService } from '../../services/contact.service';
 
@@ -10,6 +12,8 @@ import { ContactService } from '../../services/contact.service';
   styleUrls: ['./contact-form.component.scss'],
 })
 export class ContactFormComponent {
+  tomorrow = this.getTomorrowDate();
+
   serviceTypes = [
     'Compra',
     'Serviço',
@@ -38,13 +42,13 @@ export class ContactFormComponent {
   filials = ['Jaraguá do Sul', 'Blumenau'];
 
   contactForm = this.formBuilder.group({
-    name: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    type: ['', Validators.required],
+    name: ['', [Validators.required, EmptyValidator]],
+    email: ['', [Validators.required, Validators.email, EmptyValidator]],
+    type: ['', [Validators.required, EmptyValidator]],
     date: [''],
     time: [this.availableHours[0]],
     filial: [''],
-    message: ['', Validators.required],
+    message: ['', [Validators.required, EmptyValidator]],
   });
 
   constructor(
@@ -82,9 +86,13 @@ export class ContactFormComponent {
     });
 
     if (this.type?.value == 'Agendamento') {
-      this.date?.setValidators(Validators.required);
-      this.time?.setValidators(Validators.required);
-      this.filial?.setValidators(Validators.required);
+      this.date?.setValidators([
+        Validators.required,
+        EmptyValidator,
+        DateValidator,
+      ]);
+      this.time?.setValidators([Validators.required, EmptyValidator]);
+      this.filial?.setValidators([Validators.required, EmptyValidator]);
     } else {
       this.date?.clearValidators();
       this.time?.clearValidators();
@@ -125,25 +133,30 @@ export class ContactFormComponent {
     const formValues = this.contactForm.value;
 
     newService = {
-      name: formValues.name!,
-      email: formValues.email!,
+      name: formValues.name!.trim(),
+      email: formValues.email!.trim(),
       type: this.defineServiceType(formValues.type),
-      message: formValues.message!,
+      message: formValues.message!.trim(),
     };
 
     if (formValues.type == 'Agendamento') {
-      newService.date = new Date(formValues.date!);
-      newService.time = formValues.time!;
-      newService.filial = formValues.filial!;
+      newService.date = new Date(formValues.date!.trim());
+      newService.time = formValues.time!.trim();
+      newService.filial = formValues.filial!.trim();
     }
 
     this.contactService.addService(newService);
-    console.log(this.contactService.getServices());
     this.modal.nativeElement.showModal();
   }
 
   closeModal() {
     this.modal.nativeElement.close();
     this.router.navigate(['']);
+  }
+
+  getTomorrowDate() {
+    const today = new Date();
+    today.setDate(today.getDate() + 1);
+    return today.toISOString().split('T')[0];
   }
 }
