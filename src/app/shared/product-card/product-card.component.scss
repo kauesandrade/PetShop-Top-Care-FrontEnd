@@ -18,17 +18,24 @@
     right: 1rem;
   }
 
-  .product-image {
-    border-radius: 0.5rem;
-    height: 7.5rem;
-    object-fit: contain;
-  }
-
-  .product-title {
-    @include text(medium, bold);
-    color: $primary;
+  .redirect-product {
+    text-decoration: none;
     width: 100%;
-    min-height: 2.75rem;
+    @include flex(column, center);
+    gap: 0.5rem;
+
+    .product-image {
+      border-radius: 0.5rem;
+      height: 7.5rem;
+      object-fit: contain;
+    }
+
+    .product-title {
+      @include text(medium, bold);
+      color: $primary;
+      width: 100%;
+      min-height: 2.75rem;
+    }
   }
 
   .brand-rating {
@@ -37,7 +44,8 @@
 
     .product-brand {
       @include text();
-      color: $grey2;
+      text-align: left;
+      color: $gray2;
       text-decoration: underline;
     }
 
@@ -68,19 +76,19 @@
 
       .price {
         @include text();
-        color: $grey2;
+        color: $gray2;
       }
 
       .before-discount {
         @include text(small, regular);
-        color: $grey4;
+        color: $gray4;
         text-decoration: line-through;
       }
     }
 
     .parcels {
       @include text(small);
-      color: $grey2;
+      color: $gray2;
     }
   }
 
@@ -100,5 +108,12 @@
   .buttons-container {
     @include flex();
     gap: 0.5rem;
+
+    .icon-button {
+      width: 2.726rem;
+      .shopping-cart-icon {
+        font-size: 1rem;
+      }
+    }
   }
 }

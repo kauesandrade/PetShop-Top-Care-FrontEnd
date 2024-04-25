@@ -1,0 +1,138 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <label for="name" appInput>
+    <p>Nome*</p>
+    <input
+      type="text"
+      id="name"
+      formControlName="name"
+      placeholder="Digite seu nome completo"
+      [class.has-error]="name?.touched && name?.invalid"
+      required
+    />
+    <span *ngIf="name?.touched && name?.invalid" class="error-message">
+      Você deve preencher esse campo!
+    </span>
+  </label>
+  <label for="email" appInput>
+    <p>Email*</p>
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      placeholder="Digite seu e-mail"
+      [class.has-error]="email?.touched && email?.invalid"
+      required
+    />
+    <ng-container *ngIf="email?.touched && email?.invalid">
+      <span *ngIf="!email?.value?.trim()" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="email?.value?.trim()" class="error-message">
+        Deve ser um email válido!
+      </span>
+    </ng-container>
+  </label>
+  <img src="assets/images/ContactFormImage.png" alt="" />
+  <label for="type" appInput>
+    <p>Tipo de atendimento*</p>
+    <select
+      id="type"
+      formControlName="type"
+      (change)="selectedType($event)"
+      appInput
+      [class.has-error]="type?.touched && type?.invalid"
+      required
+    >
+      <option value="" selected hidden>Escolha o tipo de atendimento</option>
+      <ng-container *ngFor="let service of serviceTypes.sort(); let i = index">
+        <option [value]="service">{{ service }}</option>
+      </ng-container>
+    </select>
+    <span *ngIf="type?.touched && type?.invalid" class="error-message">
+      Você deve preencher esse campo!
+    </span>
+  </label>
+  <ng-container *ngIf="this.type?.value == 'Agendamento'">
+    <label for="date" appInput>
+      <p>Data*</p>
+      <input
+        type="date"
+        id="date"
+        [min]="tomorrow"
+        formControlName="date"
+        [class.has-error]="date?.touched && date?.invalid"
+        required
+      />
+      <span
+        *ngIf="date?.touched && date?.invalid && date?.errors"
+        class="error-message"
+      >
+        Não trabalhamos no final de semana
+      </span>
+    </label>
+    <label for="time" appInput>
+      <p>Hora*</p>
+      <select
+        id="time"
+        formControlName="time"
+        appInput
+        [class.has-error]="time?.touched && time?.invalid"
+        required
+      >
+        <ng-container *ngFor="let hour of availableHours.sort(); let i = index">
+          <option [value]="hour">{{ hour }}</option>
+        </ng-container>
+      </select>
+      <span *ngIf="time?.touched && time?.invalid" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+    </label>
+    <label for="filial" appInput>
+      <p>Filial*</p>
+      <select
+        id="filial"
+        formControlName="filial"
+        appInput
+        [class.has-error]="filial?.touched && filial?.invalid"
+        required
+      >
+        <option value="" selected hidden>Escolha a filial</option>
+        <ng-container *ngFor="let filial of filials.sort()">
+          <option [value]="filial">{{ filial }}</option>
+        </ng-container>
+      </select>
+      <span *ngIf="filial?.touched && filial?.invalid" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+    </label>
+  </ng-container>
+  <label for="message" appInput>
+    <p>Mensagem*</p>
+    <textarea
+      id="message"
+      formControlName="message"
+      placeholder="Escreva sua mensagem"
+      [class.has-error]="message?.touched && message?.invalid"
+      required
+    ></textarea>
+    <span *ngIf="message?.touched && message?.invalid" class="error-message">
+      Você deve preencher esse campo!
+    </span>
+  </label>
+  <input
+    type="submit"
+    appButton="secondary"
+    value="Enviar"
+    [disabled]="!isFormValid()"
+  />
+</form>
+<dialog #modal>
+  <div>
+    <h3>Mensagem enviada com sucesso!</h3>
+    <p>
+      Agradecemos o seu contato! Dentro de uma semana responderemos por meio do
+      seu e-mail, então fique atento!
+    </p>
+    <button appButton="secondary" (click)="closeModal()">Ok</button>
+  </div>
+</dialog>

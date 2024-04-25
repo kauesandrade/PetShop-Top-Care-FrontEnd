@@ -1,0 +1,16 @@
+@import "styles";
+
+.round-card {
+  text-align: center;
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: $black1;
+    img {
+      border-radius: 0.5rem;
+      width: 12rem;
+      aspect-ratio: 1/1;
+    }
+  }
+}

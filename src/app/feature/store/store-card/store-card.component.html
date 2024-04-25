@@ -1,0 +1,34 @@
+<a> 
+        <section class="sectionImg">
+            <img src={{store.imgSrc}} alt="cac">
+        </section>
+        <section class="sectionName">
+            <div>
+                <h6>{{store.name}}</h6>
+                <p>{{store.location}}</p>
+            </div>
+            <div>
+                <h6>Telefone</h6>
+                <p>{{store.number}}</p>
+            </div>
+            <div class="none">
+                <h6>Horário de Funcionamento</h6>
+                <p>{{store.opening_hours}}</p>
+            </div>
+        </section>
+        <section class="sectionServices none">
+            <div >
+                <h6>Serviços Oferecidos</h6>
+                <ul *ngFor="let service of store.services">
+                    <li>
+                        <p>{{service}}</p>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h6>Produtos para</h6>
+                <p>{{store.products_offered}}</p>
+            </div>
+        </section>
+</a>
+

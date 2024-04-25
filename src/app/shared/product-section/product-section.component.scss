@@ -1,0 +1,22 @@
+@import "styles";
+
+.product-section {
+  @include grid-container();
+  grid-template-rows: minmax(2.375rem, auto) minmax(23rem, auto);
+
+  &-title {
+    color: $primary;
+    text-transform: capitalize;
+    grid-column: 1 / span 12;
+  }
+
+  &-cards {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-auto-flow: row;
+    grid-column: 1 / span 12;
+    &-card {
+      grid-column: span 3;
+    }
+  }
+}
