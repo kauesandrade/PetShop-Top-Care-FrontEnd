@@ -12,7 +12,7 @@ import { ContactService } from '../../services/contact.service';
   styleUrls: ['./contact-form.component.scss'],
 })
 export class ContactFormComponent {
-  tomorrow = this.getTomorrowDate();
+  today = this.getTodayDate();
 
   serviceTypes = [
     'Compra',
@@ -154,9 +154,8 @@ export class ContactFormComponent {
     this.router.navigate(['']);
   }
 
-  getTomorrowDate() {
+  getTodayDate() {
     const today = new Date();
-    today.setDate(today.getDate() + 1);
     return today.toISOString().split('T')[0];
   }
 }

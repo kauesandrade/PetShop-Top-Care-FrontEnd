@@ -58,13 +58,21 @@
       <input
         type="date"
         id="date"
-        [min]="tomorrow"
+        [min]="today"
         formControlName="date"
         [class.has-error]="date?.touched && date?.invalid"
         required
       />
       <span
-        *ngIf="date?.touched && date?.invalid && date?.errors"
+        *ngIf="
+          date?.touched && date?.invalid && date?.hasError('LessThanToday')
+        "
+        class="error-message"
+      >
+        Dia indisponível
+      </span>
+      <span
+        *ngIf="date?.touched && date?.invalid && date?.hasError('IsWeekend')"
         class="error-message"
       >
         Não trabalhamos no final de semana
