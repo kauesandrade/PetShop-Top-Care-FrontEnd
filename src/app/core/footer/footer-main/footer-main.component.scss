@@ -200,6 +200,12 @@
           fa-icon {
             font-size: 2rem;
           }
+        
+          @media (max-width: $desktop){
+            fa-icon {
+              font-size: 1.75rem;
+            }
+          }
 
           @media (max-width: $tablet) {
             gap: 0.5rem;
