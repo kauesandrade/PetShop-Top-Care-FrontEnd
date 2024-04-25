@@ -161,7 +161,10 @@ export class ContactFormComponent {
       today.getMonth() + 1 >= 10
         ? today.getMonth() + 1
         : `0${today.getMonth() + 1}`;
-    let date = today.getDate() >= 10 ? today.getDate() : `0${today.getDate()}`;
+    let date =
+      today.getDate() + 1 >= 10
+        ? today.getDate() + 1
+        : `0${today.getDate() + 1}`;
 
     return `${today.getFullYear()}-${month}-${date}`;
   }
