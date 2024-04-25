@@ -148,10 +148,12 @@ export class ContactFormComponent {
 
     this.contactService.addService(newService);
     this.modal.nativeElement.showModal();
+    document.body.style.overflow = 'hidden';
   }
 
   closeModal() {
     this.modal.nativeElement.close();
+    document.body.style.overflow = 'auto';
     this.router.navigate(['']);
   }
 
