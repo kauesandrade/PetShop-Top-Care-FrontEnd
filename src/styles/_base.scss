@@ -78,11 +78,7 @@ body {
   }
 }
 
-.input {  
-  -webkit-appearance: initial;
-  -moz-appearance: initial;
-  appearance: initial;
-
+.input {
   @include flex();
   display: inline-flex;
   border: 2px solid $primary;
