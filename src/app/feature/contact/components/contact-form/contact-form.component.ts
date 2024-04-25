@@ -5,6 +5,7 @@ import { DateValidator } from 'src/app/core/validators/date.validator';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { Service } from '../../interfaces/service';
 import { ContactService } from '../../services/contact.service';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-contact-form',
@@ -156,6 +157,12 @@ export class ContactFormComponent {
 
   getTodayDate() {
     const today = new Date();
-    return `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
+    let month =
+      today.getMonth() + 1 >= 10
+        ? today.getMonth() + 1
+        : `0${today.getMonth() + 1}`;
+    let date = today.getDate() >= 10 ? today.getDate() : `0${today.getDate()}`;
+
+    return `${today.getFullYear()}-${month}-${date}`;
   }
 }
