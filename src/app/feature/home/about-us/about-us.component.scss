@@ -2,6 +2,7 @@
 
 .about-us-container {
   @include grid-container;
+  gap: 2rem;
 }
 
 .title {
