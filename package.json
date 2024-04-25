@@ -24,7 +24,6 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "embla-carousel": "^8.0.1",
-    "embla-carousel-autoplay": "^8.0.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.6.2",
     "zone.js": "~0.11.4"
