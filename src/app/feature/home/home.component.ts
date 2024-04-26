@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainCarousel } from 'src/app/shared/interfaces/main-carousel';
+import { Product } from 'src/app/shared/interfaces/product';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,66 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
   
+
+  produtos: Array<Product> = [
+  {
+    imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
+    favorite: false,
+    title: "Ração Cães Adultos Frango E Carne 15kg",
+    brand: "Golden Special",
+    rating: 5,
+    price: 149.99,
+    discountPrice: 190.40,
+    maxInterestFreeParcels: 2,
+    subscribersPrice: 130.00,
+  },
+  {
+    imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
+    favorite: false,
+    title: "Ração Cães Adultos Frango E Carne 15kg",
+    brand: "Golden Special",
+    rating: 5,
+    price: 149.99,
+    discountPrice: 190.40,
+    maxInterestFreeParcels: 2,
+    subscribersPrice: 130.00,
+  },
+  {
+    imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
+    favorite: false,
+    title: "Ração Cães Adultos Frango E Carne 15kg",
+    brand: "Golden Special",
+    rating: 5,
+    price: 149.99,
+    discountPrice: 190.40,
+    maxInterestFreeParcels: 2,
+    subscribersPrice: 130.00,
+  },
+  {
+    imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
+    favorite: false,
+    title: "Ração Cães Adultos Frango E Carne 15kg",
+    brand: "Golden Special",
+    rating: 5,
+    price: 149.99,
+    discountPrice: 190.40,
+    maxInterestFreeParcels: 2,
+    subscribersPrice: 130.00,
+  },
+  {
+    imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
+    favorite: false,
+    title: "Ração Cães Adultos Frango E Carne 15kg",
+    brand: "Golden Special",
+    rating: 5,
+    price: 149.99,
+    discountPrice: 190.40,
+    maxInterestFreeParcels: 2,
+    subscribersPrice: 130.00,
+  },
+  
+]
+
   itens: Array<MainCarousel> = 
   [
   {

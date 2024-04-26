@@ -1,12 +1,5 @@
 @import "styles";
 
-.embla__button--prev {
-  grid-column: 1 / 1;
-}
-.embla__button--next {
-  grid-column: 13 / 13;
-}
-
 .embla {
   // @include grid-container();
   @include subgrid();
@@ -17,6 +10,19 @@
   --slide-height: 100%;
   --slide-spacing: 1rem;
   --slide-size: 25%;
+
+  @media (max-width: $desktop) {
+    --slide-size: 33.33%;
+    --slide-spacing: 2.5rem;
+  }
+  @media (max-width: $tablet) {
+    --slide-size: 50%;
+    --slide-spacing: 3.5rem;
+  }
+  @media (max-width: $mobile) {
+    --slide-size: 100%;
+    --slide-spacing: 0rem;
+  }
 
   .embla__button--prev,
   .embla__button--next {
@@ -50,6 +56,21 @@
     }
   }
 
+  .embla__button--prev {
+    grid-column: 1 / 1;
+  }
+
+  .embla__button--next {
+    grid-column: 13 / 13;
+    left: 100%;
+  }
+  
+  @media (max-width: $mobile) {
+    .embla__button--next {
+      grid-column: 1 / 1;
+    }
+  }
+
   .embla__viewport {
     overflow: hidden;
     grid-column: 1 / -1;
@@ -71,15 +92,5 @@
         }
       }
     }
-  }
-}
-
-@media (max-width: $mobile) {
-  .embla {
-    --slide-size: 100%;
-  }
-  .embla__button--next {
-    grid-column: 1 / 1;
-    left: 100%;
   }
 }

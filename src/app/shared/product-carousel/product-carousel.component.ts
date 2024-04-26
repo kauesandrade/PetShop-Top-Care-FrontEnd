@@ -30,7 +30,7 @@ export class ProductCarouselComponent implements AfterViewInit, OnDestroy {
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
 
-  @Input() itensProduct?: Array<Product>;
+  @Input() productList?: Array<Product>;
 
   ngOnDestroy(): void {
     if (this.embla) {
