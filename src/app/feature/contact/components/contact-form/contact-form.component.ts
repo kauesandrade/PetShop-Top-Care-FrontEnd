@@ -5,6 +5,7 @@ import { DateValidator } from 'src/app/core/validators/date.validator';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { Service } from '../../interfaces/service';
 import { ContactService } from '../../services/contact.service';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-contact-form',
@@ -12,7 +13,7 @@ import { ContactService } from '../../services/contact.service';
   styleUrls: ['./contact-form.component.scss'],
 })
 export class ContactFormComponent {
-  tomorrow = this.getTomorrowDate();
+  today = this.getTodayDate();
 
   serviceTypes = [
     'Compra',
@@ -147,16 +148,26 @@ export class ContactFormComponent {
 
     this.contactService.addService(newService);
     this.modal.nativeElement.showModal();
+    document.body.style.overflow = 'hidden';
   }
 
   closeModal() {
     this.modal.nativeElement.close();
+    document.body.style.overflow = 'auto';
     this.router.navigate(['']);
   }
 
-  getTomorrowDate() {
+  getTodayDate() {
     const today = new Date();
-    today.setDate(today.getDate() + 1);
-    return today.toISOString().split('T')[0];
+    let month =
+      today.getMonth() + 1 >= 10
+        ? today.getMonth() + 1
+        : `0${today.getMonth() + 1}`;
+    let date =
+      today.getDate() + 1 >= 10
+        ? today.getDate() + 1
+        : `0${today.getDate() + 1}`;
+
+    return `${today.getFullYear()}-${month}-${date}`;
   }
 }

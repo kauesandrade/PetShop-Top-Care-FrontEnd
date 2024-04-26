@@ -1,13 +1,20 @@
 import { AbstractControl } from '@angular/forms';
 
 export function DateValidator(control: AbstractControl) {
-  let date: Date = new Date(control.value);
+  let date = new Date(control.value);
+  date.setDate(date.getDate() + 1);
 
-  if (date <= new Date()) {
-    return { LessThanToday: true };
+  let today = new Date();
+
+  if (date.getFullYear() <= today.getFullYear()) {
+    if (date.getMonth() <= today.getMonth()) {
+      if (date.getDate() <= today.getDate()) {
+        return { LessThanToday: true };
+      }
+    }
   }
 
-  if (date.getDay() == 5 || date.getDay() == 6) {
+  if (date.getDay() == 0 || date.getDay() == 6) {
     return { IsWeekend: true };
   }
 

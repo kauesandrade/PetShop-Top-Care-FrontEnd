@@ -69,7 +69,7 @@
         justify-content: center;
         align-items: center;
         gap: 0.5rem;
-        width: 17.5rem;
+        max-width: 17.5rem;
 
         h4 {
           align-self: flex-start;
@@ -158,12 +158,12 @@
       gap: 1.5rem;
 
       button {
-        width: 10rem;
+        max-width: 10rem;
         @media (max-width: $tablet) {
-          width: 8rem;
+          max-width: 8rem;
         }
         @media (max-width: $mobile) {
-          width: 10.25rem;
+          max-width: 10.25rem;
         }
       }
 

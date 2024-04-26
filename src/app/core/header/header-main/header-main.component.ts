@@ -15,5 +15,10 @@ export class HeaderMainComponent {
 
   toggleDrawer() {
     this.drawerIsOpen = !this.drawerIsOpen;
+    if (this.drawerIsOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   }
 }
