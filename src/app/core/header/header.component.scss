@@ -2,13 +2,19 @@
 
 .header {
   margin-bottom: 3.5rem;
-  @media (max-width: 320px) {
+  @media (max-width: $tablet) {
+    margin-bottom: 2rem;
+  }
+  @media (max-width: $mobile) {
     margin-bottom: 1.5rem;
   }
 }
 
 app-header-top {
-  @media (max-width: 320px) {
+  @media (max-width: $tablet) {
+    display: none;
+  }
+  @media (max-width: $mobile) {
     display: none;
   }
 }

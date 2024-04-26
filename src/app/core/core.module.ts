@@ -17,6 +17,7 @@ const Components = [
   FooterComponent,
   InputDirective,
 ];
+
 @NgModule({
   exports: [...Components],
   declarations: [

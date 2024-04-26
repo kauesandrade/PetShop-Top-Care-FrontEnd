@@ -19,27 +19,30 @@ body {
 .btn {
   @include text(normal, bold);
   @include transition();
-
-  max-width: 12.5rem;
-  padding: 0.5rem 1rem;
-
   border: 1px solid;
   border-radius: 0.5rem;
-
+  padding: 0.5rem 1rem;
   @include flex();
   gap: 0.5rem;
-
   text-transform: uppercase;
   word-wrap: break-word;
-
   cursor: pointer;
+
+  @media (max-width: $tablet) {
+    @include text(small, bold);
+    padding: 0.5rem 0.5rem;
+  }
+
+  @media (max-width: $mobile) {
+    font-size: 0.75rem;
+  }
 
   &.primary {
     background-color: $primary;
     border-color: $primary;
     color: $white;
 
-    &:hover {
+    &:hover:enabled {
       background-color: $light-primary;
       color: $black1;
     }
@@ -50,7 +53,7 @@ body {
     border-color: $secondary;
     color: $black1;
 
-    &:hover {
+    &:hover:enabled {
       background-color: $light-secondary;
       color: $black1;
     }
@@ -67,6 +70,10 @@ body {
     padding: 0.75rem;
     fa-icon {
       font-size: 1.25rem;
+
+      @media (max-width: $tablet) {
+        font-size: 0.75rem;
+      }
     }
   }
 }
@@ -81,8 +88,14 @@ body {
   outline: none;
   color: $black1;
   resize: none;
+  @include text(medium);
 
-  @include text(small, regular);
+  @media (max-width: $tablet) {
+    @include text();
+  }
+  @media (max-width: $mobile) {
+    @include text(small);
+  }
 
   &::placeholder {
     color: $gray3;
@@ -147,6 +160,13 @@ body {
 
   p {
     @include text();
+
+    @media (max-width: $tablet) {
+      @include text(small);
+    }
+    @media (max-width: $mobile) {
+      @include text(small);
+    }
   }
 
   div {

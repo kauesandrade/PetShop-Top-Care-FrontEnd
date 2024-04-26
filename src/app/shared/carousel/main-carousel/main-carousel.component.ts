@@ -1,6 +1,11 @@
-import { Component, ElementRef, AfterViewInit, OnDestroy, Input } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  AfterViewInit,
+  OnDestroy,
+  Input,
+} from '@angular/core';
 import EmblaCarousel, { EmblaOptionsType } from 'embla-carousel';
-import Autoplay from 'embla-carousel-autoplay';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { MainCarousel } from '../../interfaces/main-carousel';
@@ -8,24 +13,23 @@ import { MainCarousel } from '../../interfaces/main-carousel';
 @Component({
   selector: 'app-main-carousel',
   templateUrl: './main-carousel.component.html',
-  styleUrls: ['./main-carousel.component.scss']
+  styleUrls: ['./main-carousel.component.scss'],
 })
 export class MainCarouselComponent implements AfterViewInit, OnDestroy {
-
   constructor(private elementRef: ElementRef) {}
-  
+
   ngAfterViewInit(): void {
-    const viewportNode = this.elementRef.nativeElement.querySelector('.embla__viewport');
-    const OPTIONS: EmblaOptionsType = {align:"start", loop: true};
-    this.embla = EmblaCarousel(viewportNode, OPTIONS, [Autoplay({ stopOnMouseEnter: true, stopOnInteraction: false, delay: 7000 })]);
+    const viewportNode =
+      this.elementRef.nativeElement.querySelector('.embla__viewport');
+    const OPTIONS: EmblaOptionsType = { align: 'start', loop: true };
+    this.embla = EmblaCarousel(viewportNode, OPTIONS);
   }
-  
+
   embla: any = null;
   @Input() itensCarousel?: Array<MainCarousel>;
 
-  faAngleLeft = faAngleLeft
-  faAngleRight = faAngleRight
-  
+  faAngleLeft = faAngleLeft;
+  faAngleRight = faAngleRight;
 
   ngOnDestroy(): void {
     if (this.embla) {
@@ -44,6 +48,4 @@ export class MainCarouselComponent implements AfterViewInit, OnDestroy {
       this.embla.scrollNext();
     }
   }
-
 }
-

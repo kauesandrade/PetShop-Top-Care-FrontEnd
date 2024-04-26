@@ -2,14 +2,13 @@
 
 .about-us-container {
   @include grid-container;
+  gap: 2rem;
 }
 
 .title {
-  grid-column: 1 / span 3;
+  grid-column: 1 / -1;
   @include heading(h1);
   color: $primary;
-  // margin-bottom: 10px;
-  // margin-top: 0;
 }
 
 .content {
@@ -22,10 +21,11 @@
 .text-section {
   grid-column: 1 / span 6;
   @include text(medium, regular);
+  @include flex(column, flex-start, flex-start);
+  gap: 1.5rem;
 }
 p {
-  margin-bottom: 1.5rem;
-  text-indent: 30px;
+  text-indent: 1.25rem;
 }
 
 .image-section {
@@ -39,7 +39,46 @@ p {
   border-radius: 8px;
 }
 
-@media (max-width: 320px) {
+@media (max-width: $tablet) {
+  .about-us-container {
+    padding: 1rem 0;
+    gap: 0.5rem;
+  }
+
+  .title {
+    grid-column: 1 / span 6;
+    @include heading(h4);
+    color: $primary;
+    padding: 0 15px;
+  }
+
+  .content {
+    padding: 0 15px;
+    margin-top: 0;
+  }
+
+  .text-section {
+    order: 1;
+    grid-column: 1 / span 6;
+    @include text(normal, regular);
+    width: 100%;
+  }
+
+  .image-section {
+    grid-column: 1 / span 6;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .image-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: $mobile) {
   .about-us-container {
     padding: 1rem 0;
     gap: 0.5rem;
@@ -50,7 +89,6 @@ p {
     @include heading(h6);
     color: $primary;
     padding: 0 15px;
-    // margin-top: 15px;
   }
 
   .content {

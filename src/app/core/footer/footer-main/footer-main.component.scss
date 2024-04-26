@@ -17,14 +17,12 @@
 
   &-content {
     @include subgrid();
-    gap: 3.25rem;
     padding: 2.25rem 0;
 
-    @media (max-width: 320px) {
-      flex-direction: column;
+    @media (max-width: $tablet) {
       padding: 1rem 0;
       gap: 1rem;
-      grid-column: 1 / span 1;
+      grid-column: 1 / -1;
     }
 
     .divider {
@@ -34,7 +32,19 @@
       grid-column: span 1;
       place-self: center;
 
-      @media (max-width: 320px) {
+      @media (max-width: $tablet) {
+        position: absolute;
+        height: 70%;
+
+        &:nth-of-type(4n) {
+          left: calc(5rem * 2 + 3rem);
+        }
+        &:nth-of-type(3n) {
+          right: calc(5rem * 2 + 3rem);
+        }
+      }
+
+      @media (max-width: $tablet) {
         display: none;
       }
     }
@@ -47,7 +57,11 @@
         gap: 0.5rem;
       }
 
-      @media (max-width: 320px) {
+      @media (max-width: $tablet) {
+        gap: 0.5rem;
+      }
+
+      @media (max-width: $tablet) {
         gap: 0.5rem;
         padding: 0 1rem;
       }
@@ -61,7 +75,7 @@
         gap: 0.5rem;
       }
 
-      @media (max-width: 320px) {
+      @media (max-width: $tablet) {
         display: none;
       }
     }
@@ -69,7 +83,14 @@
     .contacts {
       grid-column: 1 / span 3;
 
-      @media (max-width: 320px) {
+      @media (max-width: $tablet) {
+        grid-column: 1 / -1;
+        h6 {
+          @include text(normal, semibold);
+        }
+      }
+
+      @media (max-width: $tablet) {
         h6 {
           @include text(normal, semibold);
         }
@@ -84,7 +105,16 @@
           font-size: 1rem;
         }
 
-        @media (max-width: 320px) {
+        @media (max-width: $tablet) {
+          &-text {
+            @include text(small);
+          }
+          fa-icon {
+            font-size: 1rem;
+          }
+        }
+
+        @media (max-width: $tablet) {
           flex-direction: row;
 
           &-text {
@@ -103,15 +133,15 @@
       gap: 2rem;
       grid-column: 5 / span 4;
 
-      @media (max-width: 320px) {
-        width: 100%;
+      @media (max-width: $tablet) {
+        grid-column: 1 / -1;
       }
 
       .vertical-divider {
         height: 1px;
         width: 100%;
         background-color: $white;
-        @media (max-width: 320px) {
+        @media (max-width: $tablet) {
           display: none;
         }
       }
@@ -129,7 +159,7 @@
           }
         }
 
-        @media (max-width: 320px) {
+        @media (max-width: $tablet) {
           display: none;
         }
       }
@@ -137,7 +167,8 @@
       .social-media {
         width: 100%;
 
-        @media (max-width: 320px) {
+        @media (max-width: $tablet) {
+          grid-column: 1 / -1;
           h6 {
             @include text(normal, semibold);
           }
@@ -151,7 +182,21 @@
           fa-icon {
             font-size: 2rem;
           }
-          @media (max-width: 320px) {
+
+          @media (max-width: $desktop) {
+            fa-icon {
+              font-size: 1.75rem;
+            }
+          }
+
+          @media (max-width: $tablet) {
+            gap: 0.5rem;
+            fa-icon {
+              font-size: 1.25rem;
+            }
+          }
+
+          @media (max-width: $tablet) {
             flex-direction: row;
 
             &-text {
@@ -173,7 +218,7 @@
         text-decoration: underline;
       }
 
-      @media (max-width: 320px) {
+      @media (max-width: $tablet) {
         display: none;
       }
     }

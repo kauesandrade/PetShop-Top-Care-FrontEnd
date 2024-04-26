@@ -6,11 +6,11 @@ import { CoreModule } from '../core/core.module';
 import { ProductSectionComponent } from './product-section/product-section.component';
 import { CarouselModule } from './carousel/carousel.module';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
-  
-  const Components = [
-    ProductCardComponent,
-    ProductSectionComponent,
-    ProductCarouselComponent
+
+const Components = [
+  ProductCardComponent,
+  ProductSectionComponent,
+  ProductCarouselComponent,
 ];
 
 @NgModule({
