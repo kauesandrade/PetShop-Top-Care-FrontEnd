@@ -31,20 +31,7 @@ export class RoundCardCarouselComponent implements AfterViewInit, OnDestroy {
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
   
-  @Input() roundCardList: Array<RoundCard> = [
-    { imgSrc: "dsad",
-      title: "dasd"
-    },
-    { imgSrc: "dsad",
-      title: "dasd"
-    },
-    { imgSrc: "dsad",
-      title: "dasd"
-    },
-    { imgSrc: "dsad",
-      title: "dasd"
-    },
-  ]
+  @Input() roundCardList: Array<RoundCard> = []
 
   ngOnDestroy(): void {
     if (this.embla) {

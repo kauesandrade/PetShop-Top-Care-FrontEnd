@@ -9,8 +9,9 @@
     color: $black1;
     img {
       border-radius: 0.5rem;
-      width: 12rem;
-      aspect-ratio: 1/1;
+      width: 10rem;
+      height: 10rem;
+      object-fit: cover;
     }
   }
 }

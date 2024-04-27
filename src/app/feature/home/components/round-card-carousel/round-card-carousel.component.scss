@@ -8,7 +8,6 @@
 }
 
 .embla {
-  // @include grid-container();
   @include subgrid();
   grid-column: 1 / -1;
   position: relative;
@@ -16,7 +15,19 @@
 
   --slide-height: 100%;
   --slide-spacing: 1rem;
-  --slide-size: 25%;
+  --slide-size: 16.6666666667%;
+
+  @media (max-width: $desktop) {
+    --slide-size: 20%;
+  }
+  @media (max-width: $tablet) {
+    --slide-size: 33.33%;
+    --slide-spacing: 2rem;
+  }
+  @media (max-width: $mobile) {
+    --slide-size: 100%;
+    --slide-spacing: 0rem;
+  }
 
   .embla__button--prev,
   .embla__button--next {
@@ -50,6 +61,15 @@
     }
   }
 
+  .embla__button--prev {
+    grid-column: 1 / 1;
+  }
+
+  .embla__button--next {
+    grid-column: 13 / 13;
+    left: 100%;
+  }
+
   .embla__viewport {
     overflow: hidden;
     grid-column: 1 / -1;
@@ -71,15 +91,5 @@
         }
       }
     }
-  }
-}
-
-@media (max-width: $mobile) {
-  .embla {
-    --slide-size: 100%;
-  }
-  .embla__button--next {
-    grid-column: 1 / 1;
-    left: 100%;
   }
 }
