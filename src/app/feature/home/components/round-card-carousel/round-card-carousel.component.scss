@@ -1,0 +1,85 @@
+@import "styles";
+
+.embla__button--prev {
+  grid-column: 1 / 1;
+}
+.embla__button--next {
+  grid-column: 13 / 13;
+}
+
+.embla {
+  // @include grid-container();
+  @include subgrid();
+  grid-column: 1 / -1;
+  position: relative;
+  width: 100%;
+
+  --slide-height: 100%;
+  --slide-spacing: 1rem;
+  --slide-size: 25%;
+
+  .embla__button--prev,
+  .embla__button--next {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $gray2;
+    padding: 1rem;
+    width: 1rem;
+    height: 1rem;
+    outline-style: none;
+    border: 1px solid $gray2;
+    border-radius: 1rem;
+
+    &:hover {
+      box-shadow: 0 0 5px $gray3;
+      cursor: pointer;
+    }
+
+    fa-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $white;
+      font-size: 1rem;
+    }
+  }
+
+  .embla__viewport {
+    overflow: hidden;
+    grid-column: 1 / -1;
+    .embla__container {
+      backface-visibility: hidden;
+      display: flex;
+      touch-action: pan-y;
+      margin: 0 calc(var(--slide-spacing) * -1);
+
+      .embla__slide {
+        flex: 0 0 var(--slide-size);
+        padding: 0 var(--slide-spacing);
+
+        app-round-card {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: var(--slide-height);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .embla {
+    --slide-size: 100%;
+  }
+  .embla__button--next {
+    grid-column: 1 / 1;
+    left: 100%;
+  }
+}

@@ -6,6 +6,8 @@ import { CoreModule } from '../core/core.module';
 import { ProductSectionComponent } from './product-section/product-section.component';
 import { CarouselModule } from './carousel/carousel.module';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
+import { RoundCardCarouselComponent } from '../feature/home/components/round-card-carousel/round-card-carousel.component';
+import { HomeModule } from '../feature/home/home.module';
 
 const Components = [
   ProductCardComponent,
