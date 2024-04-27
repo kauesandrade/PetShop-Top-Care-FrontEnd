@@ -197,39 +197,42 @@ body {
   grid-column: 1 / -1;
 
   &-primary{
-    // @include subgrid();
     grid-column: 1 / span 8;
-    height: max-content;
     padding: 2rem;
-    
     border-radius: 0.5rem;
-    background-color: $white;
   }
   &-secundary{
-    // @include subgrid();
     grid-column: 9 / -1;
-    height: max-content;
     padding: 1rem;
-
-    border-radius: 0.5rem;
-    background-color: $white;
+    border-radius: 0.5rem;  
   }
 
-  &-mid-left{
+  &-midLeft{
     grid-column: 1 / span 6;
-    height: max-content;
     padding: 1rem 2rem;
-
     border-radius: 0.5rem;
-    background-color: $white;
   }
 
-  &-mid-right{
+  &-midRight{
     grid-column: 7 / -1;
-    height: max-content;
     padding: 1rem 2rem;
-
     border-radius: 0.5rem;
+  }
+
+  &-full{
+    
+    grid-column: 1 / -1;
+    padding: 1rem 2rem;
+    border-radius: 1.5rem;
+
+  }
+
+  &-full, &-primary, &-secundary, &-midRight, &-midLeft {
+    &.subgrid{
+      @include subgrid();
+    }
+    height: max-content;
     background-color: $white;
   }
+
 }
