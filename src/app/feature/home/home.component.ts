@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainCarousel } from 'src/app/shared/interfaces/main-carousel';
+import { Product } from 'src/app/shared/interfaces/product';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,31 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  productList: Array<Product> = [
+  {
+    imgSrc: "dasd",
+    favorite: true,
+    title: "1",
+    brand: "sad",
+    rating: 4,
+    price: 10,
+    discountPrice: 10,
+    maxInterestFreeParcels: 10,
+    subscribersPrice: 10
+  },
+  {
+    imgSrc: "dasd",
+    favorite: true,
+    title: "2",
+    brand: "sad",
+    rating: 4,
+    price: 10,
+    discountPrice: 10,
+    maxInterestFreeParcels: 10,
+    subscribersPrice: 10
+  }
+  ]
   
   itens: Array<MainCarousel> = 
   [
@@ -43,6 +69,5 @@ export class HomeComponent implements OnInit {
     link: "contate-nos",
     alt: "card 6"
   },
- 
 ];
 }

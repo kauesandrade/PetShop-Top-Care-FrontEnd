@@ -4,10 +4,7 @@ main {
   @include grid-container();
   row-gap: 2rem;
 
-  app-main-carousel{
-    @include subgrid();
-  }
-  app-home-banner {
+  app-home-banner, app-product-carousel, app-main-carouse {
     @include subgrid();
   }
 
