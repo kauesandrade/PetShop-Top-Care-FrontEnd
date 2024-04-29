@@ -1,7 +1,6 @@
 @import "styles";
 
 .embla {
-  // @include grid-container();
   @include subgrid();
   position: relative;
   width: 100%;
@@ -20,59 +19,11 @@
     --slide-height: 15rem;
   }
 
-  .embla__button--prev,
-  .embla__button--next {
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $gray2;
-    padding: 1rem;
-    width: 1rem;
-    height: 1rem;
-    outline-style: none;
-    border: 1px solid $gray2;
-    border-radius: 1rem;
-
-    &:hover {
-      box-shadow: 0 0 5px $gray3;
-      cursor: pointer;
-    }
-
-    fa-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: $white;
-      font-size: 1rem;
-
-      @media (max-width: $tablet) {
-        font-size: 0.5rem;
-      }
-    }
-
-    @media (max-width: $tablet) {
-      padding: 0.5rem;
-    }
-  }
-
-  .embla__button--prev {
-    grid-column: 1 / 1;
-  }
-
-  .embla__button--next {
-    grid-column: 13 / 13;
-    left: 100%;
-  }
-
   .embla__viewport {
     overflow: hidden;
     grid-column: 1 / -1;
     border-radius: 1.5rem;
+
     @media (max-width: $tablet) {
       border-radius: 0.5rem;
     }
