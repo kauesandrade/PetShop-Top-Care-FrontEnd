@@ -85,7 +85,7 @@
 
         app-round-card {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           justify-content: center;
           height: var(--slide-height);
         }

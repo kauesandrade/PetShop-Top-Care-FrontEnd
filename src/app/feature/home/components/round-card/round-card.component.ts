@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class RoundCardComponent {
   @Input() imgSrc: string = '';
-  @Input() title: string = '';
+  @Input() title?: string = '';
 }
