@@ -5,28 +5,26 @@
   position: relative;
   width: 100%;
 
-  --slide-height: 20rem;
+  --slide-height: 15rem;
   --slide-spacing: 0px;
   --slide-size: 100%;
 
-  @media (max-width: $desktop) {
-    --slide-height: 15rem;
-  }
-  @media (max-width: $tablet) {
+  @media (min-width: $tablet) {
     --slide-height: 10rem;
   }
-  @media (max-width: $mobile) {
+  @media (min-width: $desktop) {
     --slide-height: 15rem;
   }
+  @media (min-width: $desktopHD) {
+    --slide-height: 20rem;
+  }
+  
+ 
 
   .embla__viewport {
     overflow: hidden;
     grid-column: 1 / -1;
     border-radius: 1.5rem;
-
-    @media (max-width: $tablet) {
-      border-radius: 0.5rem;
-    }
 
     .embla__container {
       backface-visibility: hidden;
@@ -51,9 +49,6 @@
               height: 100%;
               width: 100%;
               object-fit: cover;
-              @media (max-width: $tablet) {
-                border-radius: 0.5rem;
-              }
             }
           }
         }

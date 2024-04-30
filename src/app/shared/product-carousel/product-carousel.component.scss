@@ -7,21 +7,21 @@
   width: 100%;
 
   --slide-height: 100%;
-  --slide-spacing: 1rem;
-  --slide-size: 25%;
+  --slide-spacing: 0.5rem;
+  --slide-size: 0%;
 
-  @media (max-width: $desktop) {
-    --slide-size: 33.33%;
-    --slide-spacing: 2.5rem;
-  }
-  @media (max-width: $tablet) {
-    --slide-size: 50%;
-    --slide-spacing: 3.5rem;
-  }
-  @media (max-width: $mobile) {
-    --slide-size: 100%;
-    --slide-spacing: 0rem;
-  }
+  // @media (min-width: $tablet) {
+  //   --slide-size: 50%;
+  //   --slide-spacing: 3.5rem;
+  // }
+  // @media (min-width: $desktop) {
+  //   --slide-size: 33.33%;
+  //   --slide-spacing: 2.5rem;
+  // }
+  // @media (min-width: $desktopHD) {
+  //   --slide-spacing: 1rem;
+  //   --slide-size: 25%;
+  // }
   
   .embla__viewport {
     overflow: hidden;
@@ -30,7 +30,7 @@
       backface-visibility: hidden;
       display: flex;
       touch-action: pan-y;
-      margin: 0 calc(var(--slide-spacing) * -1);
+      padding: 0 calc(var(--slide-spacing) * -1);
 
       .embla__slide {
         flex: 0 0 var(--slide-size);
