@@ -11,10 +11,8 @@
 }
 
 app-header-top {
-  @media (max-width: $tablet) {
-    display: none;
-  }
-  @media (max-width: $mobile) {
-    display: none;
+  display: none;
+  @media (min-width: $tablet) {
+    display: block;
   }
 }

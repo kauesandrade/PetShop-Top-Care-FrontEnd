@@ -1,0 +1,26 @@
+<div class="drawer-overlay" [class.open]="drawerIsOpen">
+  <div class="drawer-menu">
+    <button class="close-btn" (click)="toggleDrawer()">X</button>
+    <div class="drawer-menu-items">
+      <a routerLink="sobre-nos" (click)="toggleDrawer()">Sobre nós</a>
+      <a routerLink="nossas-lojas" (click)="toggleDrawer()">Nossas lojas</a>
+      <a routerLink="contate-nos" (click)="toggleDrawer()">Contatos</a>
+    </div>
+  </div>
+  <div class="drawer-background" (click)="toggleDrawer()"></div>
+</div>
+
+<button class="hamburger-drawer" (click)="toggleDrawer()">
+  <fa-icon [icon]="faBars"></fa-icon>
+</button>
+<a routerLink="" class="brand">
+  <img
+    src="assets/images/TopCareLogo.png"
+    alt="Brand logo image"
+    class="logo"
+  />
+  <div class="brand-name">
+    <h6>Petshop</h6>
+    <p>Top Care</p>
+  </div>
+</a>
