@@ -15,11 +15,11 @@ const routes: Routes = [
   { path: 'sobre-nos', title: 'Sobre a Top Care', component: AboutUsComponent },
   { path: 'contate-nos', title: 'Contate-nos | Top Care', component: ContactComponent },
   { path: 'nossas-lojas', title: 'Lojas | Top Care', component: StoreComponent },
-  { path: 'product/:id', component: ProductComponent },
-  { path: 'register', title: 'Cadastre-se na Top Care', component: RegisterComponent },
+  { path: 'produto/:id', component: ProductComponent },
+  { path: 'registro', title: 'Cadastre-se na Top Care', component: RegisterComponent },
   { path: 'login', title: 'Login | Top Care', component: LoginComponent },
-  { path: 'search', component: SearchComponent },
-  { path: 'cart', title: 'Carrinho | Top Care', component: CartComponent },
+  { path: 'busca', component: SearchComponent },
+  { path: 'carrinho', title: 'Carrinho | Top Care', component: CartComponent },
 ];
 
 @NgModule({
