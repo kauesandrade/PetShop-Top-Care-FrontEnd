@@ -1,0 +1,42 @@
+@import "styles";
+
+.product-section {
+  @include subgrid();
+  grid-column: 1 / -1;
+  grid-template-rows: minmax(2.375rem, auto) minmax(23rem, auto);
+  gap: 0rem;
+
+  padding-top: 0.75rem;
+  border-top: 1px solid $gray4;
+
+  @media (min-width: $tablet) {
+    padding-top: 1rem;
+  }
+
+  @media (min-width: $desktop) {
+    padding-top: 1.5rem;
+    gap: 1rem;
+  }
+  @media (min-width: $desktopHD) {
+    padding-top: 2rem;
+    gap: 2rem;
+  }
+
+  &-title {
+    color: $primary;
+    text-transform: capitalize;
+    grid-column: 1 /-1;
+
+    @media (min-width: $tablet) {
+      @include heading(h4)
+    }
+  }
+
+  &-cards{
+    grid-column: 1 / -1;
+    @include subgrid();
+    app-round-card-carousel{
+      @include subgrid();
+    }
+  }
+}

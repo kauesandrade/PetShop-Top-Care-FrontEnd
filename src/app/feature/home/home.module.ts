@@ -8,6 +8,7 @@ import { HomeBannerComponent } from './components/home-banner/home-banner.compon
 import { CoreModule } from 'src/app/core/core.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RoundCardCarouselComponent } from './components/round-card-carousel/round-card-carousel.component';
+import { RoundCardSectionComponent } from './components/round-card-section/round-card-section.component';
 
 @NgModule({
   exports: [HomeComponent],
@@ -17,6 +18,7 @@ import { RoundCardCarouselComponent } from './components/round-card-carousel/rou
     RoundCardCarouselComponent,
     ChatButtonComponent,
     HomeBannerComponent,
+    RoundCardSectionComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule],
 })
