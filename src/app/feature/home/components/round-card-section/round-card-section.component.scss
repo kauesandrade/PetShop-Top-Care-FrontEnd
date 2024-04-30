@@ -1,9 +1,8 @@
 @import "styles";
 
-.product-section {
+.round-section {
   @include subgrid();
   grid-column: 1 / -1;
-  grid-template-rows: minmax(2.375rem, auto) minmax(23rem, auto);
   gap: 0rem;
 
   padding-top: 0.75rem;

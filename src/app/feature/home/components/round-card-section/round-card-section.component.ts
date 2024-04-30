@@ -14,6 +14,6 @@ export class RoundCardSectionComponent implements OnInit {
   }
 
   @Input() title: string = '';
-  @Input() roundCardList!: RoundCard;
+  @Input() roundCardList!: Array<RoundCard>;
 
 }
