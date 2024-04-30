@@ -18,9 +18,9 @@ export class ProductComponent implements OnInit {
   id?: any;
 
   getProduct(){
-    if(this.id>3){
-      this.routing.na
-    }
     this.id = this.route.snapshot.paramMap.get("id")
+    if(this.id >= 3){
+      this.routing.navigate(['/'])
+    }
   }
 }
