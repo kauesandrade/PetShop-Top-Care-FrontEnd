@@ -22,7 +22,7 @@ export class RoundCardCarouselComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     const viewportNode =
     this.elementRef.nativeElement.querySelector('.embla__viewport');
-    const OPTIONS: EmblaOptionsType = { align: 'start', loop: true };
+    const OPTIONS: EmblaOptionsType = { align: 'center', slidesToScroll: 1, dragFree: true };
     
     this.embla = EmblaCarousel(viewportNode, OPTIONS);
   }
@@ -32,27 +32,27 @@ export class RoundCardCarouselComponent implements AfterViewInit, OnDestroy {
   faAngleRight = faAngleRight;
   
   @Input() roundCardList: Array<RoundCard> = [
-    // { imgSrc: "https://logodownload.org/wp-content/uploads/2019/09/pedigree-logo-5.png",
-    //   title: "Pedigree"
-    // },
-    // { imgSrc: "https://i.pinimg.com/736x/b3/66/57/b3665754998e1377da73fdc08ec83555.jpg",
-    //   title: "Purina"
-    // },
-    // { imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQsgoZbtvOTXtRKa_0I5e3kniuXSXzAEL-selvDfdO0g&s",
-    //   title: "Golden"
-    // },
-    // { imgSrc: "https://static.petz.com.br/novaLoja/images/brands/zeedog.jpg",
-    //   title: "Zee.dog"
-    // },
-    // { imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRR5o_mITghnmjcUYROkbMkc81AgKO8yGdVDmTbQyh_Q&s",
-    //   title: "Whiskas"
-    // },
-    // { imgSrc: "https://static.petz.com.br/fotos/imagem-marca-supersecao-super_secao.jpg",
-    //   title: "Super Secão"
-    // },
-    // { imgSrc: "https://static.petz.com.br/novaLoja/images/brands/nd.jpg",
-    //   title: "N&D Prime"
-    // },
+    { imgSrc: "https://logodownload.org/wp-content/uploads/2019/09/pedigree-logo-5.png",
+      title: "Pedigree"
+    },
+    { imgSrc: "https://i.pinimg.com/736x/b3/66/57/b3665754998e1377da73fdc08ec83555.jpg",
+      title: "Purina"
+    },
+    { imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQsgoZbtvOTXtRKa_0I5e3kniuXSXzAEL-selvDfdO0g&s",
+      title: "Golden"
+    },
+    { imgSrc: "https://static.petz.com.br/novaLoja/images/brands/zeedog.jpg",
+      title: "Zee.dog"
+    },
+    { imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRR5o_mITghnmjcUYROkbMkc81AgKO8yGdVDmTbQyh_Q&s",
+      title: "Whiskas"
+    },
+    { imgSrc: "https://static.petz.com.br/fotos/imagem-marca-supersecao-super_secao.jpg",
+      title: "Super Secão"
+    },
+    { imgSrc: "https://static.petz.com.br/novaLoja/images/brands/nd.jpg",
+      title: "N&D Prime"
+    },
     ]
 
   ngOnDestroy(): void {

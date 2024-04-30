@@ -15,19 +15,7 @@
 
   --slide-height: 100%;
   --slide-spacing: 1rem;
-  --slide-size: 16.6666666667%;
-
-  @media (max-width: $desktop) {
-    --slide-size: 20%;
-  }
-  @media (max-width: $tablet) {
-    --slide-size: 33.33%;
-    --slide-spacing: 2rem;
-  }
-  @media (max-width: $mobile) {
-    --slide-size: 100%;
-    --slide-spacing: 0rem;
-  }
+  --slide-size: 0%;
 
   .embla__button--prev,
   .embla__button--next {
