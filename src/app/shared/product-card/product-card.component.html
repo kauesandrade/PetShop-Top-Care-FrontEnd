@@ -2,7 +2,7 @@
   <ng-container *ngIf="product.favorite">
     <fa-icon [icon]="faHeart" class="favorite-heart"></fa-icon>
   </ng-container>
-  <a href="/product/{{product.title}}" class="redirect-product">
+  <a href="/produto/{{product.title}}" class="redirect-product">
     <img [src]="product.imgSrc" alt="Product image" class="product-image" />
     <p class="product-title">{{ product.title }}</p>
   </a>
