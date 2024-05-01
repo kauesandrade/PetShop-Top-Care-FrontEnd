@@ -7,12 +7,7 @@
   &-content {
     @include subgrid();
     width: 100%;
-    padding: 0.75rem;
-
-    @media (min-width: $desktop) {
-      @include flex();
-      grid-column: 1 / -1;
-    }
+    padding: 0.75rem 0;
 
     app-header-main-simple,
     app-header-main-full {

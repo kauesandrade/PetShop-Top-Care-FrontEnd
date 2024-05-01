@@ -10,10 +10,10 @@
   }
 
   &-content {
-    @include flex(row, center, space-between);
+    @include flex($justify: space-between);
     width: 100%;
     grid-column: 1 / -1;
-    padding: 0.5rem;
+    padding: 0.5rem 0;
 
     .items-group {
       @include flex();

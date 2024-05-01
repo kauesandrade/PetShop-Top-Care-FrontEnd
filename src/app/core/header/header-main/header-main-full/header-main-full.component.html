@@ -10,17 +10,64 @@
   <div class="drawer-background" (click)="toggleDrawer()"></div>
 </div>
 
-<button class="hamburger-drawer" (click)="toggleDrawer()">
-  <fa-icon [icon]="faBars"></fa-icon>
-</button>
-<a routerLink="" class="brand">
-  <img
-    src="assets/images/TopCareLogo.png"
-    alt="Brand logo image"
-    class="logo"
-  />
-  <div class="brand-name">
-    <h6>Petshop</h6>
-    <p>Top Care</p>
+<div class="full-content">
+  <button class="hamburger-drawer" (click)="toggleDrawer()">
+    <fa-icon [icon]="faBars"></fa-icon>
+  </button>
+  <a routerLink="" class="icon">
+    <fa-icon [icon]="faUser"></fa-icon>
+    <span *ngIf="true">
+      Olá,
+      {{ "Topolino" }}
+    </span>
+  </a>
+  <a routerLink="" class="brand">
+    <img
+      src="assets/images/TopCareLogo.png"
+      alt="Brand logo image"
+      class="logo"
+    />
+    <div class="brand-name">
+      <h6>Petshop</h6>
+      <p>Top Care</p>
+    </div>
+  </a>
+  <div class="services-sales">
+    <a routerLink="">Serviços</a>
+    <div class="line"></div>
+    <a routerLink="">Promoções</a>
   </div>
-</a>
+  <label class="searchbar" for="searchbar" appInput>
+    <div>
+      <input
+        type="search"
+        name="searchbar"
+        placeholder="Meu pet precisa de..."
+      />
+      <button>
+        <fa-icon [icon]="faSearch"></fa-icon>
+      </button>
+    </div>
+  </label>
+  <a routerLink="" class="icon">
+    <fa-icon [icon]="faShoppingCart"></fa-icon>
+  </a>
+  <a routerLink="" class="icon">
+    <fa-icon [icon]="faHeart"></fa-icon>
+  </a>
+  <div class="utility-icons">
+    <a routerLink="">
+      <fa-icon [icon]="faUser"></fa-icon>
+      <span *ngIf="true">
+        Olá,
+        {{ "Topolino" }}
+      </span>
+    </a>
+    <a routerLink="">
+      <fa-icon [icon]="faShoppingCart"></fa-icon>
+    </a>
+    <a routerLink="">
+      <fa-icon [icon]="faHeart"></fa-icon>
+    </a>
+  </div>
+</div>

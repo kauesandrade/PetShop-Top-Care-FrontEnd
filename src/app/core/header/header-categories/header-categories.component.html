@@ -1,1 +1,8 @@
-<p>header-categories works!</p>
+<div class="categories-content">
+  <ng-container *ngFor="let category of categories; let i = index">
+    <a routerLink="">{{ category }}</a>
+    <ng-container *ngIf="i < categories.length - 1">
+      <div class="line"></div>
+    </ng-container>
+  </ng-container>
+</div>

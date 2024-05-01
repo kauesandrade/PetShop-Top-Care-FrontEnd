@@ -1,65 +1,260 @@
 @use "sass:color";
 @import "styles";
 
-.hamburger-drawer {
-  @include flex($justify: flex-start);
-  display: inline-flex;
-  font-size: 1.25rem;
-  color: $white;
-  background-color: transparent;
-  border: none;
+.full-content {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  row-gap: 0.5rem;
 
-  @media (min-width: $mobile) {
-    font-size: 2rem;
-  }
   @media (min-width: $tablet) {
-    display: none;
-  }
-}
-
-.brand {
-  @include flex();
-  grid-column: 1 / span 2;
-  gap: 0.5rem;
-
-  img {
-    width: 2.5rem;
+    @include subgrid();
   }
 
-  &-name {
-    @include flex(column);
+  .line {
+    background-color: $white;
+    width: 1px;
+  }
+
+  .hamburger-drawer {
+    @include flex($justify: flex-start);
+    font-size: 1.25rem;
     color: $white;
+    background-color: transparent;
+    border: none;
+    justify-self: start;
 
-    h3 {
-      @include text(normal, medium);
+    @media (min-width: $tablet) {
+      justify-self: start;
+      font-size: 1.5rem;
     }
-
-    p {
-      @include text(small);
+    @media (min-width: $desktop) {
+      display: none;
     }
   }
 
-  @media (min-width: $mobile) {
-    img {
-      width: 4.5rem;
+  .icon {
+    &:first-of-type {
+      justify-self: start;
     }
+
+    display: block;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: $white;
+    align-self: center;
+    justify-self: end;
+    position: relative;
+
+    span {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: max-content;
+      transform: translate(-50%, 0%);
+      text-align: center;
+      @include text(small, semibold);
+    }
+
+    @media (min-width: $tablet) {
+      font-size: 2rem;
+    }
+
+    @media (min-width: $desktop) {
+      display: none;
+    }
+  }
+
+  .brand {
+    @include flex();
+    gap: 0.25rem;
+
+    img {
+      width: 2rem;
+    }
+
     &-name {
+      display: none;
+      color: $white;
+
       h3 {
-        @include heading(h4);
+        @include text(normal, medium);
       }
 
       p {
-        @include text(normal, medium);
+        @include text(small);
+      }
+    }
+
+    @media (min-width: $tablet) {
+      @include flex(row);
+      grid-column: 3 / span 2;
+      gap: 1rem;
+
+      img {
+        width: 3.5rem;
+      }
+      &-name {
+        display: block;
+
+        h3 {
+          @include heading(h4);
+        }
+
+        p {
+          @include text(normal, medium);
+        }
+      }
+    }
+
+    @media (min-width: $desktop) {
+      text-decoration: none;
+      gap: 0;
+      justify-content: space-between;
+      grid-column: 1 / span 2;
+
+      img {
+        width: 3.5rem;
+      }
+
+      &-name {
+        h3 {
+          @include heading(h3);
+        }
+      }
+    }
+    @media (min-width: $desktopHD) {
+      img {
+        width: 4rem;
       }
     }
   }
 
-  @media (min-width: $tablet) {
-    gap: 1.5rem;
-    text-decoration: none;
-    &-name {
-      h3 {
-        @include heading(h3);
+  .services-sales {
+    display: none;
+
+    @media (min-width: $desktop) {
+      @include flex();
+      height: auto;
+      gap: 1rem;
+      grid-column: auto / span 3;
+    }
+
+    a {
+      @media (min-width: $desktop) {
+        @include text(medium, bold);
+        text-decoration: none;
+        color: $white;
+      }
+    }
+
+    .line {
+      height: 0;
+
+      @media (min-width: $desktop) {
+        height: 1.5rem;
+      }
+      @media (min-width: $desktopHD) {
+        height: 2rem;
+      }
+    }
+  }
+
+  .searchbar {
+    flex-grow: 1;
+    order: 2;
+    grid-column: 1/ -1;
+    width: 100%;
+    height: 2rem;
+    border: none;
+    place-self: center;
+
+    div {
+      width: 100%;
+      height: 100%;
+
+      input {
+        padding-left: 1rem;
+        width: 100%;
+        height: 100%;
+        border-bottom-left-radius: 0.5rem;
+        border-top-left-radius: 0.5rem;
+        @include text(small);
+      }
+
+      button {
+        padding: 0;
+        padding-right: 1rem;
+        border-bottom-right-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        height: 100%;
+        font-size: 1rem;
+      }
+    }
+
+    @media (min-width: $tablet) {
+      height: 2.5rem;
+      div {
+        input {
+          @include text();
+        }
+      }
+    }
+
+    @media (min-width: $desktop) {
+      order: 1;
+      grid-column: auto / span 5;
+      div {
+        input {
+          border-bottom-left-radius: 1rem;
+          border-top-left-radius: 1rem;
+        }
+
+        button {
+          border-bottom-right-radius: 1rem;
+          border-top-right-radius: 1rem;
+        }
+      }
+    }
+  }
+
+  .utility-icons {
+    @include flex();
+    font-size: 1.5rem;
+
+    a {
+      display: none;
+      place-self: center;
+      text-decoration: none;
+      color: $white;
+      position: relative;
+
+      span {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        width: max-content;
+        transform: translate(-50%, 0%);
+        text-align: center;
+        @include text($weight: semibold);
+      }
+    }
+
+    @media (min-width: $tablet) {
+      a {
+        order: 1;
+        place-self: center;
+        grid-column: auto / span 1;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      order: 2;
+      @include flex($justify: space-between);
+      grid-column: auto / span 2;
+      font-size: 2rem;
+
+      a {
+        display: block;
       }
     }
   }

@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBars,
+  faHeart,
+  faSearch,
+  faShoppingCart,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header-main-full',
@@ -8,6 +14,10 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderMainFullComponent {
   faBars = faBars;
+  faSearch = faSearch;
+  faUser = faUser;
+  faShoppingCart = faShoppingCart;
+  faHeart = faHeart;
 
   drawerIsOpen: boolean = false;
 

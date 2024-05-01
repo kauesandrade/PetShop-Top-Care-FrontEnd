@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header-categories',
   templateUrl: './header-categories.component.html',
-  styleUrls: ['./header-categories.component.scss']
+  styleUrls: ['./header-categories.component.scss'],
 })
-export class HeaderCategoriesComponent implements OnInit {
+export class HeaderCategoriesComponent {
+  categories = [
+    'cachorro',
+    'gato',
+    'pássaros',
+    'roedores',
+    'répteis',
+    'primatas',
+    'outros',
+  ];
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor() {}
 }
