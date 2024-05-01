@@ -1,0 +1,16 @@
+@import "styles";
+.commonSection-full{
+    .divText{
+        grid-column: 2 / 8;
+        // row-gap: 1rem;
+    }
+    .divImg{
+        grid-column: 8 / -2;
+        img{
+            width: 100%;
+            height: 20rem;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+    }
+}
