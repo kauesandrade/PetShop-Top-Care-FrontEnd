@@ -29,38 +29,8 @@ export class HeaderMainFullComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    // this.userService.login({
-    //   name: 'Maria da Silva',
-    //   email: 'maria@example.com',
-    //   cpf: '123.456.789-00',
-    //   birth: '1995-10-15',
-    //   gender: 'Feminino',
-    //   password: 'senha123',
-    //   contactInfo: [
-    //     { cellphone: '(00) 98765-4321', telephone: '(00) 1234-5678' },
-    //     { cellphone: '(00) 99999-9999', telephone: '' },
-    //   ],
-    //   addresses: [
-    //     {
-    //       name: 'Casa',
-    //       cep: '12345-678',
-    //       city: 'São Paulo',
-    //       neighborhood: 'Centro',
-    //       street: 'Rua Exemplo',
-    //       number: 123,
-    //       complement: 'Apto 101',
-    //     },
-    //     {
-    //       name: 'Trabalho',
-    //       cep: '54321-098',
-    //       city: 'São Paulo',
-    //       neighborhood: 'Bairro Novo',
-    //       street: 'Avenida Principal',
-    //       number: 456,
-    //     },
-    //   ],
-    // });
-    this.userService.logout();
+    this.userService.login("kristian@gmail.com", "12345678");
+    // this.userService.logout();
     this.user = this.userService.loggedUser;
     this.firstName = this.user?.name.split(' ')[0];
     this.isLogged = this.user?.name != null;

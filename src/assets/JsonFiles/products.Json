@@ -1,0 +1,48 @@
+{
+    "product": [
+        {
+            "imgSrc": "s", 
+            "favorite": false, 
+            "title": "cu", 
+            "brand": "sdas", 
+            "rating": 5, 
+            "price": 50.4, 
+            "discountPrice": 10.4, 
+            "maxInterestFreeParcels": 2, 
+            "subscribersPrice": 40.2
+        },
+        {
+            "imgSrc": "s", 
+            "favorite": false, 
+            "title": "cu", 
+            "brand": "sdas", 
+            "rating": 5, 
+            "price": 50.4, 
+            "discountPrice": 10.4, 
+            "maxInterestFreeParcels": 2, 
+            "subscribersPrice": 40.2
+        },
+        {
+            "imgSrc": "s", 
+            "favorite": false, 
+            "title": "cu", 
+            "brand": "sdas", 
+            "rating": 5, 
+            "price": 50.4, 
+            "discountPrice": 10.4, 
+            "maxInterestFreeParcels": 2, 
+            "subscribersPrice": 40.2
+        },
+        {
+            "imgSrc": "s", 
+            "favorite": false, 
+            "title": "cu", 
+            "brand": "sdas", 
+            "rating": 5, 
+            "price": 50.4, 
+            "discountPrice": 10.4, 
+            "maxInterestFreeParcels": 2, 
+            "subscribersPrice": 40.2
+        }
+    ]
+}
