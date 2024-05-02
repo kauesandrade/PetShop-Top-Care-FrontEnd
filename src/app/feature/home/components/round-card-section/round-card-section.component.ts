@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { RoundCard } from '../../interfaces/round-card';
+import { RoundCard } from '../../../../shared/interfaces/round-card';
 
 @Component({
   selector: 'app-round-card-section',

@@ -8,7 +8,7 @@ import {
 import EmblaCarousel, { EmblaOptionsType } from 'embla-carousel';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { RoundCard } from '../../interfaces/round-card';
+import { RoundCard } from '../../../../shared/interfaces/round-card';
 
 @Component({
   selector: 'app-round-card-carousel',

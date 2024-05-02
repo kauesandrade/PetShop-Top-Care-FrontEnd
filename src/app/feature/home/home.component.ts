@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainCarousel } from 'src/app/shared/interfaces/main-carousel';
-import { RoundCard } from './interfaces/round-card';
+import { RoundCard } from '../../shared/interfaces/round-card';
 
 @Component({
   selector: 'app-home',
