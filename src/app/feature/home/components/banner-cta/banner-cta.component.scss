@@ -1,14 +1,87 @@
 @import "styles";
+
 .commonSection-full{
-    .divText{
-        grid-column: 2 / 8;
-        // row-gap: 1rem;
+    padding: 1rem;
+    gap: 1rem;
+
+    @media(min-width: $tablet){
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    @media(min-width: $desktop){
+        padding: 2rem;
+    }
+
+    .divTextButton{
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        order: 1;
+        
+        @media(min-width: $tablet){
+            padding: 1.5rem;
+        }
+        
+        @media(min-width: $desktop){
+            grid-column: 1 / 8;
+            justify-content: space-between;
+            align-items: initial;
+            padding: 0rem;
+            order: 0;
+        }
+
+        .divText{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 1.5rem;
+            
+            @media(min-width: $desktop){
+                text-align: start;
+            }
+            
+            h4{
+                @include heading(h5);
+                color: $primary;
+                
+                @media(min-width: $tablet){
+                    @include heading(h4);
+                }
+            }
+
+            p{
+                @include text(normal);
+
+                @media(min-width: $tablet){
+                    @include text(medium);
+                }
+            }
+            
+        }
+
+        button{
+            width: 10rem;
+        }
     }
     .divImg{
-        grid-column: 8 / -2;
+        grid-column: 1 / -1;
+        height: 12rem;
+
+        @media(min-width: $tablet){
+            height: 15rem;
+        }
+
+        @media (min-width: $desktop){
+            grid-column: 8 / -1;
+            height: 17rem;
+        }
+
         img{
             width: 100%;
-            height: 20rem;
+            height: 100%;
             object-fit: cover;
             border-radius: 1rem;
         }
