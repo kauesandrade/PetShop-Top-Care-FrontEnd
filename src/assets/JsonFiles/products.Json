@@ -1,10 +1,10 @@
 {
     "product": [
         {
-            "imgSrc": "s", 
+            "imgSrc": "https://images.petz.com.br/fotos/1658430805995.jpg", 
             "favorite": false, 
-            "title": "cu", 
-            "brand": "sdas", 
+            "title": "Ração Golden - Cães Filhotes (Frango e Arroz) 1kg", 
+            "brand": "Golden", 
             "rating": 5, 
             "price": 50.4, 
             "discountPrice": 10.4, 
@@ -12,37 +12,37 @@
             "subscribersPrice": 40.2
         },
         {
-            "imgSrc": "s", 
+            "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4hDVYs0-7Km9r0BuYsbOBVkgxH4LW-YojyfP-oSSL1Q&s", 
             "favorite": false, 
-            "title": "cu", 
-            "brand": "sdas", 
+            "title": "Ração Premier Super Premium Formula Sabor Frango para Cães Adultos de Portes Grandes e Gigantes - 15kg ou 20kg", 
+            "brand": "Premier", 
             "rating": 5, 
-            "price": 50.4, 
+            "price": 70.4, 
             "discountPrice": 10.4, 
             "maxInterestFreeParcels": 2, 
             "subscribersPrice": 40.2
         },
         {
-            "imgSrc": "s", 
-            "favorite": false, 
-            "title": "cu", 
-            "brand": "sdas", 
+            "imgSrc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlsbKkklPZmMHvDyDDbWYm4BSVlmLWhKUejX0RWgYqUw&s", 
+            "favorite": true, 
+            "title": "Brinquedo Cachorro Osso Halteres Pata macio", 
+            "brand": "Ideia Store", 
             "rating": 5, 
-            "price": 50.4, 
-            "discountPrice": 10.4, 
+            "price": 10.4, 
+            "discountPrice": 1.4, 
             "maxInterestFreeParcels": 2, 
-            "subscribersPrice": 40.2
+            "subscribersPrice": 4.2
         },
         {
-            "imgSrc": "s", 
+            "imgSrc": "https://petmagia.com.br/cdn/shop/products/product-image-17027x   29481_500x.jpg?v=1670280207", 
             "favorite": false, 
-            "title": "cu", 
-            "brand": "sdas", 
-            "rating": 5, 
-            "price": 50.4, 
+            "title": "Caminha iglu para Gatos", 
+            "brand": "Pet Iglu", 
+            "rating": 4.5, 
+            "price":  149.90, 
             "discountPrice": 10.4, 
             "maxInterestFreeParcels": 2, 
-            "subscribersPrice": 40.2
+            "subscribersPrice": 70.2
         }
     ]
 }

@@ -59,12 +59,12 @@
             ]
         },
         {
-            "name": "Leticia 9",
-            "email": "gabriel@gmail.com",
-            "cpf": "000.000.000-00",
+            "name": "Leticia Mafra",
+            "email": "leticia@gmail.com",
+            "cpf": "000.000.000-01",
             "birth": "30/08/2005",
-            "gender": "bu",
-            "password": "149378",
+            "gender": "feminino",
+            "password": "amo1234567",
             "contactInfo": [
                 {
                     "cellphone": "(47) 99157-2443",
@@ -88,12 +88,12 @@
             ]
         },
         {
-            "name": "Kristian Erdmann",
-            "email": "kristian@gmail.com",
-            "cpf": "000.000.000-00",
-            "birth": "01/01/0001",
+            "name": "Kaue Schaefer de Andrade",
+            "email": "kaue@gmail.com",
+            "cpf": "000.000.000-69",
+            "birth": "24/04/2006",
             "gender": "",
-            "password": "12345678",
+            "password": "cuz123",
             "contactInfo": [
                 {
                     "cellphone": "(47) 99999-9999",
