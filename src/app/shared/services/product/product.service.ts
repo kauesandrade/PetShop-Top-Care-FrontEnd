@@ -19,15 +19,18 @@ export class ProductService {
         this.product = productFind;
         break;
       }
-    }
+    } 
     return this.product;
   }
 
-  //FAZERRRRRRRRRRRRRRRRRR
-  // searchProducts(searchValue: string){
-  //   this.productList?.filter(item => item.(searchValue));
-  //   return this.productList;
-  // }
+  searchProducts(searchValue: string){
+    productData.product.forEach((product)=>{
+      if(product.title.includes(searchValue)){
+        this.productList?.push(product);
+      }
+    })
+    return this.productList;
+  }
 
   getAllProduct(){
     this.productList = productData.product;
@@ -35,26 +38,16 @@ export class ProductService {
   }
 
   //MELHORAS ESSA FUNÇÃO
-  getProductOfCategory(category: Array<string> | string){
+  getProductOfCategory(category: Array<string>){
     for(const productFind of productData.product){
       for(const categoryProduct of productFind.category){
-
-        if(typeof category == 'string'){
-          if(categoryProduct == category){
-            this.productList?.push(productFind);
-          }
-        }
-
-        else{
-          category.forEach((category)=>{
+          category.forEach((category) => {
             if(categoryProduct == category){
               this.productList?.push(productFind);
             }
           })
         }
-
       }
-    }
     return this.productList;
   }
 
