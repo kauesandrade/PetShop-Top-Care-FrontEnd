@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
     discountPrice: 190.40,
     maxInterestFreeParcels: 2,
     subscribersPrice: 130.00,
+    category:[]
   },
   {
     imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
@@ -35,6 +36,7 @@ export class HomeComponent implements OnInit {
     discountPrice: 190.40,
     maxInterestFreeParcels: 2,
     subscribersPrice: 130.00,
+    category:[]
   },
   {
     imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
@@ -46,6 +48,7 @@ export class HomeComponent implements OnInit {
     discountPrice: 190.40,
     maxInterestFreeParcels: 2,
     subscribersPrice: 130.00,
+    category:[]
   },
   {
     imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
@@ -57,6 +60,7 @@ export class HomeComponent implements OnInit {
     discountPrice: 190.40,
     maxInterestFreeParcels: 2,
     subscribersPrice: 130.00,
+    category:[]
   },
   {
     imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
@@ -68,6 +72,7 @@ export class HomeComponent implements OnInit {
     discountPrice: 190.40,
     maxInterestFreeParcels: 2,
     subscribersPrice: 130.00,
+    category:[]
   },
   {
     imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
@@ -79,6 +84,7 @@ export class HomeComponent implements OnInit {
     discountPrice: 190.40,
     maxInterestFreeParcels: 2,
     subscribersPrice: 130.00,
+    category:[]
   },
   {
     imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
@@ -90,6 +96,7 @@ export class HomeComponent implements OnInit {
     discountPrice: 190.40,
     maxInterestFreeParcels: 2,
     subscribersPrice: 130.00,
+    category:[]
   },
   {
     imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
@@ -101,6 +108,7 @@ export class HomeComponent implements OnInit {
     discountPrice: 190.40,
     maxInterestFreeParcels: 2,
     subscribersPrice: 130.00,
+    category:[]
   },
   {
     imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
@@ -112,6 +120,7 @@ export class HomeComponent implements OnInit {
     discountPrice: 190.40,
     maxInterestFreeParcels: 2,
     subscribersPrice: 130.00,
+    category:[]
   },
   {
     imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
@@ -123,6 +132,7 @@ export class HomeComponent implements OnInit {
     discountPrice: 190.40,
     maxInterestFreeParcels: 2,
     subscribersPrice: 130.00,
+    category:[]
   },
   {
     imgSrc: "https://m.media-amazon.com/images/I/61krIHXdNGS._AC_UF1000,1000_QL80_.jpg",
@@ -134,6 +144,7 @@ export class HomeComponent implements OnInit {
     discountPrice: 190.40,
     maxInterestFreeParcels: 2,
     subscribersPrice: 130.00,
+    category:[]
   },
   
 ]
