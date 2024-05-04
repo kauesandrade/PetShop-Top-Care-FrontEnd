@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeBannerComponent } from './components/home-banner/home-banner.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { BannerCtaComponent } from './components/banner-cta/banner-cta.component';
 
 @NgModule({
   exports: [HomeComponent],
@@ -15,6 +16,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     RoundCardComponent,
     ChatButtonComponent,
     HomeBannerComponent,
+    BannerCtaComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule],
 })
