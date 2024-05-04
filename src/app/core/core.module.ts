@@ -10,6 +10,9 @@ import { FooterComponent } from './footer/footer.component';
 import { FooterMainComponent } from './footer/footer-main/footer-main.component';
 import { FooterCopyrightComponent } from './footer/footer-copyright/footer-copyright.component';
 import { InputDirective } from './directives/Inputs/input.directive';
+import { HeaderCategoriesComponent } from './header/header-categories/header-categories.component';
+import { HeaderMainSimpleComponent } from './header/header-main/header-main-simple/header-main-simple.component';
+import { HeaderMainFullComponent } from './header/header-main/header-main-full/header-main-full.component';
 
 const Components = [
   ButtonDirective,
@@ -26,6 +29,9 @@ const Components = [
     HeaderMainComponent,
     FooterMainComponent,
     FooterCopyrightComponent,
+    HeaderCategoriesComponent,
+    HeaderMainSimpleComponent,
+    HeaderMainFullComponent,
   ],
   imports: [CommonModule, RouterModule, FontAwesomeModule],
 })
