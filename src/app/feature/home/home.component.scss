@@ -11,6 +11,9 @@ main {
   app-banner-cta, app-home-banner, app-product-carousel {
     @include subgrid();
   }
+  app-product-carousel, app-product-section{
+    @include subgrid();
+  }
 
   @media (max-width: 320px){
     row-gap: 1rem;
