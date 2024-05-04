@@ -191,3 +191,90 @@ body {
     }
   }
 }
+
+.embla__button--prev,
+.embla__button--next {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $gray2;
+  width: 2rem;
+  height: 2rem;
+  outline-style: none;
+  border: 1px solid $gray2;
+  border-radius: 1rem;
+
+  &:hover {
+    box-shadow: 0 0 5px $gray3;
+    cursor: pointer;
+  }
+
+  fa-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    font-size: 1rem;
+  }
+
+}
+
+.embla__button--prev {
+  grid-column: 1 / 1;
+}
+
+.embla__button--next {
+  grid-column: -1 / 1;
+  left: 100%;
+}
+
+
+.commonSection{
+  @include subgrid();
+  grid-column: 1 / -1;
+
+  &-primary{
+    grid-column: 1 / span 8;
+    padding: 2rem;
+    border-radius: 0.5rem;
+  }
+  &-secundary{
+    grid-column: 9 / -1;
+    padding: 1rem;
+    border-radius: 0.5rem;  
+  }
+
+  &-midLeft{
+    grid-column: 1 / span 6;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+  }
+
+  &-midRight{
+    grid-column: 7 / -1;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+  }
+
+  &-full{
+    
+    grid-column: 1 / -1;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+
+  }
+
+  &-full, &-primary, &-secundary, &-midRight, &-midLeft {
+    &.subgrid{
+      @include subgrid();
+    }
+    height: max-content;
+    background-color: $white;
+  }
+
+}

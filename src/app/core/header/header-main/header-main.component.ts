@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header-main',
@@ -7,18 +6,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./header-main.component.scss'],
 })
 export class HeaderMainComponent {
-  faBars = faBars;
-
-  drawerIsOpen: boolean = false;
+  @Input() simple: boolean = false;
 
   constructor() {}
-
-  toggleDrawer() {
-    this.drawerIsOpen = !this.drawerIsOpen;
-    if (this.drawerIsOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }
 }
