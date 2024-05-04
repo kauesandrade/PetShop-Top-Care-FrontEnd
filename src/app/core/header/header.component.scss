@@ -1,20 +1,18 @@
 @import "styles";
 
 .header {
-  margin-bottom: 3.5rem;
-  @media (max-width: $tablet) {
+  margin-bottom: 1.5rem;
+  @media (min-width: $tablet) {
     margin-bottom: 2rem;
   }
-  @media (max-width: $mobile) {
-    margin-bottom: 1.5rem;
+  @media (min-width: $desktopHD) {
+    margin-bottom: 3.5rem;
   }
 }
 
 app-header-top {
-  @media (max-width: $tablet) {
-    display: none;
-  }
-  @media (max-width: $mobile) {
-    display: none;
+  display: none;
+  @media (min-width: $desktop) {
+    display: block;
   }
 }

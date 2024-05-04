@@ -8,4 +8,5 @@ export interface Product {
   discountPrice: number;
   maxInterestFreeParcels: number;
   subscribersPrice: number;
+  category: Array<string>;
 }
