@@ -1,0 +1,14 @@
+@import 'styles';
+
+main {
+    @include grid-container();
+    row-gap: 2rem;
+  
+    app-product-details{
+      @include subgrid();
+    }
+  
+    @media (max-width: 320px){
+      row-gap: 1rem;
+    }
+  }

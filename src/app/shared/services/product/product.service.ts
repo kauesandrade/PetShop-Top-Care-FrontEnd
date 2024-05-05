@@ -1,134 +1,147 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../interfaces/product';
-import * as productData from '../../../../assets/JsonFiles/products.json';
+import productData from '../../../../assets/JsonFiles/products.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  
-  productList: Array<Product> | null = [];
+
+  productList: Array<Product> = [];
   product?: Product;
-  
+
   constructor() { }
 
 
-  findProduct(id: string){
-    for(const productFind of productData.product){
-      if(productFind.title == id){
+  findProduct(id: string) {
+    for (const productFind of productData.product) {
+      if (productFind.title == id) {
         this.product = productFind;
         break;
       }
-    } 
+    }
     return this.product;
   }
 
-  searchProducts(searchValue: string){
-    productData.product.forEach((product)=>{
-      if(product.title.includes(searchValue)){
+
+
+  searchProducts(searchValue: string) {
+    this.productList = [];
+    productData.product.forEach((product) => {
+      if (product.title.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(searchValue.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase())) {
         this.productList?.push(product);
       }
     })
     return this.productList;
   }
 
-  getAllProduct(){
+
+
+  getAllProduct() {
     this.productList = productData.product;
     return this.productList;
   }
 
-  //MELHORAS ESSA FUNÇÃO
-  getProductOfCategory(category: Array<string>){
-    for(const productFind of productData.product){
-      for(const categoryProduct of productFind.category){
-          category.forEach((category) => {
-            if(categoryProduct == category){
-              this.productList?.push(productFind);
-            }
-          })
+
+  getProductOfCategory(categoryArray: Array<string>) {
+    this.productList = [];
+    for (const productFind of productData.product) {
+      let isAll = true;
+      categoryArray.sort().forEach((category) => {
+        if (!productFind.category.includes(category)) {
+          isAll = false;
         }
+      })
+      if (isAll) {
+        this.productList.push(productFind)
       }
+    }
     return this.productList;
   }
 
-  orderOf(order: string){
-    switch(order){
-      // case "Relevância":
-      //   this.orderOfRevelancia();
 
-      case "Maior Preço":
-        this.orderOfMaiorPreco();
 
-      case "Menor Preço":
-        this.orderOfMenorPreco();
-      
-      case "Nome (A-Z)":
-        this.orderOfNomeAZ();
-      
-      case "Nome (Z-A)":
-        this.orderOfNomeZA();
+  orderOf(order: string) {
 
-      case "Popularidade":
-        this.orderOfPopularidade();
-      
-      case "Maiores Descontos":
-        this.orderOfMaioresDescontos();
-      
-      // case "Lançamentos":
-      //   this.orderOfLancamentos();
+    let arrayProduct: Array<Product> = [];
+
+    if(!this.productList.length){
+      this.productList = productData.product;
     }
-  }
 
-  // private orderOfRevelancia(){
-    
-  // }
+    switch (order) {
 
-  private orderOfMaiorPreco(){
-    this.productList?.sort((p1, p2) =>{
-      return p1.price - p2.price;
-    })
-  }
-  
-  private orderOfMenorPreco() {
-    this.productList?.sort((p1, p2) =>{
-      return p1.price + p2.price;
-    })
-  }
-
-  private orderOfNomeAZ() {
-    this.productList?.sort((p1, p2)=>{
-      return p1.title.localeCompare(p2.title);
-    });
-  }
-
-  private orderOfNomeZA() {
-    this.productList?.sort((p1, p2)=>{
-      if(p1.title > p2.title){
-        return -1;
-      }
-      if(p1.title < p2.title){
-        return 1;
+      case "Maior Preço": {
+        arrayProduct = [...this.productList].sort((p1, p2) => {
+          return this.orderOfPlus(p1.price, p2.price);
+        })
+        break;
       }
 
-      return 0;
-    });
+      case "Menor Preço": {
+        arrayProduct = [...this.productList].sort((p1, p2) => {
+          if (p1.price > p2.price) {
+            return 1;
+          }
+          if (p1.price < p2.price) {
+            return -1;
+          }
+          return 0;
+        })
+        break;
+      }
+
+      case "Nome (A-Z)": {
+        arrayProduct = [...this.productList].sort((p1, p2) => {
+          return p1.title.localeCompare(p2.title);
+        });
+        break;
+      }
+
+      case "Nome (Z-A)": {
+        arrayProduct = [...this.productList].sort((p1, p2) => {
+          return this.orderOfPlus(p1.title, p2.title);
+        });
+        break;
+      }
+
+      case "Popularidade": {
+        arrayProduct = [...this.productList].sort((p1, p2) => {
+          return this.orderOfPlus(p1.rating, p2.rating);
+        })
+        break;
+      }
+
+      case "Maiores Descontos": {
+        arrayProduct = [...this.productList].sort((p1, p2) => {
+          return this.orderOfPlus(p1.price - p1.discountPrice, p2.price - p2.discountPrice);
+        })
+        break;
+      }
+
+      // case "Relevância":{
+      //   this.orderOfRevelancia();
+      //   break;
+      // }
+
+      // case "Lançamentos":{
+      //   this.orderOfLancamentos();
+      //   break;
+      // }
+    }
+    return arrayProduct;
   }
 
-  private orderOfPopularidade() {
-    this.productList?.sort((p1, p2)=>{
-      return p1.rating - p2.rating;
-    });
+
+
+  private orderOfPlus(p1Value: number | string, p2Value: number | string) {
+    if (p1Value > p2Value) {
+      return -1;
+    }
+    if (p1Value < p2Value) {
+      return 1;
+    }
+    return 0;
   }
-
-  private orderOfMaioresDescontos() {
-    this.productList?.sort((p1, p2)=>{
-      return p1.discountPrice - p2.discountPrice;
-    });
-  }
-
-  // private orderOfLancamentos() {
-    
-  // }
-
 
 }

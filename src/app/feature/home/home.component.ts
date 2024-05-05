@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MainCarousel } from 'src/app/shared/interfaces/main-carousel';
 import { Product } from 'src/app/shared/interfaces/product';
 import * as productData from '../../../assets/JsonFiles/products.json';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +10,16 @@ import * as productData from '../../../assets/JsonFiles/products.json';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
 
-  ngOnInit(): void {}
+  products: Array<Product> = [];
+  category1: Array<string> = ["oferta"];
+  category2: Array<string> = ["avaliado"];
 
-  product: any = productData;
-  products: any = this.product.product;
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
   
   itens: Array<MainCarousel> = 
   [

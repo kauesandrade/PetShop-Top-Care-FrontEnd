@@ -1,5 +1,7 @@
+import { TypeProduct } from "./type-product";
+
 export interface Product {
-  imgSrc: string;
+  images: Array<string>;
   favorite: boolean;
   title: string;
   brand: string;
@@ -8,5 +10,7 @@ export interface Product {
   discountPrice: number;
   maxInterestFreeParcels: number;
   subscribersPrice: number;
+  stock: boolean;
   category: Array<string>;
+  type: Array<TypeProduct>
 }

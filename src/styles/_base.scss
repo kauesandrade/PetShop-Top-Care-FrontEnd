@@ -239,18 +239,19 @@ body {
   grid-column: 1 / -1;
 
   &-primary{
+    @include subgrid();
     grid-column: 1 / span 8;
     padding: 2rem;
     border-radius: 0.5rem;
   }
-  &-secundary{
+  &-secondary{
     grid-column: 9 / -1;
     padding: 1rem;
     border-radius: 0.5rem;  
   }
 
   &-midLeft{
-    grid-column: 1 / span 6;
+    grid-column: 1 / 6;
     padding: 1rem 2rem;
     border-radius: 0.5rem;
   }
@@ -269,10 +270,10 @@ body {
 
   }
 
-  &-full, &-primary, &-secundary, &-midRight, &-midLeft {
-    &.subgrid{
+    &-full, &-primary, &-secondary, &-midRight, &-midLeft {
+      &.subgrid{
       @include subgrid();
-    }
+      }
     height: max-content;
     background-color: $white;
   }
