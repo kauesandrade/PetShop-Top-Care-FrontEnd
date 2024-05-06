@@ -1,27 +1,31 @@
-<section class="commonSection">
+<section class="commonSection" *ngIf="product && typeChoose">
     <div class="commonSection-primary">
         <div class="divCarouselProduct">
 
         </div>
         <div class="divDetails">
             <div class="divTitle">
-                <h5>Areia Biodegradável</h5>
-                <span>Código 0987654321</span>
-                <p>Areia biodegradável para seu gato fazer suas necessidades</p>
+                <h6>{{product.title}}</h6>
+                <span>Código {{typeChoose.productCode}}</span>
+                <p>{{product.littleDescription}}</p>
             </div>
             <div class="divBrands">
-                <a href="">Meau</a>
+                <a href="">{{product.brand}}</a>
                 <div class="divider"></div>
-                <ng-container *ngIf="stock">
+                <ng-container *ngIf="product.available">
                     <span class="inStock">Em estoque</span>
                 </ng-container>
-                <ng-container *ngIf="!stock">
+                <ng-container *ngIf="!product.available">
                     <span class="noStock">Sem estoque</span>
                 </ng-container>
             </div>
             <div class="divButtonsProduct">
-                <button class="btnRating"><fa-icon [icon]="faStar"></fa-icon>4,99</button>
-                <button class="btnReviews"><fa-icon [icon]="faComment"></fa-icon>128</button>
+                <button class="btnRating">
+                    <fa-icon [icon]="faStar"></fa-icon>{{product.rating}}
+                </button>
+                <button class="btnReviews">
+                    <fa-icon [icon]="faComment"></fa-icon>128
+                </button>
                 <button class="noClasseBtn">
                     <fa-icon class="icon like" [icon]="faHeart" (click)="likeProduct()"></fa-icon>
                 </button>
@@ -29,13 +33,21 @@
                     <fa-icon class="icon" [icon]="faShare"></fa-icon>
                 </button>
             </div>
-            <ng-container *ngIf="typesDivider.length >= 2">
+            <ng-container *ngIf="typesDivider?.length">
                 <div class="divTypesOfProducts">
                     <p>{{typeOfProducts}}</p>
                     <ng-container *ngFor="let types of typesDivider">
                         <div>
                             <ng-container *ngFor="let type of types">
-                                <button class="btnType">{{type.type}}</button>
+                                <ng-container *ngIf="type === typeChoose; then ifBlock else elseBlock"></ng-container>
+                                
+                                <ng-template #ifBlock>
+                                    <button class="btnType choose" (click)="chooseType(type)">{{type.type}}</button>
+                                </ng-template>
+
+                                <ng-template #elseBlock>
+                                    <button class="btnType" (click)="chooseType(type)">{{type.type}}</button>
+                                </ng-template>
                             </ng-container>
                         </div>
                     </ng-container>

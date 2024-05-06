@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faStar, faComment, faHeart, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartR } from '@fortawesome/free-regular-svg-icons';
 import { TypeProduct } from 'src/app/shared/interfaces/type-product';
+import { Product } from 'src/app/shared/interfaces/product';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
   selector: 'app-product-details',
@@ -10,56 +12,41 @@ import { TypeProduct } from 'src/app/shared/interfaces/type-product';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor() {
-    this.like == true ? this.faHeart = faHeart : this.faHeart = faHeartR;
-    this.dividerTypes();
-  }
-
-  ngOnInit(): void {
-  }
+  @Input() product?: Product;
 
   faStar = faStar;
   faComment = faComment;
   faHeart = faHeartR;
   faShare = faShareAlt;
 
-  like: boolean = false
-  stock: boolean = true;
+  like?: boolean;
 
-  typeOfProducts?: string = "Tamanho";
-  types: Array<TypeProduct> = [
-    {
-      productCode: 1,
-      type: "10Kg"
-    },
-    {
-      productCode: 2,
-      type: "20Kg"
-    },
-    {
-      productCode: 3,
-      type: "30Kg"
-    },
-    {
-      productCode: 4,
-      type: "40Kg"
-    },
-  ]
-  typesDivider: Array<Array<TypeProduct>> = [];
+  typeOfProducts?: string = "Selecione o Tamanho: ";
+  typesDivider?: Array<Array<TypeProduct>> = [];
+  typeChoose?: TypeProduct;
 
+  constructor() {}
+  
+  ngOnInit(): void {
+    this.typeChoose = this.product?.type[0];
+    this.dividerTypes();
+    this.like = this.product?.favorite;
+    this.like == true ? this.faHeart = faHeart : this.faHeart = faHeartR;
+  }
 
   dividerTypes() {
     let divType: Array<TypeProduct> = [];
+    let length = this.product?.type.length == undefined ? 0 : this.product.type.length;
 
-    for (let i = 0; i < this.types.length; i += 3) {
-      this.types[i] != null ? divType.push(this.types[i]) : [];
-      this.types[i+1] != null ? divType.push(this.types[i+1]) : [];
-      this.types[i+2] != null ? divType.push(this.types[i+2]) : [];
+    for (let i = 0; i < length; i += 3) {
+      this.product?.type[i] != null ? divType.push(this.product?.type[i]) : [];
+      this.product?.type[i + 1] != null ? divType.push(this.product?.type[i + 1]) : [];
+      this.product?.type[i + 2] != null ? divType.push(this.product?.type[i + 2]) : [];
       this.typesDivider?.push(divType);
       divType = [];
     }
-  }
 
+  }
 
   likeProduct() {
     if (this.like) {
@@ -71,5 +58,11 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  
+  chooseType(type: TypeProduct){
+    if(type != this.typeChoose){
+      console.log(type);
+      this.typeChoose = type;
+    }
+  }
+
 }

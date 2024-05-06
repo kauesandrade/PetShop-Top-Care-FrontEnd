@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   faHeart,
   faShoppingCart,
@@ -17,8 +17,9 @@ export class ProductCardComponent {
   faShoppingCart = faShoppingCart;
 
   @Input() product!: Product;
-
-  constructor() {}
+  
+  constructor() {
+  }
 
   onClick() {
     console.log('clicked');

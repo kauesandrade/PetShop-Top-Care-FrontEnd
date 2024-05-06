@@ -4,6 +4,7 @@ export interface Product {
   images: Array<string>;
   favorite: boolean;
   title: string;
+  littleDescription: string,
   brand: string;
   rating: number;
   price: number;

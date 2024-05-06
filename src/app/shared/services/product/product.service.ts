@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import productData from '../../../../assets/JsonFiles/products.json';
+import { TypeProduct } from '../../interfaces/type-product';
 
 @Injectable({
   providedIn: 'root',
@@ -8,10 +9,11 @@ import productData from '../../../../assets/JsonFiles/products.json';
 export class ProductService {
   productList: Array<Product> = [];
   product?: Product;
+  productType?: TypeProduct;
 
   constructor() {}
 
-  findProduct(id: string) {
+  findProduct(id: any) {
     for (const productFind of productData.product) {
       if (productFind.title == id) {
         this.product = productFind;
