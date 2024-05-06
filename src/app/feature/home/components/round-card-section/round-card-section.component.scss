@@ -3,38 +3,41 @@
 .round-section {
   @include subgrid();
   grid-column: 1 / -1;
-  gap: 0rem;
+  gap: 1rem;
 
   padding-top: 0.75rem;
   border-top: 1px solid $gray4;
 
   @media (min-width: $tablet) {
+    gap: 1.25rem;
     padding-top: 1rem;
   }
 
   @media (min-width: $desktop) {
     padding-top: 1.5rem;
-    gap: 1rem;
   }
   @media (min-width: $desktopHD) {
-    padding-top: 2rem;
     gap: 2rem;
+    padding-top: 2rem;
   }
 
   &-title {
     color: $primary;
     text-transform: capitalize;
     grid-column: 1 /-1;
+    text-align: center;
+    @include heading();
 
     @media (min-width: $tablet) {
-      @include heading(h4)
+      text-align: start;
+      @include heading(h4);
     }
   }
 
-  &-cards{
+  &-cards {
     grid-column: 1 / -1;
     @include subgrid();
-    app-round-card-carousel{
+    app-round-card-carousel {
       @include subgrid();
     }
   }
