@@ -4,7 +4,7 @@
   </ng-container>
   <a href="#" class="redirect-product">
     <img [src]="product.imgSrc" alt="Product image" class="product-image" />
-    <p class="product-title">{{ product.title }}</p>
+    <p class="product-title" [title]="product.title">{{ product.title }}</p>
   </a>
   <div class="brand-rating">
     <a href="#" class="product-brand">{{ product.brand }}</a>
