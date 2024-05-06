@@ -1,60 +1,66 @@
 {
-    "product": [
-        {
-            "images": ["https://images.petz.com.br/fotos/1658430805995.jpg"], 
-            "favorite": false, 
-            "title": "Ração Golden - Cães Filhotes (Frango e Arroz) 1kg", 
-            "brand": "Golden", 
-            "rating": 5, 
-            "price": 50.4, 
-            "discountPrice": 70.4, 
-            "maxInterestFreeParcels": 2, 
-            "subscribersPrice": 40.2,
-            "stock": true,
-            "category":["cachorro", "racao",  "filhote", "oferta", "avaliado"],
-            "type": []
-        },
-        {
-            "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4hDVYs0-7Km9r0BuYsbOBVkgxH4LW-YojyfP-oSSL1Q&s"], 
-            "favorite": false, 
-            "title": "Ração Premier Super Premium Formula Sabor Frango para Cães Adultos de Portes Grandes e Gigantes - 15kg ou 20kg", 
-            "brand": "Premier", 
-            "rating": 4, 
-            "price": 70.4, 
-            "discountPrice": 100.4, 
-            "maxInterestFreeParcels": 2, 
-            "subscribersPrice": 40.2,
-            "stock": true,
-            "category":["racao", "premium", "cachorro", "avaliado"],
-            "type": []
-        },
-        {
-            "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlsbKkklPZmMHvDyDDbWYm4BSVlmLWhKUejX0RWgYqUw&s"], 
-            "favorite": true, 
-            "title": "Brinquedo Cachorro Osso Halteres Pata macio", 
-            "brand": "Ideia Store", 
-            "rating": 3, 
-            "price": 10.4, 
-            "discountPrice": 20.4, 
-            "maxInterestFreeParcels": 2, 
-            "subscribersPrice": 4.2,
-            "stock": true,
-            "category":["brinquedo", "cachorro", "osso", "oferta"],
-            "type": []
-        },
-        {
-            "images": ["data:image/jpeg;base64,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"], 
-            "favorite": false, 
-            "title": "Caminha iglu para Gatos", 
-            "brand": "Pet Iglu", 
-            "rating": 4.5, 
-            "price":  149.90, 
-            "discountPrice": 170.4, 
-            "maxInterestFreeParcels": 2, 
-            "subscribersPrice": 70.2,
-            "stock": true,
-            "category":["caminha", "gato", "filhote", "oferta", "avaliado"],
-            "type": []
-        }
-    ]
+  "product": [
+    {
+      "images": ["https://images.petz.com.br/fotos/1658430805995.jpg"],
+      "favorite": false,
+      "title": "Ração Golden - Cães Filhotes (Frango e Arroz) 1kg",
+      "brand": "Golden",
+      "rating": 5,
+      "price": 50.4,
+      "discountPrice": 70.4,
+      "maxInterestFreeParcels": 2,
+      "subscribersPrice": 40.2,
+      "available": true,
+      "category": ["cachorro", "racao", "filhote", "oferta", "avaliado"],
+      "type": []
+    },
+    {
+      "images": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4hDVYs0-7Km9r0BuYsbOBVkgxH4LW-YojyfP-oSSL1Q&s"
+      ],
+      "favorite": false,
+      "title": "Ração Premier Super Premium Formula Sabor Frango para Cães Adultos de Portes Grandes e Gigantes - 15kg ou 20kg",
+      "brand": "Premier",
+      "rating": 4,
+      "price": 70.4,
+      "discountPrice": 100.4,
+      "maxInterestFreeParcels": 2,
+      "subscribersPrice": 40.2,
+      "available": true,
+      "category": ["racao", "premium", "cachorro", "avaliado"],
+      "type": []
+    },
+    {
+      "images": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlsbKkklPZmMHvDyDDbWYm4BSVlmLWhKUejX0RWgYqUw&s"
+      ],
+      "favorite": true,
+      "title": "Brinquedo Cachorro Osso Halteres Pata macio",
+      "brand": "Ideia Store",
+      "rating": 3,
+      "price": 10.4,
+      "discountPrice": 20.4,
+      "maxInterestFreeParcels": 2,
+      "subscribersPrice": 4.2,
+      "available": true,
+      "category": ["brinquedo", "cachorro", "osso", "oferta"],
+      "type": []
+    },
+    {
+      "images": [
+        "data:image/jpeg;base64,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"
+      ],
+      "favorite": false,
+      "title": "Caminha iglu para Gatos",
+      "brand": "Pet Iglu",
+      "rating": 4.5,
+      "price": 149.9,
+      "discountPrice": 170.4,
+      "maxInterestFreeParcels": 2,
+      "subscribersPrice": 70.2,
+      "available": true,
+      "category": ["caminha", "gato", "filhote", "oferta", "avaliado"],
+      "type": []
+    }
+  ]
 }

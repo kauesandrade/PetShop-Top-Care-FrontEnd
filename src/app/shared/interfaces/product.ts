@@ -1,4 +1,4 @@
-import { TypeProduct } from "./type-product";
+import { TypeProduct } from './type-product';
 
 export interface Product {
   images: Array<string>;
@@ -10,7 +10,7 @@ export interface Product {
   discountPrice: number;
   maxInterestFreeParcels: number;
   subscribersPrice: number;
-  stock: boolean;
+  available: boolean;
   category: Array<string>;
-  type: Array<TypeProduct>
+  type: Array<TypeProduct>;
 }
