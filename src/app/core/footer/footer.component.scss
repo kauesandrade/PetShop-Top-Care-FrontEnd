@@ -12,7 +12,8 @@
 }
 
 app-footer-copyright {
-  @media (max-width: $tablet) {
-    display: none;
+  display: none;
+  @media (min-width: $tablet) {
+    @include grid-container();
   }
 }

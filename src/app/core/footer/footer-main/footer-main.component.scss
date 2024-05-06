@@ -1,6 +1,7 @@
 @import "styles";
 
 .footer-main {
+  @include grid-container();
   width: 100%;
   background-color: $primary;
   color: $white;
@@ -12,43 +13,38 @@
   }
 
   &-content {
-    @include flex(column, flex-start, flex-start);
-    gap: 1rem;
-    padding: 1rem 1.5rem;
-
-    @media (min-width: $tablet) {
-      padding: 1.5rem 4rem;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-    @media (min-width: $desktop) {
-      padding: 1.5rem 2.75rem;
-    }
-    @media (min-width: $desktopHD) {
-      padding: 2rem 10rem;
-    }
-
-    .divider {
-      display: none;
-      @media (min-width: $tablet) {
-        display: block;
-        width: 1px;
-        background-color: $white;
-        min-height: 10rem;
-        align-self: center;
-      }
-    }
+    @include subgrid();
+    padding: 1rem 0;
+    row-gap: 1rem;
 
     .items-container {
       @include flex(column, flex-start, flex-start);
       gap: 0.5rem;
+      height: 100%;
+
       @media (min-width: $tablet) {
+        grid-column: auto / span 2;
         gap: 1rem;
+
+        &:not(:first-of-type) {
+          padding-left: 1.5rem;
+          border-left: 1px $white solid;
+        }
+      }
+      @media (min-width: $desktop) {
+        grid-column: auto / span 3;
+
+        &:not(:first-of-type) {
+          padding-left: 2rem;
+        }
       }
 
       h6 {
         @include text($weight: semibold);
         @media (min-width: $desktop) {
+          @include text(medium, semibold);
+        }
+        @media (min-width: $desktopHD) {
           @include heading();
         }
       }
@@ -89,29 +85,45 @@
     }
 
     .our-politics {
+      display: flex;
       @media (min-width: $tablet) {
-        min-width: 9.125rem;
+        display: none;
+      }
+      @media (min-width: $desktop) {
+        display: flex;
+        grid-column: auto / span 2;
       }
     }
 
     .contacts {
-      min-width: 10rem;
-      @media (min-width: $desktop) {
-        min-width: 12.125rem;
+      &.items-container {
+        padding-left: 0;
+        border-left: 0;
+        @media (min-width: $desktop) {
+          padding-left: 1.5rem;
+          border-left: 1px $white solid;
+        }
+        @media (min-width: $desktopHD) {
+          padding-left: 2rem;
+          border-left: 1px $white solid;
+        }
       }
 
       &-items {
-        &-text {
-          display: none;
-        }
-
-        @media (min-width: $tablet) {
-          a {
-            @include flex();
-            gap: 0.5rem;
+        a {
+          @include flex();
+          gap: 0.5rem;
+          fa-icon {
+            font-size: 1.25rem;
+            @media (min-width: $tablet) {
+              font-size: 1rem;
+            }
           }
-          &-text {
-            display: block;
+          p {
+            display: none;
+            @media (min-width: $tablet) {
+              display: block;
+            }
           }
         }
       }
@@ -119,7 +131,17 @@
 
     .vertical-info {
       @include flex(column, flex-start, flex-start);
-      gap: 1rem;
+      row-gap: 1rem;
+
+      @media (min-width: $tablet) {
+        padding-left: 2rem;
+        border-left: 1px $white solid;
+        grid-column: auto / span 2;
+      }
+
+      @media (min-width: $desktop) {
+        grid-column: auto / span 4;
+      }
 
       .vertical-divider {
         display: none;
@@ -131,17 +153,10 @@
         }
       }
 
-      .payment-methods {
-        &-items {
-          @media (min-width: $desktop) {
-            flex-wrap: nowrap;
-          }
-          flex-direction: row;
-          align-items: center;
-        }
-      }
-
+      .payment-methods,
       .social-media {
+        padding-left: 0;
+        border-left: 0;
         &-items {
           @media (min-width: $desktop) {
             flex-wrap: nowrap;
@@ -153,13 +168,6 @@
     }
 
     .about-us {
-      max-width: 10rem;
-      @media (min-width: $desktop) {
-        max-width: 11.25rem;
-      }
-      @media (min-width: $desktopHD) {
-        max-width: 16rem;
-      }
       p {
         @include text(small);
       }
