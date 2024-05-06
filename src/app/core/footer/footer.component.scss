@@ -1,17 +1,19 @@
 @import "styles";
 
 .footer {
-  margin-top: 3.5rem;
-  @media (max-width: $tablet) {
+  margin-top: 1.5rem;
+
+  @media (min-width: $tablet) {
     margin-top: 2rem;
   }
-  @media (max-width: $mobile) {
-    margin-top: 1.5rem;
+  @media (min-width: $desktopHD) {
+    margin-top: 3.5rem;
   }
 }
 
 app-footer-copyright {
-  @media (max-width: $tablet) {
-    display: none;
+  display: none;
+  @media (min-width: $tablet) {
+    @include grid-container();
   }
 }
