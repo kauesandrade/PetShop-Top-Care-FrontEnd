@@ -1,6 +1,8 @@
 <div class="round-card">
   <a href="#">
-    <img [src]="imageSrc" alt="Round card image" />
-    <h6>{{ title }}</h6>
+    <img [src]="imgSrc" alt="Round card image" />
+    <ng-container *ngIf="title">
+      <h6>{{ title }}</h6>
+    </ng-container>
   </a>
 </div>

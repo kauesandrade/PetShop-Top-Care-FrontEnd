@@ -9,6 +9,7 @@ main {
   }
   
   app-banner-cta, app-home-banner, app-product-carousel {
+  app-home-banner, app-round-card-carousel, app-main-carousel{
     @include subgrid();
   }
 
