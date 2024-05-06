@@ -9,6 +9,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BannerCtaComponent } from './components/banner-cta/banner-cta.component';
 import { RoundCardCarouselComponent } from './components/round-card-carousel/round-card-carousel.component';
+import { RoundCardSectionComponent } from './components/round-card-section/round-card-section.component';
 
 @NgModule({
   exports: [HomeComponent],
@@ -19,6 +20,7 @@ import { RoundCardCarouselComponent } from './components/round-card-carousel/rou
     ChatButtonComponent,
     HomeBannerComponent,
     BannerCtaComponent,
+    RoundCardSectionComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule],
 })
