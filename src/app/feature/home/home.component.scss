@@ -4,18 +4,15 @@ main {
   @include grid-container();
   row-gap: 2rem;
 
-  app-main-carousel{
-    @include subgrid();
-  }
-  
-  app-banner-cta, app-home-banner, app-product-carousel {
-    @include subgrid();
-  }
-  app-product-carousel, app-product-section{
+  app-main-carousel,
+  app-banner-cta,
+  app-home-banner,
+  app-product-carousel,
+  app-product-section {
     @include subgrid();
   }
 
-  @media (max-width: 320px){
+  @media (max-width: 320px) {
     row-gap: 1rem;
   }
 }
