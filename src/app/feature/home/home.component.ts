@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainCarousel } from 'src/app/shared/interfaces/main-carousel';
+import { Product } from 'src/app/shared/interfaces/product';
 import * as productData from '../../../assets/JsonFiles/products.json';
 import { RoundCard } from '../../shared/interfaces/round-card';
 

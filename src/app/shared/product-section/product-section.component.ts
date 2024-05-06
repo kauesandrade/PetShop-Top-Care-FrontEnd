@@ -9,6 +9,7 @@ import { Product } from '../interfaces/product';
 export class ProductSectionComponent {
   @Input() title: string = '';
   @Input() productList!: Product[];
+  @Input() category!: Array<string> | string;
 
   constructor() {}
 }
