@@ -1,4 +1,4 @@
 export interface RoundCard {
-    imgSrc: string;
-    title: string;
+  imgSrc: string;
+  title?: string;
 }

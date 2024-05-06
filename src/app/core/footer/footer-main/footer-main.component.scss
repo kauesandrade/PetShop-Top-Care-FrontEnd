@@ -17,6 +17,13 @@
     padding: 1rem 0;
     row-gap: 1rem;
 
+    @media (min-width: $tablet) {
+      padding: 1.5rem 0;
+    }
+    @media (min-width: $desktopHD) {
+      padding: 2rem 0;
+    }
+
     .items-container {
       @include flex(column, flex-start, flex-start);
       gap: 0.5rem;
