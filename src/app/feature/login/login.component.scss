@@ -2,31 +2,53 @@
 
 main {
   @include grid-container();
-  row-gap: 3.5rem;
+  row-gap: 2rem;
+  @media (min-width: $tablet) {
+    row-gap: 2rem;
+  }
+  @media (min-width: $desktopHD) {
+    row-gap: 3.5rem;
+  }
 
   h4 {
+    @include heading();
     grid-column: 1 / -1;
     text-align: center;
+
+    @media (min-width: $tablet) {
+      @include heading(h4);
+    }
   }
 
   div {
     @include subgrid();
-    grid-column: auto / span 6;
+    grid-column: 1 / -1;
+    @media (min-width: $desktop) {
+      grid-column: auto / span 6;
+    }
 
     &.login {
-      padding: 1rem 2rem;
+      padding: 1rem 0.5rem;
+      row-gap: 1.5rem;
+      @media (min-width: $tablet) {
+        padding: 1rem 1.5rem;
+      }
+      @media (min-width: $desktop) {
+        padding: 1rem 2rem;
+      }
       border-radius: 1.25rem;
       background-color: $white;
       grid-template-rows: repeat(4, min-content);
-      row-gap: 1.5rem;
 
       > * {
         grid-column: 1 / -1;
       }
 
       h4 {
-        margin-bottom: 0.8rem;
-        text-align: start;
+        text-align: center;
+        @media (min-width: $desktop) {
+          text-align: start;
+        }
       }
 
       .divider {
@@ -42,7 +64,10 @@ main {
       }
       div {
         @include subgrid();
-        row-gap: 1.5rem;
+        row-gap: 1rem;
+        @media (min-width: $tablet) {
+          row-gap: 1.5rem;
+        }
         p {
           @include text(medium, bold);
           text-align: center;
@@ -54,11 +79,20 @@ main {
       }
 
       img {
+        width: 100%;
+        @media (min-width: $tablet) {
+          width: auto;
+        }
         justify-self: center;
         align-self: flex-end;
       }
     }
   }
+}
+
+app-login-form,
+app-external-login {
+  @include subgrid();
 }
 
 h4 {

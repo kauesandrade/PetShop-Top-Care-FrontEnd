@@ -1,1 +1,38 @@
-<p>login-form works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <label for="email" appInput>
+    <p>E-mail</p>
+    <input
+      type="text"
+      id="email"
+      formControlName="email"
+      placeholder="Digite seu e-mail"
+    />
+  </label>
+  <div class="lower-inputs">
+    <p (click)="changePassword()" class="change-password">Esqueci a senha</p>
+    <label for="password" appInput>
+      <p>Senha</p>
+      <div>
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          id="password"
+          placeholder="Digite sua senha"
+          formControlName="password"
+        />
+        <button (click)="showPassword = !showPassword">
+          <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
+        </button>
+      </div>
+    </label>
+    <label for="remember">
+      <input
+        appInput
+        type="checkbox"
+        id="remember"
+        formControlName="remember"
+      />
+      <p>Lembrar minha conta</p>
+    </label>
+  </div>
+  <input type="submit" value="Entrar" appButton />
+</form>

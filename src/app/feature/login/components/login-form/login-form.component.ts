@@ -1,15 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent {
+  showPassword = false;
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
 
-  constructor() { }
+  loginForm = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email, EmptyValidator]],
+    password: ['', [Validators.required, EmptyValidator]],
+    remember: [false],
+  });
 
-  ngOnInit(): void {
+  constructor(private formBuilder: FormBuilder) {}
+
+  changePassword() {
+    console.log('JAS');
   }
 
+  onSubmit() {
+    console.log('JAasS');
+  }
 }
