@@ -6,41 +6,46 @@
   position: relative;
   width: 100%;
 
-  --slide-height: 100%;
-  --slide-spacing: 0.5rem;
-  --slide-size: 0%;
+  $slide-height: 100%;
+  $slide-size: 0%;
 
-  // @media (min-width: $tablet) {
-  //   --slide-size: 50%;
-  //   --slide-spacing: 3.5rem;
-  // }
-  // @media (min-width: $desktop) {
-  //   --slide-size: 33.33%;
-  //   --slide-spacing: 2.5rem;
-  // }
-  // @media (min-width: $desktopHD) {
-  //   --slide-spacing: 1rem;
-  //   --slide-size: 25%;
-  // }
-  
   .embla__viewport {
     overflow: hidden;
     grid-column: 1 / -1;
     .embla__container {
       backface-visibility: hidden;
       display: flex;
-      touch-action: pan-y;
-      padding: 0 calc(var(--slide-spacing) * -1);
+      gap: 50%;
+
+      & > :first-child {
+        margin-left: 25%;
+      }
+      & > :last-child {
+        margin-right: 25%;
+      }
+
+      @media (min-width: $tablet) {
+        & > :first-child,
+        & > :last-child {
+          margin: 0;
+        }
+        gap: 8rem;
+      }
+      @media (min-width: $desktop) {
+        gap: 5.2rem;
+      }
+      @media (min-width: $desktopHD) {
+        gap: 2rem;
+      }
 
       .embla__slide {
-        flex: 0 0 var(--slide-size);
-        padding: 0 var(--slide-spacing);
+        flex: 0 0 $slide-size;
 
         app-product-card {
           display: flex;
           align-items: center;
           justify-content: center;
-          height: var(--slide-height);
+          height: $slide-height;
         }
       }
     }

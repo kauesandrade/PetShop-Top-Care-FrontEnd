@@ -2,24 +2,24 @@
   <app-main-carousel [itensCarousel]="itens"></app-main-carousel>
 
   <app-round-card-section
-    [roundCardList]="roundList"
-    title="Categorias de produtos"
+    [roundCardList]="categories"
+    [title]="'Categorias de produtos'"
   ></app-round-card-section>
 
   <app-product-section
-    title="Ofertas"
+    [title]="'Ofertas'"
     [productList]="products"
   ></app-product-section>
 
   <app-banner-cta></app-banner-cta>
 
   <app-round-card-section
-    [roundCardList]="brandList"
-    title="Nossas Marcas"
+    [roundCardList]="brands"
+    [title]="'Nossas Marcas'"
   ></app-round-card-section>
 
   <app-product-section
-    title="Produtos melhores avaliados"
+    [title]="'Produtos melhores avaliados'"
     [productList]="products"
   ></app-product-section>
 </main>

@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   product: any = productData;
-  products: any = this.product.product;
+  products: Array<Product> = this.product.product;
 
   itens: Array<MainCarousel> = [
     {
@@ -48,43 +48,45 @@ export class HomeComponent implements OnInit {
     },
   ];
 
-  roundList: Array<RoundCard> = [
+  categories: Array<RoundCard> = [
     {
       imgSrc:
-        'https://logodownload.org/wp-content/uploads/2019/09/pedigree-logo-5.png',
-      title: 'Pedigree',
-    },
-    {
-      imgSrc:
-        'https://i.pinimg.com/736x/b3/66/57/b3665754998e1377da73fdc08ec83555.jpg',
-      title: 'Purina',
+        'https://m.media-amazon.com/images/I/517DTupFR3L._AC_UF1000,1000_QL80_.jpg',
+      title: 'Ração',
     },
     {
       imgSrc:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQsgoZbtvOTXtRKa_0I5e3kniuXSXzAEL-selvDfdO0g&s',
-      title: 'Golden',
-    },
-    {
-      imgSrc: 'https://static.petz.com.br/novaLoja/images/brands/zeedog.jpg',
-      title: 'Zee.dog',
+        'https://m.media-amazon.com/images/I/71f+IhKATsS._AC_UF1000,1000_QL80_.jpg',
+      title: 'Antipulga',
     },
     {
       imgSrc:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRR5o_mITghnmjcUYROkbMkc81AgKO8yGdVDmTbQyh_Q&s',
-      title: 'Whiskas',
+        'https://images.tcdn.com.br/img/img_prod/573283/combo_tapete_para_cachorro_30un_higienico_descartavel_absorvente_tipo_fralda_e_atrativo_caes_xixi_po_534496_1_20200401122000.jpg',
+      title: 'Tapete',
     },
     {
       imgSrc:
-        'https://static.petz.com.br/fotos/imagem-marca-supersecao-super_secao.jpg',
-      title: 'Super Secão',
+        'https://images.tcdn.com.br/img/img_prod/699275/antipulgas_e_carrapatos_zoetis_simparic_40mg_para_caes_10_1_a_20kg_1719_1_d3d32195b04169c53921396ca8ed764f.jpg',
+      title: 'Medicamento',
     },
     {
-      imgSrc: 'https://static.petz.com.br/novaLoja/images/brands/nd.jpg',
-      title: 'N&D Prime',
+      imgSrc:
+        'https://a-static.mlcdn.com.br/450x450/casinha-cachorro-casa-plastica-desmontavel-n6-mec-grande-vapet-vupet/vapetvupet/mecn6vm/7fd0c5e63efff0550a652d4cba7aa1f3.jpeg',
+      title: 'Casinha',
+    },
+    {
+      imgSrc:
+        'https://a-static.mlcdn.com.br/450x450/petisco-para-cachorro-adulto-dog-chow-mix-de-frutas-75g/magazineluiza/228778300/809ff66fdd60fdc8914e69cbddff6aa9.jpg',
+      title: 'Petisco',
+    },
+    {
+      imgSrc:
+        'https://cdn.awsli.com.br/600x1000/2604/2604686/produto/227108199/brinquedo-de-pelucia-para-cachorro--1--98mzuvzyh6.jpg',
+      title: 'Brinquedo',
     },
   ];
 
-  brandList: Array<RoundCard> = [
+  brands: Array<RoundCard> = [
     {
       imgSrc:
         'https://logodownload.org/wp-content/uploads/2019/09/pedigree-logo-5.png',
