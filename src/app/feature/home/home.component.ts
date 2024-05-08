@@ -3,6 +3,7 @@ import { MainCarousel } from 'src/app/shared/interfaces/main-carousel';
 import { Product } from 'src/app/shared/interfaces/product';
 import * as productData from '../../../assets/JsonFiles/products.json';
 import { ProductService } from 'src/app/shared/services/product/product.service';
+import { RoundCard } from '../../shared/interfaces/round-card';
 
 @Component({
   selector: 'app-home',
