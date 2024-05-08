@@ -14,14 +14,43 @@ import { AuthGuard } from './core/guards/auth/auth.guard';
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
   { path: 'sobre-nos', title: 'Sobre a Top Care', component: AboutUsComponent },
-  { path: 'contate-nos', title: 'Contate-nos | Top Care', component: ContactComponent },
-  { path: 'nossas-lojas', title: 'Lojas | Top Care', component: StoreComponent },
+  {
+    path: 'contate-nos',
+    title: 'Contate-nos | Top Care',
+    component: ContactComponent,
+  },
+  {
+    path: 'nossas-lojas',
+    title: 'Lojas | Top Care',
+    component: StoreComponent,
+  },
   { path: 'produto/:id', component: ProductComponent },
-  { path: 'registro', title: 'Cadastre-se na Top Care', component: RegisterComponent },
+  {
+    path: 'cadastro',
+    title: 'Cadastre-se na Top Care',
+    component: RegisterComponent,
+  },
   { path: 'login', title: 'Login | Top Care', component: LoginComponent },
   { path: 'busca', component: SearchComponent },
   { path: 'carrinho', title: 'Carrinho | Top Care', component: CartComponent },
-  { path: 'profile', title: 'Perfil | Top Care', component: AboutUsComponent, canActivate: [AuthGuard] },
+  {
+    path: 'perfil',
+    title: 'Perfil | Top Care',
+    component: AboutUsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'favoritos',
+    title: 'Favoritos | Top Care',
+    component: AboutUsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'pagamento',
+    title: 'Pagamento | Top Care',
+    component: AboutUsComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
