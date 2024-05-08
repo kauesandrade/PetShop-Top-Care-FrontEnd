@@ -19,8 +19,7 @@ export class MainCarouselComponent implements AfterViewInit, OnDestroy {
   constructor(private elementRef: ElementRef) {}
 
   ngAfterViewInit(): void {
-    const viewportNode =
-      this.elementRef.nativeElement.querySelector('.embla__viewport');
+    const viewportNode = this.elementRef.nativeElement.querySelector('.embla__viewport');
     const OPTIONS: EmblaOptionsType = { align: 'start', loop: true };
     this.embla = EmblaCarousel(viewportNode, OPTIONS);
   }

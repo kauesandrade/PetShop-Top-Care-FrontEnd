@@ -2,13 +2,26 @@
 
 .commonSection{
     &-primary{
+
+
+        gap: 1.5rem;
+
         .divCarouselProduct{
-            grid-column: -1 / 4;
+            // order: 1;
+            grid-column: 1 / -1;
+            
+            @media (min-width: $desktop){
+                // order: 0;
+                grid-column: 1 / 5;
+            }
         }
         
         .divDetails{
-            grid-column: -5 / -1;
-            @include flex(column, start);
+            @include flex(column, start,start);
+            grid-column: 1 / -1;
+            @media (min-width: $desktop){
+                grid-column: -5 / -1;
+            }
             gap: 1rem;
 
             .divTitle{

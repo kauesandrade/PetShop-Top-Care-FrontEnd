@@ -1,0 +1,58 @@
+@import 'styles';
+
+.divCarouselImage{
+    display: flex;
+    width: 100%;
+
+    .embla { 
+        @include flex(column, center, start);
+        width: 20%;
+        gap: 0.5rem;
+        $slide-height: 15rem;
+        $slide-spacing: 1rem;
+        $slide-size: 33%;
+    
+        .embla__viewport {
+            overflow: hidden;
+            
+            .embla__container {
+                backface-visibility: hidden;
+                display: flex;
+                touch-action: pan-x pinch-zoom;
+                margin-top: calc($slide-spacing * -1);
+                height: calc($slide-spacing + $slide-height);
+                flex-direction: column;
+                
+                .embla__slide {
+                    @include flex(column, center);
+                    flex: 0 0 $slide-size;
+                    min-height: 0;
+                    padding-top: $slide-spacing;
+                    
+                    .slide {
+                        height: 100%;
+                        width: 100%;  
+                        object-fit: scale-down;
+                        &.blur{
+                            -webkit-filter: grayscale(50%);
+                            filter: opacity(50%)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .sectionImage{
+        width: 80%;
+        height: 100%;
+        overflow: hidden;
+        img{
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            max-height: 16rem;
+        }
+
+    }
+}

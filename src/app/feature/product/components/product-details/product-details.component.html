@@ -1,7 +1,7 @@
 <section class="commonSection" *ngIf="product && typeChoose">
     <div class="commonSection-primary">
         <div class="divCarouselProduct">
-
+            <app-product-details-carousel [images]="product.images"></app-product-details-carousel>
         </div>
         <div class="divDetails">
             <div class="divTitle">
