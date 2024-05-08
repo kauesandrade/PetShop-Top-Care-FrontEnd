@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MainCarousel } from 'src/app/shared/interfaces/main-carousel';
 import { Product } from 'src/app/shared/interfaces/product';
-import * as productData from '../../../assets/JsonFiles/products.json';
 import { RoundCard } from '../../shared/interfaces/round-card';
 
 @Component({
@@ -9,11 +8,8 @@ import { RoundCard } from '../../shared/interfaces/round-card';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
-  constructor() {}
-
-  product: any = productData;
-  products: Array<Product> = this.product.product;
+export class HomeComponent {
+  products: Array<Product> = [];
 
   itens: Array<MainCarousel> = [
     {
@@ -86,6 +82,8 @@ export class HomeComponent implements OnInit {
     },
   ];
 
+  category1: Array<string> = ['oferta'];
+
   brands: Array<RoundCard> = [
     {
       imgSrc:
@@ -115,5 +113,7 @@ export class HomeComponent implements OnInit {
     },
   ];
 
-  ngOnInit(): void {}
+  category2: Array<string> = ['avaliado'];
+
+  constructor() {}
 }

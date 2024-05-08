@@ -4,14 +4,53 @@ import { HomeComponent } from './feature/home/home.component';
 import { AboutUsComponent } from './feature/home/about-us/about-us.component';
 import { ContactComponent } from './feature/contact/contact.component';
 import { StoreComponent } from './feature/store/store.component';
+import { ProductComponent } from './feature/product/product.component';
+import { RegisterComponent } from './feature/register/register.component';
 import { LoginComponent } from './feature/login/login.component';
+import { SearchComponent } from './feature/search/search.component';
+import { CartComponent } from './feature/cart/cart.component';
+import { AuthGuard } from './core/guards/auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'sobre-nos', component: AboutUsComponent },
-  { path: 'contate-nos', component: ContactComponent },
-  { path: 'nossas-lojas', component: StoreComponent },
-  { path: 'login', component: LoginComponent },
+  { path: '', title: 'Home | Top Care', component: HomeComponent },
+  { path: 'sobre-nos', title: 'Sobre a Top Care', component: AboutUsComponent },
+  {
+    path: 'contate-nos',
+    title: 'Contate-nos | Top Care',
+    component: ContactComponent,
+  },
+  {
+    path: 'nossas-lojas',
+    title: 'Lojas | Top Care',
+    component: StoreComponent,
+  },
+  { path: 'produto/:id', component: ProductComponent },
+  {
+    path: 'cadastro',
+    title: 'Cadastre-se na Top Care',
+    component: RegisterComponent,
+  },
+  { path: 'login', title: 'Login | Top Care', component: LoginComponent },
+  { path: 'busca', component: SearchComponent },
+  { path: 'carrinho', title: 'Carrinho | Top Care', component: CartComponent },
+  {
+    path: 'perfil',
+    title: 'Perfil | Top Care',
+    component: AboutUsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'favoritos',
+    title: 'Favoritos | Top Care',
+    component: AboutUsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'pagamento',
+    title: 'Pagamento | Top Care',
+    component: AboutUsComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
