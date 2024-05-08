@@ -73,14 +73,13 @@ export class ProductService {
     }
 
     switch (order) {
-      case 'Maior Preço': {
+      case 'Maior Preço':
         arrayProduct = [...this.productList].sort((p1, p2) => {
           return this.orderOfPlus(p1.price, p2.price);
         });
         break;
-      }
 
-      case 'Menor Preço': {
+      case 'Menor Preço':
         arrayProduct = [...this.productList].sort((p1, p2) => {
           if (p1.price > p2.price) {
             return 1;
@@ -91,30 +90,26 @@ export class ProductService {
           return 0;
         });
         break;
-      }
 
-      case 'Nome (A-Z)': {
+      case 'Nome (A-Z)':
         arrayProduct = [...this.productList].sort((p1, p2) => {
           return p1.title.localeCompare(p2.title);
         });
         break;
-      }
 
-      case 'Nome (Z-A)': {
+      case 'Nome (Z-A)':
         arrayProduct = [...this.productList].sort((p1, p2) => {
           return this.orderOfPlus(p1.title, p2.title);
         });
         break;
-      }
 
-      case 'Popularidade': {
+      case 'Popularidade':
         arrayProduct = [...this.productList].sort((p1, p2) => {
           return this.orderOfPlus(p1.rating, p2.rating);
         });
         break;
-      }
 
-      case 'Maiores Descontos': {
+      case 'Maiores Descontos':
         arrayProduct = [...this.productList].sort((p1, p2) => {
           return this.orderOfPlus(
             p1.price - p1.discountPrice,
@@ -122,17 +117,14 @@ export class ProductService {
           );
         });
         break;
-      }
 
-      // case "Relevância":{
+      // case "Relevância":
       //   this.orderOfRevelancia();
       //   break;
-      // }
 
-      // case "Lançamentos":{
+      // case "Lançamentos":
       //   this.orderOfLancamentos();
       //   break;
-      // }
     }
     return arrayProduct;
   }
