@@ -1,13 +1,7 @@
 <main>
   <app-main-carousel [itensCarousel]="itens"></app-main-carousel>
-  <app-product-section
-    title="Produtos melhores avaliados"
-    [productList]="products"
-  ></app-product-section>
-  <app-product-section
-    title="Ofertas"
-    [productList]="products"
-  ></app-product-section>
+  <app-product-section title="Produtos melhores avaliados" [category]="category2"></app-product-section>
+  <app-product-section title="Ofertas" [category]="category1"></app-product-section>
   <app-banner-cta></app-banner-cta>
 
   <!-- <app-main-carousel [itensCarousel]="itens"></app-main-carousel> -->

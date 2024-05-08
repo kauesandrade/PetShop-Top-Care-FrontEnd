@@ -19,7 +19,6 @@ registerLocaleData(ptBr);
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    FeatureModule,
     SharedModule,
     FeatureModule,
     FontAwesomeModule,
