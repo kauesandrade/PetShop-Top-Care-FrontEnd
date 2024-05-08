@@ -29,8 +29,6 @@ export class HeaderMainFullComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.userService.login("kaue@gmail.com", "cuz123");
-    // this.userService.logout();
     this.user = this.userService.loggedUser;
     this.firstName = this.user?.name.split(' ')[0];
     this.isLogged = this.user?.name != null;

@@ -9,6 +9,7 @@ import { RegisterComponent } from './feature/register/register.component';
 import { LoginComponent } from './feature/login/login.component';
 import { SearchComponent } from './feature/search/search.component';
 import { CartComponent } from './feature/cart/cart.component';
+import { AuthGuard } from './core/guards/auth/auth.guard';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'login', title: 'Login | Top Care', component: LoginComponent },
   { path: 'busca', component: SearchComponent },
   { path: 'carrinho', title: 'Carrinho | Top Care', component: CartComponent },
+  { path: 'profile', title: 'Perfil | Top Care', component: AboutUsComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
