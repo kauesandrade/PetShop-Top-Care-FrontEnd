@@ -2,14 +2,26 @@
   <label for="email" appInput>
     <p>E-mail</p>
     <input
-      type="text"
+      type="email"
       id="email"
       formControlName="email"
       placeholder="Digite seu e-mail"
+      [class.has-error]="email?.touched && email?.invalid"
+      required
     />
+    <ng-container *ngIf="email?.touched && email?.invalid">
+      <span *ngIf="email?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="email?.getError('email')" class="error-message">
+        Deve ser um email válido!
+      </span>
+      <span *ngIf="email?.getError('incorrect')" class="error-message">
+        Login inválido!
+      </span>
+    </ng-container>
   </label>
   <div class="lower-inputs">
-    <p (click)="changePassword()" class="change-password">Esqueci a senha</p>
     <label for="password" appInput>
       <p>Senha</p>
       <div>
@@ -18,21 +30,37 @@
           id="password"
           placeholder="Digite sua senha"
           formControlName="password"
+          [class.has-error]="password?.touched && password?.invalid"
+          required
         />
-        <button (click)="showPassword = !showPassword">
+        <button
+          (click)="changeShowPassword($event)"
+          [class.has-error]="password?.touched && password?.invalid"
+        >
           <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
         </button>
       </div>
+      <ng-container *ngIf="password?.touched && password?.invalid">
+        <span *ngIf="password?.getError('isEmpty')" class="error-message">
+          Você deve preencher esse campo!
+        </span>
+        <span *ngIf="password?.getError('incorrect')" class="error-message">
+          Login inválido!
+        </span>
+      </ng-container>
     </label>
-    <label for="remember">
-      <input
-        appInput
-        type="checkbox"
-        id="remember"
-        formControlName="remember"
-      />
-      <p>Lembrar minha conta</p>
-    </label>
+    <div class="remember-forgot">
+      <label for="remember">
+        <input
+          appInput
+          type="checkbox"
+          id="remember"
+          formControlName="remember"
+        />
+        <p>Lembrar minha conta</p>
+      </label>
+      <p (click)="changePassword()" class="change-password">Esqueci a senha</p>
+    </div>
   </div>
-  <input type="submit" value="Entrar" appButton />
+  <input type="submit" value="Entrar" appButton [disabled]="!isFormValid()" />
 </form>

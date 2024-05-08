@@ -8,6 +8,7 @@ form {
   }
 
   label {
+    position: relative;
     grid-column: 1 / -1;
     gap: 0;
 
@@ -27,19 +28,8 @@ form {
 
   .lower-inputs {
     @include flex(column, $align: flex-start);
-    gap: 0.5rem;
+    gap: 1.5rem;
     grid-column: 1 / -1;
-    position: relative;
-
-    .change-password {
-      position: absolute;
-      top: 0;
-      right: 0;
-      color: $primary;
-      text-decoration: underline;
-      cursor: pointer;
-      @include text($weight: medium);
-    }
 
     label[for="password"] {
       width: 100%;
@@ -51,14 +41,26 @@ form {
       }
     }
 
-    label[for="remember"] {
-      @include flex($justify: flex-start);
-      gap: 0.5rem;
-      input {
-        aspect-ratio: 1 / 1;
-        width: 1.5rem;
+    .remember-forgot {
+      @include flex($justify: space-between);
+      width: 100%;
+
+      label[for="remember"] {
+        @include flex($justify: flex-start);
+        gap: 0.5rem;
+        input {
+          aspect-ratio: 1 / 1;
+          width: 1.5rem;
+        }
+        p {
+          @include text($weight: medium);
+        }
       }
-      p {
+
+      .change-password {
+        color: $primary;
+        text-decoration: underline;
+        cursor: pointer;
         @include text($weight: medium);
       }
     }
@@ -76,4 +78,17 @@ form {
 
 fa-icon {
   font-size: 1rem;
+}
+
+.has-error {
+  border-color: $error;
+  color: $error;
+}
+
+.error-message {
+  @include text(small);
+  color: $error;
+  position: absolute;
+  top: 100%;
+  left: 0;
 }

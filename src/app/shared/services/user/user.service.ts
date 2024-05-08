@@ -13,18 +13,24 @@ export class UserService {
     this.loggedUser = JSON.parse(localStorage.getItem('user') || '""');
   }
 
-  login(login: string, password: string) {
-    for(const user of this.users.user){
-      if(user.cpf == login || user.email == login){
-        if(user.password == password){
+  login(login: string, password: string, remember: boolean): boolean {
+    for (const user of this.users.user) {
+      if (user.cpf == login || user.email == login) {
+        if (user.password == password) {
           this.loggedUser = user;
           break;
         }
       }
     }
 
-    localStorage.setItem('user', JSON.stringify(this.loggedUser));
+    if (remember) {
+      localStorage.setItem('user', JSON.stringify(this.loggedUser));
+    }
     console.log(this.loggedUser);
+    if (this.loggedUser) {
+      return true;
+    }
+    return false;
   }
 
   logout() {
