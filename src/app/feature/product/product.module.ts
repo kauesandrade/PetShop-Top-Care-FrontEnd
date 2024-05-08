@@ -6,6 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductDetailsCarouselComponent } from './components/product-details-carousel/product-details-carousel.component';
+import { ProductPricingComponent } from './components/product-pricing/product-pricing.component';
 
 
 
@@ -14,7 +15,8 @@ import { ProductDetailsCarouselComponent } from './components/product-details-ca
   declarations: [
     ProductComponent,
     ProductDetailsComponent,
-    ProductDetailsCarouselComponent
+    ProductDetailsCarouselComponent,
+    ProductPricingComponent
   ],
   imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule],
 })

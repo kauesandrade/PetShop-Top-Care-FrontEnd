@@ -4,8 +4,11 @@ main {
     @include grid-container();
     row-gap: 2rem;
   
-    app-product-details{
+    section{
       @include subgrid();
+      app-product-details, app-product-pricing{
+        @include subgrid();
+      }
     }
   
     @media (max-width: 320px){
