@@ -6,39 +6,30 @@ import {
   Input,
 } from '@angular/core';
 import EmblaCarousel, { EmblaOptionsType } from 'embla-carousel';
-import { Product } from '../interfaces/product';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { MainCarousel } from 'src/app/shared/interfaces/main-carousel';
 
 @Component({
-  selector: 'app-product-carousel',
-  templateUrl: './product-carousel.component.html',
-  styleUrls: ['./product-carousel.component.scss'],
+  selector: 'app-main-carousel',
+  templateUrl: './main-carousel.component.html',
+  styleUrls: ['./main-carousel.component.scss'],
 })
-export class ProductCarouselComponent implements AfterViewInit, OnDestroy {
+export class MainCarouselComponent implements AfterViewInit, OnDestroy {
   constructor(private elementRef: ElementRef) {}
 
   ngAfterViewInit(): void {
     const viewportNode =
       this.elementRef.nativeElement.querySelector('.embla__viewport');
-    const OPTIONS: EmblaOptionsType = {
-      breakpoints: {
-        '(min-width: 768px)': { align: 'start', loop: false },
-      },
-      align: 'center',
-      slidesToScroll: 1,
-      skipSnaps: true,
-      loop: true,
-    };
-
+    const OPTIONS: EmblaOptionsType = { align: 'start', loop: true };
     this.embla = EmblaCarousel(viewportNode, OPTIONS);
   }
 
   embla: any = null;
+  @Input() itensCarousel?: Array<MainCarousel>;
+
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
-
-  @Input() productList?: Array<Product>;
 
   ngOnDestroy(): void {
     if (this.embla) {

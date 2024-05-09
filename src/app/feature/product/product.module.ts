@@ -7,15 +7,13 @@ import { CoreModule } from 'src/app/core/core.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductDetailsCarouselComponent } from './components/product-details-carousel/product-details-carousel.component';
 
-
-
 @NgModule({
   exports: [ProductComponent],
   declarations: [
     ProductComponent,
     ProductDetailsComponent,
-    ProductDetailsCarouselComponent
+    ProductDetailsCarouselComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule],
 })
-export class ProductModule { }
+export class ProductModule {}

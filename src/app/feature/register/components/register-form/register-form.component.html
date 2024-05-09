@@ -1,0 +1,231 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <label for="name" appInput>
+    <p>Nome completo*</p>
+    <input
+      type="text"
+      id="name"
+      formControlName="name"
+      placeholder="Digite seu nome completo"
+      [class.has-error]="name?.touched && name?.invalid"
+      required
+    />
+    <ng-container *ngIf="name?.touched && name?.invalid">
+      <span *ngIf="name?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+    </ng-container>
+  </label>
+  <label for="email" appInput>
+    <p>E-mail*</p>
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      placeholder="Digite seu e-mail"
+      [class.has-error]="email?.touched && email?.invalid"
+      required
+    />
+    <ng-container *ngIf="email?.touched && email?.invalid">
+      <span *ngIf="email?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="email?.getError('email')" class="error-message">
+        Deve ser um e-mail válido!
+      </span>
+    </ng-container>
+  </label>
+  <label for="cellphone" appInput>
+    <p>Celular*</p>
+    <input
+      type="tel"
+      id="cellphone"
+      formControlName="cellphone"
+      placeholder="Digite seu celular"
+      [class.has-error]="cellphone?.touched && cellphone?.invalid"
+      mask="(00) 00000-0000"
+      required
+    />
+    <ng-container *ngIf="cellphone?.touched && cellphone?.invalid">
+      <span *ngIf="cellphone?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="cellphone?.getError('mask')" class="error-message">
+        Deve ser no formato (00) 00000-0000!
+      </span>
+    </ng-container>
+  </label>
+  <label for="telephone" appInput>
+    <p>Telefone</p>
+    <input
+      type="telephone"
+      id="telephone"
+      formControlName="telephone"
+      placeholder="Digite seu telefone"
+      [class.has-error]="telephone?.touched && telephone?.invalid"
+      mask="(00) 00000-0000"
+    />
+    <ng-container *ngIf="telephone?.touched && telephone?.invalid">
+      <span *ngIf="telephone?.getError('mask')" class="error-message">
+        Deve ser no formato (00) 00000-0000!
+      </span>
+    </ng-container>
+  </label>
+  <label for="cpf" appInput>
+    <p>CPF*</p>
+    <input
+      type="cpf"
+      id="cpf"
+      formControlName="cpf"
+      placeholder="Digite seu cpf"
+      [class.has-error]="cpf?.touched && cpf?.invalid"
+      mask="000.000.000-00"
+      required
+    />
+    <ng-container *ngIf="cpf?.touched && cpf?.invalid">
+      <span *ngIf="cpf?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="cpf?.getError('mask')" class="error-message">
+        Deve ser no formato (00) 00000-0000!
+      </span>
+    </ng-container>
+  </label>
+  <label for="gender" appInput>
+    <p>Sexo*</p>
+    <select
+      appInput
+      id="gender"
+      formControlName="gender"
+      [class.has-error]="gender?.touched && gender?.invalid"
+      required
+    >
+      <option
+        *ngFor="let gend of genders; let i = index"
+        [value]="i == 0 ? '' : gend"
+        [hidden]="i == 0"
+        [selected]="i == 0"
+      >
+        {{ gend }}
+      </option>
+    </select>
+    <ng-container *ngIf="gender?.touched && gender?.invalid">
+      <span *ngIf="gender?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+    </ng-container>
+  </label>
+  <label for="birth" appInput>
+    <p>Nascimento*</p>
+    <input
+      type="text"
+      id="birth"
+      formControlName="birth"
+      placeholder="Data de nascimento"
+      [class.has-error]="birth?.touched && birth?.invalid"
+      mask="d0/M0/0000"
+      required
+    />
+    <ng-container *ngIf="birth?.touched && birth?.invalid">
+      <span *ngIf="birth?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="birth?.getError('minlength')" class="error-message">
+        Deve ser no formato dd/mm/aaaa!
+      </span>
+    </ng-container>
+  </label>
+  <label for="password" appInput>
+    <p>Senha*</p>
+    <div>
+      <input
+        [type]="showPassword ? 'text' : 'password'"
+        id="password"
+        placeholder="Digite sua senha"
+        formControlName="password"
+        [class.has-error]="password?.touched && password?.invalid"
+        required
+        (change)="validatePassword()"
+        (blur)="checkConfirmation()"
+      />
+      <button
+        (click)="changeShowPassword($event)"
+        [class.has-error]="password?.touched && password?.invalid"
+      >
+        <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
+      </button>
+    </div>
+    <ng-container *ngIf="password?.touched && password?.invalid">
+      <span *ngIf="password?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="password?.getError('length')" class="error-message">
+        Mínimo 8 caracteres!
+      </span>
+      <span *ngIf="password?.getError('number')" class="error-message">
+        Deve conter um número!
+      </span>
+      <span *ngIf="password?.getError('uppercase')" class="error-message">
+        Deve conter uma letra maiúscula!
+      </span>
+      <span *ngIf="password?.getError('lowercase')" class="error-message">
+        Deve conter uma letra minúscula!
+      </span>
+    </ng-container>
+  </label>
+  <label for="password-confirmation" appInput>
+    <p>Confirmação*</p>
+    <div>
+      <input
+        [type]="showPasswordConf ? 'text' : 'password'"
+        id="password-confirmation"
+        placeholder="Confirme sua senha"
+        formControlName="passwordConf"
+        [class.has-error]="passwordConf?.touched && passwordConf?.invalid"
+        required
+        (blur)="checkConfirmation()"
+      />
+      <button
+        (click)="changeShowPasswordConf($event)"
+        [class.has-error]="passwordConf?.touched && passwordConf?.invalid"
+      >
+        <fa-icon [icon]="showPasswordConf ? faEye : faEyeSlash"></fa-icon>
+      </button>
+    </div>
+    <ng-container *ngIf="passwordConf?.touched && passwordConf?.invalid">
+      <span *ngIf="passwordConf?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="passwordConf?.getError('notEqual')" class="error-message">
+        A confirmação está diferente da senha!
+      </span>
+    </ng-container>
+  </label>
+  <div class="password-pattern">
+    <p>Padrão de senha:</p>
+    <ul>
+      <li>Mínimo 8 caracteres;</li>
+      <li>Letra maiúscula;</li>
+      <li>Número;</li>
+      <li>Letra minúscula.</li>
+    </ul>
+  </div>
+  <label for="terms">
+    <input type="checkbox" id="terms" formControlName="terms" appInput />
+    <p>
+      Condordo com os
+      <a (click)="openTerms($event)">termos e condições</a>
+      *
+    </p>
+  </label>
+  <input
+    type="submit"
+    value="Cadastrar"
+    [disabled]="!isFormValid()"
+    appButton
+  />
+</form>
+<app-register-address
+  (registeredAddress)="registerUser($event)"
+  [open]="openModal"
+  [title]="'Cadastre seu primeiro endereço'"
+></app-register-address>

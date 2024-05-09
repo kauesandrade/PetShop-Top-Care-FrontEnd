@@ -28,7 +28,7 @@ export class UserService {
     }
 
     console.log(this.loggedUser);
-    
+
     if (this.loggedUser) {
       return true;
     }
@@ -38,5 +38,9 @@ export class UserService {
   logout() {
     localStorage.setItem('user', JSON.stringify({}));
     this.loggedUser = null;
+  }
+
+  register(user: User) {
+    console.log(user);
   }
 }

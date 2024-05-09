@@ -171,14 +171,17 @@ body {
 
   div {
     @include flex();
+    height: 2.5rem;
 
     input {
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
       border-right: none;
+      height: 100%;
     }
 
     button {
+      height: 100%;
       background-color: $white;
       border: 2px $primary solid;
       padding: 0.5rem 0.75rem;

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '../interfaces/product';
-import { ProductService } from '../services/product/product.service';
+import { Product } from '../../interfaces/product';
+import { ProductService } from '../../services/product/product.service';
 
 @Component({
   selector: 'app-product-section',
@@ -15,19 +15,21 @@ export class ProductSectionComponent implements OnInit {
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
-    if(this.category.length){
-     this.productList = this.productService.getProductOfCategory(this.category);
+    if (this.category.length) {
+      this.productList = this.productService.getProductOfCategory(
+        this.category
+      );
       this.format();
     }
   }
 
-  format(){
+  format() {
     const a = [...this.productList];
-    this.productList = []
-    a.forEach((pro)=>{
-      if(this.productList.length < 10){
-        this.productList.push(pro)
+    this.productList = [];
+    a.forEach((pro) => {
+      if (this.productList.length < 10) {
+        this.productList.push(pro);
       }
-    })
+    });
   }
 }

@@ -8,6 +8,6 @@ export interface User {
   birth: string;
   gender: string;
   password: string;
-  contactInfo: [Contact, Contact];
+  contactInfo: [Contact, Contact?];
   addresses: Address[];
 }
