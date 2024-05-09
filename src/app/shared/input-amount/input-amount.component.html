@@ -1,0 +1,8 @@
+<div class="div-amount">
+    <p class="title-amount">Quantidade</p>
+    <div class="div-amount-input">
+        <button class="btn-amount" (click)="minusValue()"><fa-icon [icon]="faMinus"></fa-icon></button>
+        <input class="input-amount" (keypress)="verifyChar($event)" (change)="verifyValue($event)" type="number" [(ngModel)]="value"> 
+        <button class="btn-amount" (click)="plusValue()"><fa-icon [icon]="faPlus"></fa-icon></button>
+    </div>
+</div>

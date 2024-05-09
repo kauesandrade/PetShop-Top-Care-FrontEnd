@@ -8,7 +8,7 @@
     </div>
     <div class="div-product-subscriber">
         <div class="div-title-subscriber">
-            <p>
+            <p class="title-subscriber">
                 <fa-icon [icon]="faPercent"></fa-icon>
                 <span>{{product.subscribersPrice | currency: "BRL" : "symbol" : "1.2-2"}} para assinantes</span>
             </p>
@@ -21,14 +21,7 @@
     </div>
     <div class="div-buttons">
         <div class="div-button-input">
-            <div class="div-amount">
-                <p class="title-amount">Quantidade</p>
-                <div class="div-amount-input">
-                    <button class="btn-amount" (click)="minusValue()"><fa-icon [icon]="faMinus"></fa-icon></button>
-                    <input class="input-amount" (change)="changeInput($event)" type="number" [(ngModel)]="value"> 
-                    <button class="btn-amount" (click)="plusValue()"><fa-icon [icon]="faPlus"></fa-icon></button>
-                </div>
-            </div>
+            <app-input-amount (valueEmitter)="getValueInput($event)" (errorValueEmitter)=" getErrorInputValue($event)"></app-input-amount>
             <button appButton="secondary" class="btn-add-cart">Adicionar ao Carrinho</button>
         </div>
         <button class="btn-buy" appButton="">Compre Agora</button>
