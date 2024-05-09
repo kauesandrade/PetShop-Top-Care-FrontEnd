@@ -28,7 +28,10 @@ form {
   label[for="birth"],
   label[for="password"],
   label[for="password-confirmation"] {
-    grid-column: auto / span 3;
+    grid-column: 1 / -1;
+    @media (min-width: $tablet) {
+      grid-column: auto / span 3;
+    }
     width: 100%;
     div,
     select {
@@ -52,11 +55,12 @@ form {
   }
 
   input[type="submit"] {
-    width: 8.875rem;
-    height: 2.25rem;
+    width: 11.25rem;
+    height: 3.125rem;
     place-self: center;
     @media (min-width: $tablet) {
-      grid-column: 3 / span 2;
+      width: 100%;
+      grid-column: 2 / span 4;
     }
   }
 

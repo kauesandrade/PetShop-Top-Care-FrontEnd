@@ -6,6 +6,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [RegisterComponent, RegisterFormComponent],
@@ -16,6 +17,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
     FontAwesomeModule,
+    SharedModule,
   ],
 })
 export class RegisterModule {}

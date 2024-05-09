@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
+import { Address } from 'src/app/shared/interfaces/address';
+import { User } from 'src/app/shared/interfaces/user';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-register-form',
@@ -11,6 +14,8 @@ import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 })
 export class RegisterFormComponent {
   genders = ['Escolha seu sexo', 'Masculino', 'Feminino', 'Outro'];
+
+  openModal = false;
 
   showPassword = false;
   showPasswordConf = false;
@@ -28,9 +33,14 @@ export class RegisterFormComponent {
     birth: ['', [Validators.required, Validators.minLength(8), EmptyValidator]],
     password: ['', [Validators.required, EmptyValidator]],
     passwordConf: ['', [Validators.required, EmptyValidator]],
+    terms: [false, [Validators.requiredTrue]],
   });
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   get name() {
     return this.registerForm.get('name');
@@ -72,7 +82,6 @@ export class RegisterFormComponent {
 
   validatePassword() {
     let passwordValue = this.password?.value!;
-    console.log(passwordValue);
 
     if (passwordValue.length < 8) {
       this.password?.setErrors({ length: true });
@@ -91,8 +100,6 @@ export class RegisterFormComponent {
   checkConfirmation() {
     let passwordValue = this.password?.value!;
     let passwordConfValue = this.passwordConf?.value!;
-    console.log(passwordValue);
-    console.log(passwordConfValue);
 
     if (passwordValue != passwordConfValue) {
       this.passwordConf?.setErrors({ notEqual: true });
@@ -107,10 +114,28 @@ export class RegisterFormComponent {
   }
 
   isFormValid() {
-    console.log(this.birth?.errors);
-
     return this.registerForm.valid;
   }
 
-  onSubmit() {}
+  onSubmit() {
+    this.openModal = true;
+  }
+
+  registerUser(address: Address) {
+    let formValues = this.registerForm.value;
+
+    let user: User = {
+      name: formValues.name!,
+      email: formValues.email!,
+      cpf: formValues.cpf!,
+      birth: formValues.birth!,
+      gender: formValues.gender!,
+      password: formValues.password!,
+      contactInfo: [{ cellphone: formValues.cellphone! }],
+      addresses: [address],
+    };
+
+    this.userService.register(user);
+    this.router.navigate(['/login']);
+  }
 }

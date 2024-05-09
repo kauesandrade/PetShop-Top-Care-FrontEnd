@@ -14,9 +14,9 @@ export class UserService {
   }
 
   login(login: string, password: string) {
-    for(const user of this.users.user){
-      if(user.cpf == login || user.email == login){
-        if(user.password == password){
+    for (const user of this.users.user) {
+      if (user.cpf == login || user.email == login) {
+        if (user.password == password) {
           this.loggedUser = user;
           break;
         }
@@ -30,5 +30,9 @@ export class UserService {
   logout() {
     localStorage.setItem('user', JSON.stringify({}));
     this.loggedUser = null;
+  }
+
+  register(user: User) {
+    console.log(user);
   }
 }

@@ -4,7 +4,7 @@ import {
   faShoppingCart,
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
-import { Product } from '../interfaces/product';
+import { Product } from '../../interfaces/product';
 
 @Component({
   selector: 'app-product-card',
@@ -17,9 +17,8 @@ export class ProductCardComponent {
   faShoppingCart = faShoppingCart;
 
   @Input() product!: Product;
-  
-  constructor() {
-  }
+
+  constructor() {}
 
   onClick() {
     console.log('clicked');

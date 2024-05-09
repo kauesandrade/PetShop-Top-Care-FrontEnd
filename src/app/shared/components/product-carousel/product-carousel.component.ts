@@ -6,9 +6,9 @@ import {
   Input,
 } from '@angular/core';
 import EmblaCarousel, { EmblaOptionsType } from 'embla-carousel';
-import { Product } from '../interfaces/product';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { Product } from '../../interfaces/product';
 
 @Component({
   selector: 'app-product-carousel',
@@ -21,7 +21,11 @@ export class ProductCarouselComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     const viewportNode =
       this.elementRef.nativeElement.querySelector('.embla__viewport');
-    const OPTIONS: EmblaOptionsType = { align: 'center', slidesToScroll: 1, dragFree: true};
+    const OPTIONS: EmblaOptionsType = {
+      align: 'center',
+      slidesToScroll: 1,
+      dragFree: true,
+    };
 
     this.embla = EmblaCarousel(viewportNode, OPTIONS);
   }

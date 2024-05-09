@@ -173,7 +173,7 @@
     </ng-container>
   </label>
   <label for="password-confirmation" appInput>
-    <p>Confirme*</p>
+    <p>Confirmação*</p>
     <div>
       <input
         [type]="showPasswordConf ? 'text' : 'password'"
@@ -204,22 +204,28 @@
     <p>Padrão de senha:</p>
     <ul>
       <li>Mínimo 8 caracteres;</li>
-      <li>Número;</li>
       <li>Letra maiúscula;</li>
+      <li>Número;</li>
       <li>Letra minúscula.</li>
     </ul>
   </div>
   <label for="terms">
-    <input type="checkbox" id="terms" appInput />
+    <input type="checkbox" id="terms" formControlName="terms" appInput />
     <p>
       Condordo com os
       <a (click)="openTerms($event)">termos e condições</a>
+      *
     </p>
   </label>
   <input
     type="submit"
     value="Cadastrar"
-    appButton
     [disabled]="!isFormValid()"
+    appButton
   />
 </form>
+<app-register-address
+  (registeredAddress)="registerUser($event)"
+  [open]="openModal"
+  [title]="'Cadastre seu primeiro endereço'"
+></app-register-address>

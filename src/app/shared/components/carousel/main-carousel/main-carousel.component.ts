@@ -8,7 +8,7 @@ import {
 import EmblaCarousel, { EmblaOptionsType } from 'embla-carousel';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { MainCarousel } from '../../interfaces/main-carousel';
+import { MainCarousel } from 'src/app/shared/interfaces/main-carousel';
 
 @Component({
   selector: 'app-main-carousel',
@@ -19,7 +19,8 @@ export class MainCarouselComponent implements AfterViewInit, OnDestroy {
   constructor(private elementRef: ElementRef) {}
 
   ngAfterViewInit(): void {
-    const viewportNode = this.elementRef.nativeElement.querySelector('.embla__viewport');
+    const viewportNode =
+      this.elementRef.nativeElement.querySelector('.embla__viewport');
     const OPTIONS: EmblaOptionsType = { align: 'start', loop: true };
     this.embla = EmblaCarousel(viewportNode, OPTIONS);
   }
