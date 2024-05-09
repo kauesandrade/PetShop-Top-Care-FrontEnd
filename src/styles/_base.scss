@@ -171,14 +171,17 @@ body {
 
   div {
     @include flex();
+    height: 2.5rem;
 
     input {
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
       border-right: none;
+      height: 100%;
     }
 
     button {
+      height: 100%;
       background-color: $white;
       border: 2px $primary solid;
       padding: 0.5rem 0.75rem;
@@ -193,7 +196,7 @@ body {
 }
 
 .embla__button--prev,
-.embla__button--next{
+.embla__button--next {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -221,11 +224,10 @@ body {
     color: $white;
     font-size: 1rem;
   }
-
 }
 
-.embla__button--down, 
-.embla__button--up{
+.embla__button--down,
+.embla__button--up {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -247,7 +249,7 @@ body {
     justify-content: center;
     color: $white;
     font-size: 1rem;
-    transform: rotate(90deg)
+    transform: rotate(90deg);
   }
 }
 
@@ -260,48 +262,49 @@ body {
   left: 100%;
 }
 
-.commonSection{
+.commonSection {
   @include subgrid();
   grid-column: 1 / -1;
 
-  &-primary{
+  &-primary {
     @include subgrid();
     grid-column: 1 / span 8;
     padding: 1.5rem;
     border-radius: 0.5rem;
   }
-  &-secondary{
+  &-secondary {
     grid-column: 9 / -1;
     padding: 1rem;
-    border-radius: 0.5rem;  
+    border-radius: 0.5rem;
   }
 
-  &-midLeft{
+  &-midLeft {
     grid-column: 1 / 6;
     padding: 1rem 2rem;
     border-radius: 0.5rem;
   }
 
-  &-midRight{
+  &-midRight {
     grid-column: 7 / -1;
     padding: 1rem 2rem;
     border-radius: 0.5rem;
   }
 
-  &-full{
-    
+  &-full {
     grid-column: 1 / -1;
     padding: 1rem 2rem;
     border-radius: 1rem;
-
   }
 
-    &-full, &-primary, &-secondary, &-midRight, &-midLeft {
-      &.subgrid{
+  &-full,
+  &-primary,
+  &-secondary,
+  &-midRight,
+  &-midLeft {
+    &.subgrid {
       @include subgrid();
-      }
+    }
     height: max-content;
     background-color: $white;
   }
-
 }

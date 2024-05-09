@@ -1,1 +1,20 @@
-<p>register works!</p>
+<app-header [simple]="true"></app-header>
+<main>
+  <h4>Acesse ou crie sua conta</h4>
+  <div class="login">
+    <div class="register-info">
+      <h4>Acesse sua conta agora!</h4>
+      <p>
+        Caso tenha uma conta no nosso site clique aqui e acesse sua conta de um
+        jeito rápido e fácil. Compre com a gente.
+      </p>
+      <button appButton="secondary" (click)="openLogin()">Acessar</button>
+    </div>
+    <img src="assets/images/RegisterImage.png" alt="Dog image" />
+  </div>
+  <div class="register">
+    <h4>Crie sua conta</h4>
+    <app-register-form></app-register-form>
+  </div>
+</main>
+<app-footer type="copyright"></app-footer>

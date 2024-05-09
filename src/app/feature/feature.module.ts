@@ -11,10 +11,16 @@ import { ProductModule } from './product/product.module';
 import { SearchComponent } from './search/search.component';
 
 @NgModule({
-  exports: [HomeModule, ContactModule, StoreModule, LoginModule, RegisterModule, CartModule, ProductModule,],
-  declarations: [
-    SearchComponent
+  exports: [
+    HomeModule,
+    ContactModule,
+    StoreModule,
+    LoginModule,
+    RegisterModule,
+    CartModule,
+    ProductModule,
   ],
+  declarations: [SearchComponent],
   imports: [CommonModule, FontAwesomeModule],
 })
 export class FeatureModule {}
