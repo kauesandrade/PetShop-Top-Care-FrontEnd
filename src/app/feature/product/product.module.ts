@@ -7,6 +7,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductDetailsCarouselComponent } from './components/product-details-carousel/product-details-carousel.component';
 import { ProductPricingComponent } from './components/product-pricing/product-pricing.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -18,6 +19,6 @@ import { ProductPricingComponent } from './components/product-pricing/product-pr
     ProductDetailsCarouselComponent,
     ProductPricingComponent
   ],
-  imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule],
+  imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule, FormsModule],
 })
 export class ProductModule { }

@@ -23,6 +23,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@ngneat/input-mask": "^6.1.0",
     "embla-carousel": "^8.0.1",
     "inputmask": "^5.0.8",
     "rxjs": "~7.5.0",
