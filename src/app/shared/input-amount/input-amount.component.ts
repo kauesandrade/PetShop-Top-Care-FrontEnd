@@ -16,7 +16,6 @@ export class InputAmountComponent implements OnInit {
   @Output() errorValueEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   value: number = 1;
-  errorValue: boolean = false;
   
   constructor() { }
   
