@@ -43,17 +43,23 @@ export class ProductPricingComponent implements OnInit{
   }
 
   changeInput(evt: any){
+    console.log(this.value)
+
     evt = (evt) ? evt : window.event;
     var charCode = (evt.which) ? evt.which : evt.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-        return false;
+      return false;
     }
+    
     if(this.value > 100){
       this.value = 100;
       this.errorValue = true
-    }else{
+    }else if(this.value < 100 && this.value > 1){
       this.value = evt.target.value;
       this.errorValue = false
+    }
+    else if (this.value == null){
+      this.value = 1
     }
     return true;
   }
