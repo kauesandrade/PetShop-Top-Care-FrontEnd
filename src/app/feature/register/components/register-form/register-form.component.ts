@@ -101,9 +101,14 @@ export class RegisterFormComponent {
     let passwordValue = this.password?.value!;
     let passwordConfValue = this.passwordConf?.value!;
 
-    if (passwordValue != passwordConfValue) {
+    if (
+      passwordValue &&
+      passwordConfValue &&
+      passwordValue != passwordConfValue
+    ) {
       this.passwordConf?.setErrors({ notEqual: true });
     }
+    console.log(this.passwordConf?.errors);
   }
 
   openTerms(event: Event) {
@@ -131,7 +136,9 @@ export class RegisterFormComponent {
       birth: formValues.birth!,
       gender: formValues.gender!,
       password: formValues.password!,
-      contactInfo: [{ cellphone: formValues.cellphone! }],
+      contactInfo: [
+        { cellphone: formValues.cellphone!, telephone: formValues.telephone! },
+      ],
       addresses: [address],
     };
 

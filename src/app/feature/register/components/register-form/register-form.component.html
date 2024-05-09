@@ -94,7 +94,6 @@
     <p>Sexo*</p>
     <select
       appInput
-      type="gender"
       id="gender"
       formControlName="gender"
       [class.has-error]="gender?.touched && gender?.invalid"
@@ -146,6 +145,7 @@
         [class.has-error]="password?.touched && password?.invalid"
         required
         (change)="validatePassword()"
+        (blur)="checkConfirmation()"
       />
       <button
         (click)="changeShowPassword($event)"
@@ -182,7 +182,7 @@
         formControlName="passwordConf"
         [class.has-error]="passwordConf?.touched && passwordConf?.invalid"
         required
-        (change)="checkConfirmation()"
+        (blur)="checkConfirmation()"
       />
       <button
         (click)="changeShowPasswordConf($event)"

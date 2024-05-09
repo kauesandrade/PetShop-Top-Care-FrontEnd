@@ -42,6 +42,30 @@
           </span>
         </ng-container>
       </label>
+      <label for="state" appInput>
+        <p>UF*</p>
+        <select
+          appInput
+          id="state"
+          formControlName="state"
+          [class.has-error]="state?.touched && state?.invalid"
+          required
+        >
+          <option
+            *ngFor="let st of states; let i = index"
+            [value]="i == 0 ? '' : st"
+            [hidden]="i == 0"
+            [selected]="i == 0"
+          >
+            {{ st }}
+          </option>
+        </select>
+        <ng-container *ngIf="state?.touched && state?.invalid">
+          <span *ngIf="state?.getError('isEmpty')" class="error-message">
+            Você deve preencher esse campo!
+          </span>
+        </ng-container>
+      </label>
       <label for="city" appInput>
         <p>Cidade*</p>
         <input

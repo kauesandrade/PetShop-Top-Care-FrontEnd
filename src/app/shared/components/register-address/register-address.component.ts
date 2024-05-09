@@ -27,9 +27,41 @@ export class RegisterAddressComponent implements OnChanges {
 
   @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
 
+  states = [
+    'Escolha a UF',
+    'AC',
+    'AL',
+    'AP',
+    'AM',
+    'BA',
+    'CE',
+    'DF',
+    'ES',
+    'GO',
+    'MA',
+    'MT',
+    'MS',
+    'MG',
+    'PA',
+    'PB',
+    'PR',
+    'PE',
+    'PI',
+    'RJ',
+    'RN',
+    'RS',
+    'RO',
+    'RR',
+    'SC',
+    'SP',
+    'SE',
+    'TO',
+  ];
+
   registerAddressForm = this.formBuilder.group({
     addressName: ['', [Validators.required, EmptyValidator]],
     cep: ['', [Validators.required, EmptyValidator]],
+    state: ['', [Validators.required, EmptyValidator]],
     city: ['', [Validators.required, EmptyValidator]],
     neighborhood: ['', [Validators.required, EmptyValidator]],
     street: ['', [Validators.required, EmptyValidator]],
@@ -51,6 +83,9 @@ export class RegisterAddressComponent implements OnChanges {
   }
   get cep() {
     return this.registerAddressForm.get('cep');
+  }
+  get state() {
+    return this.registerAddressForm.get('state');
   }
   get city() {
     return this.registerAddressForm.get('city');
@@ -79,6 +114,11 @@ export class RegisterAddressComponent implements OnChanges {
     this.cepService.searchCep(this.cep?.value!).subscribe((res: any) => {
       if (res.erro) {
         this.cep?.setErrors({ cepInvalido: true });
+      } else {
+        this.state?.setValue(res.uf);
+        this.city?.setValue(res.localidade);
+        this.neighborhood?.setValue(res.bairro);
+        this.street?.setValue(res.logradouro);
       }
     });
   }
@@ -102,5 +142,6 @@ export class RegisterAddressComponent implements OnChanges {
 
     this.registeredAddress.emit(address);
     this.modal.nativeElement.close();
+    document.body.style.overflow = 'auto';
   }
 }
