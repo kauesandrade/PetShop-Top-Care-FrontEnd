@@ -49,6 +49,8 @@ export class InputAmountComponent implements OnInit {
     if(this.value > this.errorLimiter){
       this.value = this.errorLimiter;
       this.emitValues(true);
+    }else if(this.value < 1){
+      this.value = 1
     }else{
       this.value = evt.target.value;
       this.emitValues(false);

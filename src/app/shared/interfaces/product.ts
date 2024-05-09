@@ -5,6 +5,7 @@ export interface Product {
   favorite: boolean;
   title: string;
   littleDescription: string,
+  description: string,
   brand: string;
   rating: number;
   price: number;
