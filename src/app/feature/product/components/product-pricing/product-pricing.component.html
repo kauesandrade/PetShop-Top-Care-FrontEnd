@@ -1,7 +1,7 @@
-<ng-container *ngIf="product">
+<div class="container" *ngIf="product">
     <div class="div-product-pricing">
         <span class="product-discountPrice">{{product.discountPrice | currency : "BRL" : "symbol" : "1.2-2"}}</span>
-        <h4>{{product.price | currency : "BRL" : "symbol" : "1.2-2"}}</h4>
+        <h4 class="product-price">{{product.price | currency : "BRL" : "symbol" : "1.2-2"}}</h4>
         <ng-container *ngIf="product.maxInterestFreeParcels > 1">
             <p>ou {{product.maxInterestFreeParcels}}x de {{ (product.price / product.maxInterestFreeParcels) | currency : "BRL" : "symbol" : "1.2-2" }} sem juros</p>
         </ng-container>
@@ -21,14 +21,17 @@
     </div>
     <div class="div-buttons">
         <div class="div-button-input">
-            <div>
-                <button><fa-icon [icon]="faMinus"></fa-icon></button>
-                <input type="number">
-                <button><fa-icon [icon]="faPlus"></fa-icon></button>
+            <div class="div-amount">
+                <p class="title-amount">Quantidade</p>
+                <div class="div-amount-input">
+                    <button class="btn-amount" (click)="minusValue()"><fa-icon [icon]="faMinus"></fa-icon></button>
+                    <input class="input-amount" type="number" value={{value}}>
+                    <button class="btn-amount" (click)="plusValue()"><fa-icon [icon]="faPlus"></fa-icon></button>
+                </div>
             </div>
-            <button appButton="secondary">Adicionar ao Carrinho</button>
+            <button appButton="secondary" class="btn-add-cart">Adicionar ao Carrinho</button>
         </div>
         <button class="btn-buy" appButton="">Compre Agora</button>
     </div>
-</ng-container>
+</div>
 

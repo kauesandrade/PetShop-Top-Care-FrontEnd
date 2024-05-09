@@ -6,6 +6,10 @@ main {
   
     .commonSection{
       @include subgrid();
+      gap: 1rem;
+      @media(min-width: $tablet){
+        gap: 1.5rem;
+      }
     }
   
     @media (max-width: 320px){
