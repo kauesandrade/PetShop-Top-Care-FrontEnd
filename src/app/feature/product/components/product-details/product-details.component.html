@@ -1,5 +1,4 @@
-<section class="commonSection" *ngIf="product && typeChoose">
-    <div class="commonSection-primary">
+<ng-container *ngIf="product && typeChoose">
         <div class="divCarouselProduct">
             <app-product-details-carousel [images]="product.images"></app-product-details-carousel>
         </div>
@@ -54,5 +53,4 @@
                 </div>
             </ng-container>
         </div>
-    </div>
-</section>
+</ng-container>

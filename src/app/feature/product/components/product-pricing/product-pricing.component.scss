@@ -1,6 +1,67 @@
 @import 'styles';
 
-.commonSection-secondary{
-    
+.div-product-pricing{
+
 }
 
+.div-product-subscriber{
+    width: 100%;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    background-color: $light-primary;
+    border-radius: 0.5rem;
+
+    .div-title-subscriber{
+        p{
+            @include flex($justify: initial);
+            gap: 0.25rem;
+            fa-icon{
+                font-size: 0.75rem;
+            }
+            span{
+                @include text(large);
+                color: $primary;
+            }
+        }
+    }
+
+    .list-subscriber{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        .item-list{
+            display: flex;
+            gap: 0.25rem;
+
+            fa-icon{
+                font-size: 0.75rem;
+            }
+            span{
+                @include text(small)
+            }
+        }
+    }
+}
+
+.div-buttons{
+    @include flex(column);
+
+    .div-button-input{
+        @include flex($justify: space-between);
+        div{
+
+            input{
+                --webkit-appearance: none;
+                appearance: none;
+            }
+        }
+    }
+
+    .btn-buy{
+        
+    }
+}

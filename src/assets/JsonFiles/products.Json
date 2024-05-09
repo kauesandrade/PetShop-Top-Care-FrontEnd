@@ -9,7 +9,7 @@
       "rating": 5,
       "price": 50.4,
       "discountPrice": 70.4,
-      "maxInterestFreeParcels": 2,
+      "maxInterestFreeParcels": 1,
       "subscribersPrice": 40.2,
       "available": true,
       "category": ["cachorro", "racao", "filhote", "oferta", "avaliado"],
