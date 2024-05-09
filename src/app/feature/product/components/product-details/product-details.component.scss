@@ -79,6 +79,7 @@
                 color: $secondary;
                 border: 2px solid $secondary;
                 border-radius: 0.5rem;
+                cursor: pointer;
             }
 
             .btnReviews {
@@ -91,6 +92,7 @@
                 color: $primary;
                 border: 2px solid $primary;
                 border-radius: 0.5rem;
+                cursor: pointer;
             }
 
             .noClasseBtn {
@@ -99,6 +101,7 @@
 
                 .icon {
                     font-size: 1.5rem;
+                    cursor: pointer;
 
                     &.like {
                         color: $error;
@@ -110,14 +113,14 @@
 
         .divTypesOfProducts {
             @include flex(column, start, start);
-            gap: 1rem;
+            gap: 1rem;  
 
             div {
                 @include flex(row, start, start);
                 gap: 1rem;
 
                 .btnType {
-
+                    cursor: pointer;
                     &.choose {
                         background-color: $primary;
                         color: $white;
