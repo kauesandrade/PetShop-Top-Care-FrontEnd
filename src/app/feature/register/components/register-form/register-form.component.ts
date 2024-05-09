@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 
@@ -29,7 +30,7 @@ export class RegisterFormComponent {
     passwordConf: ['', [Validators.required, EmptyValidator]],
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   get name() {
     return this.registerForm.get('name');
@@ -96,6 +97,13 @@ export class RegisterFormComponent {
     if (passwordValue != passwordConfValue) {
       this.passwordConf?.setErrors({ notEqual: true });
     }
+  }
+
+  openTerms(event: Event) {
+    event.preventDefault();
+    this.router.navigate([]).then((res) => {
+      window.open('/', '_blank');
+    });
   }
 
   isFormValid() {

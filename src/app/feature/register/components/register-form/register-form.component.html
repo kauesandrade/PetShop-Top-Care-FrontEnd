@@ -116,7 +116,7 @@
     </ng-container>
   </label>
   <label for="birth" appInput>
-    <p>Data de nascimento*</p>
+    <p>Nascimento*</p>
     <input
       type="text"
       id="birth"
@@ -173,7 +173,7 @@
     </ng-container>
   </label>
   <label for="password-confirmation" appInput>
-    <p>Confirme sua senha*</p>
+    <p>Confirme*</p>
     <div>
       <input
         [type]="showPasswordConf ? 'text' : 'password'"
@@ -211,8 +211,10 @@
   </div>
   <label for="terms">
     <input type="checkbox" id="terms" appInput />
-
-    <p>Condordo com os <span>termos e condições</span></p>
+    <p>
+      Condordo com os
+      <a (click)="openTerms($event)">termos e condições</a>
+    </p>
   </label>
   <input
     type="submit"
