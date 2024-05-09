@@ -16,7 +16,7 @@ export class LoginFormComponent {
   faEyeSlash = faEyeSlash;
 
   loginForm = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email, EmptyValidator]],
+    login: ['', [Validators.required, EmptyValidator]],
     password: ['', [Validators.required, EmptyValidator]],
     remember: [false],
   });
@@ -27,8 +27,8 @@ export class LoginFormComponent {
     private router: Router
   ) {}
 
-  get email() {
-    return this.loginForm.get('email');
+  get login() {
+    return this.loginForm.get('login');
   }
   get password() {
     return this.loginForm.get('password');
@@ -40,12 +40,10 @@ export class LoginFormComponent {
   changeShowPassword(event: Event) {
     event.preventDefault();
     this.showPassword = !this.showPassword;
-    console.log(this.email?.errors);
+    console.log(this.login?.errors);
   }
 
-  changePassword() {
-    console.log('JAS');
-  }
+  changePassword() {}
 
   isFormValid() {
     return this.loginForm.valid;
@@ -56,16 +54,22 @@ export class LoginFormComponent {
 
     console.log(formValues);
 
+    if (formValues.login?.match('[0-9]{3}.[0-9]{3}.[0-9]{2}')) {
+      formValues.login = formValues.login.replace('.', '');
+      formValues.login = formValues.login.replace('.', '');
+      formValues.login = formValues.login.replace('-', '');
+    }
+
     if (
       this.userService.login(
-        formValues.email!,
+        formValues.login!,
         formValues.password!,
         formValues.remember!
       )
     ) {
       this.router.navigate(['/']);
     } else {
-      this.email?.setErrors({ incorrect: true });
+      this.login?.setErrors({ incorrect: true });
       this.password?.setErrors({ incorrect: true });
     }
   }

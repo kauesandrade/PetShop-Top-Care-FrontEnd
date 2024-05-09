@@ -1,22 +1,19 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <label for="email" appInput>
-    <p>E-mail</p>
+  <label for="login" appInput>
+    <p>E-mail ou CPF</p>
     <input
-      type="email"
-      id="email"
-      formControlName="email"
-      placeholder="Digite seu e-mail"
-      [class.has-error]="email?.touched && email?.invalid"
+      type="text"
+      id="login"
+      formControlName="login"
+      placeholder="Digite seu e-mail ou cpf"
+      [class.has-error]="login?.touched && login?.invalid"
       required
     />
-    <ng-container *ngIf="email?.touched && email?.invalid">
-      <span *ngIf="email?.getError('isEmpty')" class="error-message">
+    <ng-container *ngIf="login?.touched && login?.invalid">
+      <span *ngIf="login?.getError('isEmpty')" class="error-message">
         Você deve preencher esse campo!
       </span>
-      <span *ngIf="email?.getError('email')" class="error-message">
-        Deve ser um email válido!
-      </span>
-      <span *ngIf="email?.getError('incorrect')" class="error-message">
+      <span *ngIf="login?.getError('incorrect')" class="error-message">
         Login inválido!
       </span>
     </ng-container>
