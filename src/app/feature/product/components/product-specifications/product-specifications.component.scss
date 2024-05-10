@@ -1,0 +1,40 @@
+@import 'styles';
+
+.commonSection-full{
+
+    @include flex(column, start, start);
+    gap: 1rem;
+
+    .title{
+        color: $primary;
+    }
+
+    table{
+        width: 100%;
+        gap: 0;
+        border-spacing: 0;
+        overflow: hidden;
+
+        tr:nth-child(even){
+            background-color: transparent;
+        }
+
+        tr{
+            background-color: $gray5;
+
+            td{
+                @include text();
+                color: $gray2;
+                padding:1.25rem 0;
+                padding-left: 0.5rem;
+                @media(min-width: $mobile){
+                    padding-left: 10%;
+                }
+                
+                .td-title{
+                    @include text( $weight: bold);
+                }
+            }
+        }
+    }
+}

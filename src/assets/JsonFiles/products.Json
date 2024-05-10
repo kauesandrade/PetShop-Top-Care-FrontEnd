@@ -1,20 +1,54 @@
 {
   "product": [
     {
-      "images": ["https://images.petz.com.br/fotos/1658430805995.jpg"],
+      "images": [
+        "https://images.petz.com.br/fotos/1658430805995.jpg"
+      ],
       "favorite": false,
       "title": "Ração Golden - Cães Filhotes sabor Frango e Arroz - 1kg",
       "littleDescription": "racao Cão",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem.",
       "brand": "Golden",
+      "specifications": [
+        {
+          "title": "Idade",
+          "value": "Filhotes/Adultos"
+        },
+        {
+          "title": "Linha",
+          "value": "Super Premium"
+        },
+        {
+          "title": "Pet",
+          "value": "Cachorro"
+        },
+        {
+          "title": "Tipo",
+          "value": "Ração seca"
+        },
+        {
+          "title": "Apresentação",
+          "value": "Disponível em embalagem de 15kg e 20kg."
+        }
+      ],
       "rating": 5,
       "price": 50.4,
       "discountPrice": 70.4,
       "maxInterestFreeParcels": 1,
       "subscribersPrice": 40.2,
       "available": true,
-      "category": ["cachorro", "racao", "filhote", "oferta", "avaliado"],
+      "category": [
+        "cachorro",
+        "racao",
+        "filhote",
+        "oferta",
+        "avaliado"
+      ],
       "type": [
-        {"productCode": 11, "type": "1 kg"}
+        {
+          "productCode": 11,
+          "type": "1 kg"
+        }
       ]
     },
     {
@@ -25,17 +59,67 @@
       "favorite": false,
       "title": "Ração Premier Super Premium Formula Sabor Frango para Cães Adultos de Portes Grandes e Gigantes",
       "littleDescription": "racao Cão",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem.",
       "brand": "Premier",
+      "specifications": [
+        {
+          "title": "Idade",
+          "value": "Filhotes/Adultos"
+        },
+        {
+          "title": "Linha",
+          "value": "Super Premium"
+        },
+        {
+          "title": "Pet",
+          "value": "Cachorro"
+        },
+        {
+          "title": "Tipo",
+          "value": "Ração seca"
+        },
+        {
+          "title": "Apresentação",
+          "value": "Disponível em embalagem de 15kg e 20kg."
+        }
+      ],
       "rating": 4,
       "price": 70.4,
       "discountPrice": 100.4,
       "maxInterestFreeParcels": 2,
       "subscribersPrice": 40.2,
       "available": true,
-      "category": ["racao", "premium", "cachorro", "avaliado"],
+      "category": [
+        "racao",
+        "premium",
+        "cachorro",
+        "avaliado"
+      ],
+      "reviews": [
+        {
+        "user": "Kauê Andrade",
+        "icon": "../../../../../assets/images/userIcon.png",
+        "review": "Ameiiiiii!!",
+        "rating": 5,
+        "datePost": "20/03/24"
+        },
+        {
+          "user": "Bernardeira",
+          "icon": "../../../../../assets/images/TopCareLogo.png",
+          "review": "Gostei muito!!",
+          "rating": 4,
+          "datePost": "17/03/24"
+          }
+      ],
       "type": [
-        {"productCode": 12, "type": "15 kg"},
-        {"productCode": 22, "type": "20 kg"}
+        {
+          "productCode": 12,
+          "type": "15 kg"
+        },
+        {
+          "productCode": 22,
+          "type": "20 kg"
+        }
       ]
     },
     {
@@ -45,18 +129,55 @@
       "favorite": true,
       "title": "Brinquedo Cachorro Osso Halteres Pata macio",
       "littleDescription": "brinquedinho",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem.",
       "brand": "Ideia Store",
+      "specifications": [
+        {
+          "title": "Idade",
+          "value": "Filhotes/Adultos"
+        },
+        {
+          "title": "Linha",
+          "value": "Super Premium"
+        },
+        {
+          "title": "Pet",
+          "value": "Cachorro"
+        },
+        {
+          "title": "Tipo",
+          "value": "Ração seca"
+        },
+        {
+          "title": "Apresentação",
+          "value": "Disponível em embalagem de 15kg e 20kg."
+        }
+      ],
       "rating": 3,
       "price": 10.4,
       "discountPrice": 20.4,
       "maxInterestFreeParcels": 2,
       "subscribersPrice": 4.2,
       "available": true,
-      "category": ["brinquedo", "cachorro", "osso", "oferta"],
+      "category": [
+        "brinquedo",
+        "cachorro",
+        "osso",
+        "oferta"
+      ],
       "type": [
-        {"productCode": 13, "type": "Pequeno"},
-        {"productCode": 23, "type": "Médio"},
-        {"productCode": 33, "type": "Grande"}
+        {
+          "productCode": 13,
+          "type": "Pequeno"
+        },
+        {
+          "productCode": 23,
+          "type": "Médio"
+        },
+        {
+          "productCode": 33,
+          "type": "Grande"
+        }
       ]
     },
     {
@@ -66,16 +187,48 @@
       "favorite": false,
       "title": "Caminha iglu para Gatos",
       "littleDescription": "caminha boa",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem.",
       "brand": "Pet Iglu",
+      "specifications": [
+        {
+          "title": "Idade",
+          "value": "Filhotes/Adultos"
+        },
+        {
+          "title": "Linha",
+          "value": "Super Premium"
+        },
+        {
+          "title": "Pet",
+          "value": "Cachorro"
+        },
+        {
+          "title": "Tipo",
+          "value": "Ração seca"
+        },
+        {
+          "title": "Apresentação",
+          "value": "Disponível em embalagem de 15kg e 20kg."
+        }
+      ],
       "rating": 4.5,
       "price": 149.9,
       "discountPrice": 170.4,
       "maxInterestFreeParcels": 2,
       "subscribersPrice": 70.2,
       "available": true,
-      "category": ["caminha", "gato", "filhote", "oferta", "avaliado"],
+      "category": [
+        "caminha",
+        "gato",
+        "filhote",
+        "oferta",
+        "avaliado"
+      ],
       "type": [
-        {"productCode": 14, "type": "Pequena"}
+        {
+          "productCode": 14,
+          "type": "Pequena"
+        }
       ]
     }
   ]

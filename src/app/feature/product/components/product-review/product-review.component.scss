@@ -1,0 +1,38 @@
+@import 'styles';
+
+.review-container{
+    @include flex(column, start, start);
+    grid-column: 1 / -1;
+
+    gap: 0.5rem;
+
+    .div-stars{
+        color: $secondary;
+    }
+    .div-review{
+        @include text(small);
+    }
+
+    .div-user-date{
+        @include flex(row, center, space-between);
+        width: 100%;
+
+        .div-user{
+            @include flex();
+            gap: 0.5rem;
+
+            .user-img{
+                border-radius: 2rem;
+                width: 2rem;
+                height: 2rem;
+            }
+            .user-name{
+                @include text(small);
+            }
+            
+        }
+        .date{
+            @include text(small);
+        }
+    }
+}

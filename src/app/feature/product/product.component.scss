@@ -11,6 +11,10 @@ main {
         gap: 1.5rem;
       }
     }
+
+    app-product-description,app-product-section, app-product-specifications,app-product-review-section {
+      @include subgrid();
+    }
   
     @media (max-width: 320px){
       row-gap: 1rem;
