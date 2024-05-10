@@ -1,10 +1,14 @@
 <main>
     <section class="commonSection">
-        <app-product-details class="commonSection-primary" [product]="product"></app-product-details>
+        <app-product-details 
+        (typeProductEmit)="getTypeProduct($event)"
+        class="commonSection-primary" [product]="product">
+        </app-product-details>
         <app-product-pricing 
-        (handleClickButtonBuyEmitter)="getHandleClickBuy()" 
-        (handleClickButtonCartEmitter)="getHandleClickCart()"
-        (valueAmountEmitter)="getValueAmount($event)"
-        class="commonSection-secondary" [product]="product"></app-product-pricing>
+            (handleClickButtonBuyEmitter)="getHandleClickBuy()"
+            (handleClickButtonCartEmitter)="getHandleClickCart()" 
+            (valueAmountEmitter)="getValueAmount($event)"
+            class="commonSection-secondary" [product]="product">
+        </app-product-pricing>
     </section>
 </main>

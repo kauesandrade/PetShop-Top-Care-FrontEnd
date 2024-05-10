@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faStar, faComment, faHeart, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartR } from '@fortawesome/free-regular-svg-icons';
 import { TypeProduct } from 'src/app/shared/interfaces/type-product';
@@ -13,6 +13,8 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 export class ProductDetailsComponent implements OnInit {
 
   @Input() product?: Product;
+
+  @Output() typeProductEmit = new EventEmitter<TypeProduct>;
 
   faStar = faStar;
   faComment = faComment;
@@ -32,6 +34,8 @@ export class ProductDetailsComponent implements OnInit {
     this.dividerTypes();
     this.like = this.product?.favorite;
     this.like == true ? this.faHeart = faHeart : this.faHeart = faHeartR;
+    
+    this.typeProductEmit.emit(this.typeChoose);
   }
 
   dividerTypes() {
@@ -60,8 +64,8 @@ export class ProductDetailsComponent implements OnInit {
 
   chooseType(type: TypeProduct){
     if(type != this.typeChoose){
-      console.log(type);
       this.typeChoose = type;
+      this.typeProductEmit.emit(this.typeChoose);
     }
   }
 
