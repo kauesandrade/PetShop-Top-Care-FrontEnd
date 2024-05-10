@@ -6,6 +6,6 @@ import { UserModule } from '../user.module';
 @NgModule({
   exports: [DataComponent],
   declarations: [DataComponent],
-  imports: [CommonModule, UserModule],
+  imports: [CommonModule],
 })
 export class DataModule {}

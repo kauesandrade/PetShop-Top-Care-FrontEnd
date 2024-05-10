@@ -1,1 +1,7 @@
-<app-layout></app-layout>
+<app-layout>
+  <!-- <app-order-by></app-order-by> -->
+  <app-subscription-card
+    *ngFor="let product; in: user.subscriptions"
+    [product]="product"
+  ></app-subscription-card>
+</app-layout>

@@ -14,21 +14,32 @@ main {
     grid-column: 1 / -1;
     background-color: $white;
     border-radius: 1rem;
-    padding: 1rem;
-
-    @media (min-width: $desktop) {
-      grid-column: 2 / -2;
-    }
+    padding: 2rem;
+    row-gap: 1rem;
 
     .navigation-buttons {
-      @include subgrid();
-      grid-column: 2 / -2;
-      row-gap: 1rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 1rem;
+      @media (min-width: $tablet) {
+        @include subgrid();
+      }
+      @media (min-width: $desktop) {
+        @include flex($justify: space-between);
+        grid-column: 2 / -2;
+        flex-wrap: wrap;
+      }
       a {
         @include flex();
-        grid-column: 1 / -1;
         @media (min-width: $tablet) {
           grid-column: auto / span 2;
+          &:nth-child(odd) {
+            grid-column: 2 / span 2;
+          }
+        }
+        @media (min-width: $desktop) {
+          flex: 1;
         }
         padding: 1rem;
         border-radius: 1rem;
