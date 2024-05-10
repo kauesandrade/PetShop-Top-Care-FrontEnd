@@ -10,6 +10,7 @@ import { ProductPricingComponent } from './components/product-pricing/product-pr
 import { FormsModule } from '@angular/forms';
 import { ProductDescriptionComponent } from './components/product-description/product-description.component';
 import { ProductSpecificationsComponent } from './components/product-specifications/product-specifications.component';
+import { ProductReviewComponent } from './components/product-review/product-review.component';
 
 
 
@@ -21,7 +22,8 @@ import { ProductSpecificationsComponent } from './components/product-specificati
     ProductDetailsCarouselComponent,
     ProductPricingComponent,
     ProductDescriptionComponent,
-    ProductSpecificationsComponent
+    ProductSpecificationsComponent,
+    ProductReviewComponent
   ],
   imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule, FormsModule],
 })
