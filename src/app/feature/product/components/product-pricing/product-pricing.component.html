@@ -22,9 +22,9 @@
     <div class="div-buttons">
         <div class="div-button-input">
             <app-input-amount (valueEmitter)="getValueInput($event)" (errorValueEmitter)=" getErrorInputValue($event)"></app-input-amount>
-            <button appButton="secondary" class="btn-add-cart">Adicionar ao Carrinho</button>
+            <button appButton="secondary" class="btn-add-cart" (click)="emitHandleClickButtonCart()">Adicionar ao Carrinho</button>
         </div>
-        <button class="btn-buy" appButton="">Compre Agora</button>
+        <button class="btn-buy" (click)="emitHandleClickButtonBuy()" appButton="">Compre Agora</button>
     </div>
     <ng-container *ngIf="this.errorValue">
         <p class="error-amount">A quantidade de produtos solicitada é maior do que a disponível em estoque.</p>

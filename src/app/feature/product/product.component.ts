@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/shared/interfaces/product';
+import { TypeProduct } from 'src/app/shared/interfaces/type-product';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
@@ -11,21 +12,36 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 export class ProductComponent implements OnInit {
   
   product?: Product;
+  typeProduct?: TypeProduct;
   id?: any;
   category1: Array<string> = ["oferta"];
 
   constructor(private route: ActivatedRoute, private routing: Router, private productService: ProductService) { 
     this.id = this.route.snapshot.paramMap.get("id")?.replace("%20", " ");
     this.product = productService.findProduct(this.id);
-    console.log(this.product);
     this.verifyProduct();
   }
-
+  
   ngOnInit(): void {
   }
   
-  verifyProduct(){
-    if(!this.product){
+  getValueAmount(evt: number) {
+    console.log(evt)
+  }
+  getHandleClickCart() {
+    console.log("clickCart")
+    // this.routing.navigate(['/carrinho']);
+  }
+  getHandleClickBuy() {
+    console.log("clickBuy")
+  }
+  getTypeProduct(evt: TypeProduct) {
+    this.typeProduct = evt;
+    console.log(this.typeProduct)
+  }
+  
+  verifyProduct() {
+    if (!this.product) {
       this.routing.navigate(['/']);
     }
   }
