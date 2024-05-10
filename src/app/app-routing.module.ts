@@ -9,7 +9,12 @@ import { RegisterComponent } from './feature/register/register.component';
 import { LoginComponent } from './feature/login/login.component';
 import { SearchComponent } from './feature/search/search.component';
 import { CartComponent } from './feature/cart/cart.component';
+
 import { AuthGuard } from './core/guards/auth/auth.guard';
+import { DataComponent } from './feature/user/data/data.component';
+import { PetsComponent } from './feature/user/pets/pets.component';
+import { OrdersComponent } from './feature/user/orders/orders.component';
+import { SubscriptionsComponent } from './feature/user/subscriptions/subscriptions.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -36,8 +41,31 @@ const routes: Routes = [
   {
     path: 'perfil',
     title: 'Perfil | Top Care',
-    component: AboutUsComponent,
     canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'dados',
+        pathMatch: 'full',
+      },
+      {
+        path: 'dados',
+        component: DataComponent,
+      },
+      {
+        path: 'pets',
+        component: PetsComponent,
+      },
+      {
+        path: 'pedidos',
+        component: OrdersComponent,
+      },
+      {
+        path: 'assinaturas',
+        component: SubscriptionsComponent,
+      },
+    ],
   },
   {
     path: 'favoritos',

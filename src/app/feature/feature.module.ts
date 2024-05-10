@@ -9,6 +9,7 @@ import { RegisterModule } from './register/register.module';
 import { CartModule } from './cart/cart.module';
 import { ProductModule } from './product/product.module';
 import { SearchModule } from './search/search.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   exports: [
@@ -20,6 +21,7 @@ import { SearchModule } from './search/search.module';
     CartModule,
     ProductModule,
     SearchModule,
+    UserModule,
   ],
   declarations: [],
   imports: [CommonModule, FontAwesomeModule],
