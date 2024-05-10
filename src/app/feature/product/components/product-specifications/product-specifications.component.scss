@@ -22,11 +22,14 @@
             td{
                 @include text();
                 color: $gray2;
-                padding:1.25rem 0rem;
+                padding:1.25rem 0;
                 padding-left: 0.5rem;
+                @media(min-width: $mobile){
+                    padding-left: 10%;
+                }
                 
                 .td-title{
-                    @include text($weight: bold);
+                    @include text( $weight: bold);
                 }
             }
         }
