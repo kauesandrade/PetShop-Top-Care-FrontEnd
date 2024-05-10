@@ -23,9 +23,14 @@ export class ProductService {
     return this.product;
   }
 
+  addItemCart(){
+
+  }
+
   searchProducts(searchValue: string) {
     this.productList = [];
     productData.product.forEach((product) => {
+      // const productTitle = product.title +
       if (
         product.title
           .normalize('NFD')
