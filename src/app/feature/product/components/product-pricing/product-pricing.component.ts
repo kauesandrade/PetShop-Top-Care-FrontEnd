@@ -10,6 +10,19 @@ import { faCheck, faPercent } from '@fortawesome/free-solid-svg-icons';
 export class ProductPricingComponent implements OnInit{
   
   @Input() product?: Product
+  @Output() handleClickButtonBuyEmitter = new EventEmitter<void>;
+  @Output() handleClickButtonCartEmitter = new EventEmitter<void>;
+  @Output() valueAmountEmitter = new EventEmitter<number>;
+
+  emitHandleClickButtonBuy(){
+    this.handleClickButtonBuyEmitter.emit();
+    this.valueAmountEmitter.emit(this.valueAmount);
+  }
+
+  emitHandleClickButtonCart(){
+    this.handleClickButtonCartEmitter.emit();
+    this.valueAmountEmitter.emit(this.valueAmount);
+  }
 
   faCheck = faCheck;
   faPercent = faPercent;
