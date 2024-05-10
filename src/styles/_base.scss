@@ -193,7 +193,7 @@ body {
 }
 
 .embla__button--prev,
-.embla__button--next {
+.embla__button--next{
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -224,6 +224,33 @@ body {
 
 }
 
+.embla__button--down, 
+.embla__button--up{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $gray2;
+  min-width: 2rem;
+  min-height: 2rem;
+  outline-style: none;
+  border: 1px solid $gray2;
+  border-radius: 1rem;
+
+  &:hover {
+    box-shadow: 0 0 5px $gray3;
+    cursor: pointer;
+  }
+
+  fa-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    font-size: 1rem;
+    transform: rotate(90deg)
+  }
+}
+
 .embla__button--prev {
   grid-column: 1 / 1;
 }
@@ -233,24 +260,27 @@ body {
   left: 100%;
 }
 
-
 .commonSection{
   @include subgrid();
   grid-column: 1 / -1;
 
   &-primary{
+    @include subgrid();
     grid-column: 1 / span 8;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 0.5rem;
   }
-  &-secundary{
-    grid-column: 9 / -1;
+  &-secondary{
+    grid-column: 1 / -1;
+    @media(min-width: $desktop){
+      grid-column: 9 / -1;
+    }
     padding: 1rem;
     border-radius: 0.5rem;  
   }
 
   &-midLeft{
-    grid-column: 1 / span 6;
+    grid-column: 1 / 6;
     padding: 1rem 2rem;
     border-radius: 0.5rem;
   }
@@ -269,10 +299,10 @@ body {
 
   }
 
-  &-full, &-primary, &-secundary, &-midRight, &-midLeft {
-    &.subgrid{
+    &-full, &-primary, &-secondary, &-midRight, &-midLeft {
+      &.subgrid{
       @include subgrid();
-    }
+      }
     height: max-content;
     background-color: $white;
   }

@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./round-card.component.scss'],
 })
 export class RoundCardComponent {
-  @Input() imageSrc: string = '';
-  @Input() title: string = '';
+  @Input() imgSrc: string = '';
+  @Input() title?: string = '';
 }

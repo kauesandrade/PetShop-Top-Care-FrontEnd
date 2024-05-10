@@ -1,12 +1,13 @@
 @import "styles";
 
 .footer-copyright {
+  @include subgrid();
   @include text(small, regular);
-  color: $gray3;
-  text-align: center;
-  padding: 1rem;
+  padding: 1rem 0;
 
   p {
-    display: inline-block;
+    text-align: center;
+    color: $gray3;
+    grid-column: 1 / -1;
   }
 }

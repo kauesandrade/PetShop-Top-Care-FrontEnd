@@ -9,16 +9,19 @@
   @media (min-width: $tablet) {
     grid-template-columns: repeat(6, minmax(auto, 5rem));
     column-gap: 2rem;
+    padding: 0;
   }
 
   @media (min-width: $desktop) {
     grid-template-columns: repeat(12, minmax(auto, 3.5rem));
     column-gap: 1.5rem;
+    padding: 0;
   }
 
   @media (min-width: $desktopHD) {
     grid-template-columns: repeat(12, minmax(auto, 4rem));
     column-gap: 2rem;
+    padding: 0;
   }
 }
 

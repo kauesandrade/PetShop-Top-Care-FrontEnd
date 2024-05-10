@@ -1,2 +1,12 @@
-<p>product works!</p>
-<p>{{id}}</p>
+<main>
+    <section class="commonSection">
+        <app-product-details class="commonSection-primary" [product]="product"></app-product-details>
+        <app-product-pricing class="commonSection-secondary" [product]="product"></app-product-pricing>
+    </section>
+    <app-product-section title="Itens Semelhantes" [category]="category1"></app-product-section>
+    <app-product-description [description]="product?.description"></app-product-description>
+    <app-product-specifications [specifications]="product?.specifications"></app-product-specifications>
+    <ng-container *ngIf="product">
+        <app-product-review-section [reviews]="product.reviews"></app-product-review-section>
+    </ng-container>    
+</main>

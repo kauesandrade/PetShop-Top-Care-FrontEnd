@@ -1,0 +1,24 @@
+@import 'styles';
+
+.commonSection-full{
+    @include flex(column, start, start);
+    gap: 0.5rem;
+
+    .title{
+        @include heading(h6);
+        color: $primary;
+        
+        @media(min-width: $tablet){
+            @include heading(h5);
+        }
+
+    }
+
+    .description{
+        @include text(small);
+
+        @media(min-width: $tablet){
+            @include text(normal);
+        }
+    }
+}

@@ -7,12 +7,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 import { CartModule } from './cart/cart.module';
+import { ProductModule } from './product/product.module';
 import { SearchComponent } from './search/search.component';
 
 @NgModule({
-  exports: [HomeModule, ContactModule, StoreModule, LoginModule, RegisterModule, CartModule],
+  exports: [HomeModule, ContactModule, StoreModule, LoginModule, RegisterModule, CartModule, ProductModule,],
   declarations: [
-  
     SearchComponent
   ],
   imports: [CommonModule, FontAwesomeModule],

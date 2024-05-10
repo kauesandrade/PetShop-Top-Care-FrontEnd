@@ -3,7 +3,7 @@
     <fa-icon [icon]="faHeart" class="favorite-heart"></fa-icon>
   </ng-container>
   <a href="/produto/{{product.title}}" class="redirect-product">
-    <img [src]="product.imgSrc" alt="Product image" class="product-image" />
+    <img [src]="product.images[0]" alt="Product image" class="product-image" />
     <p class="product-title">{{ product.title }}</p>
   </a>
   <div class="brand-rating">
@@ -17,11 +17,11 @@
     <div class="pricing-values">
       <ng-container *ngIf="product.discountPrice !== 0">
         <p class="price">
-          {{ product.discountPrice | currency : "BRL" : "symbol" : "1.2-2" }}
+          {{ product.price | currency : "BRL" : "symbol" : "1.2-2" }}
         </p>
       </ng-container>
       <p [ngClass]="{ 'before-discount': product.discountPrice !== 0 }">
-        {{ product.price | currency : "BRL" : "symbol" : "1.2-2" }}
+        {{ product.discountPrice | currency : "BRL" : "symbol" : "1.2-2" }}
       </p>
     </div>
     <ng-container *ngIf="product!.maxInterestFreeParcels > 1">
