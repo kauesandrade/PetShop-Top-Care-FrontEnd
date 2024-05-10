@@ -97,12 +97,19 @@
       ],
       "reviews": [
         {
-        "user": "kaue Andrade",
+        "user": "Kauê Andrade",
         "icon": "../../../../../assets/images/userIcon.png",
         "review": "Ameiiiiii!!",
         "rating": 5,
         "datePost": "20/03/24"
-        }
+        },
+        {
+          "user": "Bernardeira",
+          "icon": "../../../../../assets/images/TopCareLogo.png",
+          "review": "Gostei muito!!",
+          "rating": 4,
+          "datePost": "17/03/24"
+          }
       ],
       "type": [
         {

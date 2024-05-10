@@ -1,0 +1,6 @@
+<div class="div-review-section">
+    <h4 class="title">Avaliação</h4>
+    <ng-container *ngFor="let review of reviews">
+        <app-product-review [review]="review"></app-product-review>
+    </ng-container>
+</div>

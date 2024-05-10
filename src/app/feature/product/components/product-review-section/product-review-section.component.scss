@@ -1,0 +1,15 @@
+@import 'styles';
+
+.div-review-section{
+    @include subgrid();
+    grid-column: 1 / -1;
+    row-gap: 1rem;
+
+    .title{
+        color: $primary;
+    }
+
+    app-product-review{
+        grid-column: 1 / -1;
+    }
+}
