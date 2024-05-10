@@ -6,6 +6,7 @@ import { PetsComponent } from './pets/pets.component';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { RouterModule } from '@angular/router';
+import { CoreModule } from 'src/app/core/core.module';
 
 const Components = [
   DataComponent,
@@ -17,6 +18,6 @@ const Components = [
 @NgModule({
   exports: [...Components],
   declarations: [...Components, LayoutComponent],
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, CoreModule],
 })
 export class UserModule {}
