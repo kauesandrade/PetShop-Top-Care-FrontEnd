@@ -1,3 +1,4 @@
+import { SpecificationProduct } from './specification-product';
 import { TypeProduct } from './type-product';
 
 export interface Product {
@@ -6,6 +7,7 @@ export interface Product {
   title: string;
   littleDescription: string,
   description: string,
+  specifications: Array<SpecificationProduct> 
   brand: string;
   rating: number;
   price: number;

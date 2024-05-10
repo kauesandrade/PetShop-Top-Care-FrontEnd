@@ -12,6 +12,7 @@ export class ProductComponent implements OnInit {
   
   product?: Product;
   id?: any;
+  category1: Array<string> = ["oferta"];
 
   constructor(private route: ActivatedRoute, private routing: Router, private productService: ProductService) { 
     this.id = this.route.snapshot.paramMap.get("id")?.replace("%20", " ");

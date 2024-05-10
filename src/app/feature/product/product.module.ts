@@ -9,6 +9,7 @@ import { ProductDetailsCarouselComponent } from './components/product-details-ca
 import { ProductPricingComponent } from './components/product-pricing/product-pricing.component';
 import { FormsModule } from '@angular/forms';
 import { ProductDescriptionComponent } from './components/product-description/product-description.component';
+import { ProductSpecificationsComponent } from './components/product-specifications/product-specifications.component';
 
 
 
@@ -19,7 +20,8 @@ import { ProductDescriptionComponent } from './components/product-description/pr
     ProductDetailsComponent,
     ProductDetailsCarouselComponent,
     ProductPricingComponent,
-    ProductDescriptionComponent
+    ProductDescriptionComponent,
+    ProductSpecificationsComponent
   ],
   imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule, FormsModule],
 })
