@@ -14,7 +14,7 @@ export class ProductService {
 
   product?: Product;
 
-  constructor() {}
+  constructor() { }
 
   findProduct(code: number) {
     for (const productFind of productData.product) {
@@ -36,7 +36,7 @@ export class ProductService {
     return this.product;
   }
 
-  addItemCart(product: ProductVariant, amount: number){
+  addItemCart(product: ProductVariant, amount: number) {
     const newItem: Item = {
       product,
       amount
@@ -45,13 +45,13 @@ export class ProductService {
     const itensList: Array<Item> = JSON.parse(localStorage.getItem('itensCart') || '""') == "" ? [] : JSON.parse(localStorage.getItem('itensCart') || '""');
     let found: boolean = false;
 
-    itensList.forEach((product) =>{
-      if(product.product.variantCode == newItem.product.variantCode && product.product.code == newItem.product.code){
+    itensList.forEach((product) => {
+      if (product.product.variantCode == newItem.product.variantCode && product.product.code == newItem.product.code) {
         product.amount = (product.amount + newItem.amount) > 100 ? product.amount = 100 : product.amount + newItem.amount;
         found = true;
       }
     })
-    if(!found){
+    if (!found) {
       itensList.push(newItem);
     }
     localStorage.setItem('itensCart', JSON.stringify(itensList));
@@ -59,33 +59,37 @@ export class ProductService {
 
   searchProducts(searchValue: string) {
     this.productList = [];
+
+    const searchValueList: Array<string> = searchValue.split(" ");
     productData.product.forEach((product) => {
-      // const productTitle = product.title +
-      if (
-        product.title
+      // const productTitle = product.title + 
+
+      searchValueList.forEach((searchValueFind) => {
+        if (product.title
           .normalize('NFD')
           .replace(/[\u0300-\u036f]/g, '')
           .toLowerCase()
           .includes(
-            searchValue
+            searchValueFind
               .normalize('NFD')
               .replace(/[\u0300-\u036f]/g, '')
-              .toLowerCase()
-          )
-      ) {
-        this.productList.push(this.getFirstProductVariant(product));
-      }
+              .toLowerCase()) && !this.productList.includes(this.getFirstProductVariant(product))) {
+          this.productList.push(this.getFirstProductVariant(product));
+        }
+      })
+
+
     });
     return this.productList;
   }
 
 
-  getAllProductVariants(product: Product){
+  getAllProductVariants(product: Product) {
     this.productVariantsList = []
     const arrayProductVariants: ProductVariant[] = []
 
     for (const variant of productVariantData.variant) {
-      if(product.code == variant.code){
+      if (product.code == variant.code) {
         arrayProductVariants.push(variant);
       }
     }
@@ -98,13 +102,13 @@ export class ProductService {
   }
 
 
-  
-  getFirstProductVariant(product: Product){
+
+  getFirstProductVariant(product: Product) {
     return this.getAllProductVariants(product)[0];
   }
 
 
-  filterProductOfCategory(categoryArray: Array<string>){
+  filterProductOfCategory(categoryArray: Array<string>) {
 
     const productFilterList: Array<ProductVariant> = []
 
@@ -138,7 +142,7 @@ export class ProductService {
     return this.productList;
   }
 
-  getProductOfCategoryWithoutOfProduct(product: Product | ProductVariant){
+  getProductOfCategoryWithoutOfProduct(product: Product | ProductVariant) {
     this.productList = [];
     for (const productFind of productData.product) {
       let add = 0;
@@ -148,7 +152,7 @@ export class ProductService {
           add++;
         }
       });
-      if (add>=3) {
+      if (add >= 3) {
         this.productList.push(this.getFirstProductVariant(productFind));
       }
     }
@@ -159,7 +163,7 @@ export class ProductService {
 
 
 
-  
+
   orderOf(order: string) {
     let arrayProduct: Array<ProductVariant> = [];
 
@@ -193,7 +197,7 @@ export class ProductService {
 
       case 'Nome (Z-A)': {
         arrayProduct = [...this.productList].sort((p1, p2) => {
-          return this.orderOfPlus(this.getFirstProductVariant(p1).price,this.getFirstProductVariant(p2).price);
+          return this.orderOfPlus(this.getFirstProductVariant(p1).price, this.getFirstProductVariant(p2).price);
         });
         break;
       }

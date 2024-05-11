@@ -8,12 +8,11 @@ import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 import { CartModule } from './cart/cart.module';
 import { ProductModule } from './product/product.module';
-import { SearchComponent } from './search/search.component';
+import { SearchModule } from './search/search.module';
 
 @NgModule({
-  exports: [HomeModule, ContactModule, StoreModule, LoginModule, RegisterModule, CartModule, ProductModule,],
+    exports: [HomeModule, ContactModule, StoreModule, LoginModule, RegisterModule, CartModule, ProductModule, SearchModule],
   declarations: [
-    SearchComponent
   ],
   imports: [CommonModule, FontAwesomeModule],
 })

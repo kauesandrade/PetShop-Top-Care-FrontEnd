@@ -13,6 +13,7 @@ import { InputDirective } from './directives/Inputs/input.directive';
 import { HeaderCategoriesComponent } from './header/header-categories/header-categories.component';
 import { HeaderMainSimpleComponent } from './header/header-main/header-main-simple/header-main-simple.component';
 import { HeaderMainFullComponent } from './header/header-main/header-main-full/header-main-full.component';
+import { FormsModule } from '@angular/forms';
 
 const Components = [
   ButtonDirective,
@@ -33,6 +34,6 @@ const Components = [
     HeaderMainSimpleComponent,
     HeaderMainFullComponent,
   ],
-  imports: [CommonModule, RouterModule, FontAwesomeModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule, FormsModule],
 })
 export class CoreModule {}
