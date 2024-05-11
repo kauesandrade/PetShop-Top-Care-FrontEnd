@@ -5,6 +5,7 @@ import {
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import { ProductVariant } from 'src/app/shared/interfaces/product-variant';
+import { ProductService } from '../services/product/product.service';
 
 @Component({
   selector: 'app-product-card',
@@ -15,13 +16,17 @@ export class ProductCardComponent {
   faHeart = faHeart;
   faStar = faStar;
   faShoppingCart = faShoppingCart;
-
+  
   @Input() product!: ProductVariant;
   
-  constructor() {
+  constructor(private productService: ProductService) {
   }
-
-  onClick() {
-    console.log('clicked');
+  
+  handleClickCart() {
+    this.productService.addItemCart(this.product, 1);
+    // this.routing.navigate(['/carrinho']);
+  }
+  handleClickBuy() {
+  throw new Error('Method not implemented.');
   }
 }

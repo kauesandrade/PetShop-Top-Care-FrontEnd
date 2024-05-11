@@ -74,7 +74,81 @@
         "cachorro",
         "avaliado"
       ]
+    },
+    {
+      "code": 300,
+      "favorite": false,
+      "title": "Caminha iglu para Gatos",
+      "littleDescription": "Caminha iglu para Gatos - legal",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
+      "brand": "Pet Iglu",
+      "specifications": [
+        {
+          "title": "Idade",
+          "value": "Filhotes/Adultos"
+        },
+        {
+          "title": "Linha",
+          "value": "Pet Iglu"
+        },
+        {
+          "title": "Pet",
+          "value": "Gato"
+        },
+        {
+          "title": "Tipo",
+          "value": "Caminha"
+        },
+        {
+          "title": "Apresentação",
+          "value": "Disponível em apenas um tamanho."
+        }
+      ],
+      "rating": 4.5,
+      "category": [
+        "caminha",
+        "gato",
+        "filhote",
+        "oferta",
+        "avaliado"
+      ]
+    },
+    {
+      "code": 400,
+      "favorite": false,
+      "title": "Brinquedo Cachorro Osso Halteres Pata macio",
+      "littleDescription": "Osso Halteres Pata macio",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
+      "brand": "Ideia Store",
+      "specifications": [
+        {
+          "title": "Idade",
+          "value": "Filhotes/Adultos"
+        },
+        {
+          "title": "Linha",
+          "value": "Ideia Store"
+        },
+        {
+          "title": "Pet",
+          "value": "Cachorro"
+        },
+        {
+          "title": "Tipo",
+          "value": "Brinquedo"
+        },
+        {
+          "title": "Apresentação",
+          "value": "Disponível em tamanho grande, médio e pequeno."
+        }
+      ],
+      "rating": 3,
+      "category": [
+        "brinquedo",
+        "cachorro",
+        "osso",
+        "oferta"
+      ]
     }
-
   ]
 }
