@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../interfaces/product';
+import { ProductVariant } from '../../interfaces/product-variant';
 import productData from '../../../../assets/JsonFiles/products.json';
-import { TypeProduct } from '../../interfaces/type-product';
+import productVariantData from '../../../../assets/JsonFiles/productVariant.json'
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  productList: Array<Product> = [];
+  productVariantsList: Array<ProductVariant> = [];
+  productList: Array<ProductVariant> = [];
+
   product?: Product;
-  productType?: TypeProduct;
 
   constructor() {}
 
-  findProduct(id: any) {
+  findProduct(code: number) {
     for (const productFind of productData.product) {
-      if (productFind.title == id) {
+      if (productFind.code == code) {
         this.product = productFind;
         break;
       }
@@ -23,9 +25,9 @@ export class ProductService {
     return this.product;
   }
 
-  addItemCart(){
+  // addItemCart(){
 
-  }
+  // }
 
   searchProducts(searchValue: string) {
     this.productList = [];
@@ -43,18 +45,42 @@ export class ProductService {
               .toLowerCase()
           )
       ) {
-        this.productList?.push(product);
+        this.productList.push(this.getFirstProductVariant(product));
       }
     });
     return this.productList;
   }
 
-  getAllProduct() {
-    this.productList = productData.product;
-    return this.productList;
+
+  getAllProductVariants(product: Product){
+    this.productVariantsList = []
+    const arrayProductVariants: ProductVariant[] = []
+
+    for (const variant of productVariantData.variant) {
+      if(product.code == variant.code){
+        arrayProductVariants.push(variant);
+      }
+    }
+
+    this.productVariantsList = arrayProductVariants.sort((p1, p2) => {
+      return p1.variant.localeCompare(p2.variant);
+    });
+
+    return this.productVariantsList;
   }
 
-  getProductOfCategory(categoryArray: Array<string>) {
+  getFirstProductVariant(product: Product){
+    return this.getAllProductVariants(product)[0];
+  }
+
+
+
+
+
+
+
+
+  getProductsOfCategory(categoryArray: Array<string>) {
     this.productList = [];
     for (const productFind of productData.product) {
       let isAll = true;
@@ -70,6 +96,8 @@ export class ProductService {
     return this.productList;
   }
 
+
+
   orderOf(order: string) {
     let arrayProduct: Array<Product> = [];
 
@@ -80,17 +108,17 @@ export class ProductService {
     switch (order) {
       case 'Maior Preço': {
         arrayProduct = [...this.productList].sort((p1, p2) => {
-          return this.orderOfPlus(p1.price, p2.price);
+          return this.orderOfPlus(this.getAllProductVariants(p1)[0].price, this.getAllProductVariants(p2)[0].price);
         });
         break;
       }
 
       case 'Menor Preço': {
         arrayProduct = [...this.productList].sort((p1, p2) => {
-          if (p1.price > p2.price) {
+          if (this.getAllProductVariants(p1)[0].price > this.getAllProductVariants(p2)[0].price) {
             return 1;
           }
-          if (p1.price < p2.price) {
+          if (this.getAllProductVariants(p1)[0].price < this.getAllProductVariants(p2)[0].price) {
             return -1;
           }
           return 0;
@@ -107,7 +135,7 @@ export class ProductService {
 
       case 'Nome (Z-A)': {
         arrayProduct = [...this.productList].sort((p1, p2) => {
-          return this.orderOfPlus(p1.title, p2.title);
+          return this.orderOfPlus(this.getAllProductVariants(p1)[0].price,this.getAllProductVariants(p2)[0].price);
         });
         break;
       }
@@ -122,8 +150,8 @@ export class ProductService {
       case 'Maiores Descontos': {
         arrayProduct = [...this.productList].sort((p1, p2) => {
           return this.orderOfPlus(
-            p1.price - p1.discountPrice,
-            p2.price - p2.discountPrice
+            this.getAllProductVariants(p1)[0].discountPrice - this.getAllProductVariants(p1)[0].price,
+            this.getAllProductVariants(p2)[0].discountPrice - this.getAllProductVariants(p2)[0].price
           );
         });
         break;

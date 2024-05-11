@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { Product } from 'src/app/shared/interfaces/product';
 import { faCheck, faPercent } from '@fortawesome/free-solid-svg-icons';
+import { ProductVariant } from 'src/app/shared/interfaces/product-variant';
 
 @Component({
   selector: 'app-product-pricing',
@@ -9,7 +9,7 @@ import { faCheck, faPercent } from '@fortawesome/free-solid-svg-icons';
 })
 export class ProductPricingComponent implements OnInit{
   
-  @Input() product?: Product
+  @Input() productVariant!: ProductVariant
   @Output() handleClickButtonBuyEmitter = new EventEmitter<void>;
   @Output() handleClickButtonCartEmitter = new EventEmitter<void>;
   @Output() valueAmountEmitter = new EventEmitter<number>;

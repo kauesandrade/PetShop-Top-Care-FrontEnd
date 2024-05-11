@@ -1,20 +1,29 @@
 <main>
     <section class="commonSection">
-        <app-product-details 
-        (typeProductEmit)="getTypeProduct($event)"
-        class="commonSection-primary" [product]="product">
+
+        <app-product-details
+        [productVariants] = "productVariants"
+        (productVariantstEmit)="getProductVariant($event)"
+        class="commonSection-primary">
         </app-product-details>
+
         <app-product-pricing 
             (handleClickButtonBuyEmitter)="getHandleClickBuy()"
             (handleClickButtonCartEmitter)="getHandleClickCart()" 
             (valueAmountEmitter)="getValueAmount($event)"
-            class="commonSection-secondary" [product]="product">
+            class="commonSection-secondary" [productVariant]="productVariant">
         </app-product-pricing>
+
     </section>
+
     <app-product-section title="Itens Semelhantes" [category]="category1"></app-product-section>
-    <app-product-description [description]="product?.description"></app-product-description>
-    <app-product-specifications [specifications]="product?.specifications"></app-product-specifications>
-    <ng-container *ngIf="product">
-        <app-product-review-section [reviews]="product.reviews"></app-product-review-section>
+
+    <app-product-description [description]="productVariant.description"></app-product-description>
+
+    <app-product-specifications [specifications]="productVariant.specifications"></app-product-specifications>
+
+    <ng-container *ngIf="productVariant.reviews">
+        <app-product-review-section [reviews]="productVariant.reviews"></app-product-review-section>
     </ng-container>    
+
 </main>

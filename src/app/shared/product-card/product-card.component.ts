@@ -4,7 +4,7 @@ import {
   faShoppingCart,
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
-import { Product } from '../interfaces/product';
+import { ProductVariant } from 'src/app/shared/interfaces/product-variant';
 
 @Component({
   selector: 'app-product-card',
@@ -16,7 +16,7 @@ export class ProductCardComponent {
   faStar = faStar;
   faShoppingCart = faShoppingCart;
 
-  @Input() product!: Product;
+  @Input() product!: ProductVariant;
   
   constructor() {
   }
