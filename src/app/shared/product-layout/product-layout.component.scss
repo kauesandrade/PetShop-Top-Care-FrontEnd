@@ -1,0 +1,13 @@
+@import 'styles';
+
+div{
+    grid-column: 1 / -1;
+    display: inline-flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    row-gap: 1.5rem;
+
+    @media(min-width: $mobile){
+        justify-content: space-between;
+    }
+}
