@@ -3,6 +3,7 @@ import { Product } from '../../interfaces/product';
 import { ProductVariant } from '../../interfaces/product-variant';
 import productData from '../../../../assets/JsonFiles/products.json';
 import productVariantData from '../../../../assets/JsonFiles/productVariant.json'
+import { Item } from './../../interfaces/item';
 
 @Injectable({
   providedIn: 'root',
@@ -35,9 +36,26 @@ export class ProductService {
     return this.product;
   }
 
-  // addItemCart(){
+  addItemCart(product: ProductVariant, amount: number){
+    const newItem: Item = {
+      product,
+      amount
+    }
 
-  // }
+    const itensList: Array<Item> = JSON.parse(localStorage.getItem('itensCart') || '""') == "" ? [] : JSON.parse(localStorage.getItem('itensCart') || '""');
+
+    let found: boolean = false;
+    itensList.forEach((product) =>{
+      if(product.product.variantCode == newItem.product.variantCode && product.product.code == newItem.product.code){
+        product.amount = (product.amount + newItem.amount) > 100 ? product.amount = 100 : product.amount + newItem.amount;
+        found = true;
+      }
+    })
+    if(!found){
+      itensList.push(newItem);
+    }
+    localStorage.setItem('itensCart', JSON.stringify(itensList));
+  }
 
   searchProducts(searchValue: string) {
     this.productList = [];

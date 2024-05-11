@@ -16,29 +16,28 @@ export class ProductPricingComponent implements OnInit{
 
   emitHandleClickButtonBuy(){
     this.handleClickButtonBuyEmitter.emit();
-    this.valueAmountEmitter.emit(this.valueAmount);
   }
-
+  
   emitHandleClickButtonCart(){
     this.handleClickButtonCartEmitter.emit();
-    this.valueAmountEmitter.emit(this.valueAmount);
   }
-
+  
   faCheck = faCheck;
   faPercent = faPercent;
-
+  
   valueAmount: number = 1;
   errorValue: boolean = false
-
+  
   constructor() { }
-
+  
   ngOnInit(): void {
   }
-
+  
   getValueInput(evt: any){
     this.valueAmount = evt;
+    this.valueAmountEmitter.emit(this.valueAmount);
   }
-
+  
   getErrorInputValue(evt: any){
     this.errorValue = evt;
   }

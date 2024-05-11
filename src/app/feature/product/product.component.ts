@@ -14,6 +14,7 @@ export class ProductComponent implements OnInit {
   product?: Product;
   productVariants!: Array<ProductVariant>;
   productVariant!: ProductVariant;
+  amount: number = 1;
 
 
   id?: any;
@@ -34,11 +35,13 @@ export class ProductComponent implements OnInit {
   }
   
   getValueAmount(evt: number) {
-    console.log(evt)
+    this.amount = evt;
   }
   
   getHandleClickCart() {
-    console.log("clickCart")
+    this.productService.addItemCart(this.productVariant, this.amount)
+    console.log("clickCart");
+
     // this.routing.navigate(['/carrinho']);
   }
   getHandleClickBuy() {
