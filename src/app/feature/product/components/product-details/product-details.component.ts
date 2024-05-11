@@ -31,25 +31,9 @@ export class ProductDetailsComponent implements OnInit {
     this.productVariant = this.productVariants[0];
     this.like = this.productVariants[0].favorite;
     this.like == true ? this.faHeart = faHeart : this.faHeart = faHeartR;
-    
-    // this.dividerTypes();
-    
     this.productVariantstEmit.emit(this.productVariant);
   }
 
-  // dividerTypes() {
-  //   let divType: Array<ProductVariant> = [];
-  //   let length = this.product?.type.length == undefined ? 0 : this.product.type.length;
-
-  //   for (let i = 0; i < length; i += 3) {
-  //     this.product?.type[i] != null ? divType.push(this.product?.type[i]) : [];
-  //     this.product?.type[i + 1] != null ? divType.push(this.product?.type[i + 1]) : [];
-  //     this.product?.type[i + 2] != null ? divType.push(this.product?.type[i + 2]) : [];
-  //     this.typesDivider?.push(divType);
-  //     divType = [];
-  //   }
-
-  // }
 
   likeProduct() {
     if (this.like) {

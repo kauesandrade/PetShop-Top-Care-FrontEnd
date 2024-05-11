@@ -111,16 +111,16 @@
 
         }
 
-        .divTypesOfProducts {
+        .divVariantsOfProducts {
             @include flex(column, start, start);
             gap: 1rem;  
 
-            div {
-                @include flex(row, start, start);
-                gap: 1rem;
+            .divVariants {
+                display: inline-flexbox;
 
-                .btnType {
+                .btnVariant {
                     cursor: pointer;
+                    margin: 0 0.5rem 0.5rem 0;
                     &.choose {
                         background-color: $primary;
                         color: $white;

@@ -31,24 +31,22 @@
             <fa-icon class="icon" [icon]="faShare"></fa-icon>
         </button>
     </div>
-    <ng-container *ngIf="typesDivider?.length">
-        <div class="divTypesOfProducts">
+        <div class="divVariantsOfProducts">
             <p>{{typeOfProducts}}</p>
-            <div>
+            <div class="divVariants">
                 <ng-container *ngFor="let variant of productVariants">
 
                     <ng-container *ngIf="variant === productVariant; then ifBlock else elseBlock"></ng-container>
 
                     <ng-template #ifBlock>
-                        <button class="btnvariant choose" (click)="chooseVariant(variant)">{{variant.variant}}</button>
+                        <button class="btnVariant choose" (click)="chooseVariant(variant)">{{variant.variant}}</button>
                     </ng-template>
 
                     <ng-template #elseBlock>
-                        <button class="btnvariant" (click)="chooseVariant(variant)">{{variant.variant}}</button>
+                        <button class="btnVariant" (click)="chooseVariant(variant)">{{variant.variant}}</button>
                     </ng-template>
 
                 </ng-container>
             </div>
         </div>
-    </ng-container>
 </div>

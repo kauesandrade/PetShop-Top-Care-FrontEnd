@@ -8,8 +8,8 @@ import productVariantData from '../../../../assets/JsonFiles/productVariant.json
   providedIn: 'root',
 })
 export class ProductService {
-  productVariantsList: Array<ProductVariant> = [];
   productList: Array<ProductVariant> = [];
+  productVariantsList: Array<ProductVariant> = [];
 
   product?: Product;
 
@@ -18,6 +18,16 @@ export class ProductService {
   findProduct(code: number) {
     for (const productFind of productData.product) {
       if (productFind.code == code) {
+        this.product = productFind;
+        break;
+      }
+    }
+    return this.product;
+  }
+
+  findProductByUrl(url: string) {
+    for (const productFind of productData.product) {
+      if (productFind.title == url) {
         this.product = productFind;
         break;
       }
@@ -69,12 +79,17 @@ export class ProductService {
     return this.productVariantsList;
   }
 
+
+  
   getFirstProductVariant(product: Product){
     return this.getAllProductVariants(product)[0];
   }
 
 
   filterProductOfCategory(categoryArray: Array<string>){
+
+    const productFilterList: Array<ProductVariant> = []
+
     for (const productFind of this.productList) {
       let isAll = true;
       categoryArray.sort().forEach((category) => {
@@ -83,15 +98,11 @@ export class ProductService {
         }
       });
       if (isAll) {
-        this.productList.push(productFind);
+        productFilterList.push(this.getFirstProductVariant(productFind));
       }
     }
-    return this.productList;
+    return productFilterList;
   }
-
-
-
-
 
   getProductsOfCategory(categoryArray: Array<string>) {
     this.productList = [];
@@ -103,7 +114,23 @@ export class ProductService {
         }
       });
       if (isAll) {
-        this.productList.push(productFind);
+        this.productList.push(this.getFirstProductVariant(productFind));
+      }
+    }
+    return this.productList;
+  }
+
+  getProductOfCategoryWithoutOfProduct(product: Product | ProductVariant){
+    this.productList = [];
+    for (const productFind of productData.product) {
+      let isAll = true;
+      product.category.sort().forEach((category) => {
+        if (!productFind.category.includes(category) || productFind.code == product.code) {
+          isAll = false;
+        }
+      });
+      if (isAll) {
+        this.productList.push(this.getFirstProductVariant(productFind));
       }
     }
     return this.productList;
@@ -111,12 +138,11 @@ export class ProductService {
 
 
 
-  orderOf(order: string) {
-    let arrayProduct: Array<Product> = [];
 
-    if (!this.productList.length) {
-      this.productList = productData.product;
-    }
+
+  
+  orderOf(order: string) {
+    let arrayProduct: Array<ProductVariant> = [];
 
     switch (order) {
       case 'Maior Preço': {
@@ -128,10 +154,10 @@ export class ProductService {
 
       case 'Menor Preço': {
         arrayProduct = [...this.productList].sort((p1, p2) => {
-          if (this.getAllProductVariants(p1)[0].price > this.getAllProductVariants(p2)[0].price) {
+          if (this.getFirstProductVariant(p1).price > this.getFirstProductVariant(p2).price) {
             return 1;
           }
-          if (this.getAllProductVariants(p1)[0].price < this.getAllProductVariants(p2)[0].price) {
+          if (this.getFirstProductVariant(p1).price < this.getFirstProductVariant(p2).price) {
             return -1;
           }
           return 0;
@@ -148,7 +174,7 @@ export class ProductService {
 
       case 'Nome (Z-A)': {
         arrayProduct = [...this.productList].sort((p1, p2) => {
-          return this.orderOfPlus(this.getAllProductVariants(p1)[0].price,this.getAllProductVariants(p2)[0].price);
+          return this.orderOfPlus(this.getFirstProductVariant(p1).price,this.getFirstProductVariant(p2).price);
         });
         break;
       }
@@ -163,8 +189,8 @@ export class ProductService {
       case 'Maiores Descontos': {
         arrayProduct = [...this.productList].sort((p1, p2) => {
           return this.orderOfPlus(
-            this.getAllProductVariants(p1)[0].discountPrice - this.getAllProductVariants(p1)[0].price,
-            this.getAllProductVariants(p2)[0].discountPrice - this.getAllProductVariants(p2)[0].price
+            this.getFirstProductVariant(p1).discountPrice - this.getFirstProductVariant(p1).price,
+            this.getFirstProductVariant(p2).discountPrice - this.getFirstProductVariant(p2).price
           );
         });
         break;

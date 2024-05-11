@@ -17,15 +17,14 @@ export class ProductComponent implements OnInit {
 
 
   id?: any;
-  category1: Array<string> = ["oferta"];
 
   constructor(private route: ActivatedRoute, private routing: Router, private productService: ProductService) { 
     this.id = this.route.snapshot.paramMap.get("id")?.replace("%20", " ");
-    this.product = productService.findProduct(this.id);
+    this.product = productService.findProductByUrl(this.id);
 
     if(this.product){
-      this.productVariants = productService.getVariants(this.product);
-      this.productVariant = this.productVariants[0];
+      this.productVariants = productService.getAllProductVariants(this.product);
+      this.productVariant = productService.getFirstProductVariant(this.product);
     }
 
     this.verifyProduct();
