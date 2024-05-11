@@ -43,8 +43,8 @@ export class ProductService {
     }
 
     const itensList: Array<Item> = JSON.parse(localStorage.getItem('itensCart') || '""') == "" ? [] : JSON.parse(localStorage.getItem('itensCart') || '""');
-
     let found: boolean = false;
+
     itensList.forEach((product) =>{
       if(product.product.variantCode == newItem.product.variantCode && product.product.code == newItem.product.code){
         product.amount = (product.amount + newItem.amount) > 100 ? product.amount = 100 : product.amount + newItem.amount;
@@ -141,13 +141,14 @@ export class ProductService {
   getProductOfCategoryWithoutOfProduct(product: Product | ProductVariant){
     this.productList = [];
     for (const productFind of productData.product) {
-      let isAll = true;
+      let add = 0;
+
       product.category.sort().forEach((category) => {
-        if (!productFind.category.includes(category) || productFind.code == product.code) {
-          isAll = false;
+        if (productFind.category.includes(category) && productFind.code != product.code) {
+          add++;
         }
       });
-      if (isAll) {
+      if (add>=3) {
         this.productList.push(this.getFirstProductVariant(productFind));
       }
     }

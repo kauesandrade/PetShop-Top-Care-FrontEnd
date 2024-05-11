@@ -12,7 +12,10 @@ export class ProductSectionComponent implements OnInit {
   @Input() title: string = '';
   @Input() category?: Array<string>;
   @Input() product?: Product | ProductVariant;
+  @Input() divider: boolean = false;
   productList!: Array<ProductVariant>;
+
+
 
   constructor(private productService: ProductService) {}
 
