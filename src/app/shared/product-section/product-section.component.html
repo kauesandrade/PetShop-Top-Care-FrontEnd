@@ -1,4 +1,4 @@
-<section class="product-section">
+<section class="product-section" *ngIf="productList.length>0">
   <h4 class="product-section-title">{{ title }}</h4>
   <div class="product-section-cards">
     <app-product-carousel [productList]="productList"></app-product-carousel>

@@ -1,25 +1,23 @@
-<ng-container *ngIf="review">
-    <div class="review-container commonSection-full">
-        <div class="div-stars">
-            <ng-container *ngFor="let starValue of starsValue">
-                <ng-container *ngIf="starValue; then ifTrue else elseTrue"></ng-container>
-                <ng-template #ifTrue>
-                    <fa-icon [icon]="faStarSolid"></fa-icon>
-                </ng-template>
-                <ng-template #elseTrue>
-                    <fa-icon [icon]="faStarRegular"></fa-icon>
-                </ng-template>
-            </ng-container>
-        </div>
-        <div class="div-review">
-            <p class="review">{{review.review}}</p>
-        </div>
-        <div class="div-user-date">
-            <div class="div-user">
-                <img class="user-img" src={{review.icon}} alt="">
-                <span class="user-name">{{review.user}}</span>
-            </div>
-            <span class="date">Data: {{review.datePost}}</span>
-        </div>
+<div class="review-container commonSection-full">
+    <div class="div-stars">
+        <ng-container *ngFor="let starValue of starsValue">
+            <ng-container *ngIf="starValue; then ifTrue else elseTrue"></ng-container>
+            <ng-template #ifTrue>
+                <fa-icon [icon]="faStarSolid"></fa-icon>
+            </ng-template>
+            <ng-template #elseTrue>
+                <fa-icon [icon]="faStarRegular"></fa-icon>
+            </ng-template>
+        </ng-container>
     </div>
-</ng-container>
+    <div class="div-review">
+        <p class="review">{{review.review}}</p>
+    </div>
+    <div class="div-user-date">
+        <div class="div-user">
+            <img class="user-img" src={{review.icon}} alt="">
+            <span class="user-name">{{review.user}}</span>
+        </div>
+        <span class="date">Data: {{review.datePost}}</span>
+    </div>
+</div>
