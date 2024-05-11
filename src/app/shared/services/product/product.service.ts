@@ -74,7 +74,20 @@ export class ProductService {
   }
 
 
-
+  filterProductOfCategory(categoryArray: Array<string>){
+    for (const productFind of this.productList) {
+      let isAll = true;
+      categoryArray.sort().forEach((category) => {
+        if (!productFind.category.includes(category)) {
+          isAll = false;
+        }
+      });
+      if (isAll) {
+        this.productList.push(productFind);
+      }
+    }
+    return this.productList;
+  }
 
 
 
