@@ -5,9 +5,20 @@ div{
     display: inline-flex;
     justify-content: center;
     flex-flow: row wrap;
-    row-gap: 1.5rem;
-
-    @media(min-width: $mobile){
+    gap: 1rem 100%;
+    
+    @media(min-width: $tablet){ 
         justify-content: space-between;
+        gap: 1.5rem 0;
     }
+    
+    @media(min-width: $desktop){ 
+        justify-content: start;
+        gap: 1.5rem 83px;
+    }
+
+    @media(min-width: $desktopHD){ 
+        gap: 1.5rem 2rem;
+    }
+    
 }
