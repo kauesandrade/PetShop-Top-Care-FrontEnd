@@ -4,6 +4,30 @@ main {
     @include grid-container();
     row-gap: 2rem;
 
+    .div-seachBy-orderBy{
+      // @include subgrid();
+      grid-column: 1/-1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .span-seachBy{
+        @include text(large, bold);
+      }
+
+      .div-orderBy{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .span-orderBy{
+          @include text(normal, bold);
+        }
+        
+      }
+
+    }
+
     app-product-layout{
       @include subgrid();
     }

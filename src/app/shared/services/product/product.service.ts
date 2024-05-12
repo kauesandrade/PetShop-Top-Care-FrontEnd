@@ -62,10 +62,14 @@ export class ProductService {
 
     const searchValueList: Array<string> = searchValue.split(" ");
     productData.product.forEach((product) => {
-      // const productTitle = product.title + 
 
+      let productTitle = product.title
+      this.getAllProductVariants(product).forEach(variant =>{
+        productTitle += " " + variant.variant;
+      })
+      
       searchValueList.forEach((searchValueFind) => {
-        if (product.title
+        if (productTitle
           .normalize('NFD')
           .replace(/[\u0300-\u036f]/g, '')
           .toLowerCase()

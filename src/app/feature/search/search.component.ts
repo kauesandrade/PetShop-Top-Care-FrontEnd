@@ -11,12 +11,14 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 export class SearchComponent implements OnInit {
   
   productsList?: Array<ProductVariant>;
+  seachBy!: string;
   
   constructor(private route: ActivatedRoute, private productService: ProductService) { 
   }
   
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
+      this.seachBy = params['q'].replace('%20', ' ');
       this.productsList = this.productService.searchProducts(params['q'].replace('%20', ' '));
       console.log(this.productsList);
     });
