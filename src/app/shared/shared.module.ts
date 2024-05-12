@@ -8,6 +8,7 @@ import { CarouselModule } from './carousel/carousel.module';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
 import { InputAmountComponent } from './input-amount/input-amount.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 const Components = [
   ProductCardComponent,
@@ -19,6 +20,6 @@ const Components = [
 @NgModule({
   exports: [...Components, CarouselModule],
   declarations: [...Components],
-  imports: [CommonModule, CoreModule, FontAwesomeModule, CarouselModule, FormsModule],
+  imports: [CommonModule, CoreModule, FontAwesomeModule, CarouselModule, FormsModule, RouterModule],
 })
 export class SharedModule {}
