@@ -1,0 +1,11 @@
+<ul>
+    <li (click)="openFilters()">
+        <fa-icon [icon]="faFilter"></fa-icon>
+        Filtro
+    </li>
+    <ng-container *ngFor="let filter of filters">
+        <li (click)="takeOffFilter( filter)">
+            {{filter}}
+        </li>
+    </ng-container>
+</ul>

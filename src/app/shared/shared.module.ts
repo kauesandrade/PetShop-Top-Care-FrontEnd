@@ -10,6 +10,7 @@ import { InputAmountComponent } from './input-amount/input-amount.component';
 import { FormsModule } from '@angular/forms';
 import { ProductLayoutComponent } from './product-layout/product-layout.component';
 import { OrderByComponent } from './order-by/order-by.component';
+import { ProductFilterComponent } from './product-filter/product-filter.component';
 
 const Components = [
   ProductCardComponent,
@@ -17,7 +18,8 @@ const Components = [
   ProductCarouselComponent,
   InputAmountComponent,
   ProductLayoutComponent, 
-  OrderByComponent
+  OrderByComponent, 
+  ProductFilterComponent
 ];
 
 @NgModule({

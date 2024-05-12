@@ -34,7 +34,7 @@ main {
 
     }
 
-    app-product-layout{
+    app-product-layout, app-product-filter{
       @include subgrid();
     }
   
