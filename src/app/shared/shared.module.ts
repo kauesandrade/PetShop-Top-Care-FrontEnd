@@ -9,13 +9,15 @@ import { ProductCarouselComponent } from './product-carousel/product-carousel.co
 import { InputAmountComponent } from './input-amount/input-amount.component';
 import { FormsModule } from '@angular/forms';
 import { ProductLayoutComponent } from './product-layout/product-layout.component';
+import { OrderByComponent } from './order-by/order-by.component';
 
 const Components = [
   ProductCardComponent,
   ProductSectionComponent,
   ProductCarouselComponent,
   InputAmountComponent,
-  ProductLayoutComponent
+  ProductLayoutComponent, 
+  OrderByComponent
 ];
 
 @NgModule({

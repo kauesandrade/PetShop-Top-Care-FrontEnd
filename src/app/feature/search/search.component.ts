@@ -9,9 +9,9 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-
+  
   productsList?: Array<ProductVariant>;
-
+  
   constructor(private route: ActivatedRoute, private productService: ProductService) { 
   }
   
@@ -21,7 +21,10 @@ export class SearchComponent implements OnInit {
       console.log(this.productsList);
     });
   }
-
+  
+  getOrderBy(evt: string) {
+    this.productsList = this.productService.orderOf(evt);
+  }
 
 
 }

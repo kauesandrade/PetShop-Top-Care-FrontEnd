@@ -197,7 +197,7 @@ export class ProductService {
 
       case 'Nome (Z-A)': {
         arrayProduct = [...this.productList].sort((p1, p2) => {
-          return this.orderOfPlus(this.getFirstProductVariant(p1).price, this.getFirstProductVariant(p2).price);
+          return this.orderOfPlus(this.getFirstProductVariant(p1).title, this.getFirstProductVariant(p2).title);
         });
         break;
       }

@@ -1,0 +1,13 @@
+<label appInput>
+    <select
+      appInput
+      (change)="changeOrderBy($event.target)"
+    >
+      <option
+        *ngFor="let type of typesOrderBy;"
+        [value]="type"
+      >
+        {{ type }}
+      </option>
+    </select>
+  </label>
