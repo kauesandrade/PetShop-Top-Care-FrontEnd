@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faFilter, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ProductService } from '../services/product/product.service';
 
@@ -41,48 +41,99 @@ export class ProductFilterComponent implements OnInit {
         }
       ]
     },
-    // {
-    //   title: "Porte de Raça",
-    //   variables:[
-    //     "Mini",
-    //     "Pequeno",
-    //     "Médio",
-    //     "Grande",
-    //     "Gigante"
-    //   ]
-    // },
-    // {
-    //   title: "Idade",
-    //   variables:[
-    //     "Filhote",
-    //     "Adulto",
-    //     "Sênior"
-    //   ]
-    // },
-    // {
-    //   title: "Marcas",
-    //   variables:[
-    //     "Golden",
-    //     "Whiskas",
-    //     "Pet Iglu",
-    //     "Ideia Store"
-    //   ]
-    // },
-    // {
-    //   title: "Faixa de Preço",
-    //   variables:[
-    //     "R$0,00 - R$25,00",
-    //     "R$25,00 - R$50,00",
-    //     "R$50,00 - R$100,00",
-    //     "R$100,00 - R$200,00",
-    //     "+ R$200,00"
-    //   ]
-    // }
+    {
+      title: "Porte de Raça",
+      variables:[
+        {
+          variable: "Mini",
+          isChecked: false
+        },
+        {
+          variable: "Pequeno",
+          isChecked: false
+        },
+        {
+          variable: "Médio",
+          isChecked: false
+        },
+        {
+          variable: "Grande",
+          isChecked: false
+        },
+        {
+          variable: "Gigante",
+          isChecked: false
+        }
+      ]
+    },
+    {
+      title: "Idade",
+      variables:[
+        {
+          variable: "Filhote",
+          isChecked: false
+        },
+        {
+          variable: "Adulto",
+          isChecked: false
+        },
+        {
+          variable: "Sênior",
+          isChecked: false
+        }
+      ]
+    },
+    {
+      title: "Marcas",
+      variables:[
+        {
+          variable: "Golden",
+          isChecked: false
+        },
+        {
+          variable: "Whiskas",
+          isChecked: false
+        },
+        {
+          variable: "Pet Iglu",
+          isChecked: false
+        },
+        {
+          variable: "Ideia Store",
+          isChecked: false
+        }
+      ]
+    },
+    {
+      title: "Faixa de Preço",
+      variables:[
+        {
+          variable: "R$0,00 - R$25,00",
+          isChecked: false
+        },
+        {
+          variable: "R$25,00 - R$50,00",
+          isChecked: false
+        },
+        {
+          variable: "R$50,00 - R$100,00",
+          isChecked: false
+        },
+        {
+          variable: "R$100,00 - R$200,00",
+          isChecked: false
+        },
+        {
+          variable: "+ R$200,00",
+          isChecked: false
+        }
+      ]
+    }
   ]
 
   openFilter: boolean = false;
   
-  constructor( private productService: ProductService ) { }
+  constructor( private productService: ProductService, private elementRef: ElementRef ) { }
   
   ngOnInit(): void {
   }
@@ -93,11 +144,27 @@ export class ProductFilterComponent implements OnInit {
   }
 
   openFilters() {
-    this.openFilter ? this.openFilter = false : this.openFilter = true;
+    if(this.openFilter){
+      this.openFilter = false;
+      this.elementRef.nativeElement.ownerDocument.body.style.overflowY = 'scroll';
+    }
+    else{
+      this.openFilter = true;
+      this.elementRef.nativeElement.ownerDocument.body.style.overflowY = 'hidden';
+    }
   }
 
   changeChecked(variableFilter: any){
     variableFilter.isChecked ? variableFilter.isChecked = false : variableFilter.isChecked = true;
+  }
+
+  clearAllFilters(){
+    this.typeFilters.forEach(variablesFilter =>{
+      variablesFilter.variables.forEach(variable => {
+        variable.isChecked = false;
+      });
+    })
+    this.applyFilter();
   }
 
   applyFilter(){

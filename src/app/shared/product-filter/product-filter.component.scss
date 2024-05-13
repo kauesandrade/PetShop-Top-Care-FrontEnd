@@ -31,69 +31,84 @@
 
 
 
-.div-overlay {
-    background: #000;
-    height: 100%;
-    left: 0;
-    opacity: 0.5;
+
+.div-modal{
+    background: rgba(0, 0, 0, 0.315);
     position: fixed;
+    display: flex;
+    left: 0;
     top: 0;
     width: 100vw;
-    z-index: 10;
-}
+    height: 100%;
+    z-index: 13;
+    overflow-y: scroll;
 
-.div-filter-bar {
-    background: $white;
-    left: 0;
-    opacity: initial;
-    position: fixed;
-    top: 5vh;
-    width: 16rem;
-    z-index: 11;
-    padding: 1rem;
-    border-radius: 0 1rem 1rem 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-
-    button {
+    .div-overlay {
+        height: 100%;
+        position: sticky;
+        height: 100%;
+        left: 0;
+        top: 0;
         width: 100%;
+        z-index: 11;
     }
-
-
-    .div-typeFilter {
+    
+    .div-filter-bar {
+        background: $white;
+        left: 0;
+        opacity: initial;
+        top: 5vh;
+        width: 16rem;
+        height: max-content;
+        z-index: 12;
+        padding: 1rem;
+        border-radius: 0 1rem 1rem 0;
         display: flex;
         flex-direction: column;
-
-        gap: 0.5rem;
-
-        .title-typeFilter {
-            @include text(medium, bold)
-        }
-
-        .divider {
-            height: 1px;
+        gap: 1.5rem;
+    
+        .btn-apply {
             width: 100%;
-            background-color: $gray3;
         }
-
-        .ul-variablesFilter {
+    
+        .div-typeFilter {
             display: flex;
             flex-direction: column;
-            list-style-type: none;
+    
             gap: 0.5rem;
-
-            .li-variableFilter {
-                @include text(medium);
+    
+            .title-typeFilter {
+                @include text(medium, bold)
+            }
+    
+            .divider {
+                height: 1px;
+                width: 100%;
+                background-color: $gray3;
+            }
+    
+            .ul-variablesFilter {
                 display: flex;
-                align-items: center;
+                flex-direction: column;
+                list-style-type: none;
                 gap: 0.5rem;
 
-                input {
-                    width: 1.75rem;
+                &.clearAll{
+                    cursor: pointer;
+                }
+    
+                .li-variableFilter {
+                    @include text(medium);
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+    
+                    input {
+                        width: 1.75rem;
+                    }
                 }
             }
+    
         }
-
     }
 }

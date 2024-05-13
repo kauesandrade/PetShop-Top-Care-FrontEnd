@@ -3,6 +3,7 @@
 main {
     @include grid-container();
     row-gap: 2rem;
+    overflow: hidden; 
 
     .div-seachBy-orderBy{
       grid-column: 1/-1;
