@@ -32,10 +32,10 @@
       "rating": 5,
       "category": [
         "Cachorro",
-        "racao",
-        "filhote",
-        "oferta",
-        "avaliado"
+        "Ração",
+        "Filhote",
+        "Oferta",
+        "Avaliado"
       ]
     },
     {
@@ -69,10 +69,10 @@
       ],
       "rating": 4,
       "category": [
-        "racao",
-        "premium",
+        "Ração",
+        "Premium",
         "Cachorro",
-        "avaliado"
+        "Avaliado"
       ]
     },
     {
@@ -106,11 +106,11 @@
       ],
       "rating": 4.5,
       "category": [
-        "caminha",
-        "gato",
-        "filhote",
-        "oferta",
-        "avaliado"
+        "Caminha",
+        "Gato",
+        "Filhote",
+        "Oferta",
+        "Avaliado"
       ]
     },
     {
@@ -144,10 +144,10 @@
       ],
       "rating": 3,
       "category": [
-        "brinquedo",
+        "Brinquedo",
         "Cachorro",
-        "osso",
-        "oferta"
+        "Osso",
+        "Oferta"
       ]
     }
   ]

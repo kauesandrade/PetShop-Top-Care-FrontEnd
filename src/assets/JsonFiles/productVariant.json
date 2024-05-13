@@ -32,10 +32,10 @@
             "rating": 5,
             "category": [
                 "Cachorro",
-                "racao",
-                "filhote",
-                "oferta",
-                "avaliado"
+                "Ração",
+                "Filhote",
+                "Oferta",
+                "Avaliado"
             ],
             "variantCode": 1,
             "variant": "15Kg",
@@ -80,10 +80,10 @@
             "rating": 5,
             "category": [
                 "Cachorro",
-                "racao",
-                "filhote",
-                "oferta",
-                "avaliado"
+                "Ração",
+                "Filhote",
+                "Oferta",
+                "Avaliado"
             ],
             "variantCode": 2,
             "variant": "20Kg",
@@ -128,10 +128,10 @@
             "rating": 5,
             "category": [
                 "Cachorro",
-                "racao",
-                "filhote",
-                "oferta",
-                "avaliado"
+                "Ração",
+                "Filhote",
+                "Oferta",
+                "Avaliado"
             ],
             "variantCode": 3,
             "variant": "10Kg",
@@ -175,10 +175,10 @@
             ],
             "rating": 4,
             "category": [
-                "racao",
-                "premium",
+                "Ração",
+                "Premium",
                 "Cachorro",
-                "avaliado"
+                "Avaliado"
             ],
             "reviews": [
                 {
@@ -239,11 +239,11 @@
             ],
             "rating": 4.5,
             "category": [
-                "caminha",
-                "gato",
-                "filhote",
-                "oferta",
-                "avaliado"
+                "Caminha",
+                "Gato",
+                "Filhote",
+                "Oferta",
+                "Avaliado"
             ],
             "variantCode": 1,
             "variant": "Único",
@@ -287,10 +287,10 @@
             ],
             "rating": 3,
             "category": [
-                "brinquedo",
+                "Brinquedo",
                 "Cachorro",
-                "osso",
-                "oferta"
+                "Osso",
+                "Oferta"
             ],
             "variantCode": 1,
             "variant": "Pequeno",
@@ -334,10 +334,10 @@
             ],
             "rating": 3,
             "category": [
-                "brinquedo",
+                "Brinquedo",
                 "Cachorro",
-                "osso",
-                "oferta"
+                "Osso",
+                "Oferta"
             ],
             "variantCode": 2,
             "variant": "Médio",
@@ -381,10 +381,10 @@
             ],
             "rating": 3,
             "category": [
-                "brinquedo",
+                "Brinquedo",
                 "Cachorro",
-                "osso",
-                "oferta"
+                "Osso",
+                "Oferta"
             ],
             "variantCode": 3,
             "variant": "Grande",
