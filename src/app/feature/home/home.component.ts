@@ -13,8 +13,8 @@ import { RoundCard } from '../../shared/interfaces/round-card';
 export class HomeComponent implements OnInit {
 
   products: Array<Product> = [];
-  category1: Array<string> = ["oferta"];
-  category2: Array<string> = ["avaliado"];
+  category1: Array<string> = ["Oferta"];
+  category2: Array<string> = ["Avaliado"];
 
   constructor() { }
 

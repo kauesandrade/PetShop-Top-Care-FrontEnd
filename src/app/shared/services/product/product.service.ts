@@ -120,10 +120,7 @@ export class ProductService {
       categoryArray.sort().forEach((category) => {
         if (!productFind.category.includes(category)){
           isAll = false;
-          console.log("dasd")
         }
-        console.log(category)
-        console.log(productFind.category);
       });
       if (isAll) {
         productFilterList.push(this.getFirstProductVariant(productFind));
@@ -137,10 +134,7 @@ export class ProductService {
     for (const productFind of productData.product) {
       let isAll = true;
       categoryArray.sort().forEach((category) => {
-        if (!productFind.category.includes(category
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase())) 
+        if (!productFind.category.includes(category)) 
         {
           isAll = false;
         }
