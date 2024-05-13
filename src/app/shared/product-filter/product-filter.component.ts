@@ -179,6 +179,7 @@ export class ProductFilterComponent implements OnInit {
       });
     })
     this.openFilter = false;
+    this.elementRef.nativeElement.ownerDocument.body.style.overflowY = 'scroll';
     this.emitFilters.emit(this.filters);
   }
 }
