@@ -1,11 +1,50 @@
-<ul>
-    <li (click)="openFilters()">
+<ul class="ul-filtes">
+    <li class="li-filter" (click)="openFilters()">
         <fa-icon [icon]="faFilter"></fa-icon>
         Filtro
     </li>
-    <ng-container *ngFor="let filter of filters">
-        <li (click)="takeOffFilter( filter)">
-            {{filter}}
+    <ng-container *ngFor="let filter of variableFilters">
+        <li class="li-filters" (click)="takeOffFilter(filter)">
+            <fa-icon [icon]="faTimes"></fa-icon>
+            {{filter.variable}}
         </li>
     </ng-container>
 </ul>
+
+<ng-container *ngIf="openFilter">
+    <form class="div-filter-bar">
+        <button appButton="secondary" (click)="applyFilter()">Aplicar</button>
+
+        <div class="div-typeFilter">
+            <span class="title-typeFilter">Filtar Produtos</span>
+            <div class="divider"></div>
+            <ul class="ul-variablesFilter">
+                <li class="li-variableFilter">
+                    Limpar todos os filtros
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                </li>
+            </ul>
+        </div>
+
+        <ng-container *ngFor="let typeFilter of typeFilters">
+            <div class="div-typeFilter">
+                <span class="title-typeFilter">{{typeFilter.title}}</span>
+                <div class="divider"></div>
+                <ul class="ul-variablesFilter">
+                    <ng-container *ngFor="let variableFilter of typeFilter.variables">
+                        <li class="li-variableFilter">
+                            <input type="checkbox" appInput [checked]="variableFilter.isChecked"
+                                (change)="changeChecked(variableFilter)">
+                            {{variableFilter.variable}}
+                        </li>
+                    </ng-container>
+                </ul>
+            </div>
+        </ng-container>
+
+        <button appButton="secondary" (click)="applyFilter()">Aplicar</button>
+
+    </form>
+    <div class="div-overlay" (click)="openFilters()">
+    </div>
+</ng-container>

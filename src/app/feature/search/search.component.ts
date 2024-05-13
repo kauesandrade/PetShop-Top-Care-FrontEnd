@@ -28,5 +28,8 @@ export class SearchComponent implements OnInit {
     this.productsList = this.productService.orderOf(evt);
   }
 
+  getFilters(evt: Array<string>){
+    this.productsList = this.productService.filterProductOfCategory(evt);
+  }
 
 }
