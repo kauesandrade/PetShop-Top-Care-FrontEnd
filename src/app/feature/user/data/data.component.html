@@ -1,1 +1,22 @@
-<app-layout></app-layout>
+<app-layout>
+  <app-profile-form [(profileForm)]="profileForm"></app-profile-form>
+  <div class="divider"></div>
+  <app-contact-form [(contactForm)]="contactForm"></app-contact-form>
+  <div class="divider"></div>
+  <app-address-form [(addressForm)]="addressForm"></app-address-form>
+  <div class="action-buttons">
+    <button
+      appButton
+      *ngIf="!editingData; else editing"
+      (click)="enableEditing()"
+    >
+      Editar dados
+    </button>
+    <ng-template #editing>
+      <button appButton (click)="saveData()" [disabled]="!areFormsValid()">
+        Salvar dados
+      </button>
+    </ng-template>
+    <button appButton="secondary">Sair da conta</button>
+  </div>
+</app-layout>

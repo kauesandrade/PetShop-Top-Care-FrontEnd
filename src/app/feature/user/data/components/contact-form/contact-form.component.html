@@ -1,0 +1,18 @@
+<form [formGroup]="contactForm" (input)="onInput()">
+  <label for="cellphone1" appInput>
+    <p>Celular 1</p>
+    <input type="text" id="cellphone1" formControlName="cellphone1" />
+  </label>
+  <label for="cellphone2" appInput>
+    <p>Celular 2</p>
+    <input type="text" id="cellphone2" formControlName="cellphone2" />
+  </label>
+  <label for="telephone1" appInput>
+    <p>Telefone 1</p>
+    <input type="text" id="telephone1" formControlName="telephone1" />
+  </label>
+  <label for="telephone2" appInput>
+    <p>Telefone 2</p>
+    <input type="text" id="telephone2" formControlName="telephone2" />
+  </label>
+</form>

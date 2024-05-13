@@ -133,6 +133,7 @@ export class RegisterAddressComponent implements OnChanges {
     let address: Address = {
       name: formValues.addressName!,
       cep: formValues.cep!,
+      state: formValues.state!,
       city: formValues.city!,
       neighborhood: formValues.neighborhood!,
       street: formValues.street!,

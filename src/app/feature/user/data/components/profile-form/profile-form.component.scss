@@ -1,0 +1,48 @@
+@import "styles";
+
+form {
+  @include subgrid();
+  label {
+    position: relative;
+    grid-column: auto / span 5;
+    height: fit-content;
+    input,
+    select {
+      width: 100%;
+    }
+  }
+
+  label[for="image"] {
+    grid-column: auto / span 2;
+    input {
+      display: none;
+      &:enabled {
+        cursor: pointer;
+      }
+    }
+
+    .placeholder {
+      display: none;
+    }
+  }
+}
+
+.has-error {
+  border-color: $error;
+  color: $error;
+}
+
+.error-message {
+  @include text(small);
+  color: $error;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+label[for="image"] {
+  border-radius: 100%;
+  img {
+    width: 100%;
+  }
+}
