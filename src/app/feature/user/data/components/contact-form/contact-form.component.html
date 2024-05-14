@@ -1,18 +1,67 @@
 <form [formGroup]="contactForm" (input)="onInput()">
+  <h5>Informações de contato</h5>
   <label for="cellphone1" appInput>
     <p>Celular 1</p>
-    <input type="text" id="cellphone1" formControlName="cellphone1" />
+    <input
+      type="text"
+      id="cellphone1"
+      formControlName="cellphone1"
+      [class.has-error]="cellphone1?.touched && cellphone1?.invalid"
+      mask="(00) 00000-0000"
+      required
+    />
+    <ng-container *ngIf="cellphone1?.touched && cellphone1?.invalid">
+      <span *ngIf="cellphone1?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="cellphone1?.getError('mask')" class="error-message">
+        Deve ser no formato (00) 00000-0000!
+      </span>
+    </ng-container>
   </label>
   <label for="cellphone2" appInput>
     <p>Celular 2</p>
-    <input type="text" id="cellphone2" formControlName="cellphone2" />
+    <input
+      type="text"
+      id="cellphone2"
+      formControlName="cellphone2"
+      [class.has-error]="cellphone2?.touched && cellphone2?.invalid"
+      mask="(00) 00000-0000"
+    />
+    <ng-container *ngIf="cellphone2?.touched && cellphone2?.invalid">
+      <span *ngIf="cellphone2?.getError('mask')" class="error-message">
+        Deve ser no formato (00) 00000-0000!
+      </span>
+    </ng-container>
   </label>
   <label for="telephone1" appInput>
     <p>Telefone 1</p>
-    <input type="text" id="telephone1" formControlName="telephone1" />
+    <input
+      type="text"
+      id="telephone1"
+      formControlName="telephone1"
+      mask="(00) 00000-0000"
+      [class.has-error]="telephone1?.touched && telephone1?.invalid"
+    />
+    <ng-container *ngIf="telephone1?.touched && telephone1?.invalid">
+      <span *ngIf="telephone1?.getError('mask')" class="error-message">
+        Deve ser no formato (00) 00000-0000!
+      </span>
+    </ng-container>
   </label>
   <label for="telephone2" appInput>
     <p>Telefone 2</p>
-    <input type="text" id="telephone2" formControlName="telephone2" />
+    <input
+      type="text"
+      id="telephone2"
+      formControlName="telephone2"
+      mask="(00) 00000-0000"
+      [class.has-error]="telephone2?.touched && telephone2?.invalid"
+    />
+    <ng-container *ngIf="telephone2?.touched && telephone2?.invalid">
+      <span *ngIf="telephone2?.getError('mask')" class="error-message">
+        Deve ser no formato (00) 00000-0000!
+      </span>
+    </ng-container>
   </label>
 </form>

@@ -1,7 +1,7 @@
 {
   "user": [
     {
-      "name": "Bernardo Planinscheck Zepelini",
+      "name": "Bernardo Planinscheck Zapelini",
       "email": "bernardo@gmail.com",
       "cpf": "09525709981",
       "birth": "05/07/2006",
@@ -19,14 +19,24 @@
       ],
       "addresses": [
         {
-          "name": "string",
-          "cep": "string",
-          "state": "string",
-          "city": "string",
-          "neighborhood": "string",
-          "street": "string",
-          "number": 0,
-          "complement": "string"
+          "name": "Senai",
+          "cep": "12345087",
+          "state": "SC",
+          "city": "Jaraguá do Sul",
+          "neighborhood": "Vila Nova",
+          "street": "Walter Marquardt",
+          "number": 2,
+          "complement": "Em frente ao pavilhão de eventos"
+        },
+        {
+          "name": "Senai",
+          "cep": "12345087",
+          "state": "SC",
+          "city": "Jaraguá do Sul",
+          "neighborhood": "Vila Nova",
+          "street": "Walter Marquardt",
+          "number": 2,
+          "complement": "Em frente ao pavilhão de eventos"
         }
       ]
     },

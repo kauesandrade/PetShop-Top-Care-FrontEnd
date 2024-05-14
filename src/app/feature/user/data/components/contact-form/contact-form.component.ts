@@ -15,4 +15,17 @@ export class ContactFormComponent {
   onInput() {
     this.contactFormChange.emit(this.contactForm);
   }
+
+  get cellphone1() {
+    return this.contactForm.get('cellphone1');
+  }
+  get cellphone2() {
+    return this.contactForm.get('cellphone2');
+  }
+  get telephone1() {
+    return this.contactForm.get('telephone1');
+  }
+  get telephone2() {
+    return this.contactForm.get('telephone2');
+  }
 }

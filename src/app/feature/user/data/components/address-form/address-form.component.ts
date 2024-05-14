@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
+import { faTrash, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { CepService } from 'src/app/shared/services/cep/cep.service';
 
 @Component({
   selector: 'app-address-form',
@@ -7,11 +9,88 @@ import { FormArray, FormGroup } from '@angular/forms';
   styleUrls: ['./address-form.component.scss'],
 })
 export class AddressFormComponent {
-  @Input() addressForm!: FormArray;
-  @Output() addressFormChange = new EventEmitter<FormArray>();
+  @Input() addressForm!: FormGroup;
+  @Output() addressFormChange = new EventEmitter<FormGroup>();
 
-  constructor() {}
+  states = [
+    'AC',
+    'AL',
+    'AP',
+    'AM',
+    'BA',
+    'CE',
+    'DF',
+    'ES',
+    'GO',
+    'MA',
+    'MT',
+    'MS',
+    'MG',
+    'PA',
+    'PB',
+    'PR',
+    'PE',
+    'PI',
+    'RJ',
+    'RN',
+    'RS',
+    'RO',
+    'RR',
+    'SC',
+    'SP',
+    'SE',
+    'TO',
+  ];
+
+  faTrash = faTrashAlt;
+
+  constructor(private cepService: CepService) {}
+
   onInput() {
+    console.log(this.getName(0));
+
     this.addressFormChange.emit(this.addressForm);
+  }
+
+  get addresses() {
+    return this.addressForm.get('addresses') as FormArray;
+  }
+
+  getName(index: number) {
+    return (<FormGroup>this.addresses.controls[index]).get('name');
+  }
+  getCep(index: number) {
+    return (<FormGroup>this.addresses.controls[index]).get('cep');
+  }
+  getState(index: number) {
+    return (<FormGroup>this.addresses.controls[index]).get('state');
+  }
+  getCity(index: number) {
+    return (<FormGroup>this.addresses.controls[index]).get('city');
+  }
+  getNeighborhood(index: number) {
+    return (<FormGroup>this.addresses.controls[index]).get('neighborhood');
+  }
+  getStreet(index: number) {
+    return (<FormGroup>this.addresses.controls[index]).get('street');
+  }
+  getNumber(index: number) {
+    return (<FormGroup>this.addresses.controls[index]).get('number');
+  }
+  getComplement(index: number) {
+    return (<FormGroup>this.addresses.controls[index]).get('complement');
+  }
+
+  searchCep(i: number) {
+    this.cepService.searchCep(this.getCep(i)?.value!).subscribe((res: any) => {
+      if (res.erro) {
+        this.getCep(i)?.setErrors({ cepInvalido: true });
+      } else {
+        this.getState(i)?.setValue(res.uf);
+        this.getCity(i)?.setValue(res.localidade);
+        this.getNeighborhood(i)?.setValue(res.bairro);
+        this.getStreet(i)?.setValue(res.logradouro);
+      }
+    });
   }
 }

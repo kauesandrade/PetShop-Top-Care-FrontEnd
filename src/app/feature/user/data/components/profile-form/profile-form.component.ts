@@ -7,7 +7,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { faFile } from '@fortawesome/free-solid-svg-icons';
+import { faFile, faFileImage } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-profile-form',
@@ -20,12 +20,28 @@ export class ProfileFormComponent {
 
   genders = ['Masculino', 'Feminino', 'Outro'];
 
-  faFile = faFile;
+  faFileImage = faFileImage;
+
+  profileImg: string | ArrayBuffer = 'assets/images/ProfileImage.png';
 
   constructor() {}
 
   onInput() {
     this.profileFormChange.emit(this.profileForm);
+  }
+
+  changeImg(event: any) {
+    const files = event.target.files;
+
+    const reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.profileImg = reader.result!;
+    };
+  }
+
+  isDisabled() {
+    return !this.profileForm.enabled;
   }
 
   get image() {

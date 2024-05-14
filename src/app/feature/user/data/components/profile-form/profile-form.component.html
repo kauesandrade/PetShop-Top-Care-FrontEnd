@@ -1,9 +1,18 @@
 <form [formGroup]="profileForm" (input)="onInput()">
-  <label for="image">
-    <img src="assets/images/ProfileImage.png" alt="Foto de perfil" />
-    <input type="file" id="image" formControlName="image" />
+  <label for="image" [class.disabled]="isDisabled()">
+    <img
+      [src]="profileImg"
+      accept="image/png, image/jpeg"
+      alt="Foto de perfil"
+    />
+    <input
+      type="file"
+      id="image"
+      formControlName="image"
+      (change)="changeImg($event)"
+    />
     <span class="placeholder">
-      <fa-icon [icon]="faFile"></fa-icon>
+      <fa-icon [icon]="faFileImage"></fa-icon>
       <span>Alterar imagem</span>
     </span>
   </label>
@@ -67,6 +76,7 @@
       formControlName="birth"
       [class.has-error]="birth?.touched && birth?.invalid"
       mask="d0/M0/0000"
+      [dropSpecialCharacters]="false"
       required
     />
     <ng-container *ngIf="birth?.touched && birth?.invalid">
@@ -76,25 +86,17 @@
       <span *ngIf="birth?.getError('minlength')" class="error-message">
         Deve ser no formato dd/mm/aaaa!
       </span>
+      <span *ngIf="birth?.getError('isNotBetween')" class="error-message">
+        Deve ser entre 1950 e Hoje!
+      </span>
     </ng-container>
   </label>
   <label for="gender" appInput>
     <p>Sexo</p>
-    <select
-      appInput
-      id="gender"
-      formControlName="gender"
-      [class.has-error]="gender?.touched && gender?.invalid"
-      required
-    >
+    <select appInput id="gender" formControlName="gender" required>
       <option *ngFor="let gend of genders; let i = index" [value]="gend">
         {{ gend }}
       </option>
     </select>
-    <ng-container *ngIf="gender?.touched && gender?.invalid">
-      <span *ngIf="gender?.getError('isEmpty')" class="error-message">
-        Você deve preencher esse campo!
-      </span>
-    </ng-container>
   </label>
 </form>
