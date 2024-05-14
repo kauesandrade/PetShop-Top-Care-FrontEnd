@@ -92,10 +92,6 @@ export class AddressFormComponent {
     this.addressOpen = true;
   }
 
-  canceledAddress() {
-    this.addressOpen = false;
-  }
-
   addAddress(address: Address) {
     this.addressOpen = false;
     this.addedAddress.emit(address);

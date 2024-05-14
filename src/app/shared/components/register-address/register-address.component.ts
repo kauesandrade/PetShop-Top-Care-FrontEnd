@@ -9,7 +9,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { Address } from '../../interfaces/address';
 import { CepService } from '../../services/cep/cep.service';
@@ -21,12 +20,13 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./register-address.component.scss'],
 })
 export class RegisterAddressComponent implements OnChanges {
-  @Input() open = false;
   @Input() allowClosing = false;
   @Input() title = 'Cadastre seu endereço';
 
   @Output() registeredAddress = new EventEmitter<Address>();
-  @Output() canceledAddress = new EventEmitter();
+
+  @Input() open = false;
+  @Output() openChange = new EventEmitter<boolean>();
 
   @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
 
@@ -117,13 +117,14 @@ export class RegisterAddressComponent implements OnChanges {
 
   onCancel(e: Event) {
     e.preventDefault();
-    this.canceledAddress.emit();
     this.closeModal();
   }
 
   closeModal() {
     this.modal.nativeElement.close();
     this.open = false;
+    this.openChange.emit(this.open);
+    this.registerAddressForm.reset();
     document.body.style.overflow = 'auto';
   }
 

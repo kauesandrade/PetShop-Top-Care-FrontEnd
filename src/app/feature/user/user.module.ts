@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ChangePasswordComponent } from './data/components/change-password/change-password.component';
+import { EditCardsComponent } from './data/components/edit-cards/edit-cards.component';
 
 const Components = [
   DataComponent,
@@ -30,6 +32,8 @@ const Components = [
     ProfileFormComponent,
     ContactFormComponent,
     AddressFormComponent,
+    ChangePasswordComponent,
+    EditCardsComponent,
   ],
   imports: [
     CommonModule,

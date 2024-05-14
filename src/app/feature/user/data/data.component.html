@@ -5,7 +5,9 @@
 <app-layout>
   <app-profile-form [(profileForm)]="profileForm"></app-profile-form>
   <div class="action-buttons">
-    <button appButton="secondary">Alterar senha</button>
+    <button appButton="secondary" (click)="openPasswordModal = true">
+      Alterar senha
+    </button>
     <button appButton>Meus cartões salvos</button>
   </div>
   <div class="divider"></div>
@@ -36,5 +38,5 @@
 <!-- A FAZER AQUI  -->
 <!-- A FAZER AQUI  -->
 <!-- A FAZER AQUI  -->
-<dialog #changePassword></dialog>
-<dialog #editCards></dialog>
+<app-change-password [(open)]="openPasswordModal"></app-change-password>
+<app-edit-cards></app-edit-cards>

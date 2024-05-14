@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
+import { PasswordValidator } from 'src/app/core/validators/password.validator';
 import { Address } from 'src/app/shared/interfaces/address';
 import { User } from 'src/app/shared/interfaces/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
@@ -31,7 +32,7 @@ export class RegisterFormComponent {
     cpf: ['', [Validators.required, EmptyValidator]],
     gender: ['', [Validators.required, EmptyValidator]],
     birth: ['', [Validators.required, Validators.minLength(8), EmptyValidator]],
-    password: ['', [Validators.required, EmptyValidator]],
+    password: ['', [Validators.required, EmptyValidator, PasswordValidator]],
     passwordConf: ['', [Validators.required, EmptyValidator]],
     terms: [false, [Validators.requiredTrue]],
   });
@@ -80,23 +81,6 @@ export class RegisterFormComponent {
     this.showPasswordConf = !this.showPasswordConf;
   }
 
-  validatePassword() {
-    let passwordValue = this.password?.value!;
-
-    if (passwordValue.length < 8) {
-      this.password?.setErrors({ length: true });
-    }
-    if (!/\d/.test(passwordValue)) {
-      this.password?.setErrors({ number: true });
-    }
-    if (!/[a-z]/.test(passwordValue)) {
-      this.password?.setErrors({ lowercase: true });
-    }
-    if (!/[A-Z]/.test(passwordValue)) {
-      this.password?.setErrors({ uppercase: true });
-    }
-  }
-
   checkConfirmation() {
     let passwordValue = this.password?.value!;
     let passwordConfValue = this.passwordConf?.value!;
@@ -107,8 +91,9 @@ export class RegisterFormComponent {
       passwordValue != passwordConfValue
     ) {
       this.passwordConf?.setErrors({ notEqual: true });
+    } else {
+      this.passwordConf?.setErrors(null);
     }
-    console.log(this.passwordConf?.errors);
   }
 
   openTerms(event: Event) {

@@ -16,6 +16,7 @@ export class DataComponent implements OnInit {
   user!: User;
 
   editingData = false;
+  openPasswordModal = false;
 
   profileForm!: FormGroup;
   contactForm!: FormGroup;
