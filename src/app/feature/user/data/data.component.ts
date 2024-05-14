@@ -117,6 +117,9 @@ export class DataComponent implements OnInit {
         complement: [address.complement],
       })
     );
+
+    this.addressForm.disable();
+
     if (save) {
       this.user.addresses.push(address);
       this.userService.updateUser(this.user);
@@ -126,6 +129,11 @@ export class DataComponent implements OnInit {
   deleteAddress(i: number) {
     (<FormArray>this.addressForm.controls.addresses).removeAt(i);
     this.user.addresses.splice(i, 1);
+    this.userService.updateUser(this.user);
+  }
+
+  updatePassword(newPassword: string) {
+    this.user.password = newPassword;
     this.userService.updateUser(this.user);
   }
 

@@ -91,8 +91,6 @@ export class RegisterFormComponent {
       passwordValue != passwordConfValue
     ) {
       this.passwordConf?.setErrors({ notEqual: true });
-    } else {
-      this.passwordConf?.setErrors(null);
     }
   }
 

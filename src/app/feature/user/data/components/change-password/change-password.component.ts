@@ -12,6 +12,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { PasswordValidator } from 'src/app/core/validators/password.validator';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-change-password',
@@ -41,7 +42,10 @@ export class ChangePasswordComponent implements OnChanges {
     ],
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isOpen();
@@ -74,6 +78,9 @@ export class ChangePasswordComponent implements OnChanges {
     this.open = false;
     this.openChange.emit(this.open);
     this.changePasswordForm.reset();
+    this.showLastPassword = false;
+    this.showPassword = false;
+    this.showPasswordConf = false;
     document.body.style.overflow = 'auto';
   }
 
@@ -102,8 +109,6 @@ export class ChangePasswordComponent implements OnChanges {
       passwordValue != passwordConfValue
     ) {
       this.passwordConf?.setErrors({ notEqual: true });
-    } else {
-      // this.passwordConf?.setErrors(null);
     }
   }
 
@@ -113,6 +118,17 @@ export class ChangePasswordComponent implements OnChanges {
 
   onSubmit() {
     let formValues = this.changePasswordForm.value;
+
+    if (this.userService.loggedUser?.password != formValues.lastPassword) {
+      this.lastPassword?.setErrors({ wrongPassword: true });
+      return;
+    } else if (
+      this.userService.loggedUser?.password == formValues.newPassword
+    ) {
+      this.newPassword?.setErrors({ samePassword: true });
+      return;
+    }
+
     this.changedPassword.emit(formValues.newPassword!);
     this.closeModal();
   }

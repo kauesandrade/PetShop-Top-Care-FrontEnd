@@ -38,5 +38,8 @@
 <!-- A FAZER AQUI  -->
 <!-- A FAZER AQUI  -->
 <!-- A FAZER AQUI  -->
-<app-change-password [(open)]="openPasswordModal"></app-change-password>
+<app-change-password
+  [(open)]="openPasswordModal"
+  (changedPassword)="updatePassword($event)"
+></app-change-password>
 <app-edit-cards></app-edit-cards>
