@@ -9,9 +9,11 @@ import { RegisterModule } from './register/register.module';
 import { CartModule } from './cart/cart.module';
 import { ProductModule } from './product/product.module';
 import { SearchModule } from './search/search.module';
+import { FavoritosComponent } from './favoritos/favoritos.component';
+import { FavoritosModule } from './favoritos/favoritos.module';
 
 @NgModule({
-    exports: [HomeModule, ContactModule, StoreModule, LoginModule, RegisterModule, CartModule, ProductModule, SearchModule],
+    exports: [HomeModule, ContactModule, StoreModule, LoginModule, RegisterModule, CartModule, ProductModule, SearchModule, FavoritosModule],
   declarations: [
   ],
   imports: [CommonModule, FontAwesomeModule],

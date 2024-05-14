@@ -58,12 +58,12 @@ export class ProductService {
   }
 
   searchProducts(searchValue: string) {
-    this.productList = [];
 
     const searchValueList: Array<string> = searchValue.split(" ");
+
     productData.product.forEach((product) => {
 
-      let productTitle = product.title
+      let productTitle = product.title + " " + product.brand
       this.getAllProductVariants(product).forEach(variant =>{
         productTitle += " " + variant.variant;
       })
@@ -81,8 +81,6 @@ export class ProductService {
           this.productList.push(this.getFirstProductVariant(product));
         }
       })
-
-
     });
     return this.productList;
   }
@@ -105,7 +103,22 @@ export class ProductService {
     return this.productVariantsList;
   }
 
+  getAllProductfavorited(){
+    this.productList = []
+    productData.product.forEach(product =>{
+      if(product.favorite == true){
+        this.productList.push(this.getFirstProductVariant(product));
+        console.log(product)
+      }
+    })
+    return this.productList;
+  }
 
+  // searchInProductList(searchValue: string){
+  //   this.productList.forEach( product =>{
+  //     if(product.title.includes())
+  //   })
+  // }
 
   getFirstProductVariant(product: Product) {
     return this.getAllProductVariants(product)[0];
@@ -232,6 +245,7 @@ export class ProductService {
       //   this.orderOfLancamentos();
       //   break;
       // }
+
     }
     return arrayProduct;
   }
