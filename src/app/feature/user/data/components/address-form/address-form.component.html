@@ -1,7 +1,7 @@
 <form [formGroup]="addressForm" (input)="onInput()">
   <div class="header">
     <h5>Endereços cadastrados</h5>
-    <button appButton>Adicionar endereço</button>
+    <button appButton (click)="openModal($event)">Adicionar endereço</button>
   </div>
   <div
     *ngFor="let address of addresses.controls; let i = index"
@@ -9,7 +9,7 @@
     class="addresses"
   >
     <form [formGroupName]="i" class="addressForm">
-      <button appButton="secondary">
+      <button appButton="secondary" (click)="deleteAddress($event, i)">
         <fa-icon [icon]="faTrash"></fa-icon>
       </button>
       <label for="name" appInput>
@@ -128,7 +128,7 @@
       <label for="number" appInput>
         <p>Número</p>
         <input
-          type="number"
+          type="text"
           id="number"
           formControlName="number"
           [class.has-error]="getNumber(i)?.touched && getNumber(i)?.invalid"
@@ -152,3 +152,11 @@
     </form>
   </div>
 </form>
+
+<app-register-address
+  [open]="addressOpen"
+  [title]="'Cadastro de endereço'"
+  (registeredAddress)="addAddress($event)"
+  (canceledAddress)="addressOpen = false"
+  [allowClosing]="true"
+></app-register-address>

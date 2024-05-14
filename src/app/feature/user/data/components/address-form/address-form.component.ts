@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { faTrash, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { Address } from 'src/app/shared/interfaces/address';
 import { CepService } from 'src/app/shared/services/cep/cep.service';
 
 @Component({
@@ -11,6 +12,9 @@ import { CepService } from 'src/app/shared/services/cep/cep.service';
 export class AddressFormComponent {
   @Input() addressForm!: FormGroup;
   @Output() addressFormChange = new EventEmitter<FormGroup>();
+
+  @Output() addedAddress = new EventEmitter<Address>();
+  @Output() deletedAddress = new EventEmitter<number>();
 
   states = [
     'AC',
@@ -41,6 +45,8 @@ export class AddressFormComponent {
     'SE',
     'TO',
   ];
+
+  addressOpen = false;
 
   faTrash = faTrashAlt;
 
@@ -79,6 +85,25 @@ export class AddressFormComponent {
   }
   getComplement(index: number) {
     return (<FormGroup>this.addresses.controls[index]).get('complement');
+  }
+
+  openModal(e: Event) {
+    e.preventDefault();
+    this.addressOpen = true;
+  }
+
+  canceledAddress() {
+    this.addressOpen = false;
+  }
+
+  addAddress(address: Address) {
+    this.addressOpen = false;
+    this.addedAddress.emit(address);
+  }
+
+  deleteAddress(e: Event, i: number) {
+    e.preventDefault();
+    this.deletedAddress.emit(i);
   }
 
   searchCep(i: number) {

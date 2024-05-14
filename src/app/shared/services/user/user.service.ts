@@ -43,4 +43,10 @@ export class UserService {
   register(user: User) {
     console.log(user);
   }
+
+  updateUser(user: User) {
+    this.loggedUser = user;
+    localStorage.setItem('user', JSON.stringify(this.loggedUser));
+    console.log(user);
+  }
 }

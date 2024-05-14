@@ -11,7 +11,11 @@
   <div class="divider"></div>
   <app-contact-form [(contactForm)]="contactForm"></app-contact-form>
   <div class="divider"></div>
-  <app-address-form [(addressForm)]="addressForm"></app-address-form>
+  <app-address-form
+    [(addressForm)]="addressForm"
+    (addedAddress)="createNewAddress($event, true)"
+    (deletedAddress)="deleteAddress($event)"
+  ></app-address-form>
   <div class="action-buttons">
     <button
       appButton

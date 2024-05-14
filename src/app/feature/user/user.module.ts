@@ -13,6 +13,7 @@ import { AddressFormComponent } from './data/components/address-form/address-for
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const Components = [
   DataComponent,
@@ -34,6 +35,7 @@ const Components = [
     CommonModule,
     RouterModule,
     CoreModule,
+    SharedModule,
     ReactiveFormsModule,
     NgxMaskModule,
     FontAwesomeModule,

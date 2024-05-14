@@ -12,6 +12,7 @@ dialog {
 
   form {
     @include subgrid();
+    position: relative;
     row-gap: 1rem;
     border-radius: 1.25rem;
     color: $black1;
@@ -23,6 +24,19 @@ dialog {
       row-gap: 2rem;
       padding: 1.5rem;
       grid-column: 3 / span 8;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: transparent;
+      border: none;
+      color: $black1;
+      cursor: pointer;
+      fa-icon {
+        font-size: 2rem;
+      }
     }
 
     h4 {

@@ -1,5 +1,12 @@
-<dialog #modal (cancel)="$event.preventDefault()" [open]="open">
+<dialog #modal [open]="open">
   <form [formGroup]="registerAddressForm" (ngSubmit)="onSubmit()">
+    <button
+      *ngIf="allowClosing"
+      class="close-button"
+      (click)="onCancel($event)"
+    >
+      <fa-icon [icon]="faX"></fa-icon>
+    </button>
     <h4>{{ title }}</h4>
     <div class="inputs">
       <label for="addressName" appInput>

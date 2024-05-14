@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DateValidator } from 'src/app/core/validators/date.validator';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
+import { Address } from 'src/app/shared/interfaces/address';
 import { User } from 'src/app/shared/interfaces/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
@@ -70,22 +71,61 @@ export class DataComponent implements OnInit {
   }
   initAddressForm() {
     for (let address of this.user.addresses) {
-      (<FormArray>this.addressForm.controls.addresses).push(
-        this.formBuilder.group({
-          name: [address.name, [(Validators.required, EmptyValidator)]],
-          cep: [address.cep, [Validators.required, EmptyValidator]],
-          state: [address.state, [Validators.required, EmptyValidator]],
-          city: [address.city, [Validators.required, EmptyValidator]],
-          neighborhood: [
-            address.neighborhood,
-            [Validators.required, EmptyValidator],
-          ],
-          street: [address.street, [Validators.required, EmptyValidator]],
-          number: [address.number, [Validators.required, EmptyValidator]],
-          complement: [address.complement],
-        })
-      );
+      this.createNewAddress(address);
     }
+  }
+
+  updateProfileInformation() {
+    this.user.name = this.profileForm.value.name;
+    this.user.email = this.profileForm.value.email;
+    this.user.cpf = this.profileForm.value.cpf;
+    this.user.birth = this.profileForm.value.birth;
+    this.user.gender = this.profileForm.value.gender;
+  }
+  updateContactInformation() {
+    this.user.contactInfo[0].cellphone = this.contactForm.value.cellphone1;
+    this.user.contactInfo[0].telephone = this.contactForm.value.telephone1;
+    if (this.user.contactInfo[1]) {
+      this.user.contactInfo[1].cellphone = this.contactForm.value.cellphone2;
+      this.user.contactInfo[1].telephone = this.contactForm.value.telephone2;
+    }
+  }
+  updateAddressInformation() {
+    this.user.addresses = [];
+    if (this.addressForm.value.addresses) {
+      for (let i = 0; i < this.addressForm.value.addresses.length; i++) {
+        let address: Address = this.addressForm.value.addresses[i] as Address;
+        this.user.addresses.push(address);
+      }
+    }
+  }
+
+  createNewAddress(address: Address, save: boolean = false) {
+    (<FormArray>this.addressForm.controls.addresses).push(
+      this.formBuilder.group({
+        name: [address.name, [(Validators.required, EmptyValidator)]],
+        cep: [address.cep, [Validators.required, EmptyValidator]],
+        state: [address.state, [Validators.required, EmptyValidator]],
+        city: [address.city, [Validators.required, EmptyValidator]],
+        neighborhood: [
+          address.neighborhood,
+          [Validators.required, EmptyValidator],
+        ],
+        street: [address.street, [Validators.required, EmptyValidator]],
+        number: [address.number, [Validators.required, EmptyValidator]],
+        complement: [address.complement],
+      })
+    );
+    if (save) {
+      this.user.addresses.push(address);
+      this.userService.updateUser(this.user);
+    }
+  }
+
+  deleteAddress(i: number) {
+    (<FormArray>this.addressForm.controls.addresses).removeAt(i);
+    this.user.addresses.splice(i, 1);
+    this.userService.updateUser(this.user);
   }
 
   enableEditing() {
@@ -94,6 +134,10 @@ export class DataComponent implements OnInit {
   }
 
   saveData() {
+    this.updateProfileInformation();
+    this.updateContactInformation();
+    this.updateAddressInformation();
+    this.userService.updateUser(this.user);
     this.editingData = false;
     this.disableAllForms();
   }
