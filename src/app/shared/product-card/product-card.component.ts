@@ -5,7 +5,7 @@ import {
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
 import { ProductVariant } from 'src/app/shared/interfaces/product-variant';
-import { ProductService } from '../services/product/product.service';
+import { CartService } from '../services/cart/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -19,11 +19,11 @@ export class ProductCardComponent {
   
   @Input() product!: ProductVariant;
   
-  constructor(private productService: ProductService) {
+  constructor(private cartService:  CartService) {
   }
   
   handleClickCart() {
-    this.productService.addItemCart(this.product, 1);
+    this.cartService.addItemCart(this.product, 1);
     // this.routing.navigate(['/carrinho']);
   }
   handleClickBuy() {

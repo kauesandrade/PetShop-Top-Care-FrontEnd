@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductService } from '../services/product/product.service';
 import { ProductVariant } from '../interfaces/product-variant';
 import { Product } from '../interfaces/product';
+import { FilterService } from '../services/filter/filter.service';
 
 @Component({
   selector: 'app-product-section',
@@ -17,7 +17,7 @@ export class ProductSectionComponent implements OnInit {
 
 
 
-  constructor(private productService: ProductService) {}
+  constructor(private filterService: FilterService) {}
 
   ngOnInit(): void {
     if(this.category?.length){
