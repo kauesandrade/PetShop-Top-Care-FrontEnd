@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../../interfaces/product';
 import productData from '../../../../assets/JsonFiles/products.json';
 import { ProductService } from '../product/product.service';
+import { ProductVariant } from '../../interfaces/product-variant';
 
 @Injectable({
     providedIn: 'root'
 })
 export class FavoriteService {
-    productList: Array<Product> = [];
+    productList: Array<ProductVariant> = [];
 
     constructor() { }
 
