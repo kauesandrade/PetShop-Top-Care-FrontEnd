@@ -1,3 +1,4 @@
+import { CategoryProduct } from './category-product';
 import { ReviewProduct } from './review-product';
 import { SpecificationProduct } from './specification-product';
 
@@ -10,6 +11,6 @@ export interface Product {
   brand: string;
   specifications: Array<SpecificationProduct>; 
   rating: number;
-  category: Array<string>;
+  category: Array<CategoryProduct>;
   reviews?: Array<ReviewProduct>;
 }

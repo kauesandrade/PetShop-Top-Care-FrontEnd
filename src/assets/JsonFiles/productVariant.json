@@ -31,11 +31,32 @@
             ],
             "rating": 5,
             "category": [
-                "Cachorro",
-                "Ração",
-                "Filhote",
-                "Oferta",
-                "Avaliado"
+                {
+                    "title": "Pet",
+                    "types": [
+                        "Cachorro"
+                    ]
+                },
+                {
+                    "title": "Porte de Raça",
+                    "types": [
+                        "Pequeno",
+                        "Grande"
+                    ]
+                },
+                {
+                    "title": "Idade",
+                    "types": [
+                        "Filhote",
+                        "Adulto"
+                    ]
+                },
+                {
+                    "title": "Linha",
+                    "types": [
+                        "Super Premium"
+                    ]
+                }
             ],
             "variantCode": 1,
             "variant": "15Kg",
@@ -79,11 +100,32 @@
             ],
             "rating": 5,
             "category": [
-                "Cachorro",
-                "Ração",
-                "Filhote",
-                "Oferta",
-                "Avaliado"
+                {
+                    "title": "Pet",
+                    "types": [
+                        "Cachorro"
+                    ]
+                },
+                {
+                    "title": "Porte de Raça",
+                    "types": [
+                        "Pequeno",
+                        "Grande"
+                    ]
+                },
+                {
+                    "title": "Idade",
+                    "types": [
+                        "Filhote",
+                        "Adulto"
+                    ]
+                },
+                {
+                    "title": "Linha",
+                    "types": [
+                        "Super Premium"
+                    ]
+                }
             ],
             "variantCode": 2,
             "variant": "20Kg",
@@ -127,11 +169,32 @@
             ],
             "rating": 5,
             "category": [
-                "Cachorro",
-                "Ração",
-                "Filhote",
-                "Oferta",
-                "Avaliado"
+                {
+                    "title": "Pet",
+                    "types": [
+                        "Cachorro"
+                    ]
+                },
+                {
+                    "title": "Porte de Raça",
+                    "types": [
+                        "Pequeno",
+                        "Grande"
+                    ]
+                },
+                {
+                    "title": "Idade",
+                    "types": [
+                        "Filhote",
+                        "Adulto"
+                    ]
+                },
+                {
+                    "title": "Linha",
+                    "types": [
+                        "Super Premium"
+                    ]
+                }
             ],
             "variantCode": 3,
             "variant": "10Kg",
@@ -175,10 +238,32 @@
             ],
             "rating": 4,
             "category": [
-                "Ração",
-                "Premium",
-                "Cachorro",
-                "Avaliado"
+                {
+                    "title": "Pet",
+                    "types": [
+                        "Cachorro"
+                    ]
+                },
+                {
+                    "title": "Porte de Raça",
+                    "types": [
+                        "Pequeno",
+                        "Grande"
+                    ]
+                },
+                {
+                    "title": "Idade",
+                    "types": [
+                        "Filhote",
+                        "Adulto"
+                    ]
+                },
+                {
+                    "title": "Linha",
+                    "types": [
+                        "Super Premium"
+                    ]
+                }
             ],
             "reviews": [
                 {
@@ -239,11 +324,32 @@
             ],
             "rating": 4.5,
             "category": [
-                "Caminha",
-                "Gato",
-                "Filhote",
-                "Oferta",
-                "Avaliado"
+                {
+                    "title": "Pet",
+                    "types": [
+                        "Gato"
+                    ]
+                },
+                {
+                    "title": "Porte de Raça",
+                    "types": [
+                        "Pequeno",
+                        "Grande"
+                    ]
+                },
+                {
+                    "title": "Idade",
+                    "types": [
+                        "Filhote",
+                        "Adulto"
+                    ]
+                },
+                {
+                    "title": "Linha",
+                    "types": [
+                        "Pet Iglu"
+                    ]
+                }
             ],
             "variantCode": 1,
             "variant": "Único",
@@ -287,10 +393,26 @@
             ],
             "rating": 3,
             "category": [
-                "Brinquedo",
-                "Cachorro",
-                "Osso",
-                "Oferta"
+                {
+                    "title": "Pet",
+                    "types": [
+                        "Cachorro"
+                    ]
+                },
+                {
+                    "title": "Porte de Raça",
+                    "types": [
+                        "Pequeno",
+                        "Grande"
+                    ]
+                },
+                {
+                    "title": "Idade",
+                    "types": [
+                        "Filhote",
+                        "Adulto"
+                    ]
+                }
             ],
             "variantCode": 1,
             "variant": "Pequeno",
@@ -334,10 +456,26 @@
             ],
             "rating": 3,
             "category": [
-                "Brinquedo",
-                "Cachorro",
-                "Osso",
-                "Oferta"
+                {
+                    "title": "Pet",
+                    "types": [
+                        "Cachorro"
+                    ]
+                },
+                {
+                    "title": "Porte de Raça",
+                    "types": [
+                        "Pequeno",
+                        "Grande"
+                    ]
+                },
+                {
+                    "title": "Idade",
+                    "types": [
+                        "Filhote",
+                        "Adulto"
+                    ]
+                }
             ],
             "variantCode": 2,
             "variant": "Médio",
@@ -381,10 +519,32 @@
             ],
             "rating": 3,
             "category": [
-                "Brinquedo",
-                "Cachorro",
-                "Osso",
-                "Oferta"
+                {
+                    "title": "Pet",
+                    "types": [
+                        "Cachorro"
+                    ]
+                },
+                {
+                    "title": "Cor",
+                    "types": [
+                        "Verde"
+                    ]
+                },
+                {
+                    "title": "Porte de Raça",
+                    "types": [
+                        "Pequeno",
+                        "Grande"
+                    ]
+                },
+                {
+                    "title": "Idade",
+                    "types": [
+                        "Filhote",
+                        "Adulto"
+                    ]
+                }
             ],
             "variantCode": 3,
             "variant": "Grande",

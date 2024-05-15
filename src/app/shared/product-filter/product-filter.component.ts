@@ -16,8 +16,7 @@ export class ProductFilterComponent implements OnInit {
   @Output() emitFilters = new EventEmitter<Array<string>>;
   
   variableFilters: Array<any> = [];
-  filters: Array<any> = [
-  ];
+  filters: Array<any> = [ ];
 
   typeFilters = [
     {

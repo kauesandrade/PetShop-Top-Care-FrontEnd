@@ -31,11 +31,32 @@
       ],
       "rating": 5,
       "category": [
-        "Cachorro",
-        "Ração",
-        "Filhote",
-        "Oferta",
-        "Avaliado"
+        {
+          "title": "Pet",
+          "types": [
+            "Cachorro"
+          ]
+        },
+        {
+          "title": "Porte de Raça",
+          "types": [
+            "Pequeno",
+            "Grande"
+          ]
+        },
+        {
+          "title": "Idade",
+          "types": [
+            "Filhote",
+            "Adulto"
+          ]
+        },
+        {
+          "title": "Linha",
+          "types": [
+            "Super Premium"
+          ]
+        }
       ]
     },
     {
@@ -69,10 +90,32 @@
       ],
       "rating": 4,
       "category": [
-        "Ração",
-        "Premium",
-        "Cachorro",
-        "Avaliado"
+        {
+          "title": "Pet",
+          "types": [
+            "Cachorro"
+          ]
+        },
+        {
+          "title": "Porte de Raça",
+          "types": [
+            "Pequeno",
+            "Grande"
+          ]
+        },
+        {
+          "title": "Idade",
+          "types": [
+            "Filhote",
+            "Adulto"
+          ]
+        },
+        {
+          "title": "Linha",
+          "types": [
+            "Super Premium"
+          ]
+        }
       ]
     },
     {
@@ -106,11 +149,32 @@
       ],
       "rating": 4.5,
       "category": [
-        "Caminha",
-        "Gato",
-        "Filhote",
-        "Oferta",
-        "Avaliado"
+        {
+          "title": "Pet",
+          "types": [
+            "Gato"
+          ]
+        },
+        {
+          "title": "Porte de Raça",
+          "types": [
+            "Pequeno",
+            "Grande"
+          ]
+        },
+        {
+          "title": "Idade",
+          "types": [
+            "Filhote",
+            "Adulto"
+          ]
+        },
+        {
+          "title": "Linha",
+          "types": [
+            "Pet Iglu"
+          ]
+        }
       ]
     },
     {
@@ -144,10 +208,26 @@
       ],
       "rating": 3,
       "category": [
-        "Brinquedo",
-        "Cachorro",
-        "Osso",
-        "Oferta"
+        {
+          "title": "Pet",
+          "types": [
+            "Cachorro"
+          ]
+        },
+        {
+          "title": "Porte de Raça",
+          "types": [
+            "Pequeno",
+            "Grande"
+          ]
+        },
+        {
+          "title": "Idade",
+          "types": [
+            "Filhote",
+            "Adulto"
+          ]
+        }
       ]
     }
   ]

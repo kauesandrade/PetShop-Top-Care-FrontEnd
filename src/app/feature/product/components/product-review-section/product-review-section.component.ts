@@ -8,7 +8,7 @@ import { ReviewProduct } from 'src/app/shared/interfaces/review-product';
 })
 export class ProductReviewSectionComponent implements OnInit {
 
-  @Input() reviews!: Array<ReviewProduct>
+  @Input() reviews?: Array<ReviewProduct>
 
   constructor() { }
 
