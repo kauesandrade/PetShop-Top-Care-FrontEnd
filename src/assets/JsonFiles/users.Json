@@ -38,6 +38,14 @@
           "number": 2,
           "complement": "Em frente ao pavilhão de eventos"
         }
+      ],
+      "cards": [
+        {
+          "name": "Bernardo",
+          "lastDigits": "1234",
+          "expirationDate": "01/01",
+          "mainCard": true
+        }
       ]
     },
     {

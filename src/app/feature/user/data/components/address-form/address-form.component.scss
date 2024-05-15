@@ -6,12 +6,24 @@ form {
 
   .header {
     @include subgrid();
+    row-gap: 1.5rem;
     h5 {
-      grid-column: auto / span 7;
+      text-align: center;
+      grid-column: 1 / -1;
+      @media (min-width: $tablet) {
+        text-align: start;
+        grid-column: auto / span 7;
+      }
     }
     button {
       height: 2.25rem;
-      grid-column: auto / span 3;
+      grid-column: 1 / -1;
+      @media (min-width: $tablet) {
+        grid-column: auto / span 2;
+      }
+      @media (min-width: $desktop) {
+        grid-column: auto / span 3;
+      }
     }
   }
 
@@ -28,7 +40,13 @@ form {
         height: 2.5rem;
         grid-column: 1 / -1;
         place-self: end;
-        width: 4rem;
+        width: 100%;
+        @media (min-width: $tablet) {
+          width: 4rem;
+        }
+        fa-icon {
+          font-size: 1.5rem;
+        }
       }
 
       label {

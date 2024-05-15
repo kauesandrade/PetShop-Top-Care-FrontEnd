@@ -1,4 +1,5 @@
 import { Address } from './address';
+import { Card } from './card';
 import { Contact } from './contact';
 
 export interface User {
@@ -10,4 +11,5 @@ export interface User {
   password: string;
   contactInfo: [Contact, Contact?];
   addresses: Address[];
+  cards: Card[];
 }

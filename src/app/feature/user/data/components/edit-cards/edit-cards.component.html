@@ -1,1 +1,117 @@
-<p>edit-cards works!</p>
+<dialog #modal [open]="open" (cancel)="$event.preventDefault()">
+  <form
+    [formGroup]="editCardsForm"
+    (ngSubmit)="onSubmit()"
+    (cancel)="$event.preventDefault()"
+  >
+    <h4>Meus cartões</h4>
+    <button class="add-button" (click)="addNewCard($event)">
+      <fa-icon [icon]="faPlus"></fa-icon>
+    </button>
+    <div
+      *ngFor="let card of cards.controls; let i = index"
+      formArrayName="cards"
+      class="cards"
+    >
+      <form [formGroupName]="i" class="cardForm">
+        <button appButton="secondary" (click)="deleteCard($event, i)">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+        <label for="name" appInput>
+          <p>Nome</p>
+          <input
+            type="text"
+            [id]="'name' + i"
+            formControlName="name"
+            [class.has-error]="getName(i)?.touched && getName(i)?.invalid"
+            required
+          />
+          <ng-container *ngIf="getName(i)?.touched && getName(i)?.invalid">
+            <span *ngIf="getName(i)?.getError('isEmpty')" class="error-message">
+              Você deve preencher esse campo!
+            </span>
+          </ng-container>
+        </label>
+        <label for="lastDigits" appInput>
+          <p>4 últimos dígitos</p>
+          <input
+            type="text"
+            [id]="'lastDigits' + i"
+            formControlName="lastDigits"
+            [class.has-error]="
+              getLastDigits(i)?.touched && getLastDigits(i)?.invalid
+            "
+            prefix="**** **** **** "
+            mask="0000"
+            required
+          />
+          <ng-container
+            *ngIf="getLastDigits(i)?.touched && getLastDigits(i)?.invalid"
+          >
+            <span
+              *ngIf="getLastDigits(i)?.getError('isEmpty')"
+              class="error-message"
+            >
+              Você deve preencher esse campo!
+            </span>
+            <span
+              *ngIf="getLastDigits(i)?.getError('mask')"
+              class="error-message"
+            >
+              Deve conter 4 dígitos!
+            </span>
+          </ng-container>
+        </label>
+        <label for="expirationDate" appInput>
+          <p>Data de validade</p>
+          <input
+            type="text"
+            [id]="'expirationDate' + i"
+            formControlName="expirationDate"
+            [class.has-error]="
+              getExpirationDate(i)?.touched && getExpirationDate(i)?.invalid
+            "
+            mask="M0/00"
+            required
+          />
+          <ng-container
+            *ngIf="
+              getExpirationDate(i)?.touched && getExpirationDate(i)?.invalid
+            "
+          >
+            <span
+              *ngIf="getExpirationDate(i)?.getError('isEmpty')"
+              class="error-message"
+            >
+              Você deve preencher esse campo!
+            </span>
+            <span
+              *ngIf="getExpirationDate(i)?.getError('mask')"
+              class="error-message"
+            >
+              Deve ser no formato mm/yy!
+            </span>
+          </ng-container>
+        </label>
+        <label for="mainCard" appInput class="checkbox-label">
+          <input
+            type="checkbox"
+            [id]="'mainCard' + i"
+            formControlName="mainCard"
+            (change)="resetMainCards(i)"
+          />
+          <p>Usar este cartão para compras futuras</p>
+        </label>
+      </form>
+    </div>
+    <button appButton class="close-button" (click)="onClose($event)">
+      Sair
+    </button>
+    <input
+      appButton="secondary"
+      type="submit"
+      [disabled]="!isFormValid()"
+      value="Salvar"
+    />
+  </form>
+</dialog>

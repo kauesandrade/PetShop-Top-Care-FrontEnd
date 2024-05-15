@@ -35,7 +35,10 @@ dialog {
       color: $black1;
       cursor: pointer;
       fa-icon {
-        font-size: 2rem;
+        font-size: 1rem;
+        @media (min-width: $tablet) {
+          font-size: 2rem;
+        }
       }
     }
 

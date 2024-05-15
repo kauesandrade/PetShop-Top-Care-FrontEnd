@@ -8,7 +8,9 @@
     <button appButton="secondary" (click)="openPasswordModal = true">
       Alterar senha
     </button>
-    <button appButton>Meus cartões salvos</button>
+    <button appButton (click)="openCardsModal = true">
+      Meus cartões salvos
+    </button>
   </div>
   <div class="divider"></div>
   <app-contact-form [(contactForm)]="contactForm"></app-contact-form>
@@ -42,4 +44,4 @@
   [(open)]="openPasswordModal"
   (changedPassword)="updatePassword($event)"
 ></app-change-password>
-<app-edit-cards></app-edit-cards>
+<app-edit-cards [(open)]="openCardsModal"></app-edit-cards>

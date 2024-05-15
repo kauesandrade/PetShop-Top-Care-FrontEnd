@@ -1,4 +1,4 @@
-<dialog #modal [open]="open">
+<dialog #modal [open]="open" (cancel)="$event.preventDefault()">
   <form [formGroup]="registerAddressForm" (ngSubmit)="onSubmit()">
     <button
       *ngIf="allowClosing"

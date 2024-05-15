@@ -5,6 +5,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { PasswordValidator } from 'src/app/core/validators/password.validator';
 import { Address } from 'src/app/shared/interfaces/address';
+import { Card } from 'src/app/shared/interfaces/card';
 import { User } from 'src/app/shared/interfaces/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
@@ -123,6 +124,7 @@ export class RegisterFormComponent {
         { cellphone: formValues.cellphone!, telephone: formValues.telephone! },
       ],
       addresses: [address],
+      cards: new Array<Card>(),
     };
 
     this.userService.register(user);

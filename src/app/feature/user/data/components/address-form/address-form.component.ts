@@ -53,8 +53,6 @@ export class AddressFormComponent {
   constructor(private cepService: CepService) {}
 
   onInput() {
-    console.log(this.getName(0));
-
     this.addressFormChange.emit(this.addressForm);
   }
 
