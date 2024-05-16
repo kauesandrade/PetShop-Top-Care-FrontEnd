@@ -3,8 +3,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DateValidator } from 'src/app/core/validators/date.validator';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
-import { Address } from 'src/app/shared/interfaces/address';
-import { User } from 'src/app/shared/interfaces/user';
+import { Address } from 'src/app/shared/interfaces/user/address';
+import { User } from 'src/app/shared/interfaces/user/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({

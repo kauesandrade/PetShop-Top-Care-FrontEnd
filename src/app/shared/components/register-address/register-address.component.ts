@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
-import { Address } from '../../interfaces/address';
+import { Address } from '../../interfaces/user/address';
 import { CepService } from '../../services/cep/cep.service';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 

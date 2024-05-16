@@ -4,9 +4,11 @@ import { Route, Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { PasswordValidator } from 'src/app/core/validators/password.validator';
-import { Address } from 'src/app/shared/interfaces/address';
-import { Card } from 'src/app/shared/interfaces/card';
-import { User } from 'src/app/shared/interfaces/user';
+import { Order } from 'src/app/shared/interfaces/order/order';
+import { Subscription } from 'src/app/shared/interfaces/order/subscription';
+import { Card } from 'src/app/shared/interfaces/payment/card';
+import { Address } from 'src/app/shared/interfaces/user/address';
+import { User } from 'src/app/shared/interfaces/user/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
@@ -125,6 +127,8 @@ export class RegisterFormComponent {
       ],
       addresses: [address],
       cards: new Array<Card>(),
+      orders: new Array<Order>(),
+      subscriptions: new Array<Subscription>(),
     };
 
     this.userService.register(user);

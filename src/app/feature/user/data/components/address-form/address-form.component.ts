@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { faTrash, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { Address } from 'src/app/shared/interfaces/address';
+import { Address } from 'src/app/shared/interfaces/user/address';
 import { CepService } from 'src/app/shared/services/cep/cep.service';
 
 @Component({
