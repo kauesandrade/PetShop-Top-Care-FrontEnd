@@ -1,0 +1,32 @@
+@import 'styles';
+
+main{
+    @include grid-container();
+    row-gap: 2rem;
+
+    .title{
+        grid-column: 1 / -1;
+        color: $primary;
+        @media(min-width: $tablet){
+            @include heading(h4)
+        }
+        @media(min-width: $desktopHD){
+            @include heading(h1)
+        }
+    }
+  
+    .commonSection{
+      @include subgrid();
+      gap: 1rem;
+      @media(min-width: $tablet){
+        gap: 1.5rem;
+      }
+    }
+    // {
+    //   @include subgrid();
+    // }
+  
+    @media (max-width: 320px){
+      row-gap: 1rem;
+    }
+}

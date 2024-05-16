@@ -22,9 +22,8 @@ div{
     }
     
     .noProducts{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex();
+        text-align: center;
         width: 100%;
         p{
             @include heading(h4);
