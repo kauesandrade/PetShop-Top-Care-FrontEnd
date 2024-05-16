@@ -144,7 +144,6 @@
         formControlName="password"
         [class.has-error]="password?.touched && password?.invalid"
         required
-        (change)="validatePassword()"
         (blur)="checkConfirmation()"
       />
       <button
@@ -155,9 +154,6 @@
       </button>
     </div>
     <ng-container *ngIf="password?.touched && password?.invalid">
-      <span *ngIf="password?.getError('isEmpty')" class="error-message">
-        Você deve preencher esse campo!
-      </span>
       <span *ngIf="password?.getError('length')" class="error-message">
         Mínimo 8 caracteres!
       </span>

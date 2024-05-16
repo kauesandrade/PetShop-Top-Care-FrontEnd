@@ -1,5 +1,12 @@
-<dialog #modal (cancel)="$event.preventDefault()" [open]="open">
+<dialog #modal [open]="open" (cancel)="$event.preventDefault()">
   <form [formGroup]="registerAddressForm" (ngSubmit)="onSubmit()">
+    <button
+      *ngIf="allowClosing"
+      class="close-button"
+      (click)="onCancel($event)"
+    >
+      <fa-icon [icon]="faX"></fa-icon>
+    </button>
     <h4>{{ title }}</h4>
     <div class="inputs">
       <label for="addressName" appInput>
@@ -133,12 +140,11 @@
       </label>
       <label for="complement" appInput>
         <p>Complemento</p>
-        <input
-          type="complement"
+        <textarea
           id="complement"
           formControlName="complement"
           placeholder="Digite o complemento"
-        />
+        ></textarea>
       </label>
     </div>
 

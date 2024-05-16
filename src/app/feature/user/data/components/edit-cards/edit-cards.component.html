@@ -1,0 +1,35 @@
+<dialog #modal [open]="open" (cancel)="$event.preventDefault()">
+  <div>
+    <h4>Meus cartões</h4>
+    <button class="add-button" (click)="addNewCard()">
+      <fa-icon [icon]="faPlus"></fa-icon>
+    </button>
+    <div *ngFor="let card of userCards; let i = index" class="cards">
+      <div class="card-info">
+        <p class="last-digits">**** **** **** {{ card.lastDigits }}</p>
+        <p class="name" [title]="card.name">{{ card.name }}</p>
+        <div class="expiration-date">
+          <p>Validade</p>
+          <p>{{ card.expirationDate }}</p>
+        </div>
+      </div>
+      <div class="action-buttons">
+        <button appButton="secondary" (click)="deleteCard(i)">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+        <button appButton (click)="editCard(card, i)">Editar</button>
+      </div>
+    </div>
+    <button appButton class="close-button" (click)="onClose()">Sair</button>
+    <button appButton="secondary" (click)="onSubmit()">Salvar</button>
+  </div>
+</dialog>
+
+<app-card-form
+  [(open)]="openCardModal"
+  [card]="editingCard"
+  [index]="cardIndex"
+  (editedCard)="addCard($event)"
+  (changedMainCard)="resetMainCards($event)"
+>
+</app-card-form>

@@ -9,10 +9,10 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
-import { Address } from '../../interfaces/address';
+import { Address } from '../../interfaces/user/address';
 import { CepService } from '../../services/cep/cep.service';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register-address',
@@ -20,12 +20,17 @@ import { CepService } from '../../services/cep/cep.service';
   styleUrls: ['./register-address.component.scss'],
 })
 export class RegisterAddressComponent implements OnChanges {
-  @Input() open = false;
+  @Input() allowClosing = false;
   @Input() title = 'Cadastre seu endereço';
 
   @Output() registeredAddress = new EventEmitter<Address>();
 
+  @Input() open = false;
+  @Output() openChange = new EventEmitter<boolean>();
+
   @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
+
+  faX = faTimes;
 
   states = [
     'Escolha a UF',
@@ -110,6 +115,19 @@ export class RegisterAddressComponent implements OnChanges {
     }
   }
 
+  onCancel(e: Event) {
+    e.preventDefault();
+    this.closeModal();
+  }
+
+  closeModal() {
+    this.modal.nativeElement.close();
+    this.open = false;
+    this.openChange.emit(this.open);
+    this.registerAddressForm.reset();
+    document.body.style.overflow = 'auto';
+  }
+
   searchCep() {
     this.cepService.searchCep(this.cep?.value!).subscribe((res: any) => {
       if (res.erro) {
@@ -133,6 +151,7 @@ export class RegisterAddressComponent implements OnChanges {
     let address: Address = {
       name: formValues.addressName!,
       cep: formValues.cep!,
+      state: formValues.state!,
       city: formValues.city!,
       neighborhood: formValues.neighborhood!,
       street: formValues.street!,
@@ -141,7 +160,6 @@ export class RegisterAddressComponent implements OnChanges {
     };
 
     this.registeredAddress.emit(address);
-    this.modal.nativeElement.close();
-    document.body.style.overflow = 'auto';
+    this.closeModal();
   }
 }

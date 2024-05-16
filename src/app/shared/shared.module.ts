@@ -15,6 +15,7 @@ import { RegisterAddressComponent } from './components/register-address/register
 import { InputAmountComponent } from './components/input-amount/input-amount.component';
 import { ProductLayoutComponent } from './components/product-layout/product-layout.component';
 import { ProductFilterComponent } from './components/product-filter/product-filter.component';
+import { CardDisplayComponent } from './components/card-display/card-display.component';
 
 const Components = [
   ProductCardComponent,
@@ -26,6 +27,7 @@ const Components = [
   OrderByComponent,
   ProductFilterComponent,
   MainCarouselComponent,
+  CardDisplayComponent,
 ];
 
 @NgModule({

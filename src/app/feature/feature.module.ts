@@ -10,6 +10,8 @@ import { CartModule } from './cart/cart.module';
 import { ProductModule } from './product/product.module';
 import { SearchModule } from './search/search.module';
 import { FavoritesModule } from './favorites/favorites.module';
+import { UserModule } from './user/user.module';
+
 @NgModule({
   exports: [
     HomeModule,
@@ -21,6 +23,7 @@ import { FavoritesModule } from './favorites/favorites.module';
     ProductModule,
     SearchModule,
     FavoritesModule,
+    UserModule,
   ],
   declarations: [],
   imports: [CommonModule, FontAwesomeModule],
