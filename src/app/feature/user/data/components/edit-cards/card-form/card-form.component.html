@@ -13,6 +13,7 @@
           type="text"
           id="name"
           formControlName="name"
+          placeholder="Digite o nome do titular do cartão"
           [class.has-error]="name?.touched && name?.invalid"
           required
         />
@@ -28,6 +29,7 @@
           type="text"
           id="lastDigits"
           formControlName="lastDigits"
+          placeholder="Digite o número do cartão"
           [class.has-error]="lastDigits?.touched && lastDigits?.invalid"
           prefix="**** **** **** "
           mask="0000"
@@ -48,6 +50,7 @@
           type="text"
           id="expirationDate"
           formControlName="expirationDate"
+          placeholder="Mês/ano"
           [class.has-error]="expirationDate?.touched && expirationDate?.invalid"
           mask="M0/00"
           [dropSpecialCharacters]="false"
