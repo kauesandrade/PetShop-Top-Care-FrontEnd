@@ -37,7 +37,11 @@ const routes: Routes = [
   },
   { path: 'login', title: 'Login | Top Care', component: LoginComponent },
   { path: 'busca', component: SearchComponent },
-  { path: 'carrinho', title: 'Carrinho | Top Care', component: CartComponent },
+  {
+    path: 'carrinho',
+    title: 'Carrinho | Top Care',
+    component: CartComponent,
+  },
   {
     path: 'perfil',
     title: 'Perfil | Top Care',
