@@ -13,32 +13,32 @@ export class HomeComponent {
 
   itens: Array<MainCarousel> = [
     {
-      imgSrc: '../assets/1.png',
+      imgSrc: 'assets/images/1.png',
       link: '',
       alt: 'card 1',
     },
     {
-      imgSrc: '../assets/2.png',
+      imgSrc: 'assets/images/2.png',
       link: '',
       alt: 'card 2',
     },
     {
-      imgSrc: '../assets/3.png',
+      imgSrc: 'assets/images/3.png',
       link: '',
       alt: 'card 3',
     },
     {
-      imgSrc: '../assets/4.png',
+      imgSrc: 'assets/images/4.png',
       link: '/sobre-nos',
       alt: 'card 4',
     },
     {
-      imgSrc: '../assets/5.png',
+      imgSrc: 'assets/images/5.png',
       link: '/nossas-lojas',
       alt: 'card 5',
     },
     {
-      imgSrc: '../assets/6.png',
+      imgSrc: 'assets/images/6.png',
       link: 'contate-nos',
       alt: 'card 6',
     },
