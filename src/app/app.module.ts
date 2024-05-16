@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { FeatureModule } from './feature/feature.module';
+import { RouterModule } from '@angular/router';
 registerLocaleData(ptBr);
 
 @NgModule({

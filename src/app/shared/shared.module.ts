@@ -7,6 +7,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { OrderByComponent } from './components/order-by/order-by.component';
 import { MainCarouselComponent } from './components/main-carousel/main-carousel.component';
 import { ProductSectionComponent } from './components/product-section/product-section.component';
@@ -39,6 +40,7 @@ const Components = [
     CoreModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    RouterModule,
     FormsModule,
     NgxMaskModule.forRoot(),
   ],
