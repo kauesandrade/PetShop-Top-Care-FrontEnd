@@ -18,7 +18,7 @@ dialog {
     color: $black1;
     background-color: $white;
     padding: 1rem;
-    grid-column: 1 / span 12;
+    grid-column: 1 / -1;
 
     @media (min-width: $desktop) {
       padding: 3.5rem 2rem;
@@ -52,16 +52,24 @@ dialog {
         padding: 0;
       }
 
-      button:first-of-type {
-        grid-column: 1 / -1;
+      .action-buttons {
+        @include flex();
+        gap: 1rem;
+
         @media (min-width: $tablet) {
-          grid-column: auto / span 1;
+          @include subgrid();
+          grid-column: auto / span 3;
         }
-      }
-      button:last-of-type {
-        grid-column: 1 / -1;
-        @media (min-width: $tablet) {
-          grid-column: auto / span 2;
+
+        button:first-of-type {
+          @media (min-width: $tablet) {
+            grid-column: auto / span 1;
+          }
+        }
+        button:last-of-type {
+          @media (min-width: $tablet) {
+            grid-column: auto / span 2;
+          }
         }
       }
 
@@ -69,12 +77,14 @@ dialog {
         @include flex();
         gap: 0.5rem;
         padding: 0.5rem 1rem;
-        flex-wrap: wrap;
         background-color: $light-primary;
         border-radius: 0.5rem;
+        width: 100%;
 
+        @media (min-width: $tablet) {
+          grid-column: auto / span 3;
+        }
         @media (min-width: $desktop) {
-          width: 100%;
           grid-column: auto / span 5;
         }
 
@@ -92,6 +102,10 @@ dialog {
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
+            text-align: center;
+            @media (min-width: $tablet) {
+              text-align: start;
+            }
           }
         }
 
@@ -112,6 +126,9 @@ dialog {
       height: 3rem;
       width: 100%;
 
+      @media (min-width: $tablet) {
+        grid-column: auto / span 3;
+      }
       @media (min-width: $desktop) {
         grid-column: auto / span 4;
       }

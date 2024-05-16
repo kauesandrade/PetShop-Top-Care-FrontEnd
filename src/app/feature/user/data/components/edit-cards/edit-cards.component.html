@@ -13,10 +13,12 @@
           <p>{{ card.expirationDate }}</p>
         </div>
       </div>
-      <button appButton="secondary" (click)="deleteCard(i)">
-        <fa-icon [icon]="faTrash"></fa-icon>
-      </button>
-      <button appButton (click)="editCard(card, i)">Editar</button>
+      <div class="action-buttons">
+        <button appButton="secondary" (click)="deleteCard(i)">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+        <button appButton (click)="editCard(card, i)">Editar</button>
+      </div>
     </div>
     <button appButton class="close-button" (click)="onClose()">Sair</button>
     <button appButton="secondary" (click)="onSubmit()">Salvar</button>
