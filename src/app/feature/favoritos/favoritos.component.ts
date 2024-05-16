@@ -18,6 +18,7 @@ export class FavoritosComponent implements OnInit {
 
   productsList!: Array<ProductVariant>;
   productFilters!: Array<FilterProduct>;
+  applyFilters: Array<string> = [];
   seachValue: string = "";
   
   constructor(private filterService: FilterService, private favoriteService: FavoriteService, private orderbyService: OrderByService, private routing: Router) { 
@@ -33,15 +34,16 @@ export class FavoritosComponent implements OnInit {
   }
 
   getFilters(evt: Array<string>){
-    this.productsList = this.filterService.filterProducts(evt, this.productsList);
+    this.applyFilters = evt;
+    if(!this.seachValue){
+      this.productsList = this.filterService.filterProducts(evt, this.favoriteService.getAllProductfavorited());
+    }else{
+      this.productsList = this.filterService.filterProducts(evt, this.favoriteService.searchProducts(this.seachValue,this.favoriteService.getAllProductfavorited()));
+    }
   }
 
   handleClickSeach() {
-    if(this.seachValue != ""){
-      this.productsList = this.favoriteService.searchProducts(this.seachValue, this.productsList);
-    }else{
-      this.productsList = this.favoriteService.getAllProductfavorited();
-    }
+    this.productsList = this.filterService.filterProducts(this.applyFilters, this.favoriteService.searchProducts(this.seachValue,this.favoriteService.getAllProductfavorited()));
   }
 
   verifyChar(evt: any){
