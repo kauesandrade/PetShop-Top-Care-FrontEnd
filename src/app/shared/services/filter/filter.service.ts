@@ -10,63 +10,66 @@ import { CategoryProduct } from '../../interfaces/category-product';
 })
 export class FilterService {
 
+    private productFilterList: Array<ProductVariant> = []
     private allFilters: Array<CategoryProduct> = []
-    private applyFiltersList: Array<string> = [];
 
     constructor() { }
 
-    applyFilters(filter: Array<string>){
-        this.applyFiltersList = filter;
-    }
-    
-    removeAllFilters(){
-        this.applyFiltersList = []
-    }
-
-
     filterProducts(filters: Array<string>, productList: Array<ProductVariant>) {
-        return this.filter(filters, productList);
-    }
+        this.productFilterList = []
 
-    getAllFiltersProduct(productList: Array<ProductVariant>){
+        if (filters.length) {
+            for (const productFind of productList) {
+                let productService = new ProductService()
 
-        productList.forEach(product =>{
-            product.category.forEach( category =>{
-                this.allFilters.forEach( filters =>{
-                    if(filters.title == category.title){
-                        filters.types.forEach( typefilter =>{
-                            category.types.forEach( typeCategory =>{
-                                if(typefilter != typeCategory){
-                                    filters.types.push(typeCategory);
-                                }
-                            })
-                        })
+                productService.findProduct(productFind);
 
-                    }else{
-                        this.allFilters.push(category)
-                        filters.types.forEach( typefilter =>{
-                            category.types.forEach( typeCategory =>{
-                                if(typefilter != typeCategory){
-                                    filters.types.push(typeCategory);
-                                }
-                            })
-                        })
-                    }
+                productFind.category.forEach(categoryProduct => {
+                    filters.sort().forEach((filter) => {
+
+                        if (categoryProduct.types.includes(filter) && !this.productFilterList.includes(productService.getFirstProductVariant())) {
+                            this.productFilterList.push(productService.getFirstProductVariant());
+                        }
+
+                    });
                 })
-            })
-        })
 
-        return this.allFilters;
+            }
+        } else {
+            this.productFilterList = productList;
+        }
+        return this.productFilterList;
     }
-
-
 
     getAllProductsOfCategory(categoryArray: Array<string>) {
-        return this.filter(categoryArray, productData.product)
+        this.productFilterList = []
+
+        for (const productFind of productData.product) {
+            let productService = new ProductService()
+            let isAll = true;
+
+            productService.findProduct(productFind);
+
+            productFind.category.forEach(categoryProduct => {
+                categoryArray.sort().forEach((category) => {
+
+                    if (!categoryProduct.types.includes(category)) {
+                        isAll = false;
+                    }
+
+                });
+
+                if (isAll && !this.productFilterList.includes(productService.getFirstProductVariant())) {
+                    this.productFilterList.push(productService.getFirstProductVariant());
+                }
+            })
+
+        }
+        return this.productFilterList;
     }
 
     getSimilarProducts(product: Product | ProductVariant) {
-        const productList: Array<ProductVariant> = [];
+        this.productFilterList = [];
 
         for (const productFind of productData.product) {
             let productService = new ProductService()
@@ -81,37 +84,74 @@ export class FilterService {
             });
 
             if (add >= 3) {
-                productList.push(productService.getFirstProductVariant());
+                this.productFilterList.push(productService.getFirstProductVariant());
             }
         }
 
-        return productList;
+        return this.productFilterList;
     }
 
 
-    private filter(categoryArray: Array<string>, productData: Array<ProductVariant | Product>) {
-        const productFilterList: Array<ProductVariant> = []
-        for (const productFind of productData) {
-            let productService = new ProductService()
-            let isAll = true;
+    getAllFiltersProduct(productList: Array<ProductVariant>) {
+        this.allFilters = []
 
-            productService.findProduct(productFind);
-
-            productFind.category.forEach(categoryProduct =>{
-                categoryArray.sort().forEach((category) => {
-    
-                    if (!categoryProduct.types.includes(category)) {
-                        isAll = false;
+        productList.forEach(product => {
+            product.category.forEach(category => {
+                let notFound = true
+                this.allFilters.forEach(filter => {
+                    if (filter.title == category.title) {
+                        notFound = false;
                     }
-    
-                });
-    
-                if (isAll) {
-                    productFilterList.push(productService.getFirstProductVariant());
+                })
+                if (notFound) {
+                    this.allFilters.push({
+                        title: category.title,
+                        types: []
+                    })
                 }
             })
+        })
 
-        }
-        return productFilterList;
+        productList.forEach(product => {
+            product.category.forEach(categoty => {
+                this.allFilters.forEach(filters => {
+                    if (filters.title == categoty.title) {
+                        categoty.types.forEach(type => {
+                            if (!filters.types.includes(type)) {
+                                filters.types.push(type)
+                            }
+                        })
+                    }
+                })
+            })
+        })
+        return this.allFilters;
+    }
+
+    getListFilterWithChecked(productList: Array<ProductVariant>) {
+
+        this.getAllFiltersProduct(productList);
+
+        const filterWithCheck: Array<any> = [];
+
+        this.allFilters.forEach(filter => {
+            const filterTypes: Array<any> = [];
+            filter.types.forEach(type => {
+                filterTypes.push(
+                    {
+                        type: type,
+                        isChecked: false
+                    }
+                )
+            })
+
+            filterWithCheck.push({
+                title: filter.title,
+                types: [...filterTypes]
+            })
+        })
+
+        console.log("asdasd");
+        return filterWithCheck;
     }
 }

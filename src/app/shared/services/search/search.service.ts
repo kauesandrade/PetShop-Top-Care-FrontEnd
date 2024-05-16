@@ -16,7 +16,7 @@ export class SearchService {
   searchProducts(searchValue: string) {
 
     const searchValueList: Array<string> = searchValue.split(" ");
-
+    
     let first = true;
     searchValueList.forEach((searchValueFind) => {
       if (first) {
@@ -28,19 +28,23 @@ export class SearchService {
     });
     return this.productList;
   }
-
-
+  
+  getProductList(){
+    return this.productList;
+  }
+  
   private searchInProductData(searchValueFind: string) {
     let productService = new ProductService()
     
     productData.product.forEach(product => {
       productService.findProduct(product);
+      
       if (this.getTittleWithTypes(product).includes(this.formatString(searchValueFind)) 
-      && this.productList.includes(productService.getFirstProductVariant())
+      && !this.productList.includes(productService.getFirstProductVariant())
       && this.verifyProductIsAvailable(productService.getFirstProductVariant())) {
-
+        
         this.productList.push(productService.getFirstProductVariant());
-
+        
       }
     })
   }

@@ -3,10 +3,10 @@
         <fa-icon [icon]="faFilter"></fa-icon>
         Filtro
     </li>
-    <ng-container *ngFor="let filter of variableFilters">
+    <ng-container *ngFor="let filter of applyFilters">
         <li class="li-filters" (click)="takeOffFilter(filter)">
             <fa-icon [icon]="faTimes"></fa-icon>
-            {{filter.variable}}
+            {{filter}}
         </li>
     </ng-container>
 </ul>
@@ -27,16 +27,16 @@
                 </ul>
             </div>
     
-            <ng-container *ngFor="let typeFilter of typeFilters">
+            <ng-container *ngFor="let typeFilter of productFiltersWihtChecked">
                 <div class="div-typeFilter">
                     <span class="title-typeFilter">{{typeFilter.title}}</span>
                     <div class="divider"></div>
                     <ul class="ul-variablesFilter">
-                        <ng-container *ngFor="let variableFilter of typeFilter.variables">
+                        <ng-container *ngFor="let type of typeFilter.types">
                             <li class="li-variableFilter">
-                                <input type="checkbox" appInput [checked]="variableFilter.isChecked"
-                                    (change)="changeChecked(variableFilter)">
-                                {{variableFilter.variable}}
+                                    <input type="checkbox" appInput [checked]="type.isChecked"
+                                        (change)="changeChecked(type)">
+                                    {{type.type}}
                             </li>
                         </ng-container>
                     </ul>
