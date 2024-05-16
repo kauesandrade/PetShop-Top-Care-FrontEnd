@@ -6,11 +6,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   exports: [SearchComponent],
   declarations: [SearchComponent],
-  imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule, FormsModule]
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    CoreModule,
+    SharedModule,
+    FormsModule,
+  ],
 })
-export class SearchModule { }
+export class SearchModule {}

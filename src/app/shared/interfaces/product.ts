@@ -6,10 +6,10 @@ export interface Product {
   code: number;
   favorite: boolean;
   title: string;
-  littleDescription: string,
-  description: string,
+  littleDescription: string;
+  description: string;
   brand: string;
-  specifications: Array<SpecificationProduct>; 
+  specifications: Array<SpecificationProduct>;
   rating: number;
   category: Array<CategoryProduct>;
   reviews?: Array<ReviewProduct>;

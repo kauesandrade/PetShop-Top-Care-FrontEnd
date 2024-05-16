@@ -130,6 +130,7 @@ export class RegisterFormComponent {
     let formValues = this.registerForm.value;
 
     let user: User = {
+      profileImage: '',
       name: formValues.name!,
       email: formValues.email!,
       cpf: formValues.cpf!,
