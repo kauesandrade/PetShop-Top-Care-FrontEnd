@@ -9,7 +9,7 @@ import { RegisterComponent } from './feature/register/register.component';
 import { LoginComponent } from './feature/login/login.component';
 import { SearchComponent } from './feature/search/search.component';
 import { CartComponent } from './feature/cart/cart.component';
-import { FavoritosComponent } from './feature/favoritos/favoritos.component';
+import { FavoritesComponent } from './feature/favorites/favorites.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'login', title: 'Login | Top Care', component: LoginComponent },
   { path: 'busca', component: SearchComponent },
   { path: 'carrinho', title: 'Carrinho | Top Care', component: CartComponent },
-  { path: 'favoritos', title: 'Favoritos | Top Care', component: FavoritosComponent },
+  { path: 'favoritos', title: 'Favoritos | Top Care', component: FavoritesComponent },
 ];
 
 @NgModule({

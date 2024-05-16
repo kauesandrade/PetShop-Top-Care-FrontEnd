@@ -8,11 +8,11 @@ import { FilterService } from 'src/app/shared/services/filter/filter.service';
 import { OrderByService } from 'src/app/shared/services/orderBy/order-by.service';
 
 @Component({
-  selector: 'app-favoritos',
-  templateUrl: './favoritos.component.html',
-  styleUrls: ['./favoritos.component.scss']
+  selector: 'app-favorites',
+  templateUrl: './favorites.component.html',
+  styleUrls: ['./favorites.component.scss']
 })
-export class FavoritosComponent implements OnInit {
+export class FavoritesComponent implements OnInit {
 
   faSearch = faSearch;
 
