@@ -63,6 +63,12 @@ export class SearchService {
     this.productList = productListFilter;
   }
 
+  private verifyProductIsAvailable(product: ProductVariant) {
+    if (product.available) {
+      return true;
+    }
+    return false;
+  }
 
   private getTittleWithTypes(product: Product){
     let productService = new ProductService()
@@ -75,12 +81,6 @@ export class SearchService {
     return this.formatString(productTitle);
   }
 
-  private verifyProductIsAvailable(product: ProductVariant) {
-    if (product.available) {
-      return true;
-    }
-    return false;
-  }
 
   private formatString(value: string) {
     return value.normalize('NFD')

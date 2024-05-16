@@ -126,6 +126,7 @@ export class FilterService {
                 })
             })
         })
+        
         return this.allFilters;
     }
 

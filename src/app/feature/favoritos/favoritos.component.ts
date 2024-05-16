@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FilterProduct } from 'src/app/shared/interfaces/filter-product';
 import { ProductVariant } from 'src/app/shared/interfaces/product-variant';
 import { FavoriteService } from 'src/app/shared/services/favorite/favorite.service';
 import { FilterService } from 'src/app/shared/services/filter/filter.service';
@@ -16,6 +17,7 @@ export class FavoritosComponent implements OnInit {
   faSearch = faSearch;
 
   productsList!: Array<ProductVariant>;
+  productFilters!: Array<FilterProduct>;
   seachValue: string = "";
   
   constructor(private filterService: FilterService, private favoriteService: FavoriteService, private orderbyService: OrderByService, private routing: Router) { 
@@ -23,6 +25,7 @@ export class FavoritosComponent implements OnInit {
   
   ngOnInit(): void {
     this.productsList = this.favoriteService.getAllProductfavorited();
+    this.productFilters = this.filterService.getListFilterWithChecked(this.productsList);
   }
   
   getOrderBy(evt: string) {
@@ -35,7 +38,9 @@ export class FavoritosComponent implements OnInit {
 
   handleClickSeach() {
     if(this.seachValue != ""){
-      
+      this.productsList = this.favoriteService.searchProducts(this.seachValue, this.productsList);
+    }else{
+      this.productsList = this.favoriteService.getAllProductfavorited();
     }
   }
 

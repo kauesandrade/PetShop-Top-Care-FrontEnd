@@ -1,5 +1,14 @@
 <div>
-    <ng-container *ngFor="let product of products">
-        <app-product-card [product]="product"></app-product-card>
-    </ng-container>
+    <ng-container *ngIf="products?.length; then haveProducts else noHaveProducts"></ng-container>
+    <ng-template #haveProducts>
+        <ng-container *ngFor="let product of products">
+            <app-product-card [product]="product"></app-product-card>
+        </ng-container>
+    </ng-template>
+    <ng-template #noHaveProducts>
+        <div class="noProducts">
+            <p>Nenhum produto encontrado!</p>
+            <img src="../../../assets/images/NoHaveProductsImage.png" alt="">
+        </div>
+    </ng-template>
 </div>
