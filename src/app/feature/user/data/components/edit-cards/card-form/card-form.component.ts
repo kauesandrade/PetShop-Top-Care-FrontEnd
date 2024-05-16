@@ -21,7 +21,7 @@ export class CardFormComponent implements OnInit {
   @Input() open = false;
   @Output() openChange = new EventEmitter<boolean>();
 
-  @Output() changedMainCard = new EventEmitter<number>();
+  @Output() changedMainCard = new EventEmitter<[number, boolean]>();
   @Output() editedCard = new EventEmitter<[Card, string]>();
 
   @Input() card!: Card;
@@ -85,8 +85,8 @@ export class CardFormComponent implements OnInit {
     return this.cardForm.get('mainCard');
   }
 
-  selectMainCard() {
-    this.changedMainCard.emit(this.index);
+  defineTitle() {
+    return this.action === 'edit' ? 'Editar cartão' : 'Adicionar cartão';
   }
 
   isFormValid() {
@@ -118,5 +118,7 @@ export class CardFormComponent implements OnInit {
   onSubmit() {
     this.closeModal();
     this.updateCard();
+    this.editedCard.emit([this.card, this.action]);
+    this.changedMainCard.emit([this.index, this.card.mainCard]);
   }
 }

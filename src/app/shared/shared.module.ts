@@ -11,12 +11,14 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { ProductSectionComponent } from './components/product-section/product-section.component';
 import { ProductCarouselComponent } from './components/product-carousel/product-carousel.component';
 import { RegisterAddressComponent } from './components/register-address/register-address.component';
+import { CardDisplayComponent } from './components/card-display/card-display.component';
 
 const Components = [
   ProductCardComponent,
   ProductSectionComponent,
   ProductCarouselComponent,
   RegisterAddressComponent,
+  CardDisplayComponent,
 ];
 
 @NgModule({

@@ -1,68 +1,72 @@
 <dialog #modal [open]="open" (cancel)="$event.preventDefault()">
   <form [formGroup]="cardForm" class="cardForm" (ngSubmit)="onSubmit()">
-    <label for="name" appInput>
-      <p>Nome</p>
-      <input
-        type="text"
-        id="name"
-        formControlName="name"
-        [class.has-error]="name?.touched && name?.invalid"
-        required
-      />
-      <ng-container *ngIf="name?.touched && name?.invalid">
-        <span *ngIf="name?.getError('isEmpty')" class="error-message">
-          Você deve preencher esse campo!
-        </span>
-      </ng-container>
-    </label>
-    <label for="lastDigits" appInput>
-      <p>4 últimos dígitos</p>
-      <input
-        type="text"
-        id="lastDigits"
-        formControlName="lastDigits"
-        [class.has-error]="lastDigits?.touched && lastDigits?.invalid"
-        prefix="**** **** **** "
-        mask="0000"
-        required
-      />
-      <ng-container *ngIf="lastDigits?.touched && lastDigits?.invalid">
-        <span *ngIf="lastDigits?.getError('isEmpty')" class="error-message">
-          Você deve preencher esse campo!
-        </span>
-        <span *ngIf="lastDigits?.getError('mask')" class="error-message">
-          Deve conter 4 dígitos!
-        </span>
-      </ng-container>
-    </label>
-    <label for="expirationDate" appInput>
-      <p>Data de validade</p>
-      <input
-        type="text"
-        id="expirationDate"
-        formControlName="expirationDate"
-        [class.has-error]="expirationDate?.touched && expirationDate?.invalid"
-        mask="M0/00"
-        required
-      />
-      <ng-container *ngIf="expirationDate?.touched && expirationDate?.invalid">
-        <span *ngIf="expirationDate?.getError('isEmpty')" class="error-message">
-          Você deve preencher esse campo!
-        </span>
-        <span *ngIf="expirationDate?.getError('mask')" class="error-message">
-          Deve ser no formato mm/yy!
-        </span>
-      </ng-container>
-    </label>
-    <label for="mainCard" appInput class="checkbox-label">
-      <input
-        type="checkbox"
-        id="mainCard"
-        formControlName="mainCard"
-        (change)="selectMainCard()"
-      />
-      <p>Usar este cartão para compras futuras</p>
-    </label>
+    <h4>{{ defineTitle() }}</h4>
+    <div class="inputs">
+      <label for="name" appInput>
+        <p>Nome</p>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          [class.has-error]="name?.touched && name?.invalid"
+          required
+        />
+        <ng-container *ngIf="name?.touched && name?.invalid">
+          <span *ngIf="name?.getError('isEmpty')" class="error-message">
+            Você deve preencher esse campo!
+          </span>
+        </ng-container>
+      </label>
+      <app-card-display [card]="card"></app-card-display>
+      <label for="lastDigits" appInput>
+        <p>4 últimos dígitos</p>
+        <input
+          type="text"
+          id="lastDigits"
+          formControlName="lastDigits"
+          [class.has-error]="lastDigits?.touched && lastDigits?.invalid"
+          prefix="**** **** **** "
+          mask="0000"
+          required
+        />
+        <ng-container *ngIf="lastDigits?.touched && lastDigits?.invalid">
+          <span *ngIf="lastDigits?.getError('isEmpty')" class="error-message">
+            Você deve preencher esse campo!
+          </span>
+          <span *ngIf="lastDigits?.getError('mask')" class="error-message">
+            Deve conter 4 dígitos!
+          </span>
+        </ng-container>
+      </label>
+      <label for="expirationDate" appInput>
+        <p>Data de validade</p>
+        <input
+          type="text"
+          id="expirationDate"
+          formControlName="expirationDate"
+          [class.has-error]="expirationDate?.touched && expirationDate?.invalid"
+          mask="M0/00"
+          required
+        />
+        <ng-container
+          *ngIf="expirationDate?.touched && expirationDate?.invalid"
+        >
+          <span
+            *ngIf="expirationDate?.getError('isEmpty')"
+            class="error-message"
+          >
+            Você deve preencher esse campo!
+          </span>
+          <span *ngIf="expirationDate?.getError('mask')" class="error-message">
+            Deve ser no formato mm/yy!
+          </span>
+        </ng-container>
+      </label>
+      <label for="mainCard" appInput class="checkbox-label">
+        <input type="checkbox" id="mainCard" formControlName="mainCard" />
+        <p>Usar este cartão para compras futuras</p>
+      </label>
+    </div>
     <button appButton (click)="onClose($event)">Sair</button>
     <input
       type="submit"

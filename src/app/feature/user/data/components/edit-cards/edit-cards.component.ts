@@ -46,12 +46,22 @@ export class EditCardsComponent implements OnInit, OnChanges {
     this.isOpen();
   }
 
-  resetMainCards(index: number) {
+  resetMainCards([index, value]: [number, boolean]) {
+    console.log(this.userCards);
+    console.log(this.userService.loggedUser?.cards!);
+
     for (let i = 0; i < this.userCards.length; i++) {
-      if (index != i) {
-        this.userCards[i].mainCard = false;
-      }
+      this.userCards[i].mainCard = false;
     }
+
+    if (value) {
+      this.userCards[index].mainCard = true;
+    } else {
+      this.userCards[0].mainCard = true;
+    }
+
+    console.log(this.userCards);
+    console.log(this.userService.loggedUser?.cards!);
   }
 
   cardModal(card: Card, index: number) {
