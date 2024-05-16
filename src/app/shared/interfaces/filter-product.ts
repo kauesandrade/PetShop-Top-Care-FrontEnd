@@ -1,9 +1,9 @@
 export interface FilterProduct {
     title: string,
-    types:[
+    types:Array<
         {
             type: string
             isChecked: boolean;
-        }
-    ]
+        }>
+    
 }
