@@ -35,6 +35,7 @@ export class SearchService {
   
   private searchInProductData(searchValueFind: string) {
     let productService = new ProductService()
+    this.productList = []
     
     productData.product.forEach(product => {
       productService.findProduct(product);
@@ -59,7 +60,6 @@ export class SearchService {
         productListFilter.push(product);
       }
     })
-
     this.productList = productListFilter;
   }
 

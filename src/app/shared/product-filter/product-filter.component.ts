@@ -1,8 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faFilter, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { CategoryProduct } from '../interfaces/category-product';
 import { FilterProduct } from '../interfaces/filter-product';
-import { ProductService } from '../services/product/product.service';
 
 @Component({
   selector: 'app-product-filter',
@@ -15,7 +13,7 @@ export class ProductFilterComponent implements OnInit {
   faTimes = faTimes;
   faTrash = faTrash;
 
-  @Input() productFiltersWihtChecked: Array<any> = []
+  @Input() productFiltersWihtChecked: Array<FilterProduct> = []
   @Output() emitFilters = new EventEmitter<Array<string>>;
 
   openFilter: boolean = false;
@@ -28,8 +26,13 @@ export class ProductFilterComponent implements OnInit {
   }
   
   takeOffFilter(variableFilter: any) {
-    console.log(variableFilter)
-    variableFilter.isChecked = false;
+    this.productFiltersWihtChecked.forEach(filter =>{
+      filter.types.forEach(type =>{
+        if(type.type == variableFilter){
+          type.isChecked = false
+        }
+      })
+    })
     this.applyFilter();
   }
 
@@ -49,18 +52,18 @@ export class ProductFilterComponent implements OnInit {
   }
 
   clearAllFilters(){
-    // this.typeFilters.forEach(variablesFilter =>{
-    //   variablesFilter.variables.forEach(variable => {
-    //     variable.isChecked = false;
-    //   });
-    // })
-    // this.applyFilter();
+    this.productFiltersWihtChecked.forEach(filter =>{
+      filter.types.forEach(type =>{
+          type.isChecked = false
+      })
+    })
+    this.applyFilter();
   }
 
   applyFilter(){
     this.applyFilters = []
-    this.productFiltersWihtChecked.forEach(variablesFilter =>{
-      variablesFilter.types.forEach((type: {type: string, isChecked: any; }) => {
+    this.productFiltersWihtChecked.forEach(filter =>{
+      filter.types.forEach(type => {
         if(type.isChecked){
           this.applyFilters.push(type.type);
         }

@@ -4,6 +4,7 @@ import productData from '../../../../assets/JsonFiles/products.json';
 import { ProductService } from '../product/product.service';
 import { Product } from '../../interfaces/product';
 import { CategoryProduct } from '../../interfaces/category-product';
+import { FilterProduct } from '../../interfaces/filter-product';
 
 @Injectable({
     providedIn: 'root'
@@ -132,7 +133,7 @@ export class FilterService {
 
         this.getAllFiltersProduct(productList);
 
-        const filterWithCheck: Array<any> = [];
+        const filterWithCheck: Array<FilterProduct> = [];
 
         this.allFilters.forEach(filter => {
             const filterTypes: Array<any> = [];
@@ -150,8 +151,6 @@ export class FilterService {
                 types: [...filterTypes]
             })
         })
-
-        console.log("asdasd");
         return filterWithCheck;
     }
 }
