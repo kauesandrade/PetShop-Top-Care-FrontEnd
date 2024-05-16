@@ -1,17 +1,16 @@
-import { TypeProduct } from './type-product';
+import { CategoryProduct } from './category-product';
+import { ReviewProduct } from './review-product';
+import { SpecificationProduct } from './specification-product';
 
 export interface Product {
-  images: Array<string>;
+  code: number;
   favorite: boolean;
   title: string;
   littleDescription: string,
+  description: string,
   brand: string;
+  specifications: Array<SpecificationProduct>; 
   rating: number;
-  price: number;
-  discountPrice: number;
-  maxInterestFreeParcels: number;
-  subscribersPrice: number;
-  available: boolean;
-  category: Array<string>;
-  type: Array<TypeProduct>;
+  category: Array<CategoryProduct>;
+  reviews?: Array<ReviewProduct>;
 }

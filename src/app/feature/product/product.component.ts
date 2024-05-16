@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/shared/interfaces/product';
+import { ProductVariant } from 'src/app/shared/interfaces/product-variant';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
@@ -10,21 +11,38 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 })
 export class ProductComponent implements OnInit {
   
-  product?: Product;
+  amount: number = 1;
   id?: any;
 
-  constructor(private route: ActivatedRoute, private routing: Router, private productService: ProductService) { 
+  constructor(private route: ActivatedRoute, private routing: Router, protected productService: ProductService) { 
     this.id = this.route.snapshot.paramMap.get("id")?.replace("%20", " ");
-    this.product = productService.findProduct(this.id);
-    console.log(this.product);
+    productService.findProduct(this.id);
     this.verifyProduct();
   }
-
+  
   ngOnInit(): void {
   }
   
-  verifyProduct(){
-    if(!this.product){
+  getValueAmount(evt: number) {
+    this.amount = evt;
+  }
+  
+  getHandleClickCart() {
+    // addItemCart(this.productService.getProduct(), this.amount)
+    console.log("clickCart");
+
+    // this.routing.navigate(['/carrinho']);
+  }
+  getHandleClickBuy() {
+    console.log("clickBuy")
+  }
+
+  // getProductVariant(evt: ProductVariant) {
+  //   this.productService.changeVariableProduct(evt);
+  // }
+  
+  private verifyProduct() {
+    if (!this.productService.getProduct()) {
       this.routing.navigate(['/']);
     }
   }

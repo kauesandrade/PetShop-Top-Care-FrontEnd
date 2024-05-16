@@ -4,7 +4,15 @@ main {
     @include grid-container();
     row-gap: 2rem;
   
-    app-product-details{
+    .commonSection{
+      @include subgrid();
+      gap: 1rem;
+      @media(min-width: $tablet){
+        gap: 1.5rem;
+      }
+    }
+
+    app-product-description,app-product-section, app-product-specifications,app-product-review-section {
       @include subgrid();
     }
   

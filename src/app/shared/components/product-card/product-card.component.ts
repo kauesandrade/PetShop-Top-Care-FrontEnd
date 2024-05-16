@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   faHeart,
   faShoppingCart,
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
-import { Product } from '../../interfaces/product';
+import { ProductVariant } from 'src/app/shared/interfaces/product-variant';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -16,11 +17,15 @@ export class ProductCardComponent {
   faStar = faStar;
   faShoppingCart = faShoppingCart;
 
-  @Input() product!: Product;
+  @Input() product!: ProductVariant;
 
-  constructor() {}
+  constructor(private cartService: CartService) {}
 
-  onClick() {
-    console.log('clicked');
+  handleClickCart() {
+    this.cartService.addItemCart(this.product, 1);
+    // this.routing.navigate(['/carrinho']);
+  }
+  handleClickBuy() {
+    throw new Error('Method not implemented.');
   }
 }

@@ -35,8 +35,8 @@
     <p class="subscribers-text">Apenas para assinantes</p>
   </div>
   <div class="buttons-container">
-    <button (click)="onClick()" appButton>Comprar agora</button>
-    <button class="icon-button" appButton="secondary" (click)="onClick()">
+    <button (click)="handleClickBuy()" appButton>Comprar agora</button>
+    <button class="icon-button" appButton="secondary" (click)="handleClickCart()">
       <fa-icon [icon]="faShoppingCart" class="shopping-cart-icon"></fa-icon>
     </button>
   </div>

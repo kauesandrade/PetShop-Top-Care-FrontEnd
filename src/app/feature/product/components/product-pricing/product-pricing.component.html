@@ -1,0 +1,35 @@
+<div class="div-container">
+    <div class="div-product-pricing">
+        <span class="product-discountPrice">{{productVariant.discountPrice | currency : "BRL" : "symbol" : "1.2-2"}}</span>
+        <h4 class="product-price">{{productVariant.price | currency : "BRL" : "symbol" : "1.2-2"}}</h4>
+        <ng-container *ngIf="productVariant.maxInterestFreeParcels > 1">
+            <p>ou {{productVariant.maxInterestFreeParcels}}x de {{ (productVariant.price / productVariant.maxInterestFreeParcels) | currency :
+                "BRL" : "symbol" : "1.2-2" }} sem juros</p>
+        </ng-container>
+    </div>
+    <div class="div-product-subscriber">
+        <div class="div-title-subscriber">
+            <p class="title-subscriber">
+                <fa-icon [icon]="faPercent"></fa-icon>
+                <span>{{productVariant.subscribersPrice | currency: "BRL" : "symbol" : "1.2-2"}} para assinantes</span>
+            </p>
+        </div>
+        <ul class="list-subscriber">
+            <li class="item-list"><fa-icon [icon]="faCheck"></fa-icon><span>20% OFF para todos os produtos</span></li>
+            <li class="item-list"><fa-icon [icon]="faCheck"></fa-icon><span>Assinatura e benefícios nas lojas</span></li>
+            <li class="item-list"><fa-icon [icon]="faCheck"></fa-icon><span>Frete grátis</span></li>
+        </ul>
+    </div>
+    <div class="div-buttons">
+        <div class="div-button-input">
+            <app-input-amount (valueEmitter)="getValueInput($event)"
+                (errorValueEmitter)=" getErrorInputValue($event)"></app-input-amount>
+            <button appButton="secondary" class="btn-add-cart" (click)="emitHandleClickButtonCart()">Adicionar ao
+                Carrinho</button>
+        </div>
+        <button class="btn-buy" (click)="emitHandleClickButtonBuy()" appButton="">Compre Agora</button>
+    </div>
+    <ng-container *ngIf="this.errorValue">
+        <p class="error-amount">A quantidade de produtos solicitada é maior do que a disponível em estoque.</p>
+    </ng-container>
+</div>

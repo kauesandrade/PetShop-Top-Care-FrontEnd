@@ -10,6 +10,7 @@ import { LoginComponent } from './feature/login/login.component';
 import { SearchComponent } from './feature/search/search.component';
 import { CartComponent } from './feature/cart/cart.component';
 import { AuthGuard } from './core/guards/auth/auth.guard';
+import { FavoritesComponent } from './feature/favorites/favorites.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -40,15 +41,15 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'favoritos',
-    title: 'Favoritos | Top Care',
+    path: 'pagamento',
+    title: 'Pagamento | Top Care',
     component: AboutUsComponent,
     canActivate: [AuthGuard],
   },
   {
-    path: 'pagamento',
-    title: 'Pagamento | Top Care',
-    component: AboutUsComponent,
+    path: 'favoritos',
+    title: 'Favoritos | Top Care',
+    component: FavoritesComponent,
     canActivate: [AuthGuard],
   },
 ];

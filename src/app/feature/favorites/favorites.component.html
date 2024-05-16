@@ -1,0 +1,18 @@
+<main>
+    <div class="div-searchbar-orderBy">
+        <label class="searchbar" for="searchbar" appInput>
+            <div>
+              <input (keydown)="verifyChar($event)" [(ngModel)]="seachValue" type="text" name="searchbar" placeholder="Meu pet precisa de..." />
+              <button (click)="handleClickSeach()">
+                <fa-icon [icon]="faSearch"></fa-icon>
+              </button>
+            </div>
+          </label>
+        <div class="div-orderBy">
+            <span class="span-orderBy">{{productsList.length}} resultados ordenados por</span>
+            <app-order-by (emitOrderBy)="getOrderBy($event)"></app-order-by>
+        </div>
+    </div>
+    <app-product-filter [productFiltersWihtChecked]="productFilters" (emitFilters)="getFilters($event)"></app-product-filter>
+    <app-product-layout [products]="productsList"></app-product-layout>
+</main>

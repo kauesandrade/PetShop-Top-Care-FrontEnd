@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/product';
+import { ProductVariant } from '../../interfaces/product-variant';
+import { FilterService } from '../../services/filter/filter.service';
 import { ProductService } from '../../services/product/product.service';
 
 @Component({
@@ -9,16 +11,21 @@ import { ProductService } from '../../services/product/product.service';
 })
 export class ProductSectionComponent implements OnInit {
   @Input() title: string = '';
-  @Input() category!: Array<string>;
-  productList!: Array<Product>;
+  @Input() category?: Array<string>;
+  @Input() product?: Product | ProductVariant;
+  @Input() divider: boolean = false;
+  productList!: Array<ProductVariant>;
 
-  constructor(private productService: ProductService) {}
+  constructor(private filterService: FilterService) {}
 
   ngOnInit(): void {
-    if (this.category.length) {
-      this.productList = this.productService.getProductOfCategory(
+    if (this.category?.length) {
+      this.productList = this.filterService.getAllProductsOfCategory(
         this.category
       );
+      this.format();
+    } else if (this.product) {
+      this.productList = this.filterService.getSimilarProducts(this.product);
       this.format();
     }
   }

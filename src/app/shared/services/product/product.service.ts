@@ -1,141 +1,78 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../../interfaces/product';
+import { ProductVariant } from '../../interfaces/product-variant';
 import productData from '../../../../assets/JsonFiles/products.json';
-import { TypeProduct } from '../../interfaces/type-product';
+import productVariantData from '../../../../assets/JsonFiles/productVariant.json';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  productList: Array<Product> = [];
-  product?: Product;
-  productType?: TypeProduct;
+  private product?: Product;
+  private productVariant!: ProductVariant;
+  private productVariantsList!: Array<ProductVariant>;
 
   constructor() {}
 
-  findProduct(id: any) {
-    for (const productFind of productData.product) {
-      if (productFind.title == id) {
-        this.product = productFind;
-        break;
-      }
-    }
+  getProduct() {
     return this.product;
   }
 
-  searchProducts(searchValue: string) {
-    this.productList = [];
-    productData.product.forEach((product) => {
-      if (
-        product.title
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '')
-          .toLowerCase()
-          .includes(
-            searchValue
-              .normalize('NFD')
-              .replace(/[\u0300-\u036f]/g, '')
-              .toLowerCase()
-          )
-      ) {
-        this.productList?.push(product);
-      }
-    });
-    return this.productList;
+  getProductVariants() {
+    return this.productVariantsList;
   }
 
-  getAllProduct() {
-    this.productList = productData.product;
-    return this.productList;
+  getProductVariant() {
+    return this.productVariant;
   }
 
-  getProductOfCategory(categoryArray: Array<string>) {
-    this.productList = [];
-    for (const productFind of productData.product) {
-      let isAll = true;
-      categoryArray.sort().forEach((category) => {
-        if (!productFind.category.includes(category)) {
-          isAll = false;
+  changeVariableProduct(productVariant: ProductVariant) {
+    this.productVariant = productVariant;
+  }
+  getFirstProductVariant() {
+    return this.getProductVariants()[0];
+  }
+
+  findProduct(id: number | string | Product | ProductVariant) {
+    if (typeof id == 'number' || typeof id == 'string') {
+      for (const productFind of productData.product) {
+        if (productFind.title == id || productFind.code == id) {
+          this.product = productFind;
+          break;
         }
-      });
-      if (isAll) {
-        this.productList.push(productFind);
+      }
+    } else {
+      this.product = id;
+    }
+
+    if (this.product) {
+      this.getAllProductVariants();
+      this.changeVariableProduct(this.getFirstProductVariant());
+    }
+  }
+
+  private getAllProductVariants() {
+    this.productVariantsList = [];
+    for (const variant of productVariantData.variant) {
+      if (
+        this.product?.code == variant.code &&
+        this.verifyProductIsAvailable(variant)
+      ) {
+        this.productVariantsList.push(variant);
       }
     }
-    return this.productList;
+
+    this.productVariantsList = this.productVariantsList.sort((p1, p2) => {
+      return p1.variant.localeCompare(p2.variant);
+    });
+
+    return this.productVariantsList;
   }
 
-  orderOf(order: string) {
-    let arrayProduct: Array<Product> = [];
-
-    if (!this.productList.length) {
-      this.productList = productData.product;
+  private verifyProductIsAvailable(product: ProductVariant) {
+    if (product.available) {
+      return true;
     }
-
-    switch (order) {
-      case 'Maior Preço':
-        arrayProduct = [...this.productList].sort((p1, p2) => {
-          return this.orderOfPlus(p1.price, p2.price);
-        });
-        break;
-
-      case 'Menor Preço':
-        arrayProduct = [...this.productList].sort((p1, p2) => {
-          if (p1.price > p2.price) {
-            return 1;
-          }
-          if (p1.price < p2.price) {
-            return -1;
-          }
-          return 0;
-        });
-        break;
-
-      case 'Nome (A-Z)':
-        arrayProduct = [...this.productList].sort((p1, p2) => {
-          return p1.title.localeCompare(p2.title);
-        });
-        break;
-
-      case 'Nome (Z-A)':
-        arrayProduct = [...this.productList].sort((p1, p2) => {
-          return this.orderOfPlus(p1.title, p2.title);
-        });
-        break;
-
-      case 'Popularidade':
-        arrayProduct = [...this.productList].sort((p1, p2) => {
-          return this.orderOfPlus(p1.rating, p2.rating);
-        });
-        break;
-
-      case 'Maiores Descontos':
-        arrayProduct = [...this.productList].sort((p1, p2) => {
-          return this.orderOfPlus(
-            p1.price - p1.discountPrice,
-            p2.price - p2.discountPrice
-          );
-        });
-        break;
-
-      // case "Relevância":
-      //   this.orderOfRevelancia();
-      //   break;
-
-      // case "Lançamentos":
-      //   this.orderOfLancamentos();
-      //   break;
-    }
-    return arrayProduct;
-  }
-
-  private orderOfPlus(p1Value: number | string, p2Value: number | string) {
-    if (p1Value > p2Value) {
-      return -1;
-    }
-    if (p1Value < p2Value) {
-      return 1;
-    }
-    return 0;
+    return false;
   }
 }
