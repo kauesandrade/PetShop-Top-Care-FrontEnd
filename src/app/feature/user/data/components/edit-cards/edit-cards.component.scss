@@ -10,7 +10,7 @@ dialog {
   margin: auto;
   background-color: transparent;
 
-  form {
+  div {
     @include subgrid();
     position: relative;
     row-gap: 1rem;
@@ -47,45 +47,46 @@ dialog {
 
     .cards {
       @include subgrid();
-      form {
-        @include subgrid();
-        padding: 1rem;
+      padding: 0;
+      * {
+        padding: 0;
+      }
+
+      button:first-of-type {
+        grid-column: auto / span 1;
+      }
+      button:last-of-type {
+        grid-column: auto / span 2;
+      }
+
+      .card-info {
+        @include flex($justify: space-between);
+        padding: 0.5rem 1rem;
         background-color: $light-primary;
+        border-radius: 0.5rem;
+        width: 100%;
+        grid-column: auto / span 5;
 
-        button {
-          height: auto;
-          grid-column: 1 / -1;
-          place-self: end;
-        }
-        label {
-          position: relative;
-          grid-column: 1 / -1;
-          width: 100%;
-          @include text(small);
+        p {
+          @include text();
 
-          @media (min-width: $desktop) {
-            grid-column: auto / span 4;
-          }
-
-          input {
-            width: 100%;
-            height: 100%;
+          &.name {
+            @include text(medium, bold);
           }
         }
 
-        .checkbox-label {
-          @include flex($justify: flex-start);
-          place-self: end;
-          grid-column: auto / span 4;
-          input {
-            width: 1.5rem;
+        .expiration-date {
+          @include flex($direction: column);
+          background-color: transparent;
+          gap: 0;
+          p {
+            @include text(small);
           }
         }
       }
     }
 
-    input[type="submit"],
-    .close-button {
+    button {
       place-self: end;
       grid-column: 1 / -1;
       height: 3rem;
@@ -96,17 +97,4 @@ dialog {
       }
     }
   }
-}
-
-.has-error {
-  border-color: $error;
-  color: $error;
-}
-
-.error-message {
-  @include text(small);
-  color: $error;
-  position: absolute;
-  top: 100%;
-  left: 0;
 }

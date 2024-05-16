@@ -13,6 +13,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { Card } from 'src/app/shared/interfaces/card';
+import { User } from 'src/app/shared/interfaces/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
@@ -24,100 +25,71 @@ export class EditCardsComponent implements OnInit, OnChanges {
   @Input() open = false;
   @Output() openChange = new EventEmitter<boolean>();
 
-  @Output() changedPassword = new EventEmitter();
-
   @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
 
   faPlus = faPlus;
   faTrash = faTrashAlt;
 
-  user = this.userService.loggedUser!;
+  userCards!: Card[];
 
-  editCardsForm = this.formBuilder.group({
-    cards: this.formBuilder.array([]),
-  });
+  openCardModal = false;
+  editingCard!: Card;
+  cardIndex!: number;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private userService: UserService
-  ) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.initCards();
+    this.userCards = [...this.userService.loggedUser?.cards!];
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isOpen();
   }
 
-  get cards() {
-    return this.editCardsForm.get('cards') as FormArray;
-  }
-
-  getName(index: number) {
-    return (<FormGroup>this.cards.controls[index]).get('name');
-  }
-  getLastDigits(index: number) {
-    return (<FormGroup>this.cards.controls[index]).get('lastDigits');
-  }
-  getExpirationDate(index: number) {
-    return (<FormGroup>this.cards.controls[index]).get('expirationDate');
-  }
-  getMainCard(index: number) {
-    return (<FormGroup>this.cards.controls[index]).get('mainCard');
-  }
-
-  initCards() {
-    if (this.user.cards.length > 0) {
-      for (let card of this.user.cards) {
-        this.createCard(card);
+  resetMainCards(index: number) {
+    for (let i = 0; i < this.userCards.length; i++) {
+      if (index != i) {
+        this.userCards[i].mainCard = false;
       }
     }
   }
 
-  addNewCard(e: Event) {
-    e.preventDefault();
-    this.createNewCard();
+  cardModal(card: Card, index: number) {
+    this.openCardModal = true;
+    this.editingCard = card;
+    this.cardIndex = index;
   }
 
-  createCard(card: Card) {
-    this.cards.push(
-      this.formBuilder.group({
-        name: [card.name, [Validators.required, EmptyValidator]],
-        lastDigits: [card.lastDigits, [Validators.required, EmptyValidator]],
-        expirationDate: [
-          card.expirationDate,
-          [Validators.required, EmptyValidator],
-        ],
-        mainCard: [card.mainCard],
-      })
-    );
+  addNewCard() {
+    let card = {
+      name: '',
+      lastDigits: 0,
+      expirationDate: '',
+      mainCard: false,
+    };
+    this.cardModal(card, this.userCards.length);
   }
 
-  createNewCard() {
-    this.cards.push(
-      this.formBuilder.group({
-        name: ['', [Validators.required, EmptyValidator]],
-        lastDigits: ['', [Validators.required, EmptyValidator]],
-        expirationDate: ['', [Validators.required, EmptyValidator]],
-        mainCard: [false],
-      })
-    );
+  deleteCard(i: number) {
+    this.userCards.splice(i, 1);
   }
 
-  deleteCard(e: Event, i: number) {
-    e.preventDefault();
-    this.cards.removeAt(i);
+  addCard([card, action]: [Card, string]) {
+    if (action == 'add') {
+      this.userCards.push(card);
+    } else {
+      this.userCards[this.cardIndex] = card;
+    }
   }
 
   updateUserCards() {
-    this.user.cards = [];
-    if (this.editCardsForm.value.cards) {
-      for (let i = 0; i < this.editCardsForm.value.cards.length; i++) {
-        let card: Card = this.editCardsForm.value.cards[i] as Card;
-        this.user.cards.push(card);
-      }
-    }
+    let user = this.userService.loggedUser!;
+    user.cards = this.userCards;
+    this.userService.updateUser(user);
+  }
+
+  editCard(card: Card, index: number) {
+    this.cardModal(card, index);
   }
 
   isOpen() {
@@ -127,21 +99,9 @@ export class EditCardsComponent implements OnInit, OnChanges {
     }
   }
 
-  resetMainCards(index: number) {
-    if (this.getMainCard(index)?.value) {
-      for (let i = 0; i < this.cards.length; i++) {
-        if (index != i) {
-          this.getMainCard(i)?.setValue(false);
-        }
-      }
-    }
-  }
-
-  onClose(e: Event) {
-    e.preventDefault();
+  onClose() {
+    this.userCards = [...this.userService.loggedUser?.cards!];
     this.closeModal();
-    this.cards.clear();
-    this.initCards();
   }
 
   closeModal() {
@@ -151,13 +111,8 @@ export class EditCardsComponent implements OnInit, OnChanges {
     document.body.style.overflow = 'auto';
   }
 
-  isFormValid() {
-    return this.editCardsForm.valid;
-  }
-
   onSubmit() {
     this.updateUserCards();
-    this.userService.updateUser(this.user);
     this.closeModal();
   }
 }

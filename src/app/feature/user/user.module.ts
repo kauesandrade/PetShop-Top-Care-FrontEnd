@@ -16,6 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ChangePasswordComponent } from './data/components/change-password/change-password.component';
 import { EditCardsComponent } from './data/components/edit-cards/edit-cards.component';
+import { CardFormComponent } from './data/components/edit-cards/card-form/card-form.component';
 
 const Components = [
   DataComponent,
@@ -34,6 +35,7 @@ const Components = [
     AddressFormComponent,
     ChangePasswordComponent,
     EditCardsComponent,
+    CardFormComponent,
   ],
   imports: [
     CommonModule,
