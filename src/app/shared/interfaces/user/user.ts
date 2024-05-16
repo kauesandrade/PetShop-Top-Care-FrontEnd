@@ -1,8 +1,8 @@
+import { Contact } from '../contact';
+import { Order } from '../order/order';
+import { Subscription } from '../order/subscription';
+import { Card } from '../payment/card';
 import { Address } from './address';
-import { Card } from './card';
-import { Contact } from './contact';
-import { Order } from './order';
-import { Subscription } from './subscription';
 
 export interface User {
   profileImage: string;

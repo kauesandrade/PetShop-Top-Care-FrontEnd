@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Card } from '../../interfaces/card';
+import { Card } from '../../interfaces/payment/card';
 
 @Component({
   selector: 'app-card-display',

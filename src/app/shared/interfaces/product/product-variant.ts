@@ -1,4 +1,6 @@
-export interface ProductVariant {
+import { Product } from './product';
+
+export interface ProductVariant extends Product {
   variantCode: number;
   variant: string;
   images: Array<string>;

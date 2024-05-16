@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FilterProduct } from 'src/app/shared/interfaces/filter-product';
-import { ProductVariant } from 'src/app/shared/interfaces/product-variant';
+import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
+import { Filter } from 'src/app/shared/interfaces/search/filter';
 import { FilterService } from 'src/app/shared/services/filter/filter.service';
 import { OrderByService } from 'src/app/shared/services/orderBy/order-by.service';
 import { SearchService } from 'src/app/shared/services/search/search.service';
@@ -13,7 +13,7 @@ import { SearchService } from 'src/app/shared/services/search/search.service';
 })
 export class SearchComponent implements OnInit {
   productsList: Array<ProductVariant> = [];
-  productFilters: Array<FilterProduct> = [];
+  productFilters: Array<Filter> = [];
   seachBy!: string;
 
   constructor(

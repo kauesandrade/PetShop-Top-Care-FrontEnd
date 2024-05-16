@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductVariant } from '../../interfaces/product-variant';
+import { ProductVariant } from '../../interfaces/product/product-variant';
 
 @Component({
   selector: 'app-product-layout',

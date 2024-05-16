@@ -12,8 +12,7 @@ import {
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
-import { Card } from 'src/app/shared/interfaces/card';
-import { User } from 'src/app/shared/interfaces/user';
+import { Card } from 'src/app/shared/interfaces/payment/card';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({

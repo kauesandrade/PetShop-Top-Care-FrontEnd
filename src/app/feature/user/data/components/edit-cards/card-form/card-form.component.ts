@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
-import { Card } from 'src/app/shared/interfaces/card';
+import { Card } from 'src/app/shared/interfaces/payment/card';
 
 @Component({
   selector: 'app-card-form',

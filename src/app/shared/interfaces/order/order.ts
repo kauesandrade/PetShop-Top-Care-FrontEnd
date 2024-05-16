@@ -1,8 +1,8 @@
-import { Address } from './user/address';
+import { Payment } from '../payment/payment';
+import { Shipping } from '../shipping/shipping';
+import { Address } from '../user/address';
+import { User } from '../user/user';
 import { Items } from './items';
-import { Shipping } from './shipping/shipping';
-import { User } from './user/user';
-import { Payment } from './payment/payment';
 
 export interface Order {
   user: User;

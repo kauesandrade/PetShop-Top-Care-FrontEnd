@@ -8,7 +8,7 @@ import {
 import EmblaCarousel, { EmblaOptionsType } from 'embla-carousel';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { ProductVariant } from 'src/app/shared/interfaces/product-variant';
+import { ProductVariant } from '../../interfaces/product/product-variant';
 
 @Component({
   selector: 'app-product-carousel',

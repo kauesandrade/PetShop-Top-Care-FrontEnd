@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { FilterProduct } from 'src/app/shared/interfaces/filter-product';
-import { ProductVariant } from 'src/app/shared/interfaces/product-variant';
+import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
+import { Filter } from 'src/app/shared/interfaces/search/filter';
 import { FavoriteService } from 'src/app/shared/services/favorite/favorite.service';
 import { FilterService } from 'src/app/shared/services/filter/filter.service';
 import { OrderByService } from 'src/app/shared/services/orderBy/order-by.service';
@@ -16,7 +16,7 @@ export class FavoritesComponent implements OnInit {
   faSearch = faSearch;
 
   productsList!: Array<ProductVariant>;
-  productFilters!: Array<FilterProduct>;
+  productFilters!: Array<Filter>;
   applyFilters: Array<string> = [];
   seachValue: string = '';
 

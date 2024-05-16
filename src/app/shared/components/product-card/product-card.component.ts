@@ -4,7 +4,7 @@ import {
   faShoppingCart,
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
-import { ProductVariant } from 'src/app/shared/interfaces/product-variant';
+import { ProductVariant } from '../../interfaces/product/product-variant';
 import { CartService } from '../../services/cart/cart.service';
 
 @Component({

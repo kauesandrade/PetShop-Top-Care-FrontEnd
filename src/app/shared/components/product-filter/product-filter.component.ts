@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { faFilter, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { FilterProduct } from '../../interfaces/filter-product';
+import { Filter } from '../../interfaces/search/filter';
 
 @Component({
   selector: 'app-product-filter',
@@ -19,7 +19,7 @@ export class ProductFilterComponent implements OnInit {
   faTimes = faTimes;
   faTrash = faTrash;
 
-  @Input() productFiltersWihtChecked: Array<FilterProduct> = [];
+  @Input() productFiltersWihtChecked: Array<Filter> = [];
   @Output() emitFilters = new EventEmitter<Array<string>>();
 
   openFilter: boolean = false;

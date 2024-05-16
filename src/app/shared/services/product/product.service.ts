@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../../interfaces/product';
-import { ProductVariant } from '../../interfaces/product-variant';
 import productData from '../../../../assets/JsonFiles/products.json';
 import productVariantData from '../../../../assets/JsonFiles/productVariant.json';
+import { Product } from '../../interfaces/product/product';
+import { ProductVariant } from '../../interfaces/product/product-variant';
 
 @Injectable({
   providedIn: 'root',
@@ -53,7 +53,7 @@ export class ProductService {
 
   private getAllProductVariants() {
     this.productVariantsList = [];
-    for (const variant of productVariantData.variant) {
+    for (const variant of productVariantData.variant as ProductVariant[]) {
       if (
         this.product?.code == variant.code &&
         this.verifyProductIsAvailable(variant)

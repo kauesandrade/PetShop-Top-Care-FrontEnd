@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MainCarousel } from 'src/app/shared/interfaces/main-carousel';
-import { Product } from 'src/app/shared/interfaces/product';
+import { Product } from 'src/app/shared/interfaces/product/product';
 import { RoundCard } from '../../shared/interfaces/round-card';
 
 @Component({
