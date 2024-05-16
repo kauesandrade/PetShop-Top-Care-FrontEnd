@@ -53,25 +53,45 @@ dialog {
       }
 
       button:first-of-type {
-        grid-column: auto / span 1;
+        grid-column: 1 / -1;
+        @media (min-width: $tablet) {
+          grid-column: auto / span 1;
+        }
       }
       button:last-of-type {
-        grid-column: auto / span 2;
+        grid-column: 1 / -1;
+        @media (min-width: $tablet) {
+          grid-column: auto / span 2;
+        }
       }
 
       .card-info {
-        @include flex($justify: space-between);
+        @include flex();
+        gap: 0.5rem;
         padding: 0.5rem 1rem;
+        flex-wrap: wrap;
         background-color: $light-primary;
         border-radius: 0.5rem;
-        width: 100%;
-        grid-column: auto / span 5;
+
+        @media (min-width: $desktop) {
+          width: 100%;
+          grid-column: auto / span 5;
+        }
 
         p {
           @include text();
+          flex: 0 0 auto;
+
+          &.last-digits {
+            width: 7.5rem;
+          }
 
           &.name {
             @include text(medium, bold);
+            flex: 0 1 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
           }
         }
 

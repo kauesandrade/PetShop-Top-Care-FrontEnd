@@ -1,5 +1,10 @@
 <dialog #modal [open]="open" (cancel)="$event.preventDefault()">
-  <form [formGroup]="cardForm" class="cardForm" (ngSubmit)="onSubmit()">
+  <form
+    [formGroup]="cardForm"
+    class="cardForm"
+    (input)="updateDisplayCard()"
+    (ngSubmit)="onSubmit()"
+  >
     <h4>{{ defineTitle() }}</h4>
     <div class="inputs">
       <label for="name" appInput>
@@ -17,7 +22,6 @@
           </span>
         </ng-container>
       </label>
-      <app-card-display [card]="card"></app-card-display>
       <label for="lastDigits" appInput>
         <p>4 últimos dígitos</p>
         <input
@@ -46,6 +50,7 @@
           formControlName="expirationDate"
           [class.has-error]="expirationDate?.touched && expirationDate?.invalid"
           mask="M0/00"
+          [dropSpecialCharacters]="false"
           required
         />
         <ng-container
@@ -62,9 +67,12 @@
           </span>
         </ng-container>
       </label>
+    </div>
+    <div class="card-display">
+      <app-card-display [card]="displayCard"></app-card-display>
       <label for="mainCard" appInput class="checkbox-label">
         <input type="checkbox" id="mainCard" formControlName="mainCard" />
-        <p>Usar este cartão para compras futuras</p>
+        <p>Definir este cartão como padrão</p>
       </label>
     </div>
     <button appButton (click)="onClose($event)">Sair</button>

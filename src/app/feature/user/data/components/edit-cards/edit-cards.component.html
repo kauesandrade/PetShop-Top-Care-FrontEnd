@@ -7,7 +7,7 @@
     <div *ngFor="let card of userCards; let i = index" class="cards">
       <div class="card-info">
         <p class="last-digits">**** **** **** {{ card.lastDigits }}</p>
-        <p class="name">{{ card.name }}</p>
+        <p class="name" [title]="card.name">{{ card.name }}</p>
         <div class="expiration-date">
           <p>Validade</p>
           <p>{{ card.expirationDate }}</p>

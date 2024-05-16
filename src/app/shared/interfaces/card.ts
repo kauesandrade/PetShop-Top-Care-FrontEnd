@@ -1,6 +1,6 @@
 export interface Card {
   name: string;
-  lastDigits: number;
+  lastDigits: string;
   expirationDate: string;
   mainCard: boolean;
 }

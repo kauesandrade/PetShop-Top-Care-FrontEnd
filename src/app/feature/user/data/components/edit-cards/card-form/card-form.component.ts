@@ -27,13 +27,15 @@ export class CardFormComponent implements OnInit {
   @Input() card!: Card;
   @Input() index!: number;
 
+  displayCard!: Card;
+
   action = 'edit';
 
   @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
 
   cardForm = this.formBuilder.group({
     name: ['', [Validators.required, EmptyValidator]],
-    lastDigits: [0, [Validators.required, EmptyValidator]],
+    lastDigits: ['', [Validators.required, EmptyValidator]],
     expirationDate: ['', [Validators.required, EmptyValidator]],
     mainCard: [false],
   });
@@ -46,12 +48,21 @@ export class CardFormComponent implements OnInit {
     this.isOpen();
   }
 
+  updateDisplayCard() {
+    this.displayCard = {
+      name: this.name?.value!,
+      lastDigits: this.lastDigits?.value!,
+      expirationDate: this.expirationDate?.value!,
+      mainCard: this.mainCard?.value!,
+    };
+  }
+
   isOpen() {
     if (this.open) {
       document.body.style.overflow = 'hidden';
       this.modal.nativeElement.showModal();
 
-      if (this.card.lastDigits == 0) {
+      if (this.card.lastDigits == '') {
         this.action = 'add';
       } else {
         this.action = 'edit';
@@ -69,6 +80,7 @@ export class CardFormComponent implements OnInit {
         ],
         mainCard: [this.card.mainCard],
       });
+      this.updateDisplayCard();
     }
   }
 
