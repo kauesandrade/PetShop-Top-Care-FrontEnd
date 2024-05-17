@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faPercent, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Item } from 'src/app/shared/interfaces/item';
+import { Item } from 'src/app/shared/interfaces/order/item';
 
 @Component({
   selector: 'app-cart-product-card',
