@@ -1,0 +1,14 @@
+@import 'styles';
+
+section{
+    @include flex(column, start, start);
+    gap: 1rem;
+    @media(min-width: $tablet){
+      gap: 1.5rem;
+    }
+    width: 100%;
+    
+    app-cart-product-card{
+        width: 100%;
+    }
+}

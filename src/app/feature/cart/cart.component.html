@@ -1,14 +1,11 @@
 <app-header [simple]="true"></app-header>
 <main>
     <h6 class="title">Carrinho</h6>
+
+    
     <section class="commonSection">
-
-        <ng-container *ngFor="let item of itens">
-            <app-cart-product-card (removeItemEmitter)="getItemToRemove($event)" [item]="item" class="commonSection-primary"></app-cart-product-card>
-        </ng-container>
-        
-        <!-- class="commonSection-secondary"  -->
-
+        <app-cart-product-card-section (removeItemEmitter)="getItemToRemove($event)" [itens]="itens"></app-cart-product-card-section>
+        <app-cart-payment-information class="commonSection-secondary"></app-cart-payment-information>
     </section>
 </main>
 <app-footer></app-footer>
