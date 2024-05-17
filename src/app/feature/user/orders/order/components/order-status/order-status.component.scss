@@ -1,0 +1,49 @@
+@import "styles";
+
+.content {
+  @include subgrid();
+  row-gap: 2rem;
+
+  .order-details {
+    @include flex(column, flex-start, flex-start);
+    grid-column: auto / span 4;
+    gap: 1.5rem;
+
+    div {
+      @include flex(column, flex-start, flex-start);
+
+      &.title {
+        h5 {
+          color: $primary;
+        }
+        p {
+          @include text($weight: bold);
+        }
+      }
+
+      &.date-status,
+      &.shipping {
+        p {
+          span {
+            @include text($weight: bold);
+          }
+        }
+      }
+    }
+  }
+
+  .action-buttons {
+    @include flex(column, flex-start, flex-start);
+    gap: 1rem;
+
+    grid-column: 6 / span 3;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  app-order-shipping {
+    @include subgrid();
+  }
+}

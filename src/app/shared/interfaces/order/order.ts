@@ -10,7 +10,6 @@ export interface Order {
   address: Address;
   expectedDate: string;
   payment: Payment;
-
   orderDate: string;
   status: string;
   shipping: Shipping;

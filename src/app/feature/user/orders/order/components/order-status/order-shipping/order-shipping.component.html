@@ -1,0 +1,11 @@
+<div class="status-timeline">
+  <div class="content">
+    <div class="status" *ngFor="let status of shippingStatus; let i = index">
+      <p>{{ status.value }}</p>
+      <div class="illustration" [ngClass]="defineColor(status.dateTime!)">
+        <fa-icon [icon]="icons[i]"></fa-icon>
+      </div>
+      <p>{{ status.dateTime! | mask : "d0/M0/0000 Hh:m0:s0" }}</p>
+    </div>
+  </div>
+</div>

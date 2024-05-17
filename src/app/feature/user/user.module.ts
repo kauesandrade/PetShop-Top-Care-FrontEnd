@@ -24,6 +24,7 @@ import { OrderComponent } from './orders/order/order.component';
 import { OrderStatusComponent } from './orders/order/components/order-status/order-status.component';
 import { OrderDetailsComponent } from './orders/order/components/order-details/order-details.component';
 import { OrderItemsComponent } from './orders/order/components/order-items/order-items.component';
+import { OrderShippingComponent } from './orders/order/components/order-status/order-shipping/order-shipping.component';
 
 const Components = [
   DataComponent,
@@ -48,6 +49,7 @@ const Components = [
     OrderStatusComponent,
     OrderDetailsComponent,
     OrderItemsComponent,
+    OrderShippingComponent,
   ],
   imports: [
     CommonModule,

@@ -149,7 +149,7 @@
               { "value": "Recebido pela transportadora", "dateTime": "" },
               { "value": "Mercadoria em trãnsito", "dateTime": "" },
               { "value": "Mercadoria em rota de entrega", "dateTime": "" },
-              { "value": "Pedido entregre", "dateTime": "" }
+              { "value": "Pedido entregue", "dateTime": "" }
             ]
           }
         }
