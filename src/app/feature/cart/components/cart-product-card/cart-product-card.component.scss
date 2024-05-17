@@ -3,92 +3,117 @@
 .div-container {
     @include flex(column, start, start);
     grid-column: 1 / -1;
-
     gap: 1rem;
 
     .section-informations {
-        @include flex(row, center, space-between);
+        @include flex(column, center, start);
         width: 100%;
-        height: 5rem;
-
-        .div-image {
-            width: 5rem;
+        height: 100%;
+        gap: 1rem;
+        
+        @media(min-width: 550px) {
+            @include flex(row, center, start);
             height: 5rem;
-            border: 1px solid $black1;
-            border-radius: 0.5rem;
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                border-radius: 0.5rem;
-            }
         }
 
-        .div-name-pricing {
-            @include flex(column, start, space-between);
+        .div-primary-informations {
+            @include flex(row, center, start);
+            width: 100%;
             height: 100%;
+            gap: 0.5rem;
 
-            .item-name {
-                @include text(small, bold);
-                color: $primary;
+            .div-image {
+                width: 5rem;
+                height: 5rem;
+                border: 1px solid $black1;
+                border-radius: 0.5rem;
 
-                @media(min-width: $tablet) {
-                    @include text(medium, bold);
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    border-radius: 0.5rem;
                 }
             }
 
-            .div-pricing {
-                @include flex(row, center, start);
-                gap: 0.5rem;
+            .div-name-pricing {
+                @include flex(column, start, space-between);
+                height: 100%;
 
-                .item-price {
-                    @include text(small);
+                .item-name {
+                    display: inline-block;
+                    @include text(small, bold);
+                    color: $primary;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    width: 10rem;
+                    text-overflow: clip;
 
                     @media(min-width: $tablet) {
-                        @include text(medium);
+                        @include text(medium, bold);
                     }
                 }
 
-                .item-discountPrice {
+                .div-pricing {
+                    @include flex(row, center, start);
+                    gap: 0.5rem;
+
+                    .item-price {
+                        @include text(small);
+
+                        @media(min-width: $tablet) {
+                            @include text(medium);
+                        }
+                    }
+
+                    .item-discountPrice {
+                        @include text(small);
+                        color: $gray3;
+                        text-decoration: line-through;
+
+                        @media(min-width: $tablet) {
+                            @include text(normal);
+                        }
+                    }
+                }
+
+                .item-variant {
                     @include text(small);
                     color: $gray3;
-                    text-decoration: line-through;
+                }
+            }
+        }
 
-                    @media(min-width: $tablet) {
-                        @include text(normal);
-                    }
+        .div-secondary-informations {
+            @include flex(row, center, space-between);
+            width: 100%;
+            height: 100%;
+
+            .div-amount {
+                @include flex(row, start, start);
+                height: 100%;
+            }
+
+            .div-subtotal {
+                @include flex(column, center, start);
+                height: 100%;
+                gap: 1rem;
+
+                .title {
+                    @include text(small)
                 }
             }
 
-            .item-variant {
-                @include text(small);
-                color: $gray3;
+            .div-trash {
+                @include flex();
+
+                fa-icon {
+                    font-size: 1.5rem;
+                }
             }
+
         }
 
-        .div-amount {
-            @include flex(row, start, start);
-            height: 100%;
-        }
-
-        .div-subtotal {
-            @include flex(column, center, start);
-            height: 100%;
-            gap: 1rem;
-
-            .title {
-                @include text(small)
-            }
-        }
-
-        .div-trash {
-            @include flex();
-
-            fa-icon {
-                font-size: 1.5rem;
-            }
-        }
 
     }
 
@@ -98,8 +123,30 @@
     }
 
     .section-subscription {
+        @include flex(column, start);
+        gap: 1rem;
+        width: 100%;
+        
+        
+        @media(min-width: 550px){
+            @include flex(row, center, space-between);
+            width: 80%;
+        }
 
         .div-toggle {
+
+            @include flex();
+            gap: 0.5rem;
+
+            .subscription {
+                color: $gray3;
+                @include text(small, bold);
+
+                &.checked {
+                    color: $primary;
+                }
+            }
+
             .switch {
                 position: relative;
                 display: inline-block;
@@ -120,7 +167,7 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background-color: #ccc;
+                background-color: $gray4;
                 -webkit-transition: .4s;
                 transition: .4s;
             }
@@ -132,17 +179,17 @@
                 width: 20px;
                 left: 3px;
                 bottom: 09%;
-                background-color: white;
+                background-color: $white;
                 -webkit-transition: .4s;
                 transition: .4s;
             }
 
             input:checked+.slider {
-                background-color: #2196F3;
+                background-color: $primary;
             }
 
             input:focus+.slider {
-                box-shadow: 0 0 1px #2196F3;
+                box-shadow: 0 0 1px $primary;
             }
 
             input:checked+.slider:before {
@@ -150,14 +197,30 @@
                 -ms-transform: translateX(19px);
                 transform: translateX(19px);
             }
-            .slider
-                &.round {
-                    border-radius: 34px;
-                    &:before{
-                        border-radius: 50%;
-                    } 
-                }
+
+            .slider.round {
+                border-radius: 34px;
             }
+
+            .slider.round:before {
+                border-radius: 50%;
+            }
+        }
+
+        .div-select-days {
+            @include flex();
+
+            fa-icon {
+                font-size: 0.75rem;
+            }
+
+            .select {
+                @include text(small, bold);
+                border: none;
+                color: $primary;
+                padding: 0;
+            }
+        }
 
     }
 }

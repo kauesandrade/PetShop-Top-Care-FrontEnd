@@ -7,10 +7,10 @@ import { ProductVariant } from '../../interfaces/product-variant';
 })
 export class CartService {
 
-    private itensCart: Array<Item> = []
+    itensCart: Array<Item> = []
 
     constructor() {
-        this.itensCart = JSON.parse(localStorage.getItem('itensCart') || '""') == "" ? [] : JSON.parse(localStorage.getItem('itensCart') || '""')
+        this.itensCart = this.getItensLocalStorage();
     }
 
     addItemCart(product: ProductVariant, amount: number) {
@@ -20,7 +20,7 @@ export class CartService {
         }
 
         this.itensCart = [];
-        this.itensCart = JSON.parse(localStorage.getItem('itensCart') || '""') == "" ? [] : JSON.parse(localStorage.getItem('itensCart') || '""');
+        this.itensCart = this.getItensLocalStorage();
         let found: boolean = false;
 
         this.itensCart.forEach((product) => {
@@ -34,6 +34,24 @@ export class CartService {
             this.itensCart.push(newItem);
         }
         
+        this.addLocalStorege()
+    }
+
+    removeItemCart(itemToRemove: Item){
+        this.itensCart.splice(this.itensCart.indexOf(itemToRemove), 1);
+        this.addLocalStorege();
+    }
+    
+    updateItensList(itenList: Array<Item>){
+        this.itensCart = itenList
+        this.addLocalStorege();
+    }
+
+    private getItensLocalStorage(){
+        return JSON.parse(localStorage.getItem('itensCart') || '""') == "" ? [] : JSON.parse(localStorage.getItem('itensCart') || '""')
+    }
+
+    private addLocalStorege(){
         localStorage.setItem('itensCart', JSON.stringify( this.itensCart));
     }
 }

@@ -1,31 +1,35 @@
 <div class="div-container">
     <section class="section-informations">
 
-        <div class="div-image">
-            <img src="https://images.petz.com.br/fotos/1658430805995.jpg" alt="">
-        </div>
-
-        <div class="div-name-pricing">
-            <span class="item-name">Areia Biodegradável</span>
-            <div class="div-pricing">
-                <span class="item-price">R$ 40,00</span>
-                <span class="item-discountPrice">R$ 45,00</span>
+        <div class="div-primary-informations">
+            <div class="div-image">
+                <img src={{item.product.images[0]}} alt="">
             </div>
-            <span class="item-variant">Tamanho: G</span>
+    
+            <div class="div-name-pricing">
+                <span class="item-name">{{item.product.title}}</span>
+                <div class="div-pricing">
+                    <span class="item-price">{{item.product.price | currency : "BRL" : "symbol" : "1.2-2"}}</span>
+                    <span class="item-discountPrice">{{item.product.discountPrice | currency : "BRL" : "symbol" : "1.2-2"}}</span>
+                </div>
+                <span class="item-variant">Tamanho: {{item.product.variant}}</span>
+            </div>
+        </div>
+        <div class="div-secondary-informations">
+            <div class="div-amount">
+                <app-input-amount [value]="item.amount" (valueEmitter)="getAmount($event)"></app-input-amount>
+            </div>
+    
+            <div class="div-subtotal">
+                <span class="title">Subtotal</span>
+                <span>{{subtotal | currency : "BRL" : "symbol" : "1.2-2"}}</span>
+            </div>
+    
+            <div class="div-trash" (click)="emitRemoveItem()">
+                <fa-icon [icon]="faTrash"></fa-icon>
+            </div>
         </div>
 
-        <div class="div-amount">
-            <app-input-amount></app-input-amount>
-        </div>
-
-        <div class="div-subtotal">
-            <span class="title">Subtotal</span>
-            <span>R$ 80,00</span>
-        </div>
-
-        <div class="div-trash">
-            <fa-icon [icon]="faTrash"></fa-icon>
-        </div>
 
     </section>
 
@@ -35,16 +39,31 @@
 
         <div class="div-toggle">
             <label class="switch">
-                <input type="checkbox">
+                <input type="checkbox" (change)="checked()">
                 <span class="slider round"></span>
             </label>
-            <span>Assinar Produto</span>
+            <p class="subscription" [class.checked]="isChecked" >Assinar Produto</p>
         </div>
 
-        <div class="div-select-days">
-            <fa-icon [icon]="faPercent"></fa-icon>
-            <select></select>
-        </div>
+        <ng-container *ngIf="isChecked">
+            <div class="div-select-days">
+                <fa-icon [icon]="faPercent"></fa-icon>
+                <label appInput>
+                    <select
+                    class="select"
+                      appInput
+                      (change)="changeTypesSubscription($event.target)"
+                    >
+                      <option
+                        *ngFor="let type of typesSubscriptions;"
+                        [value]="type"
+                      >
+                        {{ type }}
+                      </option>
+                    </select>
+                  </label>
+            </div>
+        </ng-container>
 
     </section>
 
