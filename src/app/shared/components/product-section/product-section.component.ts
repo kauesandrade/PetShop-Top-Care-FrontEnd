@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/product/product';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 import { FilterService } from '../../services/filter/filter.service';
-import { ProductService } from '../../services/product/product.service';
 
 @Component({
   selector: 'app-product-section',

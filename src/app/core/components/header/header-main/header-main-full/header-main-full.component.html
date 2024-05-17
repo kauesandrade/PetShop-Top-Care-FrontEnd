@@ -16,7 +16,7 @@
   </button>
   <a routerLink="/perfil" class="icon">
     <fa-icon [icon]="faUser"></fa-icon>
-    <span *ngIf="isLogged">
+    <span *ngIf="firstName">
       Olá,
       {{ firstName }}
     </span>
@@ -60,7 +60,7 @@
   <div class="utility-icons">
     <a routerLink="/perfil">
       <fa-icon [icon]="faUser"></fa-icon>
-      <span *ngIf="isLogged">
+      <span *ngIf="firstName">
         Olá,
         {{ firstName }}
       </span>
