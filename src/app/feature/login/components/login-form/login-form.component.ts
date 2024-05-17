@@ -15,6 +15,10 @@ export class LoginFormComponent {
   faEye = faEye;
   faEyeSlash = faEyeSlash;
 
+  openForgotPassword = false;
+  openCodeModal = false;
+  openChangePassword = false;
+
   loginForm = this.formBuilder.group({
     login: ['', [Validators.required, EmptyValidator]],
     password: ['', [Validators.required, EmptyValidator]],
@@ -42,8 +46,6 @@ export class LoginFormComponent {
     this.showPassword = !this.showPassword;
     console.log(this.login?.errors);
   }
-
-  changePassword() {}
 
   isFormValid() {
     return this.loginForm.valid;

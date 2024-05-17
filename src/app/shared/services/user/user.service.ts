@@ -1,16 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import * as userData from '../../../../assets/JsonFiles/users.json';
 import { User } from '../../interfaces/user/user';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class UserService implements OnChanges {
   loggedUser: User | null;
   users: any = userData;
 
   constructor() {
     this.loggedUser = JSON.parse(localStorage.getItem('user') || '""');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.loggedUser);
   }
 
   login(login: string, password: string, remember: boolean): boolean {

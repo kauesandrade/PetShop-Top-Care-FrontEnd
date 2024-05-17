@@ -15,7 +15,7 @@ export class InputAmountComponent implements OnInit {
   @Output() valueEmitter: EventEmitter<number> = new EventEmitter<number>();
   @Output() errorValueEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  value: number = 1;
+  @Input() value: number = 1;
   
   constructor() { }
   
@@ -51,6 +51,7 @@ export class InputAmountComponent implements OnInit {
       this.emitValues(true);
     }else if(this.value < 1){
       this.value = 1
+      this.emitValues(false);
     }else{
       this.value = evt.target.value;
       this.emitValues(false);

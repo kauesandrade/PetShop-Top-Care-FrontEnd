@@ -56,8 +56,23 @@
         />
         <p>Lembrar minha conta</p>
       </label>
-      <p (click)="changePassword()" class="change-password">Esqueci a senha</p>
+      <p (click)="openForgotPassword = true" class="change-password">
+        Esqueci a senha
+      </p>
     </div>
   </div>
   <input type="submit" value="Entrar" appButton [disabled]="!isFormValid()" />
 </form>
+
+<app-forgot-password-email
+  [(open)]="openForgotPassword"
+  (submittedEmail)="this.openCodeModal = true"
+></app-forgot-password-email>
+<app-forgot-password-code
+  [(open)]="openCodeModal"
+  (submittedCode)="this.openChangePassword = true"
+></app-forgot-password-code>
+<app-change-password
+  [(open)]="openChangePassword"
+  (changedPassword)="this.openChangePassword = true"
+></app-change-password>
