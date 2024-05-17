@@ -29,6 +29,10 @@ export class DateValidator {
 
   static IsNotBetween(from: string, to: string): ValidatorFn {
     return (control: AbstractControl) => {
+      if (!control.value) {
+        return null;
+      }
+
       let fromDate = new Date(from);
 
       let toDate = new Date();

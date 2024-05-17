@@ -23,7 +23,6 @@ export class HeaderMainFullComponent implements OnInit {
   faHeart = faHeart;
 
   drawerIsOpen: boolean = false;
-  isLogged!: boolean;
   user!: User | null;
   firstName!: string | undefined;
 
@@ -34,8 +33,7 @@ export class HeaderMainFullComponent implements OnInit {
   ngOnInit() {
     this.user = this.userService.loggedUser;
     if (this.user) {
-      this.firstName = this.user?.name.split(' ')[0];
-      this.isLogged = this.user?.name != null;
+      this.firstName = this.user?.name?.split(' ')[0];
     }
   }
 
