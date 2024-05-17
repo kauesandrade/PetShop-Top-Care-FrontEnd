@@ -1,0 +1,34 @@
+@import "styles";
+
+.card {
+  @include flex($justify: space-between);
+  padding: 1rem 4rem;
+  border-radius: 1rem;
+  background-color: $gray5;
+  width: 100%;
+  height: 7.25rem;
+  cursor: pointer;
+
+  .products {
+    @include flex();
+    gap: 1.5rem;
+    height: 100%;
+    img {
+      border: $black1 1px solid;
+      border-radius: 0.5rem;
+      aspect-ratio: 1 /1;
+      height: 100%;
+      object-fit: contain;
+    }
+    p {
+      @include text(medium, bold);
+    }
+  }
+  .dates {
+    @include flex(column);
+    gap: 0.5rem;
+    p {
+      color: $gray3;
+    }
+  }
+}

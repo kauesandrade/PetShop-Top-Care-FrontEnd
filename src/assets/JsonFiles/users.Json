@@ -46,6 +46,113 @@
           "expirationDate": "01/01",
           "mainCard": true
         }
+      ],
+      "orders": [
+        {
+          "orderCode": 123456,
+          "items": [
+            {
+              "product": {
+                "code": 100,
+                "favorite": true,
+                "title": "Ração Golden - Cães Filhotes sabor Frango e Arroz",
+                "littleDescription": "Ração Golden - Cães Filhotes sabor Frango e Arroz",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
+                "brand": "Golden",
+                "specifications": [
+                  {
+                    "title": "Idade",
+                    "value": "Filhotes/Adultos"
+                  },
+                  {
+                    "title": "Linha",
+                    "value": "Super Premium"
+                  },
+                  {
+                    "title": "Pet",
+                    "value": "Cachorro"
+                  },
+                  {
+                    "title": "Tipo",
+                    "value": "Ração seca"
+                  },
+                  {
+                    "title": "Apresentação",
+                    "value": "Disponível em embalagem de 15kg e 20kg."
+                  }
+                ],
+                "rating": 5,
+                "category": [
+                  {
+                    "title": "Pet",
+                    "types": ["Cachorro"]
+                  },
+                  {
+                    "title": "Porte de Raça",
+                    "types": ["Pequeno", "Grande"]
+                  },
+                  {
+                    "title": "Idade",
+                    "types": ["Filhote", "Adulto"]
+                  },
+                  {
+                    "title": "Linha",
+                    "types": ["Super Premium"]
+                  }
+                ],
+                "variantCode": 1,
+                "variant": "15Kg",
+                "images": [
+                  "https://images.petz.com.br/fotos/1658430805995.jpg"
+                ],
+                "price": 99.99,
+                "discountPrice": 120.6,
+                "maxInterestFreeParcels": 2,
+                "subscribersPrice": 80,
+                "available": true
+              },
+              "amount": 1
+            }
+          ],
+          "address": {
+            "name": "Senai",
+            "cep": "12345087",
+            "state": "SC",
+            "city": "Jaraguá do Sul",
+            "neighborhood": "Vila Nova",
+            "street": "Walter Marquardt",
+            "number": 2,
+            "complement": "Em frente ao pavilhão de eventos"
+          },
+          "expectedDate": "07062024",
+          "payment": {
+            "subtotal": 100,
+            "shippingFee": 100,
+            "total": 1000,
+            "method": {
+              "name": "Bernardo",
+              "lastDigits": "1234",
+              "expirationDate": "01/01",
+              "mainCard": true
+            },
+            "parcels": 2,
+            "status": "Pago"
+          },
+          "orderDate": "17052024",
+          "status": "Em preparo",
+          "shipping": {
+            "shippingBy": "Azul",
+            "shippingCode": 36940219,
+            "shippingStatus": [
+              { "value": "Pedido", "dateTime": "17052024143738" },
+              { "value": "Enviado para transportadora", "dateTime": "" },
+              { "value": "Recebido pela transportadora", "dateTime": "" },
+              { "value": "Mercadoria em trãnsito", "dateTime": "" },
+              { "value": "Mercadoria em rota de entrega", "dateTime": "" },
+              { "value": "Pedido entregre", "dateTime": "" }
+            ]
+          }
+        }
       ]
     },
     {

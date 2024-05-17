@@ -1,0 +1,13 @@
+<app-layout>
+  <div class="content">
+    <app-order-status [order]="order!"></app-order-status>
+    <app-order-details
+      [details]="{ address: order!.address, payment: order!.payment }"
+    ></app-order-details>
+    <app-order-items [items]="order!.items"></app-order-items>
+    <button appButton (click)="router.navigate(['/perfil/pedidos'])">
+      Voltar
+    </button>
+    <button appButton="secondary">Cancelar pedido</button>
+  </div>
+</app-layout>
