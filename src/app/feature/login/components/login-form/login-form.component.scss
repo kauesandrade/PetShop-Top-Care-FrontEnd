@@ -39,8 +39,13 @@ form {
     }
 
     .remember-forgot {
-      @include flex($justify: space-between);
+      @include flex(column-reverse, flex-start);
+      gap: 1rem;
       width: 100%;
+
+      @media (min-width: $tablet) {
+        @include flex($justify: space-between);
+      }
 
       label[for="remember"] {
         @include flex($justify: flex-start);
