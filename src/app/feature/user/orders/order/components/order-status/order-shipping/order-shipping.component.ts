@@ -19,15 +19,22 @@ export class OrderShippingComponent implements OnInit {
 
   icons = [faShoppingCart, faBox, faTruckLoading, faPlane, faTruck, faCheck];
 
+  lastValue: string = '';
+
   constructor() {}
 
   ngOnInit(): void {}
 
   defineColor(dateTime: string) {
     if (dateTime) {
+      this.lastValue = dateTime;
       return 'blue';
+    } else if (this.lastValue) {
+      this.lastValue = dateTime;
+      return 'yellow';
     } else {
-      return 'not-blue';
+      this.lastValue = dateTime;
+      return '';
     }
   }
 }
