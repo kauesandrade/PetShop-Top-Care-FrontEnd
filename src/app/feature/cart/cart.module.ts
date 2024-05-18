@@ -8,6 +8,8 @@ import { CoreModule } from 'src/app/core/core.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartPaymentInformationComponent } from './components/cart-payment-information/cart-payment-information.component';
 import { CartProductCardSectionComponent } from './components/cart-product-card-section/cart-product-card-section.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { CartService } from 'src/app/shared/services/cart/cart.service';
 
 
 
@@ -19,6 +21,6 @@ import { CartProductCardSectionComponent } from './components/cart-product-card-
     CartPaymentInformationComponent,
     CartProductCardSectionComponent
   ],
-  imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule, FormsModule]
+  imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule, FormsModule, NgxMaskModule]
 })
 export class CartModule { }
