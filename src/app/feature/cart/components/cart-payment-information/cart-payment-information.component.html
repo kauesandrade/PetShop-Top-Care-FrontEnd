@@ -1,1 +1,125 @@
-<p>cart-payment-information works!</p>
+<div class="div-container">
+    <section class="section-cep-ticket">
+        <div class="div-cep">
+            <label class="input-cep" for="login" appInput>
+                <p>Qual seu CEP?</p>
+                <input
+                  type="text"
+                  placeholder="00000-000"
+                  mask="00000-000"
+                />
+            </label>
+            <div class="div-button-cep">
+                <a class="a-cep" target="_blank" href="https://buscacepinter.correios.com.br/app/endereco/">Não sei meu CEP</a>
+                <button appButton="secondary">Endereços Salvos</button>
+            </div>
+        </div>
+
+        <ng-container *ngIf="">
+            <div class="div-shippings-title">
+
+                <h6 class="shipping-title">
+                    Endereço: 
+                    <span class="span-shipping-title">Senai Jaragua</span>
+                </h6>
+
+                <div class="div-shippings">
+                    <ng-container>
+
+                        <div class="div-shipping">
+                            <div class="div-shippingName-input">
+                                <input class="input-shipping" appInput name="shipping" type="radio">
+                                <div class="div-shipping-informations">
+                                    <p class="p-shipping-name">Frete Econômico</p>
+                                    <span class="shipping-value green">Grátis</span>
+                                </div>
+                            </div>
+                            <p class="shipping-date">de 
+                                <span class="black">4 a 6 dias úteis</span>
+                            </p>
+                        </div>
+
+                        <div class="div-shipping">
+                            <div class="div-shippingName-input">
+                                <input class="input-shipping" appInput name="shipping" type="radio">
+                                <div class="div-shipping-informations">
+                                    <p class="p-shipping-name">Frete Expresso</p>
+                                    <span class="shipping-value">R$ 10,15</span>
+                                </div>
+                            </div>
+                            <p class="shipping-date">em até 
+                                <span class="black">48 horas</span>
+                            </p>
+                        </div>
+
+                        <div class="div-shipping">
+                            <div class="div-shippingName-input">
+                                <input class="input-shipping" appInput name="shipping" type="radio">
+                                <div class="div-shipping-informations">
+                                    <p class="p-shipping-name">Busque na loja</p>
+                                    <span class="shipping-value green">Grátis <span> + 5% OFF</span></span>
+                                </div>
+                            </div>
+                            <p class="shipping-date">em
+                                <span class="black">45 minutos</span>
+                            </p>
+                        </div>
+
+                    </ng-container>
+                </div>
+
+            </div>
+
+        </ng-container>
+
+        <div class="div-ticket">
+            <label class="input-ticket" for="login" appInput>
+                <p>Cupom de desconto</p>
+                <input
+                  type="text"
+                  placeholder="Digite seu cupom de desconto"
+                />
+            </label>
+        </div>
+
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section-informations">
+
+        <div class="div-prices">
+            <h6 class="informations-title">Pedido</h6>
+            <div class="div-price"> 
+                <p class="p-price">Valor do pedido</p>
+                <span class="price">{{order | currency : "BRL" : "symbol" : "1.2-2"}}</span>
+            </div>
+            <ng-container>
+                <div class="div-shipping"> 
+                    <p class="p-shipping">Valor do frete (expresso)</p>
+                    <span class="shipping">R$10,15</span>
+                </div>
+            </ng-container>
+            <div class="div-discount">
+                <p class="p-discount">Valor do desconto</p>
+                <span class="discount">R$30,00</span>
+            </div>
+        </div>
+
+        <div class="div-totals">
+            <h6 class="total-tittle">Total</h6>
+            <div class="div-total">
+                <span class="total">R$ 240,00</span>
+                <p class="p-parcels">ou 2x de R$120,00 sem juros</p>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section-buttons">
+        <button (click)="handleClickBuy()" appButton="">Ir para pagamento</button>
+        <button (click)="handleClickGoback()" appButton="secondary">Continuar comprando</button>
+    </section>
+</div>
