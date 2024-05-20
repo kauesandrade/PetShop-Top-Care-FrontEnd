@@ -4,7 +4,7 @@ import { Item } from '../../interfaces/order/item';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'any',
 })
 
 export class CartService {
@@ -13,8 +13,6 @@ export class CartService {
     constructor() {
         this.itensCart = this.getItensLocalStorage();
     }
-
-    private dataSubject: ReplaySubject<Array<Item>> = new ReplaySubject<Array<Item>>(1);
 
     removeItemCart(itemToRemove: Item){
         this.itensCart.splice(this.itensCart.indexOf(itemToRemove), 1);
@@ -26,19 +24,26 @@ export class CartService {
         this.addLocalStorege();
     }
     
-    getItens(): Observable<Array<Item>> {
-        return this.dataSubject.asObservable();
+    getItens(): Array<Item>{
+        return this.itensCart
     }
 
     updateItem(item: Item){
         this.itensCart = [];
         this.itensCart = this.getItensLocalStorage();
 
+        let array: Array<Item> = []
         this.itensCart.forEach( itm =>{
             if(itm.product.variantCode == item.product.variantCode){
-                itm = item;
+                array.push(item)
+            }else{
+
+                array.push(itm)
             }
         })
+        this.itensCart = []
+        this.itensCart = array
+        
         this.addLocalStorege();
     }
 
@@ -77,13 +82,10 @@ export class CartService {
     }
 
     private getItensLocalStorage(){
-        this.dataSubject.next(this.itensCart);
         return JSON.parse(localStorage.getItem('itensCart') || '""') == "" ? [] : JSON.parse(localStorage.getItem('itensCart') || '""')
     }
 
     private addLocalStorege(){
-        this.dataSubject.next(this.itensCart);
-        console.log("dasd")
         localStorage.setItem('itensCart', JSON.stringify( this.itensCart));
     }
 }
