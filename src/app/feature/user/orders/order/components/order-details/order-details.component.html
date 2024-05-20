@@ -1,1 +1,51 @@
-
+<div class="content">
+  <div class="address-info">
+    <h6>Endereço da entrega</h6>
+    <p class="name">{{ address.name }}</p>
+    <p class="street-number">Rua {{ address.street }}, {{ address.number }}</p>
+    <p class="neighborhood-city-state">
+      {{ address.neighborhood }} - {{ address.city }} - {{ address.state }}
+    </p>
+    <p class="cep">CEP: {{ address.cep | mask : "00000-000" }}</p>
+    <h6 class="expected-date">
+      Entrega dia: {{ details.expectedDate | mask : "d0/M0" }}
+    </h6>
+  </div>
+  <div class="divider"></div>
+  <div class="payment-info">
+    <h6>Resumo do pedido</h6>
+    <div class="info-container items">
+      <p>
+        Produtos ({{ details.numberOfItems }} ite{{
+          details.numberOfItems > 1 ? "ns" : "m"
+        }})
+      </p>
+      <p>
+        {{ payment.subtotal | currency : "BRL" }}
+      </p>
+    </div>
+    <div class="info-container shipping">
+      <p>Frete</p>
+      <p [class.free]="!payment.shippingFee">
+        <ng-container *ngIf="payment.shippingFee; else freeShipping">
+          {{ payment.shippingFee | currency : "BRL" }}
+        </ng-container>
+        <ng-template #freeShipping> Grátis </ng-template>
+      </p>
+    </div>
+    <div class="info-container payment-method">
+      <p>Pagamento</p>
+      <p>
+        {{ paymentMethodText() }}
+      </p>
+    </div>
+    <div class="info-container parcels">
+      <p>Quantidade de parcelas</p>
+      <p>{{ payment.parcels }}</p>
+    </div>
+    <div class="info-container total">
+      <h5>Total</h5>
+      <p class="total-price">{{ payment.total | currency : "BRL" }}</p>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,12 @@
         class="commonSection-primary"
       ></app-order-status>
       <app-order-details
-        [details]="{ address: order!.address, payment: order!.payment }"
+        [details]="{
+          address: order!.address,
+          payment: order!.payment,
+          expectedDate: order!.expectedDate,
+          numberOfItems: order!.items.length
+        }"
         class="commonSection-secondary"
       ></app-order-details>
     </div>

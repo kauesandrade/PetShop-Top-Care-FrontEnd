@@ -1,0 +1,56 @@
+@import "styles";
+
+.content {
+  @include flex(column);
+  gap: 1.5rem;
+  @media (min-width: $tablet) {
+    @include flex($align: flex-start);
+  }
+  @media (min-width: $desktop) {
+    @include flex(column);
+  }
+
+  > div {
+    width: 100%;
+  }
+
+  .divider {
+    display: block;
+    height: 2px;
+    background-color: $gray5;
+    @media (min-width: $tablet) {
+      display: none;
+    }
+    @media (min-width: $desktop) {
+      display: block;
+    }
+  }
+
+  .payment-info {
+    @include flex(column, flex-start, flex-start);
+    gap: 0.5rem;
+    > * {
+      width: 100%;
+    }
+
+    .info-container {
+      @include flex($justify: space-between);
+
+      p {
+        @include text(small);
+
+        &.free {
+          color: $green;
+        }
+
+        &.total-price {
+          @include text(large);
+        }
+      }
+
+      p:nth-child(2) {
+        color: $gray2;
+      }
+    }
+  }
+}

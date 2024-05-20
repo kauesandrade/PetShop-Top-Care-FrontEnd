@@ -41,6 +41,7 @@
       ],
       "cards": [
         {
+          "value": "card",
           "name": "Bernardo",
           "lastDigits": "1234",
           "expirationDate": "01/01",
@@ -130,6 +131,7 @@
             "shippingFee": 100,
             "total": 1000,
             "method": {
+              "value": "card",
               "name": "Bernardo",
               "lastDigits": "1234",
               "expirationDate": "01/01",
