@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
+import { CartPaymentInformations } from 'src/app/shared/interfaces/order/cart-payment-informations';
 import { Item } from 'src/app/shared/interfaces/order/item';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
 
@@ -9,38 +10,31 @@ import { CartService } from 'src/app/shared/services/cart/cart.service';
   templateUrl: './cart-payment-information.component.html',
   styleUrls: ['./cart-payment-information.component.scss']
 })
-export class CartPaymentInformationComponent implements OnInit, OnDestroy {
+export class CartPaymentInformationComponent implements OnInit {
 
-  itens: Array<Item> = []
+  cartInformations!: CartPaymentInformations;
 
-  total: number = 0;
-  order: number = 0;
-
-  private unsubscribe = new Subject<void>();
-
-  constructor(private cartService: CartService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private cartService: CartService, private route: ActivatedRoute, private router: Router) {
+  this.cartService.getCartInformations().subscribe(data =>{
+    this.cartInformations = data
+  });
+  }
 
 
   ngOnInit(): void {
-    this.itens = this.cartService.itensCart;
-    this.order = this.cartService.sumProductPrices(this.itens);
-    this.cartService.getItens().pipe(takeUntil(this.unsubscribe)).subscribe(data => {
-      this.itens = data;
-      this.order = this.cartService.sumProductPrices(this.itens);
-    });
+    
   }
 
   handleClickBuy() {
 
   }
 
-  ngOnDestroy() {
-    this.unsubscribe.next();
-    this.unsubscribe.complete();
-  }
-
   handleClickGoback() {
     this.router.navigate(['..'], { relativeTo: this.route });
+  }
+
+  chooseShipping(evt: any){
+    this.cartService.setShippingPrice(evt);
   }
 
 

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Item } from 'src/app/shared/interfaces/order/item';
+import { CartService } from 'src/app/shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-cart-product-card-section',
@@ -8,16 +9,18 @@ import { Item } from 'src/app/shared/interfaces/order/item';
 })
 export class CartProductCardSectionComponent implements OnInit {
 
-  @Input() itens: Array<Item> = []
-  @Output() removeItemEmitter = new EventEmitter<Item>;
+  itens: Array<Item> = []
 
-  constructor() { 
+  constructor(private cartService: CartService) { 
+    this.cartService.getItens().subscribe(data =>{
+      this.itens = data
+    });
   }
 
   ngOnInit(): void {
   }
 
   getItemToRemove(evt: Item){
-    this.removeItemEmitter.emit(evt);
+   this.cartService.removeItemCart(evt);
   }
 }

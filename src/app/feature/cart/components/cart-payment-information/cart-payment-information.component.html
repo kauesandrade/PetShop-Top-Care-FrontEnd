@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <ng-container *ngIf="">
+        <ng-container>
             <div class="div-shippings-title">
 
                 <h6 class="shipping-title">
@@ -28,7 +28,10 @@
 
                         <div class="div-shipping">
                             <div class="div-shippingName-input">
-                                <input class="input-shipping" appInput name="shipping" type="radio">
+                                <input class="input-shipping" 
+                                appInput name="shipping" 
+                                (click)="chooseShipping(0)" 
+                                type="radio">
                                 <div class="div-shipping-informations">
                                     <p class="p-shipping-name">Frete Econômico</p>
                                     <span class="shipping-value green">Grátis</span>
@@ -41,7 +44,10 @@
 
                         <div class="div-shipping">
                             <div class="div-shippingName-input">
-                                <input class="input-shipping" appInput name="shipping" type="radio">
+                                <input class="input-shipping" 
+                                appInput name="shipping" 
+                                (click)="chooseShipping(10)" 
+                                type="radio">
                                 <div class="div-shipping-informations">
                                     <p class="p-shipping-name">Frete Expresso</p>
                                     <span class="shipping-value">R$ 10,15</span>
@@ -54,7 +60,10 @@
 
                         <div class="div-shipping">
                             <div class="div-shippingName-input">
-                                <input class="input-shipping" appInput name="shipping" type="radio">
+                                <input class="input-shipping" 
+                                appInput name="shipping" 
+                                (click)="chooseShipping(0)" 
+                                type="radio">
                                 <div class="div-shipping-informations">
                                     <p class="p-shipping-name">Busque na loja</p>
                                     <span class="shipping-value green">Grátis <span> + 5% OFF</span></span>
@@ -91,26 +100,28 @@
         <div class="div-prices">
             <h6 class="informations-title">Pedido</h6>
             <div class="div-price"> 
-                <p class="p-price">Valor do pedido</p>
-                <span class="price">{{order | currency : "BRL" : "symbol" : "1.2-2"}}</span>
+                <p class="p-price">Valor do pedido ({{cartInformations.amountItens}} itens)</p>
+                <span class="price">{{cartInformations.partialPrice | currency : "BRL" : "symbol" : "1.2-2"}}</span>
             </div>
-            <ng-container>
+            <ng-container *ngIf="cartInformations.shippingPrice">
                 <div class="div-shipping"> 
                     <p class="p-shipping">Valor do frete (expresso)</p>
-                    <span class="shipping">R$10,15</span>
+                    <span class="shipping">{{cartInformations.shippingPrice | currency : "BRL" : "symbol" : "1.2-2"}}</span>
                 </div>
             </ng-container>
-            <div class="div-discount">
-                <p class="p-discount">Valor do desconto</p>
-                <span class="discount">R$30,00</span>
-            </div>
+            <ng-container *ngIf="cartInformations.discountPrice">
+                <div class="div-discount">
+                    <p class="p-discount">Valor do desconto</p>
+                    <span class="discount">{{cartInformations.discountPrice | currency : "BRL" : "symbol" : "1.2-2"}}</span>
+                </div>
+            </ng-container>
         </div>
 
         <div class="div-totals">
             <h6 class="total-tittle">Total</h6>
             <div class="div-total">
-                <span class="total">R$ 240,00</span>
-                <p class="p-parcels">ou 2x de R$120,00 sem juros</p>
+                <span class="total">{{cartInformations.totalPrice | currency : "BRL" : "symbol" : "1.2-2"}}</span>
+                <p class="p-parcels">ou {{cartInformations.parcelsNumber}}x de {{cartInformations.parcelsPrice | currency : "BRL" : "symbol" : "1.2-2"}} sem juros</p>
             </div>
         </div>
 

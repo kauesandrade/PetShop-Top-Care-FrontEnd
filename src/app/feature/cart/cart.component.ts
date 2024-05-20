@@ -9,28 +9,16 @@ import { CartService } from 'src/app/shared/services/cart/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  
-  itens: Array<Item> = []
-  private unsubscribe = new Subject<void>();
 
+  itens: Array<Item> = []
+  
   constructor(private cartService: CartService) { 
-    this.cartService.getItens().pipe(takeUntil(this.unsubscribe)).subscribe(data => {
-      this.itens = data;
+    this.cartService.getItens().subscribe(data =>{
+      this.itens = data
     });
   }
-
+  
   ngOnInit(): void {
-    this.itens = this.cartService.itensCart;
-  }
-  
-  ngOnDestroy() {
-    this.unsubscribe.next();
-    this.unsubscribe.complete();
-  }
-  
-  getItemToRemove(evt: Item){
-    this.cartService.removeItemCart(evt);
-    this.itens = this.cartService.itensCart;
   }
 
 
