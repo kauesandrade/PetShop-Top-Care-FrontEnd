@@ -6,8 +6,15 @@
 
   .order-details {
     @include flex(column, flex-start, flex-start);
-    grid-column: auto / span 4;
+    grid-column: 1 / -1;
     gap: 1.5rem;
+
+    @media (min-width: $tablet) {
+      grid-column: auto / span 2;
+    }
+    @media (min-width: $desktop) {
+      grid-column: auto / span 4;
+    }
 
     div {
       @include flex(column, flex-start, flex-start);
@@ -15,6 +22,10 @@
       &.title {
         h5 {
           color: $primary;
+          @include heading();
+          @media (min-width: $desktop) {
+            @include heading(h5);
+          }
         }
         p {
           @include text($weight: bold);
@@ -35,10 +46,16 @@
   .action-buttons {
     @include flex(column, flex-start, flex-start);
     gap: 1rem;
-
-    grid-column: 6 / span 3;
+    grid-column: 1 / -1;
+    @media (min-width: $tablet) {
+      grid-column: auto / span 2;
+    }
+    @media (min-width: $desktop) {
+      grid-column: auto / span 4;
+    }
 
     button {
+      height: 2.25rem;
       width: 100%;
     }
   }
