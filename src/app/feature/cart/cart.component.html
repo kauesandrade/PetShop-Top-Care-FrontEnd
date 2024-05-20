@@ -1,13 +1,17 @@
+
+<app-choose-address-modal [(open)]="openAddresses"></app-choose-address-modal>
+
 <app-header [simple]="true"></app-header>
 <main>
     <h6 class="title">Carrinho</h6>
 
     <section class="commonSection">
         <app-cart-product-card-section></app-cart-product-card-section>
-        <app-cart-payment-information class="commonSection-secondary"></app-cart-payment-information>
+        <app-cart-payment-information (openAddressesModalEmitter)="openAddressModal()" class="commonSection-secondary"></app-cart-payment-information>
         <app-cart-payment-methods class="commonSection-secondary"></app-cart-payment-methods>
     </section>
     
-    <app-product-section title="Itens Semelhantes" [product]=""></app-product-section>
+    <!-- <app-product-section title="Itens Semelhantes" [product]=""></app-product-section> -->
+
 </main>
 <app-footer></app-footer>

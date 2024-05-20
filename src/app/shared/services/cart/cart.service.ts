@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, of, ReplaySubject } from 'rxjs';
 import { CartPaymentInformations } from '../../interfaces/order/cart-payment-informations';
 import { Item } from '../../interfaces/order/item';
 import { ProductVariant } from '../../interfaces/product/product-variant';
+import { Address } from '../../interfaces/user/address';
 
 @Injectable({
   providedIn: 'any',
@@ -15,17 +16,19 @@ export class CartService {
     cartInformations: CartPaymentInformations = {};
     cartInformationsSubject = new BehaviorSubject<CartPaymentInformations>({});
 
+    address?: Address
+
     constructor() {
         this.itensCart = this.getItensLocalStorage();
     }
 
+    getItens(): Observable<Item[]>{
+        this.itensSubject.next(this.itensCart);
+        return this.itensSubject.asObservable();
+    }
+
     removeItemCart(itemToRemove: Item){
         this.itensCart.splice(this.itensCart.indexOf(itemToRemove), 1);
-        this.addLocalStorege();
-    }
-    
-    updateItensList(itenList: Array<Item>){
-        this.itensCart = itenList
         this.addLocalStorege();
     }
 
@@ -35,12 +38,6 @@ export class CartService {
         this.calcParcels();
         this.cartInformationsSubject.next(this.cartInformations);
         return this.cartInformationsSubject.asObservable();
-    }
-    
-    
-    getItens(): Observable<Item[]>{
-        this.itensSubject.next(this.itensCart);
-        return this.itensSubject.asObservable();
     }
     
     updateItem(item: Item){
@@ -83,6 +80,14 @@ export class CartService {
     setShippingPrice(shippingPrice: number){
         this.cartInformations.shippingPrice = shippingPrice;
         this.getCartInformations();
+    }
+
+    setAddress(address: Address){
+        this.address = address;
+    }
+
+    getAddress(){
+        return this.address;
     }
     
     

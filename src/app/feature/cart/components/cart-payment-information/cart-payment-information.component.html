@@ -11,16 +11,16 @@
             </label>
             <div class="div-button-cep">
                 <a class="a-cep" target="_blank" href="https://buscacepinter.correios.com.br/app/endereco/">Não sei meu CEP</a>
-                <button appButton="secondary">Endereços Salvos</button>
+                <button (click)="openAddressModal()" appButton="secondary">Endereços Salvos</button>
             </div>
         </div>
 
-        <ng-container>
+        <ng-container *ngIf="this.cartService.getAddress()">
             <div class="div-shippings-title">
 
                 <h6 class="shipping-title">
                     Endereço: 
-                    <span class="span-shipping-title">Senai Jaragua</span>
+                    <span class="span-shipping-title">{{this.cartService.getAddress()?.name}}</span>
                 </h6>
 
                 <div class="div-shippings">

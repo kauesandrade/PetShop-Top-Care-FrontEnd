@@ -5,6 +5,7 @@ import { User } from '../../interfaces/user/user';
 @Injectable({
   providedIn: 'root',
 })
+
 export class UserService implements OnChanges {
   loggedUser: User | null;
   users: any = userData;
@@ -53,4 +54,6 @@ export class UserService implements OnChanges {
     localStorage.setItem('user', JSON.stringify(this.loggedUser));
     console.log(user);
   }
+
+  
 }

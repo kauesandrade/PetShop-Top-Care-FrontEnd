@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { CartPaymentInformations } from 'src/app/shared/interfaces/order/cart-payment-informations';
@@ -13,8 +13,9 @@ import { CartService } from 'src/app/shared/services/cart/cart.service';
 export class CartPaymentInformationComponent implements OnInit {
 
   cartInformations!: CartPaymentInformations;
+  @Output() openAddressesModalEmitter = new EventEmitter();
 
-  constructor(private cartService: CartService, private route: ActivatedRoute, private router: Router) {
+  constructor(protected cartService: CartService, private route: ActivatedRoute, private router: Router) {
   this.cartService.getCartInformations().subscribe(data =>{
     this.cartInformations = data
   });
@@ -37,6 +38,9 @@ export class CartPaymentInformationComponent implements OnInit {
     this.cartService.setShippingPrice(evt);
   }
 
+  openAddressModal(){
+    this.openAddressesModalEmitter.emit();
+  }
 
 
 }

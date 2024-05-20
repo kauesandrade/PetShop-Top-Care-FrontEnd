@@ -17,6 +17,7 @@ import { OrderByComponent } from './components/order-by/order-by.component';
 import { ProductFilterComponent } from './components/product-filter/product-filter.component';
 import { MainCarouselComponent } from './components/main-carousel/main-carousel.component';
 import { CardDisplayComponent } from './components/card-display/card-display.component';
+import { ChooseAddressModalComponent } from './components/choose-address-modal/choose-address-modal.component';
 
 const Components = [
   ProductCardComponent,
@@ -29,6 +30,7 @@ const Components = [
   ProductFilterComponent,
   MainCarouselComponent,
   CardDisplayComponent,
+  ChooseAddressModalComponent,
 ];
 
 @NgModule({

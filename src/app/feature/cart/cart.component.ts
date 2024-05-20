@@ -11,6 +11,7 @@ import { CartService } from 'src/app/shared/services/cart/cart.service';
 export class CartComponent implements OnInit {
 
   itens: Array<Item> = []
+  openAddresses: boolean = false;
   
   constructor(private cartService: CartService) { 
     this.cartService.getItens().subscribe(data =>{
@@ -21,5 +22,9 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openAddressModal(){
+    this.openAddresses ? this.openAddresses = false : this.openAddresses = true
+    console.log("cuu");
+  }
 
 }
