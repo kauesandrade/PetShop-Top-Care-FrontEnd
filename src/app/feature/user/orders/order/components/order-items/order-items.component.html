@@ -1,6 +1,6 @@
 <div class="content">
   <h4>Produtos</h4>
   <ng-container *ngFor="let item of items">
-    <p>{{ item.product.title }}</p>
+    <app-order-product-card [item]="item"></app-order-product-card>
   </ng-container>
 </div>
