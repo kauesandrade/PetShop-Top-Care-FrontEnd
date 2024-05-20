@@ -48,6 +48,7 @@
 
       h6 {
         @include text($weight: semibold);
+        color: $white;
         @media (min-width: $desktop) {
           @include text(medium, semibold);
         }
@@ -128,6 +129,7 @@
           }
           p {
             display: none;
+            color: $white;
             @media (min-width: $tablet) {
               display: block;
             }
@@ -177,6 +179,7 @@
     .about-us {
       p {
         @include text(small);
+        color: $white;
       }
 
       a {

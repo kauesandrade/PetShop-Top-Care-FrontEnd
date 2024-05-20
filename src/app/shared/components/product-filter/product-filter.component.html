@@ -1,51 +1,58 @@
 <ul class="ul-filtes">
-    <li class="li-filter" (click)="openFilters()">
-        <fa-icon [icon]="faFilter"></fa-icon>
-        Filtro
+  <li class="li-filter" (click)="openFilters()">
+    <fa-icon [icon]="faFilter"></fa-icon>
+    Filtro
+  </li>
+  <ng-container *ngFor="let filter of applyFilters">
+    <li class="li-filters" (click)="takeOffFilter(filter)">
+      <fa-icon [icon]="faTimes"></fa-icon>
+      {{ filter }}
     </li>
-    <ng-container *ngFor="let filter of applyFilters">
-        <li class="li-filters" (click)="takeOffFilter(filter)">
-            <fa-icon [icon]="faTimes"></fa-icon>
-            {{filter}}
-        </li>
-    </ng-container>
+  </ng-container>
 </ul>
 
 <ng-container *ngIf="openFilter">
-    <div class="div-modal">
-        <form class="div-filter-bar">
-            <button class="btn-apply" appButton="secondary" (click)="applyFilter()">Aplicar</button>
-    
-            <div class="div-typeFilter">
-                <span class="title-typeFilter">Filtar Produtos</span>
-                <div class="divider"></div>
-                <ul class="ul-variablesFilter clearAll" (click)="clearAllFilters()">
-                    <li class="li-variableFilter">
-                        Limpar todos os filtros
-                        <fa-icon [icon]="faTrash"></fa-icon>
-                    </li>
-                </ul>
-            </div>
-    
-            <ng-container *ngFor="let typeFilter of productFiltersWihtChecked">
-                <div class="div-typeFilter">
-                    <span class="title-typeFilter">{{typeFilter.title}}</span>
-                    <div class="divider"></div>
-                    <ul class="ul-variablesFilter">
-                        <ng-container *ngFor="let type of typeFilter.types">
-                            <li class="li-variableFilter">
-                                    <input type="checkbox" appInput [checked]="type.isChecked"
-                                        (change)="changeChecked(type)">
-                                    {{type.type}}
-                            </li>
-                        </ng-container>
-                    </ul>
-                </div>
+  <div class="div-modal">
+    <form class="div-filter-bar">
+      <button class="btn-apply" appButton="secondary" (click)="applyFilter()">
+        Aplicar
+      </button>
+
+      <div class="div-typeFilter">
+        <span class="title-typeFilter">Filtrar Produtos</span>
+        <div class="divider"></div>
+        <ul class="ul-variablesFilter clearAll" (click)="clearAllFilters()">
+          <li class="li-variableFilter">
+            Limpar todos os filtros
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </li>
+        </ul>
+      </div>
+
+      <ng-container *ngFor="let typeFilter of productFiltersWihtChecked">
+        <div class="div-typeFilter">
+          <span class="title-typeFilter">{{ typeFilter.title }}</span>
+          <div class="divider"></div>
+          <ul class="ul-variablesFilter">
+            <ng-container *ngFor="let type of typeFilter.types">
+              <li class="li-variableFilter">
+                <input
+                  type="checkbox"
+                  appInput
+                  [checked]="type.isChecked"
+                  (change)="changeChecked(type)"
+                />
+                {{ type.type }}
+              </li>
             </ng-container>
-    
-            <button class="btn-apply" appButton="secondary" (click)="applyFilter()">Aplicar</button>
-    
-        </form>
-        <div class="div-overlay" (click)="openFilters()"></div>
-    </div>
+          </ul>
+        </div>
+      </ng-container>
+
+      <button class="btn-apply" appButton="secondary" (click)="applyFilter()">
+        Aplicar
+      </button>
+    </form>
+    <div class="div-overlay" (click)="openFilters()"></div>
+  </div>
 </ng-container>

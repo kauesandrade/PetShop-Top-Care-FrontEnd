@@ -50,6 +50,7 @@
       top: 100%;
       left: 50%;
       width: max-content;
+      color: $white;
       transform: translate(-50%, 0%);
       text-align: center;
       @include text(small, semibold);
@@ -76,12 +77,14 @@
       display: none;
       color: $white;
 
-      h3 {
+      h6 {
         @include text(normal, medium);
+        color: $white;
       }
 
       p {
         @include text(small);
+        color: $white;
       }
     }
 
@@ -96,12 +99,14 @@
       &-name {
         display: block;
 
-        h3 {
-          @include heading(h4);
+        h6 {
+          @include text(large, bold);
+          color: $white;
         }
 
         p {
           @include text(normal, medium);
+          color: $white;
         }
       }
     }
@@ -117,8 +122,8 @@
       }
 
       &-name {
-        h3 {
-          @include heading(h3);
+        h6 {
+          @include heading();
         }
       }
     }
@@ -233,6 +238,7 @@
         top: 100%;
         left: 50%;
         width: max-content;
+        color: $white;
         transform: translate(-50%, 0%);
         text-align: center;
         @include text($weight: semibold);
