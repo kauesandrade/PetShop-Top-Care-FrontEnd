@@ -1,0 +1,7 @@
+@import 'styles';
+
+.div-container{
+    .div-icons{
+        @include flex(row, center, space-between);
+    }
+}

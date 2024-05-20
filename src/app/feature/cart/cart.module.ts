@@ -10,6 +10,7 @@ import { CartPaymentInformationComponent } from './components/cart-payment-infor
 import { CartProductCardSectionComponent } from './components/cart-product-card-section/cart-product-card-section.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
+import { CartPaymentMethodsComponent } from './components/cart-payment-methods/cart-payment-methods.component';
 
 
 
@@ -19,7 +20,8 @@ import { CartService } from 'src/app/shared/services/cart/cart.service';
     CartComponent,
     CartProductCardComponent,
     CartPaymentInformationComponent,
-    CartProductCardSectionComponent
+    CartProductCardSectionComponent,
+    CartPaymentMethodsComponent
   ],
   imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule, FormsModule, NgxMaskModule]
 })

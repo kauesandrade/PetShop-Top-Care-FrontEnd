@@ -2,10 +2,10 @@
 <main>
     <h6 class="title">Carrinho</h6>
 
-    
     <section class="commonSection">
         <app-cart-product-card-section (removeItemEmitter)="getItemToRemove($event)" [itens]="itens"></app-cart-product-card-section>
         <app-cart-payment-information class="commonSection-secondary"></app-cart-payment-information>
+        <app-cart-payment-methods class="commonSection-secondary"></app-cart-payment-methods>
     </section>
 </main>
 <app-footer></app-footer>
