@@ -1,1 +1,6 @@
-<p>order-items works!</p>
+<div class="content">
+  <h4>Produtos</h4>
+  <ng-container *ngFor="let item of items">
+    <p>{{ item.product.title }}</p>
+  </ng-container>
+</div>
