@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/shared/interfaces/order/order';
+import { Subscription } from 'src/app/shared/interfaces/order/subscription';
 
 @Component({
   selector: 'app-order-card',
@@ -8,13 +9,20 @@ import { Order } from 'src/app/shared/interfaces/order/order';
   styleUrls: ['./order-card.component.scss'],
 })
 export class OrderCardComponent implements OnInit {
-  @Input() order!: Order;
+  @Input() order?: Order;
+  @Input() subscription?: Subscription;
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
   openOrder() {
-    this.router.navigate([`${this.router.url}/${this.order.orderCode}`]);
+    if (this.subscription) {
+      this.router.navigate([
+        `${this.router.url}/${this.subscription.subscriptionCode}`,
+      ]);
+    } else if (this.order) {
+      this.router.navigate([`${this.router.url}/${this.order.orderCode}`]);
+    }
   }
 }
