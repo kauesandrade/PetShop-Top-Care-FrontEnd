@@ -5,13 +5,11 @@ import { User } from '../user/user';
 import { Item } from './item';
 
 export interface Order {
-  user: User;
   orderCode: number;
-  itens: Array<Item>;
+  items: Array<Item>;
   address: Address;
   expectedDate: string;
   payment: Payment;
-
   orderDate: string;
   status: string;
   shipping: Shipping;

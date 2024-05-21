@@ -1,0 +1,64 @@
+@import "styles";
+
+.card {
+  @include flex(column, $justify: space-between);
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: $gray5;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+
+  @media (min-width: $desktop) {
+    @include flex($justify: space-between);
+    height: 7.25rem;
+    padding: 1rem 4rem;
+  }
+
+  .products {
+    @include flex(column, $justify: flex-start);
+    gap: 0.5rem;
+
+    @media (min-width: $desktop) {
+      @include flex();
+      gap: 1.5rem;
+      height: 100%;
+    }
+
+    img {
+      border: $black1 1px solid;
+      border-radius: 0.5rem;
+      aspect-ratio: 1 /1;
+      width: 5rem;
+      height: auto;
+      object-fit: contain;
+
+      @media (min-width: $desktop) {
+        width: auto;
+        height: 100%;
+      }
+    }
+
+    p {
+      @include text(medium, bold);
+      text-align: center;
+    }
+  }
+  .dates {
+    @include flex(column);
+    gap: 0.5rem;
+    p {
+      color: $gray3;
+      text-align: center;
+    }
+  }
+
+  h6 {
+    @include text(medium, bold);
+    text-align: center;
+    @media (min-width: $desktop) {
+      @include heading();
+    }
+  }
+}

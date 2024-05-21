@@ -41,10 +41,315 @@
       ],
       "cards": [
         {
+          "value": "card",
           "name": "Bernardo",
           "lastDigits": "1234",
           "expirationDate": "01/01",
           "mainCard": true
+        }
+      ],
+      "orders": [
+        {
+          "orderCode": 123456,
+          "items": [
+            {
+              "product": {
+                "code": 100,
+                "favorite": true,
+                "title": "Ração Golden - Cães Filhotes sabor Frango e Arroz",
+                "littleDescription": "Ração Golden - Cães Filhotes sabor Frango e Arroz",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
+                "brand": "Golden",
+                "specifications": [
+                  {
+                    "title": "Idade",
+                    "value": "Filhotes/Adultos"
+                  },
+                  {
+                    "title": "Linha",
+                    "value": "Super Premium"
+                  },
+                  {
+                    "title": "Pet",
+                    "value": "Cachorro"
+                  },
+                  {
+                    "title": "Tipo",
+                    "value": "Ração seca"
+                  },
+                  {
+                    "title": "Apresentação",
+                    "value": "Disponível em embalagem de 15kg e 20kg."
+                  }
+                ],
+                "rating": 5,
+                "category": [
+                  {
+                    "title": "Pet",
+                    "types": ["Cachorro"]
+                  },
+                  {
+                    "title": "Porte de Raça",
+                    "types": ["Pequeno", "Grande"]
+                  },
+                  {
+                    "title": "Idade",
+                    "types": ["Filhote", "Adulto"]
+                  },
+                  {
+                    "title": "Linha",
+                    "types": ["Super Premium"]
+                  }
+                ],
+                "variantCode": 1,
+                "variant": "15Kg",
+                "images": [
+                  "https://images.petz.com.br/fotos/1658430805995.jpg"
+                ],
+                "price": 99.99,
+                "discountPrice": 120.6,
+                "maxInterestFreeParcels": 2,
+                "subscribersPrice": 80,
+                "available": true
+              },
+              "amount": 1
+            }
+          ],
+          "address": {
+            "name": "Senai",
+            "cep": "12345087",
+            "state": "SC",
+            "city": "Jaraguá do Sul",
+            "neighborhood": "Vila Nova",
+            "street": "Walter Marquardt",
+            "number": 2,
+            "complement": "Em frente ao pavilhão de eventos"
+          },
+          "expectedDate": "07062024",
+          "payment": {
+            "subtotal": 100,
+            "shippingFee": 100,
+            "total": 1000,
+            "method": {
+              "value": "card",
+              "name": "Bernardo",
+              "lastDigits": "1234",
+              "expirationDate": "01/01",
+              "mainCard": true
+            },
+            "parcels": 2,
+            "status": "Pago"
+          },
+          "orderDate": "17052024",
+          "status": "Em preparo",
+          "shipping": {
+            "shippingBy": "Azul",
+            "shippingCode": 36940219,
+            "shippingStatus": [
+              { "value": "Pedido", "dateTime": "17052024143738" },
+              { "value": "Enviado para transportadora", "dateTime": "" },
+              { "value": "Recebido pela transportadora", "dateTime": "" },
+              { "value": "Mercadoria em trãnsito", "dateTime": "" },
+              { "value": "Mercadoria em rota de entrega", "dateTime": "" },
+              { "value": "Pedido entregue", "dateTime": "" }
+            ]
+          }
+        },
+        {
+          "orderCode": 1234567,
+          "items": [
+            {
+              "product": {
+                "code": 100,
+                "favorite": true,
+                "title": "Ração Golden - Cães Filhotes sabor Frango e Arroz",
+                "littleDescription": "Ração Golden - Cães Filhotes sabor Frango e Arroz",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
+                "brand": "Golden",
+                "specifications": [
+                  {
+                    "title": "Idade",
+                    "value": "Filhotes/Adultos"
+                  },
+                  {
+                    "title": "Linha",
+                    "value": "Super Premium"
+                  },
+                  {
+                    "title": "Pet",
+                    "value": "Cachorro"
+                  },
+                  {
+                    "title": "Tipo",
+                    "value": "Ração seca"
+                  },
+                  {
+                    "title": "Apresentação",
+                    "value": "Disponível em embalagem de 15kg e 20kg."
+                  }
+                ],
+                "rating": 5,
+                "category": [
+                  {
+                    "title": "Pet",
+                    "types": ["Cachorro"]
+                  },
+                  {
+                    "title": "Porte de Raça",
+                    "types": ["Pequeno", "Grande"]
+                  },
+                  {
+                    "title": "Idade",
+                    "types": ["Filhote", "Adulto"]
+                  },
+                  {
+                    "title": "Linha",
+                    "types": ["Super Premium"]
+                  }
+                ],
+                "variantCode": 1,
+                "variant": "15Kg",
+                "images": [
+                  "https://images.petz.com.br/fotos/1658430805995.jpg"
+                ],
+                "price": 99.99,
+                "discountPrice": 120.6,
+                "maxInterestFreeParcels": 2,
+                "subscribersPrice": 80,
+                "available": true
+              },
+              "amount": 1
+            },
+            {
+              "product": {
+                "code": 200,
+                "favorite": false,
+                "title": "Ração Premier Super Premium Formula Sabor Frango para Cães Adultos de Portes Grandes e Gigantes",
+                "littleDescription": "Ração Premier Super Premium Formula Sabor Frango",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
+                "brand": "Premier",
+                "specifications": [
+                  {
+                    "title": "Idade",
+                    "value": "Filhotes/Adultos"
+                  },
+                  {
+                    "title": "Linha",
+                    "value": "Super Premium"
+                  },
+                  {
+                    "title": "Pet",
+                    "value": "Cachorro"
+                  },
+                  {
+                    "title": "Tipo",
+                    "value": "Ração seca"
+                  },
+                  {
+                    "title": "Apresentação",
+                    "value": "Disponível em embalagem de 15kg e 20kg."
+                  }
+                ],
+                "rating": 4,
+                "category": [
+                  {
+                    "title": "Pet",
+                    "types": ["Cachorro"]
+                  },
+                  {
+                    "title": "Porte de Raça",
+                    "types": ["Pequeno", "Grande"]
+                  },
+                  {
+                    "title": "Idade",
+                    "types": ["Filhote", "Adulto"]
+                  },
+                  {
+                    "title": "Linha",
+                    "types": ["Super Premium"]
+                  }
+                ],
+                "reviews": [
+                  {
+                    "user": "Kauê Andrade",
+                    "icon": "../../../../../assets/images/userIcon.png",
+                    "review": "Ameiiiiii!!",
+                    "rating": 5,
+                    "datePost": "20/03/24"
+                  },
+                  {
+                    "user": "Bernardeira",
+                    "icon": "../../../../../assets/images/TopCareLogo.png",
+                    "review": "Gostei muito!!",
+                    "rating": 4,
+                    "datePost": "17/03/24"
+                  }
+                ],
+                "variantCode": 1,
+                "variant": "15Kg",
+                "images": [
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4hDVYs0-7Km9r0BuYsbOBVkgxH4LW-YojyfP-oSSL1Q&s",
+                  "https://images.petz.com.br/fotos/1658430805995.jpg"
+                ],
+                "price": 70.4,
+                "discountPrice": 100.4,
+                "maxInterestFreeParcels": 3,
+                "subscribersPrice": 60.99,
+                "available": true
+              },
+              "amount": 2
+            }
+          ],
+          "address": {
+            "name": "Senai",
+            "cep": "12345087",
+            "state": "SC",
+            "city": "Jaraguá do Sul",
+            "neighborhood": "Vila Nova",
+            "street": "Walter Marquardt",
+            "number": 2,
+            "complement": "Em frente ao pavilhão de eventos"
+          },
+          "expectedDate": "",
+          "payment": {
+            "subtotal": 100,
+            "shippingFee": 0,
+            "total": 100,
+            "method": {
+              "value": "pix",
+              "copyPasteCode": "00000",
+              "qrCode": "00000",
+              "expirationInterval": 100000
+            },
+            "parcels": 1,
+            "status": "Pago"
+          },
+          "orderDate": "17052024",
+          "status": "Entregue",
+          "shipping": {
+            "shippingBy": "Azul",
+            "shippingCode": 36940219,
+            "shippingStatus": [
+              { "value": "Pedido", "dateTime": "17052024143738" },
+              {
+                "value": "Enviado para transportadora",
+                "dateTime": "17052024143738"
+              },
+              {
+                "value": "Recebido pela transportadora",
+                "dateTime": "17052024143738"
+              },
+              {
+                "value": "Mercadoria em trãnsito",
+                "dateTime": "17052024143738"
+              },
+              {
+                "value": "Mercadoria em rota de entrega",
+                "dateTime": "17052024143738"
+              },
+              { "value": "Pedido entregue", "dateTime": "17052024143738" }
+            ]
+          }
         }
       ]
     },

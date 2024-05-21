@@ -11,14 +11,15 @@
 
   &-name {
     @include flex(column);
-    color: $white;
 
     h3 {
       @include text(normal, medium);
+      color: $white;
     }
 
     p {
       @include text(small);
+      color: $white;
     }
   }
 

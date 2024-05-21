@@ -1,0 +1,84 @@
+<app-layout>
+  <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+    <img [src]="product!.images[0]" alt="" />
+    <label for="rating">
+      <p>Como você classificaria esse produto?*</p>
+      <div class="stars">
+        <fa-icon
+          *ngFor="let star of stars; let i = index"
+          [icon]="star"
+          (click)="updateStars(i + 1)"
+        ></fa-icon>
+      </div>
+      <input
+        type="range"
+        max="5"
+        step="1"
+        id="rating"
+        formControlName="rating"
+        placeholder="Digite seu nome completo"
+        [class.has-error]="rating?.touched && rating?.invalid"
+        required
+      />
+      <ng-container *ngIf="rating?.touched && rating?.invalid">
+        <span *ngIf="rating?.getError('isEmpty')" class="error-message">
+          Você deve preencher esse campo!
+        </span>
+      </ng-container>
+    </label>
+    <label for="title" appInput>
+      <p>Adicione um titulo à sua avaliação*</p>
+      <input
+        type="text"
+        id="title"
+        formControlName="title"
+        placeholder="O que é mais importante saber?"
+        [class.has-error]="title?.touched && title?.invalid"
+        required
+      />
+      <ng-container *ngIf="title?.touched && title?.invalid">
+        <span *ngIf="title?.getError('isEmpty')" class="error-message">
+          Você deve preencher esse campo!
+        </span>
+      </ng-container>
+    </label>
+    <label for="review" appInput>
+      <p>Escreva a sua avaliação*</p>
+      <textarea
+        id="review"
+        formControlName="review"
+        placeholder="Do que você gostou ou não gostou? Como você usa esse produto?"
+        [class.has-error]="review?.touched && review?.invalid"
+        required
+      ></textarea>
+      <ng-container *ngIf="review?.touched && review?.invalid">
+        <span *ngIf="review?.getError('isEmpty')" class="error-message">
+          Você deve preencher esse campo!
+        </span>
+      </ng-container>
+    </label>
+    <label for="image">
+      <p>Compartilhar uma foto ou video</p>
+      <div #imageDisplay>
+        <fa-icon
+          *ngIf="!imageDisplay.style.backgroundImage"
+          [icon]="faCamera"
+        ></fa-icon>
+      </div>
+      <input
+        type="file"
+        accept="image/png, image/jpeg, image/gif, video/mp4 ,video/x-m4v, video/*"
+        id="image"
+        formControlName="image"
+        placeholder="Digite seu telefone"
+        (input)="onFileChange($event)"
+      />
+    </label>
+    <input
+      type="submit"
+      value="Finalizar avaliação"
+      [disabled]="!isFormValid()"
+      appButton="secondary"
+    />
+  </form>
+</app-layout>

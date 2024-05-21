@@ -1,0 +1,56 @@
+@import "styles";
+
+.content {
+  @include subgrid();
+  grid-column: 2 / -2;
+  row-gap: 1.5rem;
+
+  .commonSection {
+    grid-column: 1 / -1;
+    row-gap: 2rem;
+    @media (min-width: $desktop) {
+      grid-column: auto / span 10;
+    }
+
+    &-primary {
+      grid-column: 1 / -1;
+      height: 100%;
+      @media (min-width: $desktop) {
+        grid-column: auto / span 7;
+      }
+    }
+    &-secondary {
+      grid-column: 1 / -1;
+      padding: 1rem 0.75rem;
+      height: 100%;
+      @media (min-width: $desktop) {
+        grid-column: auto / span 3;
+      }
+    }
+  }
+
+  app-order-items {
+    @include subgrid();
+  }
+
+  app-order-status,
+  app-order-details {
+    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  button {
+    grid-column: 1 / -1;
+    height: 3rem;
+
+    @media (min-width: $tablet) {
+      grid-column: auto / span 2;
+      height: 4rem;
+    }
+    @media (min-width: $desktop) {
+      grid-column: auto / span 3;
+      &.cancel-button {
+        grid-column: 8 / span 3;
+      }
+    }
+  }
+}
