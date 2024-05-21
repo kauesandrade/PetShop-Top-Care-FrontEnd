@@ -16,6 +16,7 @@ import { PetsComponent } from './feature/user/pets/pets.component';
 import { OrdersComponent } from './feature/user/orders/orders.component';
 import { SubscriptionsComponent } from './feature/user/subscriptions/subscriptions.component';
 import { OrderComponent } from './feature/user/orders/order/order.component';
+import { ReviewProductComponent } from './feature/user/orders/order/components/review-product/review-product.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -69,8 +70,16 @@ const routes: Routes = [
             path: '',
             component: OrdersComponent,
           },
-          { path: ':id', component: OrderComponent },
-          { path: 'avaliar-produto/:id', component: HomeComponent },
+          {
+            path: ':id',
+            children: [
+              {
+                path: '',
+                component: OrderComponent,
+              },
+              { path: 'avaliar/:id', component: ReviewProductComponent },
+            ],
+          },
         ],
       },
       {

@@ -1,0 +1,20 @@
+<dialog #modal [open]="open" (cancel)="$event.preventDefault()">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <h4>Avaliação</h4>
+    <p>Escolha um produto para fazer sua avaliação</p>
+    <select appInput id="product" formControlName="product">
+      <option *ngFor="let product of products; let i = index" [value]="product">
+        {{ product }}
+      </option>
+    </select>
+    <button appButton class="close-button" (click)="onCancel($event)">
+      Fechar
+    </button>
+    <input
+      appButton="secondary"
+      type="submit"
+      value="Continuar"
+      [disabled]="!isFormValid()"
+    />
+  </form>
+</dialog>

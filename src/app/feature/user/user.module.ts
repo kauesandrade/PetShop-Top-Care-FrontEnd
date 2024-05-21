@@ -25,6 +25,8 @@ import { OrderStatusComponent } from './orders/order/components/order-status/ord
 import { OrderDetailsComponent } from './orders/order/components/order-details/order-details.component';
 import { OrderItemsComponent } from './orders/order/components/order-items/order-items.component';
 import { OrderShippingComponent } from './orders/order/components/order-status/order-shipping/order-shipping.component';
+import { ChooseProductComponent } from './orders/order/components/order-status/choose-product/choose-product.component';
+import { ReviewProductComponent } from './orders/order/components/review-product/review-product.component';
 
 const Components = [
   DataComponent,
@@ -50,6 +52,8 @@ const Components = [
     OrderDetailsComponent,
     OrderItemsComponent,
     OrderShippingComponent,
+    ChooseProductComponent,
+    ReviewProductComponent,
   ],
   imports: [
     CommonModule,

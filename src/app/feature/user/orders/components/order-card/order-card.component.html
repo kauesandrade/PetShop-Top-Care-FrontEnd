@@ -5,7 +5,14 @@
   </div>
   <div class="dates">
     <p>Pedido feito em {{ order.orderDate | mask : "d0/M0/0000" }}</p>
-    <p>Previsão de entrega em {{ order.expectedDate | mask : "d0/M0/0000" }}</p>
+    <ng-container *ngIf="order.expectedDate; else alreadyArrived">
+      <p>
+        Previsão de entrega em {{ order.expectedDate | mask : "d0/M0/0000" }}
+      </p>
+    </ng-container>
+    <ng-template #alreadyArrived>
+      <p>Pedido entregue</p>
+    </ng-template>
   </div>
   <h6>Valor: {{ order.payment.total | currency : "BRL" }}</h6>
 </div>

@@ -26,7 +26,7 @@
     </div>
     <div class="info-container shipping">
       <p>Frete</p>
-      <p [class.free]="!payment.shippingFee">
+      <p [class.free]="payment.shippingFee == 0">
         <ng-container *ngIf="payment.shippingFee; else freeShipping">
           {{ payment.shippingFee | currency : "BRL" }}
         </ng-container>

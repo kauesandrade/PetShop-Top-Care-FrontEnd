@@ -9,6 +9,8 @@ import { Order } from 'src/app/shared/interfaces/order/order';
 export class OrderStatusComponent implements OnInit {
   @Input() order!: Order;
 
+  openChooseProduct = false;
+
   constructor() {}
 
   ngOnInit(): void {}

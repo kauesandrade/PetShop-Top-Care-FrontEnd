@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Order } from 'src/app/shared/interfaces/order/order';
+import { OrderByService } from 'src/app/shared/services/orderBy/order-by.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
@@ -9,21 +10,28 @@ import { UserService } from 'src/app/shared/services/user/user.service';
 })
 export class OrdersComponent implements OnInit {
   orderByOptions = [
-    'Mais recente',
-    'Mais antigo',
-    'Maior preço',
-    'Menor preço',
+    'Mais Recente',
+    'Mais Antigo',
+    'Maior Preço',
+    'Menor Preço',
   ];
 
   userOrders: Order[] = [];
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private orderByService: OrderByService
+  ) {}
 
   ngOnInit(): void {
     if (this.userService.loggedUser?.orders) {
+      console.log(this.userService.loggedUser?.orders);
+
       this.userOrders = [...this.userService.loggedUser?.orders!];
     }
   }
 
-  orderOrders(orderBy: string) {}
+  orderOrders(orderBy: string) {
+    this.userOrders = this.orderByService.orderBy(orderBy, this.userOrders);
+  }
 }

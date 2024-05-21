@@ -49,16 +49,15 @@
       p {
         @include text(small);
 
-        &.free {
-          color: $green;
-        }
-
         &.total-price {
           @include text(large);
         }
       }
 
       p:nth-child(2) {
+        &.free {
+          color: $green;
+        }
         color: $gray2;
       }
     }

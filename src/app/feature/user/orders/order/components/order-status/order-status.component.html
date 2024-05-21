@@ -5,7 +5,7 @@
       <p>#{{ order.orderCode }}</p>
     </div>
     <div class="date-status">
-      <p><span>Data:</span> {{ order.orderDate }}</p>
+      <p><span>Data:</span> {{ order.orderDate | mask : "d0/M0/0000" }}</p>
       <p><span>Status:</span> {{ order.status }}</p>
     </div>
     <div class="shipping">
@@ -20,7 +20,9 @@
       <button appButton>Rastrear pedido</button>
     </ng-container>
     <ng-template #finished>
-      <button appButton>Fazer avaliação</button>
+      <button appButton (click)="openChooseProduct = true">
+        Fazer avaliação
+      </button>
     </ng-template>
     <button appButton="secondary">Nota Fiscal</button>
   </div>
@@ -28,3 +30,8 @@
     [shippingStatus]="order.shipping.shippingStatus"
   ></app-order-shipping>
 </div>
+
+<app-choose-product
+  [(open)]="openChooseProduct"
+  [productList]="order.items"
+></app-choose-product>
