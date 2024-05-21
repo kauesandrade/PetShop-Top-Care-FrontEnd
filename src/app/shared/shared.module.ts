@@ -10,6 +10,7 @@ import { CardDisplayComponent } from './components/card-display/card-display.com
 import { ChooseAddressModalComponent } from './components/choose-address-modal/choose-address-modal.component';
 import { InputAmountComponent } from './components/input-amount/input-amount.component';
 import { MainCarouselComponent } from './components/main-carousel/main-carousel.component';
+import { ChooseAddressModalComponent } from './components/choose-address-modal/choose-address-modal.component';
 import { OrderByComponent } from './components/order-by/order-by.component';
 import { OrderProductCardComponent } from './components/order-product-card/order-product-card.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';

@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subject, takeUntil } from 'rxjs';
 import { CartPaymentInformations } from 'src/app/shared/interfaces/order/cart-payment-informations';
-import { Item } from 'src/app/shared/interfaces/order/item';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { CepService } from 'src/app/shared/services/cep/cep.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
