@@ -29,14 +29,14 @@
           "complement": "Em frente ao pavilhão de eventos"
         },
         {
-          "name": "Senai",
-          "cep": "12345087",
+          "name": "Weg",
+          "cep": "89254-700",
           "state": "SC",
           "city": "Jaraguá do Sul",
-          "neighborhood": "Vila Nova",
-          "street": "Walter Marquardt",
-          "number": 2,
-          "complement": "Em frente ao pavilhão de eventos"
+          "neighborhood": "Nova Brasília",
+          "street": "Venâncio da Silva Pôrto",
+          "number": 399,
+          "complement": "Perto do novo Angeloni"
         }
       ],
       "cards": [

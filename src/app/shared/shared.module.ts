@@ -17,6 +17,8 @@ import { ProductLayoutComponent } from './components/product-layout/product-layo
 import { OrderByComponent } from './components/order-by/order-by.component';
 import { ProductFilterComponent } from './components/product-filter/product-filter.component';
 import { MainCarouselComponent } from './components/main-carousel/main-carousel.component';
+import { CardDisplayComponent } from './components/card-display/card-display.component';
+import { ChooseAddressModalComponent } from './components/choose-address-modal/choose-address-modal.component';
 import { OrderProductCardComponent } from './components/order-product-card/order-product-card.component';
 
 const Components = [
@@ -30,6 +32,7 @@ const Components = [
   ProductFilterComponent,
   MainCarouselComponent,
   CardDisplayComponent,
+  ChooseAddressModalComponent,
   OrderProductCardComponent,
 ];
 

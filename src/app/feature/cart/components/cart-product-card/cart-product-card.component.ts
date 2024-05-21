@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faPercent, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Item } from 'src/app/shared/interfaces/order/item';
+import { CartService } from 'src/app/shared/services/cart/cart.service';
 
 @Component({
   selector: 'app-cart-product-card',
@@ -26,10 +27,9 @@ export class CartProductCardComponent implements OnInit {
     "Enviar a cada 1 ano"
   ]
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    console.log(this.item);
     this.subtotal = this.item.product.price * this.item.amount;
   }
 
@@ -43,11 +43,13 @@ export class CartProductCardComponent implements OnInit {
   }
 
   emitRemoveItem(){
-    this.removeItemEmitter.emit(this.item);
+    // this.removeItemEmitter.emit(this.item);
+    this.cartService.removeItemCart(this.item);
   }
 
   getAmount(evt: number){
     this.item.amount = evt;
+    this.cartService.updateItem(this.item);
     this.subtotal = this.item.product.price * this.item.amount;
   }
 }

@@ -26,7 +26,7 @@
                 },
                 {
                     "title": "Apresentação",
-                    "value": "Disponível em embalagem de 15kg e 20kg."
+                    "value": "Disponível em embalagem de 10Kg, 15kg e 20kg."
                 }
             ],
             "rating": 5,
@@ -55,6 +55,18 @@
                     "title": "Linha",
                     "types": [
                         "Super Premium"
+                    ]
+                },
+                {
+                    "title": "Avaliação",
+                    "types": [
+                        "Bom"
+                    ]
+                },
+                {
+                    "title": "Em Oferta",
+                    "types": [
+                        "Oferta"
                     ]
                 }
             ],
@@ -95,7 +107,7 @@
                 },
                 {
                     "title": "Apresentação",
-                    "value": "Disponível em embalagem de 15kg e 20kg."
+                    "value": "Disponível em embalagem de 10Kg, 15kg e 20kg."
                 }
             ],
             "rating": 5,
@@ -124,6 +136,18 @@
                     "title": "Linha",
                     "types": [
                         "Super Premium"
+                    ]
+                },
+                {
+                    "title": "Avaliação",
+                    "types": [
+                        "Bom"
+                    ]
+                },
+                {
+                    "title": "Em Oferta",
+                    "types": [
+                        "Oferta"
                     ]
                 }
             ],
@@ -164,7 +188,7 @@
                 },
                 {
                     "title": "Apresentação",
-                    "value": "Disponível em embalagem de 15kg e 20kg."
+                    "value": "Disponível em embalagem de 10Kg, 15kg e 20kg."
                 }
             ],
             "rating": 5,
@@ -193,6 +217,18 @@
                     "title": "Linha",
                     "types": [
                         "Super Premium"
+                    ]
+                },
+                {
+                    "title": "Avaliação",
+                    "types": [
+                        "Bom"
+                    ]
+                },
+                {
+                    "title": "Em Oferta",
+                    "types": [
+                        "Oferta"
                     ]
                 }
             ],
@@ -262,6 +298,18 @@
                     "title": "Linha",
                     "types": [
                         "Super Premium"
+                    ]
+                },
+                {
+                    "title": "Avaliação",
+                    "types": [
+                        "Legal"
+                    ]
+                },
+                {
+                    "title": "Em Oferta",
+                    "types": [
+                        "Oferta"
                     ]
                 }
             ],
@@ -349,6 +397,13 @@
                     "types": [
                         "Pet Iglu"
                     ]
+                },
+                {
+                    "title": "Avaliação",
+                    "types": [
+                        "Bom",
+                        "Legal"
+                    ]
                 }
             ],
             "variantCode": 1,
@@ -364,7 +419,7 @@
         },
         {
             "code": 400,
-            "favorite": false,
+            "favorite": true,
             "title": "Brinquedo Cachorro Osso Halteres Pata macio",
             "littleDescription": "Osso Halteres Pata macio",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
@@ -411,6 +466,19 @@
                     "types": [
                         "Filhote",
                         "Adulto"
+                    ]
+                },
+                {
+                    "title": "Avaliação",
+                    "types": [
+                        "Bom",
+                        "Legal"
+                    ]
+                },
+                {
+                    "title": "Em Oferta",
+                    "types": [
+                        "Oferta"
                     ]
                 }
             ],
@@ -427,7 +495,7 @@
         },
         {
             "code": 400,
-            "favorite": false,
+            "favorite": true,
             "title": "Brinquedo Cachorro Osso Halteres Pata macio",
             "littleDescription": "Osso Halteres Pata macio",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
@@ -474,6 +542,19 @@
                     "types": [
                         "Filhote",
                         "Adulto"
+                    ]
+                },
+                {
+                    "title": "Avaliação",
+                    "types": [
+                        "Bom",
+                        "Legal"
+                    ]
+                },
+                {
+                    "title": "Em Oferta",
+                    "types": [
+                        "Oferta"
                     ]
                 }
             ],
@@ -490,7 +571,7 @@
         },
         {
             "code": 400,
-            "favorite": false,
+            "favorite": true,
             "title": "Brinquedo Cachorro Osso Halteres Pata macio",
             "littleDescription": "Osso Halteres Pata macio",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
@@ -526,12 +607,6 @@
                     ]
                 },
                 {
-                    "title": "Cor",
-                    "types": [
-                        "Verde"
-                    ]
-                },
-                {
                     "title": "Porte de Raça",
                     "types": [
                         "Pequeno",
@@ -543,6 +618,19 @@
                     "types": [
                         "Filhote",
                         "Adulto"
+                    ]
+                },
+                {
+                    "title": "Avaliação",
+                    "types": [
+                        "Bom",
+                        "Legal"
+                    ]
+                },
+                {
+                    "title": "Em Oferta",
+                    "types": [
+                        "Oferta"
                     ]
                 }
             ],

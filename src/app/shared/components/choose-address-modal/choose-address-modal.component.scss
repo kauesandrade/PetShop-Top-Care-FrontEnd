@@ -1,0 +1,153 @@
+@import 'styles';
+
+dialog {
+
+    &:not([open]) {
+        display: none;
+    }
+
+    @include grid-container();
+    border: none;
+    outline: none;
+    margin: auto;
+    background-color: transparent;
+
+    form {
+        grid-column: 1 / -1;
+        position: relative;
+        @include flex(column);
+        row-gap: 1rem;
+        background-color: $white;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+
+        @media (min-width: $desktop) {
+            grid-column: 2 / span 10;
+          }
+
+        .div-title {
+            width: 100%;
+            @include flex(column);
+            text-align: center;
+
+            .title {
+                color: $primary;
+            }
+
+            .sub-title {
+                @include text(small, bold)
+            }
+
+            @media(min-width: $tablet) {
+
+                .title {
+                    @include heading(h4);
+                }
+
+                .sub-title {
+                    @include text(medium, bold)
+                }
+            }
+
+        }
+
+        .close-button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: transparent;
+            border: none;
+            color: $black1;
+            cursor: pointer;
+            fa-icon {
+              font-size: 1rem;
+              @media (min-width: $tablet) {
+                font-size: 2rem;
+              }
+            }
+        }
+
+        .div-addresses {
+            @include flex(column);
+            width: 100%;
+            gap: 1rem;
+
+            .div-address {
+                @include flex(row, center, start);
+                width: 100%;
+                gap: 1rem;
+                padding: 1rem 1.5rem;
+
+                background-color: $light-primary;
+                border-radius: 0.5rem;
+
+                input {
+                    width: 1.75rem;
+                    height: 1.75rem;
+                }
+
+                .div-name-cep-street {
+                    width: 100%;
+
+                    .div-name-cep {
+                        @include flex(column, start, space-between);
+                        width: 100%;
+                        gap: 0.25rem;
+
+                        @media(min-width: $tablet) {
+                            @include flex(row, center, space-between);
+                        }
+
+                        .name-address {
+                            @include text(small, bold);
+
+                            @media(min-width: $tablet) {
+                                @include text(large, bold);
+                            }
+                        }
+
+                        .cep {
+                            @include text(small);
+                        }
+
+                    }
+
+
+                    .address {
+                        @include text(small, bold);
+                        color: $primary;
+                    }
+
+                    @media(min-width: $tablet) {
+
+                        .address {
+                            @include text(medium, bold);
+                            color: $primary;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    .div-buttons {
+        @include flex(column);
+        gap: 1rem;
+        width: 100%;
+
+        @media(min-width: $tablet) {
+            @include flex();
+            gap: 2rem;
+        }
+
+        .btn {
+            width: 100%;
+            height: 3.5rem;
+        }
+    }
+
+}

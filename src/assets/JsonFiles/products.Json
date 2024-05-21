@@ -46,6 +46,14 @@
         {
           "title": "Linha",
           "types": ["Super Premium"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Bom"]
+        },
+        {
+          "title": "Em Oferta",
+          "types": ["Oferta"]
         }
       ]
     },
@@ -95,6 +103,14 @@
         {
           "title": "Linha",
           "types": ["Super Premium"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Legal"]
+        },
+        {
+          "title": "Em Oferta",
+          "types": ["Oferta"]
         }
       ]
     },
@@ -144,6 +160,10 @@
         {
           "title": "Linha",
           "types": ["Pet Iglu"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Bom", "Legal"]
         }
       ]
     },
@@ -189,6 +209,14 @@
         {
           "title": "Idade",
           "types": ["Filhote", "Adulto"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Bom", "Legal"]
+        },
+        {
+          "title": "Em Oferta",
+          "types": ["Oferta"]
         }
       ]
     }
