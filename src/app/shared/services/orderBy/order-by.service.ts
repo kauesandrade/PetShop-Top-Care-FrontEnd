@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ProductVariant } from '../../interfaces/product-variant';
+import { ProductVariant } from '../../interfaces/product/product-variant';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OrderByService {
-
-  constructor() { }
+  constructor() {}
 
   orderOf(order: string, productList: Array<ProductVariant>) {
     let arrayProduct: Array<ProductVariant> = [];
@@ -41,7 +40,7 @@ export class OrderByService {
 
       case 'Nome (Z-A)': {
         arrayProduct = [...productList].sort((p1, p2) => {
-          return this.orderOfPlus(p1.title,p2.title);
+          return this.orderOfPlus(p1.title, p2.title);
         });
         break;
       }
@@ -56,8 +55,8 @@ export class OrderByService {
       case 'Maiores Descontos': {
         arrayProduct = [...productList].sort((p1, p2) => {
           return this.orderOfPlus(
-           p1.discountPrice -p1.price,
-           p2.discountPrice -p2.price
+            p1.discountPrice - p1.price,
+            p2.discountPrice - p2.price
           );
         });
         break;
@@ -72,7 +71,6 @@ export class OrderByService {
       //   this.orderOfLancamentos();
       //   break;
       // }
-
     }
     return arrayProduct;
   }

@@ -364,7 +364,7 @@
         },
         {
             "code": 400,
-            "favorite": false,
+            "favorite": true,
             "title": "Brinquedo Cachorro Osso Halteres Pata macio",
             "littleDescription": "Osso Halteres Pata macio",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
@@ -394,26 +394,22 @@
             "rating": 3,
             "category": [
                 {
-                    "title": "Pet",
-                    "types": [
-                        "Cachorro"
-                    ]
+                  "title": "Pet",
+                  "types": ["Cachorro"]
                 },
                 {
-                    "title": "Porte de Raça",
-                    "types": [
-                        "Pequeno",
-                        "Grande"
-                    ]
+                  "title": "Porte de Raça",
+                  "types": ["Pequeno", "Grande"]
                 },
                 {
-                    "title": "Idade",
-                    "types": [
-                        "Filhote",
-                        "Adulto"
-                    ]
+                  "title": "Idade",
+                  "types": ["Filhote", "Adulto"]
+                },
+                {
+                  "title": "Avaliação",
+                  "types": ["Bom", "Legal"]
                 }
-            ],
+              ],
             "variantCode": 1,
             "variant": "Pequeno",
             "images": [
@@ -427,7 +423,7 @@
         },
         {
             "code": 400,
-            "favorite": false,
+            "favorite": true,
             "title": "Brinquedo Cachorro Osso Halteres Pata macio",
             "littleDescription": "Osso Halteres Pata macio",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
@@ -457,26 +453,22 @@
             "rating": 3,
             "category": [
                 {
-                    "title": "Pet",
-                    "types": [
-                        "Cachorro"
-                    ]
+                  "title": "Pet",
+                  "types": ["Cachorro"]
                 },
                 {
-                    "title": "Porte de Raça",
-                    "types": [
-                        "Pequeno",
-                        "Grande"
-                    ]
+                  "title": "Porte de Raça",
+                  "types": ["Pequeno", "Grande"]
                 },
                 {
-                    "title": "Idade",
-                    "types": [
-                        "Filhote",
-                        "Adulto"
-                    ]
+                  "title": "Idade",
+                  "types": ["Filhote", "Adulto"]
+                },
+                {
+                  "title": "Avaliação",
+                  "types": ["Bom", "Legal"]
                 }
-            ],
+              ],
             "variantCode": 2,
             "variant": "Médio",
             "images": [
@@ -490,7 +482,7 @@
         },
         {
             "code": 400,
-            "favorite": false,
+            "favorite": true,
             "title": "Brinquedo Cachorro Osso Halteres Pata macio",
             "littleDescription": "Osso Halteres Pata macio",
             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
@@ -520,32 +512,22 @@
             "rating": 3,
             "category": [
                 {
-                    "title": "Pet",
-                    "types": [
-                        "Cachorro"
-                    ]
+                  "title": "Pet",
+                  "types": ["Cachorro"]
                 },
                 {
-                    "title": "Cor",
-                    "types": [
-                        "Verde"
-                    ]
+                  "title": "Porte de Raça",
+                  "types": ["Pequeno", "Grande"]
                 },
                 {
-                    "title": "Porte de Raça",
-                    "types": [
-                        "Pequeno",
-                        "Grande"
-                    ]
+                  "title": "Idade",
+                  "types": ["Filhote", "Adulto"]
                 },
                 {
-                    "title": "Idade",
-                    "types": [
-                        "Filhote",
-                        "Adulto"
-                    ]
+                  "title": "Avaliação",
+                  "types": ["Bom", "Legal"]
                 }
-            ],
+              ],
             "variantCode": 3,
             "variant": "Grande",
             "images": [

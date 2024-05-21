@@ -1,0 +1,53 @@
+@import "styles";
+
+.embla {
+  @include subgrid();
+  grid-column: 1 / -1;
+  position: relative;
+  width: 100%;
+
+  $slide-height: 100%;
+  $slide-size: 0%;
+
+  .embla__viewport {
+    overflow: hidden;
+    grid-column: 1 / -1;
+    .embla__container {
+      backface-visibility: hidden;
+      display: flex;
+      gap: 50%;
+
+      & > :first-child {
+        margin-left: 25%;
+      }
+      & > :last-child {
+        margin-right: 25%;
+      }
+
+      @media (min-width: $tablet) {
+        & > :first-child,
+        & > :last-child {
+          margin: 0;
+        }
+        gap: 8rem;
+      }
+      @media (min-width: $desktop) {
+        gap: 5.2rem;
+      }
+      @media (min-width: $desktopHD) {
+        gap: 2rem;
+      }
+
+      .embla__slide {
+        flex: 0 0 $slide-size;
+
+        app-product-card {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: $slide-height;
+        }
+      }
+    }
+  }
+}

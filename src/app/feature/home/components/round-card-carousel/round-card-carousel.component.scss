@@ -13,9 +13,8 @@
   position: relative;
   width: 100%;
 
-  --slide-height: 100%;
-  --slide-spacing: 1rem;
-  --slide-size: 0%;
+  $slide-height: 100%;
+  $slide-size: 0%;
 
   .embla__button--prev,
   .embla__button--next {
@@ -64,18 +63,35 @@
     .embla__container {
       backface-visibility: hidden;
       display: flex;
+      gap: 50%;
+
+      & > :first-child {
+        margin-left: 25%;
+      }
+      & > :last-child {
+        margin-right: 25%;
+      }
+
+      @media (min-width: $tablet) {
+        & > :first-child,
+        & > :last-child {
+          margin: 0;
+        }
+        gap: 5rem;
+      }
+      @media (min-width: $desktop) {
+        gap: 2rem;
+      }
       touch-action: pan-y;
-      padding: 0 calc(var(--slide-spacing) * -1);
 
       .embla__slide {
-        flex: 0 0 var(--slide-size);
-        padding: 0 var(--slide-spacing);
+        flex: 0 0 $slide-size;
 
         app-round-card {
           display: flex;
           align-items: flex-start;
           justify-content: center;
-          height: var(--slide-height);
+          height: $slide-height;
         }
       }
     }

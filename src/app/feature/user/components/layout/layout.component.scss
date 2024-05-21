@@ -1,0 +1,58 @@
+@import "styles";
+
+a {
+  color: $black1;
+  text-decoration: none;
+  @include text(medium, medium);
+}
+
+main {
+  @include grid-container();
+
+  .content {
+    @include subgrid();
+    grid-column: 1 / -1;
+    background-color: $white;
+    border-radius: 1rem;
+    padding: 1rem;
+    @media (min-width: $tablet) {
+      padding: 2rem;
+    }
+    row-gap: 2rem;
+
+    .navigation-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 1rem;
+      @media (min-width: $tablet) {
+        @include subgrid();
+      }
+      @media (min-width: $desktop) {
+        @include flex($justify: space-between);
+        grid-column: 2 / -2;
+        flex-wrap: wrap;
+      }
+      a {
+        @include flex();
+        @media (min-width: $tablet) {
+          grid-column: auto / span 2;
+          &:nth-child(odd) {
+            grid-column: 2 / span 2;
+          }
+        }
+        @media (min-width: $desktop) {
+          flex: 1;
+        }
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: $light-primary;
+      }
+
+      .active {
+        background-color: $primary;
+        color: $white;
+      }
+    }
+  }
+}

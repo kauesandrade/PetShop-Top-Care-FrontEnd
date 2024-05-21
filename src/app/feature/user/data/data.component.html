@@ -1,0 +1,47 @@
+<!-- PRECISA FAZER OS MODALS  -->
+<!-- PRECISA FAZER OS MODALS  -->
+<!-- PRECISA FAZER OS MODALS  -->
+
+<app-layout>
+  <app-profile-form [(profileForm)]="profileForm"></app-profile-form>
+  <div class="action-buttons">
+    <button appButton="secondary" (click)="openPasswordModal = true">
+      Alterar senha
+    </button>
+    <button appButton (click)="openCardsModal = true">
+      Meus cartões salvos
+    </button>
+  </div>
+  <div class="divider"></div>
+  <app-contact-form [(contactForm)]="contactForm"></app-contact-form>
+  <div class="divider"></div>
+  <app-address-form
+    [(addressForm)]="addressForm"
+    (addedAddress)="createNewAddress($event, true)"
+    (deletedAddress)="deleteAddress($event)"
+  ></app-address-form>
+  <div class="action-buttons">
+    <button
+      appButton
+      *ngIf="!editingData; else editing"
+      (click)="enableEditing()"
+    >
+      Editar dados
+    </button>
+    <ng-template #editing>
+      <button appButton (click)="saveData()" [disabled]="!areFormsValid()">
+        Salvar dados
+      </button>
+    </ng-template>
+    <button appButton="secondary" (click)="logout()">Sair da conta</button>
+  </div>
+</app-layout>
+
+<!-- A FAZER AQUI  -->
+<!-- A FAZER AQUI  -->
+<!-- A FAZER AQUI  -->
+<app-change-password
+  [(open)]="openPasswordModal"
+  (changedPassword)="updatePassword($event)"
+></app-change-password>
+<app-edit-cards [(open)]="openCardsModal"></app-edit-cards>

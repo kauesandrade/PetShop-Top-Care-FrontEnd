@@ -1,53 +1,52 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../../interfaces/product';
-import { ProductVariant } from '../../interfaces/product-variant';
 import productData from '../../../../assets/JsonFiles/products.json';
 import productVariantData from '../../../../assets/JsonFiles/productVariant.json';
+import { Product } from '../../interfaces/product/product';
+import { ProductVariant } from '../../interfaces/product/product-variant';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-
   private product?: Product;
   private productVariant!: ProductVariant;
   private productVariantsList!: Array<ProductVariant>;
 
-
-  constructor() { 
-  }
+  constructor() {}
 
   getProduct() {
     return this.product;
   }
-  
+
+  getProductData(){
+    return productData.product;
+  }
+
   getProductVariants() {
     return this.productVariantsList;
   }
-  
+
   getProductVariant() {
     return this.productVariant;
   }
-  
-  changeVariableProduct(productVariant: ProductVariant){
+
+  changeVariableProduct(productVariant: ProductVariant) {
     this.productVariant = productVariant;
   }
   getFirstProductVariant() {
     return this.getProductVariants()[0];
   }
 
-  
   findProduct(id: number | string | Product | ProductVariant) {
-    if(typeof id == "number" || typeof id == "string") {
+    if (typeof id == 'number' || typeof id == 'string') {
       for (const productFind of productData.product) {
         if (productFind.title == id || productFind.code == id) {
           this.product = productFind;
           break;
         }
       }
-
-    }else{
-      this.product = id
+    } else {
+      this.product = id;
     }
 
     if (this.product) {
@@ -57,9 +56,12 @@ export class ProductService {
   }
 
   private getAllProductVariants() {
-    this.productVariantsList = []
-    for (const variant of productVariantData.variant) {
-      if (this.product?.code == variant.code && this.verifyProductIsAvailable(variant)) {
+    this.productVariantsList = [];
+    for (const variant of productVariantData.variant as ProductVariant[]) {
+      if (
+        this.product?.code == variant.code &&
+        this.verifyProductIsAvailable(variant)
+      ) {
         this.productVariantsList.push(variant);
       }
     }
@@ -70,7 +72,6 @@ export class ProductService {
 
     return this.productVariantsList;
   }
-
 
   private verifyProductIsAvailable(product: ProductVariant) {
     if (product.available) {

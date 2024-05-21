@@ -1,30 +1,50 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductCardComponent } from './product-card/product-card.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from '../core/core.module';
-import { ProductSectionComponent } from './product-section/product-section.component';
-import { CarouselModule } from './carousel/carousel.module';
-import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
-import { InputAmountComponent } from './input-amount/input-amount.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { ProductLayoutComponent } from './product-layout/product-layout.component';
-import { OrderByComponent } from './order-by/order-by.component';
-import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { RouterModule } from '@angular/router';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { ProductSectionComponent } from './components/product-section/product-section.component';
+import { ProductCarouselComponent } from './components/product-carousel/product-carousel.component';
+import { RegisterAddressComponent } from './components/register-address/register-address.component';
+import { InputAmountComponent } from './components/input-amount/input-amount.component';
+import { ProductLayoutComponent } from './components/product-layout/product-layout.component';
+import { OrderByComponent } from './components/order-by/order-by.component';
+import { ProductFilterComponent } from './components/product-filter/product-filter.component';
+import { MainCarouselComponent } from './components/main-carousel/main-carousel.component';
+import { CardDisplayComponent } from './components/card-display/card-display.component';
+import { ChooseAddressModalComponent } from './components/choose-address-modal/choose-address-modal.component';
 
 const Components = [
   ProductCardComponent,
   ProductSectionComponent,
   ProductCarouselComponent,
+  RegisterAddressComponent,
   InputAmountComponent,
-  ProductLayoutComponent, 
-  OrderByComponent, 
-  ProductFilterComponent
+  ProductLayoutComponent,
+  OrderByComponent,
+  ProductFilterComponent,
+  MainCarouselComponent,
+  CardDisplayComponent,
+  ChooseAddressModalComponent,
 ];
 
 @NgModule({
-  exports: [...Components, CarouselModule],
+  exports: [...Components],
   declarations: [...Components],
-  imports: [CommonModule, CoreModule, FontAwesomeModule, CarouselModule, FormsModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    CoreModule,
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    RouterModule,
+    FormsModule,
+    NgxMaskModule.forRoot(),
+  ],
 })
 export class SharedModule {}

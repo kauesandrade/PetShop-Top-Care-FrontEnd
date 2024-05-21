@@ -33,29 +33,23 @@
       "category": [
         {
           "title": "Pet",
-          "types": [
-            "Cachorro"
-          ]
+          "types": ["Cachorro"]
         },
         {
           "title": "Porte de Raça",
-          "types": [
-            "Pequeno",
-            "Grande"
-          ]
+          "types": ["Pequeno", "Grande"]
         },
         {
           "title": "Idade",
-          "types": [
-            "Filhote",
-            "Adulto"
-          ]
+          "types": ["Filhote", "Adulto"]
         },
         {
           "title": "Linha",
-          "types": [
-            "Super Premium"
-          ]
+          "types": ["Super Premium"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Bom"]
         }
       ]
     },
@@ -92,29 +86,23 @@
       "category": [
         {
           "title": "Pet",
-          "types": [
-            "Cachorro"
-          ]
+          "types": ["Cachorro"]
         },
         {
           "title": "Porte de Raça",
-          "types": [
-            "Pequeno",
-            "Grande"
-          ]
+          "types": ["Pequeno", "Grande"]
         },
         {
           "title": "Idade",
-          "types": [
-            "Filhote",
-            "Adulto"
-          ]
+          "types": ["Filhote", "Adulto"]
         },
         {
           "title": "Linha",
-          "types": [
-            "Super Premium"
-          ]
+          "types": ["Super Premium"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Legal"]
         }
       ]
     },
@@ -151,29 +139,23 @@
       "category": [
         {
           "title": "Pet",
-          "types": [
-            "Gato"
-          ]
+          "types": ["Gato"]
         },
         {
           "title": "Porte de Raça",
-          "types": [
-            "Pequeno",
-            "Grande"
-          ]
+          "types": ["Pequeno", "Grande"]
         },
         {
           "title": "Idade",
-          "types": [
-            "Filhote",
-            "Adulto"
-          ]
+          "types": ["Filhote", "Adulto"]
         },
         {
           "title": "Linha",
-          "types": [
-            "Pet Iglu"
-          ]
+          "types": ["Pet Iglu"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Bom", "Legal"]
         }
       ]
     },
@@ -210,23 +192,19 @@
       "category": [
         {
           "title": "Pet",
-          "types": [
-            "Cachorro"
-          ]
+          "types": ["Cachorro"]
         },
         {
           "title": "Porte de Raça",
-          "types": [
-            "Pequeno",
-            "Grande"
-          ]
+          "types": ["Pequeno", "Grande"]
         },
         {
           "title": "Idade",
-          "types": [
-            "Filhote",
-            "Adulto"
-          ]
+          "types": ["Filhote", "Adulto"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Bom", "Legal"]
         }
       ]
     }

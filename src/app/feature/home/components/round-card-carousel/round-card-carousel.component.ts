@@ -13,25 +13,35 @@ import { RoundCard } from '../../../../shared/interfaces/round-card';
 @Component({
   selector: 'app-round-card-carousel',
   templateUrl: './round-card-carousel.component.html',
-  styleUrls: ['./round-card-carousel.component.scss']
+  styleUrls: ['./round-card-carousel.component.scss'],
 })
 export class RoundCardCarouselComponent implements AfterViewInit, OnDestroy {
-
   constructor(private elementRef: ElementRef) {}
 
   ngAfterViewInit(): void {
     const viewportNode =
-    this.elementRef.nativeElement.querySelector('.embla__viewport');
-    const OPTIONS: EmblaOptionsType = { align: 'center', slidesToScroll: 1, dragFree: true };
-    
+      this.elementRef.nativeElement.querySelector('.embla__viewport');
+    const OPTIONS: EmblaOptionsType = {
+      breakpoints: {
+        '(min-width: 768px)': {
+          align: 'start',
+          loop: false,
+        },
+      },
+      align: 'center',
+      slidesToScroll: 1,
+      skipSnaps: true,
+      loop: true,
+    };
+
     this.embla = EmblaCarousel(viewportNode, OPTIONS);
   }
-  
+
   embla: any = null;
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
-  
-  @Input() roundCardList!: Array<RoundCard>
+
+  @Input() roundCardList!: Array<RoundCard>;
 
   ngOnDestroy(): void {
     if (this.embla) {
@@ -50,5 +60,4 @@ export class RoundCardCarouselComponent implements AfterViewInit, OnDestroy {
       this.embla.scrollNext();
     }
   }
-
 }

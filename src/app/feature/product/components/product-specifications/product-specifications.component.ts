@@ -1,18 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SpecificationProduct } from 'src/app/shared/interfaces/specification-product';
+import { ProductSpecification } from 'src/app/shared/interfaces/product/product-specification';
 
 @Component({
   selector: 'app-product-specifications',
   templateUrl: './product-specifications.component.html',
-  styleUrls: ['./product-specifications.component.scss']
+  styleUrls: ['./product-specifications.component.scss'],
 })
 export class ProductSpecificationsComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  @Input() specifications?: Array<ProductSpecification>;
 
-  @Input() specifications?: Array<SpecificationProduct>
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

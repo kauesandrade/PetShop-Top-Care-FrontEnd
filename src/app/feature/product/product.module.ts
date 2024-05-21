@@ -13,8 +13,6 @@ import { ProductSpecificationsComponent } from './components/product-specificati
 import { ProductReviewComponent } from './components/product-review/product-review.component';
 import { ProductReviewSectionComponent } from './components/product-review-section/product-review-section.component';
 
-
-
 @NgModule({
   exports: [ProductComponent],
   declarations: [
@@ -25,8 +23,14 @@ import { ProductReviewSectionComponent } from './components/product-review-secti
     ProductDescriptionComponent,
     ProductSpecificationsComponent,
     ProductReviewComponent,
-    ProductReviewSectionComponent
+    ProductReviewSectionComponent,
   ],
-  imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule, FormsModule],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    CoreModule,
+    SharedModule,
+    FormsModule,
+  ],
 })
-export class ProductModule { }
+export class ProductModule {}

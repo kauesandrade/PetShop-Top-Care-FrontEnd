@@ -1,3 +1,4 @@
+<app-header></app-header>
 <main>
     <div class="div-searchbar-orderBy">
         <label class="searchbar" for="searchbar" appInput>
@@ -16,3 +17,4 @@
     <app-product-filter [productFiltersWihtChecked]="productFilters" (emitFilters)="getFilters($event)"></app-product-filter>
     <app-product-layout [products]="productsList"></app-product-layout>
 </main>
+<app-footer></app-footer>

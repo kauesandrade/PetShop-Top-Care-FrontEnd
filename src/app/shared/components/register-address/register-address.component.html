@@ -1,0 +1,158 @@
+<dialog #modal [open]="open" (cancel)="$event.preventDefault()">
+  <form [formGroup]="registerAddressForm" (ngSubmit)="onSubmit()">
+    <button
+      *ngIf="allowClosing"
+      class="close-button"
+      (click)="onCancel($event)"
+    >
+      <fa-icon [icon]="faX"></fa-icon>
+    </button>
+    <h4>{{ title }}</h4>
+    <div class="inputs">
+      <label for="addressName" appInput>
+        <p>Nome do endereço*</p>
+        <input
+          type="text"
+          id="addressName"
+          formControlName="addressName"
+          placeholder="Digite um nome para o endereço"
+          [class.has-error]="addressName?.touched && addressName?.invalid"
+          required
+        />
+        <ng-container *ngIf="addressName?.touched && addressName?.invalid">
+          <span *ngIf="addressName?.getError('isEmpty')" class="error-message">
+            Você deve preencher esse campo!
+          </span>
+        </ng-container>
+      </label>
+      <label for="cep" appInput>
+        <p>CEP*</p>
+        <input
+          type="text"
+          id="cep"
+          formControlName="cep"
+          placeholder="Digite seu cep"
+          [class.has-error]="cep?.touched && cep?.invalid"
+          mask="00000-000"
+          required
+          (blur)="searchCep()"
+        />
+        <ng-container *ngIf="cep?.touched && cep?.invalid">
+          <span *ngIf="cep?.getError('isEmpty')" class="error-message">
+            Você deve preencher esse campo!
+          </span>
+          <span *ngIf="cep?.getError('mask')" class="error-message">
+            Deve ser no formato (00000-000)!
+          </span>
+          <span *ngIf="cep?.getError('cepInvalido')" class="error-message">
+            Deve ser um cep válido!
+          </span>
+        </ng-container>
+      </label>
+      <label for="state" appInput>
+        <p>UF*</p>
+        <select
+          appInput
+          id="state"
+          formControlName="state"
+          [class.has-error]="state?.touched && state?.invalid"
+          required
+        >
+          <option
+            *ngFor="let st of states; let i = index"
+            [value]="i == 0 ? '' : st"
+            [hidden]="i == 0"
+            [selected]="i == 0"
+          >
+            {{ st }}
+          </option>
+        </select>
+        <ng-container *ngIf="state?.touched && state?.invalid">
+          <span *ngIf="state?.getError('isEmpty')" class="error-message">
+            Você deve preencher esse campo!
+          </span>
+        </ng-container>
+      </label>
+      <label for="city" appInput>
+        <p>Cidade*</p>
+        <input
+          type="text"
+          id="city"
+          formControlName="city"
+          placeholder="Digite sua cidade"
+          [class.has-error]="city?.touched && city?.invalid"
+          required
+        />
+        <ng-container *ngIf="city?.touched && city?.invalid">
+          <span *ngIf="city?.getError('isEmpty')" class="error-message">
+            Você deve preencher esse campo!
+          </span>
+        </ng-container>
+      </label>
+      <label for="neighborhood" appInput>
+        <p>Bairro*</p>
+        <input
+          type="text"
+          id="neighborhood"
+          formControlName="neighborhood"
+          placeholder="Digite seu bairro"
+          [class.has-error]="neighborhood?.touched && neighborhood?.invalid"
+          required
+        />
+        <ng-container *ngIf="neighborhood?.touched && neighborhood?.invalid">
+          <span *ngIf="neighborhood?.getError('isEmpty')" class="error-message">
+            Você deve preencher esse campo!
+          </span>
+        </ng-container>
+      </label>
+      <label for="street" appInput>
+        <p>Rua*</p>
+        <input
+          type="text"
+          id="street"
+          formControlName="street"
+          placeholder="Digite sua rua"
+          [class.has-error]="street?.touched && street?.invalid"
+          required
+        />
+        <ng-container *ngIf="street?.touched && street?.invalid">
+          <span *ngIf="street?.getError('isEmpty')" class="error-message">
+            Você deve preencher esse campo!
+          </span>
+        </ng-container>
+      </label>
+      <label for="number" appInput>
+        <p>Número*</p>
+        <input
+          type="number"
+          id="number"
+          formControlName="number"
+          placeholder="Digite o número"
+          [class.has-error]="number?.touched && number?.invalid"
+          mask="999999"
+          required
+        />
+        <ng-container *ngIf="number?.touched && number?.invalid">
+          <span *ngIf="number?.getError('required')" class="error-message">
+            Você deve preencher esse campo!
+          </span>
+        </ng-container>
+      </label>
+      <label for="complement" appInput>
+        <p>Complemento</p>
+        <textarea
+          id="complement"
+          formControlName="complement"
+          placeholder="Digite o complemento"
+        ></textarea>
+      </label>
+    </div>
+
+    <input
+      type="submit"
+      value="Cadastrar endereço"
+      appButton="secondary"
+      [disabled]="!isFormValid()"
+    />
+  </form>
+</dialog>

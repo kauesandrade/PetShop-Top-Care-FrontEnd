@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FilterProduct } from 'src/app/shared/interfaces/filter-product';
-import { ProductVariant } from 'src/app/shared/interfaces/product-variant';
+import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
+import { Filter } from 'src/app/shared/interfaces/search/filter';
 import { FilterService } from 'src/app/shared/services/filter/filter.service';
 import { OrderByService } from 'src/app/shared/services/orderBy/order-by.service';
 import { SearchService } from 'src/app/shared/services/search/search.service';
@@ -9,35 +9,42 @@ import { SearchService } from 'src/app/shared/services/search/search.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-
   productsList: Array<ProductVariant> = [];
-  productFilters: Array<FilterProduct> = []
+  productFilters: Array<Filter> = [];
   seachBy!: string;
 
-  constructor(private route: ActivatedRoute, private searchService: SearchService, private orderbyService: OrderByService, private filterService: FilterService) {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private searchService: SearchService,
+    private orderbyService: OrderByService,
+    private filterService: FilterService
+  ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       this.seachBy = params['q'].replace('%20', ' ');
       this.productsList = this.searchService.searchProducts(this.seachBy);
-      this.productFilters = this.filterService.getListFilterWithChecked(this.productsList);
+      this.productFilters = this.filterService.getListFilterWithChecked(
+        this.productsList
+      );
     });
   }
 
   getOrderBy(evt: string) {
-    this.productsList = this.orderbyService.orderOf(evt, this.productsList)
+    this.productsList = this.orderbyService.orderOf(evt, this.productsList);
   }
 
   getFilters(evt: Array<string>) {
-    this.productsList = this.filterService.filterProducts(evt, this.searchService.getProductList());
+    this.productsList = this.filterService.filterProducts(
+      evt,
+      this.searchService.getProductList()
+    );
   }
 
-  getFiltersProducts(){
+  getFiltersProducts() {
     return this.productFilters;
   }
-
 }

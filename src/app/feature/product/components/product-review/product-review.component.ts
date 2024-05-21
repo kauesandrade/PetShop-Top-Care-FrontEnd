@@ -1,22 +1,21 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
-import { ReviewProduct } from 'src/app/shared/interfaces/review-product';
+import { ProductReview } from 'src/app/shared/interfaces/product/product-review';
 
 @Component({
   selector: 'app-product-review',
   templateUrl: './product-review.component.html',
-  styleUrls: ['./product-review.component.scss']
+  styleUrls: ['./product-review.component.scss'],
 })
 export class ProductReviewComponent implements OnInit {
-
   faStarSolid = faStarSolid;
   faStarRegular = faStarRegular;
 
-  @Input() review!: ReviewProduct;
+  @Input() review!: ProductReview;
   starsValue: Array<boolean> = new Array<boolean>(5);
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     this.setStarsValue();
@@ -24,8 +23,9 @@ export class ProductReviewComponent implements OnInit {
 
   setStarsValue() {
     for (let i = 0; i < 5; i++) {
-      i < this.review.rating ? this.starsValue[i] = true : this.starsValue[i] = false;
+      i < this.review.rating
+        ? (this.starsValue[i] = true)
+        : (this.starsValue[i] = false);
     }
   }
-
 }
