@@ -4,6 +4,7 @@ import { Observable, Subject, takeUntil } from 'rxjs';
 import { CartPaymentInformations } from 'src/app/shared/interfaces/order/cart-payment-informations';
 import { Item } from 'src/app/shared/interfaces/order/item';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
+import { CepService } from 'src/app/shared/services/cep/cep.service';
 
 @Component({
   selector: 'app-cart-payment-information',
@@ -15,7 +16,12 @@ export class CartPaymentInformationComponent implements OnInit {
   cartInformations!: CartPaymentInformations;
   @Output() openAddressesModalEmitter = new EventEmitter();
 
-  constructor(protected cartService: CartService, private route: ActivatedRoute, private router: Router) {
+  cep?: string
+
+  constructor(protected cartService: CartService, 
+    private route: ActivatedRoute, 
+    private router: Router,
+    private cepService: CepService) {
   this.cartService.getCartInformations().subscribe(data =>{
     this.cartInformations = data
   });
@@ -40,6 +46,16 @@ export class CartPaymentInformationComponent implements OnInit {
 
   openAddressModal(){
     this.openAddressesModalEmitter.emit();
+  }
+
+  searchCep() {
+    this.cepService.searchCep(this.cep!).subscribe((res: any) => {
+      if (res.erro) {
+        console.log(res.erro);
+      } else {
+        console.log(res);
+      }
+    });
   }
 
 
