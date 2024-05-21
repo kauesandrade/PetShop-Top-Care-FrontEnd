@@ -2,15 +2,25 @@
 
 form {
   @include subgrid();
-  grid-column: 2 / -2;
+  grid-column: 1 / -1;
   row-gap: 2rem;
 
+  @media (min-width: $tablet) {
+    grid-column: 2 / -2;
+  }
+
   img {
-    grid-column: auto / span 4;
-    grid-row: auto / span 2;
-    width: 100%;
+    width: 50%;
+    place-self: center;
     aspect-ratio: 1 / 1;
     object-fit: contain;
+    grid-column: 1 / -1;
+    grid-row: auto / span 1;
+    @media (min-width: $desktop) {
+      width: 100%;
+      grid-column: auto / span 4;
+      grid-row: auto / span 2;
+    }
   }
 
   label {
@@ -37,7 +47,10 @@ form {
 
     &[for="title"],
     &[for="rating"] {
-      grid-column: auto / span 6;
+      grid-column: 1 / -1;
+      @media (min-width: $desktop) {
+        grid-column: auto / span 6;
+      }
     }
 
     &[for="rating"] {
@@ -45,10 +58,22 @@ form {
       gap: 1rem;
       .stars {
         @include flex($justify: flex-start);
-        gap: 1.5rem;
+        gap: 1rem;
         width: 100%;
+        @media (min-width: $tablet) {
+          @include flex($justify: space-between);
+        }
+        @media (min-width: $desktop) {
+          gap: 1.5rem;
+          @include flex($justify: flex-start);
+        }
+
         fa-icon {
-          font-size: 2.5rem;
+          color: $secondary;
+          font-size: 1.5rem;
+          @media (min-width: $tablet) {
+            font-size: 2.5rem;
+          }
         }
       }
 
@@ -58,6 +83,7 @@ form {
     }
 
     &[for="image"] {
+      @include flex(column, flex-start);
       width: 100%;
       height: 10.5rem;
 
@@ -72,8 +98,15 @@ form {
         width: 100%;
         height: 100%;
         background-color: $gray5;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-clip: content-box;
         fa-icon {
-          font-size: 4rem;
+          font-size: 2rem;
+          @media (min-width: $desktop) {
+            font-size: 4rem;
+          }
         }
       }
     }
@@ -81,7 +114,10 @@ form {
 
   input[type="submit"] {
     height: 3rem;
-    grid-column: 4 / span 4;
+    grid-column: 1 / -1;
+    @media (min-width: $desktop) {
+      grid-column: 4 / span 4;
+    }
   }
 }
 

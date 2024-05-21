@@ -48,7 +48,7 @@
     }
     @media (min-width: $desktop) {
       grid-column: auto / span 3;
-      &:last-of-type {
+      &.cancel-button {
         grid-column: 8 / span 3;
       }
     }

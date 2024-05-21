@@ -32,4 +32,9 @@ export class OrderComponent implements OnInit {
       this.order = orderValue;
     }
   }
+
+  cancelOrder() {
+    this.orderService.cancelOrder(this.code);
+    this.router.navigate(['/perfil/pedidos']);
+  }
 }

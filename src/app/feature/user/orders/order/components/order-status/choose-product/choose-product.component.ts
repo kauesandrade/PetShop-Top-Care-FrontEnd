@@ -42,8 +42,6 @@ export class ChooseProductComponent implements OnChanges {
       this.products.push(item.product.title);
     });
 
-    console.log(this.products);
-
     this.productForm = this.formBuilder.group({
       product: [this.products[0]],
     });

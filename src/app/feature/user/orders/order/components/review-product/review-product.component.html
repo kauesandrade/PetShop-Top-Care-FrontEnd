@@ -2,7 +2,7 @@
   <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
     <img [src]="product!.images[0]" alt="" />
     <label for="rating">
-      <p>Como você classificaria esse produto?</p>
+      <p>Como você classificaria esse produto?*</p>
       <div class="stars">
         <fa-icon
           *ngFor="let star of stars; let i = index"
@@ -27,7 +27,7 @@
       </ng-container>
     </label>
     <label for="title" appInput>
-      <p>Adicione um titulo à sua avaliação</p>
+      <p>Adicione um titulo à sua avaliação*</p>
       <input
         type="text"
         id="title"
@@ -43,7 +43,7 @@
       </ng-container>
     </label>
     <label for="review" appInput>
-      <p>Escreva a sua avaliação</p>
+      <p>Escreva a sua avaliação*</p>
       <textarea
         id="review"
         formControlName="review"
@@ -59,8 +59,11 @@
     </label>
     <label for="image">
       <p>Compartilhar uma foto ou video</p>
-      <div>
-        <fa-icon [icon]="faCamera"></fa-icon>
+      <div #imageDisplay>
+        <fa-icon
+          *ngIf="!imageDisplay.style.backgroundImage"
+          [icon]="faCamera"
+        ></fa-icon>
       </div>
       <input
         type="file"
@@ -68,13 +71,14 @@
         id="image"
         formControlName="image"
         placeholder="Digite seu telefone"
+        (input)="onFileChange($event)"
       />
     </label>
     <input
       type="submit"
-      value="Cadastrar"
+      value="Finalizar avaliação"
       [disabled]="!isFormValid()"
-      appButton
+      appButton="secondary"
     />
   </form>
 </app-layout>

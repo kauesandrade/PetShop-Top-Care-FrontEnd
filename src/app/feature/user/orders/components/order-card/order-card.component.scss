@@ -1,11 +1,12 @@
 @import "styles";
 
 .card {
-  @include flex(column);
+  @include flex(column, $justify: space-between);
   gap: 1rem;
   padding: 1.5rem;
   border-radius: 1rem;
   background-color: $gray5;
+  height: 100%;
   width: 100%;
   cursor: pointer;
 
@@ -16,13 +17,13 @@
   }
 
   .products {
-    @include flex(column);
+    @include flex(column, $justify: flex-start);
     gap: 0.5rem;
-    height: 100%;
 
     @media (min-width: $desktop) {
       @include flex();
       gap: 1.5rem;
+      height: 100%;
     }
 
     img {

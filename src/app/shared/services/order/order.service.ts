@@ -33,4 +33,9 @@ export class OrderService {
   getOrders() {
     return [...this.userService.loggedUser?.orders!];
   }
+
+  cancelOrder(code: number) {
+    this.orders = this.orders?.filter((order) => order.orderCode != code);
+    console.log(this.orders);
+  }
 }

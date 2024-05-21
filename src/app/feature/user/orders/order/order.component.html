@@ -19,6 +19,13 @@
     <button appButton (click)="router.navigate(['/perfil/pedidos'])">
       Voltar
     </button>
-    <button appButton="secondary">Cancelar pedido</button>
+    <button
+      *ngIf="order!.expectedDate"
+      appButton="secondary"
+      (click)="cancelOrder()"
+      class="cancel-button"
+    >
+      Cancelar pedido
+    </button>
   </div>
 </app-layout>
