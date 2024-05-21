@@ -12,6 +12,7 @@ import { SearchModule } from './search/search.module';
 import { FavoritesModule } from './favorites/favorites.module';
 import { UserModule } from './user/user.module';
 import { SharedModule } from '../shared/shared.module';
+import { PaymentModule } from './payment/payment.module';
 
 @NgModule({
   exports: [
@@ -25,8 +26,10 @@ import { SharedModule } from '../shared/shared.module';
     SearchModule,
     FavoritesModule,
     UserModule,
+    PaymentModule
   ],
-  declarations: [],
+  declarations: [
+  ],
   imports: [CommonModule, SharedModule, FontAwesomeModule],
 })
 export class FeatureModule {}

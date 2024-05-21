@@ -20,26 +20,27 @@ export class CartProductCardComponent implements OnInit {
   subtotal: number = 0
 
   typesSubscriptions = [
-    "Enviar a cada 30 dias",
-    "Enviar a cada 14 dias",
-    "Enviar a cada 7 dias",
-    "Enviar a cada 1 dia",
-    "Enviar a cada 1 ano"
+    "30 dias",
+    "14 dias",
+    "7 dias",
+    "1 dia",
+    "1 ano"
   ]
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.subtotal = this.item.product.price * this.item.amount;
+    this.item.subscription ? this.isChecked = true :  this.isChecked = false;
   }
 
   changeTypesSubscription(evt: any){
-    console.log(evt.value)
+    this.item.subscription = evt
+    this.cartService.updateItem(this.item);
   }
 
   checked(){
     this.isChecked ? this.isChecked = false : this.isChecked = true;
-    console.log(this.isChecked)
   }
 
   emitRemoveItem(){

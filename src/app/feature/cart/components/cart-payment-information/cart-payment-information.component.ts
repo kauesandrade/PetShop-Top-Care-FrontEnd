@@ -16,33 +16,33 @@ export class CartPaymentInformationComponent implements OnInit {
 
   cep?: string
 
-  constructor(protected cartService: CartService, 
-    private route: ActivatedRoute, 
+  constructor(protected cartService: CartService,
+    private route: ActivatedRoute,
     private router: Router,
-    private cepService: CepService) {
-  this.cartService.getCartInformations().subscribe(data =>{
-    this.cartInformations = data
-  });
+    private cepService: CepService) 
+    {
+
+    this.cartService.getCartInformations().subscribe(data => {
+      this.cartInformations = data
+    });
+
   }
 
-
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
   handleClickBuy() {
-    this.router.navigate(['..'], { relativeTo: this.route });
+    this.router.navigate(['/carrinho/pagamento']);
   }
 
   handleClickGoback() {
     this.router.navigate(['..'], { relativeTo: this.route });
   }
 
-  chooseShipping(evt: any){
+  chooseShipping(evt: any) {
     this.cartService.setShippingPrice(evt);
   }
 
-  openAddressModal(){
+  openAddressModal() {
     this.openAddressesModalEmitter.emit();
   }
 

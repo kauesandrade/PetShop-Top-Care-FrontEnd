@@ -27,7 +27,7 @@ export class CartService {
 
     removeItemCart(itemToRemove: Item){
         this.itensCart.splice(this.itensCart.indexOf(itemToRemove), 1);
-        this.addLocalStorege();
+        this.addLocalStorage();
     }
 
     getCartInformations(): Observable<CartPaymentInformations>{
@@ -45,10 +45,14 @@ export class CartService {
         this.itensCart.forEach( itm =>{
             if(itm.product.variantCode == item.product.variantCode && itm.product.code == item.product.code){
                 itm.amount = item.amount
+                itm.product = item.product
+                if(item.subscription){
+                    itm.subscription = item.subscription
+                }
             }
         })
         
-        this.addLocalStorege();
+        this.addLocalStorage();
     }
     
     addItemCart(product: ProductVariant, amount: number) {
@@ -72,7 +76,7 @@ export class CartService {
             this.itensCart.push(newItem);
         }
         
-        this.addLocalStorege()
+        this.addLocalStorage()
     }
 
     setShippingPrice(shippingPrice: number){
@@ -138,7 +142,7 @@ export class CartService {
         return JSON.parse(localStorage.getItem('itensCart') || '""') == "" ? [] : JSON.parse(localStorage.getItem('itensCart') || '""')
     }
 
-    private addLocalStorege(){
+    private addLocalStorage(){
         this.getItens();
         this.getCartInformations();
         localStorage.setItem('itensCart', JSON.stringify( this.itensCart));
