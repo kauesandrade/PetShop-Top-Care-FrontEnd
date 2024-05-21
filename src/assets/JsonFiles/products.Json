@@ -50,6 +50,10 @@
         {
           "title": "Avaliação",
           "types": ["Bom"]
+        },
+        {
+          "title": "Em Oferta",
+          "types": ["Oferta"]
         }
       ]
     },
@@ -103,6 +107,10 @@
         {
           "title": "Avaliação",
           "types": ["Legal"]
+        },
+        {
+          "title": "Em Oferta",
+          "types": ["Oferta"]
         }
       ]
     },
@@ -205,6 +213,10 @@
         {
           "title": "Avaliação",
           "types": ["Bom", "Legal"]
+        },
+        {
+          "title": "Em Oferta",
+          "types": ["Oferta"]
         }
       ]
     }

@@ -24,7 +24,6 @@ export class CartComponent implements OnInit {
 
   openAddressModal(){
     this.openAddresses ? this.openAddresses = false : this.openAddresses = true
-    console.log("cuu");
   }
 
 }
