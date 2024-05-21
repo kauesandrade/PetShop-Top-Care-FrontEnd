@@ -84,7 +84,16 @@ const routes: Routes = [
       },
       {
         path: 'assinaturas',
-        component: SubscriptionsComponent,
+        children: [
+          {
+            path: '',
+            component: SubscriptionsComponent,
+          },
+          {
+            path: ':id',
+            component: HomeComponent,
+          },
+        ],
       },
     ],
   },

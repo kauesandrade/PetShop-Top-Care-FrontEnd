@@ -1,13 +1,19 @@
 <div class="card" (click)="openOrder()">
   <div class="products">
-    <ng-container *ngIf="this.order; else subscriptionProduct">
+    <ng-container *ngIf="order; else subscriptionProduct">
       <img [src]="order.items[0].product.images[0]" alt="Imagem do produto" />
       <p>#{{ order.orderCode }}</p>
     </ng-container>
-    <ng-template #subscriptionProduct></ng-template>
+    <ng-template #subscriptionProduct>
+      <img
+        [src]="(subscription?.product?.images)![0]"
+        alt="Imagem do produto"
+      />
+      <p>{{ subscription?.product?.title }}</p>
+    </ng-template>
   </div>
   <div class="dates">
-    <ng-container *ngIf="this.order; else subscriptionDates">
+    <ng-container *ngIf="order; else subscriptionDates">
       <p>Pedido feito em {{ order.orderDate | mask : "d0/M0/0000" }}</p>
       <ng-container *ngIf="order.expectedDate; else alreadyArrived">
         <p>
@@ -19,8 +25,20 @@
       </ng-template>
     </ng-container>
     <ng-template #subscriptionDates>
-      <p>Envio a cada {{ subscription?.interval }} dias</p>
+      <p class="subscription-interval">
+        <fa-icon [icon]="faClock"></fa-icon> Envio a cada
+        {{ subscription?.interval }}
+      </p>
+      <p>
+        Próxima entrega em
+        {{ subscription?.nextShipping! | mask : "d0/M0/0000" }}
+      </p>
     </ng-template>
   </div>
-  <h6>Valor: {{ order?.payment?.total | currency : "BRL" }}</h6>
+  <ng-container *ngIf="order; else subscriptionValue">
+    <h6>Valor: {{ order.payment.total | currency : "BRL" }}</h6>
+  </ng-container>
+  <ng-template #subscriptionValue>
+    <h6>Valor: {{ subscription?.payment?.total | currency : "BRL" }}</h6>
+  </ng-template>
 </div>

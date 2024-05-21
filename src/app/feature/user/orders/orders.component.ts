@@ -38,6 +38,9 @@ export class OrdersComponent implements OnInit, OnChanges {
   }
 
   orderOrders(orderBy: string) {
-    this.userOrders = this.orderByService.orderBy(orderBy, this.userOrders);
+    this.userOrders = this.orderByService.orderOrdersBy(
+      orderBy,
+      this.userOrders
+    );
   }
 }

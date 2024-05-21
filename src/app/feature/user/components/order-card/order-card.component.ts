@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { Order } from 'src/app/shared/interfaces/order/order';
 import { Subscription } from 'src/app/shared/interfaces/order/subscription';
 
@@ -11,6 +12,8 @@ import { Subscription } from 'src/app/shared/interfaces/order/subscription';
 export class OrderCardComponent implements OnInit {
   @Input() order?: Order;
   @Input() subscription?: Subscription;
+
+  faClock = faClock;
 
   constructor(private router: Router) {}
 
