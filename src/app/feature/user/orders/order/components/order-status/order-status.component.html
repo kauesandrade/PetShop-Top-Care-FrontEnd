@@ -1,0 +1,37 @@
+<div class="content">
+  <div class="order-details">
+    <div class="title">
+      <h5>Número de pedido</h5>
+      <p>#{{ order.orderCode }}</p>
+    </div>
+    <div class="date-status">
+      <p><span>Data:</span> {{ order.orderDate | mask : "d0/M0/0000" }}</p>
+      <p><span>Status:</span> {{ order.status }}</p>
+    </div>
+    <div class="shipping">
+      <p><span>Empresa de transporte:</span> {{ order.shipping.shippingBy }}</p>
+      <p><span>Código de rastreio:</span> {{ order.shipping.shippingCode }}</p>
+    </div>
+  </div>
+  <div class="action-buttons">
+    <ng-container
+      *ngIf="!order.shipping.shippingStatus[5].dateTime; else finished"
+    >
+      <button appButton>Rastrear pedido</button>
+    </ng-container>
+    <ng-template #finished>
+      <button appButton (click)="openChooseProduct = true">
+        Fazer avaliação
+      </button>
+    </ng-template>
+    <button appButton="secondary">Nota Fiscal</button>
+  </div>
+  <app-order-shipping
+    [shippingStatus]="order.shipping.shippingStatus"
+  ></app-order-shipping>
+</div>
+
+<app-choose-product
+  [(open)]="openChooseProduct"
+  [productList]="order.items"
+></app-choose-product>

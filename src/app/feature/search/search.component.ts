@@ -14,7 +14,7 @@ import { SearchService } from 'src/app/shared/services/search/search.service';
 export class SearchComponent implements OnInit {
   productsList: Array<ProductVariant> = [];
   productFilters: Array<Filter> = [];
-  seachBy!: string;
+  searchBy!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,8 +25,8 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      this.seachBy = params['q'].replace('%20', ' ');
-      this.productsList = this.searchService.searchProducts(this.seachBy);
+      this.searchBy = params['q'].replace('%20', ' ');
+      this.productsList = this.searchService.searchProducts(this.searchBy);
       this.productFilters = this.filterService.getListFilterWithChecked(
         this.productsList
       );

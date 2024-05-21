@@ -4,5 +4,4 @@ import { Subscription } from './subscription';
 export interface Item {
   product: ProductVariant;
   amount: number;
-  subcription?: Subscription;
 }

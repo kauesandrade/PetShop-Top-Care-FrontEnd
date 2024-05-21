@@ -65,6 +65,7 @@ export class EditCardsComponent implements OnInit, OnChanges {
 
   addNewCard() {
     let card = {
+      value: 'card',
       name: '',
       lastDigits: '',
       expirationDate: '',

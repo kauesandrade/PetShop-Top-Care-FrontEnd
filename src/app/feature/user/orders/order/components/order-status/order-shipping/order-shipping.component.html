@@ -1,0 +1,29 @@
+<div class="status-timeline">
+  <div class="content">
+    <div class="illustrations">
+      <div
+        class="illustration"
+        *ngFor="let status of shippingStatus; let i = index"
+        [ngClass]="defineColor(status.dateTime!)"
+      >
+        <fa-icon [icon]="icons[i]"></fa-icon>
+      </div>
+    </div>
+    <p class="title" *ngFor="let status of shippingStatus; let i = index">
+      {{ status.value }}
+    </p>
+    <p class="date" *ngFor="let status of shippingStatus; let i = index">
+      {{ status.dateTime! | mask : "d0/M0/0000 Hh:m0:s0" }}
+    </p>
+
+    <div
+      class="mobile-text"
+      *ngFor="let status of shippingStatus; let i = index"
+    >
+      <p class="title-mobile">{{ status.value }}</p>
+      <p class="date-mobile" *ngIf="status.dateTime">
+        {{ status.dateTime! | mask : "d0/M0/0000 Hh:m0:s0" }}
+      </p>
+    </div>
+  </div>
+</div>

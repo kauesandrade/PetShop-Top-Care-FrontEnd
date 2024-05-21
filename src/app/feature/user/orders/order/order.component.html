@@ -1,0 +1,31 @@
+<app-layout>
+  <div class="content">
+    <div class="commonSection">
+      <app-order-status
+        [order]="order!"
+        class="commonSection-primary"
+      ></app-order-status>
+      <app-order-details
+        [details]="{
+          address: order!.address,
+          payment: order!.payment,
+          expectedDate: order!.expectedDate,
+          numberOfItems: order!.items.length
+        }"
+        class="commonSection-secondary"
+      ></app-order-details>
+    </div>
+    <app-order-items [items]="order!.items"></app-order-items>
+    <button appButton (click)="router.navigate(['/perfil/pedidos'])">
+      Voltar
+    </button>
+    <button
+      *ngIf="order!.expectedDate"
+      appButton="secondary"
+      (click)="cancelOrder()"
+      class="cancel-button"
+    >
+      Cancelar pedido
+    </button>
+  </div>
+</app-layout>
