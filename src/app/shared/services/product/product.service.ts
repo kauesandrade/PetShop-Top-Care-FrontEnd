@@ -18,6 +18,10 @@ export class ProductService {
     return this.product;
   }
 
+  getProductData(){
+    return productData.product;
+  }
+
   getProductVariants() {
     return this.productVariantsList;
   }

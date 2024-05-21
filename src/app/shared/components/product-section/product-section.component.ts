@@ -21,10 +21,7 @@ export class ProductSectionComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.category?.length) {
-      // this.productList = this.filterService.filterProducts(this.category, productData.product);
-
-
-      //MUDAR A SERVICE DE PRODUTO E TODA A ESTRUTURA.
+      this.productList = this.filterService.filterProducts(this.category, productData.product);
       this.format();
     } else if (this.product) {
       this.productList = this.filterService.getSimilarProducts(this.product);
