@@ -24,6 +24,7 @@ form {
   }
 
   label {
+    align-items: center;
     place-self: center;
     grid-column: 1 / -1;
     position: relative;
@@ -31,8 +32,16 @@ form {
     height: auto;
     gap: 1rem;
 
+    @media (min-width: $desktop) {
+      align-items: flex-start;
+    }
+
     p {
       @include text(medium, bold);
+      text-align: center;
+      @media (min-width: $desktop) {
+        text-align: start;
+      }
     }
 
     input,
@@ -54,15 +63,22 @@ form {
     }
 
     &[for="rating"] {
-      @include flex(column, flex-start);
+      @include flex(column, center);
       gap: 1rem;
+
+      @media (min-width: $desktop) {
+        align-items: start;
+      }
+
       .stars {
-        @include flex($justify: flex-start);
+        @include flex($justify: center);
         gap: 1rem;
         width: 100%;
+
         @media (min-width: $tablet) {
           @include flex($justify: space-between);
         }
+
         @media (min-width: $desktop) {
           gap: 1.5rem;
           @include flex($justify: flex-start);
