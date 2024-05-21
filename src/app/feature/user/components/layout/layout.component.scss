@@ -35,7 +35,9 @@ main {
       }
       a {
         @include flex();
+        @include text(small);
         @media (min-width: $tablet) {
+          @include text();
           grid-column: auto / span 2;
           &:nth-child(odd) {
             grid-column: 2 / span 2;
