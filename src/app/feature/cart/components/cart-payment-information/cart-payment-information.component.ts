@@ -5,6 +5,7 @@ import { CartPaymentInformations } from 'src/app/shared/interfaces/order/cart-pa
 import { Item } from 'src/app/shared/interfaces/order/item';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { CepService } from 'src/app/shared/services/cep/cep.service';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
   selector: 'app-cart-payment-information',
@@ -33,7 +34,7 @@ export class CartPaymentInformationComponent implements OnInit {
   }
 
   handleClickBuy() {
-
+    
   }
 
   handleClickGoback() {
