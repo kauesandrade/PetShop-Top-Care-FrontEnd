@@ -85,4 +85,12 @@
       @include heading();
     }
   }
+
+  .cancel-button {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
 }

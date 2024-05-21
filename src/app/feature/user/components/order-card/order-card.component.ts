@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Order } from 'src/app/shared/interfaces/order/order';
 import { Subscription } from 'src/app/shared/interfaces/order/subscription';
+import { SubscriptionService } from 'src/app/shared/services/subscription/subscription.service';
 
 @Component({
   selector: 'app-order-card',
@@ -13,19 +14,28 @@ export class OrderCardComponent implements OnInit {
   @Input() order?: Order;
   @Input() subscription?: Subscription;
 
-  faClock = faClock;
+  @Output() canceledSubscription = new EventEmitter();
 
-  constructor(private router: Router) {}
+  faClock = faClock;
+  faTrash = faTrashAlt;
+
+  constructor(
+    private router: Router,
+    private subscriptionService: SubscriptionService
+  ) {}
 
   ngOnInit(): void {}
 
-  openOrder() {
-    if (this.subscription) {
-      this.router.navigate([
-        `${this.router.url}/${this.subscription.subscriptionCode}`,
-      ]);
-    } else if (this.order) {
+  openPage() {
+    if (this.order) {
       this.router.navigate([`${this.router.url}/${this.order.orderCode}`]);
     }
+  }
+
+  cancelSubscription() {
+    this.subscriptionService.cancelSubscription(
+      this.subscription?.subscriptionCode!
+    );
+    this.canceledSubscription.emit();
   }
 }

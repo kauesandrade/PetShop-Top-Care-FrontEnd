@@ -1,4 +1,4 @@
-<div class="card" (click)="openOrder()">
+<div class="card" (click)="openPage()">
   <div class="products">
     <ng-container *ngIf="order; else subscriptionProduct">
       <img [src]="order.items[0].product.images[0]" alt="Imagem do produto" />
@@ -40,5 +40,8 @@
   </ng-container>
   <ng-template #subscriptionValue>
     <h6>Valor: {{ subscription?.payment?.total | currency : "BRL" }}</h6>
+    <button class="cancel-button" (click)="cancelSubscription()">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
   </ng-template>
 </div>

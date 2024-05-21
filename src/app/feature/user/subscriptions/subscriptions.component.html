@@ -11,6 +11,7 @@
       <app-order-card
         *ngFor="let subscription of userSubscriptions"
         [subscription]="subscription"
+        (canceledSubscription)="updateSubscriptions()"
       ></app-order-card>
     </div>
   </div>
