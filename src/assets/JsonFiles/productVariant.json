@@ -394,26 +394,22 @@
             "rating": 3,
             "category": [
                 {
-                    "title": "Pet",
-                    "types": [
-                        "Cachorro"
-                    ]
+                  "title": "Pet",
+                  "types": ["Cachorro"]
                 },
                 {
-                    "title": "Porte de Raça",
-                    "types": [
-                        "Pequeno",
-                        "Grande"
-                    ]
+                  "title": "Porte de Raça",
+                  "types": ["Pequeno", "Grande"]
                 },
                 {
-                    "title": "Idade",
-                    "types": [
-                        "Filhote",
-                        "Adulto"
-                    ]
+                  "title": "Idade",
+                  "types": ["Filhote", "Adulto"]
+                },
+                {
+                  "title": "Avaliação",
+                  "types": ["Bom", "Legal"]
                 }
-            ],
+              ],
             "variantCode": 1,
             "variant": "Pequeno",
             "images": [
@@ -457,26 +453,22 @@
             "rating": 3,
             "category": [
                 {
-                    "title": "Pet",
-                    "types": [
-                        "Cachorro"
-                    ]
+                  "title": "Pet",
+                  "types": ["Cachorro"]
                 },
                 {
-                    "title": "Porte de Raça",
-                    "types": [
-                        "Pequeno",
-                        "Grande"
-                    ]
+                  "title": "Porte de Raça",
+                  "types": ["Pequeno", "Grande"]
                 },
                 {
-                    "title": "Idade",
-                    "types": [
-                        "Filhote",
-                        "Adulto"
-                    ]
+                  "title": "Idade",
+                  "types": ["Filhote", "Adulto"]
+                },
+                {
+                  "title": "Avaliação",
+                  "types": ["Bom", "Legal"]
                 }
-            ],
+              ],
             "variantCode": 2,
             "variant": "Médio",
             "images": [
@@ -520,32 +512,22 @@
             "rating": 3,
             "category": [
                 {
-                    "title": "Pet",
-                    "types": [
-                        "Cachorro"
-                    ]
+                  "title": "Pet",
+                  "types": ["Cachorro"]
                 },
                 {
-                    "title": "Cor",
-                    "types": [
-                        "Verde"
-                    ]
+                  "title": "Porte de Raça",
+                  "types": ["Pequeno", "Grande"]
                 },
                 {
-                    "title": "Porte de Raça",
-                    "types": [
-                        "Pequeno",
-                        "Grande"
-                    ]
+                  "title": "Idade",
+                  "types": ["Filhote", "Adulto"]
                 },
                 {
-                    "title": "Idade",
-                    "types": [
-                        "Filhote",
-                        "Adulto"
-                    ]
+                  "title": "Avaliação",
+                  "types": ["Bom", "Legal"]
                 }
-            ],
+              ],
             "variantCode": 3,
             "variant": "Grande",
             "images": [

@@ -82,7 +82,7 @@ export class HomeComponent {
     },
   ];
 
-  category1: Array<string> = ['oferta'];
+  category1: Array<string> = ['Grande'];
 
   brands: Array<RoundCard> = [
     {
@@ -113,7 +113,7 @@ export class HomeComponent {
     },
   ];
 
-  category2: Array<string> = ['avaliado'];
+  category2: Array<string> = ['Bom'];
 
   constructor() {}
 }

@@ -46,6 +46,10 @@
         {
           "title": "Linha",
           "types": ["Super Premium"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Bom", "Legal"]
         }
       ]
     },
@@ -95,6 +99,10 @@
         {
           "title": "Linha",
           "types": ["Super Premium"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Bom", "Legal"]
         }
       ]
     },
@@ -144,6 +152,10 @@
         {
           "title": "Linha",
           "types": ["Pet Iglu"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Bom", "Legal"]
         }
       ]
     },
@@ -189,6 +201,10 @@
         {
           "title": "Idade",
           "types": ["Filhote", "Adulto"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Bom", "Legal"]
         }
       ]
     }
