@@ -7,7 +7,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxMaskModule } from 'ngx-mask';
 import { CoreModule } from '../core/core.module';
 import { CardDisplayComponent } from './components/card-display/card-display.component';
-import { ChooseAddressModalComponent } from './components/choose-address-modal/choose-address-modal.component';
 import { InputAmountComponent } from './components/input-amount/input-amount.component';
 import { MainCarouselComponent } from './components/main-carousel/main-carousel.component';
 import { ChooseAddressModalComponent } from './components/choose-address-modal/choose-address-modal.component';
