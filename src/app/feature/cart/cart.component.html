@@ -1,4 +1,3 @@
-
 <app-choose-address-modal [(open)]="openAddresses"></app-choose-address-modal>
 
 <app-header [simple]="true"></app-header>
@@ -10,7 +9,9 @@
         <app-cart-payment-information (openAddressesModalEmitter)="openAddressModal()" class="commonSection-secondary"></app-cart-payment-information>
     </section>
     
-    <app-product-section title="Itens Semelhantes" [product]="itens[0].product"></app-product-section>
+    <ng-container *ngIf="itens.length">
+        <app-product-section title="Itens Semelhantes" [product]="itens[0].product"></app-product-section>
+    </ng-container>
 
 </main>
 <app-footer></app-footer>

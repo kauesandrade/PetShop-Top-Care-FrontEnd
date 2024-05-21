@@ -11,6 +11,8 @@ import { ProductModule } from './product/product.module';
 import { SearchModule } from './search/search.module';
 import { FavoritesModule } from './favorites/favorites.module';
 import { UserModule } from './user/user.module';
+import { SharedModule } from '../shared/shared.module';
+import { PaymentModule } from './payment/payment.module';
 
 @NgModule({
   exports: [
@@ -24,8 +26,10 @@ import { UserModule } from './user/user.module';
     SearchModule,
     FavoritesModule,
     UserModule,
+    PaymentModule
   ],
-  declarations: [],
-  imports: [CommonModule, FontAwesomeModule],
+  declarations: [
+  ],
+  imports: [CommonModule, SharedModule, FontAwesomeModule],
 })
 export class FeatureModule {}

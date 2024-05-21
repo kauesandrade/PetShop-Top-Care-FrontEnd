@@ -1,8 +1,6 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subject, takeUntil } from 'rxjs';
 import { CartPaymentInformations } from 'src/app/shared/interfaces/order/cart-payment-informations';
-import { Item } from 'src/app/shared/interfaces/order/item';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { CepService } from 'src/app/shared/services/cep/cep.service';
 
@@ -18,33 +16,33 @@ export class CartPaymentInformationComponent implements OnInit {
 
   cep?: string
 
-  constructor(protected cartService: CartService, 
-    private route: ActivatedRoute, 
+  constructor(protected cartService: CartService,
+    private route: ActivatedRoute,
     private router: Router,
-    private cepService: CepService) {
-  this.cartService.getCartInformations().subscribe(data =>{
-    this.cartInformations = data
-  });
+    private cepService: CepService) 
+    {
+
+    this.cartService.getCartInformations().subscribe(data => {
+      this.cartInformations = data
+    });
+
   }
 
-
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
   handleClickBuy() {
-
+    this.router.navigate(['/carrinho/pagamento']);
   }
 
   handleClickGoback() {
     this.router.navigate(['..'], { relativeTo: this.route });
   }
 
-  chooseShipping(evt: any){
+  chooseShipping(evt: any) {
     this.cartService.setShippingPrice(evt);
   }
 
-  openAddressModal(){
+  openAddressModal() {
     this.openAddressesModalEmitter.emit();
   }
 
