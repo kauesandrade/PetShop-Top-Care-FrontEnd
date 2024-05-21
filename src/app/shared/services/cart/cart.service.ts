@@ -10,13 +10,11 @@ import { Address } from '../../interfaces/user/address';
 })
 
 export class CartService {
-    itensCart: Array<Item> = []
+    itensCart: Array<Item> = [];
     itensSubject = new BehaviorSubject<Array<Item>>([]);
     
     cartInformations: CartPaymentInformations = {};
     cartInformationsSubject = new BehaviorSubject<CartPaymentInformations>({});
-
-    address?: Address
 
     constructor() {
         this.itensCart = this.getItensLocalStorage();
@@ -83,11 +81,11 @@ export class CartService {
     }
 
     setAddress(address: Address){
-        this.address = address;
+        this.cartInformations.address = address;
     }
 
     getAddress(){
-        return this.address;
+        return this.cartInformations.address;
     }
     
     
