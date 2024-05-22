@@ -1,7 +1,18 @@
 <app-layout>
-  <!-- <app-order-by></app-order-by> -->
-  <!-- <app-subscription-card
-    *ngFor="let product; in: user.subscriptions"
-    [product]="product"
-  ></app-subscription-card> -->
+  <div class="content">
+    <div class="order-by">
+      <p>Ordenar por</p>
+      <app-order-by
+        (emitOrderBy)="orderSubscriptions($event)"
+        [typesOrderBy]="orderByOptions"
+      ></app-order-by>
+    </div>
+    <div *ngIf="userSubscriptions.length > 0" class="cards">
+      <app-order-card
+        *ngFor="let subscription of userSubscriptions"
+        [subscription]="subscription"
+        (canceledSubscription)="updateSubscriptions()"
+      ></app-order-card>
+    </div>
+  </div>
 </app-layout>

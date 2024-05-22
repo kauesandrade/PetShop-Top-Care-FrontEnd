@@ -1,0 +1,32 @@
+@import "styles";
+
+app-layout {
+  .content {
+    @include subgrid();
+    row-gap: 1rem;
+    grid-column: 2 / -2;
+    .order-by {
+      @include flex($justify: flex-end);
+      gap: 1rem;
+      grid-column: 1 / -1;
+
+      p {
+        @include text($weight: bold);
+      }
+    }
+    .cards {
+      @include subgrid();
+      row-gap: 1.5rem;
+
+      app-order-card {
+        grid-column: 1 / -1;
+        @media (min-width: $tablet) {
+          grid-column: auto / span 2;
+        }
+        @media (min-width: $desktop) {
+          grid-column: 1 / -1;
+        }
+      }
+    }
+  }
+}

@@ -43,6 +43,17 @@
     p {
       @include text(medium, bold);
       text-align: center;
+
+      @media (min-width: $desktop) {
+        max-width: 8rem;
+      }
+      @media (min-width: $desktopHD) {
+        max-width: 12rem;
+      }
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
   .dates {
@@ -51,6 +62,19 @@
     p {
       color: $gray3;
       text-align: center;
+
+      &.subscription-interval {
+        @include flex();
+        gap: 0.5rem;
+
+        @include text($weight: bold);
+        color: $primary;
+
+        fa-icon {
+          @include text(large, bold);
+          color: $black1;
+        }
+      }
     }
   }
 
@@ -60,5 +84,13 @@
     @media (min-width: $desktop) {
       @include heading();
     }
+  }
+
+  .cancel-button {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
   }
 }
