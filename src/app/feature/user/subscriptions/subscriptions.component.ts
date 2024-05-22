@@ -22,6 +22,7 @@ export class SubscriptionsComponent implements OnInit {
     private orderByService: OrderByService,
     private subscriptionService: SubscriptionService
   ) {}
+
   ngOnChanges(changes: SimpleChanges): void {
     this.updateSubscriptions();
   }
@@ -32,7 +33,7 @@ export class SubscriptionsComponent implements OnInit {
 
   updateSubscriptions() {
     if (this.subscriptionService.subscriptions) {
-      this.userSubscriptions = this.subscriptionService.subscriptions;
+      this.userSubscriptions = this.subscriptionService.getSubscriptions();
     }
   }
 

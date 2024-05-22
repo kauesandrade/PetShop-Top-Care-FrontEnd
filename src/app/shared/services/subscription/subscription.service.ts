@@ -6,7 +6,7 @@ import { UserService } from '../user/user.service';
   providedIn: 'root',
 })
 export class SubscriptionService {
-  subscriptions?: Subscription[];
+  subscriptions: Subscription[] = [];
 
   constructor(private userService: UserService) {
     this.subscriptions = this.getSubscriptions();
@@ -31,6 +31,9 @@ export class SubscriptionService {
   }
 
   getSubscriptions() {
+    if (this.subscriptions.length > 0) {
+      return this.subscriptions;
+    }
     if (this.userService.loggedUser?.subscriptions) {
       return [...this.userService.loggedUser?.subscriptions];
     }
