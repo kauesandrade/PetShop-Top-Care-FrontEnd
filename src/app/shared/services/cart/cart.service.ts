@@ -46,9 +46,7 @@ export class CartService {
             if(itm.product.variantCode == item.product.variantCode && itm.product.code == item.product.code){
                 itm.amount = item.amount
                 itm.product = item.product
-                if(item.subscription){
-                    itm.subscription = item.subscription
-                }
+                itm.subscription = item.subscription
             }
         })
         
