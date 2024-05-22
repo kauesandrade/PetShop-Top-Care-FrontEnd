@@ -18,6 +18,7 @@ export class CartProductCardComponent implements OnInit {
 
   isChecked: boolean = false;
   subtotal: number = 0
+  subcriptionType: string = '';
 
   typesSubscriptions = [
     "30 dias",
@@ -27,24 +28,34 @@ export class CartProductCardComponent implements OnInit {
     "1 ano"
   ]
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService) { 
+  }
 
   ngOnInit(): void {
     this.subtotal = this.item.product.price * this.item.amount;
-    this.item.subscription ? this.isChecked = true :  this.isChecked = false;
+    (typeof this.item.subscription == "string") ? this.isChecked = true :  this.isChecked = false;
+    console.log(this.item.subscription);
   }
-
+  
   changeTypesSubscription(evt: any){
-    this.item.subscription = evt
+    this.item.subscription = evt.value;
+    this.cartService.updateItem(this.item);
+  }
+  
+  checked(){
+    if(this.isChecked){
+      this.isChecked = false;
+      this.item.subscription = undefined;
+    }
+    if(!this.isChecked) {
+      this.isChecked = true;
+      this.item.subscription = "30 dias";
+    }
+    console.log(this.item.subscription);
     this.cartService.updateItem(this.item);
   }
 
-  checked(){
-    this.isChecked ? this.isChecked = false : this.isChecked = true;
-  }
-
   emitRemoveItem(){
-    // this.removeItemEmitter.emit(this.item);
     this.cartService.removeItemCart(this.item);
   }
 

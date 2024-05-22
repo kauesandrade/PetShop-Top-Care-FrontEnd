@@ -55,11 +55,12 @@
                       (change)="changeTypesSubscription($event.target)"
                     >
                       <option
+                        [selected]="type == item.subscription"
                         *ngFor="let type of typesSubscriptions;"
                         [value]="type"
-                      >
-                      Enviar a cada {{ type }}
-                      </option>
+                        >
+                        Enviar a cada {{ type }}
+                    </option>
                     </select>
                   </label>
             </div>
