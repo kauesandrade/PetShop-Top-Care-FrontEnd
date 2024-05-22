@@ -24,59 +24,32 @@
                     <span class="span-shipping-title">{{this.cartService.getAddress()?.name}}</span>
                 </h6>
 
-                <div class="div-shippings">
-                    <ng-container>
+                <form for="shipping" class="div-shippings">
+                    <ng-container *ngFor="let shippingType of shippingTypes">
 
                         <div class="div-shipping">
                             <div class="div-shippingName-input">
                                 <input class="input-shipping" 
-                                appInput name="shipping" 
-                                (click)="chooseShipping(0)" 
+                                appInput 
+                                name="shipping" 
+                                [checked]="shippingType.name == cartService.cartInformations.shippingType?.name"
+                                (click)="chooseShipping(shippingType)" 
                                 type="radio">
                                 <div class="div-shipping-informations">
-                                    <p class="p-shipping-name">Frete Econômico</p>
-                                    <span class="shipping-value green">Grátis</span>
+                                    <p class="p-shipping-name">{{shippingType.name}}</p>
+                                    <ng-container *ngIf="shippingType.price > 0; else isGratis">
+                                        <span class="shipping-value">{{shippingType.price | currency : "BRL" : "symbol" : "1.2-2"}}</span>
+                                    </ng-container>
+                                    <ng-template #isGratis>
+                                        <span class="shipping-value green">Grátis</span>
+                                    </ng-template>
                                 </div>
                             </div>
-                            <p class="shipping-date">de 
-                                <span class="black">4 a 6 dias úteis</span>
-                            </p>
-                        </div>
-
-                        <div class="div-shipping">
-                            <div class="div-shippingName-input">
-                                <input class="input-shipping" 
-                                appInput name="shipping" 
-                                (click)="chooseShipping(10)" 
-                                type="radio">
-                                <div class="div-shipping-informations">
-                                    <p class="p-shipping-name">Frete Expresso</p>
-                                    <span class="shipping-value">R$ 10,15</span>
-                                </div>
-                            </div>
-                            <p class="shipping-date">em até 
-                                <span class="black">48 horas</span>
-                            </p>
-                        </div>
-
-                        <div class="div-shipping">
-                            <div class="div-shippingName-input">
-                                <input class="input-shipping" 
-                                appInput name="shipping" 
-                                (click)="chooseShipping(0)" 
-                                type="radio">
-                                <div class="div-shipping-informations">
-                                    <p class="p-shipping-name">Busque na loja</p>
-                                    <span class="shipping-value green">Grátis <span> + 5% OFF</span></span>
-                                </div>
-                            </div>
-                            <p class="shipping-date">em
-                                <span class="black">45 minutos</span>
-                            </p>
+                            <p class="shipping-date black">{{shippingType.shippingTime}}</p>
                         </div>
 
                     </ng-container>
-                </div>
+                </form>
 
             </div>
 
@@ -104,10 +77,10 @@
                 <p class="p-price">Valor do pedido ({{cartInformations.amountItens}} itens)</p>
                 <span class="price">{{cartInformations.partialPrice | currency : "BRL" : "symbol" : "1.2-2"}}</span>
             </div>
-            <ng-container *ngIf="cartInformations.shippingPrice">
+            <ng-container *ngIf="cartInformations.shippingType?.price">
                 <div class="div-shipping"> 
                     <p class="p-shipping">Valor do frete (expresso)</p>
-                    <span class="shipping">{{cartInformations.shippingPrice | currency : "BRL" : "symbol" : "1.2-2"}}</span>
+                    <span class="shipping">{{cartInformations.shippingType?.price | currency : "BRL" : "symbol" : "1.2-2"}}</span>
                 </div>
             </ng-container>
             <ng-container *ngIf="cartInformations.discountPrice">

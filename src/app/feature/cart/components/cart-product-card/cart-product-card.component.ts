@@ -33,7 +33,7 @@ export class CartProductCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.subtotal = this.item.product.price * this.item.amount;
-    (typeof this.item.subscription == "string") ? this.isChecked = true :  this.isChecked = false;
+    typeof this.item.subscription == "undefined" ? this.isChecked = false :  this.isChecked = true;
   }
   
   changeTypesSubscription(evt: any){
@@ -43,11 +43,11 @@ export class CartProductCardComponent implements OnInit {
   
   checked(){
     this.isChecked =  !this.isChecked;
-    this.item.subscription ? this.item.subscription = undefined : this.item.subscription = "30 dias";
+    this.item.subscription ? this.item.subscription = undefined : this.item.subscription = this.typesSubscriptions[0];
     this.cartService.updateItem(this.item);
   }
 
-  emitRemoveItem(){
+  removeItem(){
     this.cartService.removeItemCart(this.item);
   }
 

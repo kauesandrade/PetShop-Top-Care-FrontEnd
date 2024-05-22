@@ -3,8 +3,10 @@ import {
   ElementRef,
   EventEmitter,
   Input,
+  OnChanges,
   OnInit,
   Output,
+  SimpleChanges,
 } from '@angular/core';
 import { faFilter, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Filter } from '../../interfaces/search/filter';
@@ -14,7 +16,7 @@ import { Filter } from '../../interfaces/search/filter';
   templateUrl: './product-filter.component.html',
   styleUrls: ['./product-filter.component.scss'],
 })
-export class ProductFilterComponent implements OnInit {
+export class ProductFilterComponent implements OnChanges {
   faFilter = faFilter;
   faTimes = faTimes;
   faTrash = faTrash;
@@ -27,7 +29,9 @@ export class ProductFilterComponent implements OnInit {
 
   constructor(private elementRef: ElementRef) {}
 
-  ngOnInit(): void {}
+  ngOnChanges(changes: SimpleChanges): void {
+    this.applyFilters = [];
+  }
 
   takeOffFilter(variableFilter: any) {
     this.productFiltersWihtChecked.forEach((filter) => {

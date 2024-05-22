@@ -1,3 +1,4 @@
+import { ShippingType } from "../shipping/shipping-type";
 import { Address } from "../user/address";
 
 export interface CartPaymentInformations {
@@ -7,7 +8,6 @@ export interface CartPaymentInformations {
     parcelsPrice?: number,
     parcelsNumber?: number,
     totalPrice?: number,
-    shippingPrice?: number,
-    typeShipping?: string,
+    shippingType?: ShippingType,
     address?: Address,
 }
