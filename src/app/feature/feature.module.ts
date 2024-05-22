@@ -26,10 +26,9 @@ import { PaymentModule } from './payment/payment.module';
     SearchModule,
     FavoritesModule,
     UserModule,
-    PaymentModule
+    PaymentModule,
   ],
-  declarations: [
-  ],
+  declarations: [],
   imports: [CommonModule, SharedModule, FontAwesomeModule],
 })
 export class FeatureModule {}

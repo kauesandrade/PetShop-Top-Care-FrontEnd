@@ -13,6 +13,7 @@ main {
     }
   }
 
+  app-product-item-section,
   app-payment-layout,
   app-product-item-section {
     @include subgrid();
