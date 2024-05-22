@@ -1,0 +1,23 @@
+@import "styles";
+
+.content {
+  @include subgrid();
+  row-gap: 2rem;
+
+  > p {
+    grid-column: 1 / -1;
+    @include text(large, bold);
+  }
+
+  .info {
+    @include flex();
+    grid-column: 2 / -2;
+    background-color: $light-primary;
+    border-radius: 1rem;
+    padding: 1.5rem;
+
+    p {
+      text-align: center;
+    }
+  }
+}

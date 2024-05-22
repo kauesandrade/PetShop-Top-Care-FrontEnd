@@ -8,6 +8,7 @@ import { Item } from 'src/app/shared/interfaces/order/item';
 })
 export class ProductItemSectionComponent implements OnInit {
   @Input() items!: Item[];
+  @Input() boxShadow: boolean = false;
 
   constructor() {}
 

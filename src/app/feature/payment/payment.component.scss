@@ -2,7 +2,18 @@
 
 main {
   @include grid-container();
+  row-gap: 2rem;
 
+  h1 {
+    color: $primary;
+    grid-column: 1 / -1;
+    text-align: center;
+    @media (min-width: $tablet) {
+      text-align: start;
+    }
+  }
+
+  app-payment-layout,
   app-product-item-section {
     @include subgrid();
   }

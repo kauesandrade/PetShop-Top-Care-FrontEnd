@@ -1,4 +1,4 @@
-<div class="card" (click)="openCard()">
+<div class="card" (click)="openCard()" [class.box-shadow]="boxShadow">
   <div class="product">
     <img [src]="item.product.images[0]" alt="Imagem do produto" />
     <div class="title-variant">

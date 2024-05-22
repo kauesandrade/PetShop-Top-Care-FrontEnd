@@ -9,6 +9,7 @@ import { Item } from '../../interfaces/order/item';
 })
 export class ProductItemCardComponent implements OnInit {
   @Input() item!: Item;
+  @Input() boxShadow: boolean = true;
 
   constructor(private router: Router) {}
 

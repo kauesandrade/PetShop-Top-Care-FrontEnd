@@ -1,2 +1,20 @@
-<app-payment-layout-navigation [(page)]="selectedPage">
-</app-payment-layout-navigation>
+<div class="content">
+  <nav>
+    <button (click)="page = 'Cartão'" [class.selected]="page == 'Cartão'">
+      Cartão
+    </button>
+    <div class="divider"></div>
+    <button (click)="page = 'Pix'" [class.selected]="page == 'Pix'">Pix</button>
+    <div class="divider"></div>
+    <button (click)="page = 'Boleto'" [class.selected]="page == 'Boleto'">
+      Boleto
+    </button>
+    <div class="border-bottom"></div>
+  </nav>
+  <ng-container *ngIf="page == 'Cartão'; else pixSlip">
+    <app-payment-card></app-payment-card>
+  </ng-container>
+  <ng-template #pixSlip>
+    <app-payment-pix-slip [type]="page"></app-payment-pix-slip>
+  </ng-template>
+</div>

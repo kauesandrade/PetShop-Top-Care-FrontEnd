@@ -7,16 +7,16 @@ import { FormsModule } from '@angular/forms';
 import { PaymentComponent } from './payment.component';
 import { FinishedPaymentComponent } from './finished-payment/finished-payment.component';
 import { PaymentLayoutComponent } from './components/payment-layout/payment-layout.component';
-import { PaymentLayoutNavigationComponent } from './components/payment-layout/payment-layout-navigation/payment-layout-navigation.component';
-
-
+import { PaymentCardComponent } from './components/payment-card/payment-card.component';
+import { PaymentPixSlipComponent } from './components/payment-pix-slip/payment-pix-slip.component';
 
 @NgModule({
   declarations: [
     PaymentComponent,
     FinishedPaymentComponent,
     PaymentLayoutComponent,
-    PaymentLayoutNavigationComponent,
+    PaymentCardComponent,
+    PaymentPixSlipComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +24,6 @@ import { PaymentLayoutNavigationComponent } from './components/payment-layout/pa
     CoreModule,
     SharedModule,
     FormsModule,
-  ]
+  ],
 })
-export class PaymentModule { }
+export class PaymentModule {}

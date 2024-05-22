@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./payment-layout.component.scss'],
 })
 export class PaymentLayoutComponent implements OnInit {
-  selectedPage = 'Cartão';
+  page: string = 'Cartão';
 
   constructor() {}
 
