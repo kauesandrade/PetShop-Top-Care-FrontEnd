@@ -1,0 +1,9 @@
+@import "styles";
+
+main {
+  @include grid-container();
+
+  app-product-item-section {
+    @include subgrid();
+  }
+}

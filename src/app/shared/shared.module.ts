@@ -11,14 +11,14 @@ import { InputAmountComponent } from './components/input-amount/input-amount.com
 import { MainCarouselComponent } from './components/main-carousel/main-carousel.component';
 import { ChooseAddressModalComponent } from './components/choose-address-modal/choose-address-modal.component';
 import { OrderByComponent } from './components/order-by/order-by.component';
-import { OrderProductCardComponent } from './components/order-product-card/order-product-card.component';
+import { ProductItemCardComponent } from './components/product-item-card/product-item-card.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductCarouselComponent } from './components/product-carousel/product-carousel.component';
 import { ProductFilterComponent } from './components/product-filter/product-filter.component';
 import { ProductLayoutComponent } from './components/product-layout/product-layout.component';
 import { ProductSectionComponent } from './components/product-section/product-section.component';
 import { RegisterAddressComponent } from './components/register-address/register-address.component';
-
+import { ProductItemSectionComponent } from './components/product-item-section/product-item-section.component';
 
 const Components = [
   ProductCardComponent,
@@ -32,7 +32,8 @@ const Components = [
   MainCarouselComponent,
   CardDisplayComponent,
   ChooseAddressModalComponent,
-  OrderProductCardComponent,
+  ProductItemCardComponent,
+  ProductItemSectionComponent,
 ];
 
 @NgModule({

@@ -18,15 +18,14 @@ import { AddressFormComponent } from './data/components/address-form/address-for
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChangePasswordComponent } from './data/components/change-password/change-password.component';
 import { EditCardsComponent } from './data/components/edit-cards/edit-cards.component';
-import { CardFormComponent } from './data/components/edit-cards/card-form/card-form.component';
 import { OrderCardComponent } from './orders/components/order-card/order-card.component';
 import { OrderComponent } from './orders/order/order.component';
 import { OrderStatusComponent } from './orders/order/components/order-status/order-status.component';
 import { OrderDetailsComponent } from './orders/order/components/order-details/order-details.component';
-import { OrderItemsComponent } from './orders/order/components/order-items/order-items.component';
 import { OrderShippingComponent } from './orders/order/components/order-status/order-shipping/order-shipping.component';
 import { ChooseProductComponent } from './orders/order/components/order-status/choose-product/choose-product.component';
 import { ReviewProductComponent } from './orders/order/components/review-product/review-product.component';
+import { CardFormComponent } from './data/components/edit-cards/card-form/card-form.component';
 
 const Components = [
   DataComponent,
@@ -50,7 +49,6 @@ const Components = [
     OrderComponent,
     OrderStatusComponent,
     OrderDetailsComponent,
-    OrderItemsComponent,
     OrderShippingComponent,
     ChooseProductComponent,
     ReviewProductComponent,

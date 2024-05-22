@@ -1,1 +1,14 @@
+<app-header [simple]="true"></app-header>
 
+<main>
+  <div class="commonSection">
+    <div class="commonSection-primary">
+      <app-payment-layout></app-payment-layout>
+    </div>
+    <div class="commonSection-secondary"></div>
+  </div>
+
+  <app-product-item-section [items]="cartItems"></app-product-item-section>
+</main>
+
+<app-footer type="copyright"></app-footer>
