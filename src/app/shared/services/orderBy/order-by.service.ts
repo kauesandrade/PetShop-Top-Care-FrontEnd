@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Order } from '../../interfaces/order/order';
+import { Subscription } from '../../interfaces/order/subscription';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 
 @Injectable({
@@ -71,7 +72,7 @@ export class OrderByService {
     return arrayProduct;
   }
 
-  orderBy(order: string, orderList: Array<Order>) {
+  orderOrdersBy(order: string, orderList: Array<Order>) {
     let arrayOrder: Array<Order> = [];
 
     switch (order) {
@@ -84,6 +85,41 @@ export class OrderByService {
       case 'Mais Antigo': {
         arrayOrder = [...orderList].sort((o1, o2) => {
           return this.orderByDate(o1.orderDate, o2.orderDate);
+        });
+        arrayOrder.reverse();
+        break;
+      }
+      case 'Maior Preço': {
+        arrayOrder = [...orderList].sort((o1, o2) => {
+          return this.orderByPrice(o1.payment.total, o2.payment.total);
+        });
+        break;
+      }
+      case 'Menor Preço': {
+        arrayOrder = [...orderList].sort((o1, o2) => {
+          return this.orderByPrice(o1.payment.total, o2.payment.total);
+        });
+        arrayOrder.reverse();
+        break;
+      }
+    }
+
+    return arrayOrder;
+  }
+
+  orderSubscriptionsBy(order: string, orderList: Array<Subscription>) {
+    let arrayOrder: Array<Subscription> = [];
+
+    switch (order) {
+      case 'Mais Recente': {
+        arrayOrder = [...orderList].sort((o1, o2) => {
+          return this.orderByDate(o1.nextShipping, o2.nextShipping);
+        });
+        break;
+      }
+      case 'Mais Antigo': {
+        arrayOrder = [...orderList].sort((o1, o2) => {
+          return this.orderByDate(o1.nextShipping, o2.nextShipping);
         });
         arrayOrder.reverse();
         break;

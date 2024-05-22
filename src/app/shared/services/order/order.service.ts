@@ -10,7 +10,7 @@ import { UserService } from '../user/user.service';
   providedIn: 'any',
 })
 export class OrderService {
-  orders?: Order[];
+  orders: Order[] = [];
 
   constructor(private userService: UserService) {
     this.orders = this.getOrders();
@@ -35,7 +35,13 @@ export class OrderService {
   }
 
   getOrders() {
-    return [...this.userService.loggedUser?.orders!];
+    if (this.orders.length > 0) {
+      return this.orders;
+    }
+    if (this.userService.loggedUser?.orders) {
+      return [...this.userService.loggedUser?.orders];
+    }
+    return [];
   }
 
   cancelOrder(code: number) {
