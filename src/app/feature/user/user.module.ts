@@ -13,7 +13,6 @@ import { PetsComponent } from './pets/pets.component';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 
 import { LayoutComponent } from './components/layout/layout.component';
-import { OrderCardComponent } from './components/order-card/order-card.component';
 import { AddressFormComponent } from './data/components/address-form/address-form.component';
 import { CardFormComponent } from './data/components/edit-cards/card-form/card-form.component';
 import { EditCardsComponent } from './data/components/edit-cards/edit-cards.component';
@@ -27,6 +26,7 @@ import { ReviewProductComponent } from './orders/order/components/review-product
 import { OrderComponent } from './orders/order/order.component';
 import { ChangePasswordComponent } from './data/components/change-password/change-password.component';
 import { ContactFormComponent } from './data/components/contact-form/contact-form.component';
+import { OrderCardComponent } from './components/order-card/order-card.component';
 
 const Components = [
   DataComponent,
