@@ -1,0 +1,67 @@
+<div class="content">
+    <div class="address-info">
+      <h6>Endereço de entrega</h6>
+      <p>
+        <strong> {{ orderInformation?.address?.name || "Senai" }}</strong>
+      </p>
+      <p>
+        {{ orderInformation?.address?.street || "Walter Marquardt" }},
+        {{ orderInformation?.address?.number || "2" }}
+      </p>
+      <p>
+        {{ orderInformation?.address?.neighborhood || "Vila Nova" }} -
+        {{ orderInformation?.address?.city || "Jaraguá do Sul" }} -
+        {{ orderInformation?.address?.state || "SC" }}
+      </p>
+      <p>
+        CEP:
+        {{ orderInformation?.address?.cep! | mask : "00000-000" || "12345-087" }}
+      </p>
+      <!-- <h6>
+        {{
+          orderInformation.shipping.shippingTime ||
+            "Entrega de 4 a 6 dias úteis"
+        }}
+      </h6> -->
+    </div>
+    <div class="divider"></div>
+    <div class="order-info">
+      <h6>Resumo do pedido</h6>
+      <div class="info-container">
+        <p>
+          Produtos ({{ orderInformation?.items?.length }} ite{{
+            orderInformation?.items?.length! == 1 ? "m" : "ns"
+          }})
+        </p>
+        <p>{{ orderInformation?.payment?.subtotal | currency : "BRL" }}</p>
+      </div>
+      <!-- <div class="info-container">
+        <p>Frete</p>
+        <ng-container
+          *ngIf="orderInformation.shipping?.price; else freeShipping"
+        >
+          <p>{{ orderInformation.shipping?.price | currency : "BRL" }}</p>
+        </ng-container>
+        <ng-template #freeShipping>
+          <p class="free-shipping">Grátis</p>
+        </ng-template>
+      </div> -->
+      <div class="info-container">
+        <p>
+          Pagamento</p>
+        <p>{{ orderInformation?.payment?.method?.value}}</p>
+      </div>
+      <div class="info-container">
+        <p>
+          Quantidade de parcelas</p>
+        <p>{{ orderInformation?.payment?.parcels}}</p>
+      </div>
+      <div class="info-container">
+        <h6>Total</h6>
+        <div class="valor">
+          <p>{{ orderInformation?.payment?.total | currency : "BRL" }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
