@@ -18,7 +18,10 @@
       {{ paymentInformation.address?.cep! | mask : "00000-000" || "12345-087" }}
     </p>
     <h6>
-      {{ paymentInformation.typeShipping || "Entrega de 4 a 6 dias úteis" }}
+      {{
+        paymentInformation.shippingType?.shippingTime ||
+          "Entrega de 4 a 6 dias úteis"
+      }}
     </h6>
     <!-- <button appButton="secondary" (click)="openAddresses = true">
       Alterar endereço
@@ -37,8 +40,10 @@
     </div>
     <div class="info-container">
       <p>Valor do frete</p>
-      <ng-container *ngIf="paymentInformation.shippingPrice; else freeShipping">
-        <p>{{ paymentInformation.shippingPrice | currency : "BRL" }}</p>
+      <ng-container
+        *ngIf="paymentInformation.shippingType?.price; else freeShipping"
+      >
+        <p>{{ paymentInformation.shippingType?.price | currency : "BRL" }}</p>
       </ng-container>
       <ng-template #freeShipping>
         <p class="free-shipping">Grátis</p>

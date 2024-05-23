@@ -59,8 +59,9 @@ export class PaymentInformationComponent implements OnInit {
   calculateExpectedDate() {
     let today = new Date().getTime();
 
-    // const newDate = new Date(today
-    //     + this.paymentInformation.typeShipping.time * 24 * 60 * 60 * 1000);
+    const newDate = new Date(
+      today + this.paymentInformation.shippingType?.time! * 24 * 60 * 60 * 1000
+    );
     const expectedDate = new Date(today + 6 * 24 * 60 * 60 * 1000);
 
     let expectedDateFormatted = '';
@@ -105,7 +106,7 @@ export class PaymentInformationComponent implements OnInit {
   generatePayment(): Payment {
     return {
       subtotal: this.paymentInformation.partialPrice!,
-      shippingFee: this.paymentInformation.shippingPrice!,
+      shippingFee: this.paymentInformation.shippingType?.price!,
       total: this.paymentInformation.totalPrice!,
       method: this.generatePaymentMethod(),
       parcels: this.paymentInformation.parcelsNumber!,
