@@ -28,7 +28,7 @@
                 </div>
                 <div class="payQRCode">
                     <p>QR code</p>
-                    <img src="../../../../../assets/images/codeBarFinish.png" alt="QRCode">
+                    <img src="../../../../../assets/images/qrCodeFinish.png" alt="QRCode">
                 </div>
             </div>
             <div class="card-payment-information">
@@ -37,7 +37,7 @@
             </div>
         </ng-container>
 
-        <ng-container *ngIf="orderInformation?.payment?.method?.value == 'bank'">
+        <ng-container *ngIf="orderInformation?.payment?.method?.value == 'bankSlip'">
             <div class="informations">
                 <div class="input-howPay">
                     <div class="">
@@ -54,7 +54,7 @@
                 </div>
                 <div class="payCodeBar">
                     <p>Código de barra</p>
-                    <img src="../../../../../assets/images/qrCodeFinish.png" alt="CodeBar">
+                    <img src="../../../../../assets/images/codeBarFinish.png" alt="CodeBar">
                 </div>
             </div>
             <div class="card-payment-information">
