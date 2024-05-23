@@ -57,7 +57,6 @@ export class CardFormComponent implements OnInit, OnChanges {
 
   updateDisplayCard() {
     this.displayCard = {
-      value: 'card',
       name: this.name?.value!,
       lastDigits: this.lastDigits?.value!,
       expirationDate: this.expirationDate?.value!,
