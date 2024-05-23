@@ -6,7 +6,7 @@
     </div>
     <div class="divider"></div>
     <div class="payment-informations">
-        <ng-container>
+        <ng-container *ngIf="orderInformation?.payment?.method?.value == 'pix'">
             <div class="informations">
                 <div class="input-howPay">
                         <label class="div-input" for="login" appInput>
@@ -37,12 +37,11 @@
             </div>
         </ng-container>
 
-        <ng-container>
+        <ng-container *ngIf="orderInformation?.payment?.method?.value == 'bank'">
             <div class="informations">
                 <div class="input-howPay">
                     <div class="">
-                        <h6>Vencimento do boleto: 24/05/24</h6>
-                        <!-- <h6>Vencimento do boleto: {{orderInformation?.payment?.method?.expirationInterval || "15/12/23" }}</h6> -->
+                        <h6>Vencimento do boleto: {{orderInformation?.payment?.method?.value || "15/12/23" }}</h6>
                     </div>
                     <div class="howPay">
                         <p class="title">Como pagar?</p>
@@ -64,7 +63,7 @@
             </div>
         </ng-container>
 
-        <ng-container>
+        <ng-container *ngIf="orderInformation?.payment?.method?.value == 'card'">
             <div class="informations">
                 <div class="input-howPay">
                     <div>

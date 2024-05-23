@@ -1,9 +1,6 @@
 import {
   Component,
-  Input,
-  OnChanges,
   OnInit,
-  SimpleChanges,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartPaymentInformations } from 'src/app/shared/interfaces/order/cart-payment-informations';
