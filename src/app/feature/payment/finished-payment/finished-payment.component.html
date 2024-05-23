@@ -1,1 +1,19 @@
-<p>finished-payment works!</p>
+<app-header [simple]="true"></app-header>
+<main>
+    <h6 class="title">Compra Realizada</h6>
+    
+    <ng-container>
+        
+        <section class="commonSection">
+            <app-finish-layout [orderInformation]="orderInformation" class="commonSection-primary"></app-finish-layout>
+            <app-finish-information [orderInformation]="orderInformation" class="commonSection-secondary"></app-finish-information>
+        </section>
+        
+    </ng-container>
+    <app-product-item-section 
+    [items]="orderInformation?.items!"
+    [boxShadow]="false"
+    ></app-product-item-section>
+
+</main>
+<app-footer type="copyright"></app-footer>

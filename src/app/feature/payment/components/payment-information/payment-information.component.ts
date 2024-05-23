@@ -71,6 +71,22 @@ export class PaymentInformationComponent implements OnInit {
     };
   }
 
+  generateShipping(): Shipping {
+    return {
+      shippingType: this.paymentInformation.shippingType,
+      shippingBy: 'Azul',
+      shippingCode: '6534',
+      shippingStatus: [
+        { value: 'Pedido', dateTime: this.generateOrderDate() },
+        { value: 'Enviado para transportadora' },
+        { value: 'Recebido pela transportadora' },
+        { value: 'Mercadoria em trãnsito' },
+        { value: 'Mercadoria em rota de entrega' },
+        { value: 'Pedido entregue' },
+      ],
+    };
+  }
+
   finishPayment() {
     if (this.paymentService.hasErrors()) {
       return;

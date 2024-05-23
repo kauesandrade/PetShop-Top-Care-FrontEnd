@@ -12,6 +12,8 @@ import { PaymentPixSlipComponent } from './components/payment-pix-slip/payment-p
 import { PaymentInformationComponent } from './components/payment-information/payment-information.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { ChooseCardComponent } from './components/payment-card/choose-card/choose-card.component';
+import { FinishInformationComponent } from './components/finish-information/finish-information.component';
+import { FinishLayoutComponent } from './components/finish-layout/finish-layout.component';
 import { CardFormComponent } from './components/payment-card/card-form/card-form.component';
 
 @NgModule({
@@ -25,6 +27,8 @@ import { CardFormComponent } from './components/payment-card/card-form/card-form
     PaymentInformationComponent,
     CardFormComponent,
     ChooseCardComponent,
+    FinishInformationComponent,
+    FinishLayoutComponent,
   ],
   imports: [
     CommonModule,
