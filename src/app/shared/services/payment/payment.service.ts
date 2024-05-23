@@ -14,8 +14,11 @@ export class PaymentService {
 
   card!: Card;
   saveCard = false;
+
   cvv: number = 0;
+
   parcels = new Array<number>();
+  parcelsNumber = 1;
 
   errors = true;
 
@@ -33,6 +36,10 @@ export class PaymentService {
     } else {
       this.setBlankCard();
     }
+  }
+
+  setParcelsNumber(value: number) {
+    this.parcelsNumber = value;
   }
 
   defineParcels() {

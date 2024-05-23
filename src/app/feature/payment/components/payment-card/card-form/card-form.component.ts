@@ -48,7 +48,7 @@ export class CardFormComponent implements OnInit, OnChanges {
         [Validators.required, EmptyValidator],
       ],
       cvv: ['', [Validators.required, EmptyValidator]],
-      parcels: [this.parcels[0]],
+      parcelsOpt: [this.parcels[0]],
       mainCard: [this.card.mainCard],
     });
 
@@ -83,6 +83,9 @@ export class CardFormComponent implements OnInit, OnChanges {
   get mainCard() {
     return this.cardForm.get('mainCard');
   }
+  get parcelsOpt() {
+    return this.cardForm.get('parcelsOpt');
+  }
 
   chooseSavedCard() {
     this.selectSavedCard.emit();
@@ -102,6 +105,12 @@ export class CardFormComponent implements OnInit, OnChanges {
       return true;
     }
     return false;
+  }
+
+  selectParcels() {
+    let index = this.parcels.indexOf(parseFloat(this.parcelsOpt?.value));
+
+    this.paymentService.setParcelsNumber(index + 1);
   }
 
   onFormInput() {

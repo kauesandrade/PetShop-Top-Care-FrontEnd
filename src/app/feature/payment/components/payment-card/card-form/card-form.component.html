@@ -99,7 +99,12 @@
     </div>
     <label for="parcels" appInput>
       <p>Em quantas vezes?</p>
-      <select appInput id="parcels" formControlName="parcels">
+      <select
+        appInput
+        id="parcels"
+        formControlName="parcelsOpt"
+        (change)="selectParcels()"
+      >
         <option
           *ngFor="let parcelPrice of parcels; let i = index"
           [value]="parcelPrice"

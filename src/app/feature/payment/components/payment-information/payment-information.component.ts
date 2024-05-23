@@ -68,7 +68,7 @@ export class PaymentInformationComponent implements OnInit {
       shippingFee: this.paymentInformation.shippingType?.price!,
       total: this.paymentInformation.totalPrice!,
       method: this.generatePaymentMethod(),
-      parcels: this.paymentInformation.parcelsNumber!,
+      parcels: this.paymentService.parcelsNumber,
       status: 'Em preparo',
     };
   }
