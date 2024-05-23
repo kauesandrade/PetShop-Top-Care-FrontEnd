@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, of, ReplaySubject } from 'rxjs';
 import { CartPaymentInformations } from '../../interfaces/order/cart-payment-informations';
 import { Item } from '../../interfaces/order/item';
 import { ProductVariant } from '../../interfaces/product/product-variant';
+import { ShippingType } from '../../interfaces/shipping/shipping-type';
 import { Address } from '../../interfaces/user/address';
 
 @Injectable({
@@ -17,7 +18,7 @@ export class CartService {
     cartInformationsSubject = new BehaviorSubject<CartPaymentInformations>({});
 
     constructor() {
-        this.itensCart = this.getItensLocalStorage();
+        this.getLocalStorage();
     }
 
     getItens(): Observable<Item[]>{
@@ -27,9 +28,9 @@ export class CartService {
 
     removeItemCart(itemToRemove: Item){
         this.itensCart.splice(this.itensCart.indexOf(itemToRemove), 1);
-        this.addLocalStorege();
+        this.addLocalStorage();
     }
-
+    
     getCartInformations(): Observable<CartPaymentInformations>{
         this.calcProductPrices();
         this.calcTotal();
@@ -45,10 +46,12 @@ export class CartService {
         this.itensCart.forEach( itm =>{
             if(itm.product.variantCode == item.product.variantCode && itm.product.code == item.product.code){
                 itm.amount = item.amount
+                itm.product = item.product
+                itm.subscription = item.subscription
             }
         })
         
-        this.addLocalStorege();
+        this.addLocalStorage();
     }
     
     addItemCart(product: ProductVariant, amount: number) {
@@ -72,16 +75,17 @@ export class CartService {
             this.itensCart.push(newItem);
         }
         
-        this.addLocalStorege()
+        this.addLocalStorage()
     }
 
-    setShippingPrice(shippingPrice: number){
-        this.cartInformations.shippingPrice = shippingPrice;
-        this.getCartInformations();
+    setShipping(shippingType: ShippingType){
+        this.cartInformations.shippingType = shippingType;
+        this.addLocalStorage();
     }
 
     setAddress(address: Address){
         this.cartInformations.address = address;
+        this.addLocalStorage();
     }
 
     getAddress(){
@@ -92,7 +96,7 @@ export class CartService {
     private calcTotal() {
         let total = 0
         total += this.cartInformations.partialPrice!;
-        total += this.cartInformations.shippingPrice || 0;
+        total += this.cartInformations.shippingType?.price || 0;
         total -= this.cartInformations.discountPrice || 0;
         
         this.cartInformations.totalPrice = total;
@@ -134,13 +138,24 @@ export class CartService {
 
     private getItensLocalStorage(){
         this.getItens();
-        this.getCartInformations();
         return JSON.parse(localStorage.getItem('itensCart') || '""') == "" ? [] : JSON.parse(localStorage.getItem('itensCart') || '""')
     }
 
-    private addLocalStorege(){
+    private getCartInformationsLocalStorage(){
+        this.getCartInformations();
+        return JSON.parse(localStorage.getItem('cartInformations') || '""') == "" ? {} : JSON.parse(localStorage.getItem('cartInformations') || '""')
+    }
+
+    private getLocalStorage(){
+        this.itensCart = this.getItensLocalStorage();
+        this.cartInformations = this.getCartInformationsLocalStorage();
+    }
+
+    private addLocalStorage(){
         this.getItens();
         this.getCartInformations();
-        localStorage.setItem('itensCart', JSON.stringify( this.itensCart));
+        console.log(this.cartInformations);
+        localStorage.setItem('itensCart', JSON.stringify(this.itensCart));
+        localStorage.setItem('cartInformations', JSON.stringify(this.cartInformations));
     }
 }

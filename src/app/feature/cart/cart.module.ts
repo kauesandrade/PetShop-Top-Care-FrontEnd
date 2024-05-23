@@ -9,8 +9,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartPaymentInformationComponent } from './components/cart-payment-information/cart-payment-information.component';
 import { CartProductCardSectionComponent } from './components/cart-product-card-section/cart-product-card-section.component';
 import { NgxMaskModule } from 'ngx-mask';
-import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { CartPaymentMethodsComponent } from './components/cart-payment-methods/cart-payment-methods.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -23,6 +23,6 @@ import { CartPaymentMethodsComponent } from './components/cart-payment-methods/c
     CartProductCardSectionComponent,
     CartPaymentMethodsComponent
   ],
-  imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule, FormsModule, NgxMaskModule]
+  imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule, FormsModule, NgxMaskModule, RouterModule]
 })
 export class CartModule { }

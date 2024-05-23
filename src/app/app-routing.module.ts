@@ -17,6 +17,7 @@ import { SubscriptionsComponent } from './feature/user/subscriptions/subscriptio
 import { OrderComponent } from './feature/user/orders/order/order.component';
 import { FavoritesComponent } from './feature/favorites/favorites.component';
 import { ReviewProductComponent } from './feature/user/orders/order/components/review-product/review-product.component';
+import { PaymentComponent } from './feature/payment/payment.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -42,7 +43,19 @@ const routes: Routes = [
   {
     path: 'carrinho',
     title: 'Carrinho | Top Care',
-    component: CartComponent,
+    canActivateChild: [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: CartComponent,
+      },
+      {
+        path: 'pagamento',
+        title: 'Pagamento | Top Care',
+        component: PaymentComponent,
+        canActivate: [AuthGuard],
+      },
+    ]
   },
   {
     path: 'perfil',
@@ -87,12 +100,6 @@ const routes: Routes = [
         component: SubscriptionsComponent,
       },
     ],
-  },
-  {
-    path: 'pagamento',
-    title: 'Pagamento | Top Care',
-    component: AboutUsComponent,
-    canActivate: [AuthGuard],
   },
   {
     path: 'favoritos',

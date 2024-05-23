@@ -27,9 +27,7 @@ export class SearchComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.searchBy = params['q'].replace('%20', ' ');
       this.productsList = this.searchService.searchProducts(this.searchBy);
-      this.productFilters = this.filterService.getListFilterWithChecked(
-        this.productsList
-      );
+      this.productFilters = this.filterService.getListFilterWithChecked(this.productsList);
     });
   }
 

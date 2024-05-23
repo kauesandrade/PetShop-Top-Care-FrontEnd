@@ -120,7 +120,7 @@
                     
                     .shipping-date{
                    
-                        .black{
+                        &.black{
                             @include text(normal, bold);
                         }
                     }
