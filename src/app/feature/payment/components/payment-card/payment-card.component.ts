@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Card } from 'src/app/shared/interfaces/payment/card';
+import { PaymentService } from 'src/app/shared/services/payment/payment.service';
 
 @Component({
   selector: 'app-payment-card',
@@ -7,30 +8,20 @@ import { Card } from 'src/app/shared/interfaces/payment/card';
   styleUrls: ['./payment-card.component.scss'],
 })
 export class PaymentCardComponent implements OnInit {
-  page = 'Informações';
-  card: Card = this.generateBlankCard();
+  page = 'card';
+  card: Card = this.paymentService.card;
 
-  constructor() {}
+  constructor(private paymentService: PaymentService) {}
 
   ngOnInit(): void {}
 
-  generateBlankCard() {
-    return {
-      value: '',
-      name: '',
-      lastDigits: '',
-      expirationDate: '',
-      mainCard: false,
-    };
-  }
-
   selectSavedCard() {
-    this.page = 'Cartões';
-    this.card = this.generateBlankCard();
+    this.page = 'select';
+    this.paymentService.setBlankCard();
   }
 
   selectCard(card: Card) {
-    this.page = 'Informações';
+    this.page = 'card';
     this.card = card;
   }
 }

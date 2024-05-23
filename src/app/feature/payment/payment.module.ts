@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaymentComponent } from './payment.component';
 import { FinishedPaymentComponent } from './finished-payment/finished-payment.component';
 import { PaymentLayoutComponent } from './components/payment-layout/payment-layout.component';
@@ -31,6 +31,7 @@ import { ChooseCardComponent } from './components/payment-card/choose-card/choos
     CoreModule,
     SharedModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxMaskModule,
   ],
 })

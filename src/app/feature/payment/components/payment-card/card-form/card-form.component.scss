@@ -1,0 +1,13 @@
+@import "styles";
+
+.content {
+  @include subgrid();
+
+  form {
+    @include subgrid();
+
+    * {
+      grid-column: 1 / -1;
+    }
+  }
+}

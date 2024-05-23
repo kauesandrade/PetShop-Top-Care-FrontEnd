@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { PaymentService } from 'src/app/shared/services/payment/payment.service';
 
 @Component({
   selector: 'app-payment-layout',
@@ -6,13 +7,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./payment-layout.component.scss'],
 })
 export class PaymentLayoutComponent {
-  page: string = 'Cartão';
-  @Output() paymentMethod = new EventEmitter<string>();
+  page: string = 'card';
 
-  constructor() {}
+  constructor(private paymentService: PaymentService) {}
 
   updatePage(page: string) {
     this.page = page;
-    this.paymentMethod.emit(this.page);
+    this.paymentService.setPaymentMethod({ value: this.page });
   }
 }
