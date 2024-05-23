@@ -9,6 +9,10 @@ import { FinishedPaymentComponent } from './finished-payment/finished-payment.co
 import { PaymentLayoutComponent } from './components/payment-layout/payment-layout.component';
 import { PaymentCardComponent } from './components/payment-card/payment-card.component';
 import { PaymentPixSlipComponent } from './components/payment-pix-slip/payment-pix-slip.component';
+import { PaymentInformationComponent } from './components/payment-information/payment-information.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { CardFormComponent } from './components/payment-card/card-form/card-form.component';
+import { ChooseCardComponent } from './components/payment-card/choose-card/choose-card.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,9 @@ import { PaymentPixSlipComponent } from './components/payment-pix-slip/payment-p
     PaymentLayoutComponent,
     PaymentCardComponent,
     PaymentPixSlipComponent,
+    PaymentInformationComponent,
+    CardFormComponent,
+    ChooseCardComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +31,7 @@ import { PaymentPixSlipComponent } from './components/payment-pix-slip/payment-p
     CoreModule,
     SharedModule,
     FormsModule,
+    NgxMaskModule,
   ],
 })
 export class PaymentModule {}

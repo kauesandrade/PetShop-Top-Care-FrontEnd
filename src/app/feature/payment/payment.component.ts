@@ -9,6 +9,7 @@ import { CartService } from 'src/app/shared/services/cart/cart.service';
 })
 export class PaymentComponent implements OnInit {
   cartItems: Array<Item> = [];
+  paymentMethod = 'Cartão';
 
   constructor(private cartService: CartService) {}
 

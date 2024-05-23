@@ -1,12 +1,14 @@
 <div class="content">
   <nav>
-    <button (click)="page = 'Cartão'" [class.selected]="page == 'Cartão'">
+    <button (click)="updatePage('Cartão')" [class.selected]="page == 'Cartão'">
       Cartão
     </button>
     <div class="divider"></div>
-    <button (click)="page = 'Pix'" [class.selected]="page == 'Pix'">Pix</button>
+    <button (click)="updatePage('Pix')" [class.selected]="page == 'Pix'">
+      Pix
+    </button>
     <div class="divider"></div>
-    <button (click)="page = 'Boleto'" [class.selected]="page == 'Boleto'">
+    <button (click)="updatePage('Boleto')" [class.selected]="page == 'Boleto'">
       Boleto
     </button>
     <div class="border-bottom"></div>

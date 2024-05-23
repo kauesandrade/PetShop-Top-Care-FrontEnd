@@ -15,24 +15,40 @@
     }
 
     .border-bottom {
+      display: none;
       height: 100%;
       width: 100%;
       background-color: transparent;
       border-bottom: 2px solid $gray5;
+
+      @media (min-width: $tablet) {
+        display: block;
+      }
     }
 
     button {
       @include flex();
-      padding: 1rem 2rem;
+      flex-grow: 1;
+      padding: 0.5rem 1rem;
       height: 100%;
 
       background-color: transparent;
       border: none;
       outline: none;
 
-      @include text(large, bold);
+      @include text($weight: bold);
       color: $black1;
       border-bottom: 2px $gray5 solid;
+
+      cursor: pointer;
+
+      @media (min-width: $tablet) {
+        padding: 1rem 2rem;
+        flex-grow: 0;
+      }
+      @media (min-width: $desktop) {
+        @include text(large, bold);
+      }
 
       &.selected {
         color: $primary;

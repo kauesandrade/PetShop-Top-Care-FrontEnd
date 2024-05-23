@@ -56,7 +56,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         children: [
           { path: '', component: PaymentComponent },
-          { path: 'finalizado', component: FinishedPaymentComponent },
+          { path: 'finalizado/:id', component: FinishedPaymentComponent },
         ],
       },
     ],

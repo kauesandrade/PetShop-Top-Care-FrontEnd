@@ -19,6 +19,7 @@ import { ProductLayoutComponent } from './components/product-layout/product-layo
 import { ProductSectionComponent } from './components/product-section/product-section.component';
 import { RegisterAddressComponent } from './components/register-address/register-address.component';
 import { ProductItemSectionComponent } from './components/product-item-section/product-item-section.component';
+import { CardCardComponent } from './components/card-card/card-card.component';
 
 const Components = [
   ProductCardComponent,
@@ -34,6 +35,7 @@ const Components = [
   ChooseAddressModalComponent,
   ProductItemCardComponent,
   ProductItemSectionComponent,
+  CardCardComponent,
 ];
 
 @NgModule({

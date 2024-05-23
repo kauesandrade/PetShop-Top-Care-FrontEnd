@@ -2,13 +2,19 @@
 
 main {
   @include grid-container();
-  row-gap: 2rem;
+  row-gap: 1rem;
+
+  @media (min-width: $tablet) {
+    row-gap: 2rem;
+  }
 
   h1 {
+    @include heading();
     color: $primary;
     grid-column: 1 / -1;
     text-align: center;
     @media (min-width: $tablet) {
+      @include heading(h1);
       text-align: start;
     }
   }

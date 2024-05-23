@@ -1,0 +1,10 @@
+@import "styles";
+
+.content {
+  @include subgrid();
+
+  app-card-form,
+  app-choose-card {
+    @include subgrid();
+  }
+}
