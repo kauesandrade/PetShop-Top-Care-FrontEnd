@@ -1,7 +1,4 @@
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartPaymentInformations } from 'src/app/shared/interfaces/order/cart-payment-informations';
 import { Order } from 'src/app/shared/interfaces/order/order';
@@ -60,7 +57,7 @@ export class PaymentInformationComponent implements OnInit {
     }
     // this.paymentService.checkCVV();
     return {
-      value: 'bankSlip',
+      value: 'card',
       card: this.paymentService.card,
     };
   }
