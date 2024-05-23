@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open",
+    "start": "ng serve",
+    "start-open": "ng serve --open",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -23,7 +24,9 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@ngneat/input-mask": "^6.1.0",
     "embla-carousel": "^8.0.1",
+    "ngx-mask": "^14.3.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.6.2",
     "zone.js": "~0.11.4"

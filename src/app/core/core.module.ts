@@ -1,32 +1,39 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonDirective } from './directives/Button/button.directive';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HeaderComponent } from './header/header.component';
-import { HeaderTopComponent } from './header/header-top/header-top.component';
-import { HeaderMainComponent } from './header/header-main/header-main.component';
-import { FooterComponent } from './footer/footer.component';
-import { FooterMainComponent } from './footer/footer-main/footer-main.component';
-import { FooterCopyrightComponent } from './footer/footer-copyright/footer-copyright.component';
+import { FormsModule } from '@angular/forms';
+import { ButtonDirective } from './directives/Button/button.directive';
 import { InputDirective } from './directives/Inputs/input.directive';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderMainComponent } from './components/header/header-main/header-main.component';
+import { HeaderTopComponent } from './components/header/header-top/header-top.component';
+import { HeaderMainFullComponent } from './components/header/header-main/header-main-full/header-main-full.component';
+import { HeaderMainSimpleComponent } from './components/header/header-main/header-main-simple/header-main-simple.component';
+import { HeaderCategoriesComponent } from './components/header/header-categories/header-categories.component';
+import { FooterMainComponent } from './components/footer/footer-main/footer-main.component';
+import { FooterCopyrightComponent } from './components/footer/footer-copyright/footer-copyright.component';
 
 const Components = [
   ButtonDirective,
+  InputDirective,
   HeaderComponent,
   FooterComponent,
-  InputDirective,
 ];
 
 @NgModule({
   exports: [...Components],
   declarations: [
     ...Components,
-    HeaderTopComponent,
     HeaderMainComponent,
+    HeaderTopComponent,
+    HeaderMainFullComponent,
+    HeaderMainSimpleComponent,
+    HeaderCategoriesComponent,
     FooterMainComponent,
     FooterCopyrightComponent,
   ],
-  imports: [CommonModule, RouterModule, FontAwesomeModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule, FormsModule],
 })
 export class CoreModule {}

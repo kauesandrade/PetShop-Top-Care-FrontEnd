@@ -1,0 +1,17 @@
+<app-layout>
+  <div class="content">
+    <div class="order-by">
+      <p>Ordenar por</p>
+      <app-order-by
+        (emitOrderBy)="orderOrders($event)"
+        [typesOrderBy]="orderByOptions"
+      ></app-order-by>
+    </div>
+    <div *ngIf="userOrders.length > 0" class="cards">
+      <app-order-card
+        *ngFor="let order of userOrders"
+        [order]="order"
+      ></app-order-card>
+    </div>
+  </div>
+</app-layout>

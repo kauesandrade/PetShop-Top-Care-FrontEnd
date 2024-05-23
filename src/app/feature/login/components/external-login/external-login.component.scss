@@ -1,0 +1,28 @@
+@import "styles";
+
+div {
+  @include subgrid();
+  row-gap: 1rem;
+
+  button {
+    @include flex();
+    gap: 1.5rem;
+
+    grid-column: 1 / -1;
+    @media (min-width: $tablet) {
+      grid-column: 2 / span 4;
+    }
+
+    min-height: 2.5rem;
+    border-radius: 0.5rem;
+    border: 2px $primary solid;
+    background-color: $light-primary;
+    color: $primary;
+    @include text($weight: bold);
+    cursor: pointer;
+
+    fa-icon {
+      font-size: 1.5rem;
+    }
+  }
+}

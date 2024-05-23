@@ -1,0 +1,28 @@
+<dialog #modal [open]="open" (cancel)="$event.preventDefault()">
+  <div>
+    <h4>Meus cartões</h4>
+    <button class="add-button" (click)="addNewCard()">
+      <fa-icon [icon]="faPlus"></fa-icon>
+    </button>
+    <div *ngFor="let card of userCards; let i = index" class="cards">
+      <app-card-card [card]="card"></app-card-card>
+      <div class="action-buttons">
+        <button appButton="secondary" (click)="deleteCard(i)">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+        <button appButton (click)="editCard(card, i)">Editar</button>
+      </div>
+    </div>
+    <button appButton class="close-button" (click)="onClose()">Sair</button>
+    <button appButton="secondary" (click)="onSubmit()">Salvar</button>
+  </div>
+</dialog>
+
+<app-card-form
+  [(open)]="openCardModal"
+  [card]="editingCard"
+  [index]="cardIndex"
+  (editedCard)="addCard($event)"
+  (changedMainCard)="resetMainCards($event)"
+>
+</app-card-form>

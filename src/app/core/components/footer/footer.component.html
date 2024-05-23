@@ -1,0 +1,8 @@
+<footer class="footer">
+  <ng-container *ngIf="type == 'both' || type == 'main'">
+    <app-footer-main></app-footer-main>
+  </ng-container>
+  <ng-container *ngIf="type == 'both' || type == 'copyright'">
+    <app-footer-copyright [ngClass]="type"></app-footer-copyright>
+  </ng-container>
+</footer>

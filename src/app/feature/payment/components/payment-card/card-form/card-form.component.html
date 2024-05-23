@@ -1,0 +1,121 @@
+<div class="content">
+  <form
+    [formGroup]="cardForm"
+    (ngSubmit)="$event.preventDefault()"
+    (input)="onFormInput()"
+  >
+    <label for="name" appInput>
+      <p>Nome do titular</p>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        placeholder="Digite o nome do titular do cartão"
+        [class.has-error]="name?.touched && name?.invalid"
+        required
+      />
+      <ng-container *ngIf="name?.touched && name?.invalid">
+        <span *ngIf="name?.getError('isEmpty')" class="error-message">
+          Você deve preencher esse campo!
+        </span>
+      </ng-container>
+    </label>
+    <div class="display-card">
+      <app-card-display [card]="displayCard"></app-card-display>
+      <label for="mainCard" appInput class="checkbox-label">
+        <input type="checkbox" id="mainCard" formControlName="mainCard" />
+        <p>Usar este cartão para compras futuras</p>
+      </label>
+    </div>
+    <label for="lastDigits" appInput>
+      <p>4 últimos dígitos*</p>
+      <input
+        type="text"
+        id="lastDigits"
+        formControlName="lastDigits"
+        placeholder="Digite os 4 últimos dígitos do cartão"
+        [class.has-error]="lastDigits?.touched && lastDigits?.invalid"
+        prefix="**** **** **** "
+        mask="0000"
+        required
+      />
+      <ng-container *ngIf="lastDigits?.touched && lastDigits?.invalid">
+        <span *ngIf="lastDigits?.getError('isEmpty')" class="error-message">
+          Você deve preencher esse campo!
+        </span>
+        <span *ngIf="lastDigits?.getError('mask')" class="error-message">
+          Deve ser no formato 0000!
+        </span>
+      </ng-container>
+    </label>
+    <div class="cvv-expiration">
+      <label for="cvv" appInput>
+        <p>CVV</p>
+        <input
+          type="text"
+          id="cvv"
+          formControlName="cvv"
+          placeholder="CVV"
+          [class.has-error]="cvv?.touched && cvv?.invalid"
+          (change)="saveCVV()"
+          mask="000"
+          required
+        />
+        <ng-container *ngIf="cvv?.touched && cvv?.invalid">
+          <span *ngIf="cvv?.getError('isEmpty')" class="error-message">
+            Campo obrigatório!
+          </span>
+          <span *ngIf="cvv?.getError('mask')" class="error-message">
+            Deve ser no formato 000!
+          </span>
+        </ng-container>
+      </label>
+      <label for="expirationDate" appInput>
+        <p>Validade</p>
+        <input
+          type="text"
+          id="expirationDate"
+          formControlName="expirationDate"
+          placeholder="Mês/ano"
+          [class.has-error]="expirationDate?.touched && expirationDate?.invalid"
+          mask="M0/00"
+          [dropSpecialCharacters]="false"
+          required
+        />
+        <ng-container
+          *ngIf="expirationDate?.touched && expirationDate?.invalid"
+        >
+          <span
+            *ngIf="expirationDate?.getError('isEmpty')"
+            class="error-message"
+          >
+            Campo obrigatório!
+          </span>
+          <span *ngIf="expirationDate?.getError('mask')" class="error-message">
+            Deve ser no formato mm/yy!
+          </span>
+        </ng-container>
+      </label>
+    </div>
+    <label for="parcels" appInput>
+      <p>Em quantas vezes?</p>
+      <select
+        appInput
+        id="parcels"
+        formControlName="parcelsOpt"
+        (change)="selectParcels()"
+      >
+        <option
+          *ngFor="let parcelPrice of parcels; let i = index"
+          [value]="parcelPrice"
+        >
+          {{ i + 1 }} vez{{ i + 1 > 1 ? "es" : "" }} de
+          {{ parcelPrice | currency : "BRL" }}
+        </option>
+      </select>
+    </label>
+    <button appButton (click)="chooseSavedCard()">
+      Escolher um cartão salvo
+    </button>
+  </form>
+</div>

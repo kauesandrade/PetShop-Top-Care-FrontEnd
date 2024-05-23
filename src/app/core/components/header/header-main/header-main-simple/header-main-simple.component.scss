@@ -1,0 +1,50 @@
+@import "styles";
+
+.brand {
+  @include flex();
+  grid-column: 1 / -1;
+  gap: 0.5rem;
+
+  img {
+    width: 2.5rem;
+  }
+
+  &-name {
+    @include flex(column);
+
+    h3 {
+      @include text(normal, medium);
+      color: $white;
+    }
+
+    p {
+      @include text(small);
+      color: $white;
+    }
+  }
+
+  @media (min-width: $mobile) {
+    img {
+      width: 4.5rem;
+    }
+    &-name {
+      h3 {
+        @include heading(h4);
+      }
+
+      p {
+        @include text(normal, medium);
+      }
+    }
+  }
+
+  @media (min-width: $tablet) {
+    gap: 1.5rem;
+    text-decoration: none;
+    &-name {
+      h3 {
+        @include heading(h3);
+      }
+    }
+  }
+}

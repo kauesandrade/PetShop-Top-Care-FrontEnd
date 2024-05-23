@@ -1,0 +1,78 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <label for="login" appInput>
+    <p>E-mail ou CPF</p>
+    <input
+      type="text"
+      id="login"
+      formControlName="login"
+      placeholder="Digite seu e-mail ou cpf"
+      [class.has-error]="login?.touched && login?.invalid"
+      required
+    />
+    <ng-container *ngIf="login?.touched && login?.invalid">
+      <span *ngIf="login?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="login?.getError('incorrect')" class="error-message">
+        Login inválido!
+      </span>
+    </ng-container>
+  </label>
+  <div class="lower-inputs">
+    <label for="password" appInput>
+      <p>Senha</p>
+      <div>
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          id="password"
+          placeholder="Digite sua senha"
+          formControlName="password"
+          [class.has-error]="password?.touched && password?.invalid"
+          required
+        />
+        <button
+          (click)="changeShowPassword($event)"
+          [class.has-error]="password?.touched && password?.invalid"
+        >
+          <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
+        </button>
+      </div>
+      <ng-container *ngIf="password?.touched && password?.invalid">
+        <span *ngIf="password?.getError('isEmpty')" class="error-message">
+          Você deve preencher esse campo!
+        </span>
+        <span *ngIf="password?.getError('incorrect')" class="error-message">
+          Login inválido!
+        </span>
+      </ng-container>
+    </label>
+    <div class="remember-forgot">
+      <label for="remember">
+        <input
+          appInput
+          type="checkbox"
+          id="remember"
+          formControlName="remember"
+        />
+        <p>Lembrar minha conta</p>
+      </label>
+      <p (click)="openForgotPassword = true" class="change-password">
+        Esqueci a senha
+      </p>
+    </div>
+  </div>
+  <input type="submit" value="Entrar" appButton [disabled]="!isFormValid()" />
+</form>
+
+<app-forgot-password-email
+  [(open)]="openForgotPassword"
+  (submittedEmail)="this.openCodeModal = true"
+></app-forgot-password-email>
+<app-forgot-password-code
+  [(open)]="openCodeModal"
+  (submittedCode)="this.openChangePassword = true"
+></app-forgot-password-code>
+<app-change-password
+  [(open)]="openChangePassword"
+  (changedPassword)="this.openChangePassword = true"
+></app-change-password>

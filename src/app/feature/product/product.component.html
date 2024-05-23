@@ -1,0 +1,31 @@
+<app-header></app-header>
+<main>
+    <section class="commonSection">
+
+        <app-product-details
+        [productVariants] = "productService.getProductVariants()"
+        (productVariantstEmit)="productService.changeVariableProduct($event)"
+        class="commonSection-primary">
+        </app-product-details>
+
+        <app-product-pricing 
+            (handleClickButtonBuyEmitter)="getHandleClickBuy()"
+            (handleClickButtonCartEmitter)="getHandleClickCart()" 
+            (valueAmountEmitter)="getValueAmount($event)"
+            class="commonSection-secondary" [productVariant]="productService.getProductVariant()">
+        </app-product-pricing>
+
+    </section>
+
+    <app-product-section title="Itens Semelhantes" [product]="productService.getProductVariant()"></app-product-section>
+
+    <app-product-description [description]="productService.getProductVariant().description"></app-product-description>
+
+    <app-product-specifications [specifications]="productService.getProductVariant().specifications"></app-product-specifications>
+
+    <ng-container *ngIf="this.productService.getProductVariant().reviews?.length">
+        <app-product-review-section [reviews]="productService.getProductVariant().reviews"></app-product-review-section>
+    </ng-container>    
+
+</main>
+<app-footer></app-footer>

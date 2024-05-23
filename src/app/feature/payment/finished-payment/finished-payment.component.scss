@@ -1,0 +1,33 @@
+@import "styles";
+
+main {
+  @include grid-container();
+  row-gap: 2rem;
+
+  app-product-item-section {
+    grid-column: 1/ -1;
+  }
+
+  .title {
+    grid-column: 1 / -1;
+    color: $primary;
+    @media (min-width: $tablet) {
+      @include heading(h4);
+    }
+    @media (min-width: $desktopHD) {
+      @include heading(h1);
+    }
+  }
+
+  .commonSection {
+    gap: 1rem;
+
+    .title {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 320px) {
+    row-gap: 1rem;
+  }
+}

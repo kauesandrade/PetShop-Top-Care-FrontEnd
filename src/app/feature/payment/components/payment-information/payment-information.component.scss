@@ -1,0 +1,49 @@
+@import "styles";
+
+.content {
+  @include flex(column, flex-start);
+  row-gap: 1.5rem;
+
+  button {
+    width: 100%;
+    height: 3rem;
+  }
+
+  .divider {
+    width: 100%;
+    height: 2px;
+    background-color: $gray5;
+  }
+
+  .address-info {
+    @include flex(column, flex-start);
+    gap: 0.25rem;
+    p {
+      @include text(small);
+    }
+  }
+
+  .order-info {
+    @include flex(column, flex-start);
+    width: 100%;
+    gap: 0.5rem;
+
+    .info-container {
+      @include flex($justify: space-between);
+      width: 100%;
+      gap: 1rem;
+
+      p {
+        @include text(small);
+
+        &.free-shipping {
+          color: $green;
+        }
+      }
+
+      .valor {
+        @include flex(column, flex-end);
+      }
+    }
+  }
+}

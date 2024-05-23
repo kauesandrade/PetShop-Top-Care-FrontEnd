@@ -1,0 +1,45 @@
+@import 'styles';
+
+main {
+    @include grid-container();
+    row-gap: 2rem;
+    overflow: hidden; 
+
+    .div-seachBy-orderBy{
+      grid-column: 1/-1;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: start;
+      gap: 0.5rem;
+      
+      @media(min-width: 500px){
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .span-seachBy{
+        @include text(large, bold);
+      }
+
+      .div-orderBy{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        .span-orderBy{
+          @include text(normal, bold);
+        }
+        
+      }
+
+    }
+
+    app-product-layout, app-product-filter{
+      @include subgrid();
+    }
+  
+    @media (max-width: 320px){
+      row-gap: 1rem;
+    }
+  }

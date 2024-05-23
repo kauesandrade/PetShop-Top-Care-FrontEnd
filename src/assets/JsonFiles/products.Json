@@ -1,0 +1,224 @@
+{
+  "product": [
+    {
+      "code": 100,
+      "favorite": true,
+      "title": "Ração Golden - Cães Filhotes sabor Frango e Arroz",
+      "littleDescription": "Ração Golden - Cães Filhotes sabor Frango e Arroz",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
+      "brand": "Golden",
+      "specifications": [
+        {
+          "title": "Idade",
+          "value": "Filhotes/Adultos"
+        },
+        {
+          "title": "Linha",
+          "value": "Super Premium"
+        },
+        {
+          "title": "Pet",
+          "value": "Cachorro"
+        },
+        {
+          "title": "Tipo",
+          "value": "Ração seca"
+        },
+        {
+          "title": "Apresentação",
+          "value": "Disponível em embalagem de 10Kg, 15kg e 20kg."
+        }
+      ],
+      "rating": 5,
+      "category": [
+        {
+          "title": "Pet",
+          "types": ["Cachorro"]
+        },
+        {
+          "title": "Porte de Raça",
+          "types": ["Pequeno", "Grande"]
+        },
+        {
+          "title": "Idade",
+          "types": ["Filhote", "Adulto"]
+        },
+        {
+          "title": "Linha",
+          "types": ["Super Premium"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Bom"]
+        },
+        {
+          "title": "Em Oferta",
+          "types": ["Oferta"]
+        }
+      ]
+    },
+    {
+      "code": 200,
+      "favorite": false,
+      "title": "Ração Premier Super Premium Formula Sabor Frango para Cães Adultos de Portes Grandes e Gigantes",
+      "littleDescription": "Ração Premier Super Premium Formula Sabor Frango",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
+      "brand": "Premier",
+      "specifications": [
+        {
+          "title": "Idade",
+          "value": "Filhotes/Adultos"
+        },
+        {
+          "title": "Linha",
+          "value": "Super Premium"
+        },
+        {
+          "title": "Pet",
+          "value": "Cachorro"
+        },
+        {
+          "title": "Tipo",
+          "value": "Ração seca"
+        },
+        {
+          "title": "Apresentação",
+          "value": "Disponível em embalagem de 15kg e 20kg."
+        }
+      ],
+      "rating": 4,
+      "category": [
+        {
+          "title": "Pet",
+          "types": ["Cachorro"]
+        },
+        {
+          "title": "Porte de Raça",
+          "types": ["Pequeno", "Grande"]
+        },
+        {
+          "title": "Idade",
+          "types": ["Filhote", "Adulto"]
+        },
+        {
+          "title": "Linha",
+          "types": ["Super Premium"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Legal"]
+        },
+        {
+          "title": "Em Oferta",
+          "types": ["Oferta"]
+        }
+      ]
+    },
+    {
+      "code": 300,
+      "favorite": false,
+      "title": "Caminha iglu para Gatos",
+      "littleDescription": "Caminha iglu para Gatos - legal",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
+      "brand": "Pet Iglu",
+      "specifications": [
+        {
+          "title": "Idade",
+          "value": "Filhotes/Adultos"
+        },
+        {
+          "title": "Linha",
+          "value": "Pet Iglu"
+        },
+        {
+          "title": "Pet",
+          "value": "Gato"
+        },
+        {
+          "title": "Tipo",
+          "value": "Caminha"
+        },
+        {
+          "title": "Apresentação",
+          "value": "Disponível em apenas um tamanho."
+        }
+      ],
+      "rating": 4.5,
+      "category": [
+        {
+          "title": "Pet",
+          "types": ["Gato"]
+        },
+        {
+          "title": "Porte de Raça",
+          "types": ["Pequeno", "Grande"]
+        },
+        {
+          "title": "Idade",
+          "types": ["Filhote", "Adulto"]
+        },
+        {
+          "title": "Linha",
+          "types": ["Pet Iglu"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Bom", "Legal"]
+        }
+      ]
+    },
+    {
+      "code": 400,
+      "favorite": true,
+      "title": "Brinquedo Cachorro Osso Halteres Pata macio",
+      "littleDescription": "Osso Halteres Pata macio",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
+      "brand": "Ideia Store",
+      "specifications": [
+        {
+          "title": "Idade",
+          "value": "Filhotes/Adultos"
+        },
+        {
+          "title": "Linha",
+          "value": "Ideia Store"
+        },
+        {
+          "title": "Pet",
+          "value": "Cachorro"
+        },
+        {
+          "title": "Tipo",
+          "value": "Brinquedo"
+        },
+        {
+          "title": "Apresentação",
+          "value": "Disponível em tamanho grande, médio e pequeno."
+        }
+      ],
+      "rating": 3,
+      "category": [
+        {
+          "title": "Pet",
+          "types": ["Cachorro"]
+        },
+        {
+          "title": "Porte de Raça",
+          "types": ["Pequeno", "Grande"]
+        },
+        {
+          "title": "Idade",
+          "types": ["Filhote", "Adulto"]
+        },
+        {
+          "title": "Avaliação",
+          "types": ["Bom", "Legal"]
+        },
+        {
+          "title": "Em Oferta",
+          "types": ["Oferta"]
+        }
+      ]
+    }
+  ]
+}

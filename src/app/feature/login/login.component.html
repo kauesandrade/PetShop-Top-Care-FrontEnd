@@ -1,0 +1,22 @@
+<app-header [simple]="true"></app-header>
+<main>
+  <h4>Acesse ou crie sua conta</h4>
+  <div class="login">
+    <h4>Acesse sua conta</h4>
+    <app-login-form></app-login-form>
+    <!-- <div class="divider"></div>
+    <app-external-login></app-external-login> -->
+  </div>
+  <div class="register">
+    <div class="register-info">
+      <h4>Crie sua conta agora!</h4>
+      <p>
+        Caso não tenha uma conta no nosso site clique aqui e crie sua conta de
+        um jeito rápido e fácil. Compre com a gente.
+      </p>
+      <button appButton="secondary" (click)="openRegister()">Cadastro</button>
+    </div>
+    <img src="assets/images/LoginImage.png" alt="Dog image" />
+  </div>
+</main>
+<app-footer type="copyright"></app-footer>

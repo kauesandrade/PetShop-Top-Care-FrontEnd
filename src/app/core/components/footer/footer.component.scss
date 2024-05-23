@@ -1,0 +1,24 @@
+@import "styles";
+
+.footer {
+  margin-top: 1.5rem;
+
+  @media (min-width: $tablet) {
+    margin-top: 2rem;
+  }
+  @media (min-width: $desktopHD) {
+    margin-top: 3.5rem;
+  }
+}
+
+app-footer-copyright {
+  display: none;
+
+  &.copyright {
+    @include grid-container();
+  }
+
+  @media (min-width: $tablet) {
+    @include grid-container();
+  }
+}

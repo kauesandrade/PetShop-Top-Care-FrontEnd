@@ -1,0 +1,39 @@
+@import "styles";
+
+.card {
+  @include flex(column, flex-start, flex-end);
+  gap: 0.5rem;
+  background-color: $secondary;
+  max-width: 18rem;
+  aspect-ratio: 1.6 / 1;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  place-self: center;
+
+  .digits {
+    width: 100%;
+    text-align: start;
+    @include text(large, bold);
+  }
+
+  p {
+    @include text(small, bold);
+  }
+
+  .lower-info {
+    @include flex($justify: space-evenly);
+    gap: 0.5rem;
+    width: 100%;
+
+    .name {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .expiration {
+      @include flex(column);
+    }
+  }
+}

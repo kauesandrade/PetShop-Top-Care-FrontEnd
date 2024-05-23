@@ -1,0 +1,45 @@
+@import "styles";
+
+.div-amount {
+    @include flex(column,);
+    gap: 0.5rem;
+
+    .title-amount{
+        @include text(small)
+    }
+
+    .div-amount-input {
+        @include flex();
+        border: 1px solid $gray4;
+        border-radius: 0.5rem;
+        padding: 0.5rem 0.75rem;
+
+
+
+        .input-amount::-webkit-outer-spin-button,
+        .input-amount::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .input-amount {
+            @include text();
+            width: 2.5rem;
+            border: 0;
+            padding: 0;
+
+            text-align: center;
+            outline-style: none;
+        }
+
+        .btn-amount {
+            border: 0;
+            padding: 0;
+            font-size: 0.75rem;
+            color: $primary;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+    }
+}

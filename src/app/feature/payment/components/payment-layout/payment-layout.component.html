@@ -1,0 +1,22 @@
+<div class="content">
+  <nav>
+    <button (click)="updatePage('card')" [class.selected]="page == 'card'">
+      Cartão
+    </button>
+    <div class="divider"></div>
+    <button (click)="updatePage('pix')" [class.selected]="page == 'pix'">
+      Pix
+    </button>
+    <div class="divider"></div>
+    <button (click)="updatePage('slip')" [class.selected]="page == 'slip'">
+      Boleto
+    </button>
+    <div class="border-bottom"></div>
+  </nav>
+  <ng-container *ngIf="page == 'card'; else pixSlip">
+    <app-payment-card></app-payment-card>
+  </ng-container>
+  <ng-template #pixSlip>
+    <app-payment-pix-slip [type]="page"></app-payment-pix-slip>
+  </ng-template>
+</div>

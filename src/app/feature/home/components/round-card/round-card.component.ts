@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-round-card',
@@ -6,6 +7,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./round-card.component.scss'],
 })
 export class RoundCardComponent {
-  @Input() imageSrc: string = '';
-  @Input() title: string = '';
+  @Input() imgSrc: string = '';
+  @Input() title?: string = '';
+
+  constructor(private routing: Router) {}
+
+  goToSearch(){
+      this.routing.navigate(['/busca'], {
+        queryParams: { q: this.title },
+      });
+  }
 }

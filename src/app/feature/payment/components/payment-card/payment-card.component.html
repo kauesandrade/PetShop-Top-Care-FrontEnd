@@ -1,0 +1,8 @@
+<div class="content">
+  <ng-container *ngIf="page == 'card'; else chooseCard">
+    <app-card-form (selectSavedCard)="selectSavedCard()"></app-card-form>
+  </ng-container>
+  <ng-template #chooseCard>
+    <app-choose-card (onCardSelect)="selectCard($event)"></app-choose-card>
+  </ng-template>
+</div>

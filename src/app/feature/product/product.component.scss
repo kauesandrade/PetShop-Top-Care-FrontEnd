@@ -1,0 +1,22 @@
+@import 'styles';
+
+main {
+    @include grid-container();
+    row-gap: 2rem;
+  
+    .commonSection{
+      @include subgrid();
+      gap: 1rem;
+      @media(min-width: $tablet){
+        gap: 1.5rem;
+      }
+    }
+
+    app-product-description,app-product-section, app-product-specifications,app-product-review-section {
+      @include subgrid();
+    }
+  
+    @media (max-width: 320px){
+      row-gap: 1rem;
+    }
+  }

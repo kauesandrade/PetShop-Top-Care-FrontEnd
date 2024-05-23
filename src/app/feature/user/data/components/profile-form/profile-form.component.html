@@ -1,0 +1,102 @@
+<form [formGroup]="profileForm" (input)="onInput()">
+  <label for="image" [class.disabled]="isDisabled()">
+    <img
+      [src]="profileImg"
+      accept="image/png, image/jpeg"
+      alt="Foto de perfil"
+    />
+    <input
+      type="file"
+      id="image"
+      formControlName="image"
+      (change)="changeImg($event)"
+    />
+    <span class="placeholder">
+      <fa-icon [icon]="faFileImage"></fa-icon>
+      <span>Alterar imagem</span>
+    </span>
+  </label>
+  <label for="name" appInput>
+    <p>Nome Completo</p>
+    <input
+      type="text"
+      id="name"
+      formControlName="name"
+      [class.has-error]="name?.touched && name?.invalid"
+      required
+    />
+    <ng-container *ngIf="name?.touched && name?.invalid">
+      <span *ngIf="name?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+    </ng-container>
+  </label>
+  <label for="email" appInput>
+    <p>E-mail</p>
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      [class.has-error]="email?.touched && email?.invalid"
+      required
+    />
+    <ng-container *ngIf="email?.touched && email?.invalid">
+      <span *ngIf="email?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="email?.getError('email')" class="error-message">
+        Deve ser um e-mail válido!
+      </span>
+    </ng-container>
+  </label>
+  <label for="cpf" appInput>
+    <p>CPF</p>
+    <input
+      type="text"
+      id="cpf"
+      formControlName="cpf"
+      [class.has-error]="cpf?.touched && cpf?.invalid"
+      mask="000.000.000-00"
+      required
+    />
+    <ng-container *ngIf="cpf?.touched && cpf?.invalid">
+      <span *ngIf="cpf?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="cpf?.getError('mask')" class="error-message">
+        Deve ser no formato (00) 00000-0000!
+      </span>
+    </ng-container>
+  </label>
+  <label for="birth" appInput>
+    <p>Data de nascimento</p>
+    <input
+      type="text"
+      id="birth"
+      formControlName="birth"
+      [class.has-error]="birth?.touched && birth?.invalid"
+      mask="d0/M0/0000"
+      [dropSpecialCharacters]="false"
+      required
+    />
+    <ng-container *ngIf="birth?.touched && birth?.invalid">
+      <span *ngIf="birth?.getError('isEmpty')" class="error-message">
+        Você deve preencher esse campo!
+      </span>
+      <span *ngIf="birth?.getError('minlength')" class="error-message">
+        Deve ser no formato dd/mm/aaaa!
+      </span>
+      <span *ngIf="birth?.getError('isNotBetween')" class="error-message">
+        Deve ser entre 1950 e Hoje!
+      </span>
+    </ng-container>
+  </label>
+  <label for="gender" appInput>
+    <p>Sexo</p>
+    <select appInput id="gender" formControlName="gender" required>
+      <option *ngFor="let gend of genders; let i = index" [value]="gend">
+        {{ gend }}
+      </option>
+    </select>
+  </label>
+</form>

@@ -1,0 +1,18 @@
+<app-header></app-header>
+<main>
+  <div class="div-seachBy-orderBy">
+    <span class="span-seachBy">Pesquisa "{{ searchBy }}"</span>
+    <div class="div-orderBy">
+      <span class="span-orderBy"
+        >{{ productsList.length }} resultados ordenados por</span
+      >
+      <app-order-by (emitOrderBy)="getOrderBy($event)"></app-order-by>
+    </div>
+  </div>
+  <app-product-filter
+    [productFiltersWihtChecked]="getFiltersProducts()"
+    (emitFilters)="getFilters($event)"
+  ></app-product-filter>
+  <app-product-layout [products]="productsList"></app-product-layout>
+</main>
+<app-footer></app-footer>

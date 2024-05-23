@@ -1,0 +1,18 @@
+@import "styles";
+
+.header {
+  margin-bottom: 1.5rem;
+  @media (min-width: $tablet) {
+    margin-bottom: 2rem;
+  }
+  @media (min-width: $desktopHD) {
+    margin-bottom: 3.5rem;
+  }
+}
+
+app-header-top {
+  display: none;
+  @media (min-width: $desktop) {
+    display: block;
+  }
+}

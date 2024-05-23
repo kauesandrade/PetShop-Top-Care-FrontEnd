@@ -1,21 +1,55 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductCardComponent } from './product-card/product-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxMaskModule } from 'ngx-mask';
 import { CoreModule } from '../core/core.module';
-import { ProductSectionComponent } from './product-section/product-section.component';
-import { CarouselModule } from './carousel/carousel.module';
-import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
+import { CardDisplayComponent } from './components/card-display/card-display.component';
+import { InputAmountComponent } from './components/input-amount/input-amount.component';
+import { MainCarouselComponent } from './components/main-carousel/main-carousel.component';
+import { ChooseAddressModalComponent } from './components/choose-address-modal/choose-address-modal.component';
+import { OrderByComponent } from './components/order-by/order-by.component';
+import { ProductItemCardComponent } from './components/product-item-card/product-item-card.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { ProductCarouselComponent } from './components/product-carousel/product-carousel.component';
+import { ProductFilterComponent } from './components/product-filter/product-filter.component';
+import { ProductLayoutComponent } from './components/product-layout/product-layout.component';
+import { ProductSectionComponent } from './components/product-section/product-section.component';
+import { RegisterAddressComponent } from './components/register-address/register-address.component';
+import { ProductItemSectionComponent } from './components/product-item-section/product-item-section.component';
+import { CardCardComponent } from './components/card-card/card-card.component';
 
 const Components = [
   ProductCardComponent,
   ProductSectionComponent,
   ProductCarouselComponent,
+  RegisterAddressComponent,
+  InputAmountComponent,
+  ProductLayoutComponent,
+  OrderByComponent,
+  ProductFilterComponent,
+  MainCarouselComponent,
+  CardDisplayComponent,
+  ChooseAddressModalComponent,
+  ProductItemCardComponent,
+  ProductItemSectionComponent,
+  CardCardComponent,
 ];
 
 @NgModule({
-  exports: [...Components, CarouselModule],
+  exports: [...Components],
   declarations: [...Components],
-  imports: [CommonModule, CoreModule, FontAwesomeModule, CarouselModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    CoreModule,
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    RouterModule,
+    FormsModule,
+    NgxMaskModule.forRoot(),
+  ],
 })
 export class SharedModule {}

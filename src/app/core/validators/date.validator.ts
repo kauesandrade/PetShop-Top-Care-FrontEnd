@@ -1,22 +1,53 @@
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 
-export function DateValidator(control: AbstractControl) {
-  let date = new Date(control.value);
-  date.setDate(date.getDate() + 1);
+export class DateValidator {
+  static isLessThanToday(control: AbstractControl) {
+    let date = new Date(control.value);
+    date.setDate(date.getDate() + 1);
 
-  let today = new Date();
+    let today = new Date();
 
-  if (date.getFullYear() <= today.getFullYear()) {
-    if (date.getMonth() <= today.getMonth()) {
-      if (date.getDate() <= today.getDate()) {
-        return { LessThanToday: true };
+    if (date.getFullYear() <= today.getFullYear()) {
+      if (date.getMonth() <= today.getMonth()) {
+        if (date.getDate() <= today.getDate()) {
+          return { lessThanToday: true };
+        }
       }
     }
+    return null;
   }
 
-  if (date.getDay() == 0 || date.getDay() == 6) {
-    return { IsWeekend: true };
+  static isWeekend(control: AbstractControl) {
+    let date = new Date(control.value);
+    date.setDate(date.getDate() + 1);
+
+    if (date.getDay() == 0 || date.getDay() == 6) {
+      return { isWeekend: true };
+    }
+    return null;
   }
 
-  return null;
+  static IsNotBetween(from: string, to: string): ValidatorFn {
+    return (control: AbstractControl) => {
+      if (!control.value) {
+        return null;
+      }
+
+      let fromDate = new Date(from);
+
+      let toDate = new Date();
+      if (to != 'today') {
+        toDate = new Date(to);
+      }
+
+      let date = control.value.split('/');
+      date = [date[1], date[0], date[2]].join('/');
+      date = new Date(date);
+
+      if (date <= fromDate || date >= toDate) {
+        return { isNotBetween: true };
+      }
+      return null;
+    };
+  }
 }

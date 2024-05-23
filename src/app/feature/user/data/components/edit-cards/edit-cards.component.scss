@@ -1,0 +1,101 @@
+@import "styles";
+
+app-card-card {
+  grid-column: 1/-1;
+  @media (min-width: $tablet) {
+    grid-column: auto / span 3;
+  }
+  @media (min-width: $desktop) {
+    grid-column: auto / span 5;
+  }
+}
+
+dialog {
+  &:not([open]) {
+    display: none;
+  }
+  @include grid-container();
+  border: none;
+  outline: none;
+  margin: auto;
+  background-color: transparent;
+
+  div {
+    @include subgrid();
+    position: relative;
+    row-gap: 1rem;
+    border-radius: 1.25rem;
+    color: $black1;
+    background-color: $white;
+    padding: 1rem;
+    grid-column: 1 / -1;
+
+    @media (min-width: $desktop) {
+      padding: 3.5rem 2rem;
+      grid-column: 3 / span 8;
+    }
+
+    h4 {
+      grid-column: 1 / -1;
+      color: $primary;
+      text-align: center;
+    }
+
+    .add-button {
+      border: none;
+      outline: none;
+      border-radius: 0.5rem;
+      height: 3.5rem;
+      grid-column: 1 / -1;
+      color: $gray3;
+      background-color: $gray5;
+      cursor: pointer;
+      fa-icon {
+        font-size: 2rem;
+      }
+    }
+
+    .cards {
+      @include subgrid();
+      padding: 0;
+      * {
+        padding: 0;
+      }
+
+      .action-buttons {
+        @include flex();
+        gap: 1rem;
+
+        @media (min-width: $tablet) {
+          @include subgrid();
+          grid-column: auto / span 3;
+        }
+
+        button:first-of-type {
+          @media (min-width: $tablet) {
+            grid-column: auto / span 1;
+          }
+        }
+        button:last-of-type {
+          @media (min-width: $tablet) {
+            grid-column: auto / span 2;
+          }
+        }
+      }
+    }
+
+    button {
+      place-self: end;
+      grid-column: 1 / -1;
+      height: 3rem;
+      width: 100%;
+
+      @media (min-width: $tablet) {
+        grid-column: auto / span 3;
+      }
+      @media (min-width: $desktop) {
+        grid-column: auto / span 4;
+      }
+    }
+  }
+}

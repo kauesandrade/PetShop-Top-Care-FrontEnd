@@ -1,0 +1,15 @@
+<div class="card">
+  <img
+    src="assets/images/CardChip.png"
+    alt="Imagem do chip do cartão"
+    class="chip"
+  />
+  <p class="digits">**** **** **** {{ card?.lastDigits || "0000" }}</p>
+  <div class="lower-info">
+    <p class="name" [title]="card?.name">{{ card?.name || "Nome" }}</p>
+    <div class="expiration">
+      <p>Validade</p>
+      <p>{{ card?.expirationDate! || "00/00" }}</p>
+    </div>
+  </div>
+</div>

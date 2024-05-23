@@ -1,0 +1,190 @@
+@import "styles";
+
+.footer-main {
+  @include grid-container();
+  width: 100%;
+  background-color: $primary;
+  color: $white;
+
+  a {
+    @include text(small);
+    color: $white;
+    text-decoration: none;
+  }
+
+  &-content {
+    @include subgrid();
+    padding: 1rem 0;
+    row-gap: 1rem;
+
+    @media (min-width: $tablet) {
+      padding: 1.5rem 0;
+    }
+    @media (min-width: $desktopHD) {
+      padding: 2rem 0;
+    }
+
+    .items-container {
+      @include flex(column, flex-start, flex-start);
+      gap: 0.5rem;
+      height: 100%;
+
+      @media (min-width: $tablet) {
+        grid-column: auto / span 2;
+        gap: 1rem;
+
+        &:not(:first-of-type) {
+          padding-left: 1.5rem;
+          border-left: 1px $white solid;
+        }
+      }
+      @media (min-width: $desktop) {
+        grid-column: auto / span 3;
+
+        &:not(:first-of-type) {
+          padding-left: 2rem;
+        }
+      }
+
+      h6 {
+        @include text($weight: semibold);
+        color: $white;
+        @media (min-width: $desktop) {
+          @include text(medium, semibold);
+        }
+        @media (min-width: $desktopHD) {
+          @include heading();
+        }
+      }
+
+      div {
+        @include flex($align: flex-start, $justify: flex-start);
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        @media (min-width: $tablet) {
+          flex-direction: column;
+        }
+
+        fa-icon {
+          font-size: 1rem;
+          @media (min-width: $tablet) {
+            font-size: 1.5rem;
+          }
+          @media (min-width: $desktopHD) {
+            font-size: 2rem;
+          }
+        }
+
+        img {
+          width: 1rem;
+          @media (min-width: $tablet) {
+            width: 1.5rem;
+          }
+          @media (min-width: $desktop) {
+            width: 2rem;
+          }
+        }
+
+        p,
+        a {
+          @include text(small);
+        }
+      }
+    }
+
+    .our-politics {
+      display: flex;
+      @media (min-width: $tablet) {
+        display: none;
+      }
+      @media (min-width: $desktop) {
+        display: flex;
+        grid-column: auto / span 2;
+      }
+    }
+
+    .contacts {
+      &.items-container {
+        padding-left: 0;
+        border-left: 0;
+        @media (min-width: $desktop) {
+          padding-left: 1.5rem;
+          border-left: 1px $white solid;
+        }
+        @media (min-width: $desktopHD) {
+          padding-left: 2rem;
+          border-left: 1px $white solid;
+        }
+      }
+
+      &-items {
+        a {
+          @include flex();
+          gap: 0.5rem;
+          fa-icon {
+            font-size: 1.25rem;
+            @media (min-width: $tablet) {
+              font-size: 1rem;
+            }
+          }
+          p {
+            display: none;
+            color: $white;
+            @media (min-width: $tablet) {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .vertical-info {
+      @include flex(column, flex-start, flex-start);
+      row-gap: 1rem;
+
+      @media (min-width: $tablet) {
+        padding-left: 2rem;
+        border-left: 1px $white solid;
+        grid-column: auto / span 2;
+      }
+
+      @media (min-width: $desktop) {
+        grid-column: auto / span 4;
+      }
+
+      .vertical-divider {
+        display: none;
+        @media (min-width: $tablet) {
+          display: block;
+          height: 1px;
+          width: 100%;
+          background-color: $white;
+        }
+      }
+
+      .payment-methods,
+      .social-media {
+        padding-left: 0;
+        border-left: 0;
+        &-items {
+          @media (min-width: $desktop) {
+            flex-wrap: nowrap;
+          }
+          flex-direction: row;
+          align-items: center;
+        }
+      }
+    }
+
+    .about-us {
+      p {
+        @include text(small);
+        color: $white;
+      }
+
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+}

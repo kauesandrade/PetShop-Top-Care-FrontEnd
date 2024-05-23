@@ -1,4 +1,25 @@
+<app-header></app-header>
 <main>
   <app-main-carousel [itensCarousel]="itens"></app-main-carousel>
-  <app-home-banner></app-home-banner>
+
+  <app-round-card-section
+    [roundCardList]="categories"
+    [title]="'Categorias de produtos'"
+  ></app-round-card-section>
+
+  <app-product-section
+    [title]="'Ofertas'"
+    [category]="category1"
+  ></app-product-section>
+
+  <app-round-card-section
+    [roundCardList]="brands"
+    [title]="'Nossas Marcas'"
+  ></app-round-card-section>
+
+  <app-product-section
+    [title]="'Produtos melhores avaliados'"
+    [category]="category2"
+  ></app-product-section>
 </main>
+<app-footer></app-footer>

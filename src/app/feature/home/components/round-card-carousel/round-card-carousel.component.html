@@ -1,0 +1,13 @@
+<ng-container *ngIf="roundCardList?.length">
+    <section class="embla">
+      <button class="embla__button--prev" (click)="prevSlide()"><fa-icon [icon]="faAngleLeft"></fa-icon></button>
+      <button class="embla__button--next" (click)="nextSlide()"><fa-icon [icon]="faAngleRight"></fa-icon></button>
+      <div class="embla__viewport">
+        <div class="embla__container">
+          <div class="embla__slide" *ngFor="let item of roundCardList; index as i">
+            <app-round-card [imgSrc]="item.imgSrc" [title]="item.title"></app-round-card>
+          </div>
+        </div>
+      </div>
+    </section>
+  </ng-container>

@@ -5,7 +5,6 @@ import { DateValidator } from 'src/app/core/validators/date.validator';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { Service } from '../../interfaces/service';
 import { ContactService } from '../../services/contact.service';
-import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-contact-form',
@@ -90,7 +89,8 @@ export class ContactFormComponent {
       this.date?.setValidators([
         Validators.required,
         EmptyValidator,
-        DateValidator,
+        DateValidator.isLessThanToday,
+        DateValidator.isWeekend,
       ]);
       this.time?.setValidators([Validators.required, EmptyValidator]);
       this.filial?.setValidators([Validators.required, EmptyValidator]);

@@ -1,0 +1,43 @@
+@import "styles";
+
+form {
+  @include subgrid();
+  row-gap: 1.5rem;
+
+  h5 {
+    grid-column: 1 / -1;
+  }
+
+  label {
+    position: relative;
+
+    grid-column: 1 / -1;
+    @media (min-width: $desktop) {
+      grid-column: auto / span 5;
+    }
+
+    height: 4.75rem;
+    gap: 0.25rem;
+    p {
+      @include text(medium, bold);
+    }
+    input,
+    select {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.has-error {
+  border-color: $error;
+  color: $error;
+}
+
+.error-message {
+  @include text(small);
+  color: $error;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
