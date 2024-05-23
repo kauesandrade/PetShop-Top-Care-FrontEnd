@@ -141,8 +141,20 @@
     }
 
     .under-buttons{
-        @include flex(row, center, end);
+        @include flex(column, center, space-between);
         grid-column: 1/ -1;
+        gap: 1rem;
+        
+        button{
+            width: 100%;
+        }
+        
+        @media(min-width: $tablet){
+            @include flex(row, center, space-between);
+            button{
+                width: 15rem;
+            }    
+        }
     }
     
 

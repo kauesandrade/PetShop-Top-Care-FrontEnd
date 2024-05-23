@@ -91,6 +91,9 @@
 
     </div>
     <div class="under-buttons">
+        <ng-container *ngIf="orderInformation?.payment?.method?.value == 'bankSlip'">
+            <button appButton="secondary">Ver boleto</button>
+        </ng-container>
         <button (click)="cancelOrder()" appButton="">Cancelar Compra</button>
     </div>
 </div>
