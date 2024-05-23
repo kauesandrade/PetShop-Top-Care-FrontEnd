@@ -17,6 +17,31 @@ main{
 
     .commonSection{
       gap: 1rem;
+
+      &-full{
+        @include flex(column);
+
+        .title{
+          text-align: center;
+        }
+        .a-home{
+          color: $primary;
+        }
+
+        div{
+          width: 100%;
+          @include flex();
+          .img{
+            width: 80%;
+            height: 80%;
+            
+            @media(min-width: $tablet){
+              width: 50%;
+              height: 50%;
+            }
+          }
+        }
+      }
     }
 
     app-cart-product-card-section{
