@@ -56,7 +56,6 @@ export class PaymentService {
 
   setBlankCard() {
     this.card = {
-      value: 'card',
       name: '',
       lastDigits: '',
       expirationDate: '',

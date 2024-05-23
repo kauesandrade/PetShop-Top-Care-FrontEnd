@@ -1,6 +1,6 @@
 import { PaymentMethod } from './payment-method';
 
-export interface Card extends PaymentMethod {
+export interface Card {
   name: string;
   lastDigits: string;
   expirationDate: string;

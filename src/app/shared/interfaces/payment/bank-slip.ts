@@ -1,6 +1,6 @@
 import { PaymentMethod } from './payment-method';
 
-export interface BankSlip extends PaymentMethod {
+export interface BankSlip {
   slip: string;
   expirationInterval: number;
 }

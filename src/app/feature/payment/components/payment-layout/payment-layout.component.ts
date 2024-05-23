@@ -14,5 +14,6 @@ export class PaymentLayoutComponent {
   updatePage(page: string) {
     this.page = page;
     this.paymentService.setPaymentMethod({ value: this.page });
+    this.paymentService.setErrors(false);
   }
 }

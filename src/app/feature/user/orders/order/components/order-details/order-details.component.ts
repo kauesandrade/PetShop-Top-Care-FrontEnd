@@ -30,7 +30,7 @@ export class OrderDetailsComponent implements OnInit {
 
   paymentMethodText() {
     if (this.payment.method.value == 'card') {
-      return `Cartão final ${(this.payment.method as Card).lastDigits}`;
+      return `Cartão final ${(this.payment.method.card as Card).lastDigits}`;
     } else if (this.payment.method.value == 'pix') {
       return `Pix`;
     }

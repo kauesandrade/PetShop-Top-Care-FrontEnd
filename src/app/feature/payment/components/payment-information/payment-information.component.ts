@@ -46,19 +46,26 @@ export class PaymentInformationComponent implements OnInit {
     if (this.paymentMethod.value == 'pix') {
       return {
         value: 'pix',
-        copyPasteCode: '123123123123',
-        qrCode: '123123123213123123123',
-        expirationInterval: 1,
+        pix: {
+          copyPasteCode: '123123123123',
+          qrCode: '123123123213123123123',
+          expirationInterval: 1,
+        },
       };
     } else if (this.paymentMethod.value == 'slip') {
       return {
         value: 'bankSlip',
-        slip: '12312312312313',
-        expirationInterval: 2,
+        bankSlip: {
+          slip: '12312312312313',
+          expirationInterval: 2,
+        },
       };
     }
     // this.paymentService.checkCVV();
-    return this.paymentService.card;
+    return {
+      value: 'bankSlip',
+      card: this.paymentService.card,
+    };
   }
 
   generatePayment(): Payment {
