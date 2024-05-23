@@ -9,9 +9,11 @@ import { Router } from '@angular/router';
 import { CartPaymentInformations } from 'src/app/shared/interfaces/order/cart-payment-informations';
 import { Order } from 'src/app/shared/interfaces/order/order';
 import { Payment } from 'src/app/shared/interfaces/payment/payment';
-import { Shipping } from 'src/app/shared/interfaces/shipping/shipping';
+import { PaymentMethod } from 'src/app/shared/interfaces/payment/payment-method';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import { PaymentService } from 'src/app/shared/services/payment/payment.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-payment-information',
@@ -19,7 +21,9 @@ import { OrderService } from 'src/app/shared/services/order/order.service';
   styleUrls: ['./payment-information.component.scss'],
 })
 export class PaymentInformationComponent implements OnInit {
-  @Input() paymentMethod = 'Cartão';
+  paymentMethod: PaymentMethod = {
+    value: 'card',
+  };
   paymentInformation!: CartPaymentInformations;
 
   openAddresses: boolean = false;
@@ -27,80 +31,33 @@ export class PaymentInformationComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
+    private paymentService: PaymentService,
+    private userService: UserService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.paymentMethod = this.paymentService.paymentMethod;
     this.paymentInformation = this.cartService.cartInformations;
   }
 
-  generateOrderDate() {
-    let orderDate = '';
-    let today = new Date();
-
-    let day = today.getDate();
-    orderDate += day >= 10 ? day : `0${day}`;
-
-    let month = today.getMonth() + 1;
-    orderDate += month >= 10 ? month : `0${month}`;
-
-    orderDate += today.getFullYear();
-
-    let hours = today.getHours();
-    orderDate += hours >= 10 ? hours : `0${hours}`;
-    let minutes = today.getMinutes();
-    orderDate += minutes >= 10 ? minutes : `0${minutes}`;
-    let seconds = today.getSeconds();
-    orderDate += seconds >= 10 ? seconds : `0${seconds}`;
-
-    return orderDate;
-  }
-
-  calculateExpectedDate() {
-    let today = new Date().getTime();
-
-    const newDate = new Date(
-      today + this.paymentInformation.shippingType?.time! * 24 * 60 * 60 * 1000
-    );
-    const expectedDate = new Date(today + 6 * 24 * 60 * 60 * 1000);
-
-    let expectedDateFormatted = '';
-
-    let day = expectedDate.getDate();
-    expectedDateFormatted += day >= 10 ? day : `0${day}`;
-
-    let month = expectedDate.getMonth() + 1;
-    expectedDateFormatted += month >= 10 ? month : `0${month}`;
-
-    expectedDateFormatted += expectedDate.getFullYear();
-
-    return expectedDateFormatted;
-  }
-
   generatePaymentMethod() {
-    console.log(this.paymentMethod);
-    if (this.paymentMethod == 'Pix') {
+    if (this.paymentMethod.value == 'pix') {
       return {
         value: 'pix',
         copyPasteCode: '123123123123',
         qrCode: '123123123213123123123',
         expirationInterval: 1,
       };
-    } else if (this.paymentMethod == 'Boleto') {
+    } else if (this.paymentMethod.value == 'slip') {
       return {
         value: 'bankSlip',
         slip: '12312312312313',
         expirationInterval: 2,
       };
-    } else {
-      return {
-        value: 'card',
-        name: 'Bernardo',
-        lastDigits: '9875',
-        expirationDate: '1001',
-        mainCard: false,
-      };
     }
+    // this.paymentService.checkCVV();
+    return this.paymentService.card;
   }
 
   generatePayment(): Payment {
@@ -114,31 +71,27 @@ export class PaymentInformationComponent implements OnInit {
     };
   }
 
-  generateShipping(): Shipping {
-    return {
-      shippingBy: 'Azul',
-      shippingCode: '6534',
-      shippingStatus: [
-        { value: 'Pedido', dateTime: this.generateOrderDate() },
-        { value: 'Enviado para transportadora' },
-        { value: 'Recebido pela transportadora' },
-        { value: 'Mercadoria em trãnsito' },
-        { value: 'Mercadoria em rota de entrega' },
-        { value: 'Pedido entregue' },
-      ],
-    };
-  }
-
   finishPayment() {
+    if (this.paymentService.hasErrors()) {
+      return;
+    }
+
+    if (this.paymentService.saveCard) {
+      let user = this.userService.loggedUser!;
+      user?.cards.push(this.paymentService.card);
+
+      this.userService.updateUser(user);
+    }
+
     let newOrder: Order = {
       orderCode: 11872635,
       items: this.cartService.itensCart,
       address: this.paymentInformation.address!,
-      expectedDate: this.calculateExpectedDate(),
+      expectedDate: this.orderService.calculateExpectedDate(),
       payment: this.generatePayment(),
-      orderDate: this.generateOrderDate(),
+      orderDate: this.orderService.generateOrderDate(),
       status: 'Em preparo',
-      shipping: this.generateShipping(),
+      shipping: this.orderService.generateShipping(),
     };
 
     console.log(newOrder);
