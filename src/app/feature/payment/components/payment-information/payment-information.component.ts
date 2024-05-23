@@ -10,6 +10,7 @@ import { CartPaymentInformations } from 'src/app/shared/interfaces/order/cart-pa
 import { Order } from 'src/app/shared/interfaces/order/order';
 import { Payment } from 'src/app/shared/interfaces/payment/payment';
 import { PaymentMethod } from 'src/app/shared/interfaces/payment/payment-method';
+import { Shipping } from 'src/app/shared/interfaces/shipping/shipping';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { PaymentService } from 'src/app/shared/services/payment/payment.service';
@@ -77,7 +78,7 @@ export class PaymentInformationComponent implements OnInit {
       shippingBy: 'Azul',
       shippingCode: '6534',
       shippingStatus: [
-        { value: 'Pedido', dateTime: this.generateOrderDate() },
+        { value: 'Pedido', dateTime: this.orderService.generateOrderDate() },
         { value: 'Enviado para transportadora' },
         { value: 'Recebido pela transportadora' },
         { value: 'Mercadoria em trãnsito' },
