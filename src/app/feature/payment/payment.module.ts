@@ -14,6 +14,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { CardFormComponent } from './components/payment-card/card-form/card-form.component';
 import { ChooseCardComponent } from './components/payment-card/choose-card/choose-card.component';
 import { FinishInformationComponent } from './components/finish-information/finish-information.component';
+import { FinishLayoutComponent } from './components/finish-layout/finish-layout.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FinishInformationComponent } from './components/finish-information/fini
     CardFormComponent,
     ChooseCardComponent,
     FinishInformationComponent,
+    FinishLayoutComponent,
   ],
   imports: [
     CommonModule,

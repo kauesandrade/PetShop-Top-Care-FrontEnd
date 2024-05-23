@@ -5,7 +5,7 @@
         <strong> {{ orderInformation?.address?.name || "Senai" }}</strong>
       </p>
       <p>
-        {{ orderInformation?.address?.street || "Walter Marquardt" }},
+        Rua {{ orderInformation?.address?.street || "Walter Marquardt" }},
         {{ orderInformation?.address?.number || "2" }}
       </p>
       <p>
@@ -17,12 +17,12 @@
         CEP:
         {{ orderInformation?.address?.cep! | mask : "00000-000" || "12345-087" }}
       </p>
-      <!-- <h6>
+      <h6>
         {{
-          orderInformation.shipping.shippingTime ||
+          orderInformation?.shipping?.shippingType?.shippingTime ||
             "Entrega de 4 a 6 dias úteis"
         }}
-      </h6> -->
+      </h6>
     </div>
     <div class="divider"></div>
     <div class="order-info">
@@ -35,17 +35,17 @@
         </p>
         <p>{{ orderInformation?.payment?.subtotal | currency : "BRL" }}</p>
       </div>
-      <!-- <div class="info-container">
+      <div class="info-container">
         <p>Frete</p>
         <ng-container
-          *ngIf="orderInformation.shipping?.price; else freeShipping"
+          *ngIf="orderInformation?.payment?.shippingFee; else freeShipping"
         >
-          <p>{{ orderInformation.shipping?.price | currency : "BRL" }}</p>
+          <p>{{ orderInformation?.payment?.shippingFee | currency : "BRL" }}</p>
         </ng-container>
         <ng-template #freeShipping>
           <p class="free-shipping">Grátis</p>
         </ng-template>
-      </div> -->
+      </div>
       <div class="info-container">
         <p>
           Pagamento</p>

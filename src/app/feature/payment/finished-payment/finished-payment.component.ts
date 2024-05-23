@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CartPaymentInformations } from 'src/app/shared/interfaces/order/cart-payment-informations';
 import { Order } from 'src/app/shared/interfaces/order/order';
-import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
@@ -14,7 +12,7 @@ export class FinishedPaymentComponent implements OnInit {
 
   id!: number;
   @Input() paymentMethod = 'Cartão';
-  finishInformation?: Order ;
+  orderInformation?: Order ;
 
   constructor(
     private orderService: OrderService,
@@ -25,10 +23,9 @@ export class FinishedPaymentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // typeof this.orderService.getOrder(this.id) == '"null"' ?  this.finishInformation = ;
-
-     this.finishInformation = this.orderService.getOrder(this.id) || undefined
-
-
+     this.orderInformation = this.orderService.getOrder(this.id) || undefined
+     if(typeof this.orderInformation == 'undefined'){
+      // this.router.navigate(["/perfil"]);
+     }
   }
 }

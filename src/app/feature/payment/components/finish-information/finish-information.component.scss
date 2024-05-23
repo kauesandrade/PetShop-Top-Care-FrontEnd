@@ -33,12 +33,20 @@
       width: 100%;
       gap: 1rem;
 
+      .valor{
+        p{
+          @include text(large);
+          color: $gray2;
+        }
+      }
+
       p {
         @include text(small);
 
         &.free-shipping {
           color: $green;
         }
+
       }
     }
   }

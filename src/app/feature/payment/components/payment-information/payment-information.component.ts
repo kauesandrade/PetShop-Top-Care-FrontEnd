@@ -116,6 +116,7 @@ export class PaymentInformationComponent implements OnInit {
 
   generateShipping(): Shipping {
     return {
+      shippingType: this.paymentInformation.shippingType,
       shippingBy: 'Azul',
       shippingCode: '6534',
       shippingStatus: [

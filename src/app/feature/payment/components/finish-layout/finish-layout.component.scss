@@ -1,0 +1,103 @@
+@import 'styles';
+
+.content {
+    @include subgrid();
+    row-gap: 1rem;
+
+    .divider {
+        grid-column: 1/ -1;
+        border: 1px solid gray;
+    }
+
+    .acknowledgment {
+        grid-column: 1/ -1;
+    }
+
+    .payment-informations {
+        grid-column: 1/ -1;
+        @include flex(column, start, start);
+        row-gap: 1rem;
+
+        .informations {
+            width: 100%;
+            @include flex(column, start, space-between);
+
+            .payQRCode, .payCodeBar {
+                width: 100%;
+                order: -1;
+                @include flex(column, center, center);
+            }
+            
+
+            @media(min-width: $tablet) {
+                @include flex(row, start, space-between);
+
+                .payQRCode, .payCodeBar  {
+                    width: auto;
+                    order: initial;
+                }
+            }
+
+            .input-howPay {
+                width: 100%;
+                @include flex(column, start, start);
+                gap: 1rem;
+                
+                @media(min-width: $tablet) {
+                    width: auto;
+                }
+
+                .div-input{
+                    width: 100%;
+                        input{
+                            width: 100%;
+                        }
+                }
+
+                .howPay {
+                    @include flex(column, start, start);
+                    gap: 0.5rem;
+
+                    p {
+                        &.title {
+                            @include text(small, bold);
+                            color: $gray2;
+                        }
+                    }
+
+                    .tips {
+                        @include flex(column, start, start);
+                        gap: 0.25rem;
+
+                        .tip {
+
+                            span {
+                                @include text(small, bold);
+                                color: $gray2;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .card-payment-information {
+            @include flex();
+            padding: 1rem;
+            background-color: $light-secondary;
+            border-radius: 0.5rem;
+
+            p {
+                @include text(small);
+                color: $gray2;
+                text-align: center;
+            }
+        }
+    }
+
+    .under-buttons{
+        @include flex(row, center, end);
+        grid-column: 1/ -1;
+    }
+
+}

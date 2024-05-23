@@ -1,0 +1,95 @@
+<div class="content">
+    <div class="acknowledgment">
+        <h6>Agredeçemos por escolher a Petshop Top Care, {{user.loggedUser?.name}}</h6>
+        <p>Enviamos detalhes do seu pedido para seu email: <strong>{{user.loggedUser?.email}}</strong></p>
+        <p><strong>Pedido: {{orderInformation?.orderCode}}</strong></p>
+    </div>
+    <div class="divider"></div>
+    <div class="payment-informations">
+        <ng-container>
+            <div class="informations">
+                <div class="input-howPay">
+                        <label class="div-input" for="login" appInput>
+                            <p>Código Pix</p>
+                            <input
+                              type="text"
+                              value="00020101021226770014BR.GOV.BCB.PIX2555api.itau/pix/qr/v2/ed31ffa1-6a75-443a-83b5-5895c65f90d35204000053039865802BR5925PET CENTER PARTICIPACOES 6009SAO PAULO62070503***6304C4F7"
+                            />
+                        </label>
+                    <div class="howPay">
+                        <p class="title">Como pagar?</p>
+                        <div class="tips">
+                            <p class="tip"><span>1 -</span> Abra o app do seu banco, selecione pix;</p>
+                            <p class="tip"><span>2 -</span> Escaneie do QR code com seu celular ou cole o código pix;
+                            </p>
+                            <p class="tip"><span>3 -</span> Confira as informações;</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="payQRCode">
+                    <p>QR code</p>
+                    <img src="" alt="QRCode">
+                </div>
+            </div>
+            <div class="card-payment-information">
+                <p>O código Pix tem prazo de 30 minutos para pagamento. Caso não seja realizado dentro desse período, o
+                    pedido será cancelado.</p>
+            </div>
+        </ng-container>
+
+        <ng-container>
+            <div class="informations">
+                <div class="input-howPay">
+                    <div class="">
+                        <h6>Vencimento do boleto: 24/05/24</h6>
+                        <!-- <h6>Vencimento do boleto: {{orderInformation?.payment?.method?.expirationInterval || "15/12/23" }}</h6> -->
+                    </div>
+                    <div class="howPay">
+                        <p class="title">Como pagar?</p>
+                        <div class="tips">
+                            <p class="tip"><span>1 -</span> Abra o app do seu banco, selecione pagar conta;</p>
+                            <p class="tip"><span>2 -</span> Escaneie do código de barra com seu celular;</p>
+                            <p class="tip"><span>3 -</span> Autorize o pagamento.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="payCodeBar">
+                    <p>Código de barra</p>
+                    <img src="" alt="CodeBar">
+                </div>
+            </div>
+            <div class="card-payment-information">
+                <p>Para pagar em qualquer banco, caixa eletrônico ou lotérica, por favor, imprima o boleto. O prazo de
+                    aprovação é de 1 dia útil após o pagamento.</p>
+            </div>
+        </ng-container>
+
+        <ng-container>
+            <div class="informations">
+                <div class="input-howPay">
+                    <div>
+                        <h6>Cartão de Crédito final 0923</h6>
+                        <h6>Nome: {{user.loggedUser?.name}}</h6>
+                    </div>
+                    <div class="howPay">
+                        <p class="title">Confirme seu pagamento:</p>
+                        <div class="tips">
+                            <p class="tip"><span>1 -</span> Abra o app do seu banco, extrato;</p>
+                            <p class="tip"><span>2 -</span> Verifique o pagamento.</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button appButton="secondary" (click)="goToProfileOrder()">Ir para meus pedidos</button>
+                </div>
+            </div>
+            <div class="card-payment-information">
+                <p>O pagemento é confirmado em torno de 1 hora, após a confirmação será gerada a nota fiscal.</p>
+            </div>
+        </ng-container>
+
+    </div>
+    <div class="under-buttons">
+        <button appButton="">Cancelar Compra</button>
+    </div>
+</div>
