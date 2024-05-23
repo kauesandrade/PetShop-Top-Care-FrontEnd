@@ -178,5 +178,11 @@ export class CartService {
     );
   }
 
-  clearCart() {}
+  clearCart() {
+    for (let item of this.itensCart) {
+      this.removeItemCart(item);
+    }
+    this.cartInformations.address = undefined;
+    this.cartInformations.shippingType = undefined;
+  }
 }
