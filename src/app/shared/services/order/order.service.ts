@@ -49,27 +49,7 @@ export class OrderService {
     console.log(this.orders);
   }
 
-  createOrder(
-    orderCode: number,  
-    items: Array<Item>, 
-    address: Address, 
-    expectedDate: string, 
-    payment: Payment,
-    orderDate: string,
-    status: string,
-    shipping: Shipping){
-
-    const order: Order = {
-      orderCode,
-      items,
-      address,
-      expectedDate,
-      payment,
-      orderDate,
-      status,
-      shipping
-    }
-
+  createOrder(order: Order) {
     this.orders?.push(order);
   }
 }

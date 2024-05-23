@@ -1,0 +1,45 @@
+@import "styles";
+
+.card-info {
+  @include flex();
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  flex-wrap: wrap;
+  background-color: $light-primary;
+  border-radius: 0.5rem;
+  width: 100%;
+
+  @media (min-width: $tablet) {
+    flex-wrap: nowrap;
+  }
+
+  p {
+    @include text();
+    flex: 0 0 auto;
+
+    &.last-digits {
+      width: 7.5rem;
+    }
+
+    &.name {
+      @include text(medium, bold);
+      flex: 0 1 auto;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: center;
+      @media (min-width: $tablet) {
+        flex: 0 1 100%;
+      }
+    }
+  }
+
+  .expiration-date {
+    @include flex($direction: column);
+    background-color: transparent;
+    gap: 0;
+    p {
+      @include text(small);
+    }
+  }
+}

@@ -18,6 +18,7 @@ import { OrderComponent } from './feature/user/orders/order/order.component';
 import { FavoritesComponent } from './feature/favorites/favorites.component';
 import { ReviewProductComponent } from './feature/user/orders/order/components/review-product/review-product.component';
 import { PaymentComponent } from './feature/payment/payment.component';
+import { FinishedPaymentComponent } from './feature/payment/finished-payment/finished-payment.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -52,10 +53,13 @@ const routes: Routes = [
       {
         path: 'pagamento',
         title: 'Pagamento | Top Care',
-        component: PaymentComponent,
         canActivate: [AuthGuard],
+        children: [
+          { path: '', component: PaymentComponent },
+          { path: 'finalizado/:id', component: FinishedPaymentComponent },
+        ],
       },
-    ]
+    ],
   },
   {
     path: 'perfil',

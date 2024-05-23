@@ -3,12 +3,13 @@ import { Router } from '@angular/router';
 import { Item } from '../../interfaces/order/item';
 
 @Component({
-  selector: 'app-order-product-card',
-  templateUrl: './order-product-card.component.html',
-  styleUrls: ['./order-product-card.component.scss'],
+  selector: 'app-product-item-card',
+  templateUrl: './product-item-card.component.html',
+  styleUrls: ['./product-item-card.component.scss'],
 })
-export class OrderProductCardComponent implements OnInit {
+export class ProductItemCardComponent implements OnInit {
   @Input() item!: Item;
+  @Input() boxShadow: boolean = true;
 
   constructor(private router: Router) {}
 

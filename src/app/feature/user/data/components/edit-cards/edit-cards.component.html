@@ -5,14 +5,7 @@
       <fa-icon [icon]="faPlus"></fa-icon>
     </button>
     <div *ngFor="let card of userCards; let i = index" class="cards">
-      <div class="card-info">
-        <p class="last-digits">**** **** **** {{ card.lastDigits }}</p>
-        <p class="name" [title]="card.name">{{ card.name }}</p>
-        <div class="expiration-date">
-          <p>Validade</p>
-          <p>{{ card.expirationDate }}</p>
-        </div>
-      </div>
+      <app-card-card [card]="card"></app-card-card>
       <div class="action-buttons">
         <button appButton="secondary" (click)="deleteCard(i)">
           <fa-icon [icon]="faTrash"></fa-icon>

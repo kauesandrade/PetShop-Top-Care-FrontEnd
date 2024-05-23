@@ -7,13 +7,16 @@
   border-radius: 1rem;
   background-color: $white;
   width: 100%;
-  box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.25);
   cursor: pointer;
+
+  &.box-shadow {
+    box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.25);
+  }
 
   @media (min-width: $desktop) {
     @include flex($justify: space-between);
-    height: 10rem;
-    padding: 2rem 2.5rem;
+    height: 8rem;
+    padding: 1.5rem 2rem;
   }
 
   .product {
@@ -31,6 +34,12 @@
       gap: 0.5rem;
       .title {
         @include text(small, bold);
+
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
         @media (min-width: $tablet) {
           @include text(normal, semibold);
           gap: 1rem;
