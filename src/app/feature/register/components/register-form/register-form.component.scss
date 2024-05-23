@@ -82,7 +82,10 @@ form {
         color: $gray3;
 
         &:nth-child(even) {
-          place-self: end;
+          place-self: auto;
+          @media (min-width: $mobile) {
+            place-self: end;
+          }
         }
       }
     }

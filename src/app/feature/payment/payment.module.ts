@@ -11,10 +11,11 @@ import { PaymentCardComponent } from './components/payment-card/payment-card.com
 import { PaymentPixSlipComponent } from './components/payment-pix-slip/payment-pix-slip.component';
 import { PaymentInformationComponent } from './components/payment-information/payment-information.component';
 import { NgxMaskModule } from 'ngx-mask';
-import { CardFormComponent } from './components/payment-card/card-form/card-form.component';
 import { ChooseCardComponent } from './components/payment-card/choose-card/choose-card.component';
+import { CardFormComponent } from './components/payment-card/card-form/card-form.component';
 
 @NgModule({
+  exports: [PaymentComponent],
   declarations: [
     PaymentComponent,
     FinishedPaymentComponent,
