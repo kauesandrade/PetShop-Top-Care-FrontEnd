@@ -40,6 +40,10 @@
           color: $green;
         }
       }
+
+      .valor {
+        @include flex(column, flex-end);
+      }
     }
   }
 }

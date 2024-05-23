@@ -4,14 +4,10 @@
   <h1>Pagamento</h1>
   <div class="commonSection">
     <div class="commonSection-primary">
-      <app-payment-layout
-        (paymentMethod)="paymentMethod = $event"
-      ></app-payment-layout>
+      <app-payment-layout></app-payment-layout>
     </div>
     <div class="commonSection-secondary">
-      <app-payment-information
-        [paymentMethod]="paymentMethod"
-      ></app-payment-information>
+      <app-payment-information></app-payment-information>
     </div>
   </div>
 

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Card } from 'src/app/shared/interfaces/payment/card';
+import { PaymentService } from 'src/app/shared/services/payment/payment.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
@@ -12,7 +13,10 @@ export class ChooseCardComponent implements OnInit {
 
   @Output() onCardSelect = new EventEmitter<Card>();
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private paymentService: PaymentService
+  ) {}
 
   ngOnInit(): void {
     if (this.userService.loggedUser?.cards) {
@@ -22,5 +26,6 @@ export class ChooseCardComponent implements OnInit {
 
   selectCard(card: Card) {
     this.onCardSelect.emit(card);
+    this.paymentService.setCard(card);
   }
 }
