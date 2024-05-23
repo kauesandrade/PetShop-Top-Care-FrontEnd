@@ -32,7 +32,6 @@ export class PaymentInformationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.paymentMethod = this.paymentService.paymentMethod;
     this.paymentInformation = this.cartService.cartInformations;
   }
 
@@ -90,6 +89,8 @@ export class PaymentInformationComponent implements OnInit {
   }
 
   finishPayment() {
+    this.paymentMethod = this.paymentService.paymentMethod;
+
     if (this.paymentService.hasErrors()) {
       return;
     }
@@ -102,7 +103,7 @@ export class PaymentInformationComponent implements OnInit {
     }
 
     let newOrder: Order = {
-      orderCode: 11872635,
+      orderCode: Math.floor(Math.random() * 100000),
       items: this.cartService.itensCart,
       address: this.paymentInformation.address!,
       expectedDate: this.orderService.calculateExpectedDate(),
@@ -115,6 +116,9 @@ export class PaymentInformationComponent implements OnInit {
     console.log(newOrder);
 
     this.orderService.createOrder(newOrder);
+
+    this.cartService.clearCart();
+
     this.router.navigate([
       this.router.url + '/finalizado/' + newOrder.orderCode,
     ]);
