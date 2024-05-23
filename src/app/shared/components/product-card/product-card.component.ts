@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   faHeart,
   faShoppingCart,
@@ -19,13 +20,13 @@ export class ProductCardComponent {
 
   @Input() product!: ProductVariant;
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {}
 
   handleClickCart() {
     this.cartService.addItemCart(this.product, 1);
-    // this.routing.navigate(['/carrinho']);
   }
   handleClickBuy() {
-    throw new Error('Method not implemented.');
+    this.cartService.addItemCart(this.product, 1);
+    this.router.navigate(['/carrinho']);
   }
 }

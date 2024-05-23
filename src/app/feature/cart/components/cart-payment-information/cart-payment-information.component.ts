@@ -46,7 +46,7 @@ export class CartPaymentInformationComponent implements OnInit {
   ngOnInit(): void { }
 
   handleClickBuy() {
-    if (this.cartInformations.address) {
+    if (this.cartInformations.address && this.cartInformations.shippingType) {
       this.router.navigate(['/carrinho/pagamento']);
     }
   }

@@ -26,16 +26,11 @@ export class ProductComponent implements OnInit {
 
   getHandleClickCart() {
     this.cartService.addItemCart(this.productService.getProductVariant(), this.amount);
-    console.log("clickCart");
-    // this.routing.navigate(['/carrinho']);
   }
   getHandleClickBuy() {
-    console.log('clickBuy');
+    this.cartService.addItemCart(this.productService.getProductVariant(), this.amount);
+    this.routing.navigate(['/carrinho']);
   }
-
-  // getProductVariant(evt: ProductVariant) {
-  //   this.productService.changeVariableProduct(evt);
-  // }
 
   private verifyProduct() {
     if (!this.productService.getProduct()) {
