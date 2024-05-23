@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/shared/interfaces/order/order';
+import { OrderService } from 'src/app/shared/services/order/order.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class FinishLayoutComponent implements OnInit {
 
   constructor(
     protected user: UserService, 
+    private orderService: OrderService,
     private router: Router
     ) { }
 
@@ -23,6 +25,11 @@ export class FinishLayoutComponent implements OnInit {
 
   goToProfileOrder(){
     this.router.navigate(["/perfil/pedidos"]);
+  }
+
+  cancelOrder(){
+    this.orderService.cancelOrder(this.orderInformation?.orderCode!);
+    this.router.navigate(["/"]);
   }
 
 }
