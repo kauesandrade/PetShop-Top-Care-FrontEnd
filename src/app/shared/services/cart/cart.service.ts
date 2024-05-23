@@ -179,9 +179,13 @@ export class CartService {
   }
 
   clearCart() {
-    for (let item of this.itensCart) {
-      this.removeItemCart(item);
+    this.getLocalStorage();
+
+    console.log(this.itensCart);
+    while (this.itensCart.length > 0) {
+      this.removeItemCart(this.itensCart[0]);
     }
+    console.log(this.itensCart);
     this.cartInformations.address = undefined;
     this.cartInformations.shippingType = undefined;
   }

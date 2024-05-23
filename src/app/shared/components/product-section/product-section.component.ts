@@ -17,11 +17,17 @@ export class ProductSectionComponent implements OnInit {
   @Input() divider: boolean = false;
   productList: Array<ProductVariant> = [];
 
-  constructor(private filterService: FilterService, private productService: ProductService) {}
+  constructor(
+    private filterService: FilterService,
+    private productService: ProductService
+  ) {}
 
   ngOnInit(): void {
     if (this.category?.length) {
-      this.productList = this.filterService.filterProducts(this.category, productData.product);
+      this.productList = this.filterService.filterProducts(
+        this.category,
+        productData.product
+      );
       this.format();
     } else if (this.product) {
       this.productList = this.filterService.getSimilarProducts(this.product);

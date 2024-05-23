@@ -95,7 +95,7 @@ export class PaymentInformationComponent implements OnInit {
       return;
     }
 
-    if (this.paymentService.saveCard) {
+    if (this.paymentService.saveCard && this.userService.mainCard() == null) {
       let user = this.userService.loggedUser!;
       user?.cards.push(this.paymentService.card);
 

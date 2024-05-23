@@ -46,15 +46,20 @@ export class CardFormComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isOpen();
-    this.cardForm = this.formBuilder.group({
-      name: [this.card.name, [Validators.required, EmptyValidator]],
-      lastDigits: [this.card.lastDigits, [Validators.required, EmptyValidator]],
-      expirationDate: [
-        this.card.expirationDate,
-        [Validators.required, EmptyValidator],
-      ],
-      mainCard: [this.card.mainCard],
-    });
+    if (this.card) {
+      this.cardForm = this.formBuilder.group({
+        name: [this.card.name, [Validators.required, EmptyValidator]],
+        lastDigits: [
+          this.card.lastDigits,
+          [Validators.required, EmptyValidator],
+        ],
+        expirationDate: [
+          this.card.expirationDate,
+          [Validators.required, EmptyValidator],
+        ],
+        mainCard: [this.card.mainCard],
+      });
+    }
     this.updateDisplayCard();
   }
 

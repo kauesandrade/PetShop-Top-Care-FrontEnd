@@ -22,6 +22,7 @@ export class ChooseCardComponent implements OnInit {
     if (this.userService.loggedUser?.cards) {
       this.userCards = this.userService.loggedUser?.cards;
     }
+    console.log(this.userCards);
   }
 
   selectCard(card: Card) {
