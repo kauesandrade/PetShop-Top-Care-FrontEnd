@@ -16,4 +16,17 @@ export class FinishInformationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getValuePayment(){
+    if(this.orderInformation?.payment?.method?.value == 'card'){
+      return "Cartão de Crédito";
+    }
+    if(this.orderInformation?.payment?.method?.value == 'pix'){
+      return "Pix";
+    }
+    if(this.orderInformation?.payment?.method?.value == 'bankSlip'){
+      return "Boleto";
+    }
+    return ""
+  }
+
 }

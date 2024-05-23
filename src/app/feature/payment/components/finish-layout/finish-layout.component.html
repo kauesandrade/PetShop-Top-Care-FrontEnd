@@ -1,7 +1,9 @@
 <div class="content">
     <div class="acknowledgment">
-        <h6>Agredeçemos por escolher a Petshop Top Care, {{user.loggedUser?.name}}</h6>
-        <p>Enviamos detalhes do seu pedido para seu email: <strong>{{user.loggedUser?.email}}</strong></p>
+        <div class="acknowledgment-send">
+            <h6>Agredeçemos por escolher a Petshop Top Care, {{user.loggedUser?.name}}</h6>
+            <p>Enviamos detalhes do seu pedido para seu email: <strong>{{user.loggedUser?.email}}</strong></p>
+        </div>
         <p><strong>Pedido: {{orderInformation?.orderCode}}</strong></p>
     </div>
     <div class="divider"></div>
@@ -13,7 +15,7 @@
                             <p>Código Pix</p>
                             <input
                               type="text"
-                              value="00020101021226770014BR.GOV.BCB.PIX2555api.itau/pix/qr/v2/ed31ffa1-6a75-443a-83b5-5895c65f90d35204000053039865802BR5925PET CENTER PARTICIPACOES 6009SAO PAULO62070503***6304C4F7"
+                              [value]="orderInformation?.payment?.method?.pix?.copyPasteCode"
                             />
                         </label>
                     <div class="howPay">
@@ -26,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="payQRCode">
+                <div class="payQRCode underDiv">
                     <p>QR code</p>
                     <img src="../../../../../assets/images/qrCodeFinish.png" alt="QRCode">
                 </div>
@@ -40,8 +42,8 @@
         <ng-container *ngIf="orderInformation?.payment?.method?.value == 'bankSlip'">
             <div class="informations">
                 <div class="input-howPay">
-                    <div class="">
-                        <h6>Vencimento do boleto: {{orderInformation?.payment?.method?.value || "15/12/23" }}</h6>
+                    <div class="div-experation">
+                        <h6 class="experation">Vencimento do boleto: {{orderInformation?.payment?.method?.bankSlip?.expirationInterval }} dias</h6>
                     </div>
                     <div class="howPay">
                         <p class="title">Como pagar?</p>
@@ -52,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="payCodeBar">
+                <div class="payCodeBar underDiv">
                     <p>Código de barra</p>
                     <img src="../../../../../assets/images/codeBarFinish.png" alt="CodeBar">
                 </div>
@@ -66,9 +68,9 @@
         <ng-container *ngIf="orderInformation?.payment?.method?.value == 'card'">
             <div class="informations">
                 <div class="input-howPay">
-                    <div>
-                        <h6>Cartão de Crédito final 0923</h6>
-                        <h6>Nome: {{user.loggedUser?.name}}</h6>
+                    <div class="div-cardValue">
+                        <h6 class="cardValue">Cartão de Crédito final 0923</h6>
+                        <h6 class="cardValue">Nome: {{user.loggedUser?.name}}</h6>
                     </div>
                     <div class="howPay">
                         <p class="title">Confirme seu pagamento:</p>
@@ -78,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="button underDiv">
                     <button appButton="secondary" (click)="goToProfileOrder()">Ir para meus pedidos</button>
                 </div>
             </div>

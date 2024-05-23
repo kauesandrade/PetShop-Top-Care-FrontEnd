@@ -25,7 +25,7 @@ export class FinishedPaymentComponent implements OnInit {
   ngOnInit(): void {
      this.orderInformation = this.orderService.getOrder(this.id) || undefined
      if(typeof this.orderInformation == 'undefined'){
-      // this.router.navigate(["/perfil"]);
+      this.router.navigate(["/perfil"]);
      }
   }
 }

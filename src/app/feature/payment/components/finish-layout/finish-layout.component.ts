@@ -20,7 +20,7 @@ export class FinishLayoutComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-
+    console.log(this.orderInformation)
   }
 
   goToProfileOrder(){
