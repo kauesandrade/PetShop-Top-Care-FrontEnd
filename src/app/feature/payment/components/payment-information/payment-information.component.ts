@@ -13,6 +13,7 @@ import { PaymentMethod } from 'src/app/shared/interfaces/payment/payment-method'
 import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { PaymentService } from 'src/app/shared/services/payment/payment.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-payment-information',
@@ -31,6 +32,7 @@ export class PaymentInformationComponent implements OnInit {
     private cartService: CartService,
     private orderService: OrderService,
     private paymentService: PaymentService,
+    private userService: UserService,
     private router: Router
   ) {}
 
@@ -54,13 +56,8 @@ export class PaymentInformationComponent implements OnInit {
         expirationInterval: 2,
       };
     }
-    return {
-      value: 'card',
-      name: 'Bernardo',
-      lastDigits: '9875',
-      expirationDate: '1001',
-      mainCard: false,
-    };
+    // this.paymentService.checkCVV();
+    return this.paymentService.card;
   }
 
   generatePayment(): Payment {
@@ -75,6 +72,17 @@ export class PaymentInformationComponent implements OnInit {
   }
 
   finishPayment() {
+    if (this.paymentService.hasErrors()) {
+      return;
+    }
+
+    if (this.paymentService.saveCard) {
+      let user = this.userService.loggedUser!;
+      user?.cards.push(this.paymentService.card);
+
+      this.userService.updateUser(user);
+    }
+
     let newOrder: Order = {
       orderCode: 11872635,
       items: this.cartService.itensCart,

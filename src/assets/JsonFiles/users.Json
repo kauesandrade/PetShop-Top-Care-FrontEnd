@@ -459,7 +459,10 @@
           "number": 0,
           "complement": "string"
         }
-      ]
+      ],
+      "cards": [],
+      "orders": [],
+      "subscriptions": []
     },
     {
       "name": "Leticia Mafra",
@@ -489,7 +492,10 @@
           "number": 0,
           "complement": "string"
         }
-      ]
+      ],
+      "cards": [],
+      "orders": [],
+      "subscriptions": []
     },
     {
       "name": "Kaue Schaefer de Andrade",
@@ -519,7 +525,10 @@
           "number": 0,
           "complement": "string"
         }
-      ]
+      ],
+      "cards": [],
+      "orders": [],
+      "subscriptions": []
     }
   ]
 }

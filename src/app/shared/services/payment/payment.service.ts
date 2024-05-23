@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { PaymentMethod } from '../../interfaces/payment/payment-method';
 import { Card } from '../../interfaces/payment/card';
+import { UserService } from '../user/user.service';
+import { CartService } from '../cart/cart.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,21 +12,51 @@ export class PaymentService {
     value: 'card',
   };
 
-  card: Card = {
-    value: 'card',
-    name: '',
-    lastDigits: '',
-    expirationDate: '',
-    mainCard: false,
-  };
+  card!: Card;
+  saveCard = false;
+  cvv: number = 0;
+  parcels = new Array<number>();
 
-  constructor() {
-    this.setBlankCard();
+  errors = true;
+
+  constructor(
+    private userService: UserService,
+    private cartService: CartService
+  ) {
+    this.initCard();
+    this.defineParcels();
+  }
+
+  initCard() {
+    if (this.userService.mainCard() != null) {
+      this.card = this.userService.mainCard()!;
+    } else {
+      this.setBlankCard();
+    }
+  }
+
+  defineParcels() {
+    this.parcels = new Array<number>();
+    for (
+      let i = 1;
+      i <= this.cartService.cartInformations.parcelsNumber!;
+      i++
+    ) {
+      this.parcels?.push(this.cartService.cartInformations.totalPrice! / i);
+    }
+  }
+
+  setCvv(cvv: number) {
+    this.cvv = cvv;
+  }
+
+  setSaveCard(value: boolean) {
+    this.saveCard = value;
   }
 
   setBlankCard() {
     this.card = {
-      value: this.paymentMethod.value,
+      value: 'card',
       name: '',
       lastDigits: '',
       expirationDate: '',
@@ -36,8 +68,20 @@ export class PaymentService {
     this.card = card;
   }
 
+  hasErrors() {
+    if (this.errors) {
+      return true;
+    }
+    return false;
+  }
+
+  setErrors(value: boolean) {
+    this.errors = value;
+  }
+
   setPaymentMethod(paymentMethod: PaymentMethod) {
     this.paymentMethod = paymentMethod;
+    this.defineParcels();
 
     if (paymentMethod.value === 'card') {
       this.setBlankCard();

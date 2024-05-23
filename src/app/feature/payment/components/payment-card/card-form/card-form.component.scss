@@ -5,9 +5,125 @@
 
   form {
     @include subgrid();
+    row-gap: 1rem;
 
-    * {
+    label {
+      position: relative;
       grid-column: 1 / -1;
+      grid-row: auto / span 1;
+      order: 0;
+
+      @media (min-width: $tablet) {
+        grid-column: 1 / span 3;
+      }
+      @media (min-width: $desktop) {
+        grid-column: 1 / span 4;
+      }
+
+      input,
+      select {
+        width: 100%;
+      }
+    }
+
+    .cvv-expiration {
+      @include flex(column);
+      gap: 1rem;
+
+      order: 1;
+
+      @media (min-width: $tablet) {
+        order: 0;
+        @include flex(row);
+        grid-column: 1 / span 3;
+      }
+      @media (min-width: $desktop) {
+        grid-column: 1 / span 4;
+      }
+
+      label {
+        width: 100%;
+      }
+    }
+
+    .display-card {
+      @include subgrid();
+      row-gap: 1rem;
+      grid-column: 1/ -1;
+      grid-row: auto / span 3;
+      order: 2;
+
+      @media (min-width: $tablet) {
+        order: 0;
+        grid-column: auto / span 3;
+      }
+      @media (min-width: $desktop) {
+        grid-column: auto / span 4;
+      }
+
+      app-card-display {
+        place-self: center;
+        grid-column: 1 / -1;
+        width: 100%;
+        @media (min-width: $mobile) {
+          width: 50%;
+        }
+        @media (min-width: $tablet) {
+          width: 100%;
+        }
+        @media (min-width: $desktopHD) {
+          grid-column: 2 / span 3;
+        }
+      }
+      label {
+        grid-column: 1/ -1;
+        width: 100%;
+        @media (min-width: $desktopHD) {
+          grid-column: 2 / span 3;
+        }
+      }
+
+      label {
+        @include flex(row, center, center);
+        @media (min-width: $tablet) {
+          @include flex($align: center, $justify: flex-start);
+        }
+
+        input {
+          width: auto;
+          height: 1.5rem;
+        }
+      }
+    }
+
+    button {
+      place-self: end;
+      height: 2.5rem;
+      width: 100%;
+      grid-column: 1 / -1;
+      order: 3;
+
+      @media (min-width: $tablet) {
+        order: 0;
+        grid-column: auto / span 3;
+      }
+      @media (min-width: $desktop) {
+        grid-column: auto / span 4;
+      }
     }
   }
+}
+
+.has-error {
+  border-color: $error;
+  color: $error;
+}
+
+.error-message {
+  @include text(small);
+  color: $error;
+  position: absolute;
+  width: auto;
+  top: 100%;
+  left: 0;
 }
