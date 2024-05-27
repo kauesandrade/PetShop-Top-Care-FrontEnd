@@ -132,10 +132,12 @@
             "total": 1000,
             "method": {
               "value": "card",
-              "name": "Bernardo",
-              "lastDigits": "1234",
-              "expirationDate": "01/01",
-              "mainCard": true
+              "card": {
+                "name": "Bernardo",
+                "lastDigits": "1234",
+                "expirationDate": "01/01",
+                "mainCard": true
+              }
             },
             "parcels": 2,
             "status": "Pago"
@@ -317,9 +319,11 @@
             "total": 100,
             "method": {
               "value": "pix",
-              "copyPasteCode": "00000",
-              "qrCode": "00000",
-              "expirationInterval": 100000
+              "pix": {
+                "copyPasteCode": "00000",
+                "qrCode": "00000",
+                "expirationInterval": 100000
+              }
             },
             "parcels": 1,
             "status": "Pago"
@@ -421,9 +425,11 @@
             "total": 100,
             "method": {
               "value": "pix",
-              "copyPasteCode": "00000",
-              "qrCode": "00000",
-              "expirationInterval": 100000
+              "pix": {
+                "copyPasteCode": "00000",
+                "qrCode": "00000",
+                "expirationInterval": 100000
+              }
             },
             "parcels": 1,
             "status": "Pago"

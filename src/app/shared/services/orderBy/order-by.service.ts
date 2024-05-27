@@ -84,22 +84,20 @@ export class OrderByService {
       }
       case 'Mais Antigo': {
         arrayOrder = [...orderList].sort((o1, o2) => {
-          return this.orderByDate(o1.orderDate, o2.orderDate);
-        });
-        arrayOrder.reverse();
-        break;
-      }
-      case 'Maior Preço': {
-        arrayOrder = [...orderList].sort((o1, o2) => {
-          return this.orderByPrice(o1.payment.total, o2.payment.total);
+          return this.orderByDateDesc(o1.orderDate, o2.orderDate);
         });
         break;
       }
-      case 'Menor Preço': {
+      case 'Entregue': {
         arrayOrder = [...orderList].sort((o1, o2) => {
-          return this.orderByPrice(o1.payment.total, o2.payment.total);
+          return this.orderByDate(o1.expectedDate, o2.expectedDate);
         });
-        arrayOrder.reverse();
+        break;
+      }
+      case 'Não Entregue': {
+        arrayOrder = [...orderList].sort((o1, o2) => {
+          return this.orderByDateDesc(o1.expectedDate, o2.expectedDate);
+        });
         break;
       }
     }
@@ -111,30 +109,16 @@ export class OrderByService {
     let arrayOrder: Array<Subscription> = [];
 
     switch (order) {
-      case 'Mais Recente': {
+      case 'Próxima Entrega': {
         arrayOrder = [...orderList].sort((o1, o2) => {
           return this.orderByDate(o1.nextShipping, o2.nextShipping);
         });
         break;
       }
-      case 'Mais Antigo': {
+      case 'Última Entrega': {
         arrayOrder = [...orderList].sort((o1, o2) => {
-          return this.orderByDate(o1.nextShipping, o2.nextShipping);
+          return this.orderByDateDesc(o1.nextShipping, o2.nextShipping);
         });
-        arrayOrder.reverse();
-        break;
-      }
-      case 'Maior Preço': {
-        arrayOrder = [...orderList].sort((o1, o2) => {
-          return this.orderByPrice(o1.payment.total, o2.payment.total);
-        });
-        break;
-      }
-      case 'Menor Preço': {
-        arrayOrder = [...orderList].sort((o1, o2) => {
-          return this.orderByPrice(o1.payment.total, o2.payment.total);
-        });
-        arrayOrder.reverse();
         break;
       }
     }
@@ -152,15 +136,46 @@ export class OrderByService {
     return 0;
   }
 
-  private orderByDate(value1: string, value2: string) {
-    let date1 = new Date(value1);
-    let date2 = new Date(value2);
+  private formatToDate(date: string) {
+    return `${date.slice(0, 2)}/${date.slice(2, 4)}/${date.slice(4)}`;
+  }
 
-    if (date1 > date2) {
+  private orderByDate(value1: string, value2: string) {
+    let date1 = Date.parse('01/01/0001');
+    let date2 = Date.parse('01/01/0001');
+
+    if (value1) {
+      date1 = Date.parse(this.formatToDate(value1));
+    }
+    if (value2) {
+      date2 = Date.parse(this.formatToDate(value2));
+    }
+
+    if (date1 < date2) {
       return -1;
     }
+    if (date1 > date2) {
+      return 1;
+    }
+    return 0;
+  }
+
+  private orderByDateDesc(value1: string, value2: string) {
+    let date1 = Date.parse('01/01/0001');
+    let date2 = Date.parse('01/01/0001');
+
+    if (value1) {
+      date1 = Date.parse(this.formatToDate(value1));
+    }
+    if (value2) {
+      date2 = Date.parse(this.formatToDate(value2));
+    }
+
     if (date1 < date2) {
       return 1;
+    }
+    if (date1 > date2) {
+      return -1;
     }
     return 0;
   }
