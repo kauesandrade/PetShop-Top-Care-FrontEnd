@@ -42,7 +42,7 @@ export class UserService implements OnChanges {
       }
     }
 
-    if (this.loggedUser) {
+    if (this.loggedUser?.name) {
       console.log(this.loggedUser);
       if (remember) {
         localStorage.setItem('user', JSON.stringify(this.loggedUser));

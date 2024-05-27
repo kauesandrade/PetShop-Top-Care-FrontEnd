@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -44,6 +44,12 @@ export class LoginFormComponent {
   changeShowPassword(event: Event) {
     event.preventDefault();
     this.showPassword = !this.showPassword;
+  }
+  resetLoginError() {
+    this.login?.setErrors(null);
+    this.password?.setErrors(null);
+    console.log(this.login?.errors);
+    console.log(this.password?.errors);
   }
 
   isFormValid() {
