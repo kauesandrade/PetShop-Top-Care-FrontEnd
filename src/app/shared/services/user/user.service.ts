@@ -29,6 +29,10 @@ export class UserService implements OnChanges {
   }
 
   login(login: string, password: string, remember: boolean): boolean {
+    console.log(this.users.user);
+    console.log(login);
+    console.log(password);
+
     for (const user of this.users.user) {
       if (user.cpf == login || user.email == login) {
         if (user.password == password) {
@@ -38,13 +42,11 @@ export class UserService implements OnChanges {
       }
     }
 
-    if (remember) {
-      localStorage.setItem('user', JSON.stringify(this.loggedUser));
-    }
-
-    console.log(this.loggedUser);
-
     if (this.loggedUser) {
+      console.log(this.loggedUser);
+      if (remember) {
+        localStorage.setItem('user', JSON.stringify(this.loggedUser));
+      }
       return true;
     }
     return false;

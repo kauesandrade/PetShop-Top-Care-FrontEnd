@@ -44,7 +44,6 @@ export class LoginFormComponent {
   changeShowPassword(event: Event) {
     event.preventDefault();
     this.showPassword = !this.showPassword;
-    console.log(this.login?.errors);
   }
 
   isFormValid() {
@@ -52,6 +51,10 @@ export class LoginFormComponent {
   }
 
   onSubmit() {
+    if (!this.isFormValid()) {
+      return;
+    }
+
     const formValues = this.loginForm.value;
 
     console.log(formValues);

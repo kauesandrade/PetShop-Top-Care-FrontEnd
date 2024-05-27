@@ -1,4 +1,8 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form
+  [formGroup]="loginForm"
+  (keydown.enter)="onSubmit()"
+  (ngSubmit)="onSubmit()"
+>
   <label for="login" appInput>
     <p>E-mail ou CPF</p>
     <input
@@ -33,6 +37,7 @@
         <button
           (click)="changeShowPassword($event)"
           [class.has-error]="password?.touched && password?.invalid"
+          type="button"
         >
           <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
         </button>
