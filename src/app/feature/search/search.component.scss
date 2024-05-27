@@ -1,45 +1,41 @@
-@import 'styles';
+@import "styles";
 
 main {
-    @include grid-container();
-    row-gap: 2rem;
-    overflow: hidden; 
+  @include grid-container();
+  row-gap: 2rem;
+  overflow: hidden;
 
-    .div-seachBy-orderBy{
-      grid-column: 1/-1;
-      display: flex;
-      justify-content: space-between;
-      flex-direction: column;
-      align-items: start;
+  .div-seachBy-orderBy {
+    grid-column: 1/-1;
+    @include flex(column, flex-start, space-between);
+    gap: 0.5rem;
+
+    @media (min-width: 500px) {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .span-seachBy {
+      @include text(large, bold);
+    }
+
+    .div-orderBy {
+      @include flex();
+      justify-self: end;
       gap: 0.5rem;
-      
-      @media(min-width: 500px){
-        flex-direction: row;
-        align-items: center;
+
+      .span-orderBy {
+        @include text(normal, bold);
       }
-
-      .span-seachBy{
-        @include text(large, bold);
-      }
-
-      .div-orderBy{
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-
-        .span-orderBy{
-          @include text(normal, bold);
-        }
-        
-      }
-
-    }
-
-    app-product-layout, app-product-filter{
-      @include subgrid();
-    }
-  
-    @media (max-width: 320px){
-      row-gap: 1rem;
     }
   }
+
+  app-product-layout,
+  app-product-filter {
+    @include subgrid();
+  }
+
+  @media (max-width: 320px) {
+    row-gap: 1rem;
+  }
+}

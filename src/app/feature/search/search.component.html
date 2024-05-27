@@ -4,7 +4,10 @@
     <span class="span-seachBy">Pesquisa "{{ searchBy }}"</span>
     <div class="div-orderBy">
       <span class="span-orderBy"
-        >{{ productsList.length }} resultados ordenados por</span
+        >{{ productsList.length }} resultado{{
+          productsList.length > 1 ? "s" : ""
+        }}
+        ordenado{{ productsList.length > 1 ? "s" : "" }} por</span
       >
       <app-order-by (emitOrderBy)="getOrderBy($event)"></app-order-by>
     </div>
