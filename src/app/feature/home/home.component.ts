@@ -13,32 +13,56 @@ export class HomeComponent {
 
   itens: Array<MainCarousel> = [
     {
-      imgSrc: 'assets/images/1.png',
+      imgSrcs: [
+        '../../../../assets/images/carousel-images/carousel1desktop.png',
+        '../../../../assets/images/carousel-images/carousel1tablet.png',
+        '../../../../assets/images/carousel-images/carousel1mobile.png'
+      ],
       link: '',
       alt: 'card 1',
     },
     {
-      imgSrc: 'assets/images/2.png',
+      imgSrcs: [
+        '../../../../assets/images/carousel-images/carousel2desktop.png',
+        '../../../../assets/images/carousel-images/carousel2tablet.png',
+        '../../../../assets/images/carousel-images/carousel2mobile.png'
+    ],
       link: '',
       alt: 'card 2',
     },
     {
-      imgSrc: 'assets/images/3.png',
+      imgSrcs: [
+        '../../../../assets/images/carousel-images/carousel3desktop.png',
+        '../../../../assets/images/carousel-images/carousel3tablet.png',
+        '../../../../assets/images/carousel-images/carousel3mobile.png'
+      ],
       link: '',
       alt: 'card 3',
     },
     {
-      imgSrc: 'assets/images/4.png',
+      imgSrcs: [
+        '../../../../assets/images/carousel-images/carousel4desktop.png',
+        '../../../../assets/images/carousel-images/carousel4tablet.png',
+        '../../../../assets/images/carousel-images/carousel4mobile.png'
+      ],
       link: '/sobre-nos',
       alt: 'card 4',
     },
     {
-      imgSrc: 'assets/images/5.png',
+      imgSrcs: [
+        '../../../../assets/images/carousel-images/carousel5desktop.png',
+        '../../../../assets/images/carousel-images/carousel5tablet.png',
+        '../../../../assets/images/carousel-images/carousel5mobile.png'
+      ],
       link: '/nossas-lojas',
       alt: 'card 5',
     },
     {
-      imgSrc: 'assets/images/6.png',
+      imgSrcs: [
+        '../../../../assets/images/carousel-images/carousel6desktop.png',
+        '../../../../assets/images/carousel-images/carousel6tablet.png',
+        '../../../../assets/images/carousel-images/carousel6mobile.png'
+      ],
       link: 'contate-nos',
       alt: 'card 6',
     },

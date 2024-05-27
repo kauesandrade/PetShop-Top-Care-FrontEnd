@@ -1,5 +1,5 @@
 export interface MainCarousel {
-    imgSrc: string;
+    imgSrcs: Array<string>
     link: string;
     alt?: string;
 }
