@@ -85,12 +85,35 @@ export class PaymentService {
     this.errors = value;
   }
 
+  checkCVV() {
+    if (this.cvv !== 0) {
+      return true;
+    }
+    return false;
+  }
+
+  resetPayment() {
+    this.cvv = 0;
+    if (this.userService.mainCard() !== null) {
+      this.card = this.userService.mainCard()!;
+    }
+    this.parcels = [1, 1];
+    this.parcelsNumber = 1;
+
+    this.paymentMethod = {
+      value: 'card',
+      card: this.card,
+    };
+  }
+
   setPaymentMethod(paymentMethod: PaymentMethod) {
     this.paymentMethod = paymentMethod;
     this.defineParcels();
 
     if (paymentMethod.value === 'card') {
-      this.setBlankCard();
+      if (this.card) {
+        this.resetPayment();
+      }
     }
   }
 }

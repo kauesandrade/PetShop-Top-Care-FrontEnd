@@ -18,15 +18,13 @@
       {{ paymentInformation.address?.cep! | mask : "00000-000" || "12345-087" }}
     </p>
     <h6>
-      {{
-        paymentInformation.shippingType?.shippingTime ||
-          "Entrega de 4 a 6 dias úteis"
-      }}
+      Entrega
+      {{ paymentInformation.shippingType?.shippingTime }}
     </h6>
-    <!-- <button appButton="secondary" (click)="openAddresses = true">
-      Alterar endereço
-    </button> -->
   </div>
+  <button appButton="secondary" (click)="openAddresses = true">
+    Alterar endereço
+  </button>
   <div class="divider"></div>
   <div class="order-info">
     <h6>Pedido</h6>
@@ -37,6 +35,10 @@
         }})
       </p>
       <p>{{ paymentInformation.partialPrice | currency : "BRL" }}</p>
+    </div>
+    <div class="info-container">
+      <p>Desconto</p>
+      <p>{{ paymentInformation.discountPrice | currency : "BRL" }}</p>
     </div>
     <div class="info-container">
       <p>Valor do frete</p>
