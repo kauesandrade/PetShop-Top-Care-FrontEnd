@@ -9,12 +9,12 @@
         border: 1px solid gray;
     }
 
-    .acknowledgment{
+    .acknowledgment {
         @include flex(column, start, start);
         grid-column: 1/ -1;
         gap: 0.5rem;
-        
-        &-send{
+
+        &-send {
             gap: 0.25rem;
         }
     }
@@ -29,27 +29,31 @@
             @include flex(column, start, space-between);
             gap: 1rem;
 
-            .button{
+            .button {
                 @include flex(column, center, center);
                 width: 100%;
                 gap: 0.5rem;
-                button{
+
+                button {
                     width: 100%;
                 }
             }
 
-            .payQRCode, .payCodeBar{
+            .payQRCode,
+            .payCodeBar {
                 width: 100%;
                 gap: 0.5rem;
                 order: -1;
                 @include flex(column, center, center);
             }
-            
+
 
             @media(min-width: $tablet) {
                 @include flex(row, start, space-between);
 
-                .payQRCode, .payCodeBar, .button {
+                .payQRCode,
+                .payCodeBar,
+                .button {
                     width: auto;
                     order: initial;
                 }
@@ -59,29 +63,51 @@
                 width: 100%;
                 @include flex(column, start, start);
                 gap: 1rem;
-                
+
                 @media(min-width: $tablet) {
                     width: auto;
                 }
 
-                .div-input{
+                .div-input {
                     width: 100%;
-                        input{
-                            width: 100%;
+
+                    div {
+                        width: 100%;
+                        button{
+                            &.copied {
+                                border-color: $green;
+
+                                .iconCopied{
+                                    color: $green;
+                                }
+                            }
                         }
+                        input {
+                            width: 100%;
+                            &.copied {
+                                border-color: $green;
+                            }
+                        }
+                    }
+
+
+
+
                 }
 
-                .div-experation, .div-cardValue{
+                .div-experation,
+                .div-cardValue {
                     width: 100%;
 
-                    .cardValue, .experation{
+                    .cardValue,
+                    .experation {
                         @include text(small, bold);
 
-                        @media(min-width: $mobile){
+                        @media(min-width: $mobile) {
                             @include text(medium, bold);
                         }
 
-                        @media(min-width: $tablet){
+                        @media(min-width: $tablet) {
                             @include heading(h6);
                         }
                     }
@@ -113,11 +139,12 @@
                 }
             }
 
-            .underDiv{
+            .underDiv {
 
-                &.payCodeBar{
-                    img{
-                        width: 15rem;;
+                &.payCodeBar {
+                    img {
+                        width: 15rem;
+                        ;
                     }
                 }
             }
@@ -140,22 +167,23 @@
         }
     }
 
-    .under-buttons{
+    .under-buttons {
         @include flex(column, center, space-between);
         grid-column: 1/ -1;
         gap: 1rem;
-        
-        button{
+
+        button {
             width: 100%;
         }
-        
-        @media(min-width: $tablet){
+
+        @media(min-width: $tablet) {
             @include flex(row, center, space-between);
-            button{
+
+            button {
                 width: 15rem;
-            }    
+            }
         }
     }
-    
+
 
 }
