@@ -1,31 +1,34 @@
 <div class="content">
   <div class="address-info">
-    <h6>Endereço de entrega</h6>
-    <p>
-      <strong> {{ paymentInformation.address?.name }}</strong>
-    </p>
-    <p>
-      Rua {{ paymentInformation.address?.street || "Walter Marquardt" }},
-      {{ paymentInformation.address?.number || "2" }}
-    </p>
-    <p>
-      {{ paymentInformation.address?.neighborhood || "Vila Nova" }} -
-      {{ paymentInformation.address?.city || "Jaraguá do Sul" }} -
-      {{ paymentInformation.address?.state || "SC" }}
-    </p>
-    <p>
-      CEP:
-      {{ paymentInformation.address?.cep! | mask : "00000-000" || "12345-087" }}
-    </p>
-    <h6>
-      {{
-        paymentInformation.shippingType?.shippingTime ||
-          "Entrega de 4 a 6 dias úteis"
-      }}
-    </h6>
-    <!-- <button appButton="secondary" (click)="openAddresses = true">
+    <div>
+
+      <h6>Endereço de entrega</h6>
+      <p>
+        <strong> {{ paymentInformation.address?.name }}</strong>
+      </p>
+      <p>
+        Rua {{ paymentInformation.address?.street || "Walter Marquardt" }},
+        {{ paymentInformation.address?.number || "2" }}
+      </p>
+      <p>
+        {{ paymentInformation.address?.neighborhood || "Vila Nova" }} -
+        {{ paymentInformation.address?.city || "Jaraguá do Sul" }} -
+        {{ paymentInformation.address?.state || "SC" }}
+      </p>
+      <p>
+        CEP:
+        {{ paymentInformation.address?.cep! | mask : "00000-000" || "12345-087" }}
+      </p>
+      <h6>
+        {{
+          paymentInformation.shippingType?.shippingTime ||
+            "Entrega de 4 a 6 dias úteis"
+        }}
+      </h6>
+    </div>
+    <button appButton="secondary" (click)="openAddresses = true">
       Alterar endereço
-    </button> -->
+    </button>
   </div>
   <div class="divider"></div>
   <div class="order-info">
