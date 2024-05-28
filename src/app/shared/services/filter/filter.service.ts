@@ -59,23 +59,25 @@ export class FilterService {
 
     for (const productFind of productData.product) {
       let productService = new ProductService();
-
+      let isAll = 0;
+      
       productService.findProduct(productFind);
 
       productFind.category.forEach((categoryProduct) => {
-        categoryArray.sort().forEach((filter) => {
-          if (
-            categoryProduct.types.includes(filter) &&
-            !this.productFilterList.includes(
-              productService.getFirstProductVariant()
-            )
-          ) {
-            this.productFilterList.push(
-              productService.getFirstProductVariant()
-            );
+        categoryArray.sort().forEach((category) => {
+          if (categoryProduct.types.includes(category)) {
+            isAll++;
           }
         });
       });
+      if (
+        isAll == categoryArray.length &&
+        !this.productFilterList.includes(
+          productService.getFirstProductVariant()
+        )
+      ) {
+        this.productFilterList.push(productService.getFirstProductVariant());
+      }
     }
     return this.productFilterList;
   }
