@@ -13,9 +13,12 @@ export class FilterService {
   private productFilterList: Array<ProductVariant> = [];
   private allFilters: Array<Category> = [];
 
-  constructor() { }
+  constructor() {}
 
-  filterProducts(filters: Array<string>, productList: Array<ProductVariant | Product>) {
+  filterProducts(
+    filters: Array<string>,
+    productList: Array<ProductVariant | Product>
+  ) {
     this.productFilterList = [];
 
     if (filters.length) {
@@ -40,18 +43,16 @@ export class FilterService {
         });
       }
     } else {
-      productList.forEach(product => {
+      productList.forEach((product) => {
         let productService = new ProductService();
         productService.findProduct(product);
 
         this.productFilterList.push(productService.getFirstProductVariant());
-      })
+      });
     }
 
     return this.productFilterList;
   }
-
-
 
   getAllProductsOfCategory(categoryArray: Array<string>) {
     this.productFilterList = [];
@@ -91,14 +92,19 @@ export class FilterService {
 
       productService.findProduct(productFind);
 
-      productService.getFirstProductVariant().category.sort().forEach((category: Category) => {
-        if (
-          productService.getFirstProductVariant().category.includes(category) &&
-          productService.getFirstProductVariant().code != product.code
-        ) {
-          add++;
-        }
-      });
+      productService
+        .getFirstProductVariant()
+        .category.sort()
+        .forEach((category: Category) => {
+          if (
+            productService
+              .getFirstProductVariant()
+              .category.includes(category) &&
+            productService.getFirstProductVariant().code != product.code
+          ) {
+            add++;
+          }
+        });
 
       if (add >= 3) {
         this.productFilterList.push(productService.getFirstProductVariant());

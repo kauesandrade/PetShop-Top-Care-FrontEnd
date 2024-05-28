@@ -35,7 +35,7 @@
   <div class="services-sales">
     <a routerLink="/servicos">Serviços</a>
     <div class="line"></div>
-    <a routerLink="/busca">Promoções</a>
+    <a routerLink="/busca" [queryParams]="{ categoria: 'oferta' }">Promoções</a>
   </div>
   <label class="searchbar" for="searchbar" appInput>
     <div>
