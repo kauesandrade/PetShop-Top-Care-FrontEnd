@@ -54,7 +54,7 @@ export class PaymentInformationComponent implements OnInit {
         },
       };
     }
-    // this.paymentService.checkCVV();
+    this.paymentService.checkCVV();
     return {
       value: 'card',
       card: this.paymentService.card,
@@ -92,6 +92,7 @@ export class PaymentInformationComponent implements OnInit {
     this.paymentMethod = this.paymentService.paymentMethod;
 
     if (this.paymentService.hasErrors()) {
+      console.log('XC');
       return;
     }
 
@@ -100,6 +101,12 @@ export class PaymentInformationComponent implements OnInit {
       user?.cards.push(this.paymentService.card);
 
       this.userService.updateUser(user);
+    }
+
+    if (this.paymentService.paymentMethod.value == 'card') {
+      if (!this.paymentService.checkCVV()) {
+        return;
+      }
     }
 
     let newOrder: Order = {
@@ -116,6 +123,8 @@ export class PaymentInformationComponent implements OnInit {
     console.log(newOrder);
 
     this.orderService.createOrder(newOrder);
+
+    this.paymentService.resetPayment();
 
     this.cartService.clearCart();
 
