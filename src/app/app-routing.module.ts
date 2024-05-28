@@ -19,6 +19,7 @@ import { FavoritesComponent } from './feature/favorites/favorites.component';
 import { ReviewProductComponent } from './feature/user/orders/order/components/review-product/review-product.component';
 import { PaymentComponent } from './feature/payment/payment.component';
 import { FinishedPaymentComponent } from './feature/payment/finished-payment/finished-payment.component';
+import { ServicesComponent } from './feature/services/services.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -40,6 +41,9 @@ const routes: Routes = [
     component: RegisterComponent,
   },
   { path: 'login', title: 'Login | Top Care', component: LoginComponent },
+
+  { path: 'servicos', title: 'Serviços | Top Care', component: ServicesComponent },
+
   { path: 'busca', component: SearchComponent },
   {
     path: 'carrinho',
