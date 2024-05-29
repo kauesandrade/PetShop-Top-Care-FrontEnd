@@ -41,6 +41,22 @@
           </div>
         </div>
 
+        <div class="payQRCode underDiv">
+          <p>QR code</p>
+          <img
+            src="../../../../../assets/images/qrCodeFinish.png"
+            alt="QRCode"
+          />
+        </div>
+      </div>
+      <div class="card-payment-information">
+        <p>
+          O código Pix tem prazo de 30 minutos para pagamento. Caso não seja
+          realizado dentro desse período, o pedido será cancelado.
+        </p>
+      </div>
+    </ng-container>
+
     <ng-container
       *ngIf="orderInformation?.payment?.method?.value == 'bankSlip'"
     >
