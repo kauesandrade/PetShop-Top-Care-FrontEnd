@@ -1,6 +1,8 @@
 <div class="categories-content">
   <ng-container *ngFor="let category of categories; let i = index">
-    <a routerLink="">{{ category }}</a>
+    <a routerLink="/busca" [queryParams]="{ categoria: category }">{{
+      category
+    }}</a>
     <ng-container *ngIf="i < categories.length - 1">
       <div class="line"></div>
     </ng-container>

@@ -9,7 +9,9 @@
         [src]="(subscription?.product?.images)![0]"
         alt="Imagem do produto"
       />
-      <p>{{ subscription?.product?.title }}</p>
+      <p [title]="subscription?.product?.title">
+        {{ subscription?.product?.title }}
+      </p>
     </ng-template>
   </div>
   <div class="dates">

@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Subscription } from 'src/app/shared/interfaces/order/subscription';
 import { OrderByService } from 'src/app/shared/services/orderBy/order-by.service';
 import { SubscriptionService } from 'src/app/shared/services/subscription/subscription.service';
@@ -8,13 +8,8 @@ import { SubscriptionService } from 'src/app/shared/services/subscription/subscr
   templateUrl: './subscriptions.component.html',
   styleUrls: ['./subscriptions.component.scss'],
 })
-export class SubscriptionsComponent implements OnInit {
-  orderByOptions = [
-    'Mais Recente',
-    'Mais Antigo',
-    'Maior Preço',
-    'Menor Preço',
-  ];
+export class SubscriptionsComponent implements OnInit, OnChanges {
+  orderByOptions = ['Próxima Entrega', 'Última Entrega'];
 
   userSubscriptions: Subscription[] = [];
 

@@ -13,11 +13,11 @@ import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { Card } from 'src/app/shared/interfaces/payment/card';
 
 @Component({
-  selector: 'app-card-form',
-  templateUrl: './card-form.component.html',
-  styleUrls: ['./card-form.component.scss'],
+  selector: 'app-card-form-modal',
+  templateUrl: './card-form-modal.component.html',
+  styleUrls: ['./card-form-modal.component.scss'],
 })
-export class CardFormComponent implements OnInit {
+export class CardFormModalComponent implements OnInit {
   @Input() open = false;
   @Output() openChange = new EventEmitter<boolean>();
 

@@ -1,4 +1,8 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form
+  [formGroup]="loginForm"
+  (keydown.enter)="onSubmit()"
+  (ngSubmit)="onSubmit()"
+>
   <label for="login" appInput>
     <p>E-mail ou CPF</p>
     <input
@@ -7,6 +11,7 @@
       formControlName="login"
       placeholder="Digite seu e-mail ou cpf"
       [class.has-error]="login?.touched && login?.invalid"
+      (change)="resetLoginError()"
       required
     />
     <ng-container *ngIf="login?.touched && login?.invalid">
@@ -29,10 +34,12 @@
           formControlName="password"
           [class.has-error]="password?.touched && password?.invalid"
           required
+          (change)="resetLoginError()"
         />
         <button
           (click)="changeShowPassword($event)"
           [class.has-error]="password?.touched && password?.invalid"
+          type="button"
         >
           <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
         </button>

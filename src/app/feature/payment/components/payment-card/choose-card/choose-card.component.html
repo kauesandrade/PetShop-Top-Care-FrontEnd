@@ -1,5 +1,16 @@
 <div class="content">
+  <button class="add-button" (click)="addNewCard()">
+    <fa-icon [icon]="faPlus"></fa-icon>
+  </button>
   <ng-container *ngFor="let card of userCards">
     <app-card-card [card]="card" (click)="selectCard(card)"></app-card-card>
   </ng-container>
 </div>
+
+<app-card-form-modal
+  [(open)]="openAddCard"
+  [card]="editingCard"
+  [index]="cardIndex"
+  (editedCard)="addCard($event)"
+  (changedMainCard)="resetMainCards($event)"
+></app-card-form-modal>

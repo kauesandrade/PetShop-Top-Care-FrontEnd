@@ -25,6 +25,8 @@ export class ForgotPasswordCodeComponent implements OnChanges {
 
   @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
 
+  randomCode!: number;
+
   codeForm = this.formBuilder.group({
     code: ['', [Validators.required, EmptyValidator]],
   });
@@ -32,6 +34,7 @@ export class ForgotPasswordCodeComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isOpen();
+    this.generateRandomCode();
   }
 
   get code() {
@@ -45,9 +48,14 @@ export class ForgotPasswordCodeComponent implements OnChanges {
     }
   }
 
+  generateRandomCode() {
+    this.randomCode = Math.floor(Math.random() * 899999 + 100000);
+    console.log(this.randomCode);
+  }
+
   resendCode(e: Event) {
     e.preventDefault();
-    //
+    this.generateRandomCode();
   }
 
   closeModal() {
@@ -63,6 +71,10 @@ export class ForgotPasswordCodeComponent implements OnChanges {
   }
 
   onSubmit() {
+    if (this.randomCode != parseInt(this.code?.value!)) {
+      this.code?.setErrors({ wrongCode: true });
+      return;
+    }
     this.submittedCode.emit();
     this.closeModal();
   }

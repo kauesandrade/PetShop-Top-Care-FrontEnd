@@ -33,12 +33,13 @@ export class CardFormComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.updateDisplayCard();
+    this.updateParcels();
   }
 
   ngOnInit(): void {
     this.card = this.paymentService.card;
 
-    this.parcels = this.paymentService.parcels || [1];
+    this.updateParcels();
 
     this.cardForm = this.formBuilder.group({
       name: [this.card.name, [Validators.required, EmptyValidator]],
@@ -66,6 +67,12 @@ export class CardFormComponent implements OnInit, OnChanges {
 
   saveCVV() {
     this.paymentService.setCvv(this.cvv?.value);
+  }
+
+  updateParcels() {
+    this.parcels = this.paymentService.parcels;
+    console.log(this.parcels);
+    console.log(this.paymentService.parcels);
   }
 
   get name() {

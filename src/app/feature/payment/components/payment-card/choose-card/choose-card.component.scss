@@ -4,6 +4,24 @@
   @include subgrid();
   row-gap: 1rem;
 
+  .add-button {
+    @include flex();
+    padding: 0.5rem 0;
+    grid-column: 1 / -1;
+    background-color: $gray5;
+
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+
+    cursor: pointer;
+
+    fa-icon {
+      font-size: 2rem;
+      color: $gray3;
+    }
+  }
+
   app-card-card {
     grid-column: 1 / -1;
     cursor: pointer;

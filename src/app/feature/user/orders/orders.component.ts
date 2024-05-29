@@ -2,7 +2,6 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Order } from 'src/app/shared/interfaces/order/order';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { OrderByService } from 'src/app/shared/services/orderBy/order-by.service';
-import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-orders',
@@ -10,12 +9,7 @@ import { UserService } from 'src/app/shared/services/user/user.service';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit, OnChanges {
-  orderByOptions = [
-    'Mais Recente',
-    'Mais Antigo',
-    'Maior Preço',
-    'Menor Preço',
-  ];
+  orderByOptions = ['Mais Recente', 'Mais Antigo', 'Entregue', 'Não Entregue'];
 
   userOrders: Order[] = [];
 
@@ -23,6 +17,7 @@ export class OrdersComponent implements OnInit, OnChanges {
     private orderByService: OrderByService,
     private orderService: OrderService
   ) {}
+
   ngOnChanges(changes: SimpleChanges): void {
     this.updateOrders();
   }

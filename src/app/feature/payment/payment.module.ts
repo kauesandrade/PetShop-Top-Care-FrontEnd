@@ -29,6 +29,7 @@ import { CardFormComponent } from './components/payment-card/card-form/card-form
     ChooseCardComponent,
     FinishInformationComponent,
     FinishLayoutComponent,
+    CardFormComponent,
   ],
   imports: [
     CommonModule,
