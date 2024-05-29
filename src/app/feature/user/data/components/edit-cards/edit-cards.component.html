@@ -18,11 +18,11 @@
   </div>
 </dialog>
 
-<app-card-form
+<app-card-form-modal
   [(open)]="openCardModal"
   [card]="editingCard"
   [index]="cardIndex"
   (editedCard)="addCard($event)"
   (changedMainCard)="resetMainCards($event)"
 >
-</app-card-form>
+</app-card-form-modal>

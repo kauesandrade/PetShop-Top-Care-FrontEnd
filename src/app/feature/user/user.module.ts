@@ -14,8 +14,6 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
 import { LayoutComponent } from './components/layout/layout.component';
 import { OrderCardComponent } from './components/order-card/order-card.component';
 import { AddressFormComponent } from './data/components/address-form/address-form.component';
-import { CardFormComponent } from './data/components/edit-cards/card-form/card-form.component';
-import { EditCardsComponent } from './data/components/edit-cards/edit-cards.component';
 import { ProfileFormComponent } from './data/components/profile-form/profile-form.component';
 import { OrderDetailsComponent } from './orders/order/components/order-details/order-details.component';
 import { ChooseProductComponent } from './orders/order/components/order-status/choose-product/choose-product.component';
@@ -25,6 +23,7 @@ import { ReviewProductComponent } from './orders/order/components/review-product
 import { OrderComponent } from './orders/order/order.component';
 import { ChangePasswordComponent } from './data/components/change-password/change-password.component';
 import { ContactFormComponent } from './data/components/contact-form/contact-form.component';
+import { EditCardsComponent } from './data/components/edit-cards/edit-cards.component';
 
 const Components = [
   DataComponent,
@@ -42,8 +41,6 @@ const Components = [
     ContactFormComponent,
     AddressFormComponent,
     ChangePasswordComponent,
-    EditCardsComponent,
-    CardFormComponent,
     OrderCardComponent,
     OrderComponent,
     OrderStatusComponent,
@@ -51,6 +48,7 @@ const Components = [
     OrderShippingComponent,
     ChooseProductComponent,
     ReviewProductComponent,
+    EditCardsComponent,
   ],
   imports: [
     CommonModule,
