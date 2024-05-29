@@ -29,6 +29,7 @@
     .cvv-expiration {
       @include flex(column);
       gap: 1rem;
+      position: relative;
 
       order: 1;
 
@@ -43,6 +44,49 @@
 
       label {
         width: 100%;
+      }
+
+      fa-icon {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        right: 0;
+        font-size: 1rem;
+      }
+
+      .cvv-info {
+        @include flex();
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1.5rem 2rem;
+        z-index: 10;
+        height: auto;
+
+        border: 2px $primary solid;
+        border-radius: 0.5rem;
+        background-color: $white;
+
+        @media (min-width: $tablet) {
+          transform: translate(50%, -50%);
+        }
+
+        fa-icon {
+          position: absolute;
+          top: 4px;
+          right: 4px;
+          font-size: 1rem;
+          color: $primary;
+        }
+
+        img {
+          width: 5rem;
+        }
+
+        &.hovered {
+          display: block;
+        }
       }
     }
 

@@ -50,12 +50,23 @@
     </label>
     <div class="cvv-expiration">
       <label for="cvv" appInput>
-        <p>CVV</p>
+        <p>CVV/CVC</p>
+        <fa-icon
+          (click)="showCVVInformation = true"
+          [icon]="faQuestionCircle"
+        ></fa-icon>
+        <span class="cvv-info" [class.hovered]="showCVVInformation">
+          <fa-icon
+            (click)="showCVVInformation = false"
+            [icon]="faTimes"
+          ></fa-icon>
+          <img src="/assets/images/creditCard.png" alt="" />
+        </span>
         <input
           type="text"
           id="cvv"
           formControlName="cvv"
-          placeholder="CVV"
+          placeholder="CVV/CVC"
           [class.has-error]="cvv?.touched && cvv?.invalid"
           (change)="saveCVV()"
           mask="000"

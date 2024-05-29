@@ -7,6 +7,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { faQuestionCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { Card } from 'src/app/shared/interfaces/payment/card';
 import { PaymentService } from 'src/app/shared/services/payment/payment.service';
@@ -23,6 +24,10 @@ export class CardFormComponent implements OnInit, OnChanges {
   cardForm!: FormGroup;
 
   displayCard!: Card;
+
+  faQuestionCircle = faQuestionCircle;
+  faTimes = faTimes;
+  showCVVInformation = false;
 
   @Output() selectSavedCard = new EventEmitter();
 
