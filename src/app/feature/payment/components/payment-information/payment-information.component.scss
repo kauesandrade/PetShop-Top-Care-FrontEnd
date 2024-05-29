@@ -36,7 +36,7 @@
       p {
         @include text(small);
 
-        &.free-shipping {
+        &.green {
           color: $green;
         }
       }

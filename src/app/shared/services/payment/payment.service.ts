@@ -108,12 +108,5 @@ export class PaymentService {
 
   setPaymentMethod(paymentMethod: PaymentMethod) {
     this.paymentMethod = paymentMethod;
-    this.defineParcels();
-
-    if (paymentMethod.value === 'card') {
-      if (this.card) {
-        this.resetPayment();
-      }
-    }
   }
 }

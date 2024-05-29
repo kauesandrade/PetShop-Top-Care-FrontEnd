@@ -36,10 +36,7 @@
       </p>
       <p>{{ paymentInformation.partialPrice | currency : "BRL" }}</p>
     </div>
-    <div class="info-container">
-      <p>Desconto</p>
-      <p>{{ paymentInformation.discountPrice | currency : "BRL" }}</p>
-    </div>
+
     <div class="info-container">
       <p>Valor do frete</p>
       <ng-container
@@ -48,8 +45,14 @@
         <p>{{ paymentInformation.shippingType?.price | currency : "BRL" }}</p>
       </ng-container>
       <ng-template #freeShipping>
-        <p class="free-shipping">Grátis</p>
+        <p class="green">Grátis</p>
       </ng-template>
+    </div>
+    <div class="info-container" *ngIf="paymentInformation.discountPrice">
+      <p>Desconto</p>
+      <p class="green">
+        {{ paymentInformation.discountPrice | currency : "BRL" }}
+      </p>
     </div>
     <div class="info-container">
       <h6>Total</h6>
