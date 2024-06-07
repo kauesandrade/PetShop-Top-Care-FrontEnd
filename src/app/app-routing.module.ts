@@ -115,6 +115,23 @@ const routes: Routes = [
     component: FavoritesComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'dashboard',
+    title: 'DashBoard | Top Care',
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'produtos',
+        pathMatch: 'full',
+      },
+      {
+        path: 'produtos',
+        component: FavoritesComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
