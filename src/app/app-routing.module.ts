@@ -126,10 +126,73 @@ const routes: Routes = [
         redirectTo: 'produtos',
         pathMatch: 'full',
       },
+
       {
         path: 'produtos',
+        title: 'DashBoard Produtos | Top Care',
+        component: FavoritesComponent
+      },
+      {
+        path: 'produto',
+        children: [
+          {
+            path: '',
+            title: 'Adicionar Produto| Top Care',
+            component: FavoritesComponent
+          },
+          {
+            path: ':id',
+            title: 'Produto| Top Care',
+            component: FavoritesComponent
+          },
+        ]
+      },
+
+      {
+        path: 'servicos',
+        title: 'DashBoard Serviços | Top Care',
+        component: FavoritesComponent
+      },
+      {
+        path: 'servico',
+        children: [
+          {
+            path: '',
+            title: 'Adicionar Serviço| Top Care',
+            component: FavoritesComponent
+          },
+          {
+            path: ':id',
+            title: 'Serviço| Top Care',
+            component: FavoritesComponent
+          },
+        ]
+      },
+
+
+      {
+        path: 'pedidos',
+        title: 'DashBoard Pedidos | Top Care',
+        component: FavoritesComponent
+      },
+      {
+        path: 'pedido/:id',
+        title: 'Pedido| Top Care',
+        component: FavoritesComponent
+      },
+
+
+      {
+        path: 'agendamentos',
+        title: 'DashBoard Agendamentos | Top Care',
+        component: FavoritesComponent
+      },
+      {
+        path: 'agendamento/:id',
+        title: 'Agendamento | Top Care',
         component: FavoritesComponent
       }
+
     ]
   }
 ];

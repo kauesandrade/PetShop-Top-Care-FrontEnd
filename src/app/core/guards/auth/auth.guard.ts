@@ -31,15 +31,15 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
 
 
-  isFunctionary(): boolean {
-    if (this.userService.loggedUser?.cpf) {
-      return true;
-    }
-    this.router.navigate(['/login']);
-    return false;
-  }
+  // isFunctionary(): boolean {
+  //   if (this.userService.loggedUser?.cpf) {
+  //     return true;
+  //   }
+  //   this.router.navigate(['/login']);
+  //   return false;
+  // }
 
-  canActivateDashBoard(): boolean{
-    return this.isFunctionary()
-  }
+  // canActivateDashBoard(): boolean{
+  //   return this.isFunctionary()
+  // }
 }
