@@ -11,7 +11,7 @@ import { UserService } from 'src/app/shared/services/user/user.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard implements CanActivate, CanActivateChild, CanActivate {
   constructor(private router: Router, private userService: UserService) {}
 
   isLogged(): boolean {
@@ -26,14 +26,24 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return this.isLogged();
   }
 
+  canDeactivate(): boolean{
+    if(this.isFunctionary()) {
+      return false
+    }
+    return true
+  }
+
   canActivate(
     route: ActivatedRouteSnapshot,
     // state: RouterStateSnapshot
     ): boolean {
-    
+
       if(this.isLogged()){
-        if(this.isFunctionary() && route.routeConfig?.path == 'dashboard'){
-          return true
+        if(this.isFunctionary()) {
+          if(route.routeConfig?.path == 'dashboard'){
+            return true
+          }
+          this.router.navigate(['/dashboard']);
         }
         if(!this.isFunctionary() && route.routeConfig?.path != 'dashboard'){
           return true
