@@ -130,6 +130,7 @@ export class RegisterFormComponent {
       cards: new Array<Card>(),
       orders: new Array<Order>(),
       subscriptions: new Array<Subscription>(),
+      access: 'normal',
     };
 
     this.userService.register(user);

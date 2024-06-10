@@ -120,6 +120,7 @@ const routes: Routes = [
     title: 'DashBoard | Top Care',
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
+    canDeactivate:[AuthGuard],
     children: [
       {
         path: '',

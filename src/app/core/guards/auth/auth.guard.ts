@@ -4,6 +4,7 @@ import {
   CanActivate,
   CanActivateChild,
   Router,
+  RouterStateSnapshot,
 } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
@@ -25,21 +26,31 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return this.isLogged();
   }
 
-  canActivate(): boolean {
-    return this.isLogged();
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    // state: RouterStateSnapshot
+    ): boolean {
+    
+      if(this.isLogged()){
+        if(this.isFunctionary() && route.routeConfig?.path == 'dashboard'){
+          return true
+        }
+        if(!this.isFunctionary() && route.routeConfig?.path != 'dashboard'){
+          return true
+        }else{
+          this.router.navigate(['/']);
+          // this.router.navigate(['/nao-encontrada']);
+        }
+      }
+      
+      return false;
   }
 
+  isFunctionary(): boolean{
+    if(this.userService.loggedUser?.access == "admin"){
+      return true
+    }
+    return false
+  }
 
-
-  // isFunctionary(): boolean {
-  //   if (this.userService.loggedUser?.cpf) {
-  //     return true;
-  //   }
-  //   this.router.navigate(['/login']);
-  //   return false;
-  // }
-
-  // canActivateDashBoard(): boolean{
-  //   return this.isFunctionary()
-  // }
 }
