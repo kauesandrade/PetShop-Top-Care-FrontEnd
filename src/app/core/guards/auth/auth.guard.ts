@@ -46,7 +46,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
       return false;
   }
 
-  isFunctionary(): boolean{
+  private isFunctionary(): boolean{
     if(this.userService.loggedUser?.access == "admin"){
       return true
     }
