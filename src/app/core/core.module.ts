@@ -14,14 +14,14 @@ import { HeaderMainSimpleComponent } from './components/header/header-main/heade
 import { HeaderCategoriesComponent } from './components/header/header-categories/header-categories.component';
 import { FooterMainComponent } from './components/footer/footer-main/footer-main.component';
 import { FooterCopyrightComponent } from './components/footer/footer-copyright/footer-copyright.component';
-import { SharedModule } from '../shared/shared.module';
-import { DashboardSideBarComponent } from '../shared/components/dashboard-side-bar/dashboard-side-bar.component';
+import { DashboardSideBarComponent } from './components/dashboard-side-bar/dashboard-side-bar.component';
 
 const Components = [
   ButtonDirective,
   InputDirective,
   HeaderComponent,
   FooterComponent,
+  DashboardSideBarComponent,
 ];
 
 @NgModule({

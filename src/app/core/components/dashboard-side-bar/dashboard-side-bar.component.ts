@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faBaseballBall, faChevronDown, faReceipt, faBriefcase, faTable } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
