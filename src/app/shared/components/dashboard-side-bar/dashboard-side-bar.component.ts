@@ -1,12 +1,12 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { faBaseballBall, faChevronDown, faReceipt, faBriefcase, faTable } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-side-bar',
-  templateUrl: './side-bar.component.html',
-  styleUrls: ['./side-bar.component.scss']
+  selector: 'app-dashboard-side-bar',
+  templateUrl: './dashboard-side-bar.component.html',
+  styleUrls: ['./dashboard-side-bar.component.scss']
 })
-export class SideBarComponent implements OnInit {
+export class DashboardSideBarComponent implements OnInit {
 
   faBaseballBall = faBaseballBall;
   faChevronDown = faChevronDown;
@@ -20,14 +20,20 @@ export class SideBarComponent implements OnInit {
 
   isHovered: boolean = false;
   id = '1'
-  side = 'close'
+  size = 'small'
+  @Input() isOpen = 'close'
+
 
   clickedBtn(evt: any){
    this.id = evt
   }
 
   hoverSideBar(evt: string){
-    this.side = evt
+    this.size = evt
+  }
+
+  clickToOpen(evt: string){
+    this.isOpen = evt
   }
 
 }

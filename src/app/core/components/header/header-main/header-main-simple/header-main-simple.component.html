@@ -1,11 +1,39 @@
-<a routerLink="" class="brand">
-  <img
-    src="../../../../assets/images/TopCareLogo.png"
-    alt="Brand logo image"
-    class="logo"
-  />
-  <div class="brand-name">
-    <h3>Petshop</h3>
-    <p>Top Care</p>
+<ng-container *ngIf="functionary; else notIsFuctionary">
+
+  <!-- <app-dashboard-side-bar></app-dashboard-side-bar> -->
+
+  <div class="full-content">
+
+    <button class="hamburger-drawer" (click)="toggleDrawer()">
+      <fa-icon [icon]="faBars"></fa-icon>
+    </button>
+
+    <a routerLink="/dashboard" class="brand">
+      <img src="../../../../assets/images/TopCareLogo.png" alt="Brand logo image" class="logo" />
+      <div class="brand-name">
+        <h3>Petshop</h3>
+        <p>Top Care / Dashboard</p>
+      </div>
+    </a>
+
+    <a routerLink="/dashboard/perfil" class="icon">
+      <fa-icon [icon]="faUser"></fa-icon>
+      <span *ngIf="firstName">
+        Olá,
+        {{ firstName }}
+      </span>
+    </a>
+
   </div>
-</a>
+
+</ng-container>
+
+<ng-template #notIsFuctionary>
+  <a routerLink="" class="brand">
+    <img src="../../../../assets/images/TopCareLogo.png" alt="Brand logo image" class="logo" />
+    <div class="brand-name">
+      <h3>Petshop</h3>
+      <p>Top Care</p>
+    </div>
+  </a>
+</ng-template>

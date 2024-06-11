@@ -9,6 +9,7 @@ aside {
     height: 100vh;
     background-color: $white;
 
+
     .accordion {
         @include flex(column, start, start);
         width: 100%;
@@ -92,33 +93,40 @@ aside {
         }
     }
 
+    @media (max-width: 1023px) {
+        &.close{
+            display: none;
+        }
+    }
 
-    &.close {
-        width: 120px;
-
-        .accordion {
-
-            &-btn {
-                @include flex(row, center, center);
-
-                &-header {
-                    span {
+    @media (min-width: $tablet) {
+        &.small {
+            width: 120px;
+    
+            .accordion {
+    
+                &-btn {
+                    @include flex(row, center, center);
+    
+                    &-header {
+                        span {
+                            display: none;
+                        }
+                    }
+    
+                    .arrow {
                         display: none;
                     }
                 }
-
-                .arrow {
+    
+                .accordion-description {
                     display: none;
+                    width: 100%;
+    
                 }
             }
-
-            .accordion-description {
-                display: none;
-                width: 100%;
-
-            }
+    
         }
-
     }
 
 }

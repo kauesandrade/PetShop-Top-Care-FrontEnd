@@ -1,6 +1,6 @@
 <header class="header">
-  <ng-container *ngIf="simple; else completeHeader">
-    <app-header-main [simple]="true"></app-header-main>
+  <ng-container *ngIf="simple || functionary; else completeHeader">
+    <app-header-main [functionary]="functionary" [simple]="true"></app-header-main>
   </ng-container>
   <ng-template #completeHeader>
     <app-header-top></app-header-top>

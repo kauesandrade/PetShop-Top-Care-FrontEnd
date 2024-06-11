@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class HeaderComponent {
   @Input() simple: boolean = false;
+  @Input() functionary: boolean = false
 
   constructor() {}
 }

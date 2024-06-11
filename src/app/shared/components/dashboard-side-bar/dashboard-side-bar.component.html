@@ -1,4 +1,4 @@
-<aside (mouseenter)="hoverSideBar('')" (mouseleave)="hoverSideBar('close')" [ngClass]="side">
+<aside (mouseenter)="hoverSideBar('')" (mouseleave)="hoverSideBar('small')" [ngClass]="[size, isOpen]">
     <div 
     class="accordion"
     [ngClass]="id == '1' ? 'clicked' : '' "
