@@ -6,6 +6,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardProductComponent } from './dashboard-product/dashboard-product.component';
 import { RouterModule } from '@angular/router';
+import { DashboardSideBarComponent } from './components/dashboard-side-bar/dashboard-side-bar.component';
 
 
 
@@ -14,6 +15,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     DashboardComponent,
     DashboardProductComponent,
+    DashboardSideBarComponent
   ],
   imports: [CommonModule, RouterModule, FontAwesomeModule, CoreModule, SharedModule]
 })

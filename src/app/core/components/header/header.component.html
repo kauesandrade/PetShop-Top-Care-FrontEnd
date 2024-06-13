@@ -1,6 +1,6 @@
-<header class="header">
+<header class="header" [ngClass]="['funcionary-'+functionary]">
   <ng-container *ngIf="simple || functionary; else completeHeader">
-    <app-header-main [functionary]="functionary" [simple]="true"></app-header-main>
+    <app-header-main (sideBarOpenEmitter)="sideBarOpen($event)" [functionary]="functionary" [simple]="true"></app-header-main>
   </ng-container>
   <ng-template #completeHeader>
     <app-header-top></app-header-top>

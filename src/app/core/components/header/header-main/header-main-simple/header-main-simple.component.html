@@ -1,11 +1,16 @@
 <ng-container *ngIf="functionary; else notIsFuctionary">
 
-  <app-dashboard-side-bar></app-dashboard-side-bar>
-
   <div class="full-content">
 
     <button class="hamburger-drawer" (click)="toggleDrawer()">
-      <fa-icon [icon]="faBars"></fa-icon>
+      <ng-container *ngIf="sideBarOpen == false; else isClose">
+        <fa-icon [icon]="faBars"></fa-icon>
+      </ng-container>
+      
+      <ng-template #isClose>
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </ng-template>
+
     </button>
 
     <a routerLink="/dashboard" class="brand">

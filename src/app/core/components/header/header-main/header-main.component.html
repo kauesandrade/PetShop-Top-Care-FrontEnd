@@ -1,7 +1,7 @@
 <div class="header-main">
   <div class="header-main-content">
     <ng-container *ngIf="simple || functionary; else simpleHeader">
-        <app-header-main-simple [functionary]="functionary"></app-header-main-simple>
+        <app-header-main-simple (sideBarOpenEmitter)="sideBarOpen($event)" [functionary]="functionary"></app-header-main-simple>
     </ng-container>
     <ng-template #simpleHeader>
       <app-header-main-full></app-header-main-full>

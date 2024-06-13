@@ -1,3 +1,4 @@
-<app-header [simple]="true" [functionary]="true"></app-header>
+<app-header (sideBarOpenEmitter)="sideBarOpen($event)" [simple]="true" [functionary]="true"></app-header>
+<app-dashboard-side-bar [isOpen]="isOpen"></app-dashboard-side-bar>
 <main>
 </main>

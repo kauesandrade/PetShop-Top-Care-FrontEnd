@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { User } from 'src/app/shared/interfaces/user/user';
-import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faUser, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header-main-simple',
@@ -12,13 +12,19 @@ export class HeaderMainSimpleComponent implements OnInit {
 
   faBars = faBars;
   faUser = faUser;
+  faTimes = faTimes;
 
   @Input() functionary: boolean = false;
   user!: User | null;
   firstName!: string | undefined;
 
-  constructor(private userService: UserService) {
+  sideBarOpen: boolean = false;
 
+  @Output() sideBarOpenEmitter = new EventEmitter<boolean>()
+
+  private innerWidth: any;
+
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -26,11 +32,26 @@ export class HeaderMainSimpleComponent implements OnInit {
     if (this.user) {
       this.firstName = this.user?.name?.split(' ')[0];
     }
+
+    this.innerWidth = window.innerWidth;
   }
 
-  toggleDrawer(){
-    
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    if(this.innerWidth > 1023 && this.sideBarOpen){
+      this.toggleDrawer();
+    }
   }
+
+  toggleDrawer() {
+    this.sideBarOpen = !this.sideBarOpen;
+    this.sideBarOpenEmitter.emit(this.sideBarOpen);
+    console.log(this.sideBarOpen)
+  }
+
+  
 
 
 }
