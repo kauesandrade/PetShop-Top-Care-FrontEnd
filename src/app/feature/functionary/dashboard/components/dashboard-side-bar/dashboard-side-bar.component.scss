@@ -7,7 +7,10 @@ aside {
     width: 250px;
     height: 100vh;
     background-color: $white;
+    border-right: 2px solid $primary;
 
+    position: absolute;
+    z-index: 100;
 
     @media (max-width: 1023px) {
         &.isOpen-false {
