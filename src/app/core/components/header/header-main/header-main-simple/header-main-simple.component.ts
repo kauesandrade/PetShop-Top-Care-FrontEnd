@@ -48,7 +48,6 @@ export class HeaderMainSimpleComponent implements OnInit {
   toggleDrawer() {
     this.sideBarOpen = !this.sideBarOpen;
     this.sideBarOpenEmitter.emit(this.sideBarOpen);
-    console.log(this.sideBarOpen)
   }
 
   

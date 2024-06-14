@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, HostListener, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { faBaseballBall, faChevronDown, faReceipt, faBriefcase, faTable, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -14,6 +14,8 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
   faBriefcase = faBriefcase;
   faTable = faTable;
   faUser = faUser;
+  sideBarOpen: boolean | undefined;
+  innerWidth: any;
 
   constructor() { }
   ngOnChanges(changes: SimpleChanges): void {
@@ -36,11 +38,27 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
   }
 
   hoverSideBar(evt: string){
-    this.size = evt;
+
+    if(this.innerWidth >= 1440){
+      this.size = '';
+    }
+    else{
+      this.size = evt;
+    }
+
     if(evt == 'small' && !this.isOpen){
       this.id = this.idPage;
     }
+  }
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+    if(this.innerWidth >= 1440){
+      this.size = '';
+    }else{
+      this.size = 'small';
+    }
   }
 
 
