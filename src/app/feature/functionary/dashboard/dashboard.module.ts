@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardProductComponent } from './dashboard-product/dashboard-product.component';
 import { RouterModule } from '@angular/router';
 import { DashboardSideBarComponent } from './components/dashboard-side-bar/dashboard-side-bar.component';
+import { ProductCardDashboardComponent } from './components/product-card-dashboard/product-card-dashboard.component';
 
 
 
@@ -15,7 +16,8 @@ import { DashboardSideBarComponent } from './components/dashboard-side-bar/dashb
   declarations: [
     DashboardComponent,
     DashboardProductComponent,
-    DashboardSideBarComponent
+    DashboardSideBarComponent,
+    ProductCardDashboardComponent
   ],
   imports: [CommonModule, RouterModule, FontAwesomeModule, CoreModule, SharedModule]
 })
