@@ -30,3 +30,20 @@
   grid-template-columns: subgrid;
   grid-column: 1 / -1;
 }
+
+@mixin layoutDashboard {
+  
+  @media(min-width: $desktop) {
+    margin-left: 120px;
+  }
+
+  @media(min-width: $desktopHD) {
+    margin-left: 250px;
+  }
+
+  @include grid-container();
+  grid-column: 1 / -1;
+  display: inline-flex;
+  justify-content: center;
+  flex-flow: row wrap;
+}

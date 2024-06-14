@@ -3,8 +3,9 @@
 aside {
     @include flex(column, start, space-between);
     padding: 2rem 10px;
-
+    
     width: 250px;
+    min-height: 100%;
     height: 100vh;
     background-color: $white;
     border-right: 2px solid $primary;
@@ -12,14 +13,15 @@ aside {
     position: absolute;
     z-index: 100;
 
-    @media (max-width: 1023px) {
-        &.isOpen-false {
-            display: none;
-        }
-
+    &.isOpen-false {
+        display: none;
     }
 
-
+    @media(min-width: $desktop){
+        &.isOpen-false {
+            display: flex;
+        }
+    }
 
     .container {
         @include flex(column, start, start);
@@ -151,8 +153,6 @@ aside {
                 }
 
             }
-
-
 
         }
 

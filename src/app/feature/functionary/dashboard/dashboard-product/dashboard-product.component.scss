@@ -4,22 +4,11 @@ main {
     display: flex;
     position: relative;
 
-    app-dashboard-side-bar {
-
-        @media(min-width: $desktop){
-            width: 120px;
-        }
-        @media(min-width: $desktopHD){
-            width: 250px;
-        }
-
-    }
+    
 
     div {
-        @include grid-container();
-        grid-column: 1 / -1;
-        display: inline-flex;
-        justify-content: center;
-        flex-flow: row wrap;
+
+        @include layoutDashboard;
+    
     }
 }
