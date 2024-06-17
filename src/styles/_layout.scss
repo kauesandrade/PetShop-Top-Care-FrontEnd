@@ -117,7 +117,7 @@
     gap: 1rem 100%;
 
     @media(min-width: $tablet) {
-      justify-content: space-between;
+      justify-content: start;
       gap: 1.5rem 2rem;
     }
 
