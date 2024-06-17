@@ -2,9 +2,9 @@
     <div class="container">
         <div 
         class="accordion"
-        [ngClass]="id == '1' ? 'clicked' : '' "
+        [ngClass]="page == 'produto' ? 'clicked' : '' "
         >
-            <button class="accordion-btn" (click)="clickedBtn(1)">
+            <button class="accordion-btn" (click)="clickedBtn('produto')">
                 <div class="accordion-btn-header">
                     <fa-icon [icon]="faBaseballBall"></fa-icon>
                     <span>Produto</span>
@@ -24,9 +24,9 @@
         </div>
         <div
         class="accordion"
-        [ngClass]="id == '2' ? 'clicked' : '' " 
+        [ngClass]="page == 'servico' ? 'clicked' : '' " 
         >
-            <button class="accordion-btn" (click)="clickedBtn(2)">
+            <button class="accordion-btn" (click)="clickedBtn('servico')">
                 <div class="accordion-btn-header">
                     <fa-icon [icon]="faBriefcase"></fa-icon>
                     <span>Serviços</span>
@@ -46,9 +46,9 @@
         </div>
         <div
         class="accordion"
-        [ngClass]="id == '3' ? 'clicked' : '' " 
+        [ngClass]="page == 'pedido' ? 'clicked' : '' " 
         >
-            <button class="accordion-btn" (click)="clickedBtn(3)">
+            <button class="accordion-btn" (click)="clickedBtn('pedido')">
                 <div class="accordion-btn-header">
                     <fa-icon [icon]="faReceipt"></fa-icon>
                     <span>Pedidos</span>
@@ -65,9 +65,9 @@
         </div>
         <div
         class="accordion"
-        [ngClass]="id == '4' ? 'clicked' : '' " 
+        [ngClass]="page == 'agendamento' ? 'clicked' : '' " 
         >
-            <button class="accordion-btn" (click)="clickedBtn(4)">
+            <button class="accordion-btn" (click)="clickedBtn('agendamento')">
                 <div class="accordion-btn-header">
                     <fa-icon [icon]="faTable"></fa-icon>
                     <span>Agendamentos</span>
@@ -86,9 +86,9 @@
     <div class="container" *ngIf="isOpen">
         <div
         class="accordion"
-        [ngClass]="id == '5' ? 'clicked' : '' " 
+        [ngClass]="page == 'perfil' ? 'clicked' : '' " 
         >
-            <button class="accordion-btn" (click)="clickedBtn(5)">
+            <button class="accordion-btn" (click)="clickedBtn('perfil')">
                 <a class="accordion-btn-header"
                     routerLink="/dashboard/perfil"
                 >

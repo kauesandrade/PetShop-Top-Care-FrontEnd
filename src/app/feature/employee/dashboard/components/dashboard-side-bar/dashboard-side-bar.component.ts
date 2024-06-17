@@ -17,11 +17,12 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
   sideBarOpen: boolean | undefined;
   innerWidth: any;
 
-  constructor() { }
+  constructor() {}
+  
   ngOnChanges(changes: SimpleChanges): void {
     if(!this.isOpen){
       document.body.style.overflow = 'auto';
-      this.id = this.idPage;
+      this.page = this.pageNow;
     }else{
       document.body.style.overflow = 'hidden';
     }
@@ -30,17 +31,19 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.onResize();
+    this.page = this.pageNow;
+    console.log(this.pageNow)
   }
 
   isHovered: boolean = false;
-  @Input() idPage = '1'
-  id = '1'
+  @Input() pageNow: string = '' ;
+  page: string  = ''
   size = 'small'
   @Input() isOpen:boolean = false
 
 
-  clickedBtn(evt: any){
-   this.id = evt
+  clickedBtn(evt: string){
+   this.page = evt
   }
 
   hoverSideBar(evt: string){
@@ -53,7 +56,7 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
     }
 
     if(evt == 'small' && !this.isOpen){
-      this.id = this.idPage;
+      this.page = this.pageNow;
     }
   }
 

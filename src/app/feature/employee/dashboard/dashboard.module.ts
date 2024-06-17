@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { DashboardSideBarComponent } from './components/dashboard-side-bar/dashboard-side-bar.component';
 import { ProductCardDashboardComponent } from './components/product-card-dashboard/product-card-dashboard.component';
 import { FormsModule } from '@angular/forms';
+import { DashboardOrderComponent } from './dashboard-order/dashboard-order.component';
 
 
 
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
     DashboardProductComponent,
     DashboardSideBarComponent,
-    ProductCardDashboardComponent
+    ProductCardDashboardComponent,
+    DashboardOrderComponent
   ],
   imports: [CommonModule, RouterModule, FontAwesomeModule, FormsModule, CoreModule, SharedModule]
 })

@@ -11,10 +11,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 import { FeatureModule } from './feature/feature.module';
+import { OrderCardDashboardComponent } from './order-card-dashboard/order-card-dashboard.component';
 registerLocaleData(ptBr);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, OrderCardDashboardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
