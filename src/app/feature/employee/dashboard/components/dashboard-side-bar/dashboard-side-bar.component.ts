@@ -20,8 +20,12 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
   constructor() { }
   ngOnChanges(changes: SimpleChanges): void {
     if(!this.isOpen){
+      document.body.style.overflow = 'auto';
       this.id = this.idPage;
+    }else{
+      document.body.style.overflow = 'hidden';
     }
+    
   }
 
   ngOnInit(): void {

@@ -12,4 +12,4 @@ import { DashboardModule } from './dashboard/dashboard.module';
   declarations: [],
   imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule]
 })
-export class FunctionaryModule { }
+export class EmployeeModule { }

@@ -3,7 +3,7 @@
 .card-container {
   @include flex(column, center, start);
   width: 16rem;
-  height: 23rem;
+  height: 22rem;
   padding: 1rem;
   background-color: $white;
   gap: 0.5rem;
@@ -98,7 +98,7 @@
         padding: 0.625rem 1rem;
       }
 
-      .shopping-cart-icon {
+      .trash-icon {
         font-size: 1rem;
       }
     }

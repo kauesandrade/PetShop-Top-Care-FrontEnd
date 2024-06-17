@@ -20,7 +20,7 @@ import { ReviewProductComponent } from './feature/user/orders/order/components/r
 import { PaymentComponent } from './feature/payment/payment.component';
 import { FinishedPaymentComponent } from './feature/payment/finished-payment/finished-payment.component';
 import { ServicesComponent } from './feature/services/services.component';
-import { DashboardProductComponent } from './feature/functionary/dashboard/dashboard-product/dashboard-product.component';
+import { DashboardProductComponent } from './feature/employee/dashboard/dashboard-product/dashboard-product.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },

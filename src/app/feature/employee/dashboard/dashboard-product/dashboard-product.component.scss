@@ -1,0 +1,14 @@
+@import 'styles';
+
+main {
+    display: flex;
+
+    app-dashboard-side-bar{
+        // position: absolute;
+    }
+
+    .layout-dashboard {
+        @include layoutDashboard;
+    }
+
+}

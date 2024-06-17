@@ -15,8 +15,8 @@ import { SharedModule } from '../shared/shared.module';
 import { PaymentModule } from './payment/payment.module';
 import { ServicesComponent } from './services/services.component';
 import { ServicesModule } from './services/services.module';
-import { DashboardComponent } from './functionary/dashboard/dashboard.component';
-import { FunctionaryModule } from './functionary/functionary.module';
+import { DashboardComponent } from './employee/dashboard/dashboard.component';
+import { EmployeeModule } from './employee/employee.module';
 
 @NgModule({
   exports: [
@@ -32,7 +32,7 @@ import { FunctionaryModule } from './functionary/functionary.module';
     UserModule,
     PaymentModule,
     ServicesModule,
-    FunctionaryModule,
+    EmployeeModule,
   ],
   declarations: [],
   imports: [CommonModule, SharedModule, FontAwesomeModule],

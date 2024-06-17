@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dashboard-product',
@@ -12,10 +13,26 @@ export class DashboardProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  faSearch = faSearch;
+  
   isOpen: boolean = false;
+  seachValue: string = '';
 
   sideBarOpen(evt: any){
     this.isOpen = evt;
   }
+
+  handleClickSeach(){
+
+  }
+
+  getOrderBy(evt: any){
+    console.log(evt);
+  }
+
+  verifyChar(evt: any){
+    console.log(evt);
+  }
+  
 
 }
