@@ -14,7 +14,10 @@
     background-color: $light-secondary;
 
     fa-icon {
-      font-size: 2rem;
+      font-size: 1.5rem;
+      @media (min-width: $tablet) {
+        font-size: 2rem;
+      }
     }
 
     img {

@@ -34,17 +34,53 @@ main {
     @include subgrid();
     background-color: $white;
     border-radius: 1rem;
-    padding: 1.5rem;
+
+    padding: 0.5rem;
+    @media (min-width: $tablet) {
+      padding: 1rem;
+    }
+    @media (min-width: $desktop) {
+      padding: 1.5rem;
+    }
+
     .content {
-      @include subgrid();
-      grid-column: 2 / span 10;
+      @include flex(column);
+      gap: 0.5rem;
+
+      grid-column: 1 / -1;
+      @media (min-width: $tablet) {
+        @include subgrid();
+      }
+      @media (min-width: $desktop) {
+        grid-column: 2 / span 10;
+      }
 
       h4 {
-        grid-column: auto / span 7;
+        align-self: center;
+        grid-column: 1 / -1;
+        @include text(small, bold);
+        @media (min-width: $tablet) {
+          @include heading();
+          grid-column: auto / span 4;
+        }
+        @media (min-width: $desktop) {
+          @include heading(h5);
+          grid-column: auto / span 7;
+        }
+        @media (min-width: $desktopHD) {
+          @include heading(h4);
+        }
       }
 
       button {
-        grid-column: auto / span 3;
+        grid-column: 1 / -1;
+        @media (min-width: $tablet) {
+          grid-column: auto / span 2;
+        }
+        @media (min-width: $desktop) {
+          height: 2.5rem;
+          grid-column: auto / span 3;
+        }
       }
     }
   }
