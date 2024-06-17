@@ -1,0 +1,19 @@
+<div class="card-container">
+    <a class="image" href="">
+        <img src="" alt="product-image">
+    </a>
+    <p class="title">Banho</p>
+    <div class="code">
+        <p><span>Código: </span>1234</p>
+        <p><span>Categoria: </span>Higiene</p>
+    </div>
+    <div class="pricing">
+        <p><span>Total: </span>R$ 10,00</p>
+    </div>
+    <div class="buttons-container">
+        <button (click)="handleClickEdit()" appButton>Editar</button>
+        <button class="icon-button" appButton="secondary" (click)="handleClickTrash()">
+            <fa-icon [icon]="faTrash" class="trash-icon"></fa-icon>
+        </button>
+    </div>
+</div>

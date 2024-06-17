@@ -10,7 +10,7 @@ import { DashboardSideBarComponent } from './components/dashboard-side-bar/dashb
 import { ProductCardDashboardComponent } from './components/product-card-dashboard/product-card-dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardOrderComponent } from './dashboard-order/dashboard-order.component';
-import { OrderCardComponent } from '../../user/components/order-card/order-card.component';
+import { ServiceCardDashboardComponent } from './components/service-card-dashboard/service-card-dashboard.component';
 import { OrderCardDashboardComponent } from './components/order-card-dashboard/order-card-dashboard.component';
 
 
@@ -23,6 +23,7 @@ import { OrderCardDashboardComponent } from './components/order-card-dashboard/o
     DashboardSideBarComponent,
     ProductCardDashboardComponent,
     DashboardOrderComponent,
+    ServiceCardDashboardComponent,
     OrderCardDashboardComponent
   ],
   imports: [CommonModule, RouterModule, FontAwesomeModule, FormsModule, CoreModule, SharedModule]
