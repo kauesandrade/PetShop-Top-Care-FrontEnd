@@ -1,0 +1,29 @@
+@import "styles";
+
+.card {
+  @include flex(column);
+  gap: 0.5rem;
+  width: 100%;
+
+  .square {
+    @include flex();
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    border: 1px $secondary solid;
+    border-radius: 1rem;
+    background-color: $light-secondary;
+
+    fa-icon {
+      font-size: 2rem;
+    }
+
+    img {
+      aspect-ratio: 1/1;
+      width: 2.25rem;
+    }
+  }
+
+  p {
+    font-weight: bold;
+  }
+}

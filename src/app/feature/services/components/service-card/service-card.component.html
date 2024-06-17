@@ -1,0 +1,17 @@
+<div class="card" [class.invert]="side == 'right'">
+  <img [src]="service.image" alt="" />
+  <div class="content">
+    <div class="title-desc">
+      <h3 class="title">{{ service.title }}</h3>
+      <p>{{ service.description }}</p>
+    </div>
+    <div class="served-pets">
+      <h5>Pets atendidos</h5>
+      <div class="pets-cards">
+        <ng-container *ngFor="let pet of service.servedPets">
+          <app-pet-card [pet]="pet"></app-pet-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,20 @@
 <app-header></app-header>
-<p>services works!</p>
+<main>
+  <div class="service-cards">
+    <ng-container *ngFor="let service of serviceList; let i = index">
+      <ng-container *ngIf="i % 2 == 0; else rightCard">
+        <app-service-card side="left" [service]="service"></app-service-card>
+      </ng-container>
+      <ng-template #rightCard>
+        <app-service-card side="right" [service]="service"></app-service-card>
+      </ng-template>
+    </ng-container>
+  </div>
+  <div class="schedule">
+    <div class="content">
+      <h4>Se interessou em algum serviço oferecido?</h4>
+      <button appButton>Agendar agora</button>
+    </div>
+  </div>
+</main>
 <app-footer></app-footer>

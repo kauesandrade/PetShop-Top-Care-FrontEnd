@@ -1,0 +1,96 @@
+@import "styles";
+
+.card {
+  @include flex(column);
+
+  @media (min-width: $tablet) {
+    @include subgrid();
+
+    &.invert {
+      img {
+        order: 2;
+      }
+      .content {
+        order: 1;
+        .title-desc {
+          * {
+            justify-self: end;
+          }
+        }
+
+        .served-pets {
+          h5 {
+            justify-self: end;
+          }
+          .pets-cards {
+            @include flex($justify: flex-end);
+          }
+        }
+      }
+    }
+  }
+
+  img {
+    grid-column: auto / span 5;
+    border-radius: 2rem;
+    width: 100%;
+    height: 18rem;
+    object-fit: cover;
+  }
+
+  .content {
+    @include flex(column);
+
+    @media (min-width: $tablet) {
+      @include subgrid();
+      grid-template-rows: min-content;
+      row-gap: 1.5rem;
+      grid-column: auto / span 7;
+    }
+
+    h3,
+    h5 {
+      color: $primary;
+    }
+
+    .title-desc {
+      @include flex(column);
+
+      @media (min-width: $tablet) {
+        @include subgrid();
+        grid-template-rows: min-content;
+        row-gap: 1rem;
+      }
+
+      * {
+        grid-column: 1 / -1;
+      }
+
+      p {
+        font-weight: bold;
+      }
+    }
+
+    .served-pets {
+      @include flex(column);
+
+      @media (min-width: $tablet) {
+        @include subgrid();
+        grid-template-rows: min-content;
+        row-gap: 0.5rem;
+      }
+
+      * {
+        grid-column: 1 / -1;
+      }
+
+      .pets-cards {
+        @include flex(row, flex-start, flex-start);
+        gap: 2rem;
+        * {
+          width: 4rem;
+        }
+      }
+    }
+  }
+}
