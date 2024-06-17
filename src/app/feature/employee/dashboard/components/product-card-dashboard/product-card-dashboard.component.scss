@@ -27,6 +27,7 @@
 
     p {
       @include text(small);
+      color: $gray2;
 
       span {
         @include text(small, bold);
