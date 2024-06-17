@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Order } from 'src/app/shared/interfaces/order/order';
 
 @Component({
   selector: 'app-order-card-dashboard',
@@ -12,14 +13,16 @@ export class OrderCardDashboardComponent implements OnInit {
 
   constructor() { }
 
+  @Input() order!: Order;
+
+  
+
   ngOnInit(): void {
   }
 
-  handleClickTrash(){
-
+  handleClickNext(){
   }
 
-  handleClickEdit(){
-    
+  handleClickBack(){
   }
 }

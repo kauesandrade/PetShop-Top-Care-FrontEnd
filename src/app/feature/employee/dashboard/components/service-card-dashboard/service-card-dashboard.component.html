@@ -2,13 +2,24 @@
     <a class="image" href="">
         <img src="" alt="product-image">
     </a>
-    <p class="title">Banho</p>
+    <p class="title">
+        <!-- {{service.title}} -->
+        Banho</p>
     <div class="code">
-        <p><span>Código: </span>1234</p>
-        <p><span>Categoria: </span>Higiene</p>
+        <p><span>Código: </span>
+            <!-- {{service.serviceCode}} -->
+            1234
+        </p>
+        <p><span>Categoria: </span>
+            <!-- {{service.category}} -->
+            Higiene
+        </p>
     </div>
     <div class="pricing">
-        <p><span>Total: </span>R$ 10,00</p>
+        <p><span>Total: </span>
+            <!-- {{service.price}} -->
+            R$ 10,00
+        </p>
     </div>
     <div class="buttons-container">
         <button (click)="handleClickEdit()" appButton>Editar</button>

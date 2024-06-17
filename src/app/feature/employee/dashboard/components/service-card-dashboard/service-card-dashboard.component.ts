@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+// import { ServiceType } from 'src/app/feature/contact/interfaces/service';
 
 @Component({
   selector: 'app-service-card-dashboard',
@@ -9,6 +10,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 export class ServiceCardDashboardComponent implements OnInit {
 
   faTrash = faTrash
+  // @Input() service!: ServiceType;
 
   constructor() { }
 
