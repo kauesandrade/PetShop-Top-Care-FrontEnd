@@ -22,8 +22,9 @@ aside {
             display: flex;
         }
 
- 
-
+        margin-right: -250px;
+        position: sticky;
+        top: 0;
     }
 
     .container {
