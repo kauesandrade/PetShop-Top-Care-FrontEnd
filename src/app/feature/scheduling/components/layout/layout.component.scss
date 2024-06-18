@@ -1,0 +1,22 @@
+@import "styles";
+
+main {
+  @include grid-container();
+  row-gap: 2rem;
+
+  h3 {
+    color: $primary;
+    grid-column: 1 / -1;
+  }
+
+  .layout {
+    @include subgrid();
+    background-color: $white;
+    border-radius: 1rem;
+    min-height: 38rem;
+
+    app-navbar {
+      grid-column: 1 / -1;
+    }
+  }
+}

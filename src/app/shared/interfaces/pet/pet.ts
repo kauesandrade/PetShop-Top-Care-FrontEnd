@@ -1,4 +1,5 @@
 export interface Pet {
+  image: string;
   name: string;
   size: string;
   type: string;

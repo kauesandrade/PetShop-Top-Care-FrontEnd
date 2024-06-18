@@ -1,0 +1,27 @@
+@import "styles";
+
+nav {
+  @include flex($justify: space-between);
+  padding: 1rem 2rem;
+  a {
+    color: $gray3;
+    text-decoration: none;
+    @include heading(h5);
+
+    &.active {
+      color: $secondary;
+    }
+
+    &.completed {
+      color: $primary;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  h5 {
+    color: $gray3;
+  }
+}

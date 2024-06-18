@@ -7,13 +7,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class HeaderComponent {
   @Input() simple: boolean = false;
-  @Input() functionary: boolean = false
+  @Input() functionary: boolean = false;
 
-  @Output() sideBarOpenEmitter = new EventEmitter<boolean>()
+  @Output() sideBarOpenEmitter = new EventEmitter<boolean>();
 
   constructor() {}
 
-  sideBarOpen(evt: any){
+  sideBarOpen(evt: any) {
     this.sideBarOpenEmitter.emit(evt);
   }
 }

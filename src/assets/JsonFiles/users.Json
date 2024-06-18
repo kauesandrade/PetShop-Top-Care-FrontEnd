@@ -436,6 +436,7 @@
           }
         }
       ],
+      "pets": [],
       "access": "normal"
     },
     {
@@ -470,6 +471,7 @@
       "cards": [],
       "orders": [],
       "subscriptions": [],
+      "pets": [],
       "access": "admin"
     },
     {
@@ -504,6 +506,7 @@
       "cards": [],
       "orders": [],
       "subscriptions": [],
+      "pets": [],
       "access": "normal"
     },
     {
@@ -538,6 +541,7 @@
       "cards": [],
       "orders": [],
       "subscriptions": [],
+      "pets": [],
       "access": "normal"
     }
   ]
