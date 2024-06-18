@@ -18,6 +18,17 @@ export class DashboardProductComponent implements OnInit {
   isOpen: boolean = false;
   seachValue: string = '';
 
+  typesOrderBy = [
+    'Popularidade',
+    "Maior Estoque",
+    "Menor Estoque",
+    "Maior Preço",
+    "Menor Preço",
+    'Maiores Descontos',
+    'Nome (A-Z)',
+    'Nome (Z-A)'
+  ]
+
   sideBarOpen(evt: any){
     this.isOpen = evt;
   }

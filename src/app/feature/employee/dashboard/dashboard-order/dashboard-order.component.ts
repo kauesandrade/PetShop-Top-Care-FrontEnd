@@ -13,6 +13,16 @@ export class DashboardOrderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  typesOrderBy = [
+    "Recentes",
+    "Maior Quantidade de Itens",
+    "Menor Quantidade de Itens",
+    "Maior Preço",
+    "Menor Preço",
+    "Mais Perto do Destino",
+    "Mais Longe do Destino",
+  ]
+
   faSearch = faSearch;
   
   isOpen: boolean = false;

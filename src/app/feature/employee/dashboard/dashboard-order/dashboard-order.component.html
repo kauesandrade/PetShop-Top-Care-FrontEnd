@@ -16,7 +16,7 @@
       <div class="div-orderBy">
         <!-- <span class="span-orderBy">{{productsList.length}} resultados ordenados por</span> -->
         <span class="span-orderBy">10 resultados ordenados por</span>
-        <app-order-by (emitOrderBy)="getOrderBy($event)"></app-order-by>
+        <app-order-by [typesOrderBy]="typesOrderBy" (emitOrderBy)="getOrderBy($event)"></app-order-by>
       </div>
     </div>
 
