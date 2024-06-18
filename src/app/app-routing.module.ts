@@ -22,6 +22,7 @@ import { FinishedPaymentComponent } from './feature/payment/finished-payment/fin
 import { ServicesComponent } from './feature/services/services.component';
 import { DashboardProductComponent } from './feature/employee/dashboard/dashboard-product/dashboard-product.component';
 import { DashboardOrderComponent } from './feature/employee/dashboard/dashboard-order/dashboard-order.component';
+import { DashboardServiceComponent } from './feature/employee/dashboard/dashboard-service/dashboard-service.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -154,7 +155,7 @@ const routes: Routes = [
       {
         path: 'servicos',
         title: 'DashBoard Serviços | Top Care',
-        component: FavoritesComponent
+        component: DashboardServiceComponent
       },
       {
         path: 'servico',
