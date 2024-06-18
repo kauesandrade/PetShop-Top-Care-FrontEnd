@@ -13,6 +13,8 @@ import { DashboardOrderComponent } from './dashboard-order/dashboard-order.compo
 import { ServiceCardDashboardComponent } from './components/service-card-dashboard/service-card-dashboard.component';
 import { OrderCardDashboardComponent } from './components/order-card-dashboard/order-card-dashboard.component';
 import { DashboardServiceComponent } from './dashboard-service/dashboard-service.component';
+import { DashboardSchedulingComponent } from './dashboard-scheduling/dashboard-scheduling.component';
+import { SchedulingCardDashboardComponent } from './components/scheduling-card-dashboard/scheduling-card-dashboard.component';
 
 
 
@@ -26,7 +28,9 @@ import { DashboardServiceComponent } from './dashboard-service/dashboard-service
     DashboardOrderComponent,
     ServiceCardDashboardComponent,
     OrderCardDashboardComponent,
-    DashboardServiceComponent
+    DashboardServiceComponent,
+    DashboardSchedulingComponent,
+    SchedulingCardDashboardComponent
   ],
   imports: [CommonModule, RouterModule, FontAwesomeModule, FormsModule, CoreModule, SharedModule]
 })
