@@ -19,10 +19,14 @@ export class DashboardSchedulingComponent implements OnInit {
   seachValue: string = '';
 
   typesOrderBy = [
-    "Nome (A-Z)",
-    "Nome (Z-A)",
+    "Recentes",
+    "Antigos",
+    "Nome Cliente (A-Z)",
+    "Nome Cliente (Z-A)",
     "Maior Preço",
     "Menor Preço",
+    "Maior Quantidade de Serviços",
+    "Menor Quantidade de Serviços",
   ]
 
   sideBarOpen(evt: any){
