@@ -21,11 +21,11 @@
 
         p {
             @include text(small);
-            color: $gray2;
+            color: $primary;
 
             span {
                 @include text(small, bold);
-                color: $primary
+                color: $primary;
             }
         }
     }

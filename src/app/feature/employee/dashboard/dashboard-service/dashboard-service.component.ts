@@ -19,14 +19,10 @@ export class DashboardServiceComponent implements OnInit {
   seachValue: string = '';
 
   typesOrderBy = [
-    'Popularidade',
-    "Maior Estoque",
-    "Menor Estoque",
+    "Nome (A-Z)",
+    "Nome (Z-A)",
     "Maior Preço",
     "Menor Preço",
-    'Maiores Descontos',
-    'Nome (A-Z)',
-    'Nome (Z-A)'
   ]
 
   sideBarOpen(evt: any){
