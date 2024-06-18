@@ -1,0 +1,33 @@
+<app-header (sideBarOpenEmitter)="sideBarOpen($event)" [simple]="true" [employee]="true"></app-header>
+<main>
+  <app-dashboard-side-bar pageNow='pedido' [isOpen]="isOpen"></app-dashboard-side-bar>
+
+  <div class="layout-dashboard">
+    <div class="div-searchbar-orderBy">
+      <label class="searchbar" for="searchbar" appInput>
+        <div>
+          <input (keydown)="verifyChar($event)" [(ngModel)]="seachValue" type="text" name="searchbar"
+            placeholder="Digite o pedido..." />
+          <button (click)="handleClickSeach()">
+            <fa-icon [icon]="faSearch"></fa-icon>
+          </button>
+        </div>
+      </label>
+      <div class="div-orderBy">
+        <!-- <span class="span-orderBy">{{productsList.length}} resultados ordenados por</span> -->
+        <span class="span-orderBy">10 resultados ordenados por</span>
+        <app-order-by [typesOrderBy]="typesOrderBy" (emitOrderBy)="getOrderBy($event)"></app-order-by>
+      </div>
+    </div>
+
+
+    <div class="cards">
+
+      <app-order-card-dashboard></app-order-card-dashboard>
+      <app-order-card-dashboard></app-order-card-dashboard>
+      <app-order-card-dashboard></app-order-card-dashboard>
+      <app-order-card-dashboard></app-order-card-dashboard>
+
+    </div>
+  </div>
+</main>

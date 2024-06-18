@@ -1,0 +1,102 @@
+<aside (mouseenter)="hoverSideBar('')" (mouseleave)="hoverSideBar('small')" [ngClass]="['size-'+size, 'isOpen-'+isOpen]">
+    <div class="container">
+        <div 
+        class="accordion"
+        [ngClass]="page == 'produto' ? 'clicked' : '' "
+        >
+            <button class="accordion-btn" (click)="clickedBtn('produto')">
+                <div class="accordion-btn-header">
+                    <fa-icon [icon]="faBaseballBall"></fa-icon>
+                    <span>Produto</span>
+                </div>
+                <fa-icon class="arrow" [icon]="faChevronDown"></fa-icon>
+            </button>
+            <div class="accordion-description">
+                <ul class="accordion-list">
+                    <li class="accordion-link">
+                        <a routerLink="/dashboard/produto">Adicionar Produto</a>
+                    </li>
+                    <li class="accordion-link">
+                        <a routerLink="/dashboard/produtos">Lista de Produtos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div
+        class="accordion"
+        [ngClass]="page == 'servico' ? 'clicked' : '' " 
+        >
+            <button class="accordion-btn" (click)="clickedBtn('servico')">
+                <div class="accordion-btn-header">
+                    <fa-icon [icon]="faBriefcase"></fa-icon>
+                    <span>Serviços</span>
+                </div>
+                <fa-icon class="arrow" [icon]="faChevronDown"></fa-icon>
+            </button>
+            <div class="accordion-description">
+                <ul class="accordion-list">
+                    <li class="accordion-link">
+                        <a routerLink="/dashboard/servico">Adicionar Serviço</a>
+                    </li>
+                    <li class="accordion-link">
+                        <a routerLink="/dashboard/servicos">Lista de Serviços</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div
+        class="accordion"
+        [ngClass]="page == 'pedido' ? 'clicked' : '' " 
+        >
+            <button class="accordion-btn" (click)="clickedBtn('pedido')">
+                <div class="accordion-btn-header">
+                    <fa-icon [icon]="faReceipt"></fa-icon>
+                    <span>Pedidos</span>
+                </div>
+                <fa-icon class="arrow" [icon]="faChevronDown"></fa-icon>
+            </button>
+            <div class="accordion-description">
+                <ul class="accordion-list">
+                    <li class="accordion-link">
+                        <a routerLink="/dashboard/pedidos">Lista de Pedidos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div
+        class="accordion"
+        [ngClass]="page == 'agendamento' ? 'clicked' : '' " 
+        >
+            <button class="accordion-btn" (click)="clickedBtn('agendamento')">
+                <div class="accordion-btn-header">
+                    <fa-icon [icon]="faTable"></fa-icon>
+                    <span>Agendamentos</span>
+                </div>
+                <fa-icon class="arrow" [icon]="faChevronDown"></fa-icon>
+            </button>
+            <div class="accordion-description">
+                <ul class="accordion-list">
+                    <li class="accordion-link">
+                        <a routerLink="/dashboard/agendamentos">Lista de Agendamentos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container" *ngIf="isOpen">
+        <div
+        class="accordion"
+        [ngClass]="page == 'perfil' ? 'clicked' : '' " 
+        >
+            <button class="accordion-btn" (click)="clickedBtn('perfil')">
+                <a class="accordion-btn-header"
+                    routerLink="/dashboard/perfil"
+                >
+                    <fa-icon [icon]="faUser"></fa-icon>
+                    <span>Perfil</span>
+                </a>
+            </button>
+        </div>
+    </div>
+   
+</aside>

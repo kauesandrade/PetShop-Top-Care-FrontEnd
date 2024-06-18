@@ -30,3 +30,109 @@
   grid-template-columns: subgrid;
   grid-column: 1 / -1;
 }
+
+@mixin layoutDashboard {
+  
+  @include grid-container();
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  gap: 1.5rem;
+  height: 100%;
+
+  @media (min-width: $tablet) {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  @media(min-width: $desktop) {
+    margin-left: 120px;
+    gap: 2rem;
+
+    grid-template-columns: repeat(12, 3.25rem);
+    column-gap: 1.5rem;
+    padding: 0;
+  }
+
+  @media(min-width: $desktopHD) {
+    margin-left: 250px;
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+
+    grid-template-columns: repeat(12, 4rem);
+    column-gap: 2rem;
+    padding: 0;
+  }
+
+  .div-searchbar-orderBy {
+    grid-column: 1/-1;
+    @include flex(column, flex-end, space-between);
+    gap: 0.5rem;
+    
+    @media(min-width: $tablet) {
+      flex-direction: row;
+      align-items: center;
+      height: 40px;
+    }
+
+    .searchbar {
+      width: 100%;
+
+      @media(min-width: $tablet) {
+        width: initial;
+      }
+
+      div {
+        width: 100%;
+        height: 2.5rem;
+
+        input {
+          width: 100%;
+          height: 100%;
+        }
+
+        button {
+          height: 100%;
+        }
+      }
+    }
+
+    .div-orderBy {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      .span-orderBy {
+        @include text(small, bold);
+        
+        @media(min-width: $tablet) {
+          @include text(normal, bold);
+        }
+      }
+
+    }
+  }
+
+  .cards {
+    grid-column: 1 / -1;
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 1rem 100%;
+
+    @media(min-width: $tablet) {
+      justify-content: space-between;
+      gap: 1.5rem 2rem;
+    }
+
+    @media(min-width: $desktop) {
+      justify-content: start;
+      gap: 1.5rem 3.75rem;
+    }
+
+    @media(min-width: $desktopHD) {
+      gap: 1.5rem 2rem;
+    }
+  }
+
+}

@@ -17,4 +17,5 @@ export interface User {
   cards: Card[];
   orders: Order[];
   subscriptions: Subscription[];
+  access: string;
 }

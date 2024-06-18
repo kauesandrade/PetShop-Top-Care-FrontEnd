@@ -20,7 +20,6 @@ import { ProductSectionComponent } from './components/product-section/product-se
 import { RegisterAddressComponent } from './components/register-address/register-address.component';
 import { ProductItemSectionComponent } from './components/product-item-section/product-item-section.component';
 import { CardCardComponent } from './components/card-card/card-card.component';
-import { EditCardsComponent } from '../feature/user/data/components/edit-cards/edit-cards.component';
 import { CardFormModalComponent } from './components/card-form-modal/card-form-modal.component';
 
 const Components = [

@@ -435,7 +435,8 @@
             "status": "Pago"
           }
         }
-      ]
+      ],
+      "access": "normal"
     },
     {
       "name": "Gabriel Baseggio",
@@ -443,7 +444,7 @@
       "cpf": "00000000000",
       "birth": "30/08/2005",
       "gender": "Masculino",
-      "password": "149378",
+      "password": "123456",
       "contactInfo": [
         {
           "cellphone": "47991572443",
@@ -468,7 +469,8 @@
       ],
       "cards": [],
       "orders": [],
-      "subscriptions": []
+      "subscriptions": [],
+      "access": "admin"
     },
     {
       "name": "Leticia Mafra",
@@ -501,7 +503,8 @@
       ],
       "cards": [],
       "orders": [],
-      "subscriptions": []
+      "subscriptions": [],
+      "access": "normal"
     },
     {
       "name": "Kaue Schaefer de Andrade",
@@ -534,7 +537,8 @@
       ],
       "cards": [],
       "orders": [],
-      "subscriptions": []
+      "subscriptions": [],
+      "access": "normal"
     }
   ]
 }
