@@ -1,6 +1,6 @@
 <app-header (sideBarOpenEmitter)="sideBarOpen($event)" [simple]="true" [employee]="true"></app-header>
 <main>
-  <app-dashboard-side-bar pageNow='produto' [isOpen]="isOpen"></app-dashboard-side-bar>
+  <app-dashboard-side-bar pageNow='agendamento' [isOpen]="isOpen"></app-dashboard-side-bar>
 
   <div class="layout-dashboard">
     <div class="div-searchbar-orderBy">
@@ -22,11 +22,10 @@
 
 
     <div class="cards">
-      <app-service-card-dashboard></app-service-card-dashboard>
-      <app-service-card-dashboard></app-service-card-dashboard>
-      <app-service-card-dashboard></app-service-card-dashboard>
-      <app-service-card-dashboard></app-service-card-dashboard>
-      <app-service-card-dashboard></app-service-card-dashboard>
+        <app-scheduling-card-dashboard></app-scheduling-card-dashboard>
+        <app-scheduling-card-dashboard></app-scheduling-card-dashboard>
+        <app-scheduling-card-dashboard></app-scheduling-card-dashboard>
+        <app-scheduling-card-dashboard></app-scheduling-card-dashboard>
     </div>
   </div>
 </main>

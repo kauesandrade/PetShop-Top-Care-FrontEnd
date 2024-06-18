@@ -1,0 +1,96 @@
+@import "styles";
+
+.card-container {
+    @include flex(column, center, start);
+    width: 16rem;
+    height: 20.1rem;
+    padding: 1rem;
+    background-color: $white;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    position: relative;
+
+    .image {
+        height: 7.5rem;
+        background-color: rgb(214, 214, 214);
+    }
+
+    .code {
+        width: 100%;
+        @include flex(row, center, space-between);
+
+        p {
+            @include text(small);
+            color: $primary;
+
+            span {
+                @include text(small, bold);
+                color: $primary;
+            }
+        }
+    }
+
+    .client{
+
+        width: 100%;
+        @include flex(column, start);
+
+        p {
+            @include text(small);
+            color: $gray2;
+
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;    
+
+            span {
+                @include text(normal, bold);
+                color: $gray2;
+            }
+        }
+
+    }
+
+    .pricing {
+        width: 100%;
+        @include flex(center, center, space-between);
+
+        p {
+            @include text(medium);
+            color: $gray2;
+
+            span {
+                @include text(medium, bold);
+                color: $gray2
+            }
+        }
+    }
+
+    .buttons-container {
+        @include flex($justify: space-between);
+        gap: 0.5rem;
+        width: 100%;
+        height: 2.25rem;
+
+        button {
+            height: 100%;
+
+            &:first-child {
+                width: 100%;
+            }
+        }
+
+        .icon-button {
+            width: 3rem;
+
+            &.icon {
+                padding: 0.625rem 1rem;
+            }
+
+            .trash-icon {
+                font-size: 1rem;
+            }
+        }
+    }
+}

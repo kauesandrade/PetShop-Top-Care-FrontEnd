@@ -12,4 +12,7 @@ export class SchedulingCardDashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  handleClickCheck(){
+  }
+
 }
