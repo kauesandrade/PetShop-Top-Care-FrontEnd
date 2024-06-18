@@ -102,7 +102,11 @@
       gap: 0.5rem;
 
       .span-orderBy {
-        @include text(normal, bold);
+        @include text(small, bold);
+        
+        @media(min-width: $tablet) {
+          @include text(normal, bold);
+        }
       }
 
     }
