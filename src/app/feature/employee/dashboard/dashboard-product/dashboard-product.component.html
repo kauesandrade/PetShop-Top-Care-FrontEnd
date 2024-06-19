@@ -22,18 +22,9 @@
 
 
     <div class="cards">
-      <app-product-card-dashboard></app-product-card-dashboard>
-      <app-product-card-dashboard></app-product-card-dashboard>
-      <app-product-card-dashboard></app-product-card-dashboard>
-      <app-product-card-dashboard></app-product-card-dashboard>
-      <app-product-card-dashboard></app-product-card-dashboard>
-      <app-product-card-dashboard></app-product-card-dashboard>
-      <app-product-card-dashboard></app-product-card-dashboard>
-      <app-product-card-dashboard></app-product-card-dashboard>
-      <app-product-card-dashboard></app-product-card-dashboard>
-      <app-product-card-dashboard></app-product-card-dashboard>
-      <app-product-card-dashboard></app-product-card-dashboard>
-      <app-product-card-dashboard></app-product-card-dashboard>
+      <ng-container *ngFor="let product of productList">
+        <app-product-card-dashboard [product]="product"></app-product-card-dashboard>
+      </ng-container>
     </div>
   </div>
 </main>
