@@ -20,11 +20,10 @@ import { ReviewProductComponent } from './feature/user/orders/order/components/r
 import { PaymentComponent } from './feature/payment/payment.component';
 import { FinishedPaymentComponent } from './feature/payment/finished-payment/finished-payment.component';
 import { ServicesComponent } from './feature/services/services.component';
-import { DashboardProductComponent } from './feature/functionary/dashboard/dashboard-product/dashboard-product.component';
 import { SchedulingComponent } from './feature/scheduling/scheduling.component';
 import { DashboardProductComponent } from './feature/employee/dashboard/dashboard-product/dashboard-product.component';
-import { DashboardOrderComponent } from './feature/employee/dashboard/dashboard-order/dashboard-order.component';
 import { DashboardServiceComponent } from './feature/employee/dashboard/dashboard-service/dashboard-service.component';
+import { DashboardOrderComponent } from './feature/employee/dashboard/dashboard-order/dashboard-order.component';
 import { DashboardSchedulingComponent } from './feature/employee/dashboard/dashboard-scheduling/dashboard-scheduling.component';
 
 const routes: Routes = [
