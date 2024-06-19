@@ -1,0 +1,87 @@
+@import "styles";
+
+main {
+  @include grid-container();
+
+  row-gap: 1rem;
+  @media (min-width: $tablet) {
+    row-gap: 2rem;
+  }
+  @media (min-width: $desktop) {
+    row-gap: 1.5rem;
+  }
+  @media (min-width: $desktopHD) {
+    row-gap: 2rem;
+  }
+
+  .service-cards {
+    @include subgrid();
+    row-gap: 3.5rem;
+
+    @media (min-width: $desktop) {
+      row-gap: 1.5rem;
+    }
+    @media (min-width: $desktopHD) {
+      row-gap: 3.5rem;
+    }
+
+    app-service-card {
+      @include subgrid();
+    }
+  }
+
+  .schedule {
+    @include subgrid();
+    background-color: $white;
+    border-radius: 1rem;
+
+    padding: 0.5rem;
+    @media (min-width: $tablet) {
+      padding: 1rem;
+    }
+    @media (min-width: $desktop) {
+      padding: 1.5rem;
+    }
+
+    .content {
+      @include flex(column);
+      gap: 0.5rem;
+
+      grid-column: 1 / -1;
+      @media (min-width: $tablet) {
+        @include subgrid();
+      }
+      @media (min-width: $desktop) {
+        grid-column: 2 / span 10;
+      }
+
+      h4 {
+        align-self: center;
+        grid-column: 1 / -1;
+        @include text(small, bold);
+        @media (min-width: $tablet) {
+          @include heading();
+          grid-column: auto / span 4;
+        }
+        @media (min-width: $desktop) {
+          @include heading(h5);
+          grid-column: auto / span 7;
+        }
+        @media (min-width: $desktopHD) {
+          @include heading(h4);
+        }
+      }
+
+      button {
+        grid-column: 1 / -1;
+        @media (min-width: $tablet) {
+          grid-column: auto / span 2;
+        }
+        @media (min-width: $desktop) {
+          height: 2.5rem;
+          grid-column: auto / span 3;
+        }
+      }
+    }
+  }
+}

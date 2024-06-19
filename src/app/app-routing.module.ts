@@ -20,6 +20,8 @@ import { ReviewProductComponent } from './feature/user/orders/order/components/r
 import { PaymentComponent } from './feature/payment/payment.component';
 import { FinishedPaymentComponent } from './feature/payment/finished-payment/finished-payment.component';
 import { ServicesComponent } from './feature/services/services.component';
+import { DashboardProductComponent } from './feature/functionary/dashboard/dashboard-product/dashboard-product.component';
+import { SchedulingComponent } from './feature/scheduling/scheduling.component';
 import { DashboardProductComponent } from './feature/employee/dashboard/dashboard-product/dashboard-product.component';
 import { DashboardOrderComponent } from './feature/employee/dashboard/dashboard-order/dashboard-order.component';
 import { DashboardServiceComponent } from './feature/employee/dashboard/dashboard-service/dashboard-service.component';
@@ -46,7 +48,17 @@ const routes: Routes = [
   },
   { path: 'login', title: 'Login | Top Care', component: LoginComponent },
 
-  { path: 'servicos', title: 'Serviços | Top Care', component: ServicesComponent },
+  {
+    path: 'servicos',
+    title: 'Serviços | Top Care',
+    component: ServicesComponent,
+  },
+
+  {
+    path: 'agendamento',
+    title: 'Agendamento | Top Care',
+    component: SchedulingComponent,
+  },
 
   { path: 'busca', component: SearchComponent },
   {
@@ -124,7 +136,7 @@ const routes: Routes = [
     title: 'DashBoard | Top Care',
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
-    canDeactivate:[AuthGuard],
+    canDeactivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -135,7 +147,7 @@ const routes: Routes = [
       {
         path: 'produtos',
         title: 'DashBoard Produtos | Top Care',
-        component: DashboardProductComponent
+        component: DashboardProductComponent,
       },
       {
         path: 'produto',
@@ -143,14 +155,14 @@ const routes: Routes = [
           {
             path: '',
             title: 'Adicionar Produto| Top Care',
-            component: FavoritesComponent
+            component: FavoritesComponent,
           },
           {
             path: ':id',
             title: 'Produto| Top Care',
-            component: FavoritesComponent
+            component: FavoritesComponent,
           },
-        ]
+        ],
       },
 
       {
@@ -164,16 +176,15 @@ const routes: Routes = [
           {
             path: '',
             title: 'Adicionar Serviço| Top Care',
-            component: FavoritesComponent
+            component: FavoritesComponent,
           },
           {
             path: ':id',
             title: 'Serviço| Top Care',
-            component: FavoritesComponent
+            component: FavoritesComponent,
           },
-        ]
+        ],
       },
-
 
       {
         path: 'pedidos',
@@ -183,9 +194,8 @@ const routes: Routes = [
       {
         path: 'pedido/:id',
         title: 'Pedido| Top Care',
-        component: FavoritesComponent
+        component: FavoritesComponent,
       },
-
 
       {
         path: 'agendamentos',
@@ -195,11 +205,10 @@ const routes: Routes = [
       {
         path: 'agendamento/:id',
         title: 'Agendamento | Top Care',
-        component: FavoritesComponent
-      }
-
-    ]
-  }
+        component: FavoritesComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({

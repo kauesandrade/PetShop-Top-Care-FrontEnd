@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="square">
+    <ng-container *ngIf="iconImage; else iconTempl">
+      <img [src]="iconImage" alt="Animal icon" />
+    </ng-container>
+    <ng-template #iconTempl>
+      <fa-icon [icon]="icon!"></fa-icon>
+    </ng-template>
+  </div>
+  <p>{{ pet }}</p>
+</div>
