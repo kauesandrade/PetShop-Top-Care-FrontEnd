@@ -7,9 +7,10 @@ import { DashboardModule } from './dashboard/dashboard.module';
 
 
 
+
 @NgModule({
   exports:[DashboardModule],
   declarations: [],
   imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule]
 })
-export class FunctionaryModule { }
+export class EmployeeModule { }

@@ -22,6 +22,10 @@ import { FinishedPaymentComponent } from './feature/payment/finished-payment/fin
 import { ServicesComponent } from './feature/services/services.component';
 import { DashboardProductComponent } from './feature/functionary/dashboard/dashboard-product/dashboard-product.component';
 import { SchedulingComponent } from './feature/scheduling/scheduling.component';
+import { DashboardProductComponent } from './feature/employee/dashboard/dashboard-product/dashboard-product.component';
+import { DashboardOrderComponent } from './feature/employee/dashboard/dashboard-order/dashboard-order.component';
+import { DashboardServiceComponent } from './feature/employee/dashboard/dashboard-service/dashboard-service.component';
+import { DashboardSchedulingComponent } from './feature/employee/dashboard/dashboard-scheduling/dashboard-scheduling.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -164,7 +168,7 @@ const routes: Routes = [
       {
         path: 'servicos',
         title: 'DashBoard Serviços | Top Care',
-        component: FavoritesComponent,
+        component: DashboardServiceComponent
       },
       {
         path: 'servico',
@@ -185,7 +189,7 @@ const routes: Routes = [
       {
         path: 'pedidos',
         title: 'DashBoard Pedidos | Top Care',
-        component: FavoritesComponent,
+        component: DashboardOrderComponent
       },
       {
         path: 'pedido/:id',
@@ -196,7 +200,7 @@ const routes: Routes = [
       {
         path: 'agendamentos',
         title: 'DashBoard Agendamentos | Top Care',
-        component: FavoritesComponent,
+        component: DashboardSchedulingComponent
       },
       {
         path: 'agendamento/:id',

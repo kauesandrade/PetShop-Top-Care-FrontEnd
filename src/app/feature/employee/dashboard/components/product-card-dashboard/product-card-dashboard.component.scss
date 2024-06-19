@@ -3,7 +3,7 @@
 .card-container {
   @include flex(column, center, start);
   width: 16rem;
-  height: 23rem;
+  height: 22rem;
   padding: 1rem;
   background-color: $white;
   gap: 0.5rem;
@@ -13,6 +13,12 @@
   .image {
     height: 7.5rem;
     background-color: rgb(214, 214, 214);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 
   .title {
@@ -27,6 +33,7 @@
 
     p {
       @include text(small);
+      color: $gray2;
 
       span {
         @include text(small, bold);
@@ -65,12 +72,12 @@
   .subscribers-pricing {
     @include flex(column, flex-start);
     align-self: flex-start;
-    
+
     .subscribers-price {
       color: $primary;
       @include text(medium, bold);
     }
-    
+
     .subscribers-text {
       color: $primary;
       @include text(small);
@@ -98,7 +105,7 @@
         padding: 0.625rem 1rem;
       }
 
-      .shopping-cart-icon {
+      .trash-icon {
         font-size: 1rem;
       }
     }

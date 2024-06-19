@@ -2,13 +2,9 @@
 
 main {
     display: flex;
-    position: relative;
 
-    
-
-    div {
-
+    .layout-dashboard {
         @include layoutDashboard;
-    
     }
+
 }

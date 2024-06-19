@@ -1,0 +1,33 @@
+<div class="card-container">
+    <a class="image" href="">
+        <img src="https://images.petz.com.br/fotos/1658430805995.jpg" alt="product-image">
+    </a>
+    <div class="code">
+        <!-- <p><span>Código: </span>{{scheduling.schedulingCode}}</p> -->
+        <p><span>Código: </span>1234</p>
+        <p><span>Serviços: </span>5</p>
+
+        <!-- <ng-container *ngIf="scheduling.services.length > 1; else services">
+            <p><span>Serviço: </span>{{scheduling.services.length}}</p>
+        </ng-container>
+        <ng-template #items>
+            <p><span>Serviços: </span>{{scheduling.services.length}}</p>
+        </ng-template> -->
+
+    </div>
+    <div class="client">
+        <!-- <p><span>Pet: </span>{{scheduling.pet.name}} ({{scheduling.pet.species}})</p> -->
+        <!-- <p><span>Cliente: </span>{{scheduling.client}}</p> -->
+        <!-- <p><span>Data: </span>{{scheduling.date}}</p> -->
+        <p><span>Pet: </span>Cleber (cachorro)</p>
+        <p><span>Cliente: </span>Kauê Schaefer de Andrade</p>
+        <p><span>Data: </span>25/07/24 - 13:30h</p>
+    </div>
+    <div class="pricing">
+        <!-- <p><span>Total: </span>{{scheduling.price | currency : "BRL" : "symbol" : "1.2-2"}}</p> -->
+        <p><span>Total: </span>R$ 10,00</p>
+    </div>
+    <div class="buttons-container">
+        <button (click)="handleClickCheck()" appButton="secondary">Confirmar</button>
+    </div>
+</div>

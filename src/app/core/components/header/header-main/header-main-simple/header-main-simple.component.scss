@@ -5,6 +5,7 @@
   grid-template-columns: repeat(5, auto);
   row-gap: 0.5rem;
 
+
   @media (min-width: $tablet) {
     @include subgrid();
   }
