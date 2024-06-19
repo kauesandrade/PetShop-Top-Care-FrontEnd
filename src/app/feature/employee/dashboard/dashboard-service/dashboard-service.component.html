@@ -14,15 +14,14 @@
         </div>
       </label>
       <div class="div-orderBy">
-        <!-- <span class="span-orderBy">{{productsList.length}} resultados ordenados por</span> -->
-        <span class="span-orderBy">10 resultados ordenados por</span>
+        <span class="span-orderBy">{{servicesList.length}} resultados ordenados por</span>
         <app-order-by [typesOrderBy]="typesOrderBy" (emitOrderBy)="getOrderBy($event)"></app-order-by>
       </div>
     </div>
 
 
     <div class="cards">
-      <ng-container *ngFor="let service of services">
+      <ng-container *ngFor="let service of servicesList">
         <app-service-card-dashboard [service]="service"></app-service-card-dashboard>
       </ng-container>
     </div>

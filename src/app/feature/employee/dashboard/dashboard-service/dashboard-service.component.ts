@@ -13,7 +13,7 @@ export class DashboardServiceComponent implements OnInit {
   constructor( private serviceService: ServicesService) { }
 
   ngOnInit(): void {
-    this.services = this.serviceService.getServicesFirtVariant();
+    this.servicesList = this.serviceService.getServicesFirtVariant();
   }
 
   faSearch = faSearch;
@@ -28,7 +28,7 @@ export class DashboardServiceComponent implements OnInit {
     "Menor Preço",
   ]
 
-  services: Array<ServiceVariant> = []
+  servicesList: Array<ServiceVariant> = []
 
   sideBarOpen(evt: any){
     this.isOpen = evt;
