@@ -3,22 +3,18 @@
         <img src="https://images.petz.com.br/fotos/1658430805995.jpg" alt="product-image">
     </a>
     <p class="title">
-        <!-- {{service.title}} -->
-        Banho</p>
+        {{service.title}}</p>
     <div class="code">
         <p><span>Código: </span>
-            <!-- {{service.serviceCode}} -->
-            1234
+            {{service.code}}
         </p>
         <p><span>Categoria: </span>
-            <!-- {{service.category}} -->
-            Higiene
+            {{service.category}}
         </p>
     </div>
     <div class="pricing">
         <p><span>Total: </span>
-            <!-- {{service.price}} -->
-            R$ 10,00
+            {{service.price | currency : "BRL" : "symbol" : "1.2-2"}}
         </p>
     </div>
     <div class="buttons-container">

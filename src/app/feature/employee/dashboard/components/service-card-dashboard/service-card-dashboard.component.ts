@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-// import { ServiceType } from 'src/app/feature/contact/interfaces/service';
+import { ServiceVariant } from 'src/app/shared/interfaces/services/service-variant';
 
 @Component({
   selector: 'app-service-card-dashboard',
@@ -10,7 +10,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 export class ServiceCardDashboardComponent implements OnInit {
 
   faTrash = faTrash
-  // @Input() service!: ServiceType;
+  @Input() service!: ServiceVariant;
 
   constructor() { }
 
@@ -18,11 +18,11 @@ export class ServiceCardDashboardComponent implements OnInit {
   }
 
   handleClickTrash(){
-
+    console.log(this.service.code);
   }
-
+  
   handleClickEdit(){
-    
+    console.log(this.service.code);
   }
 
 }

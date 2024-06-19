@@ -22,11 +22,9 @@
 
 
     <div class="cards">
-      <app-service-card-dashboard></app-service-card-dashboard>
-      <app-service-card-dashboard></app-service-card-dashboard>
-      <app-service-card-dashboard></app-service-card-dashboard>
-      <app-service-card-dashboard></app-service-card-dashboard>
-      <app-service-card-dashboard></app-service-card-dashboard>
+      <ng-container *ngFor="let service of services">
+        <app-service-card-dashboard [service]="service"></app-service-card-dashboard>
+      </ng-container>
     </div>
   </div>
 </main>
