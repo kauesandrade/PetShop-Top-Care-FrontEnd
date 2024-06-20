@@ -8,7 +8,7 @@ import { DashboardProductComponent } from './dashboard-product/dashboard-product
 import { RouterModule } from '@angular/router';
 import { DashboardSideBarComponent } from './components/dashboard-side-bar/dashboard-side-bar.component';
 import { ProductCardDashboardComponent } from './components/product-card-dashboard/product-card-dashboard.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardOrderComponent } from './dashboard-order/dashboard-order.component';
 import { ServiceCardDashboardComponent } from './components/service-card-dashboard/service-card-dashboard.component';
 import { OrderCardDashboardComponent } from './components/order-card-dashboard/order-card-dashboard.component';
@@ -16,11 +16,12 @@ import { DashboardServiceComponent } from './dashboard-service/dashboard-service
 import { DashboardSchedulingComponent } from './dashboard-scheduling/dashboard-scheduling.component';
 import { SchedulingCardDashboardComponent } from './components/scheduling-card-dashboard/scheduling-card-dashboard.component';
 import { DashboardPageProductComponent } from './dashboard-page-product/dashboard-page-product.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 
 @NgModule({
-  exports:[DashboardComponent],
+  exports: [DashboardComponent],
   declarations: [
     DashboardComponent,
     DashboardProductComponent,
@@ -34,6 +35,14 @@ import { DashboardPageProductComponent } from './dashboard-page-product/dashboar
     SchedulingCardDashboardComponent,
     DashboardPageProductComponent
   ],
-  imports: [CommonModule, RouterModule, FontAwesomeModule, FormsModule, CoreModule, SharedModule]
+  imports: [
+    CommonModule, 
+    RouterModule, 
+    FontAwesomeModule, 
+    FormsModule,
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
+    CoreModule, 
+    SharedModule]
 })
 export class DashboardModule { }

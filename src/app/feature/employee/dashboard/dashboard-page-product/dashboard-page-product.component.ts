@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { faFileImage } from '@fortawesome/free-solid-svg-icons';
 import { Product } from 'src/app/shared/interfaces/product/product';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 import { ProductService } from 'src/app/shared/services/product/product.service';
-import { SearchService } from 'src/app/shared/services/search/search.service';
+import { faPlus, faTrash, faSave } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dashboard-page-product',
@@ -12,31 +14,65 @@ import { SearchService } from 'src/app/shared/services/search/search.service';
 })
 export class DashboardPageProductComponent implements OnInit {
 
-  product?: Product;
+  product?: Product
   productVariantsList!: Array<ProductVariant>;
   id!: string;
+  
+  isOpen: boolean = false;
+  titlePage = ""
+  
+  specificationsOpen = false;
+  variationsOpen = false;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+  faPlus = faPlus;
+  faTrash = faTrash;
+
+  productForm = this.formBuilder.group({
+    code: [''],
+    title: [''],
+    littleDescription: [''],
+    description: [''],
+    // brand: ['']
+    // specifications: Array<ProductSpecification>;
+    // rating: number;
+    // category: Array<Category>;
+    // reviews?: Array<ProductReview>;
+  })
+
+  specificationForm = this.formBuilder.group({
+    title: [''],
+    description: [''],
+  })
+
+  constructor(private route: ActivatedRoute,
+    private productService: ProductService,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.productService.findProduct(this.id);
 
-    if(typeof this.productService.getProduct() == 'object'){
+    if (typeof this.productService.getProduct() == 'object') {
       this.product = this.productService.getProduct();
+      this.titlePage = 'Editar um Produto'
       console.log(this.product);
-    }else{
-      console.log("cu");
+    } else {
+      this.titlePage = 'Adicionar um Produto'
+      console.log("sem objeto");
     }
 
   }
 
-
-
-  isOpen: boolean = false;
-
   sideBarOpen(evt: any) {
     this.isOpen = evt;
+  }
+
+  addSpecifications(){
+    this.specificationsOpen = !this.specificationsOpen;
+  }
+  
+  addVariant(){
+    this.variationsOpen = !this.variationsOpen;
   }
 
 }
