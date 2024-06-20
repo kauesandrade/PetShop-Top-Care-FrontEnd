@@ -1,0 +1,47 @@
+[
+    {
+        "code": 1,
+        "title": "Banho e Tosa",
+        "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+        "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+        "category": "Higiene",
+        "servedPets": [
+            "Cachorro",
+            "Gato",
+            "Aves"
+        ],
+        "variantCode": 1,
+        "variantTitle": "Tosa Higiene",
+        "price": 40
+    },
+    {
+        "code": 1,
+        "title": "Banho e Tosa",
+        "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+        "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+        "category": "Higiene",
+        "servedPets": [
+            "Cachorro",
+            "Gato",
+            "Aves"
+        ],
+        "variantCode": 2,
+        "variantTitle": "Banho completo",
+        "price": 50
+    },
+    {
+        "code": 2,
+        "title": "Consulta Veterinária",
+        "image": "https://blog-static.petlove.com.br/wp-content/uploads/2020/12/Cachorro-consulta-Petlove.jpg",
+        "description": "Exames e cuidados médicos para a saúde do seu pet.",
+        "category": "Saúde",
+        "servedPets": [
+            "Cachorro",
+            "Gato",
+            "Roedores"
+        ],
+        "variantCode": 1,
+        "variantTitle": "Consulta normal",
+        "price": 70
+    }
+]

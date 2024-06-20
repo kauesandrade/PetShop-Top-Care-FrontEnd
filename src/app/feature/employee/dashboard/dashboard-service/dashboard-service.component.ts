@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { ServiceVariant } from 'src/app/shared/interfaces/services/service-variant';
+import { ServicesService } from 'src/app/shared/services/services/services.service';
 
 @Component({
   selector: 'app-dashboard-service',
@@ -8,9 +10,10 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class DashboardServiceComponent implements OnInit {
 
-  constructor() { }
+  constructor( private serviceService: ServicesService) { }
 
   ngOnInit(): void {
+    this.servicesList = this.serviceService.getServicesFirtVariant();
   }
 
   faSearch = faSearch;
@@ -24,6 +27,8 @@ export class DashboardServiceComponent implements OnInit {
     "Maior Preço",
     "Menor Preço",
   ]
+
+  servicesList: Array<ServiceVariant> = []
 
   sideBarOpen(evt: any){
     this.isOpen = evt;
