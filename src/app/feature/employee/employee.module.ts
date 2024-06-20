@@ -5,12 +5,10 @@ import { CoreModule } from 'src/app/core/core.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardModule } from './dashboard/dashboard.module';
 
-
-
-
 @NgModule({
   exports:[DashboardModule],
-  declarations: [],
+  declarations: [
+  ],
   imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule]
 })
 export class EmployeeModule { }
