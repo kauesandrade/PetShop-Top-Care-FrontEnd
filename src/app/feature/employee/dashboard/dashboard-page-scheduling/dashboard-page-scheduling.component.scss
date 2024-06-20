@@ -1,0 +1,48 @@
+@import 'styles';
+
+main {
+  display: flex;
+  
+
+  .layout-dashboard {
+    @include layoutDashboard;
+    @include subgrid();
+
+    .info-title {
+      color: #016FC8; 
+      text-align: left; 
+      grid-column: 1 / -1; 
+      margin: 32px 0; 
+    }
+
+    .custom-rectangle {
+      background-color: #FEFEFE;
+      border-radius: 20px;
+      grid-column: 1 / -1; 
+      height: 800px; 
+      padding: 20px; 
+      position: relative;
+
+      .inner-rectangle {
+        background-color: #CCDEF5;
+        border-radius: 20px; 
+        height: 400px; 
+        width: calc(5 * (100% / 12) - 32px); // Largura calculada para ocupar 5 espaços da grid
+        position: absolute; 
+        right: 20px; 
+        top: 32px; 
+        grid-column: -5 / -1;
+      }
+      .second-inner-rectangle {
+        background-color: #CCDEF5;
+        border-radius: 20px;
+        height: 200px;
+        width: calc(3 * (100% / 12) - 32px);
+        position: absolute;
+        left: calc(4 * (100% / 12) + 20px); // Posicionamento à direita do primeiro retângulo
+        top: 32px; 
+        grid-column: 4 / 6;
+      }
+    }
+  }
+}

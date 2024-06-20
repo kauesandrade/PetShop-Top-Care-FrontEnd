@@ -11,5 +11,9 @@ export class DashboardPageSchedulingComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  isOpen: boolean = false;
+  sideBarOpen(evt: any){
+      this.isOpen = evt;
+    }
+  
 }
