@@ -43,5 +43,15 @@
     >
   </ng-container>
   <ng-template #horarioDisabled><h5>Horário</h5></ng-template>
-  <h5>Confirmação</h5>
+  <ng-container
+    *ngIf="checkIfCompleted('confirmacao'); else confirmacaoDisabled"
+  >
+    <a
+      routerLink="/agendamento/confirmacao"
+      routerLinkActive="active"
+      class="completed"
+      >Confirmação</a
+    >
+  </ng-container>
+  <ng-template #confirmacaoDisabled><h5>Confirmação</h5></ng-template>
 </nav>

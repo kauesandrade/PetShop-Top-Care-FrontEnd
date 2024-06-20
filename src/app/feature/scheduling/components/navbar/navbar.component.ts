@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
     ];
     let index = routes.indexOf(route);
 
-    if (index < routes.indexOf(url)) {
+    if (index <= routes.indexOf(url)) {
       return true;
     }
     return false;

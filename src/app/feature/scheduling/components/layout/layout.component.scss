@@ -13,10 +13,50 @@ main {
     @include subgrid();
     background-color: $white;
     border-radius: 1rem;
-    min-height: 38rem;
+    padding-bottom: 2rem;
+    row-gap: 2rem;
 
     app-navbar {
       grid-column: 1 / -1;
+    }
+
+    .content {
+      @include subgrid();
+      grid-column: 2 / span 10;
+      height: 24rem;
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 0.5rem;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $gray4;
+        border-radius: 0.5rem;
+      }
+    }
+
+    .buttons {
+      @include subgrid();
+      height: 3.5rem;
+
+      button {
+        height: 100%;
+        grid-column: auto / span 3;
+
+        &.cancel {
+          grid-column-start: 2;
+        }
+
+        &.continue {
+          grid-column-start: 9;
+        }
+      }
     }
   }
 }

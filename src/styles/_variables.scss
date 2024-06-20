@@ -20,16 +20,31 @@ $light-secondary: #feeed1;
 $green: #307310;
 
 // Pet colors
-$pet-red: #f83a22;
-$pet-orange: #ff7537;
-$pet-yellow: #fad165;
-$pet-blue: #4986e7;
-$pet-light-blue: #9fe1e7;
-$pet-green: #16a765;
-$pet-light-green: #7bd148;
-$pet-grey: #5f6368;
-$pet-pink: #f691b2;
-$pet-purple: #a47ae2;
+
+$pet-colors: (
+  "pet-red": #f83a22,
+  "pet-orange": #ff7537,
+  "pet-yellow": #fad165,
+  "pet-blue": #4986e7,
+  "pet-light-blue": #9fe1e7,
+  "pet-green": #16a765,
+  "pet-light-green": #7bd148,
+  "pet-grey": #5f6368,
+  "pet-pink": #f691b2,
+  "pet-purple": #a47ae2,
+);
+
+@each $name, $pet-color in $pet-colors {
+  .background-#{$name} {
+    background-color: $pet-color;
+  }
+  .color-#{$name} {
+    color: $pet-color;
+  }
+  .border-#{$name} {
+    border-color: $pet-color;
+  }
+}
 
 // Breakpoints
 $desktopHD: 1440px;

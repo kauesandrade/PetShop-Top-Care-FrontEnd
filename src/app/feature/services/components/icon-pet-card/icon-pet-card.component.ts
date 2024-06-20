@@ -3,22 +3,16 @@ import {
   faCat,
   faDog,
   faDove,
-  faDragon,
   faFish,
-  faFrog,
-  faHandLizard,
-  faMale,
-  faMouse,
-  faOtter,
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-pet-card',
-  templateUrl: './pet-card.component.html',
-  styleUrls: ['./pet-card.component.scss'],
+  selector: 'app-icon-pet-card',
+  templateUrl: './icon-pet-card.component.html',
+  styleUrls: ['./icon-pet-card.component.scss'],
 })
-export class PetCardComponent implements OnInit {
+export class IconPetCardComponent implements OnInit {
   @Input() pet!: string;
   icon?: IconDefinition;
   iconImage?: string;

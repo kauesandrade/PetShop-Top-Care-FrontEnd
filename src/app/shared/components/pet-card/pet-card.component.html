@@ -1,0 +1,23 @@
+<ng-container *ngIf="type == 'add'; else petCard">
+  <div class="card add" (click)="onClick()">
+    <div class="add-icon">
+      <fa-icon [icon]="faPlus"></fa-icon>
+    </div>
+    <h6>Adicionar pet</h6>
+  </div>
+</ng-container>
+<ng-template #petCard>
+  <div
+    class="card pet"
+    (click)="onClick()"
+    [class.selected]="scheduleSelected == index"
+    [ngClass]="'border-' + pet.idColor"
+  >
+    <div class="color-strip" [ngClass]="'background-' + pet.idColor"></div>
+    <div class="image">
+      <img [src]="pet.image" alt="Pet image" />
+      <fa-icon [icon]="faCheck"></fa-icon>
+    </div>
+    <h6>{{ pet.name }}</h6>
+  </div>
+</ng-template>

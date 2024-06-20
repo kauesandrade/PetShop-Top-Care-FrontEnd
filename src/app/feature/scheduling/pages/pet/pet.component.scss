@@ -1,0 +1,10 @@
+@import "styles";
+
+.content {
+  @include subgrid();
+  row-gap: 2rem;
+
+  app-pet-card {
+    grid-column: auto / span 2;
+  }
+}

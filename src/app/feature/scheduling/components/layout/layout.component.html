@@ -3,12 +3,16 @@
   <h3>Agendamento de serviços</h3>
   <div class="layout">
     <app-navbar></app-navbar>
-    <ng-content></ng-content>
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
     <div class="buttons">
-      <button (click)="onCancel()" appButton="secondary">
+      <button (click)="onCancel()" appButton="secondary" class="cancel">
         Cancelar agendamento
       </button>
-      <button (click)="onContinue()" appButton>Prosseguir</button>
+      <button (click)="onContinue()" appButton class="continue">
+        Prosseguir
+      </button>
     </div>
   </div>
 </main>

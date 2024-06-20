@@ -2,7 +2,28 @@
 
 nav {
   @include flex($justify: space-between);
-  padding: 1rem 2rem;
+  height: 5rem;
+
+  a,
+  h5 {
+    width: auto;
+    height: 100%;
+    flex-grow: 1;
+    @include flex();
+    position: relative;
+
+    &:not(:first-child) {
+      &::before {
+        content: "";
+        position: absolute;
+        width: 3px;
+        background-color: $gray5;
+        height: 50%;
+        left: 0;
+      }
+    }
+  }
+
   a {
     color: $gray3;
     text-decoration: none;
@@ -10,10 +31,12 @@ nav {
 
     &.active {
       color: $secondary;
+      border-bottom: 4px solid $secondary;
     }
 
-    &.completed {
+    &.completed:not(.active) {
       color: $primary;
+      border-bottom: 3px solid $primary;
     }
 
     &:hover {
@@ -23,5 +46,6 @@ nav {
 
   h5 {
     color: $gray3;
+    border-bottom: 3px solid $gray5;
   }
 }

@@ -18,6 +18,17 @@ export class LayoutComponent implements OnInit {
   }
 
   onContinue() {
+    let url = this.router.url.split('/agendamento/').join('');
+    let routes = [
+      'pet',
+      'localizacao',
+      'petshop',
+      'servicos',
+      'horario',
+      'confirmacao',
+    ];
+    let index = routes.indexOf(url);
+    this.router.navigate(['/agendamento/' + routes[index + 1]]);
     this.continue.emit();
   }
 }

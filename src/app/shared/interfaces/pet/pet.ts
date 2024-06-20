@@ -1,4 +1,6 @@
 export interface Pet {
+  id: number;
+  idColor: string;
   image: string;
   name: string;
   size: string;
