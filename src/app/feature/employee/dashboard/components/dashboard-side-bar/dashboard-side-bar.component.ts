@@ -32,7 +32,6 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.onResize();
     this.page = this.pageNow;
-    console.log(this.pageNow)
   }
 
   isHovered: boolean = false;

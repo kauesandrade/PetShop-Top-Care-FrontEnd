@@ -16,7 +16,6 @@ export class DashboardProductComponent implements OnInit {
   ngOnInit(): void {
     this.searchService.searchProducts("");
     this.productList = this.searchService.getProductList();
-    console.log(this.productList)
   }
 
   productList: Array<ProductVariant> = []
