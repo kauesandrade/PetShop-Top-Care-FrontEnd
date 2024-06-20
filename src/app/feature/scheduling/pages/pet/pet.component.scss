@@ -2,7 +2,14 @@
 
 .content {
   @include subgrid();
-  row-gap: 2rem;
+
+  row-gap: 1rem;
+  @media (min-width: $tablet) {
+    row-gap: 1.5rem;
+  }
+  @media (min-width: $desktop) {
+    row-gap: 2rem;
+  }
 
   app-pet-card {
     grid-column: 1 / -1;

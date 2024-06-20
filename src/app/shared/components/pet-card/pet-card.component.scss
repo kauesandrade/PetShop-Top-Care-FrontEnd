@@ -6,7 +6,6 @@
   @include flex(column, $justify: space-between);
   text-align: center;
   padding: 0.5rem 1.5rem;
-  // aspect-ratio: 1 / 1;
 
   @media (min-width: $tablet) {
     aspect-ratio: auto;
@@ -25,11 +24,19 @@
   &.add {
     padding: 1rem 1.5rem;
     background-color: $gray5;
+    gap: 2rem;
+    height: auto;
+
+    @media (min-width: $tablet) {
+      gap: 0;
+      height: 100%;
+    }
 
     .add-icon {
       @include flex();
       aspect-ratio: 1 / 1;
       border-radius: 100%;
+      width: 4rem;
       @media (min-width: $desktop) {
         width: 3.5rem;
       }
