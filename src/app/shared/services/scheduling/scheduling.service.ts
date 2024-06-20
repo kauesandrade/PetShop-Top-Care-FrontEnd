@@ -16,12 +16,16 @@ export class SchedulingService {
 
   constructor(private router: Router) {}
 
-  cancelScheduling() {
+  clearScheduling() {
     this.pet = undefined;
     this.address = undefined;
     this.petshop = undefined;
     this.services = undefined;
     this.schedule = undefined;
+  }
+
+  cancelScheduling() {
+    this.clearScheduling();
     this.router.navigate(['/servicos']);
   }
 
@@ -41,5 +45,8 @@ export class SchedulingService {
 
   setPet(pet: Pet) {
     this.pet = pet;
+  }
+  setAddress(address: Address) {
+    this.address = address;
   }
 }

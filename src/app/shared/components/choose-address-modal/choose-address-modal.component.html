@@ -1,38 +1,45 @@
 <dialog #modal [open]="open" (cancel)="$event.preventDefault()">
-    <form (ngSubmit)="onSubmit()">
-        <div>
-            <div class="div-title">
-                <h6 class="title">Escolha seu Endereço</h6>
-                <p class="sub-title">Escolhe o endereço onde você queira que a TopCare entrege seu pedido</p>
-            </div>
-            <button class="close-button" (click)="onCancel($event)">
-                <fa-icon [icon]="faX"></fa-icon>
-            </button>
-        </div>
-        <div class="div-addresses">
-            <ng-container *ngIf="user">
-                <ng-container *ngFor="let address of user.addresses">
-                    <div class="div-address">
-                        <input type="radio" name="address" (change)="changeInputRadio(address)">
-                        <div class="div-name-cep-street">
-                            <div class="div-name-cep">
-                                <span class="name-address">{{address.name}}</span>
-                                <p class="cep">CEP: {{address.cep}}</p>
-                            </div>
-                            <p class="address">Rua {{address.street}}, {{address.number}} - {{address.city}} -
-                                {{address.state}}</p>
-                        </div>
-                    </div>
-                </ng-container>
-            </ng-container>
-        </div>
-        <div class="div-buttons">
-            <button class="btn" appButton="" (click)="$event.preventDefault(); addressOpen = true">Adicionar um novo
-                endereço</button>
-            <input class="btn" type="submit" value="Confirmar escolha" appButton="secondary" />
-        </div>
-    </form>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <div class="div-title">
+        <h6 class="title">Escolha seu Endereço</h6>
+        <p class="sub-title">
+          Escolhe o endereço onde você queira que a TopCare entrege seu pedido
+        </p>
+      </div>
+      <button class="close-button" (click)="onCancel($event)">
+        <fa-icon [icon]="faX"></fa-icon>
+      </button>
+    </div>
+    <div class="div-addresses">
+      <ng-container *ngIf="user">
+        <ng-container *ngFor="let address of user.addresses">
+          <app-address-card [address]="address"></app-address-card>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div class="div-buttons">
+      <button
+        class="btn"
+        appButton=""
+        (click)="$event.preventDefault(); addressOpen = true"
+      >
+        Adicionar um novo endereço
+      </button>
+      <input
+        class="btn"
+        type="submit"
+        value="Confirmar escolha"
+        appButton="secondary"
+      />
+    </div>
+  </form>
 </dialog>
 
-<app-register-address [(open)]="addressOpen" [title]="'Cadastre seu endereço'" (registeredAddress)="addAddress($event)"
-    (canceledAddress)="addressOpen = false" [allowClosing]="true"></app-register-address>
+<app-register-address
+  [(open)]="addressOpen"
+  [title]="'Cadastre seu endereço'"
+  (registeredAddress)="addAddress($event)"
+  (canceledAddress)="addressOpen = false"
+  [allowClosing]="true"
+></app-register-address>

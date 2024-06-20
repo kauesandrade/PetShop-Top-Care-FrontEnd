@@ -1,0 +1,20 @@
+<label class="card" [for]="address.cep">
+  <input
+    type="radio"
+    name="address"
+    [id]="address.cep"
+    (change)="changeInputRadio()"
+    [checked]="address.cep == selectedAddress?.cep"
+    appInput
+  />
+  <div class="div-name-cep-street">
+    <div class="div-name-cep">
+      <span class="name-address">{{ address.name }}</span>
+      <p class="cep">CEP: {{ address.cep }}</p>
+    </div>
+    <p class="address">
+      Rua {{ address.street }}, {{ address.number }} - {{ address.city }} -
+      {{ address.state }}
+    </p>
+  </div>
+</label>

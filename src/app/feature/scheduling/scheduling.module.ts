@@ -11,6 +11,8 @@ import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
+import { AddAddressCardComponent } from './components/add-address-card/add-address-card.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const Components = [
   PetComponent,
@@ -22,8 +24,19 @@ const Components = [
 ];
 
 @NgModule({
-  imports: [CommonModule, CoreModule, SharedModule, RouterModule],
+  imports: [
+    CommonModule,
+    CoreModule,
+    SharedModule,
+    RouterModule,
+    FontAwesomeModule,
+  ],
   exports: [...Components],
-  declarations: [...Components, LayoutComponent, NavbarComponent],
+  declarations: [
+    ...Components,
+    LayoutComponent,
+    NavbarComponent,
+    AddAddressCardComponent,
+  ],
 })
 export class SchedulingModule {}
