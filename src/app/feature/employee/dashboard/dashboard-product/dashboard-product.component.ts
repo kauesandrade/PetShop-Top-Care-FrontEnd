@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
+import { FilterService } from 'src/app/shared/services/filter/filter.service';
+import { SearchService } from 'src/app/shared/services/search/search.service';
 
 @Component({
   selector: 'app-dashboard-product',
@@ -8,10 +11,15 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class DashboardProductComponent implements OnInit {
 
-  constructor() { }
+  constructor(private searchService: SearchService, private filterService: FilterService) { }
 
   ngOnInit(): void {
+    this.searchService.searchProducts("");
+    this.productList = this.searchService.getProductList();
+    console.log(this.productList)
   }
+
+  productList: Array<ProductVariant> = []
 
   faSearch = faSearch;
   

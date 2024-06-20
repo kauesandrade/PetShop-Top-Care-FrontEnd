@@ -1,37 +1,27 @@
 <div class="card-container">
     <a class="image" href="">
-        <img src="https://images.petz.com.br/fotos/1658430805995.jpg" alt="product-image">
+        <img [src]="product.images[0]" alt="Product image" class="product-image" />
     </a>
-    <p class="title">Ração úmida kelcat sachê carne</p>
+    <p class="title">{{product.title}}</p>
     <div class="code">
-        <p><span>Código: </span>1234</p>
-        <p><span>Estoque: </span>1000</p>
+        <p><span>Código: </span>{{product.code}}</p>
     </div>
     <div class="main-pricing">
         <div class="pricing-values">
-            <!-- <ng-container *ngIf="product.discountPrice !== 0"> -->
-            <ng-container>
+            <ng-container *ngIf="product.discountPrice !== 0">
                 <p class="price">
-                    <!-- {{ product.price | currency : "BRL" : "symbol" : "1.2-2" }} -->
-                    R$ 100
+                    {{ product.price | currency : "BRL" : "symbol" : "1.2-2" }}
                 </p>
             </ng-container>
-            <!-- <p [ngClass]="{ 'before-discount': product.discountPrice !== 0 }"> -->
-            <p>
-                <!-- {{ product.discountPrice | currency : "BRL" : "symbol" : "1.2-2" }} -->
-                R$ 100
+            <p [ngClass]="{ 'before-discount': product.discountPrice !== 0 }">
+                {{ product.discountPrice | currency : "BRL" : "symbol" : "1.2-2" }}
             </p>
         </div>
-        <!-- <ng-container *ngIf="product!.maxInterestFreeParcels > 1"> -->
-        <ng-container>
-            <!-- <p class="parcels">até {{ product.maxInterestFreeParcels }}x sem juros</p> -->
-            <p class="parcels">até 1x sem juros</p>
-        </ng-container>
+        <p class="parcels">até {{ product.maxInterestFreeParcels }}x sem juros</p>
     </div>
     <div class="subscribers-pricing">
         <p class="subscribers-price">
-            <!-- {{ product.subscribersPrice | currency : "BRL" : "symbol" : "1.2-2" }} -->
-            R$ 100
+            {{ product.subscribersPrice | currency : "BRL" : "symbol" : "1.2-2" }}
         </p>
         <p class="subscribers-text">Apenas para assinantes</p>
     </div>

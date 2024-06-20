@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { faCat, faDog, faDove } from '@fortawesome/free-solid-svg-icons';
+import { Service } from 'src/app/shared/interfaces/services/service';
+import { ServicesService } from 'src/app/shared/services/services/services.service';
 
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
-  styleUrls: ['./services.component.scss']
+  styleUrls: ['./services.component.scss'],
 })
 export class ServicesComponent implements OnInit {
+  serviceList: Service[] = this.services.getServices();
 
-  constructor() { }
+  constructor(private services: ServicesService, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  goToSchedule() {
+    this.router.navigate(['/agendamento']);
   }
-
 }
