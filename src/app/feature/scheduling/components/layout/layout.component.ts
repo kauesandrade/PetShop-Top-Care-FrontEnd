@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { SchedulingService } from 'src/app/shared/services/scheduling/scheduling.service';
 
 @Component({
   selector: 'app-layout',
@@ -9,26 +10,18 @@ import { Router } from '@angular/router';
 export class LayoutComponent implements OnInit {
   @Output() continue = new EventEmitter();
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private schedulingService: SchedulingService
+  ) {}
 
   ngOnInit(): void {}
 
   onCancel() {
-    this.router.navigate(['/servicos']);
+    this.schedulingService.cancelScheduling();
   }
 
   onContinue() {
-    let url = this.router.url.split('/agendamento/').join('');
-    let routes = [
-      'pet',
-      'localizacao',
-      'petshop',
-      'servicos',
-      'horario',
-      'confirmacao',
-    ];
-    let index = routes.indexOf(url);
-    this.router.navigate(['/agendamento/' + routes[index + 1]]);
     this.continue.emit();
   }
 }

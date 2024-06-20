@@ -2,11 +2,21 @@
 
 .card {
   width: 100%;
-  height: 10rem;
   border-radius: 1.5rem;
   @include flex(column, $justify: space-between);
   text-align: center;
   padding: 0.5rem 1.5rem;
+  // aspect-ratio: 1 / 1;
+
+  @media (min-width: $tablet) {
+    aspect-ratio: auto;
+  }
+  @media (min-width: $desktop) {
+    height: 8.5rem;
+  }
+  @media (min-width: $desktopHD) {
+    height: 10rem;
+  }
 
   &:hover {
     cursor: pointer;
@@ -20,7 +30,12 @@
       @include flex();
       aspect-ratio: 1 / 1;
       border-radius: 100%;
-      width: 4rem;
+      @media (min-width: $desktop) {
+        width: 3.5rem;
+      }
+      @media (min-width: $desktopHD) {
+        width: 4rem;
+      }
       background-color: $gray4;
       fa-icon {
         color: $gray5;
@@ -44,7 +59,13 @@
 
     .image {
       z-index: 1;
-      width: 6rem;
+      width: 7.5rem;
+      @media (min-width: $desktop) {
+        width: 5rem;
+      }
+      @media (min-width: $desktopHD) {
+        width: 6rem;
+      }
       position: relative;
       img {
         border-radius: 100%;
@@ -70,7 +91,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: rgba(26, 231, 112, 0.1);
+        background-color: rgba(26, 231, 112, 0.2);
       }
 
       .image {

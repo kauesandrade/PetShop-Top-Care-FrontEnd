@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pet } from 'src/app/shared/interfaces/pet/pet';
+import { SchedulingService } from 'src/app/shared/services/scheduling/scheduling.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-pet',
@@ -8,58 +10,28 @@ import { Pet } from 'src/app/shared/interfaces/pet/pet';
   styleUrls: ['./pet.component.scss'],
 })
 export class PetComponent implements OnInit {
-  pets: Pet[] = [
-    {
-      id: 1,
-      idColor: 'pet-green',
-      image:
-        'https://console.kr-asia.com/wp-content/uploads/2019/07/Dog-Shutterstock-Size-2.jpg',
-      name: 'Rex',
-      size: 'Médio',
-      type: 'Cachorro',
-      race: 'Labrador Retriever',
-      gender: 'Macho',
-      color: 'Amarelo',
-      birth: '15052018',
-      weight: 25.5,
-    },
-    {
-      id: 2,
-      idColor: 'pet-yellow',
-      image:
-        'https://console.kr-asia.com/wp-content/uploads/2019/07/Dog-Shutterstock-Size-2.jpg',
-      name: 'Rex',
-      size: 'Médio',
-      type: 'Cachorro',
-      race: 'Labrador Retriever',
-      gender: 'Macho',
-      color: 'Amarelo',
-      birth: '15052018',
-      weight: 25.5,
-    },
-    {
-      id: 3,
-      idColor: 'pet-blue',
-      image:
-        'https://console.kr-asia.com/wp-content/uploads/2019/07/Dog-Shutterstock-Size-2.jpg',
-      name: 'Rex',
-      size: 'Médio',
-      type: 'Cachorro',
-      race: 'Labrador Retriever',
-      gender: 'Macho',
-      color: 'Amarelo',
-      birth: '15052018',
-      weight: 25.5,
-    },
-  ];
+  pets?: Pet[];
 
-  selectedIndex?: number;
+  selectedPet?: Pet;
 
-  constructor(private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private schedulingService: SchedulingService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.pets = this.userService.loggedUser?.pets;
+    if (this.schedulingService.pet) {
+      this.selectedPet = this.schedulingService.pet;
+    }
+  }
 
   onContinue() {
-    console.log('XD');
+    if (this.selectedPet) {
+      this.schedulingService.setPet(this.selectedPet);
+      this.schedulingService.navigateToNextRoute();
+    } else {
+      alert('Seleciona ai doidão');
+    }
   }
 }

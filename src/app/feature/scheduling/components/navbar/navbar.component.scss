@@ -1,8 +1,17 @@
 @import "styles";
 
 nav {
-  @include flex($justify: space-between);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   height: 5rem;
+
+  @media (min-width: $tablet) {
+    @include flex($justify: space-between);
+    height: 4rem;
+  }
+  @media (min-width: $desktop) {
+    height: 5rem;
+  }
 
   a,
   h5 {
@@ -11,8 +20,16 @@ nav {
     flex-grow: 1;
     @include flex();
     position: relative;
+    @include text(small, bold);
 
-    &:not(:first-child) {
+    @media (min-width: $desktop) {
+      @include text(medium, bold);
+    }
+    @media (min-width: $desktop) {
+      @include heading(h5);
+    }
+
+    &:not(:nth-child(3n + 1)) {
       &::before {
         content: "";
         position: absolute;
@@ -22,12 +39,23 @@ nav {
         left: 0;
       }
     }
+    @media (min-width: $tablet) {
+      &:not(:first-child) {
+        &::before {
+          content: "";
+          position: absolute;
+          width: 3px;
+          background-color: $gray5;
+          height: 50%;
+          left: 0;
+        }
+      }
+    }
   }
 
   a {
     color: $gray3;
     text-decoration: none;
-    @include heading(h5);
 
     &.active {
       color: $secondary;

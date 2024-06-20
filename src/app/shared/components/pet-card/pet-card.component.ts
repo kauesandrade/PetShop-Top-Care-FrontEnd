@@ -12,10 +12,8 @@ export class PetCardComponent implements OnInit {
   @Input() type: string = 'link';
   @Input() pet!: Pet;
 
-  @Input() index!: number;
-
-  @Input() scheduleSelected?: number;
-  @Output() onScheduleSelected = new EventEmitter<number>();
+  @Input() scheduleSelected?: Pet;
+  @Output() scheduleSelectedChange = new EventEmitter<Pet>();
 
   faPlus = faPlus;
   faCheck = faCheck;
@@ -33,7 +31,11 @@ export class PetCardComponent implements OnInit {
         this.router.navigate(['/perfil/pets/' + this.pet.id]);
         break;
       case 'scheduling':
-        this.onScheduleSelected.emit(this.index);
+        if (this.scheduleSelected?.id == this.pet.id) {
+          this.scheduleSelectedChange.emit(undefined);
+        } else {
+          this.scheduleSelectedChange.emit(this.pet);
+        }
         break;
     }
   }

@@ -10,7 +10,7 @@
   <div
     class="card pet"
     (click)="onClick()"
-    [class.selected]="scheduleSelected == index"
+    [class.selected]="scheduleSelected?.id == pet.id"
     [ngClass]="'border-' + pet.idColor"
   >
     <div class="color-strip" [ngClass]="'background-' + pet.idColor"></div>
