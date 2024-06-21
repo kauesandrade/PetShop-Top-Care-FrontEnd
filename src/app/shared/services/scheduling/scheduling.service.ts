@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pet } from '../../interfaces/pet/pet';
+import { Petshop } from '../../interfaces/petshop/petshop';
 import { Service } from '../../interfaces/services/service';
 import { Address } from '../../interfaces/user/address';
 
@@ -10,7 +11,7 @@ import { Address } from '../../interfaces/user/address';
 export class SchedulingService {
   pet?: Pet;
   address?: Address;
-  petshop?: string;
+  petshop?: Petshop;
   services?: Service[];
   schedule?: string;
 
@@ -48,5 +49,8 @@ export class SchedulingService {
   }
   setAddress(address: Address) {
     this.address = address;
+  }
+  setPetshop(petshop: Petshop) {
+    this.petshop = petshop;
   }
 }

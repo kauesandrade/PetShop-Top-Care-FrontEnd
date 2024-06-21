@@ -1,1 +1,10 @@
-<app-layout></app-layout>
+<app-layout (continue)="onContinue()">
+  <div class="content">
+    <ng-container *ngFor="let petshop of petshops; let i = index">
+      <app-petshop-card
+        [(selectedPetshop)]="petshopSelected"
+        [petshop]="petshop"
+      ></app-petshop-card>
+    </ng-container>
+  </div>
+</app-layout>
