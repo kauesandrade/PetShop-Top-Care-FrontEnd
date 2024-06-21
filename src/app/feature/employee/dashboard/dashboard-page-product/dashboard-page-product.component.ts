@@ -5,7 +5,7 @@ import { faFileImage } from '@fortawesome/free-solid-svg-icons';
 import { Product } from 'src/app/shared/interfaces/product/product';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 import { ProductService } from 'src/app/shared/services/product/product.service';
-import { faPlus, faTrash, faSave } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dashboard-page-product',
@@ -26,6 +26,7 @@ export class DashboardPageProductComponent implements OnInit {
 
   faPlus = faPlus;
   faTrash = faTrash;
+  faTimes = faTimes;
 
   productForm = this.formBuilder.group({
     code: [''],

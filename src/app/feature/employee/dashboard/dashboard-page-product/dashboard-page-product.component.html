@@ -49,12 +49,21 @@
           </button>
         </div>
 
+        <div class="specifications">
+          <ng-container *ngFor="let specification of product?.specifications">
+            <div class="select-tag">
+              <p>{{specification.title}}</p>
+              <button><fa-icon [icon]="faTimes"></fa-icon></button>
+            </div>
+          </ng-container>
+        </div>
+
 
         <ng-container *ngIf="specificationsOpen">
           <div class="specification">
 
             <div class="specification-card">
-              <p><span>Adicionar Especificações</span></p>
+              <p>Adicionar Especificações</p>
               <button appButton="secondary">Adicionar</button>
             </div>
 
@@ -73,36 +82,6 @@
             </form>
           </div>
         </ng-container>
-
-
-
-        <div class="specifications">
-          <ng-container *ngFor="let specification of product?.specifications">
-
-            <div class="specification">
-
-              <div class="specification-card">
-                <p>Título: <span>{{specification.title}}</span></p>
-                <fa-icon [icon]="faTrash"></fa-icon>
-              </div>
-
-              <form [formGroup]="specificationForm" class="form-specifications">
-                <label for="title" class="labels" appInput>
-                  <p>Título da Especificação*</p>
-                  <input type="title" id="title" formControlName="title" placeholder="Título da Especificação"
-                    required />
-                </label>
-
-                <label for="description" class="labels" appInput>
-                  <p>Descrição da Especificação*</p>
-                  <input type="description" id="description" formControlName="description"
-                    placeholder="Descrição da Especificação" required />
-                </label>
-              </form>
-
-            </div>
-          </ng-container>
-        </div>
 
       </section>
 
