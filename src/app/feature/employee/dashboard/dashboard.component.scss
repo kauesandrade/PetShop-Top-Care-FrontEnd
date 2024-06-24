@@ -1,0 +1,46 @@
+@import 'styles';
+
+main {
+    display: flex;
+
+    .layout-dashboard {
+        @include layoutDashboard;
+        
+        h1 {
+            grid-column: 1 / -1;
+            color: $primary;
+            @include heading(h6);
+            
+            @media(min-width: $tablet) {
+                @include heading(h4);
+            }
+            
+            @media(min-width: $desktop) {
+                @include heading(h2);
+            }
+            
+            @media(min-width: $desktopHD) {
+                @include heading(h1);
+            }
+        }
+
+        h3{
+            grid-column: 1 / -1;
+            color: $primary;
+            @include heading(h6);
+            
+            @media(min-width: $tablet) {
+                @include heading(h4);
+            }
+            
+            @media(min-width: $desktopHD) {
+                @include heading(h3);
+            }
+        }
+        
+        .graphic{
+            
+        }
+    }
+
+}

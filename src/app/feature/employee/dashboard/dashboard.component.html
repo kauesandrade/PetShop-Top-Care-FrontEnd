@@ -1,0 +1,22 @@
+<app-header (sideBarOpenEmitter)="sideBarOpen($event)" [simple]="true" [employee]="true"></app-header>
+<main>
+    <app-dashboard-side-bar pageNow='dashboard' [isOpen]="isOpen"></app-dashboard-side-bar>
+
+    <div class="layout-dashboard">
+        <h1>Dashboard</h1>
+
+        <div class="graphic">
+            
+        </div>
+
+
+
+        <h3>Produtos mais vendidos</h3>
+        <div class="cards">
+            <ng-container *ngFor="let product of productList">
+                <app-product-card-dashboard [product]="product"></app-product-card-dashboard>
+            </ng-container>
+        </div>
+
+    </div>
+</main>
