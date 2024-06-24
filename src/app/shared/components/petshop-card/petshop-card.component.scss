@@ -18,7 +18,10 @@
   }
 
   .content {
-    @include flex(row, flex-start, flex-start);
+    @include flex(column, flex-start, flex-start);
+    @media (min-width: $tablet) {
+      @include flex(row, flex-start, flex-start);
+    }
     gap: 1.5rem;
     width: 100%;
 
@@ -31,27 +34,22 @@
     }
 
     .text-content {
-      @include flex($align: flex-start, $justify: space-between);
-      gap: 1.5rem;
+      @include flex($align: flex-start, $justify: flex-start);
+      flex-wrap: wrap;
+      gap: 0.5rem;
       width: 100%;
 
       .title-text {
+        flex: 1;
         .title {
-          @include text(large, bold);
+          @include text(small, bold);
+          @media (min-width: $tablet) {
+            @include text(normal, bold);
+          }
+          @media (min-width: $desktop) {
+            @include text(large, bold);
+          }
           color: $primary;
-        }
-
-        &.name {
-          width: 34%;
-        }
-        &.distance {
-          width: 14%;
-        }
-        &.opening-hours {
-          width: 24%;
-        }
-        &.offered-services {
-          width: 28%;
         }
       }
     }
