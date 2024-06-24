@@ -140,13 +140,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'produtos',
-        pathMatch: 'full',
+        title: 'Dashboard | Top Care',
+        component: DashboardPageProductComponent,
       },
 
       {
         path: 'produtos',
-        title: 'DashBoard Produtos | Top Care',
+        title: 'Dashboard Produtos | Top Care',
         component: DashboardProductComponent,
       },
       {
@@ -154,12 +154,12 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            title: 'Adicionar Produto| Top Care',
+            title: 'Adicionar Produto | Top Care',
             component: DashboardPageProductComponent,
           },
           {
             path: ':id',
-            title: 'Produto| Top Care',
+            title: 'Produto | Top Care',
             component: DashboardPageProductComponent,
           },
         ],
@@ -167,7 +167,7 @@ const routes: Routes = [
 
       {
         path: 'servicos',
-        title: 'DashBoard Serviços | Top Care',
+        title: 'Dashboard Serviços | Top Care',
         component: DashboardServiceComponent
       },
       {
@@ -175,12 +175,12 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            title: 'Adicionar Serviço| Top Care',
+            title: 'Adicionar Serviço | Top Care',
             component: FavoritesComponent,
           },
           {
             path: ':id',
-            title: 'Serviço| Top Care',
+            title: 'Serviço | Top Care',
             component: FavoritesComponent,
           },
         ],
@@ -188,18 +188,18 @@ const routes: Routes = [
 
       {
         path: 'pedidos',
-        title: 'DashBoard Pedidos | Top Care',
+        title: 'Dashboard Pedidos | Top Care',
         component: DashboardOrderComponent
       },
       {
         path: 'pedido/:id',
-        title: 'Pedido| Top Care',
+        title: 'Pedido | Top Care',
         component: FavoritesComponent,
       },
 
       {
         path: 'agendamentos',
-        title: 'DashBoard Agendamentos | Top Care',
+        title: 'Dashboard Agendamentos | Top Care',
         component: DashboardSchedulingComponent
       },
       {

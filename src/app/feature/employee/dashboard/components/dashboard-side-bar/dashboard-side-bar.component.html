@@ -2,6 +2,26 @@
     <div class="container">
         <div 
         class="accordion"
+        [ngClass]="page == 'dashboard' ? 'clicked' : '' "
+        >
+            <button class="accordion-btn" (click)="clickedBtn('dashboard')">
+                <div class="accordion-btn-header">
+                    <fa-icon [icon]="faHome"></fa-icon>
+                    <span>Dashboard</span>
+                </div>
+                <fa-icon class="arrow" [icon]="faChevronDown"></fa-icon>
+            </button>
+            <div class="accordion-description">
+                <ul class="accordion-list">
+                    <li class="accordion-link">
+                        <a routerLink="/dashboard">Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div 
+        class="accordion"
         [ngClass]="page == 'produto' ? 'clicked' : '' "
         >
             <button class="accordion-btn" (click)="clickedBtn('produto')">

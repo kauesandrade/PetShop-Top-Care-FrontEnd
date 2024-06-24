@@ -1,5 +1,5 @@
 import { Component, HostListener, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { faBaseballBall, faChevronDown, faReceipt, faBriefcase, faTable, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faBaseballBall, faChevronDown, faReceipt, faBriefcase, faTable, faUser, faHome } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dashboard-side-bar',
@@ -14,6 +14,8 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
   faBriefcase = faBriefcase;
   faTable = faTable;
   faUser = faUser;
+  faHome = faHome;
+
   sideBarOpen: boolean | undefined;
   innerWidth: any;
 
