@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Pet } from '../../interfaces/pet/pet';
 import { Petshop } from '../../interfaces/petshop/petshop';
 import { Service } from '../../interfaces/services/service';
+import { ServiceVariant } from '../../interfaces/services/service-variant';
 import { Address } from '../../interfaces/user/address';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class SchedulingService {
   pet?: Pet;
   address?: Address;
   petshop?: Petshop;
-  services?: Service[];
+  services?: ServiceVariant[];
   schedule?: string;
 
   constructor(private router: Router) {}
@@ -52,5 +53,8 @@ export class SchedulingService {
   }
   setPetshop(petshop: Petshop) {
     this.petshop = petshop;
+  }
+  setServices(services: Array<ServiceVariant>) {
+    this.services = services;
   }
 }

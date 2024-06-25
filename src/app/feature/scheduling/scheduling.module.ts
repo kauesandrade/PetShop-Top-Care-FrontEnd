@@ -13,6 +13,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { AddAddressCardComponent } from './components/add-address-card/add-address-card.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
+import { ServiceCardComponent } from './components/service-card/service-card.component';
 
 const Components = [
   PetComponent,
@@ -30,6 +32,7 @@ const Components = [
     SharedModule,
     RouterModule,
     FontAwesomeModule,
+    FormsModule,
   ],
   exports: [...Components],
   declarations: [
@@ -37,6 +40,7 @@ const Components = [
     LayoutComponent,
     NavbarComponent,
     AddAddressCardComponent,
+    ServiceCardComponent,
   ],
 })
 export class SchedulingModule {}
