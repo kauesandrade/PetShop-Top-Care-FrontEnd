@@ -24,6 +24,7 @@ import { CardFormModalComponent } from './components/card-form-modal/card-form-m
 import { PetCardComponent } from './components/pet-card/pet-card.component';
 import { AddressCardComponent } from './components/address-card/address-card.component';
 import { PetshopCardComponent } from './components/petshop-card/petshop-card.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 const Components = [
   ProductCardComponent,
@@ -44,6 +45,7 @@ const Components = [
   PetCardComponent,
   AddressCardComponent,
   PetshopCardComponent,
+  CalendarComponent,
 ];
 
 @NgModule({

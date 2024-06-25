@@ -1,0 +1,29 @@
+@import "styles";
+
+.full-calendar {
+  @include subgrid();
+  background-color: $light-primary;
+  border-radius: 0.5rem;
+
+  .sidebar {
+    @include subgrid();
+    padding: 2rem 1.5rem;
+    grid-column: auto / span 3;
+    background-color: $white;
+    border: $light-primary 2px solid;
+    border-bottom-left-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    h6 {
+      grid-column: 1 / -1;
+      text-align: center;
+    }
+  }
+  .calendar {
+    @include subgrid();
+    padding: 2rem 0;
+    grid-column: 5 / span 5;
+    background-color: $light-primary;
+    border-bottom-right-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
+}

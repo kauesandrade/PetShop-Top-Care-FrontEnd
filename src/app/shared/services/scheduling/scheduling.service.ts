@@ -14,7 +14,7 @@ export class SchedulingService {
   address?: Address;
   petshop?: Petshop;
   services?: ServiceVariant[];
-  schedule?: string;
+  schedule?: Date;
 
   constructor(private router: Router) {}
 
@@ -45,6 +45,15 @@ export class SchedulingService {
     this.router.navigate(['/agendamento/' + routes[index + 1]]);
   }
 
+  getUnavailableTimes() {
+    return [
+      new Date(),
+      new Date('2024-06-06'),
+      new Date('2024-06-11'),
+      new Date('2024-06-13'),
+    ];
+  }
+
   setPet(pet: Pet) {
     this.pet = pet;
   }
@@ -56,5 +65,8 @@ export class SchedulingService {
   }
   setServices(services: Array<ServiceVariant>) {
     this.services = services;
+  }
+  setSchedule(datetime: Date) {
+    this.schedule = datetime;
   }
 }
