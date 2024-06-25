@@ -5,42 +5,145 @@ main {
 
     .layout-dashboard {
         @include layoutDashboard;
-        
+
         h1 {
             grid-column: 1 / -1;
             color: $primary;
             @include heading(h6);
-            
+
             @media(min-width: $tablet) {
                 @include heading(h4);
             }
-            
+
             @media(min-width: $desktop) {
                 @include heading(h2);
             }
-            
+
             @media(min-width: $desktopHD) {
                 @include heading(h1);
             }
         }
 
-        h3{
+        h3 {
             grid-column: 1 / -1;
             color: $primary;
             @include heading(h6);
-            
+
             @media(min-width: $tablet) {
                 @include heading(h4);
             }
-            
+
             @media(min-width: $desktopHD) {
                 @include heading(h3);
             }
         }
-        
-        .graphic{
+
+        .informations {
+            @include subgrid();
+            grid-column: 1 / -1;
+            row-gap: 1.5rem;
+
+            .graphic {
+                grid-column: 1 / -1;
+                @include flex(column, start, space-between);
+                height: auto;
+                background-color: $white;
+                border-radius: 0.5rem;
+                padding: 1.5rem;
+                gap: 1.5rem;
+                
+                @media(min-width: $desktop) {
+                    grid-column: 1 / 7;
+                }
+                
+                #canvas{
+                    width: 100%;
+                }
+
+                .header-graphic{
+                    padding: 0 1.5rem;
+                    
+                    h5{
+                        color: $primary;
+                        @include heading(h6);
             
+                        @media(min-width: $desktop) {
+                            @include heading(h5);
+                        }
+                    }
+
+                    h4{
+                        color: $secondary;
+                        @include heading(h6);
+            
+                        @media(min-width: $desktop) {
+                            @include heading(h5);
+                        }
+                    }
+                }
+            }
+
+
+            .service-invoicing {
+                @include subgrid();
+                grid-column: 1 / -1;
+                row-gap: 1rem;
+                
+                @media(min-width: $desktop) {
+                    grid-column: 7 / -1;
+                }
+
+                .service {
+                    @include flex(column, center, space-between);
+                    grid-column: 1 / -1;
+                    background-color: $white;
+                    border-radius: 0.5rem;
+                    padding: 1.5rem;
+
+                    h5{
+                        color: $primary;
+                        @include heading(h6);
+            
+                        @media(min-width: $desktop) {
+                            @include heading(h5);
+                        }
+                    }
+                }
+
+                .invoicing {
+                    @include flex(column);
+                    grid-column: 1 / -1;
+                    background-color: $white;
+                    border-radius: 0.5rem;
+                    padding: 1rem;
+                    
+                    @media(min-width: $tablet){
+                        @include flex($justify: space-between);
+                    }
+
+                    h5{
+                        color: $primary;
+                        @include heading(h6);
+            
+                        @media(min-width: $desktop) {
+                            @include heading(h5);
+                        }
+                    }
+
+                    p{
+                        @include flex();
+                        @include text(medium);
+                        
+                        @media(min-width: $desktop) {
+                            @include text(large);
+                        }
+                    }
+                }
+
+            }
+
         }
+
     }
 
 }
