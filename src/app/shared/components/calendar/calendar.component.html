@@ -1,7 +1,14 @@
 <div class="full-calendar">
   <div class="sidebar">
-    <h6>{{ type == "scheduling" ? "Horário" : "Compromissos" }}</h6>
-    <ng-container></ng-container>
+    <h6>{{ type == "scheduling" ? "Horários" : "Compromissos" }}</h6>
+    <ng-container *ngIf="type == 'scheduling'; else petSchedule">
+      <div class="scheduling-time" *ngFor="let openTime of openTimes">
+        {{ openTime | date : "shortTime" }}
+      </div>
+    </ng-container>
+    <ng-template #petSchedule>
+      <p>Perfil</p>
+    </ng-template>
     <!-- Faz a lógica aí dos 2 calendários -->
   </div>
   <div class="calendar"></div>

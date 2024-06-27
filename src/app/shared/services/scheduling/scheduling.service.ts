@@ -1,5 +1,7 @@
+import { Time } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { eachMinuteOfInterval } from 'date-fns';
 import { Pet } from '../../interfaces/pet/pet';
 import { Petshop } from '../../interfaces/petshop/petshop';
 import { Service } from '../../interfaces/services/service';
@@ -45,13 +47,30 @@ export class SchedulingService {
     this.router.navigate(['/agendamento/' + routes[index + 1]]);
   }
 
-  getUnavailableTimes() {
-    return [
-      new Date(),
-      new Date('2024-06-06'),
-      new Date('2024-06-11'),
-      new Date('2024-06-13'),
-    ];
+  getUnavailableTimes(): Array<Date> {
+    return [new Date()];
+  }
+
+  getOpenTimes(): Array<Date> {
+    return eachMinuteOfInterval(
+      {
+        start: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth() + 1,
+          new Date().getDate() + 1,
+          7
+        ),
+        end: new Date(
+          new Date().getFullYear(),
+          new Date().getMonth() + 1,
+          new Date().getDate() + 1,
+          17
+        ),
+      },
+      {
+        step: 30,
+      }
+    );
   }
 
   setPet(pet: Pet) {
