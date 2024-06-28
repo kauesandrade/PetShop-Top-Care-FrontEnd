@@ -2,8 +2,14 @@
   <div class="sidebar">
     <h6>{{ type == "scheduling" ? "Horários" : "Compromissos" }}</h6>
     <ng-container *ngIf="type == 'scheduling'; else petSchedule">
-      <div class="scheduling-time" *ngFor="let openTime of openTimes">
-        {{ openTime | date : "shortTime" }}
+      <div class="scheduling-times">
+        <button
+          class="scheduling-time"
+          appButton="secondary"
+          *ngFor="let avalableTime of availableTimes"
+        >
+          {{ avalableTime | date : "shortTime" }}
+        </button>
       </div>
     </ng-container>
     <ng-template #petSchedule>

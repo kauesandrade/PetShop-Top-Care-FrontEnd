@@ -8,6 +8,7 @@
   .sidebar {
     @include subgrid();
     padding: 2rem 1.5rem;
+    gap: 2rem;
     grid-column: auto / span 3;
     background-color: $white;
     border: $light-primary 2px solid;
@@ -16,6 +17,12 @@
     h6 {
       grid-column: 1 / -1;
       text-align: center;
+    }
+
+    .scheduling-times {
+      @include flex();
+      grid-column: 1 / -1;
+      flex-wrap: wrap;
     }
   }
   .calendar {

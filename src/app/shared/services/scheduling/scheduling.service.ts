@@ -47,23 +47,43 @@ export class SchedulingService {
     this.router.navigate(['/agendamento/' + routes[index + 1]]);
   }
 
-  getUnavailableTimes(): Array<Date> {
-    return [new Date()];
-  }
-
-  getOpenTimes(): Array<Date> {
+  getUnavailableTimes(selectedDate: Date): Array<Date> {
     return eachMinuteOfInterval(
       {
         start: new Date(
-          new Date().getFullYear(),
-          new Date().getMonth() + 1,
-          new Date().getDate() + 1,
-          7
+          selectedDate.getFullYear(),
+          selectedDate.getMonth(),
+          selectedDate.getDate(),
+          13,
+          30
         ),
         end: new Date(
-          new Date().getFullYear(),
-          new Date().getMonth() + 1,
-          new Date().getDate() + 1,
+          selectedDate.getFullYear(),
+          selectedDate.getMonth(),
+          selectedDate.getDate(),
+          15
+        ),
+      },
+      {
+        step: 30,
+      }
+    );
+  }
+
+  getOpenTimes(selectedDate: Date): Array<Date> {
+    return eachMinuteOfInterval(
+      {
+        start: new Date(
+          selectedDate.getFullYear(),
+          selectedDate.getMonth(),
+          selectedDate.getDate(),
+          7,
+          30
+        ),
+        end: new Date(
+          selectedDate.getFullYear(),
+          selectedDate.getMonth(),
+          selectedDate.getDate(),
           17
         ),
       },
