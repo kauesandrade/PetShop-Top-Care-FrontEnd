@@ -17,6 +17,9 @@ import { DashboardSchedulingComponent } from './dashboard-scheduling/dashboard-s
 import { SchedulingCardDashboardComponent } from './components/scheduling-card-dashboard/scheduling-card-dashboard.component';
 import { DashboardPageProductComponent } from './dashboard-page-product/dashboard-page-product.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { ProductFormsComponent } from './dashboard-page-product/components/product-forms/product-forms.component';
+import { SpecificationsFormsComponent } from './dashboard-page-product/components/specifications-forms/specifications-forms.component';
+import { VariantFormsComponent } from './dashboard-page-product/components/variant-forms/variant-forms.component';
 
 
 
@@ -33,7 +36,10 @@ import { NgxMaskModule } from 'ngx-mask';
     DashboardServiceComponent,
     DashboardSchedulingComponent,
     SchedulingCardDashboardComponent,
-    DashboardPageProductComponent
+    DashboardPageProductComponent,
+    ProductFormsComponent,
+    SpecificationsFormsComponent,
+    VariantFormsComponent
   ],
   imports: [
     CommonModule, 
