@@ -230,6 +230,142 @@ main {
 
                 }
 
+
+                &.section-variants{
+
+                    .variants {
+                        
+                        display: flex;
+                        flex-wrap: wrap;
+                        grid-column: 1 / -1;
+                        row-gap: 0.25rem;
+
+                        gap: 1rem;
+                        
+                        .select-tag{
+                            @include flex($justify: start);
+                            background-color: $white;
+                            border: 2px solid $secondary;
+                            border-radius: 0.5rem;
+                            padding: 0.5rem 1rem;
+
+                            gap: 0.5rem;
+                            
+                            button{
+                                @include flex();
+                                background-color: transparent;
+                                border: 0;
+                                font-size: 1rem;
+                                color: $secondary;
+                                
+                                fa-icon{
+                                    @include flex();
+                                }
+                            }
+
+                            p{
+                                @include text(medium, bold);
+                                color: $secondary;
+                            }
+                        }
+
+                    }
+
+                    .variant {
+                        @include subgrid();
+                        grid-column: 1 / -1;
+                        background-color: $white;
+                        padding: 1rem;
+                        gap: 0.5rem;
+                        border-radius: 0.5rem;
+
+                        .variant-card {
+                            grid-column: 1 / -1;
+                            @include flex($justify: space-between);
+
+
+                            p {
+                                @include heading(h5);
+                                color: $secondary;
+                            }
+
+                            fa-icon {
+                                padding: 1rem;
+                                background-color: $secondary;
+
+                                border-radius: 0.5rem;
+                            }
+
+                        }
+
+                        .form-variants {
+                            @include subgrid();
+                            grid-column: 1 / -1;
+                            div{
+                                @include subgrid();
+                                grid-column: 1 / -1;
+
+                                .labels {
+                                    @media(min-width: $tablet) {
+                                        &:first-child {
+                                            grid-column: 1 / 4;
+                                        }
+    
+                                        &:last-child {
+                                            grid-column: 4 / -1;
+                                        }
+                                    }
+    
+                                    @media(min-width: $desktop) {
+    
+                                        &:first-child {
+                                            grid-column: 1 / 7;
+                                        }
+    
+                                        &:last-child {
+                                            grid-column: 7 / -1;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .btn-add-img{
+                                grid-column: 1 / 4;
+                            }
+
+                            .images-list{
+                                @include subgrid();
+                                grid-column: 1 / -1;
+                                gap: 0.5rem;
+
+                                .image{
+                                    @include flex($justify: space-between);
+                                    grid-column: 1 / -1;
+                                    border: 2px solid $primary;
+                                    border-radius: 0.5rem;
+                                    padding: 1rem 1.5rem;
+                                    
+                                    img{
+                                        width: 4.5rem;
+                                        height: 4.5rem;
+                                        border-radius: 0.5rem;
+                                    }
+                                    
+                                    fa-icon{
+                                        @include flex();
+                                        color: $white;
+                                        background-color: $primary;
+                                        border-radius: 0.5rem;
+                                        padding: 1rem;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+
             }
 
             .header{
@@ -289,6 +425,34 @@ main {
                 }
 
             }
+        }
+
+        .div-btns{
+            @include subgrid();
+            grid-column: 1 / -1;
+            row-gap: 1rem;
+
+            @media(min-width: $tablet) {
+                :first-child {
+                    grid-column: 1 / 4;
+                }
+
+                :last-child {
+                    grid-column: 4 / -1;
+                }
+            }
+
+            @media(min-width: $desktop) {
+
+                :first-child {
+                    grid-column: 3 / 6;
+                }
+
+                :last-child {
+                    grid-column: 8 / -3;
+                }
+            }
+
         }
 
     }

@@ -19,10 +19,6 @@ export class ProductCardDashboardComponent implements OnInit {
   }
 
   handleClickTrash(){
-
-  }
-
-  handleClickEdit(){
     
   }
 
