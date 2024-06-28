@@ -17,5 +17,51 @@
     </ng-template>
     <!-- Faz a lógica aí dos 2 calendários -->
   </div>
-  <div class="calendar"></div>
+  <div class="calendar">
+    <div class="calendar-header">
+      <button class="today-button" (click)="selectToday()">
+        <p class="date">
+          {{ today | date : "d" }}
+        </p>
+        <p class="month">
+          {{ today | date : "MMM" }}
+        </p>
+      </button>
+      <div class="month-slider">
+        <button (click)="prevMonth()">
+          <fa-icon [icon]="faAngleLeft"></fa-icon>
+        </button>
+        <label for="month-input">
+          <input
+            type="month"
+            id="month-input"
+            name="month-input"
+            (change)="pickMonth($event)"
+          />
+          <h6>{{ selectedDate | date : "MMMM" }}</h6>
+        </label>
+        <button (click)="nextMonth()">
+          <fa-icon [icon]="faAngleRight"></fa-icon>
+        </button>
+      </div>
+    </div>
+    <div class="calendar-body">
+      <div class="dates-header">
+        <p *ngFor="let weekDay of weekDays">{{ weekDay }}</p>
+      </div>
+      <div class="dates-body">
+        <p *ngFor="let date of calendarBeforeDates">{{ date | date : "d" }}</p>
+        <button
+          (click)="onSelectCalendarDate(date)"
+          [class.selected]="isDateSame(date, selectedDate)"
+          *ngFor="let date of calendarMonthDates"
+        >
+          <p>
+            {{ date | date : "d" }}
+          </p>
+        </button>
+        <p *ngFor="let date of calendarAfterDates">{{ date | date : "d" }}</p>
+      </div>
+    </div>
+  </div>
 </div>

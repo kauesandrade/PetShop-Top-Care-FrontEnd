@@ -8,7 +8,7 @@
   .sidebar {
     @include subgrid();
     padding: 2rem 1.5rem;
-    gap: 2rem;
+    gap: 1.5rem;
     grid-column: auto / span 3;
     background-color: $white;
     border: $light-primary 2px solid;
@@ -20,17 +20,159 @@
     }
 
     .scheduling-times {
-      @include flex();
+      @include flex($justify: flex-start);
       grid-column: 1 / -1;
+      gap: 1rem 0.5rem;
       flex-wrap: wrap;
+      max-height: 17rem;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 0.25rem;
+        @media (min-width: $tablet) {
+          width: 0.5rem;
+        }
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $gray4;
+        border-radius: 0.5rem;
+      }
+
+      button {
+        padding: 1rem;
+        width: 4.5rem;
+      }
     }
   }
   .calendar {
     @include subgrid();
-    padding: 2rem 0;
+    padding: 1.5rem 0;
     grid-column: 5 / span 5;
     background-color: $light-primary;
     border-bottom-right-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
+    grid-template-rows: min-content 1fr;
+
+    &-header {
+      @include flex($justify: space-between);
+      grid-column: 1 / -1;
+      height: min-content;
+
+      .today-button {
+        @include flex(column);
+        border: none;
+        outline: none;
+        background-color: $primary;
+        color: $white;
+        gap: 0;
+        aspect-ratio: 1 / 1;
+        max-width: 4rem;
+        border-radius: 100%;
+        padding: 0.5rem 0.75rem;
+        cursor: pointer;
+
+        p {
+          color: $white;
+          &.date {
+            @include text(medium, medium);
+          }
+          &.month {
+            @include text(small);
+            text-transform: capitalize;
+          }
+        }
+      }
+
+      .month-slider {
+        @include flex();
+        gap: 0.5rem;
+
+        button {
+          border: none;
+          outline: none;
+          background: transparent;
+          cursor: pointer;
+          font-size: 2rem;
+        }
+
+        label {
+          input {
+            // display: none;
+          }
+          h6 {
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+
+    &-body {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: min-content 1fr;
+
+      row-gap: 1rem;
+      grid-column: 1 / -1;
+      height: 100%;
+
+      .dates {
+        &-header {
+          @include subgrid();
+          grid-auto-rows: min-content;
+          row-gap: 1rem;
+          place-items: center;
+          p {
+            font-weight: bold;
+          }
+        }
+        &-body {
+          @include subgrid();
+          height: 100%;
+          row-gap: 1rem;
+          place-items: center;
+          button {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background-color: transparent;
+            position: relative;
+
+            &.selected {
+              p {
+                color: $white;
+              }
+            }
+
+            p {
+              @include text();
+              position: relative;
+              z-index: 30;
+              color: $black1;
+            }
+
+            &.selected::before {
+              content: "";
+              width: 2.5rem;
+              aspect-ratio: 1 / 1;
+              z-index: 1;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              border-radius: 100%;
+              background-color: $primary;
+            }
+          }
+          p {
+            color: $gray3;
+          }
+        }
+      }
+    }
   }
 }

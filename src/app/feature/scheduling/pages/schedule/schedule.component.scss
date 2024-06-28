@@ -2,7 +2,6 @@
 
 .content {
   @include subgrid();
-
   row-gap: 1rem;
 
   app-calendar {

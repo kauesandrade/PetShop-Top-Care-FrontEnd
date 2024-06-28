@@ -61,7 +61,8 @@ export class SchedulingService {
           selectedDate.getFullYear(),
           selectedDate.getMonth(),
           selectedDate.getDate(),
-          15
+          15,
+          30
         ),
       },
       {
