@@ -174,11 +174,13 @@ main {
                         grid-column: 1 / -1;
                         background-color: $white;
                         padding: 1rem;
+                        gap: 0.5rem;
                         border-radius: 0.5rem;
 
                         .specification-card {
                             grid-column: 1 / -1;
                             @include flex($justify: space-between);
+
 
                             p {
                                 @include heading(h5);

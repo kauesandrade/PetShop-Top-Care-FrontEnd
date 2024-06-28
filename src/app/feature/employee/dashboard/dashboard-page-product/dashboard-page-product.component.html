@@ -49,7 +49,7 @@
           </button>
         </div>
 
-        <div class="specifications">
+        <div class="specifications" *ngIf="product?.specifications">
           <ng-container *ngFor="let specification of product?.specifications">
             <div class="select-tag">
               <p>{{specification.title}}</p>
@@ -63,7 +63,7 @@
           <div class="specification">
 
             <div class="specification-card">
-              <p>Adicionar Especificações</p>
+              <p>Adicionar Especificação</p>
               <button appButton="secondary">Adicionar</button>
             </div>
 
@@ -96,6 +96,40 @@
             <fa-icon [icon]="faPlus"></fa-icon>
           </button>
         </div>
+
+        <div class="specifications" *ngIf="productVariantsList">
+          <ng-container *ngFor="let product of productVariantsList">
+            <div class="select-tag">
+              <p>{{product.title}}</p>
+              <button><fa-icon [icon]="faTimes"></fa-icon></button>
+            </div>
+          </ng-container>
+        </div>
+
+        <ng-container *ngIf="specificationsOpen">
+          <div class="specification">
+
+            <div class="specification-card">
+              <p>Adicionar Especificação</p>
+              <button appButton="secondary">Adicionar</button>
+            </div>
+
+            <form [formGroup]="specificationForm" class="form-specifications">
+              <label for="title" class="labels" appInput>
+                <p>Título da Especificação*</p>
+                <input type="title" id="title" formControlName="title" placeholder="Título da Especificação"
+                  required />
+              </label>
+
+              <label for="description" class="labels" appInput>
+                <p>Descrição da Especificação*</p>
+                <input type="description" id="description" formControlName="description"
+                  placeholder="Descrição da Especificação" required />
+              </label>
+            </form>
+          </div>
+        </ng-container>
+
 
       </section>
 
