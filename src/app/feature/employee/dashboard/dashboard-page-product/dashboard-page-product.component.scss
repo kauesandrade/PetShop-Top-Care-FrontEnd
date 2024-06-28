@@ -301,9 +301,11 @@ main {
                         .form-variants {
                             @include subgrid();
                             grid-column: 1 / -1;
+
                             div{
                                 @include subgrid();
                                 grid-column: 1 / -1;
+                                row-gap: 1rem;
 
                                 .labels {
                                     @media(min-width: $tablet) {
