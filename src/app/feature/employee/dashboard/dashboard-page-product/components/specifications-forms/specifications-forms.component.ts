@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { faPlus, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Product } from 'src/app/shared/interfaces/product/product';
@@ -11,6 +11,8 @@ import { Product } from 'src/app/shared/interfaces/product/product';
 export class SpecificationsFormsComponent implements OnInit {
 
   @Input() product?: Product
+  @Output() emitSpecificationForms: EventEmitter<FormBuilder> = new EventEmitter()
+  
   specificationsOpen = false;
 
   faPlus = faPlus;

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Product } from 'src/app/shared/interfaces/product/product';
 
@@ -11,15 +11,17 @@ export class ProductFormsComponent implements OnInit {
 
 
   @Input() product?: Product
+  @Output() emitProductForms: EventEmitter<FormBuilder> = new EventEmitter()
 
   productForm = this.formBuilder.group({
     code: [''],
     title: [''],
     littleDescription: [''],
     description: [''],
-    // brand: ['']
+    brand: [''],
     // specifications: Array<ProductSpecification>;
     // rating: number;
+    category: ['']
     // category: Array<Category>;
     // reviews?: Array<ProductReview>;
   })
@@ -28,5 +30,7 @@ export class ProductFormsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  
 
 }

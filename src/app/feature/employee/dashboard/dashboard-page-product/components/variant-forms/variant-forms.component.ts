@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { faPlus, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
@@ -11,6 +11,7 @@ import { ProductVariant } from 'src/app/shared/interfaces/product/product-varian
 export class VariantFormsComponent implements OnInit {
 
   @Input() productVariantsList!: Array<ProductVariant>
+  @Output() emitVariantForms: EventEmitter<FormBuilder> = new EventEmitter()
 
   faPlus = faPlus;
   faTrash = faTrash;

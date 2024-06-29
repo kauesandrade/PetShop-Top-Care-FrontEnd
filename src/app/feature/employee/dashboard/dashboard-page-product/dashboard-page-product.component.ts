@@ -21,8 +21,34 @@ export class DashboardPageProductComponent implements OnInit {
   isOpen: boolean = false;
   titlePage = ""
 
+  productForm = this.formBuilder.group({
+    code: [''],
+    title: [''],
+    littleDescription: [''],
+    description: [''],
+    // brand: ['']
+    // specifications: Array<ProductSpecification>;
+    // rating: number;
+    // category: Array<Category>;
+    // reviews?: Array<ProductReview>;
+  })
+
+  specificationForm = this.formBuilder.group({
+    title: [''],
+    description: [''],
+  })
+
+  variantForm = this.formBuilder.group({
+    title: [''],
+    code: [''],
+    stock: [''],
+    price: [''],
+    images: [''],
+  })
+
   constructor(private route: ActivatedRoute,
-    private productService: ProductService) { }
+    private productService: ProductService,
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -42,6 +68,18 @@ export class DashboardPageProductComponent implements OnInit {
 
   sideBarOpen(evt: any) {
     this.isOpen = evt;
+  }
+
+  getProductForms(evt: any){
+    console.log(evt);
+  }
+  
+  getSpecificationsForms(evt: any){
+    console.log(evt);
+  }
+  
+  getVariantForms(evt: any){
+    console.log(evt);
   }
 
 }
