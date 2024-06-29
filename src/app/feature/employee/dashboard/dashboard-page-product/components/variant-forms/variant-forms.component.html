@@ -1,1 +1,80 @@
-<p>variant-forms works!</p>
+<section class="section-variants">
+
+    <div class="header-variants">
+      <h6>Variantes</h6>
+      <button class="btn-add" (click)="addVariant()">
+        <fa-icon [icon]="faPlus"></fa-icon>
+      </button>
+    </div>
+
+    <div class="variants" *ngIf="productVariantsList">
+      <ng-container *ngFor="let product of productVariantsList">
+        <div class="select-tag">
+          <p>{{product.variant}}</p>
+          <button>
+            <fa-icon [icon]="faTimes"></fa-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+
+    <ng-container *ngIf="variationsOpen">
+      <div class="variant">
+
+
+        <div class="variant-card">
+          <p>Adicionar Variação</p>
+          <button appButton="secondary">Adicionar</button>
+        </div>
+
+        <form [formGroup]="variantForm" class="form-variants">
+
+          <div>
+            <label for="title" class="labels" appInput>
+              <p>Título da Variação*</p>
+              <input type="title" id="title" formControlName="title" placeholder="Título da variação" required />
+            </label>
+
+            <label for="code" class="labels" appInput>
+              <p>Código*</p>
+              <input type="code" id="code" formControlName="code" placeholder="Código da variação" required />
+            </label>
+          </div>
+
+          <div>
+            <label for="stock" class="labels" appInput>
+              <p>Estoque</p>
+              <input type="stock" id="stock" formControlName="stock" placeholder="Quantidade da variação no estoque"
+                required />
+            </label>
+
+            <label for="price" class="labels" appInput>
+              <p>Preço*</p>
+              <input type="price" id="price" formControlName="price" placeholder="Preço da variação" required />
+            </label>
+
+
+          </div>
+
+          <label for="images" class="labels btn-add-img" appButton="">
+            Adicionar Imagem
+            <input type="file" accept="image/png, image/jpeg" id="images" formControlName="images" multiple
+              (change)="addImagesVariant($event)" style="display: none" />
+          </label>
+
+          <div class="images-list">
+            <ng-container *ngFor="let image of files">
+              <div class="image">
+                <img src="https://images.petz.com.br/fotos/1658430805995.jpg" alt="cu">
+                <p>{{image.name}}</p>
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </div>
+            </ng-container>
+          </div>
+
+        </form>
+
+      </div>
+    </ng-container>
+
+  </section>

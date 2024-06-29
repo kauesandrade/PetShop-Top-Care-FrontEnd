@@ -5,165 +5,22 @@
 
     <h1>{{titlePage}}</h1>
 
-    <form [formGroup]="productForm">
-      <section class="sections section-product">
-        <div class="title-code">
-          <label for="title" class="labels" appInput>
-            <p>Título do Produto*</p>
-            <input type="title" id="title" formControlName="title" placeholder="Título do produto" required />
-          </label>
+    <section class="sections">
+      <app-product-forms [product]="product"></app-product-forms>
+    </section>
 
-          <label for="code" class="labels" appInput>
-            <p>Código*</p>
-            <input type="code" id="code" formControlName="code" placeholder="Código do produto" required />
-          </label>
-        </div>
+    <section class="sections">
+      <app-specifications-forms [product]="product"></app-specifications-forms>
+    </section>
 
-        <label for="description" class="labels" appInput>
-          <p>Descrição*</p>
-          <textarea type="description" id="description" formControlName="description" placeholder="Descrição do produto"
-            required>
-            </textarea>
-        </label>
-
-        <label for="littleDescription" class="labels" appInput>
-          <p>Descrição Curta*</p>
-          <input type="littleDescription" id="littleDescription" formControlName="littleDescription"
-            placeholder="Descrição curta" required />
-        </label>
-      </section>
-    </form>
-
-
-
-    <section class="sections section-specifications">
-
-      <div class="header-specifications">
-        <h6>Especificações</h6>
-        <button class="btn-add" (click)="addSpecifications()">
-          <fa-icon [icon]="faPlus"></fa-icon>
-        </button>
-      </div>
-
-      <div class="specifications" *ngIf="product?.specifications">
-        <ng-container *ngFor="let specification of product?.specifications">
-          <div class="select-tag">
-            <p>{{specification.title}}</p>
-            <button>
-              <fa-icon [icon]="faTimes"></fa-icon>
-            </button>
-          </div>
-        </ng-container>
-      </div>
-
-
-      <ng-container *ngIf="specificationsOpen">
-        <div class="specification">
-
-          <div class="specification-card">
-            <p>Adicionar Especificação</p>
-            <button appButton="secondary">Adicionar</button>
-          </div>
-
-          <form [formGroup]="specificationForm" class="form-specifications">
-            <label for="title" class="labels" appInput>
-              <p>Título da Especificação*</p>
-              <input type="title" id="title" formControlName="title" placeholder="Título da especificação" required />
-            </label>
-
-            <label for="description" class="labels" appInput>
-              <p>Descrição da Especificação*</p>
-              <input type="description" id="description" formControlName="description"
-                placeholder="Descrição da especificação" required />
-            </label>
-          </form>
-        </div>
-      </ng-container>
+    <section class="sections">
+      <app-variant-forms [productVariantsList]="productVariantsList"></app-variant-forms>
     </section>
 
 
 
 
-    <section class="sections section-variants">
 
-      <div class="header-variants">
-        <h6>Variantes</h6>
-        <button class="btn-add" (click)="addVariant()">
-          <fa-icon [icon]="faPlus"></fa-icon>
-        </button>
-      </div>
-
-      <div class="variants" *ngIf="productVariantsList">
-        <ng-container *ngFor="let product of productVariantsList">
-          <div class="select-tag">
-            <p>{{product.variant}}</p>
-            <button>
-              <fa-icon [icon]="faTimes"></fa-icon>
-            </button>
-          </div>
-        </ng-container>
-      </div>
-
-      <ng-container *ngIf="variationsOpen">
-        <div class="variant">
-
-
-          <div class="variant-card">
-            <p>Adicionar Variação</p>
-            <button appButton="secondary">Adicionar</button>
-          </div>
-
-          <form [formGroup]="variantForm" class="form-variants">
-
-            <div>
-              <label for="title" class="labels" appInput>
-                <p>Título da Variação*</p>
-                <input type="title" id="title" formControlName="title" placeholder="Título da variação" required />
-              </label>
-
-              <label for="code" class="labels" appInput>
-                <p>Código*</p>
-                <input type="code" id="code" formControlName="code" placeholder="Código da variação" required />
-              </label>
-            </div>
-
-            <div>
-              <label for="stock" class="labels" appInput>
-                <p>Estoque</p>
-                <input type="stock" id="stock" formControlName="stock" placeholder="Quantidade da variação no estoque"
-                  required />
-              </label>
-
-              <label for="price" class="labels" appInput>
-                <p>Preço*</p>
-                <input type="price" id="price" formControlName="price" placeholder="Preço da variação" required />
-              </label>
-
-
-            </div>
-
-            <label for="images" class="labels btn-add-img" appButton="">
-              Adicionar Imagem
-              <input type="file" accept="image/png, image/jpeg" id="images" formControlName="images" multiple
-                (change)="addImagesVariant($event)" style="display: none" />
-            </label>
-
-            <div class="images-list">
-              <ng-container *ngFor="let image of files">
-                <div class="image">
-                  <img src="https://images.petz.com.br/fotos/1658430805995.jpg" alt="cu">
-                  <p>{{image.name}}</p>
-                  <fa-icon [icon]="faTrash"></fa-icon>
-                </div>
-              </ng-container>
-            </div>
-
-          </form>
-
-        </div>
-      </ng-container>
-
-    </section>
 
 
 
