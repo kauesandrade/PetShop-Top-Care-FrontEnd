@@ -27,6 +27,7 @@
     "@ngneat/input-mask": "^6.1.0",
     "embla-carousel": "^8.0.1",
     "ngx-mask": "^14.3.3",
+    "primeng": "^14.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.6.2",
     "zone.js": "~0.11.4"
