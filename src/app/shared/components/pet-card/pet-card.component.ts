@@ -9,7 +9,7 @@ import { Pet } from '../../interfaces/pet/pet';
   styleUrls: ['./pet-card.component.scss'],
 })
 export class PetCardComponent implements OnInit {
-  @Input() type: string = 'link';
+  @Input() type: 'add' | 'link' | 'scheduling' = 'link';
   @Input() pet!: Pet;
 
   @Input() scheduleSelected?: Pet;
