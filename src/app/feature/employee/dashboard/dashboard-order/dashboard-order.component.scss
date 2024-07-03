@@ -1,0 +1,10 @@
+@import 'styles';
+
+main {
+    display: flex;
+
+    .layout-dashboard {
+        @include layoutDashboard;
+    }
+
+}

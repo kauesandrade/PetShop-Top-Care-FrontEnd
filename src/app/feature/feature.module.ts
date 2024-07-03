@@ -13,8 +13,8 @@ import { StoreModule } from './store/store.module';
 import { UserModule } from './user/user.module';
 import { PaymentModule } from './payment/payment.module';
 import { ServicesModule } from './services/services.module';
-import { FunctionaryModule } from './functionary/functionary.module';
 import { SchedulingModule } from './scheduling/scheduling.module';
+import { EmployeeModule } from './employee/employee.module';
 
 @NgModule({
   exports: [
@@ -32,6 +32,7 @@ import { SchedulingModule } from './scheduling/scheduling.module';
     ServicesModule,
     FunctionaryModule,
     SchedulingModule,
+    EmployeeModule,
   ],
   declarations: [],
   imports: [CommonModule, FontAwesomeModule],
