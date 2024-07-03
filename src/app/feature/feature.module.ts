@@ -30,7 +30,6 @@ import { EmployeeModule } from './employee/employee.module';
     UserModule,
     PaymentModule,
     ServicesModule,
-    FunctionaryModule,
     SchedulingModule,
     EmployeeModule,
   ],

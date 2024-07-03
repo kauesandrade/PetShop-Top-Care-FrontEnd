@@ -20,14 +20,12 @@ import { ReviewProductComponent } from './feature/user/orders/order/components/r
 import { PaymentComponent } from './feature/payment/payment.component';
 import { FinishedPaymentComponent } from './feature/payment/finished-payment/finished-payment.component';
 import { ServicesComponent } from './feature/services/services.component';
-import { DashboardProductComponent } from './feature/functionary/dashboard/dashboard-product/dashboard-product.component';
 import { PetComponent } from './feature/scheduling/pages/pet/pet.component';
 import { AddressComponent } from './feature/scheduling/pages/address/address.component';
 import { PetshopComponent } from './feature/scheduling/pages/petshop/petshop.component';
 import { ServiceComponent } from './feature/scheduling/pages/service/service.component';
 import { ScheduleComponent } from './feature/scheduling/pages/schedule/schedule.component';
 import { ConfirmationComponent } from './feature/scheduling/pages/confirmation/confirmation.component';
-import { SchedulingComponent } from './feature/scheduling/scheduling.component';
 import { DashboardProductComponent } from './feature/employee/dashboard/dashboard-product/dashboard-product.component';
 import { DashboardServiceComponent } from './feature/employee/dashboard/dashboard-service/dashboard-service.component';
 import { DashboardOrderComponent } from './feature/employee/dashboard/dashboard-order/dashboard-order.component';

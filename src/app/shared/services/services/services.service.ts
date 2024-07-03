@@ -26,7 +26,7 @@ export class ServicesService {
   getServiceVariants(code: number) {
     let serviceList: Array<ServiceVariant> = []
 
-    serviceVariant.forEach(variant => {
+    servicesVariants.forEach(variant => {
       if (variant.code == code) {
         serviceList.push(variant);
       }
@@ -38,7 +38,7 @@ export class ServicesService {
   getServicesFirtVariant() {
     let serviceList: Array<ServiceVariant> = []
     
-    serviceVariant.forEach(variant => {
+    servicesVariants.forEach(variant => {
       if(!serviceList.includes(this.getServiceVariants(variant.code)[0])){
         serviceList.push(this.getServiceVariants(variant.code)[0]);
       }
