@@ -67,6 +67,15 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
+        path: 'pagamento',
+        title: 'Pagamento | Top Care',
+        canActivate: [AuthGuard],
+        children: [
+          { path: '', component: PaymentComponent },
+          { path: 'finalizado/:id', component: FinishedPaymentComponent },
+        ],
+      },
+      {
         path: 'pet',
         component: PetComponent,
       },

@@ -14,7 +14,10 @@
     <div class="div-addresses">
       <ng-container *ngIf="user">
         <ng-container *ngFor="let address of user.addresses">
-          <app-address-card [address]="address"></app-address-card>
+          <app-address-card
+            [address]="address"
+            [(selectedAddress)]="selectedAddress"
+          ></app-address-card>
         </ng-container>
       </ng-container>
     </div>

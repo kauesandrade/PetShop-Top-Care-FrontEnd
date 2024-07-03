@@ -41,6 +41,14 @@
 
       .title-text {
         flex: 1;
+
+        &.offered-services {
+          display: none;
+          @media (min-width: $tablet) {
+            display: block;
+          }
+        }
+
         .title {
           @include text(small, bold);
           @media (min-width: $tablet) {

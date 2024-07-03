@@ -25,6 +25,7 @@ import { PetCardComponent } from './components/pet-card/pet-card.component';
 import { AddressCardComponent } from './components/address-card/address-card.component';
 import { PetshopCardComponent } from './components/petshop-card/petshop-card.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { ServiceDetailsSectionComponent } from './components/service-details-section/service-details-section.component';
 
 const Components = [
   ProductCardComponent,
@@ -46,6 +47,7 @@ const Components = [
   AddressCardComponent,
   PetshopCardComponent,
   CalendarComponent,
+  ServiceDetailsSectionComponent,
 ];
 
 @NgModule({

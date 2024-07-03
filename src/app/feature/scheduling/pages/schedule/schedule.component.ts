@@ -24,8 +24,6 @@ export class ScheduleComponent implements OnInit {
   }
 
   onContinue() {
-    console.log(this.selectedScheduleTime);
-
     if (this.selectedScheduleTime) {
       this.schedulingService.setSchedule(this.selectedScheduleTime);
       this.schedulingService.navigateToNextRoute();
