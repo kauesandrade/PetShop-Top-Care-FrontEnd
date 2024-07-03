@@ -6,7 +6,6 @@ import { Product } from 'src/app/shared/interfaces/product/product';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 import { faPlus, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { ProductSpecification } from 'src/app/shared/interfaces/product/product-specification';
 
 @Component({
   selector: 'app-dashboard-page-product',
@@ -22,35 +21,34 @@ export class DashboardPageProductComponent implements OnInit {
   isOpen: boolean = false;
   titlePage = ""
 
-
-  // ({
-  //   code: [''],
-  //   title: [''],
-  //   littleDescription: [''],
-  //   description: [''],
-  //   // brand: ['']
-  //   // specifications: Array<ProductSpecification>;
-  //   // rating: number;
-  //   // category: Array<Category>;
-  //   // reviews?: Array<ProductReview>;
-  // })
-
-  
-  productForm!: FormGroup;
+  productForm = this.formBuilder.group({
+    code: [''],
+    title: [''],
+    littleDescription: [''],
+    description: [''],
+    // brand: ['']
+    // specifications: Array<ProductSpecification>;
+    // rating: number;
+    // category: Array<Category>;
+    // reviews?: Array<ProductReview>;
+  })
 
   specificationForm = this.formBuilder.group({
-    specifications: this.formBuilder.array([])
+    title: [''],
+    description: [''],
   })
 
   variantForm = this.formBuilder.group({
-    variants: this.formBuilder.array([])
+    title: [''],
+    code: [''],
+    stock: [''],
+    price: [''],
+    images: [''],
   })
 
   constructor(private route: ActivatedRoute,
     private productService: ProductService,
-    private formBuilder: FormBuilder) {
-
-  }
+    private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -66,68 +64,22 @@ export class DashboardPageProductComponent implements OnInit {
       console.log("sem objeto");
     }
 
-    this.initSpecificationForm();
-    this.initVariantForm();
-    this.initProductForm();
   }
 
   sideBarOpen(evt: any) {
     this.isOpen = evt;
   }
 
-  getProductForms(evt: any) {
-    this.productForm = evt
+  getProductForms(evt: any){
+    console.log(evt);
   }
-
-  getSpecificationsForms(evt: any) {
-    this.specificationForm = evt
+  
+  getSpecificationsForms(evt: any){
+    console.log(evt);
   }
-
-  getVariantForms(evt: any) {
-    this.getVariantForms = evt
+  
+  getVariantForms(evt: any){
+    console.log(evt);
   }
-
-  initSpecificationForm() {
-    for (let specification of this.product!.specifications) {
-      this.createNewSpecification(specification);
-    }
-  }
-
-  initVariantForm() {
-    for (let productVariant of this.productVariantsList) {
-      this.createNewVariant(productVariant);
-    }
-  }
-
-  initProductForm() {
-    this.productForm = this.formBuilder.group({
-      code: [''],
-      title: [''],
-      littleDescription: [''],
-      description: ['']
-    })
-  }
-
-  createNewVariant(productVariant: ProductVariant) {
-    (<FormArray>this.variantForm.controls.variants).push(
-      this.formBuilder.group({
-        title: [productVariant.title],
-        code: [productVariant.code],
-        stock: [''],
-        price: [productVariant.price],
-        images: [productVariant.images],
-      })
-    );
-  }
-
-  createNewSpecification(specification: ProductSpecification) {
-    (<FormArray>this.specificationForm.controls.specifications).push(
-      this.formBuilder.group({
-        title: [specification.title],
-        description: [specification.value],
-      })
-    )
-  }
-
 
 }
