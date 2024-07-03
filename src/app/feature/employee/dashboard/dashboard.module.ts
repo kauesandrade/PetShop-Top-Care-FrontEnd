@@ -23,6 +23,7 @@ import { ProductVariantFormsComponent } from './dashboard-page-product/component
 import { DashboardPageServiceComponent } from './dashboard-page-service/dashboard-page-service.component';
 import { ServiceFormsComponent } from './dashboard-page-service/components/service-forms/service-forms.component';
 import { ServiceVariantFormsComponent } from './dashboard-page-service/components/service-variant-forms/service-variant-forms.component';
+import { DashboardPageSchedulingComponent } from './dashboard-page-scheduling/dashboard-page-scheduling.component';
 
 
 
@@ -46,6 +47,7 @@ import { ServiceVariantFormsComponent } from './dashboard-page-service/component
     DashboardPageServiceComponent,
     ServiceVariantFormsComponent,
     ServiceFormsComponent,
+    DashboardPageSchedulingComponent
   ],
   imports: [
     CommonModule, 

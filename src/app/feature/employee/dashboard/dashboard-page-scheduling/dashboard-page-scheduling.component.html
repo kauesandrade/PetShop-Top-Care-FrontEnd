@@ -1,0 +1,11 @@
+<app-header (sideBarOpenEmitter)="sideBarOpen($event)" [simple]="true" [employee]="true"></app-header>
+<main>
+  <app-dashboard-side-bar pageNow="produto" [isOpen]="isOpen"></app-dashboard-side-bar>
+  <div class="layout-dashboard">
+    <h2 class="info-title">Informações do agendamento</h2>
+    <div class="custom-rectangle">
+      <div class="inner-rectangle"></div>
+      <div class="second-inner-rectangle"></div>
+    </div>
+  </div>
+</main>

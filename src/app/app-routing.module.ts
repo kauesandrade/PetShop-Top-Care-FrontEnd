@@ -33,6 +33,7 @@ import { DashboardSchedulingComponent } from './feature/employee/dashboard/dashb
 import { DashboardPageProductComponent } from './feature/employee/dashboard/dashboard-page-product/dashboard-page-product.component';
 import { DashboardPageServiceComponent } from './feature/employee/dashboard/dashboard-page-service/dashboard-page-service.component';
 import { DashboardComponent } from './feature/employee/dashboard/dashboard.component';
+import { DashboardPageSchedulingComponent } from './feature/employee/dashboard/dashboard-page-scheduling/dashboard-page-scheduling.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -253,7 +254,7 @@ const routes: Routes = [
       {
         path: 'agendamento/:id',
         title: 'Agendamento | Top Care',
-        component: FavoritesComponent,
+        component: DashboardPageSchedulingComponent,
       },
     ],
   },
