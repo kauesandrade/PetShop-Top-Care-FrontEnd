@@ -1,0 +1,11 @@
+<app-layout (continue)="onContinue()">
+  <div class="content">
+    <app-add-address-card></app-add-address-card>
+    <ng-container *ngFor="let address of addresses; let i = index">
+      <app-address-card
+        [(selectedAddress)]="addressSelected"
+        [address]="address"
+      ></app-address-card>
+    </ng-container>
+  </div>
+</app-layout>

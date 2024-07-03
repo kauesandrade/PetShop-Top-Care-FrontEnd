@@ -1,0 +1,12 @@
+<app-layout (continue)="onContinue()">
+  <div class="content">
+    <app-pet-card type="add"></app-pet-card>
+    <ng-container *ngFor="let pet of pets; let i = index">
+      <app-pet-card
+        type="scheduling"
+        [(scheduleSelected)]="selectedPet"
+        [pet]="pet"
+      ></app-pet-card>
+    </ng-container>
+  </div>
+</app-layout>

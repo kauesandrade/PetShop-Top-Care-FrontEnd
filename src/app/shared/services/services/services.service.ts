@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import services from '../../../../assets/JsonFiles/services.json';
-import serviceVariant from '../../../../assets/JsonFiles/serviceVariant.json';
+import servicesVariants from '../../../../assets/JsonFiles/servicesVariants.json';
+import servicesCategories from '../../../../assets/JsonFiles/servicesCategories.json';
 import { Service } from '../../interfaces/services/service';
 import { ServiceVariant } from '../../interfaces/services/service-variant';
 
@@ -11,9 +12,15 @@ export class ServicesService {
   constructor() { }
 
   getServices(): Service[] {
-    let serviceList = services as Service[];
+    return services as Service[];
+  }
 
-    return serviceList;
+  getServicesVariants(): ServiceVariant[] {
+    return servicesVariants as ServiceVariant[];
+  }
+
+  getServicesCategories(): any {
+    return servicesCategories.categories;
   }
 
   getServiceVariants(code: number) {

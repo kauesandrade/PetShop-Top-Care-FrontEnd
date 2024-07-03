@@ -21,6 +21,11 @@ import { RegisterAddressComponent } from './components/register-address/register
 import { ProductItemSectionComponent } from './components/product-item-section/product-item-section.component';
 import { CardCardComponent } from './components/card-card/card-card.component';
 import { CardFormModalComponent } from './components/card-form-modal/card-form-modal.component';
+import { PetCardComponent } from './components/pet-card/pet-card.component';
+import { AddressCardComponent } from './components/address-card/address-card.component';
+import { PetshopCardComponent } from './components/petshop-card/petshop-card.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { ServiceDetailsSectionComponent } from './components/service-details-section/service-details-section.component';
 
 const Components = [
   ProductCardComponent,
@@ -38,6 +43,11 @@ const Components = [
   ProductItemSectionComponent,
   CardCardComponent,
   CardFormModalComponent,
+  PetCardComponent,
+  AddressCardComponent,
+  PetshopCardComponent,
+  CalendarComponent,
+  ServiceDetailsSectionComponent,
 ];
 
 @NgModule({

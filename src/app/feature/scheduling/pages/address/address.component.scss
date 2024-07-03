@@ -1,0 +1,24 @@
+@import "styles";
+
+.content {
+  @include subgrid();
+
+  row-gap: 0.5rem;
+  @media (min-width: $tablet) {
+    row-gap: 1rem;
+  }
+  @media (min-width: $desktop) {
+    row-gap: 2rem;
+  }
+  app-add-address-card,
+  app-address-card {
+    height: auto;
+    grid-column: 1 / -1;
+    @media (min-width: $tablet) {
+      grid-column: auto / span 4;
+    }
+    @media (min-width: $desktop) {
+      grid-column: auto / span 5;
+    }
+  }
+}

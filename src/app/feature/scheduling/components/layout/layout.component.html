@@ -1,0 +1,19 @@
+<app-header [simple]="true"></app-header>
+<main>
+  <h3>Agendamento de serviços</h3>
+  <div class="layout">
+    <app-navbar></app-navbar>
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+    <div class="buttons">
+      <button (click)="onCancel()" appButton="secondary" class="cancel">
+        Cancelar agendamento
+      </button>
+      <button (click)="onContinue()" appButton class="continue">
+        Prosseguir
+      </button>
+    </div>
+  </div>
+</main>
+<app-footer type="copyright"></app-footer>

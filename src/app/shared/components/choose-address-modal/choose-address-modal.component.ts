@@ -1,4 +1,14 @@
-import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Address } from '../../interfaces/user/address';
 import { User } from '../../interfaces/user/user';
@@ -8,12 +18,11 @@ import { UserService } from '../../services/user/user.service';
 @Component({
   selector: 'app-choose-address-modal',
   templateUrl: './choose-address-modal.component.html',
-  styleUrls: ['./choose-address-modal.component.scss']
+  styleUrls: ['./choose-address-modal.component.scss'],
 })
 export class ChooseAddressModalComponent implements OnInit, OnChanges {
-
-  user: User | null = null
-  address!: Address;
+  user: User | null = null;
+  selectedAddress?: Address;
 
   faX = faTimes;
 
@@ -24,20 +33,17 @@ export class ChooseAddressModalComponent implements OnInit, OnChanges {
 
   @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
 
-  constructor(private userService: UserService, 
-    private cartService: CartService) {
-  }
+  constructor(
+    private userService: UserService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
-    this.user = this.userService.loggedUser
+    this.user = this.userService.loggedUser;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isOpen();
-  }
-
-  changeInputRadio(evt: Address) {
-    this.address = evt;
   }
 
   isOpen() {
@@ -60,11 +66,13 @@ export class ChooseAddressModalComponent implements OnInit, OnChanges {
   }
 
   onSubmit() {
-    this.cartService.setAddress(this.address);
+    if (this.selectedAddress) {
+      this.cartService.setAddress(this.selectedAddress);
+    }
     this.closeModal();
   }
 
-  addAddress(evt: Address){
+  addAddress(evt: Address) {
     this.user?.addresses.push(evt);
     this.userService.updateUser(this.user!);
   }

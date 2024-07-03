@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SchedulingComponent } from './scheduling.component';
+import { PetshopCardComponent } from './petshop-card.component';
 
-describe('SchedulingComponent', () => {
-  let component: SchedulingComponent;
-  let fixture: ComponentFixture<SchedulingComponent>;
+describe('PetshopCardComponent', () => {
+  let component: PetshopCardComponent;
+  let fixture: ComponentFixture<PetshopCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SchedulingComponent ]
+      declarations: [ PetshopCardComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SchedulingComponent);
+    fixture = TestBed.createComponent(PetshopCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

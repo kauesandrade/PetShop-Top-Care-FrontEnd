@@ -20,6 +20,13 @@ import { ReviewProductComponent } from './feature/user/orders/order/components/r
 import { PaymentComponent } from './feature/payment/payment.component';
 import { FinishedPaymentComponent } from './feature/payment/finished-payment/finished-payment.component';
 import { ServicesComponent } from './feature/services/services.component';
+import { DashboardProductComponent } from './feature/functionary/dashboard/dashboard-product/dashboard-product.component';
+import { PetComponent } from './feature/scheduling/pages/pet/pet.component';
+import { AddressComponent } from './feature/scheduling/pages/address/address.component';
+import { PetshopComponent } from './feature/scheduling/pages/petshop/petshop.component';
+import { ServiceComponent } from './feature/scheduling/pages/service/service.component';
+import { ScheduleComponent } from './feature/scheduling/pages/schedule/schedule.component';
+import { ConfirmationComponent } from './feature/scheduling/pages/confirmation/confirmation.component';
 import { SchedulingComponent } from './feature/scheduling/scheduling.component';
 import { DashboardProductComponent } from './feature/employee/dashboard/dashboard-product/dashboard-product.component';
 import { DashboardServiceComponent } from './feature/employee/dashboard/dashboard-service/dashboard-service.component';
@@ -27,6 +34,7 @@ import { DashboardOrderComponent } from './feature/employee/dashboard/dashboard-
 import { DashboardSchedulingComponent } from './feature/employee/dashboard/dashboard-scheduling/dashboard-scheduling.component';
 import { DashboardPageProductComponent } from './feature/employee/dashboard/dashboard-page-product/dashboard-page-product.component';
 import { DashboardPageServiceComponent } from './feature/employee/dashboard/dashboard-page-service/dashboard-page-service.component';
+
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -58,7 +66,48 @@ const routes: Routes = [
   {
     path: 'agendamento',
     title: 'Agendamento | Top Care',
-    component: SchedulingComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'pet',
+        pathMatch: 'full',
+      },
+      {
+        path: 'pagamento',
+        title: 'Pagamento | Top Care',
+        canActivate: [AuthGuard],
+        children: [
+          { path: '', component: PaymentComponent },
+          { path: 'finalizado/:id', component: FinishedPaymentComponent },
+        ],
+      },
+      {
+        path: 'pet',
+        component: PetComponent,
+      },
+      {
+        path: 'localizacao',
+        component: AddressComponent,
+      },
+      {
+        path: 'petshop',
+        component: PetshopComponent,
+      },
+      {
+        path: 'servicos',
+        component: ServiceComponent,
+      },
+      {
+        path: 'horario',
+        component: ScheduleComponent,
+      },
+      {
+        path: 'confirmacao',
+        component: ConfirmationComponent,
+      },
+    ],
   },
 
   { path: 'busca', component: SearchComponent },

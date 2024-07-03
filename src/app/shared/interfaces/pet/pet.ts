@@ -1,4 +1,9 @@
+import { Schedule } from '../schedule/schedule';
+
 export interface Pet {
+  id: number;
+  idColor: string;
+  image: string;
   name: string;
   size: string;
   type: string;
@@ -9,4 +14,5 @@ export interface Pet {
   birth: string;
   rga?: number;
   weight: number;
+  schedules: Schedule[];
 }

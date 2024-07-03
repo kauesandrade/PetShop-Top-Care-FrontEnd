@@ -1,0 +1,112 @@
+[
+  {
+    "code": 1,
+    "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+    "title": "Banho e Tosa",
+    "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+    "category": "Higiene",
+    "servedPets": ["Cachorro", "Gato", "Aves"],
+    "variantCode": 101,
+    "variantTitle": "Banho Simples",
+    "price": 50.0
+  },
+  {
+    "code": 1,
+    "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+    "title": "Banho e Tosa",
+    "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+    "category": "Higiene",
+    "servedPets": ["Cachorro", "Gato", "Aves"],
+    "variantCode": 102,
+    "variantTitle": "Tosa Completa",
+    "price": 80.0
+  },
+  {
+    "code": 2,
+    "image": "https://blog-static.petlove.com.br/wp-content/uploads/2020/12/Cachorro-consulta-Petlove.jpg",
+    "title": "Consulta Veterinária",
+    "description": "Exames e cuidados médicos para a saúde do seu pet.",
+    "category": "Saúde",
+    "servedPets": ["Cachorro", "Gato", "Roedores"],
+    "variantCode": 201,
+    "variantTitle": "Consulta de Rotina",
+    "price": 100.0
+  },
+  {
+    "code": 2,
+    "image": "https://blog-static.petlove.com.br/wp-content/uploads/2020/12/Cachorro-consulta-Petlove.jpg",
+    "title": "Consulta Veterinária",
+    "description": "Exames e cuidados médicos para a saúde do seu pet.",
+    "category": "Saúde",
+    "servedPets": ["Cachorro", "Gato", "Roedores"],
+    "variantCode": 202,
+    "variantTitle": "Consulta de Emergência",
+    "price": 200.0
+  },
+  {
+    "code": 3,
+    "image": "https://www.melhoresdestinos.com.br/wp-content/uploads/2021/04/cachorro-hotel-capa.jpg",
+    "title": "Hotel para Pets",
+    "description": "Conforto e cuidados enquanto você está fora.",
+    "category": "Hospedagem",
+    "servedPets": ["Cachorro", "Répteis", "Aves"],
+    "variantCode": 301,
+    "variantTitle": "Hospedagem Diária",
+    "price": 70.0
+  },
+  {
+    "code": 3,
+    "image": "https://www.melhoresdestinos.com.br/wp-content/uploads/2021/04/cachorro-hotel-capa.jpg",
+    "title": "Hotel para Pets",
+    "description": "Conforto e cuidados enquanto você está fora.",
+    "category": "Hospedagem",
+    "servedPets": ["Cachorro", "Répteis", "Aves"],
+    "variantCode": 302,
+    "variantTitle": "Hospedagem Semanal",
+    "price": 400.0
+  },
+  {
+    "code": 4,
+    "image": "https://s3.nuvemvet.com/blog/wp-content/uploads/2022/09/06150058/day-care.jpg",
+    "title": "Creche para Pets",
+    "description": "Diversão e socialização para seu pet durante o dia.",
+    "category": "Diversão",
+    "servedPets": ["Cachorro", "Gato", "Primatas"],
+    "variantCode": 401,
+    "variantTitle": "Creche Meio Período",
+    "price": 60.0
+  },
+  {
+    "code": 4,
+    "image": "https://s3.nuvemvet.com/blog/wp-content/uploads/2022/09/06150058/day-care.jpg",
+    "title": "Creche para Pets",
+    "description": "Diversão e socialização para seu pet durante o dia.",
+    "category": "Diversão",
+    "servedPets": ["Cachorro", "Gato", "Primatas"],
+    "variantCode": 402,
+    "variantTitle": "Creche Período Integral",
+    "price": 100.0
+  },
+  {
+    "code": 5,
+    "image": "https://cptstatic.s3.amazonaws.com/imagens/enviadas/materias/materia30082/adestramento_de_caes_por_que_indicar_o_adestramento_aos_seus_clientes.jpg",
+    "title": "Serviço de Adestramento",
+    "description": "Educação e treinamento comportamental para seu pet.",
+    "category": "Educação",
+    "servedPets": ["Outros", "Gato", "Roedores"],
+    "variantCode": 501,
+    "variantTitle": "Adestramento Básico",
+    "price": 150.0
+  },
+  {
+    "code": 5,
+    "image": "https://cptstatic.s3.amazonaws.com/imagens/enviadas/materias/materia30082/adestramento_de_caes_por_que_indicar_o_adestramento_aos_seus_clientes.jpg",
+    "title": "Serviço de Adestramento",
+    "description": "Educação e treinamento comportamental para seu pet.",
+    "category": "Educação",
+    "servedPets": ["Outros", "Gato", "Roedores"],
+    "variantCode": 502,
+    "variantTitle": "Adestramento Avançado",
+    "price": 250.0
+  }
+]

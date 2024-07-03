@@ -1,4 +1,5 @@
-import { Service } from "./service";
+
+import { Service } from './service';
 
 export interface ServiceVariant extends Service {
   variantCode: number;

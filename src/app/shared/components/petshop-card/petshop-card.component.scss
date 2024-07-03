@@ -1,0 +1,65 @@
+@import "styles";
+
+.card {
+  @include flex($justify: flex-start);
+  gap: 0.5rem;
+  width: 100%;
+  background-color: $light-primary;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  input {
+    aspect-ratio: 1 / 1;
+    width: 1.5rem;
+  }
+
+  .content {
+    @include flex(column, flex-start, flex-start);
+    @media (min-width: $tablet) {
+      @include flex(row, flex-start, flex-start);
+    }
+    gap: 1.5rem;
+    width: 100%;
+
+    img {
+      border-radius: 0.5rem;
+      aspect-ratio: 1 / 1;
+      width: 6rem;
+      object-fit: cover;
+      align-self: center;
+    }
+
+    .text-content {
+      @include flex($align: flex-start, $justify: flex-start);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      width: 100%;
+
+      .title-text {
+        flex: 1;
+
+        &.offered-services {
+          display: none;
+          @media (min-width: $tablet) {
+            display: block;
+          }
+        }
+
+        .title {
+          @include text(small, bold);
+          @media (min-width: $tablet) {
+            @include text(normal, bold);
+          }
+          @media (min-width: $desktop) {
+            @include text(large, bold);
+          }
+          color: $primary;
+        }
+      }
+    }
+  }
+}

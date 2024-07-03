@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+    "name": "Pet Lovers",
+    "address": "123 Rua Principal, Cidade",
+    "openingHours": ["Seg-Sex: 9h-18h", "Sáb: 10h-16h", "Dom: Fechado"],
+    "telephone": "+1 (123) 456-7890",
+    "offeredServices": ["Banho e Tosa", "Hotel para Pets", "Treinamento"],
+    "servedPets": ["Cães", "Gatos", "Pássaros"]
+  },
+  {
+    "id": 2,
+    "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+    "name": "Happy Paws",
+    "address": "456 Rua das Árvores, Cidadela",
+    "openingHours": ["Seg-Sáb: 8h-19h", "Dom: 9h-17h"],
+    "telephone": "+1 (234) 567-8901",
+    "offeredServices": ["Cuidados Veterinários", "Produtos para Pets"],
+    "servedPets": ["Cães", "Gatos"]
+  },
+  {
+    "id": 3,
+    "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+    "name": "Patas e Garras",
+    "address": "789 Avenida do Bosque, Vilarejo",
+    "openingHours": ["Seg-Sex: 10h-20h", "Sáb-Dom: 9h-17h"],
+    "telephone": "+1 (345) 678-9012",
+    "offeredServices": [
+      "Banho e Tosa",
+      "Creche para Pets",
+      "Fotografia de Pets"
+    ],
+    "servedPets": ["Cães"]
+  },
+  {
+    "id": 4,
+    "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+    "name": "Paraíso dos Pets",
+    "address": "321 Rua do Bairro, Subúrbio",
+    "openingHours": ["Seg-Sáb: 9h-18h", "Dom: Fechado"],
+    "telephone": "+1 (456) 789-0123",
+    "offeredServices": ["Banho e Tosa", "Treinamento", "Hotel para Pets"],
+    "servedPets": ["Cães", "Gatos"]
+  },
+  {
+    "id": 5,
+    "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+    "name": "Bigodes & Rabinhos",
+    "address": "567 Estrada do Pinheiro, Interior",
+    "openingHours": ["Seg-Sex: 8h-17h", "Sáb: 9h-16h", "Dom: Fechado"],
+    "telephone": "+1 (567) 890-1234",
+    "offeredServices": [
+      "Banho e Tosa",
+      "Passeios com Cães",
+      "Boutique para Pets"
+    ],
+    "servedPets": ["Cães", "Gatos", "Pequenos Mamíferos"]
+  }
+]

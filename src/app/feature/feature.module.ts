@@ -11,9 +11,9 @@ import { RegisterModule } from './register/register.module';
 import { SearchModule } from './search/search.module';
 import { StoreModule } from './store/store.module';
 import { UserModule } from './user/user.module';
-import { SharedModule } from '../shared/shared.module';
 import { PaymentModule } from './payment/payment.module';
 import { ServicesModule } from './services/services.module';
+import { SchedulingModule } from './scheduling/scheduling.module';
 import { EmployeeModule } from './employee/employee.module';
 
 @NgModule({
@@ -30,9 +30,11 @@ import { EmployeeModule } from './employee/employee.module';
     UserModule,
     PaymentModule,
     ServicesModule,
+    FunctionaryModule,
+    SchedulingModule,
     EmployeeModule,
   ],
   declarations: [],
-  imports: [CommonModule, SharedModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule],
 })
 export class FeatureModule {}

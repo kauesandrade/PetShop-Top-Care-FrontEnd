@@ -1,0 +1,57 @@
+<nav>
+  <a
+    routerLink="/agendamento/pet"
+    routerLinkActive="active"
+    [class.completed]="checkIfCompleted('pet')"
+    >Pet</a
+  >
+  <ng-container
+    *ngIf="checkIfCompleted('localizacao'); else localizacaoDisabled"
+  >
+    <a
+      routerLink="/agendamento/localizacao"
+      routerLinkActive="active"
+      class="completed"
+      >Localização</a
+    >
+  </ng-container>
+  <ng-template #localizacaoDisabled><h5>Localização</h5></ng-template>
+  <ng-container *ngIf="checkIfCompleted('petshop'); else petshopDisabled">
+    <a
+      routerLink="/agendamento/petshop"
+      routerLinkActive="active"
+      class="completed"
+      >PetShop</a
+    >
+  </ng-container>
+  <ng-template #petshopDisabled><h5>PetShop</h5></ng-template>
+  <ng-container *ngIf="checkIfCompleted('servicos'); else servicosDisabled">
+    <a
+      routerLink="/agendamento/servicos"
+      routerLinkActive="active"
+      class="completed"
+      >Serviços</a
+    >
+  </ng-container>
+  <ng-template #servicosDisabled><h5>Serviços</h5></ng-template>
+  <ng-container *ngIf="checkIfCompleted('horario'); else horarioDisabled">
+    <a
+      routerLink="/agendamento/horario"
+      routerLinkActive="active"
+      class="completed"
+      >Horário</a
+    >
+  </ng-container>
+  <ng-template #horarioDisabled><h5>Horário</h5></ng-template>
+  <ng-container
+    *ngIf="checkIfCompleted('confirmacao'); else confirmacaoDisabled"
+  >
+    <a
+      routerLink="/agendamento/confirmacao"
+      routerLinkActive="active"
+      class="completed"
+      >Confirmação</a
+    >
+  </ng-container>
+  <ng-template #confirmacaoDisabled><h5>Confirmação</h5></ng-template>
+</nav>
