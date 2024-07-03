@@ -110,10 +110,10 @@
   }
 
   &.confirmation {
-    border-width: 2px;
-    border-style: solid;
+    background-color: $light-primary;
     position: relative;
     overflow: hidden;
+    cursor: default;
 
     .color-strip {
       position: absolute;

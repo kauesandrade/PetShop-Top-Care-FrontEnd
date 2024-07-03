@@ -32,7 +32,6 @@ import { DashboardOrderComponent } from './feature/employee/dashboard/dashboard-
 import { DashboardSchedulingComponent } from './feature/employee/dashboard/dashboard-scheduling/dashboard-scheduling.component';
 import { DashboardPageProductComponent } from './feature/employee/dashboard/dashboard-page-product/dashboard-page-product.component';
 import { DashboardPageServiceComponent } from './feature/employee/dashboard/dashboard-page-service/dashboard-page-service.component';
-
 import { DashboardComponent } from './feature/employee/dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -217,7 +216,7 @@ const routes: Routes = [
       {
         path: 'servicos',
         title: 'Dashboard Serviços | Top Care',
-        component: DashboardServiceComponent
+        component: DashboardServiceComponent,
       },
       {
         path: 'servico',
@@ -238,7 +237,7 @@ const routes: Routes = [
       {
         path: 'pedidos',
         title: 'Dashboard Pedidos | Top Care',
-        component: DashboardOrderComponent
+        component: DashboardOrderComponent,
       },
       {
         path: 'pedido/:id',
@@ -249,7 +248,7 @@ const routes: Routes = [
       {
         path: 'agendamentos',
         title: 'Dashboard Agendamentos | Top Care',
-        component: DashboardSchedulingComponent
+        component: DashboardSchedulingComponent,
       },
       {
         path: 'agendamento/:id',
