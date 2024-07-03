@@ -10,11 +10,11 @@
     </section>
 
     <section class="sections">
-      <app-specifications-forms (emitSpecificationForms)="getSpecificationsForms($event)" [product]="product"></app-specifications-forms>
+      <app-specifications-forms (emitSpecificationForms)="getSpecificationsForms($event)" [specificationForm]="specificationForm"></app-specifications-forms>
     </section>
 
     <section class="sections">
-      <app-variant-forms (emitVariantForms)="getVariantForms($event)" [productVariantsList]="productVariantsList"></app-variant-forms>
+      <app-variant-forms (emitVariantForms)="getVariantForms($event)" [variantForm]="variantForm"></app-variant-forms>
     </section>
 
     <div class="div-btns">

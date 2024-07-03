@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { faPlus, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 
@@ -10,7 +10,7 @@ import { ProductVariant } from 'src/app/shared/interfaces/product/product-varian
 })
 export class VariantFormsComponent implements OnInit {
 
-  @Input() productVariantsList!: Array<ProductVariant>
+  @Input() variantForm!: FormGroup
   @Output() emitVariantForms: EventEmitter<FormBuilder> = new EventEmitter()
 
   faPlus = faPlus;
@@ -19,13 +19,13 @@ export class VariantFormsComponent implements OnInit {
 
   variationsOpen = false;
 
-  variantForm = this.formBuilder.group({
-    title: [''],
-    code: [''],
-    stock: [''],
-    price: [''],
-    images: [''],
-  })
+  // variantForm = this.formBuilder.group({
+  //   title: [''],
+  //   code: [''],
+  //   stock: [''],
+  //   price: [''],
+  //   images: [''],
+  // })
 
   // variantFormArray = new FormArray([this.variantForm]);
 
@@ -68,6 +68,17 @@ export class VariantFormsComponent implements OnInit {
         // return reader.result!;
       };
     
+  }
+
+
+  deleteVariant(variant: ProductVariant){
+    // this.productVariantsList?.forEach(productVariant =>{
+    //   if(productVariant.variantCode == variant.variantCode){
+    //     this.productVariantsList?.splice(this.productVariantsList?.indexOf(productVariant), 1);
+    //   }
+    // })
+
+    //ADD NO product update
   }
 
 }

@@ -64,6 +64,8 @@
 
             gap: 0.5rem;
 
+            cursor: pointer;
+
             button {
                 @include flex();
                 background-color: transparent;
@@ -73,6 +75,7 @@
 
                 fa-icon {
                     @include flex();
+                    cursor: pointer;
                 }
             }
 
