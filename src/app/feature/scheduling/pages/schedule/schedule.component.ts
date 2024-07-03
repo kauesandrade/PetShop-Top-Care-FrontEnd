@@ -30,7 +30,7 @@ export class ScheduleComponent implements OnInit {
       this.schedulingService.setSchedule(this.selectedScheduleTime);
       this.schedulingService.navigateToNextRoute();
     } else {
-      alert('Seleciona ai doidão');
+      alert('Você deve selecionar um!');
     }
   }
 }

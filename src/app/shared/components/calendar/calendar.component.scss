@@ -7,33 +7,54 @@
 
   .sidebar {
     @include subgrid();
-    padding: 2rem 1rem;
-    gap: 1.5rem;
-    grid-column: auto / span 3;
+    gap: 1rem;
+    padding: 0.5rem;
     background-color: $white;
     border: $light-primary 2px solid;
-    border-bottom-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
     border-top-left-radius: 0.5rem;
+
+    @media (min-width: $tablet) {
+      padding: 1rem;
+    }
+    @media (min-width: $desktop) {
+      gap: 1.5rem;
+      padding: 2rem 1rem;
+      grid-column: auto / span 3;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 0.5rem;
+      border-top-left-radius: 0.5rem;
+    }
+
     h6 {
       grid-column: 1 / -1;
       text-align: center;
     }
 
     .sidebar-content {
-      grid-column: 1 / -1;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       grid-auto-rows: min-content;
       width: 100%;
       gap: 1rem 0.5rem;
-      flex-wrap: wrap;
-      height: 17rem;
       overflow-y: auto;
+      grid-column: 1 / -1;
+      height: 8rem;
+      @media (min-width: $tablet) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-column: 2 / span 2;
+      }
+      @media (min-width: $desktop) {
+        height: 17rem;
+        grid-column: 1 / -1;
+      }
 
       &::-webkit-scrollbar {
         width: 0.25rem;
+        height: 0.25rem;
         @media (min-width: $tablet) {
           width: 0.5rem;
+          height: 0.5rem;
         }
       }
 
@@ -47,52 +68,94 @@
       }
 
       button {
-        padding: 1rem;
+        padding: 0.5rem;
         width: 100%;
+
+        @media (min-width: $tablet) {
+          padding: 1rem;
+        }
+
         &.selected-time {
           background-color: $light-secondary;
         }
       }
 
       .pet-schedule {
-        grid-column: 1/-1;
         @include flex(row, center, space-between);
-        gap: 0.5rem;
+        grid-column: 1/-1;
+        gap: 0.25rem;
         width: 100%;
-        height: 6rem;
+        overflow: hidden;
 
         border-width: 2px;
         border-style: solid;
-        border-radius: 1rem;
+        border-radius: 0.5rem;
+
+        @media (min-width: $tablet) {
+          gap: 0.5rem;
+          height: auto;
+        }
+        @media (min-width: $desktop) {
+          border-radius: 1rem;
+        }
 
         .color-strip {
           height: 100%;
           width: 1rem;
-          border-top-left-radius: 1rem;
-          border-bottom-left-radius: 1rem;
         }
 
         img {
           aspect-ratio: 1 / 1;
-          height: 3rem;
+          height: 2rem;
+          @media (min-width: $tablet) {
+            height: 3rem;
+          }
           object-fit: cover;
           border-radius: 100%;
+          margin: 0.5rem 0;
         }
 
         .pet-info {
           @include flex();
           gap: 0.5rem;
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
           padding: 0.5rem 0;
           width: 100%;
+
+          @media (min-width: $desktop) {
+            flex-wrap: wrap;
+          }
+          @media (min-width: $desktopHD) {
+            flex-wrap: nowrap;
+          }
+
+          h6 {
+            @include text(medium, bold);
+            text-align: start;
+            @media (min-width: $desktop) {
+              text-align: center;
+              @include heading();
+            }
+            @media (min-width: $desktopHD) {
+              text-align: start;
+            }
+          }
 
           .schedule-info {
             width: 100%;
             p {
-              text-align: center;
+              text-align: start;
               @include text(small);
+
               span {
                 @include text(small, bold);
+              }
+
+              @media (min-width: $desktop) {
+                text-align: center;
+              }
+              @media (min-width: $desktopHD) {
+                text-align: start;
               }
             }
           }
@@ -102,13 +165,25 @@
   }
   .calendar {
     @include subgrid();
-    padding: 1.5rem 0;
+    padding: 0.5rem;
     row-gap: 1rem;
-    grid-column: 5 / span 5;
     background-color: $light-primary;
-    border-bottom-right-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
     grid-template-rows: min-content 1fr;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+
+    @media (min-width: $tablet) {
+      padding: 1rem;
+    }
+
+    @media (min-width: $desktop) {
+      padding: 1.5rem 0;
+      grid-column: 5 / span 5;
+
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
 
     &-header {
       @include flex($justify: space-between);
@@ -123,47 +198,77 @@
         color: $white;
         gap: 0;
         aspect-ratio: 1 / 1;
-        width: 3.5rem;
+        width: 2rem;
         border-radius: 100%;
-        padding: 0.5rem 0.75rem;
+        padding: 0;
         cursor: pointer;
+
+        @media (min-width: $tablet) {
+          width: 3rem;
+        }
+        @media (min-width: $desktop) {
+          width: 3.5rem;
+        }
 
         p {
           color: $white;
           &.date {
-            @include text(medium, medium);
+            @include text(medium, bold);
+            line-height: 1rem;
+            @media (min-width: $tablet) {
+              line-height: 1.375rem;
+            }
           }
           &.month {
             @include text(small);
             text-transform: capitalize;
+            line-height: 0.5rem;
+            @media (min-width: $tablet) {
+              font-size: 0.75rem;
+              line-height: 0.875rem;
+            }
           }
         }
       }
 
       .month-slider {
         @include flex();
-        gap: 0.5rem;
+        gap: 0;
+        @media (min-width: $tablet) {
+          gap: 0.5rem;
+        }
 
         button {
           border: none;
           outline: none;
           background: transparent;
           cursor: pointer;
-          font-size: 2rem;
+          font-size: 1.5rem;
+          @media (min-width: $tablet) {
+            font-size: 2rem;
+          }
         }
 
         h6 {
-          min-width: 6rem;
+          @include text(medium, bold);
+          min-width: 5.25rem;
+          @media (min-width: $desktop) {
+            @include heading();
+            min-width: 6rem;
+          }
           text-transform: capitalize;
           text-align: center;
         }
       }
       .year-slider {
         @include flex(row, center, flex-end);
-        gap: 0.5rem;
+        gap: 0.25rem;
         padding: 0.25rem;
         background-color: $primary;
         border-radius: 0.5rem;
+        @media (min-width: $desktop) {
+          gap: 0.5rem;
+        }
 
         .action-buttons {
           @include flex(column, center, center);
@@ -179,7 +284,12 @@
         }
 
         h6 {
-          min-width: 3rem;
+          @include text(medium, bold);
+          min-width: 2.75rem;
+          @media (min-width: $desktop) {
+            @include heading();
+            min-width: 3rem;
+          }
           color: $white;
           text-transform: capitalize;
           text-align: end;
@@ -237,7 +347,10 @@
               position: absolute;
               top: 50%;
               left: 50%;
-              transform: translate(-50%, 100%);
+              transform: translate(-50%, 80%);
+              @media (min-width: $tablet) {
+                transform: translate(-50%, 100%);
+              }
               border-radius: 100%;
               background-color: $secondary;
             }
@@ -251,7 +364,10 @@
 
             &.selected::before {
               content: "";
-              width: 2.5rem;
+              width: 2rem;
+              @media (min-width: $tablet) {
+                width: 2.5rem;
+              }
               aspect-ratio: 1 / 1;
               z-index: 1;
               position: absolute;

@@ -30,7 +30,7 @@ export class AddressComponent implements OnInit {
       this.schedulingService.setAddress(this.addressSelected);
       this.schedulingService.navigateToNextRoute();
     } else {
-      alert('Seleciona ai doidão');
+      alert('Você deve selecionar um!');
     }
   }
 }

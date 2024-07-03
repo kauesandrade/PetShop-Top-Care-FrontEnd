@@ -27,6 +27,7 @@ import {
   subDays,
   subMonths,
   subYears,
+  toDate,
 } from 'date-fns';
 import { Pet } from '../../interfaces/pet/pet';
 import { Schedule } from '../../interfaces/schedule/schedule';
@@ -71,8 +72,6 @@ export class CalendarComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    console.log(this.pets);
-
     if (this.type == 'scheduling') {
       this.defineAvailableTimes(this.today);
     }
@@ -208,7 +207,6 @@ export class CalendarComponent implements OnInit, OnChanges {
     } else {
       this.selectedTime = time;
     }
-    console.log(this.selectedTime);
     this.selectedTimeChange.emit(this.selectedTime);
   }
 

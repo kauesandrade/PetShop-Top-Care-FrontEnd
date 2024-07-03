@@ -30,7 +30,7 @@ export class PetshopComponent implements OnInit {
       this.schedulingService.setPetshop(this.petshopSelected);
       this.schedulingService.navigateToNextRoute();
     } else {
-      alert('Seleciona ai doidão');
+      alert('Você deve selecionar um!');
     }
   }
 }

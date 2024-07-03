@@ -1,11 +1,6 @@
 <app-layout (continue)="onContinue()">
   <div class="content">
     <app-calendar
-      type="profile"
-      [pets]="userPets"
-      [(selectedTime)]="selectedScheduleTime"
-    ></app-calendar>
-    <app-calendar
       type="scheduling"
       [(selectedTime)]="selectedScheduleTime"
     ></app-calendar>

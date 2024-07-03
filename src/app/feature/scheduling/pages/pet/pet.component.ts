@@ -31,7 +31,7 @@ export class PetComponent implements OnInit {
       this.schedulingService.setPet(this.selectedPet);
       this.schedulingService.navigateToNextRoute();
     } else {
-      alert('Seleciona ai doidão');
+      alert('Você deve selecionar um!');
     }
   }
 }

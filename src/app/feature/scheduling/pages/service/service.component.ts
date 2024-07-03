@@ -42,7 +42,7 @@ export class ServiceComponent implements OnInit {
       this.schedulingService.setServices(this.servicesSelected);
       this.schedulingService.navigateToNextRoute();
     } else {
-      alert('Seleciona ai doidão');
+      alert('Você deve selecionar um!');
     }
   }
 }
