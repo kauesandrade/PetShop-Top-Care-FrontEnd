@@ -1,1 +1,28 @@
-<p>dashboard-page-service works!</p>
+<app-header (sideBarOpenEmitter)="sideBarOpen($event)" [simple]="true" [employee]="true"></app-header>
+<main>
+  <app-dashboard-side-bar pageNow='servico' [isOpen]="isOpen"></app-dashboard-side-bar>
+  <div class="layout-dashboard">
+
+    <h1>{{titlePage}}</h1>
+
+    <section class="sections">
+        <app-service-forms></app-service-forms>
+    </section>
+
+    <section class="sections">
+        <app-service-variant-forms></app-service-variant-forms>
+    </section>
+
+    <div class="div-btns">
+      <button routerLink="/dashboard/produtos" appButton="">Voltar</button>
+      <ng-container *ngIf="this.service; else notService">
+        <button appButton="secondary">Salvar</button>
+      </ng-container>
+      <ng-template #notService>
+        <button appButton="secondary">Adicionar</button>
+      </ng-template>
+    </div>
+
+  </div>
+
+</main>

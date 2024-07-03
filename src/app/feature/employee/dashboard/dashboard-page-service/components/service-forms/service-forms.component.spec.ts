@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VariantFormsComponent } from './variant-forms.component';
+import { ServiceFormsComponent } from './service-forms.component';
 
-describe('VariantFormsComponent', () => {
-  let component: VariantFormsComponent;
-  let fixture: ComponentFixture<VariantFormsComponent>;
+describe('ServiceFormsComponent', () => {
+  let component: ServiceFormsComponent;
+  let fixture: ComponentFixture<ServiceFormsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VariantFormsComponent ]
+      declarations: [ ServiceFormsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VariantFormsComponent);
+    fixture = TestBed.createComponent(ServiceFormsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

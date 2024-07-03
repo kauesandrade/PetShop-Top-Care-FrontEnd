@@ -19,8 +19,10 @@ import { DashboardPageProductComponent } from './dashboard-page-product/dashboar
 import { NgxMaskModule } from 'ngx-mask';
 import { ProductFormsComponent } from './dashboard-page-product/components/product-forms/product-forms.component';
 import { SpecificationsFormsComponent } from './dashboard-page-product/components/specifications-forms/specifications-forms.component';
-import { VariantFormsComponent } from './dashboard-page-product/components/variant-forms/variant-forms.component';
+import { ProductVariantFormsComponent } from './dashboard-page-product/components/product-variant-forms/product-variant-forms.component';
 import { DashboardPageServiceComponent } from './dashboard-page-service/dashboard-page-service.component';
+import { ServiceFormsComponent } from './dashboard-page-service/components/service-forms/service-forms.component';
+import { ServiceVariantFormsComponent } from './dashboard-page-service/components/service-variant-forms/service-variant-forms.component';
 
 
 
@@ -40,8 +42,10 @@ import { DashboardPageServiceComponent } from './dashboard-page-service/dashboar
     DashboardPageProductComponent,
     ProductFormsComponent,
     SpecificationsFormsComponent,
-    VariantFormsComponent
-    DashboardPageServiceComponent
+    ProductVariantFormsComponent,
+    DashboardPageServiceComponent,
+    ServiceVariantFormsComponent,
+    ServiceFormsComponent,
   ],
   imports: [
     CommonModule, 

@@ -20,9 +20,5 @@ export class ServiceCardDashboardComponent implements OnInit {
   handleClickTrash(){
     console.log(this.service.code);
   }
-  
-  handleClickEdit(){
-    console.log(this.service.code);
-  }
 
 }

@@ -5,11 +5,11 @@ import { Observable } from 'rxjs/internal/Observable';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 
 @Component({
-  selector: 'app-variant-forms',
-  templateUrl: './variant-forms.component.html',
-  styleUrls: ['./variant-forms.component.scss']
+  selector: 'app-product-service-variant-forms',
+  templateUrl: './product-variant-forms.component.html',
+  styleUrls: ['./product-variant-forms.component.scss']
 })
-export class VariantFormsComponent implements OnInit {
+export class ProductVariantFormsComponent implements OnInit {
 
   @Input() productVariantsList!: Array<ProductVariant>
   @Output() emitVariantForms: EventEmitter<FormBuilder> = new EventEmitter()
