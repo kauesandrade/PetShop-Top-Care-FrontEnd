@@ -21,14 +21,6 @@ export class DashboardPageProductComponent implements OnInit {
   isOpen: boolean = false;
   titlePage = ""
 
-  specificationsOpen = false;
-  variationsOpen = false;
-
-  faPlus = faPlus;
-  faTrash = faTrash;
-  faTimes = faTimes;
-
-
   productForm = this.formBuilder.group({
     code: [''],
     title: [''],
@@ -54,11 +46,6 @@ export class DashboardPageProductComponent implements OnInit {
     images: [''],
   })
 
-  // variantFormArray = new FormArray([this.variantForm]);
-
-
-  files: Array<File> = []
-
   constructor(private route: ActivatedRoute,
     private productService: ProductService,
     private formBuilder: FormBuilder) { }
@@ -83,41 +70,16 @@ export class DashboardPageProductComponent implements OnInit {
     this.isOpen = evt;
   }
 
-  addSpecifications() {
-    this.specificationsOpen = !this.specificationsOpen;
-  }
-
-  addVariant() {
-    this.variationsOpen = !this.variationsOpen;
-  }
-
-  addImagesVariant(evt: any) {
-    const fis: Array<File> = evt.target.files
-
-    for(let i = 0; i < fis.length; i++){
-      this.files.push(fis[i]);
-    }
-
-    // const reader = new FileReader();
-    // reader.readAsDataURL(this.files[0]);
-    // reader.onload = (_event) => {
-    //   console.log(reader.result!);
-    // };
-    
-    
-    // this.variantForm.controls.images.setValue(files);
-    
+  getProductForms(evt: any){
+    console.log(evt);
   }
   
-  getImage(img: File){
-    
-    const reader = new FileReader();
-    reader.readAsDataURL(img);
-    reader.onloadend = (_event) => {
-        // console.log(reader.result!);
-        // return reader.result!;
-      };
-    
+  getSpecificationsForms(evt: any){
+    console.log(evt);
+  }
+  
+  getVariantForms(evt: any){
+    console.log(evt);
   }
 
 }

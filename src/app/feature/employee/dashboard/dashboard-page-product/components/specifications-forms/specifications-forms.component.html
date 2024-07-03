@@ -1,0 +1,55 @@
+<section class="section-specifications">
+    
+    <div class="header-specifications">
+        <h6>Especificações</h6>
+        <button class="btn-add" (click)="addSpecifications()">
+            <fa-icon [icon]="faPlus"></fa-icon>
+        </button>
+    </div>
+    
+    <div class="specifications" *ngIf="product?.specifications">
+        <ng-container *ngFor="let specification of product?.specifications">
+            <div class="select-tag" (click)="editSpecification(specification)">
+                <p>{{specification.title}}</p>
+                <button (click)="deleteSpecification(specification)">
+                    <fa-icon [icon]="faTimes"></fa-icon>
+                </button>
+            </div>
+        </ng-container>
+    </div>
+    
+    
+    <ng-container *ngIf="specificationsOpen">
+        <div class="specification">
+
+    
+            <ng-container *ngIf="specificationUpdate != ''; else noSpecification"> 
+                <div class="specification-card">
+                    <p>{{specificationUpdate}}</p>
+                    <button (click)="updateSpecification()" appButton="secondary">Salvar</button>
+                </div>
+            </ng-container>
+
+            <ng-template #noSpecification>
+                <div class="specification-card">
+                    <p>Adicionar Especificação</p>
+                    <button (click)="addSpecification()" appButton="secondary">Adicionar</button>
+                </div>
+            </ng-template>
+
+    
+            <form [formGroup]="specificationForm" class="form-specifications">
+                <label for="title" class="labels" appInput>
+                    <p>Título da Especificação*</p>
+                    <input type="title" id="title" formControlName="title" placeholder="Título da especificação" required />
+                </label>
+    
+                <label for="description" class="labels" appInput>
+                    <p>Descrição da Especificação*</p>
+                    <input type="description" id="description" formControlName="description"
+                        placeholder="Descrição da especificação" required />
+                </label>
+            </form>
+        </div>
+    </ng-container>
+</section>

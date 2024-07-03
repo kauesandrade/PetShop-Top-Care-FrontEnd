@@ -1,0 +1,38 @@
+<form [formGroup]="productForm" class="section-product">
+    <div class="title-code">
+        <label for="title" class="labels" appInput>
+            <p>Título do Produto*</p>
+            <input type="title" id="title" formControlName="title" placeholder="Título do produto" required />
+        </label>
+
+        <label for="code" class="labels" appInput>
+            <p>Código*</p>
+            <input type="code" id="code" formControlName="code" placeholder="Código do produto" required />
+        </label>
+    </div>
+
+    <label for="description" class="labels" appInput>
+        <p>Descrição*</p>
+        <textarea type="description" id="description" formControlName="description" placeholder="Descrição do produto"
+            required>
+          </textarea>
+    </label>
+
+    <label for="littleDescription" class="labels" appInput>
+        <p>Descrição Curta*</p>
+        <input type="littleDescription" id="littleDescription" formControlName="littleDescription"
+            placeholder="Descrição curta" required />
+    </label>
+
+    <div class="title-code">
+        <label for="brand" class="labels" appInput>
+            <p>Marca*</p>
+            <input type="brand" id="brand" formControlName="brand" placeholder="Marca do produto" required />
+        </label>
+
+        <label for="category" class="labels" appInput>
+            <p>Categoria*</p>
+            <input type="category" id="category" formControlName="category" placeholder="Categoria do produto" required />
+        </label>
+    </div>
+</form>
