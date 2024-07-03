@@ -1,20 +1,47 @@
 <div class="full-calendar">
   <div class="sidebar">
     <h6>{{ type == "scheduling" ? "Horários" : "Compromissos" }}</h6>
-    <ng-container *ngIf="type == 'scheduling'; else petSchedule">
-      <div class="scheduling-times">
+    <div class="sidebar-content">
+      <ng-container *ngIf="type == 'scheduling'; else petSchedule">
         <button
           class="scheduling-time"
+          [class.selected-time]="isTimeSame(availableTime, selectedTime!)"
+          (click)="selectTime(availableTime)"
           appButton="secondary"
-          *ngFor="let avalableTime of availableTimes"
+          *ngFor="let availableTime of availableTimes"
         >
-          {{ avalableTime | date : "shortTime" }}
+          {{ availableTime | date : "shortTime" }}
         </button>
-      </div>
-    </ng-container>
-    <ng-template #petSchedule>
-      <p>Perfil</p>
-    </ng-template>
+      </ng-container>
+      <ng-template #petSchedule>
+        <ng-container *ngFor="let pet of pets">
+          <ng-container *ngFor="let schedule of pet.schedules">
+            <ng-container *ngIf="isDateSame(schedule.dateTime, selectedDate)">
+              <ng-container *ngFor="let service of schedule.services">
+                <div class="pet-schedule" [ngClass]="'border-' + pet.idColor">
+                  <div
+                    class="color-strip"
+                    [ngClass]="'background-' + pet.idColor"
+                  ></div>
+                  <img [src]="pet.image" alt="Pet image" />
+                  <div class="pet-info">
+                    <h6>{{ pet.name }}</h6>
+                    <div class="schedule-info">
+                      <p>
+                        <span>{{
+                          schedule.dateTime | date : "shortTime"
+                        }}</span>
+                        - {{ service.variantTitle }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </ng-template>
+    </div>
     <!-- Faz a lógica aí dos 2 calendários -->
   </div>
   <div class="calendar">
@@ -31,18 +58,21 @@
         <button (click)="prevMonth()">
           <fa-icon [icon]="faAngleLeft"></fa-icon>
         </button>
-        <label for="month-input">
-          <input
-            type="month"
-            id="month-input"
-            name="month-input"
-            (change)="pickMonth($event)"
-          />
-          <h6>{{ selectedDate | date : "MMMM" }}</h6>
-        </label>
+        <h6>{{ selectedDate | date : "MMMM" }}</h6>
         <button (click)="nextMonth()">
           <fa-icon [icon]="faAngleRight"></fa-icon>
         </button>
+      </div>
+      <div class="year-slider">
+        <h6>{{ selectedDate | date : "YYYY" }}</h6>
+        <div class="action-buttons">
+          <button (click)="nextYear()">
+            <fa-icon [icon]="faAngleUp"></fa-icon>
+          </button>
+          <button (click)="prevYear()">
+            <fa-icon [icon]="faAngleDown"></fa-icon>
+          </button>
+        </div>
       </div>
     </div>
     <div class="calendar-body">
@@ -50,7 +80,16 @@
         <p *ngFor="let weekDay of weekDays">{{ weekDay }}</p>
       </div>
       <div class="dates-body">
-        <p *ngFor="let date of calendarBeforeDates">{{ date | date : "d" }}</p>
+        <button
+          *ngFor="let date of calendarBeforeDates"
+          (click)="onSelectCalendarDate(date)"
+          class="other-month"
+        >
+          <p>
+            {{ date | date : "d" }}
+          </p>
+          <span *ngIf="hasSchedule(date)"></span>
+        </button>
         <button
           (click)="onSelectCalendarDate(date)"
           [class.selected]="isDateSame(date, selectedDate)"
@@ -59,8 +98,18 @@
           <p>
             {{ date | date : "d" }}
           </p>
+          <span *ngIf="hasSchedule(date)"></span>
         </button>
-        <p *ngFor="let date of calendarAfterDates">{{ date | date : "d" }}</p>
+        <button
+          *ngFor="let date of calendarAfterDates"
+          (click)="onSelectCalendarDate(date)"
+          class="other-month"
+        >
+          <p>
+            {{ date | date : "d" }}
+          </p>
+          <span *ngIf="hasSchedule(date)"></span>
+        </button>
       </div>
     </div>
   </div>

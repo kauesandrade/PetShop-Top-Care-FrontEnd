@@ -1,6 +1,7 @@
 import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { SchedulingService } from 'src/app/shared/services/scheduling/scheduling.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-schedule',
@@ -8,19 +9,25 @@ import { SchedulingService } from 'src/app/shared/services/scheduling/scheduling
   styleUrls: ['./schedule.component.scss'],
 })
 export class ScheduleComponent implements OnInit {
-  timeSelected?: Date;
+  selectedScheduleTime?: Date;
+  userPets = this.userService.loggedUser?.pets;
 
-  constructor(private schedulingService: SchedulingService) {}
+  constructor(
+    private schedulingService: SchedulingService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     if (this.schedulingService.schedule) {
-      this.timeSelected = this.schedulingService.schedule;
+      this.selectedScheduleTime = this.schedulingService.schedule;
     }
   }
 
   onContinue() {
-    if (this.timeSelected) {
-      this.schedulingService.setSchedule(this.timeSelected);
+    console.log(this.selectedScheduleTime);
+
+    if (this.selectedScheduleTime) {
+      this.schedulingService.setSchedule(this.selectedScheduleTime);
       this.schedulingService.navigateToNextRoute();
     } else {
       alert('Seleciona ai doidão');

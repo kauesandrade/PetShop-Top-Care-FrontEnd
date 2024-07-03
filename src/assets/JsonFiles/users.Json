@@ -448,7 +448,61 @@
           "gender": "Macho",
           "color": "Amarelo",
           "birth": "15052018",
-          "weight": 25.5
+          "weight": 25.5,
+          "schedules": [
+            {
+              "code": "1",
+              "dateTime": "2024-07-02T10:00:00",
+              "services": [
+                {
+                  "code": 1,
+                  "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+                  "title": "Banho e Tosa",
+                  "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+                  "category": "Higiene",
+                  "servedPets": ["Cachorro", "Gato", "Aves"],
+                  "variantCode": 101,
+                  "variantTitle": "Banho Simples",
+                  "price": 50.0
+                }
+              ],
+              "petshop": {
+                "id": 1,
+                "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+                "name": "Pet Lovers",
+                "address": "123 Rua Principal, Cidade",
+                "openingHours": [
+                  "Seg-Sex: 9h-18h",
+                  "Sáb: 10h-16h",
+                  "Dom: Fechado"
+                ],
+                "telephone": "+1 (123) 456-7890",
+                "offeredServices": [
+                  "Banho e Tosa",
+                  "Hotel para Pets",
+                  "Treinamento"
+                ],
+                "servedPets": ["Cães", "Gatos", "Pássaros"]
+              },
+              "payment": {
+                "subtotal": 50.0,
+                "shippingFee": 0,
+                "total": 50.0,
+                "method": {
+                  "value": "card",
+                  "card": {
+                    "value": "card",
+                    "name": "Bernardo",
+                    "lastDigits": "1234",
+                    "expirationDate": "01/01",
+                    "mainCard": true
+                  }
+                },
+                "parcels": 1,
+                "status": "Pago"
+              }
+            }
+          ]
         },
         {
           "id": 2,
@@ -461,7 +515,61 @@
           "gender": "Macho",
           "color": "Amarelo",
           "birth": "15052018",
-          "weight": 25.5
+          "weight": 25.5,
+          "schedules": [
+            {
+              "code": "1",
+              "dateTime": "2024-07-02T10:00:00",
+              "services": [
+                {
+                  "code": 1,
+                  "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+                  "title": "Banho e Tosa",
+                  "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+                  "category": "Higiene",
+                  "servedPets": ["Cachorro", "Gato", "Aves"],
+                  "variantCode": 101,
+                  "variantTitle": "Banho Simples",
+                  "price": 50.0
+                }
+              ],
+              "petshop": {
+                "id": 1,
+                "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+                "name": "Pet Lovers",
+                "address": "123 Rua Principal, Cidade",
+                "openingHours": [
+                  "Seg-Sex: 9h-18h",
+                  "Sáb: 10h-16h",
+                  "Dom: Fechado"
+                ],
+                "telephone": "+1 (123) 456-7890",
+                "offeredServices": [
+                  "Banho e Tosa",
+                  "Hotel para Pets",
+                  "Treinamento"
+                ],
+                "servedPets": ["Cães", "Gatos", "Pássaros"]
+              },
+              "payment": {
+                "subtotal": 50.0,
+                "shippingFee": 0,
+                "total": 50.0,
+                "method": {
+                  "value": "card",
+                  "card": {
+                    "value": "card",
+                    "name": "Bernardo",
+                    "lastDigits": "1234",
+                    "expirationDate": "01/01",
+                    "mainCard": true
+                  }
+                },
+                "parcels": 1,
+                "status": "Pago"
+              }
+            }
+          ]
         },
         {
           "id": 3,
@@ -474,7 +582,61 @@
           "gender": "Macho",
           "color": "Amarelo",
           "birth": "15052018",
-          "weight": 25.5
+          "weight": 25.5,
+          "schedules": [
+            {
+              "code": "1",
+              "dateTime": "2024-07-02T10:00:00",
+              "services": [
+                {
+                  "code": 1,
+                  "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+                  "title": "Banho e Tosa",
+                  "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+                  "category": "Higiene",
+                  "servedPets": ["Cachorro", "Gato", "Aves"],
+                  "variantCode": 101,
+                  "variantTitle": "Banho Simples",
+                  "price": 50.0
+                }
+              ],
+              "petshop": {
+                "id": 1,
+                "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+                "name": "Pet Lovers",
+                "address": "123 Rua Principal, Cidade",
+                "openingHours": [
+                  "Seg-Sex: 9h-18h",
+                  "Sáb: 10h-16h",
+                  "Dom: Fechado"
+                ],
+                "telephone": "+1 (123) 456-7890",
+                "offeredServices": [
+                  "Banho e Tosa",
+                  "Hotel para Pets",
+                  "Treinamento"
+                ],
+                "servedPets": ["Cães", "Gatos", "Pássaros"]
+              },
+              "payment": {
+                "subtotal": 50.0,
+                "shippingFee": 0,
+                "total": 50.0,
+                "method": {
+                  "value": "card",
+                  "card": {
+                    "value": "card",
+                    "name": "Bernardo",
+                    "lastDigits": "1234",
+                    "expirationDate": "01/01",
+                    "mainCard": true
+                  }
+                },
+                "parcels": 1,
+                "status": "Pago"
+              }
+            }
+          ]
         },
         {
           "id": 4,
@@ -487,7 +649,61 @@
           "gender": "Macho",
           "color": "Amarelo",
           "birth": "15052018",
-          "weight": 25.5
+          "weight": 25.5,
+          "schedules": [
+            {
+              "code": "1",
+              "dateTime": "2024-07-02T10:00:00",
+              "services": [
+                {
+                  "code": 1,
+                  "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+                  "title": "Banho e Tosa",
+                  "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+                  "category": "Higiene",
+                  "servedPets": ["Cachorro", "Gato", "Aves"],
+                  "variantCode": 101,
+                  "variantTitle": "Banho Simples",
+                  "price": 50.0
+                }
+              ],
+              "petshop": {
+                "id": 1,
+                "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+                "name": "Pet Lovers",
+                "address": "123 Rua Principal, Cidade",
+                "openingHours": [
+                  "Seg-Sex: 9h-18h",
+                  "Sáb: 10h-16h",
+                  "Dom: Fechado"
+                ],
+                "telephone": "+1 (123) 456-7890",
+                "offeredServices": [
+                  "Banho e Tosa",
+                  "Hotel para Pets",
+                  "Treinamento"
+                ],
+                "servedPets": ["Cães", "Gatos", "Pássaros"]
+              },
+              "payment": {
+                "subtotal": 50.0,
+                "shippingFee": 0,
+                "total": 50.0,
+                "method": {
+                  "value": "card",
+                  "card": {
+                    "value": "card",
+                    "name": "Bernardo",
+                    "lastDigits": "1234",
+                    "expirationDate": "01/01",
+                    "mainCard": true
+                  }
+                },
+                "parcels": 1,
+                "status": "Pago"
+              }
+            }
+          ]
         },
         {
           "id": 5,
@@ -500,7 +716,61 @@
           "gender": "Macho",
           "color": "Amarelo",
           "birth": "15052018",
-          "weight": 25.5
+          "weight": 25.5,
+          "schedules": [
+            {
+              "code": "1",
+              "dateTime": "2024-07-02T10:00:00",
+              "services": [
+                {
+                  "code": 1,
+                  "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+                  "title": "Banho e Tosa",
+                  "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+                  "category": "Higiene",
+                  "servedPets": ["Cachorro", "Gato", "Aves"],
+                  "variantCode": 101,
+                  "variantTitle": "Banho Simples",
+                  "price": 50.0
+                }
+              ],
+              "petshop": {
+                "id": 1,
+                "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+                "name": "Pet Lovers",
+                "address": "123 Rua Principal, Cidade",
+                "openingHours": [
+                  "Seg-Sex: 9h-18h",
+                  "Sáb: 10h-16h",
+                  "Dom: Fechado"
+                ],
+                "telephone": "+1 (123) 456-7890",
+                "offeredServices": [
+                  "Banho e Tosa",
+                  "Hotel para Pets",
+                  "Treinamento"
+                ],
+                "servedPets": ["Cães", "Gatos", "Pássaros"]
+              },
+              "payment": {
+                "subtotal": 50.0,
+                "shippingFee": 0,
+                "total": 50.0,
+                "method": {
+                  "value": "card",
+                  "card": {
+                    "value": "card",
+                    "name": "Bernardo",
+                    "lastDigits": "1234",
+                    "expirationDate": "01/01",
+                    "mainCard": true
+                  }
+                },
+                "parcels": 1,
+                "status": "Pago"
+              }
+            }
+          ]
         }
       ],
       "access": "normal"
