@@ -17,6 +17,7 @@ import { DashboardSchedulingComponent } from './dashboard-scheduling/dashboard-s
 import { SchedulingCardDashboardComponent } from './components/scheduling-card-dashboard/scheduling-card-dashboard.component';
 import { DashboardPageProductComponent } from './dashboard-page-product/dashboard-page-product.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { DashboardPageServiceComponent } from './dashboard-page-service/dashboard-page-service.component';
 
 
 
@@ -33,7 +34,8 @@ import { NgxMaskModule } from 'ngx-mask';
     DashboardServiceComponent,
     DashboardSchedulingComponent,
     SchedulingCardDashboardComponent,
-    DashboardPageProductComponent
+    DashboardPageProductComponent,
+    DashboardPageServiceComponent
   ],
   imports: [
     CommonModule, 
