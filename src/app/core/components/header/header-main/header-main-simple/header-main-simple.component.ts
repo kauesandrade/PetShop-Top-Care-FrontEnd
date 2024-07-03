@@ -14,7 +14,7 @@ export class HeaderMainSimpleComponent implements OnInit {
   faUser = faUser;
   faTimes = faTimes;
 
-  @Input() functionary: boolean = false;
+  @Input() employee: boolean = false;
   user!: User | null;
   firstName!: string | undefined;
 
