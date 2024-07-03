@@ -9,7 +9,7 @@
 
     <div class="variants" *ngIf="productVariantsList">
       <ng-container *ngFor="let product of productVariantsList">
-        <div class="select-tag">
+        <div class="select-tag" (click)="editSpecification(product)">
           <p>{{product.variant}}</p>
           <button (click)="deleteVariant(product)">
             <fa-icon [icon]="faTimes"></fa-icon>
@@ -22,10 +22,20 @@
       <div class="variant">
 
 
-        <div class="variant-card">
-          <p>Adicionar Variação</p>
-          <button appButton="secondary">Adicionar</button>
-        </div>
+        <ng-container *ngIf="variantUpdate != ''; else noSpecification"> 
+          <div class="specification-card">
+              <p>{{variantUpdate}}</p>
+              <button (click)="updateVariant()" appButton="secondary">Salvar</button>
+          </div>
+      </ng-container>
+
+      <ng-template #noSpecification>
+            <div class="variant-card">
+              <p>Adicionar Variação</p>
+              <button (click)="addVariant()" appButton="secondary">Adicionar</button>
+            </div>
+      </ng-template>
+
 
         <form [formGroup]="variantForm" class="form-variants">
 
