@@ -6,16 +6,16 @@
     <h1>{{titlePage}}</h1>
 
     <section class="sections">
-        <app-service-forms></app-service-forms>
+        <app-service-forms [service]="service"></app-service-forms>
     </section>
 
     <section class="sections">
-        <app-service-variant-forms></app-service-variant-forms>
+        <app-service-variant-forms [serviceVariantsList]="serviceVariantList"></app-service-variant-forms>
     </section>
 
     <div class="div-btns">
-      <button routerLink="/dashboard/produtos" appButton="">Voltar</button>
-      <ng-container *ngIf="this.service; else notService">
+      <button routerLink="/dashboard/servicos" appButton="">Voltar</button>
+      <ng-container *ngIf="this.serviceVariantList; else notService">
         <button appButton="secondary">Salvar</button>
       </ng-container>
       <ng-template #notService>

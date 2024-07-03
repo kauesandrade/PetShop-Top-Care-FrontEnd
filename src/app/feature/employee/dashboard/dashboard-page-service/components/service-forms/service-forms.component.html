@@ -1,9 +1,7 @@
 <form [formGroup]="serviceForm" class="section-product">
 
     <section class="section-image">
-
-        <img src="https://blog-static.petlove.com.br/wp-content/uploads/2020/12/Cachorro-consulta-Petlove.jpg" alt="">
-
+        <img [src]="serviceForm.value.image"/>
     </section>
 
     <section class="section-forms">

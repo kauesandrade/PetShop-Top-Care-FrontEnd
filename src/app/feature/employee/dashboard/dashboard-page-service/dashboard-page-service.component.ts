@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Service } from 'src/app/feature/contact/interfaces/service';
+import { Service } from 'src/app/shared/interfaces/services/service';
+import { ServiceVariant } from 'src/app/shared/interfaces/services/service-variant';
 import { ServicesService } from 'src/app/shared/services/services/services.service';
 
 @Component({
@@ -11,11 +12,12 @@ import { ServicesService } from 'src/app/shared/services/services/services.servi
 })
 export class DashboardPageServiceComponent implements OnInit {
 
+  serviceVariantList!: ServiceVariant[]
   service!: Service
   id!: string;
 
   isOpen: boolean = false;
-  titlePage = "Editar Servico"
+  titlePage = ""
 
   serviceForm = this.formBuilder.group({
     code: [''],
@@ -43,17 +45,22 @@ export class DashboardPageServiceComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    // this.serviceService.findProduct(this.id);
-
-    // if (typeof this.serviceService.getProduct() == 'object') {
-    //   this.product = this.serviceService.getProduct();
-    //   this.productVariantsList = this.serviceService.getProductVariants();
-    //   this.titlePage = 'Editar um Produto'
-    //   console.log(this.product);
-    // } else {
-    //   this.titlePage = 'Adicionar um Produto'
-    //   console.log("sem objeto");
-    // }
+    
+    if (typeof this.serviceService.getServiceVariants(parseInt(this.id))[0] == 'object') {
+      this.serviceVariantList = this.serviceService.getServiceVariants(parseInt(this.id));
+      this.service = ({
+        code: this.serviceVariantList[0].code,
+        image: this.serviceVariantList[0].image,
+        title: this.serviceVariantList[0].title,
+        description: this.serviceVariantList[0].description,
+        category: this.serviceVariantList[0].category,
+        servedPets: [],
+      })
+      this.titlePage = 'Editar um Produto'
+    } else {
+      this.titlePage = 'Adicionar um Produto'
+      console.log("sem objeto");
+    }
 
   }
 
