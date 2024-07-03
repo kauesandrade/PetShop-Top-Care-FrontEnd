@@ -1,15 +1,12 @@
-<ng-container
-  *ngIf="type == 'add'; then addCard; type == 'link'; then petCard; else confirmationCard"
-></ng-container>
-<ng-template #addCard>
+<ng-container *ngIf="type == 'add'">
   <div class="card add" (click)="onClick()">
     <div class="add-icon">
       <fa-icon [icon]="faPlus"></fa-icon>
     </div>
     <h6>Adicionar pet</h6>
   </div>
-</ng-template>
-<ng-template #petCard *ngIf="type == 'link'; else confirmationCard">
+</ng-container>
+<ng-container *ngIf="type == 'link'">
   <div
     class="card pet"
     (click)="onClick()"
@@ -23,14 +20,9 @@
     </div>
     <h6>{{ pet.name }}</h6>
   </div>
-</ng-template>
-<ng-template #confirmationCard>
-  <div
-    class="card pet"
-    (click)="onClick()"
-    [class.selected]="scheduleSelected?.id == pet.id"
-    [ngClass]="'border-' + pet.idColor"
-  >
+</ng-container>
+<ng-container *ngIf="type == 'confirmation'">
+  <div class="card confirmation">
     <div class="color-strip" [ngClass]="'background-' + pet.idColor"></div>
     <div class="image">
       <img [src]="pet.image" alt="Pet image" />
@@ -38,4 +30,4 @@
     </div>
     <h6>{{ pet.name }}</h6>
   </div>
-</ng-template>
+</ng-container>
