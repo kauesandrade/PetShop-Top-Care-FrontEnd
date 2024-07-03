@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { faPlus, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Observable } from 'rxjs/internal/Observable';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 
 @Component({
-  selector: 'app-product-service-variant-forms',
+  selector: 'app-product-variant-forms',
   templateUrl: './product-variant-forms.component.html',
   styleUrls: ['./product-variant-forms.component.scss']
 })

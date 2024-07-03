@@ -39,7 +39,7 @@ main {
                 row-gap: 2rem;
             }
 
-            app-product-forms, app-specifications-forms, app-variant-forms {
+            app-product-forms, app-specifications-forms, app-product-variant-forms {
                 @include subgrid();
                 grid-column: 1 / -1;
             }
