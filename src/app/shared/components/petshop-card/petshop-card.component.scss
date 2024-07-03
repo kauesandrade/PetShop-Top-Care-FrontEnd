@@ -41,6 +41,12 @@
 
       .title-text {
         flex: 1;
+        &:first-child {
+          flex: auto;
+          @media (min-width: $tablet) {
+            flex: 1;
+          }
+        }
 
         &.offered-services {
           display: none;
@@ -58,6 +64,16 @@
             @include text(large, bold);
           }
           color: $primary;
+        }
+
+        p {
+          @include text(small);
+          @media (min-width: $tablet) {
+            @include text(normal);
+          }
+          @media (min-width: $desktop) {
+            @include text(large);
+          }
         }
       }
     }

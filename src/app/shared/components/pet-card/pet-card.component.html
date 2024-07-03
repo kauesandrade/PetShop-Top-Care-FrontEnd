@@ -6,7 +6,7 @@
     <h6>Adicionar pet</h6>
   </div>
 </ng-container>
-<ng-container *ngIf="type == 'link'">
+<ng-container *ngIf="type == 'link' || type == 'scheduling'">
   <div
     class="card pet"
     (click)="onClick()"
@@ -26,7 +26,6 @@
     <div class="color-strip" [ngClass]="'background-' + pet.idColor"></div>
     <div class="image">
       <img [src]="pet.image" alt="Pet image" />
-      <fa-icon [icon]="faCheck"></fa-icon>
     </div>
     <h6>{{ pet.name }}</h6>
   </div>

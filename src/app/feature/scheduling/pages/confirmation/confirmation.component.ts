@@ -10,7 +10,10 @@ import { UserService } from 'src/app/shared/services/user/user.service';
   styleUrls: ['./confirmation.component.scss'],
 })
 export class ConfirmationComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    public schedulingService: SchedulingService
+  ) {}
 
   ngOnInit(): void {}
 

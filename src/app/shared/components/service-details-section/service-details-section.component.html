@@ -1,3 +1,30 @@
 <section>
-  <app-pet-card></app-pet-card>
+  <app-pet-card type="confirmation" [pet]="pet"></app-pet-card>
+  <div class="schedule-time">
+    <h5>Data do agendamento:</h5>
+    <h6>{{ schedule | date : "dd/MM/yyyy - HH:mm" }}</h6>
+  </div>
+  <div class="selected-services">
+    <h5>Serviços selecionados:</h5>
+    <ng-container *ngFor="let category of categories; let i = index">
+      <div class="divider" *ngIf="i !== 0"></div>
+      <p class="title">{{ category }}</p>
+      <ul>
+        <li *ngFor="let service of services">
+          <ng-container *ngIf="service.category == category">
+            {{ service.variantTitle }}
+          </ng-container>
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+  <div class="payment-info">
+    <h6>Agendamento</h6>
+    <div class="text-info">
+      <p>
+        Valor dos serviços({{ services.length }} ite
+        {{ services.length > 1 ? "ns" : "m" }})
+      </p>
+    </div>
+  </div>
 </section>

@@ -20,21 +20,17 @@ import { ReviewProductComponent } from './feature/user/orders/order/components/r
 import { PaymentComponent } from './feature/payment/payment.component';
 import { FinishedPaymentComponent } from './feature/payment/finished-payment/finished-payment.component';
 import { ServicesComponent } from './feature/services/services.component';
-import { DashboardProductComponent } from './feature/functionary/dashboard/dashboard-product/dashboard-product.component';
 import { PetComponent } from './feature/scheduling/pages/pet/pet.component';
 import { AddressComponent } from './feature/scheduling/pages/address/address.component';
 import { PetshopComponent } from './feature/scheduling/pages/petshop/petshop.component';
 import { ServiceComponent } from './feature/scheduling/pages/service/service.component';
 import { ScheduleComponent } from './feature/scheduling/pages/schedule/schedule.component';
 import { ConfirmationComponent } from './feature/scheduling/pages/confirmation/confirmation.component';
-import { SchedulingComponent } from './feature/scheduling/scheduling.component';
-import { DashboardProductComponent } from './feature/employee/dashboard/dashboard-product/dashboard-product.component';
 import { DashboardServiceComponent } from './feature/employee/dashboard/dashboard-service/dashboard-service.component';
 import { DashboardOrderComponent } from './feature/employee/dashboard/dashboard-order/dashboard-order.component';
 import { DashboardSchedulingComponent } from './feature/employee/dashboard/dashboard-scheduling/dashboard-scheduling.component';
 import { DashboardPageProductComponent } from './feature/employee/dashboard/dashboard-page-product/dashboard-page-product.component';
 import { DashboardPageServiceComponent } from './feature/employee/dashboard/dashboard-page-service/dashboard-page-service.component';
-
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -197,7 +193,7 @@ const routes: Routes = [
       {
         path: 'produtos',
         title: 'Dashboard Produtos | Top Care',
-        component: DashboardProductComponent,
+        component: DashboardPageProductComponent,
       },
       {
         path: 'produto',
@@ -218,7 +214,7 @@ const routes: Routes = [
       {
         path: 'servicos',
         title: 'Dashboard Serviços | Top Care',
-        component: DashboardServiceComponent
+        component: DashboardServiceComponent,
       },
       {
         path: 'servico',
@@ -239,7 +235,7 @@ const routes: Routes = [
       {
         path: 'pedidos',
         title: 'Dashboard Pedidos | Top Care',
-        component: DashboardOrderComponent
+        component: DashboardOrderComponent,
       },
       {
         path: 'pedido/:id',
@@ -250,7 +246,7 @@ const routes: Routes = [
       {
         path: 'agendamentos',
         title: 'Dashboard Agendamentos | Top Care',
-        component: DashboardSchedulingComponent
+        component: DashboardSchedulingComponent,
       },
       {
         path: 'agendamento/:id',

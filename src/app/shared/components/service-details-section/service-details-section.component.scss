@@ -1,0 +1,9 @@
+@import "styles";
+
+section {
+  @include subgrid();
+
+  app-pet-card {
+    grid-column: auto / span 2;
+  }
+}

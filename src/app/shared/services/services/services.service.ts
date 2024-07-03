@@ -9,7 +9,7 @@ import { ServiceVariant } from '../../interfaces/services/service-variant';
   providedIn: 'root',
 })
 export class ServicesService {
-  constructor() { }
+  constructor() {}
 
   getServices(): Service[] {
     return services as Service[];
@@ -24,27 +24,26 @@ export class ServicesService {
   }
 
   getServiceVariants(code: number) {
-    let serviceList: Array<ServiceVariant> = []
+    let serviceList: Array<ServiceVariant> = [];
 
-    serviceVariant.forEach(variant => {
+    servicesVariants.forEach((variant) => {
       if (variant.code == code) {
         serviceList.push(variant);
       }
-    })
+    });
 
     return serviceList;
   }
 
   getServicesFirtVariant() {
-    let serviceList: Array<ServiceVariant> = []
-    
-    serviceVariant.forEach(variant => {
-      if(!serviceList.includes(this.getServiceVariants(variant.code)[0])){
+    let serviceList: Array<ServiceVariant> = [];
+
+    servicesVariants.forEach((variant) => {
+      if (!serviceList.includes(this.getServiceVariants(variant.code)[0])) {
         serviceList.push(this.getServiceVariants(variant.code)[0]);
       }
-    })
+    });
 
     return serviceList;
   }
-
 }

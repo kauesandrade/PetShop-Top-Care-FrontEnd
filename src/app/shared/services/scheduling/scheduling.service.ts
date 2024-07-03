@@ -1,10 +1,8 @@
-import { Time } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { eachMinuteOfInterval } from 'date-fns';
 import { Pet } from '../../interfaces/pet/pet';
 import { Petshop } from '../../interfaces/petshop/petshop';
-import { Service } from '../../interfaces/services/service';
 import { ServiceVariant } from '../../interfaces/services/service-variant';
 import { Address } from '../../interfaces/user/address';
 
