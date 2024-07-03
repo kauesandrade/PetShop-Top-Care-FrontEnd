@@ -80,8 +80,10 @@ export class SpecificationsFormsComponent implements OnInit {
       value: this.specificationForm.value.description!
     }
 
-    this.product?.specifications.push(specification);
-    this.addSpecifications();
+    if(specification.title != '' && specification.value != ''){
+      this.product?.specifications.push(specification);
+      this.addSpecifications();
+    }
   }
 
 }

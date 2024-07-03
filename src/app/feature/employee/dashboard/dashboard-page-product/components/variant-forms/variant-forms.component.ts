@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { faPlus, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs/internal/Observable';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 
 @Component({
@@ -26,7 +27,7 @@ export class VariantFormsComponent implements OnInit {
     code: [0],
     stock: [''],
     price: [0],
-    images: ['']
+    images: [Array<File>]
   })
 
   // variantFormArray = new FormArray([this.variantForm]);
@@ -40,36 +41,22 @@ export class VariantFormsComponent implements OnInit {
   }
 
   addImagesVariant(evt: any) {
-    const fis: Array<File> = evt.target.files
+    const files: Array<File> = evt.target.files
 
-    for (let i = 0; i < fis.length; i++) {
-      this.files.push(fis[i]);
+    for (let i = 0; i < files.length; i++) {
+      this.files.push(files[i]);
     }
 
-    // const reader = new FileReader();
-    // reader.readAsDataURL(this.files[0]);
-    // reader.onload = (_event) => {
-    //   console.log(reader.result!);
-    // };
-
-
-    // this.variantForm.controls.images.setValue(files);
-
   }
 
-  getImage(img: File) {
-
-    const reader = new FileReader();
-    reader.readAsDataURL(img);
-    reader.onloadend = (_event) => {
-      // console.log(reader.result!);
-      // return reader.result!;
-    };
-
+  getImage(img: File){
+      const reader = new FileReader();
+      reader.readAsDataURL(img);
+      return reader.result!
   }
 
 
-  addSpecifications() {
+  addVariants() {
     this.variationsOpen = true;
     this.variantUpdate = "";
     this.variantForm = this.formBuilder.group({
@@ -77,14 +64,14 @@ export class VariantFormsComponent implements OnInit {
       code: [0],
       stock: [''],
       price: [0],
-      images: ['']
+      images: [Array<File>]
     })
   }
 
   deleteVariant(productVariant: ProductVariant) {
     this.productVariantsList.forEach(variant => {
       if (variant.variantCode == productVariant.variantCode) {
-       this.productVariantsList.splice(this.productVariantsList.indexOf(variant), 1);
+        this.productVariantsList.splice(this.productVariantsList.indexOf(variant), 1);
         if (this.variantForm.value.code == productVariant.variantCode) {
           this.variationsOpen = false;
         }
@@ -101,7 +88,7 @@ export class VariantFormsComponent implements OnInit {
       code: [productVariant.variantCode],
       stock: [''],
       price: [productVariant.price],
-      images: ['']
+      images: [Array<File>]
     })
   }
 
@@ -119,16 +106,32 @@ export class VariantFormsComponent implements OnInit {
   }
 
   addVariant() {
-    // let productVariant: Pro = {
-    //   title: this.variantForm.value.title!,
-    //   code: this.variantForm.value.code!,
-    //   stock: [''],
-    //   price: this.variantForm.value.price!,
-    //   images: ['']
-    // }
 
-    // this.product?.specifications.push(specification);
-    // this.addSpecifications();
+    let productVariant: ProductVariant = {
+      variantCode: this.variantForm.value.code!,
+      variant: this.variantForm.value.title!,
+      images: [],
+      price: this.variantForm.value.price!,
+      discountPrice: this.variantForm.value.price! - (this.variantForm.value.price! * 0.2),
+      maxInterestFreeParcels: 1,
+      subscribersPrice: this.variantForm.value.price! - (this.variantForm.value.price! * 0.15),
+      available: true,
+      code: this.productVariantsList[0].code,
+      favorite: false,
+      title: this.productVariantsList[0].title,
+      littleDescription: this.productVariantsList[0].littleDescription,
+      description: this.productVariantsList[0].description,
+      brand: this.productVariantsList[0].brand,
+      specifications: this.productVariantsList[0].specifications,
+      rating: this.productVariantsList[0].rating,
+      category: this.productVariantsList[0].category
+    }
+
+    if(productVariant.price != 0 && productVariant.code != 0 && productVariant.variant != ''){
+      this.productVariantsList.push(productVariant);
+      this.addVariants();
+    }
+
   }
 
 }
