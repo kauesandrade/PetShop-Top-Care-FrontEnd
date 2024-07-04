@@ -1,24 +1,24 @@
 <div class="card-container">
     <a class="image">
-        <img [src]="service.image" alt="product-image">
+        <img [src]="service?.image" alt="product-image">
     </a>
     <p class="title">
-        {{service.title}}</p>
+        {{service?.title}}</p>
     <div class="code">
         <p><span>Código: </span>
-            {{service.code}}
+            {{service?.code}}
         </p>
         <p><span>Categoria: </span>
-            {{service.category}}
+            {{service?.category}}
         </p>
     </div>
     <div class="pricing">
         <p><span>Total: </span>
-            {{service.price | currency : "BRL" : "symbol" : "1.2-2"}}
+            {{service?.price | currency : "BRL" : "symbol" : "1.2-2"}}
         </p>
     </div>
     <div class="buttons-container">
-        <button routerLink="/dashboard/servico/{{service.code}}" appButton>Editar</button>
+        <button routerLink="/dashboard/servico/{{service?.code}}" appButton>Editar</button>
         <button class="icon-button" appButton="secondary" (click)="handleClickTrash()">
             <fa-icon [icon]="faTrash" class="trash-icon"></fa-icon>
         </button>

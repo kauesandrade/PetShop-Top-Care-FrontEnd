@@ -24,11 +24,11 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
   constructor(private userService: UserService) {}
   
   ngOnChanges(changes: SimpleChanges): void {
-    if(!this.isOpen){
+    if(this.isOpen){
+      document.body.style.overflow = 'hidden';
+    }else{
       document.body.style.overflow = 'auto';
       this.page = this.pageNow;
-    }else{
-      document.body.style.overflow = 'hidden';
     }
     
   }
@@ -70,6 +70,7 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.innerWidth = window.innerWidth;
+
     if(this.innerWidth >= 1440){
       this.size = '';
     }else{

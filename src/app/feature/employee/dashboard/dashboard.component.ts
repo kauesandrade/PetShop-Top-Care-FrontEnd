@@ -4,13 +4,14 @@ import Chart from 'chart.js/auto';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 import { ServiceVariant } from 'src/app/shared/interfaces/services/service-variant';
 import { SearchService } from 'src/app/shared/services/search/search.service';
+import { ServicesService } from 'src/app/shared/services/services/services.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent implements OnInit {
 
   chart: any = [];
   productList: Array<ProductVariant> = []
@@ -33,7 +34,7 @@ export class DashboardComponent implements OnInit{
   };
 
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService, private serviceService: ServicesService) { }
 
   @HostListener('window:resize', ['$event'])
   onResize() {
@@ -44,6 +45,7 @@ export class DashboardComponent implements OnInit{
   ngOnInit(): void {
     this.searchService.searchProducts("");
     this.productList = this.searchService.getProductList();
+    this.service = this.serviceService.getServicesVariants()[0]
 
     this.chart = new Chart('canvas', {
       type: 'line',

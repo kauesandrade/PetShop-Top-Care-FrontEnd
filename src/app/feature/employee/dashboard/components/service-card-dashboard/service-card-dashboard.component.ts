@@ -10,7 +10,7 @@ import { ServiceVariant } from 'src/app/shared/interfaces/services/service-varia
 export class ServiceCardDashboardComponent implements OnInit {
 
   faTrash = faTrash
-  @Input() service!: ServiceVariant;
+  @Input() service?: ServiceVariant;
 
   constructor() { }
 
@@ -18,7 +18,7 @@ export class ServiceCardDashboardComponent implements OnInit {
   }
 
   handleClickTrash(){
-    console.log(this.service.code);
+    console.log(this.service?.code);
   }
 
 }
