@@ -6,7 +6,7 @@
     <div class="content">
       <ng-content></ng-content>
     </div>
-    <div class="buttons">
+    <div class="buttons" *ngIf="isNotConfirmationPage()">
       <button (click)="onCancel()" appButton="secondary" class="cancel">
         Cancelar agendamento
       </button>

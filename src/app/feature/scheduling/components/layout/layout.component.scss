@@ -45,7 +45,6 @@ main {
     .content {
       @include subgrid();
       aspect-ratio: 1 / 1;
-      grid-auto-rows: min-content;
       overflow-x: hidden;
       overflow-y: auto;
 

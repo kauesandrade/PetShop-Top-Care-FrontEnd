@@ -17,6 +17,10 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  isNotConfirmationPage() {
+    return !this.router.url.includes('confirmacao');
+  }
+
   onCancel() {
     this.schedulingService.cancelScheduling();
   }

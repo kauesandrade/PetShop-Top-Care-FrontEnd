@@ -4,27 +4,61 @@
     <h5>Data do agendamento:</h5>
     <h6>{{ schedule | date : "dd/MM/yyyy - HH:mm" }}</h6>
   </div>
-  <div class="selected-services">
+  <div class="selected-services" [class.two-rows]="type == 'profile'">
     <h5>Serviços selecionados:</h5>
     <ng-container *ngFor="let category of categories; let i = index">
       <div class="divider" *ngIf="i !== 0"></div>
-      <p class="title">{{ category }}</p>
-      <ul>
-        <li *ngFor="let service of services">
-          <ng-container *ngIf="service.category == category">
-            {{ service.variantTitle }}
+      <div class="services-list">
+        <p class="title">{{ category }}</p>
+        <ul>
+          <ng-container *ngFor="let service of services">
+            <li *ngIf="service.category == category">
+              <fa-icon [icon]="faCircle"></fa-icon>
+              <p>
+                {{ service.variantTitle }}
+              </p>
+            </li>
           </ng-container>
-        </li>
-      </ul>
+        </ul>
+      </div>
     </ng-container>
   </div>
-  <div class="payment-info">
-    <h6>Agendamento</h6>
-    <div class="text-info">
-      <p>
-        Valor dos serviços({{ services.length }} ite
-        {{ services.length > 1 ? "ns" : "m" }})
-      </p>
+  <div class="payment-info" [class.two-rows]="type == 'scheduling'">
+    <div class="text-container">
+      <h6 *ngIf="type == 'scheduling'">Agendamento</h6>
+      <div class="text-info" *ngIf="type == 'scheduling'">
+        <p>
+          Valor dos serviços ({{ services.length || "1" }} ite{{
+            (services.length || 1) > 1 ? "ns" : "m"
+          }})
+        </p>
+        <p>
+          {{ totalServicesSum() | currency : "BRL" }}
+        </p>
+      </div>
+      <div class="text-info">
+        <h5>{{ type == "profile" ? "Valor pago" : "Total" }}</h5>
+        <div class="total-parcels">
+          <p>
+            {{ totalServicesSum() | currency : "BRL" }}
+          </p>
+          <p *ngIf="type == 'scheduling'">
+            ou {{ numParcels }}x de
+            {{ defineParcelsPrice() | currency : "BRL" }} sem juros
+          </p>
+          <p *ngIf="type == 'profile'">
+            {{ numParcels }}x de
+            {{ defineParcelsPrice() | currency : "BRL" }} sem juros
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="buttons-container" *ngIf="type == 'scheduling'">
+      <button appButton (click)="goToPayment()">Ir para o pagamento</button>
+      <div class="divider"></div>
+      <button appButton="secondary" (click)="cancelScheduling()">
+        Cancelar agendamento
+      </button>
     </div>
   </div>
 </section>

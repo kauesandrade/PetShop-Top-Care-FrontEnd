@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { faCircle, faDotCircle } from '@fortawesome/free-solid-svg-icons';
 import { Pet } from '../../interfaces/pet/pet';
 import { Petshop } from '../../interfaces/petshop/petshop';
 import { Schedule } from '../../interfaces/schedule/schedule';
@@ -20,9 +22,15 @@ export class ServiceDetailsSectionComponent implements OnInit {
   @Input() services!: ServiceVariant[];
   @Input() schedule!: Date;
 
+  faCircle = faCircle;
+  numParcels = 2;
+
   categories: string[] = [];
 
-  constructor(private schedulingService: SchedulingService) {}
+  constructor(
+    private schedulingService: SchedulingService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     if (this.type == 'scheduling') {
@@ -33,20 +41,36 @@ export class ServiceDetailsSectionComponent implements OnInit {
       this.schedule = this.schedulingService.schedule!;
     }
 
-    for (let service of this.services) {
-      if (!this.categories.includes(service.category)) {
-        this.categories.push(service.category);
+    if (this.services) {
+      for (let service of this.services) {
+        if (!this.categories.includes(service.category)) {
+          this.categories.push(service.category);
+        }
       }
     }
+  }
+
+  defineParcelsPrice() {
+    return this.totalServicesSum() / this.numParcels;
   }
 
   totalServicesSum() {
     let total = 0;
 
-    for (let service of this.services) {
-      total += service.price;
+    if (this.services) {
+      for (let service of this.services) {
+        total += service.price;
+      }
     }
 
     return total;
+  }
+
+  cancelScheduling() {
+    this.schedulingService.cancelScheduling();
+  }
+
+  goToPayment() {
+    this.router.navigate(['/agendamento/pagamento']);
   }
 }
