@@ -10,8 +10,10 @@ import { ProductVariant } from 'src/app/shared/interfaces/product/product-varian
 })
 export class VariantFormsComponent implements OnInit {
 
+
   @Input() variantForm!: FormGroup
-  @Output() emitVariantForms: EventEmitter<FormBuilder> = new EventEmitter()
+  @Input() productVariantsList!: Array<ProductVariant>
+  @Output() variantFormChange = new EventEmitter<FormGroup>();
 
   faPlus = faPlus;
   faTrash = faTrash;
@@ -19,17 +21,10 @@ export class VariantFormsComponent implements OnInit {
 
   variationsOpen = false;
 
-  // variantForm = this.formBuilder.group({
-  //   title: [''],
-  //   code: [''],
-  //   stock: [''],
-  //   price: [''],
-  //   images: [''],
-  // })
-
+  variantUpdate = "";
   // variantFormArray = new FormArray([this.variantForm]);
 
-  
+
   files: Array<File> = []
 
   constructor(private formBuilder: FormBuilder) { }
@@ -37,48 +32,97 @@ export class VariantFormsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addVariant() {
-    this.variationsOpen = !this.variationsOpen;
-  }
-
   addImagesVariant(evt: any) {
-    const fis: Array<File> = evt.target.files
+    const files: Array<File> = evt.target.files
 
-    for(let i = 0; i < fis.length; i++){
-      this.files.push(fis[i]);
+    for (let i = 0; i < files.length; i++) {
+      this.files.push(files[i]);
     }
 
-    // const reader = new FileReader();
-    // reader.readAsDataURL(this.files[0]);
-    // reader.onload = (_event) => {
-    //   console.log(reader.result!);
-    // };
-    
-    
-    // this.variantForm.controls.images.setValue(files);
-    
   }
-  
+
   getImage(img: File){
-    
-    const reader = new FileReader();
-    reader.readAsDataURL(img);
-    reader.onloadend = (_event) => {
-        // console.log(reader.result!);
-        // return reader.result!;
-      };
-    
+      const reader = new FileReader();
+      reader.readAsDataURL(img);
+      return reader.result!
   }
 
 
-  deleteVariant(variant: ProductVariant){
-    // this.productVariantsList?.forEach(productVariant =>{
-    //   if(productVariant.variantCode == variant.variantCode){
-    //     this.productVariantsList?.splice(this.productVariantsList?.indexOf(productVariant), 1);
-    //   }
-    // })
+  addVariants() {
+    this.variationsOpen = true;
+    this.variantUpdate = "";
+    this.variantForm = this.formBuilder.group({
+      title: [''],
+      code: [0],
+      stock: [''],
+      price: [0],
+      images: [Array<File>]
+    })
+  }
 
+  deleteVariant(productVariant: ProductVariant) {
+    this.productVariantsList.forEach(variant => {
+      if (variant.variantCode == productVariant.variantCode) {
+        this.productVariantsList.splice(this.productVariantsList.indexOf(variant), 1);
+        if (this.variantForm.value.code == productVariant.variantCode) {
+          this.variationsOpen = false;
+        }
+      }
+    })
     //ADD NO product update
   }
 
+  editSpecification(productVariant: ProductVariant) {
+    this.variantUpdate = productVariant.variant!
+    this.variationsOpen = true;
+    this.variantForm = this.formBuilder.group({
+      title: [productVariant.variant],
+      code: [productVariant.variantCode],
+      stock: [''],
+      price: [productVariant.price],
+      images: [Array<File>]
+    })
+  }
+
+  updateVariant() {
+    this.productVariantsList.forEach(productVariant => {
+      if (productVariant.variant == this.variantUpdate) {
+        this.productVariantsList[this.productVariantsList.indexOf(productVariant)].variant = this.variantForm.value.title!
+        this.productVariantsList[this.productVariantsList.indexOf(productVariant)].variantCode = this.variantForm.value.code!
+        this.productVariantsList[this.productVariantsList.indexOf(productVariant)].price = this.variantForm.value.price!
+        // this.productVariantsList[this.productVariantsList.indexOf(productVariant)].stock = this.variantForm.value.stock!
+        // this.productVariantsList[this.productVariantsList.indexOf(productVariant)].images = this.variantForm.value.images!
+        this.variantUpdate = this.variantForm.value.title!
+      }
+    })
+  }
+
+  addVariant() {
+
+    let productVariant: ProductVariant = {
+      variantCode: this.variantForm.value.code!,
+      variant: this.variantForm.value.title!,
+      images: [],
+      price: this.variantForm.value.price!,
+      discountPrice: this.variantForm.value.price! - (this.variantForm.value.price! * 0.2),
+      maxInterestFreeParcels: 1,
+      subscribersPrice: this.variantForm.value.price! - (this.variantForm.value.price! * 0.15),
+      available: true,
+      code: this.productVariantsList[0].code,
+      favorite: false,
+      title: this.productVariantsList[0].title,
+      littleDescription: this.productVariantsList[0].littleDescription,
+      description: this.productVariantsList[0].description,
+      brand: this.productVariantsList[0].brand,
+      specifications: this.productVariantsList[0].specifications,
+      rating: this.productVariantsList[0].rating,
+      category: this.productVariantsList[0].category
+    }
+
+    if(productVariant.price != 0 && productVariant.code != 0 && productVariant.variant != ''){
+      this.productVariantsList.push(productVariant);
+      this.addVariants();
+    }
+
+  }
 }

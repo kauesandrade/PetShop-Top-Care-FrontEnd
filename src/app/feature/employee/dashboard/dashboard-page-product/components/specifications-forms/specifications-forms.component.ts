@@ -13,7 +13,7 @@ import { ProductSpecification } from 'src/app/shared/interfaces/product/product-
 export class SpecificationsFormsComponent implements OnInit {
 
   @Input() specificationForm!: FormGroup
-  @Output() emitSpecificationForms: EventEmitter<FormBuilder> = new EventEmitter()
+  @Output() specificationFormChange = new EventEmitter<FormGroup>();
 
   specificationsOpen = false;
 

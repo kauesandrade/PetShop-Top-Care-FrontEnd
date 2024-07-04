@@ -6,15 +6,15 @@
     <h1>{{titlePage}}</h1>
 
     <section class="sections">
-      <app-product-forms (emitProductForms)="getProductForms($event)" [product]="product"></app-product-forms>
+      <app-product-forms [(productForm)]="productForm"></app-product-forms>
     </section>
 
     <section class="sections">
-      <app-specifications-forms (emitSpecificationForms)="getSpecificationsForms($event)" [specificationForm]="specificationForm"></app-specifications-forms>
+      <app-specifications-forms [(specificationForm)]="specificationForm" ></app-specifications-forms>
     </section>
 
     <section class="sections">
-      <app-variant-forms (emitVariantForms)="getVariantForms($event)" [variantForm]="variantForm"></app-variant-forms>
+      <app-variant-forms [(variantForm)]="variantForm"></app-variant-forms>
     </section>
 
     <div class="div-btns">

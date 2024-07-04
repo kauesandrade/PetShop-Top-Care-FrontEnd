@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { faFileImage } from '@fortawesome/free-solid-svg-icons';
 import { Product } from 'src/app/shared/interfaces/product/product';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 import { ProductService } from 'src/app/shared/services/product/product.service';
-import { faPlus, faTrash, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { ProductSpecification } from 'src/app/shared/interfaces/product/product-specification';
 
 @Component({
@@ -49,7 +47,6 @@ export class DashboardPageProductComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private productService: ProductService,
     private formBuilder: FormBuilder) {
-
   }
 
   ngOnInit(): void {
@@ -101,10 +98,12 @@ export class DashboardPageProductComponent implements OnInit {
 
   initProductForm() {
     this.productForm = this.formBuilder.group({
-      code: [''],
-      title: [''],
-      littleDescription: [''],
-      description: ['']
+      code: this.product?.code!,
+      title: this.product?.title!,
+      littleDescription: this.product?.littleDescription!,
+      description: this.product?.description!,
+      brand: this.product?.brand!,
+      categoria: this.product?.category!,
     })
   }
 

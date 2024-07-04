@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Product } from 'src/app/shared/interfaces/product/product';
+import { FormGroup } from '@angular/forms';
+import { Brand } from 'src/app/shared/interfaces/product/brand';
+import brands from '../../../../../../../assets/JsonFiles/brands.json';
 
 @Component({
   selector: 'app-product-forms',
@@ -10,27 +11,20 @@ import { Product } from 'src/app/shared/interfaces/product/product';
 export class ProductFormsComponent implements OnInit {
 
 
-  @Input() product?: Product
-  @Output() emitProductForms: EventEmitter<FormBuilder> = new EventEmitter()
+  @Input() productForm!: FormGroup
+  @Output() productFormChange = new EventEmitter<FormGroup>();
 
-  productForm = this.formBuilder.group({
-    code: [''],
-    title: [''],
-    littleDescription: [''],
-    description: [''],
-    brand: [''],
-    // specifications: Array<ProductSpecification>;
-    // rating: number;
-    category: ['']
-    // category: Array<Category>;
-    // reviews?: Array<ProductReview>;
-  })
+  brands!: Array<Brand>
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor() { }
 
   ngOnInit(): void {
+    this.brands = brands.brand
   }
 
-  
+  changeEmitProductForms(){
+    console.log(this.productForm);
+    this.productFormChange.emit(this.productForm);
+  }
 
 }
