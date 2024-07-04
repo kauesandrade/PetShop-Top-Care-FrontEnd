@@ -57,6 +57,7 @@ import { DashboardPageSchedulingComponent } from './dashboard-page-scheduling/da
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
     CoreModule, 
-    SharedModule]
+    SharedModule
+  ]
 })
 export class DashboardModule { }

@@ -1,5 +1,6 @@
 import { Component, HostListener, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { faBaseballBall, faChevronDown, faReceipt, faBriefcase, faTable, faUser, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faBaseballBall, faChevronDown, faReceipt, faBriefcase, faTable, faUser, faHome, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-dashboard-side-bar',
@@ -15,11 +16,12 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
   faTable = faTable;
   faUser = faUser;
   faHome = faHome;
+  faSignOutAlt = faSignOutAlt;
 
   sideBarOpen: boolean | undefined;
   innerWidth: any;
 
-  constructor() {}
+  constructor(private userService: UserService) {}
   
   ngOnChanges(changes: SimpleChanges): void {
     if(!this.isOpen){
@@ -45,6 +47,10 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
 
   clickedBtn(evt: string){
    this.page = evt
+  }
+
+  handleClickLogout(){
+    this.userService.logout();
   }
 
   hoverSideBar(evt: string){

@@ -11,27 +11,34 @@
   }
 
 
-  @media(min-width: $desktop){
+  @media(min-width: $desktop) {
 
-    .brand{
+    .brand {
       @include flex();
-      grid-column: 6 / span 2 ;
+      grid-column: 6 / span 2;
       gap: 0.5rem;
-     }
-    
-    .icon{
-     @include flex();
-     grid-column: -2 / -1;
     }
 
-    .hamburger-drawer{
+    .icon {
+      @include flex();
+      grid-column: -3 / -2;
+    }
+
+    .logout {
+      @include flex();
+      grid-column: -2 / -1;
+
+      cursor: pointer;
+    }
+
+    .hamburger-drawer {
       display: none;
     }
   }
 
 }
 
-.icon {
+.icon, .logout{
   &:first-of-type {
     justify-self: start;
   }
@@ -63,7 +70,7 @@
 
 .hamburger-drawer {
   @include flex();
-     grid-column: 1 / 1;
+  grid-column: 1 / 1;
 
   font-size: 1.25rem;
   color: $white;
@@ -105,6 +112,7 @@
     img {
       width: 4.5rem;
     }
+
     &-name {
       h3 {
         @include heading(h4);
@@ -119,6 +127,7 @@
   @media (min-width: $tablet) {
     gap: 1.5rem;
     text-decoration: none;
+
     &-name {
       h3 {
         @include heading(h3);

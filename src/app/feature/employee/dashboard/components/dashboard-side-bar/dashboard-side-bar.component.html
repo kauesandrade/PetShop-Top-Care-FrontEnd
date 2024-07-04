@@ -117,6 +117,18 @@
                 </a>
             </button>
         </div>
+        <div
+        class="accordion"
+        >
+            <button class="accordion-btn" routerLink="/" (click)="handleClickLogout()">
+                <a class="accordion-btn-header"
+                    routerLink="/dashboard/perfil"
+                >
+                    <fa-icon [icon]="faSignOutAlt"></fa-icon>
+                    <span>Sair</span>
+                </a>
+            </button>
+        </div>
     </div>
    
 </aside>

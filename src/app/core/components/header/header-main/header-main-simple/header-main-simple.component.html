@@ -21,11 +21,18 @@
       </div>
     </a>
 
-    <a routerLink="/dashboard/perfil" class="icon">
+    <a class="icon">
       <fa-icon [icon]="faUser"></fa-icon>
       <span *ngIf="firstName">
         Olá,
         {{ firstName }}
+      </span>
+    </a>
+
+    <a class="logout" routerLink="/" (click)="handleClickLogout()">
+      <fa-icon [icon]="faSignOutAlt"></fa-icon>
+      <span *ngIf="firstName">
+          Sair
       </span>
     </a>
 
