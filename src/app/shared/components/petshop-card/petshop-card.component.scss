@@ -71,9 +71,6 @@
           @media (min-width: $tablet) {
             @include text(normal);
           }
-          @media (min-width: $desktop) {
-            @include text(large);
-          }
         }
       }
     }

@@ -11,17 +11,6 @@
     "price": 50.0
   },
   {
-    "code": 1,
-    "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
-    "title": "Banho e Tosa",
-    "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
-    "category": "Higiene",
-    "servedPets": ["Cachorro", "Gato", "Aves"],
-    "variantCode": 102,
-    "variantTitle": "Tosa Completa",
-    "price": 80.0
-  },
-  {
     "code": 2,
     "image": "https://blog-static.petlove.com.br/wp-content/uploads/2020/12/Cachorro-consulta-Petlove.jpg",
     "title": "Consulta Veterinária",
@@ -31,16 +20,5 @@
     "variantCode": 201,
     "variantTitle": "Consulta de Rotina",
     "price": 100.0
-  },
-  {
-    "code": 2,
-    "image": "https://blog-static.petlove.com.br/wp-content/uploads/2020/12/Cachorro-consulta-Petlove.jpg",
-    "title": "Consulta Veterinária",
-    "description": "Exames e cuidados médicos para a saúde do seu pet.",
-    "category": "Clínica",
-    "servedPets": ["Cachorro", "Gato", "Roedores"],
-    "variantCode": 202,
-    "variantTitle": "Consulta de Emergência",
-    "price": 200.0
   }
 ]

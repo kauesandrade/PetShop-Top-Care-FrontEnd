@@ -56,9 +56,9 @@ export class DashboardPageServiceComponent implements OnInit {
         category: this.serviceVariantList[0].category,
         servedPets: [],
       })
-      this.titlePage = 'Editar um Produto'
+      this.titlePage = 'Editar um Serviço'
     } else {
-      this.titlePage = 'Adicionar um Produto'
+      this.titlePage = 'Adicionar um Serviço'
       console.log("sem objeto");
     }
 
