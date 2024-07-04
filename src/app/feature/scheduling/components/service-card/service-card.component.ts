@@ -9,21 +9,32 @@ import { ServiceVariant } from '../../../../shared/interfaces/services/service-v
 export class ServiceCardComponent implements OnInit {
   @Input() service!: ServiceVariant;
 
-  @Input() serviceSelected?: ServiceVariant[] = [];
-  @Output() serviceSelectedChange = new EventEmitter<ServiceVariant[]>();
+  @Input() servicesSelected?: ServiceVariant[] = [];
+  @Output() servicesSelectedChange = new EventEmitter<ServiceVariant[]>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
+  isServiceSelected() {
+    if (this.servicesSelected) {
+      for (let service of this.servicesSelected) {
+        if (service == this.service) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   onClick() {
-    if (this.serviceSelected?.includes(this.service)) {
-      let i = this.serviceSelected.indexOf(this.service);
-      this.serviceSelected.splice(i, 1);
-      this.serviceSelectedChange.emit(this.serviceSelected);
+    if (this.servicesSelected?.includes(this.service)) {
+      let i = this.servicesSelected.indexOf(this.service);
+      this.servicesSelected.splice(i, 1);
+      this.servicesSelectedChange.emit(this.servicesSelected);
     } else {
-      this.serviceSelected?.push(this.service);
-      this.serviceSelectedChange.emit(this.serviceSelected);
+      this.servicesSelected?.push(this.service);
+      this.servicesSelectedChange.emit(this.servicesSelected);
     }
   }
 }
