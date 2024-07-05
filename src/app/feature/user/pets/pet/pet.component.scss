@@ -1,0 +1,13 @@
+@import "styles";
+
+app-layout {
+    .content {
+        @include subgrid();
+        
+        app-pet-profile-form {
+            grid-column: 2 / -2;
+        }
+
+    }
+
+}

@@ -34,6 +34,7 @@ import { DashboardPageProductComponent } from './feature/employee/dashboard/dash
 import { DashboardPageServiceComponent } from './feature/employee/dashboard/dashboard-page-service/dashboard-page-service.component';
 import { DashboardComponent } from './feature/employee/dashboard/dashboard.component';
 import { DashboardPageSchedulingComponent } from './feature/employee/dashboard/dashboard-page-scheduling/dashboard-page-scheduling.component';
+import { PetProfile } from './feature/user/pets/pet/pet.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -147,7 +148,21 @@ const routes: Routes = [
       },
       {
         path: 'pets',
-        component: PetsComponent,
+        children: [
+          {
+            path: '',
+            component: PetsComponent,
+          },
+          {
+            path: ':id',
+            children: [
+              {
+                path: '',
+                component: PetProfile,
+              }
+            ],
+          },
+        ],
       },
       {
         path: 'pedidos',
