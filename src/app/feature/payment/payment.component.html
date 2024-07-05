@@ -11,10 +11,19 @@
     </div>
   </div>
 
-  <app-product-item-section
+  <app-payment-item-section
+    *ngIf="type == 'cart'"
+    [type]="type"
     [items]="cartItems"
     [boxShadow]="false"
-  ></app-product-item-section>
+  ></app-payment-item-section>
+
+  <app-payment-item-section
+    *ngIf="type == 'scheduling'"
+    [type]="type"
+    [services]="schedulingItems!.services"
+    [boxShadow]="false"
+  ></app-payment-item-section>
 </main>
 
 <app-footer type="copyright"></app-footer>

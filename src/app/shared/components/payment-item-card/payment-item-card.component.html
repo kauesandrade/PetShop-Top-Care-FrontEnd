@@ -1,0 +1,35 @@
+<div
+  class="card"
+  (click)="openCard()"
+  [class.box-shadow]="boxShadow"
+  [class.scheduling]="type == 'scheduling'"
+>
+  <div class="product">
+    <img
+      [src]="service?.image || item!.product.images[0]"
+      alt="Imagem do produto"
+    />
+    <div class="title-variant">
+      <p class="title">{{ service?.variantTitle || item!.product.title }}</p>
+      <p class="variant" *ngIf="type == 'cart' && item != undefined">
+        {{ defineVariant() }}: {{ item.product.variant }}
+      </p>
+    </div>
+  </div>
+  <div class="unit-quantity-subtotal">
+    <div class="info-container">
+      <p>Preço</p>
+      <p>{{ service?.price || item!.product.price | currency : "BRL" }}</p>
+    </div>
+    <div class="info-container">
+      <p>Quantidade</p>
+      <p>
+        {{ item?.amount || 1 }} ite{{ (item?.amount || 1) > 1 ? "ns" : "m" }}
+      </p>
+    </div>
+    <div class="info-container">
+      <p>Subtotal</p>
+      <p>{{ getSubtotal() | currency : "BRL" }}</p>
+    </div>
+  </div>
+</div>
