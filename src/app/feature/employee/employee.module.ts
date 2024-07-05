@@ -6,8 +6,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 
-
-
 @NgModule({
   exports:[DashboardModule],
   declarations: [],

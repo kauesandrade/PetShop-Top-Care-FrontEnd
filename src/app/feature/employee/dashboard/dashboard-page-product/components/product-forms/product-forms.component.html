@@ -40,10 +40,12 @@
 
         </label>
 
-        <label for="category" class="labels" appInput>
-            <p>Categoria*</p>
-            <input type="text" placeholder="Categoria do produto" required />
-        </label>
+        
 
+        <label for="category" class="labels">
+            <p>Categoria*</p>
+            <p-multiSelect [options]="typesCategories" [(ngModel)]="selectCategories" optionLabel="type" defaultLabel="Selecione a Categoria"></p-multiSelect>
+        </label>
+        
     </div>
 </form>

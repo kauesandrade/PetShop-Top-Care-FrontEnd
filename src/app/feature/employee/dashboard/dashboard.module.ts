@@ -20,7 +20,8 @@ import { NgxMaskModule } from 'ngx-mask';
 import { ProductFormsComponent } from './dashboard-page-product/components/product-forms/product-forms.component';
 import { SpecificationsFormsComponent } from './dashboard-page-product/components/specifications-forms/specifications-forms.component';
 import { VariantFormsComponent } from './dashboard-page-product/components/variant-forms/variant-forms.component';
-
+import { MultiSelectModule } from 'primeng/multiselect';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -49,6 +50,9 @@ import { VariantFormsComponent } from './dashboard-page-product/components/varia
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
     CoreModule, 
-    SharedModule]
+    SharedModule,
+    MultiSelectModule,
+    BrowserAnimationsModule,
+  ]
 })
 export class DashboardModule { }
