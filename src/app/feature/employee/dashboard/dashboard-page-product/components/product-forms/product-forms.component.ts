@@ -19,7 +19,7 @@ export class ProductFormsComponent implements OnInit {
   brands!: Array<Brand>
 
   categories!: Array<Category>
-  typesCategories!: Array<{type: string}>
+  typesCategories: Array<{type: string}> = []
   selectCategories!: Array<string>
 
   constructor() { }
@@ -27,6 +27,7 @@ export class ProductFormsComponent implements OnInit {
   ngOnInit(): void {
     this.brands = brands.brand
     this.categories = categories.category
+
     this.categories.forEach(categories =>{
       categories.types.forEach( type =>{
         console.log(type);
