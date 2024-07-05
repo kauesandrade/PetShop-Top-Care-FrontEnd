@@ -7,6 +7,7 @@ import { Schedule } from '../../interfaces/schedule/schedule';
 import { ServiceCategory } from '../../interfaces/services/service-category';
 import { ServiceVariant } from '../../interfaces/services/service-variant';
 import { Address } from '../../interfaces/user/address';
+import { PaymentService } from '../../services/payment/payment.service';
 import { SchedulingService } from '../../services/scheduling/scheduling.service';
 
 @Component({
@@ -29,6 +30,7 @@ export class ServiceDetailsSectionComponent implements OnInit {
 
   constructor(
     private schedulingService: SchedulingService,
+    private paymentService: PaymentService,
     private router: Router
   ) {}
 
@@ -71,6 +73,16 @@ export class ServiceDetailsSectionComponent implements OnInit {
   }
 
   goToPayment() {
+    this.paymentService.setParcelsNumber(2);
+
+    let parcels = new Array<number>();
+    for (let i = 1; i <= this.paymentService.parcelsNumber; i++) {
+      parcels.push(this.totalServicesSum() / i);
+    }
+    this.paymentService.setParcels(parcels);
+
+    console.log(this.paymentService);
+
     this.router.navigate(['/agendamento/pagamento']);
   }
 }

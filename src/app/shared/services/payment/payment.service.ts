@@ -42,6 +42,12 @@ export class PaymentService {
     this.parcelsNumber = value;
   }
 
+  setParcels(parcels: Array<number>) {
+    console.log(parcels);
+    this.parcels = parcels;
+    console.log(this.parcels);
+  }
+
   defineParcels() {
     this.parcels = new Array<number>();
     for (
