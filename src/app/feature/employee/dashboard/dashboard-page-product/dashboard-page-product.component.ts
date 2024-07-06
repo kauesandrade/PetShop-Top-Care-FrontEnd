@@ -86,18 +86,19 @@ export class DashboardPageProductComponent implements OnInit {
   }
 
   initSpecificationForm() {
-    for (let specification of this.product!.specifications) {
-      this.createNewSpecification(specification);
-    }
+    // for (let specification of this.product!.specifications) {
+    //   this.createNewSpecification(specification);
+    // }
   }
 
   initVariantForm() {
-    for (let productVariant of this.productVariantsList) {
-      this.createNewVariant(productVariant);
-    }
+    // for (let productVariant of this.productVariantsList) {
+    //   this.createNewVariant(productVariant);
+    // }
   }
 
   initProductForm() {
+
     this.productForm = this.formBuilder.group({
       code: [this.product?.code!, [Validators.required, EmptyValidator]],
       title: [this.product?.title!, [Validators.required, EmptyValidator]],
@@ -106,6 +107,7 @@ export class DashboardPageProductComponent implements OnInit {
       brand: [this.product?.brand!, [Validators.required, EmptyValidator]],
       category: [this.product?.category!, [Validators.required, EmptyValidator]],
     })
+
   }
 
   createNewVariant(productVariant: ProductVariant) {
