@@ -55,8 +55,8 @@ export class VariantFormsComponent implements OnInit {
     this.variantsFormChange.emit(this.variantsForm)
     
     if(this.variantModal! == variant){
-      this.addVariant();
-      this.variationsOpen = false;
+      this.clearInputs();
+      this.variationsOpen = false;   
     }
   }
   
