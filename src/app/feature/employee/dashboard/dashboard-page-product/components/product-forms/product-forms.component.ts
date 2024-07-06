@@ -25,12 +25,12 @@ export class ProductFormsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
     this.brands = brands.brand
     this.categories = categories.category
 
     this.categories.forEach(categories =>{
-      categories.types.forEach( type =>{
-        console.log(type);
+      categories.types.forEach( type =>{  
         this.typesCategories.push({type: type})
       })
     })
@@ -39,6 +39,30 @@ export class ProductFormsComponent implements OnInit {
   changeEmitProductForms(){
     console.log(this.productForm);
     this.productFormChange.emit(this.productForm);
+  }
+
+  get code(){
+    return this.productForm.get('code')
+  }
+
+  get title(){
+    return this.productForm.get('title')
+  }
+
+  get littleDescription(){
+    return this.productForm.get('littleDescription')
+  }
+
+  get description(){
+    return this.productForm.get('description')
+  }
+
+  get brand(){
+    return this.productForm.get('brand')
+  }
+
+  get categoria(){
+    return this.productForm.get('categoria')
   }
 
 }

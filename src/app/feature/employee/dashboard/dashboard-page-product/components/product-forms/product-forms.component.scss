@@ -13,7 +13,7 @@
         row-gap: 2rem;
     }
 
-    .title-code {
+    .title-code, .brand-category {
         @include subgrid();
         grid-column: 1 / -1;
         row-gap: 1rem;
@@ -63,9 +63,14 @@
             }
         }
 
-        input {
+        input, select, p-multiSelect {
+            .p-multiSelect{
+                width: 100%;
+            }
             width: 100%;
         }
+
+        
 
         textarea {
             width: 100%;

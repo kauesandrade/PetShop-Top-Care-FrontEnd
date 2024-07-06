@@ -27,6 +27,18 @@
       {
         "code": 7,
         "name": "N&D Prime"
+      },
+      {
+        "code": 8,
+        "name": "Premier"
+      },
+      {
+        "code": 9,
+        "name": "Pet Iglu"
+      },
+      {
+        "code": 10,
+        "name": "Ideia Store"
       }
     ]
 }

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/shared/interfaces/product/product';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 import { ProductSpecification } from 'src/app/shared/interfaces/product/product-specification';
+import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 
 @Component({
   selector: 'app-dashboard-page-product',
@@ -33,7 +34,7 @@ export class DashboardPageProductComponent implements OnInit {
   //   // reviews?: Array<ProductReview>;
   // })
 
-  
+
   productForm!: FormGroup;
 
   specificationForm = this.formBuilder.group({
@@ -98,12 +99,12 @@ export class DashboardPageProductComponent implements OnInit {
 
   initProductForm() {
     this.productForm = this.formBuilder.group({
-      code: this.product?.code!,
-      title: this.product?.title!,
-      littleDescription: this.product?.littleDescription!,
-      description: this.product?.description!,
-      brand: this.product?.brand!,
-      categoria: this.product?.category!,
+      code: [this.product?.code!, [Validators.required, EmptyValidator]],
+      title: [this.product?.title!, [Validators.required, EmptyValidator]],
+      littleDescription: [this.product?.littleDescription!, [Validators.required, EmptyValidator]],
+      description: [this.product?.description!, [Validators.required, EmptyValidator]],
+      brand: [this.product?.brand!, [Validators.required, EmptyValidator]],
+      category: [this.product?.category!, [Validators.required, EmptyValidator]],
     })
   }
 
