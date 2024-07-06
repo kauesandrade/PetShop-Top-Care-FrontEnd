@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { faPlus, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { EmptyValidator } from 'src/app/core/validators/empty.validator';
+import { Image } from 'src/app/shared/interfaces/product/image';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 
 @Component({
@@ -11,118 +13,187 @@ import { ProductVariant } from 'src/app/shared/interfaces/product/product-varian
 export class VariantFormsComponent implements OnInit {
 
 
-  @Input() variantForm!: FormGroup
-  @Input() productVariantsList!: Array<ProductVariant>
-  @Output() variantFormChange = new EventEmitter<FormGroup>();
+  @Input() variantsForm!: FormGroup
+  @Output() variantsFormChange = new EventEmitter<FormGroup>();
+  @Output() deleteVariantForm = new EventEmitter<number>();
+  @Output() addVariantForm = new EventEmitter<FormGroup>();
+
+
+  variationsOpen = false;
+
+  variantForm!: FormGroup
+  variantModal?: number | null = 0;
+
+  files: Array<Image> = []
 
   faPlus = faPlus;
   faTrash = faTrash;
   faTimes = faTimes;
 
-  variationsOpen = false;
-
-  variantUpdate = "";
-  // variantFormArray = new FormArray([this.variantForm]);
-
-
-  files: Array<File> = []
-
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-  }
-
-  addImagesVariant(evt: any) {
-    const files: Array<File> = evt.target.files
-
-    for (let i = 0; i < files.length; i++) {
-      this.files.push(files[i]);
-    }
-
-  }
-
-  getImage(img: File){
-      const reader = new FileReader();
-      reader.readAsDataURL(img);
-      return reader.result!
-  }
-
-
-  addVariants() {
-    this.variationsOpen = true;
-    this.variantUpdate = "";
     this.variantForm = this.formBuilder.group({
       title: [''],
       code: [0],
       stock: [''],
       price: [0],
-      images: [Array<File>]
+      images: [[]]
     })
   }
 
-  deleteVariant(productVariant: ProductVariant) {
-    this.productVariantsList.forEach(variant => {
-      if (variant.variantCode == productVariant.variantCode) {
-        this.productVariantsList.splice(this.productVariantsList.indexOf(variant), 1);
-        if (this.variantForm.value.code == productVariant.variantCode) {
-          this.variationsOpen = false;
-        }
-      }
-    })
-    //ADD NO product update
+  
+  addVariants() {
+    this.variationsOpen = true;
+    this.variantModal = null;
+    this.clearInputs();
   }
 
-  editSpecification(productVariant: ProductVariant) {
-    this.variantUpdate = productVariant.variant!
+  deleteVariant(variant: number) {
+    (<FormArray>this.variantsForm.get("variants")).removeAt(variant)
+    this.deleteVariantForm.emit(variant);
+    this.variantsFormChange.emit(this.variantsForm)
+    
+    if(this.variantModal! == variant){
+      this.addVariant();
+      this.variationsOpen = false;
+    }
+  }
+  
+  
+  editVariant(variant: number) {
+    this.variantModal = variant
     this.variationsOpen = true;
     this.variantForm = this.formBuilder.group({
-      title: [productVariant.variant],
-      code: [productVariant.variantCode],
-      stock: [''],
-      price: [productVariant.price],
-      images: [Array<File>]
+      title: [this.getTitle(this.variantModal!)?.value!],
+      code: [this.getCode(this.variantModal!)?.value!],
+      stock: [this.getStock(this.variantModal!)?.value!],
+      price: [this.getPrice(this.variantModal!)?.value!],
+      images: [this.getImages(this.variantModal!)]
     })
   }
-
+  
   updateVariant() {
-    this.productVariantsList.forEach(productVariant => {
-      if (productVariant.variant == this.variantUpdate) {
-        this.productVariantsList[this.productVariantsList.indexOf(productVariant)].variant = this.variantForm.value.title!
-        this.productVariantsList[this.productVariantsList.indexOf(productVariant)].variantCode = this.variantForm.value.code!
-        this.productVariantsList[this.productVariantsList.indexOf(productVariant)].price = this.variantForm.value.price!
-        // this.productVariantsList[this.productVariantsList.indexOf(productVariant)].stock = this.variantForm.value.stock!
-        // this.productVariantsList[this.productVariantsList.indexOf(productVariant)].images = this.variantForm.value.images!
-        this.variantUpdate = this.variantForm.value.title!
+    
+    const form = this.formBuilder.group({
+      title: [this.variantForm.get("title")?.value],
+      code: [this.variantForm.get("code")?.value],
+      stock: [this.variantForm.get("stock")?.value],
+      price: [this.variantForm.get("price")?.value],
+      images: [this.variantForm.get("images")?.value]
+    });
+
+    (<FormArray>this.variantsForm.get("variants")).setControl(this.variantModal!, form as FormGroup);
+  }
+
+
+  
+  addVariant() {
+    this.variantModal = null
+    this.variationsOpen = true;
+    (<FormArray>this.variantsForm.get("variants")).push(this.variantForm)
+    this.clearInputs()
+  }
+  
+
+  addImagesVariant(evt: any) {
+    const files: Array<File> = evt.target.files
+
+    for (let i = 0; i < files.length; i++) {
+      this.setImages(files[i]);
+    }
+
+  }
+
+  setImages(img: File) {
+    const reader = new FileReader();
+    reader.readAsDataURL(img);
+
+    reader.onload = () => {
+      const image: Image = {
+        name: img.name,
+        src: reader.result!
       }
+
+      const images: Array<Image> = []
+      for(let img of this.variantForm.get("images")?.value){
+        images.push(img)
+      }
+      images.push(image)
+      
+      this.variantForm = this.formBuilder.group({
+        title: [this.variantForm.get("title")?.value],
+        code: [this.variantForm.get("code")?.value],
+        stock: [this.variantForm.get("stock")?.value],
+        price: [this.variantForm.get("price")?.value],
+        images: [images]
+      });
+      
+    }
+    
+  }
+
+  removeImage(id: number) {
+
+    const images: Array<Image> = []
+      for(let img of this.variantForm.get("images")?.value){
+        images.push(img)
+      }
+    images.splice(id, 1)
+
+    this.variantForm = this.formBuilder.group({
+      title: [this.variantForm.get("title")?.value],
+      code: [this.variantForm.get("code")?.value],
+      stock: [this.variantForm.get("stock")?.value],
+      price: [this.variantForm.get("price")?.value],
+      images: [images]
+    })
+    
+  }
+
+
+  clearInputs(){
+    this.variantForm = this.formBuilder.group({
+      title: [],
+      code: [],
+      stock: [],
+      price: [],
+      images: [[]]
     })
   }
-
-  addVariant() {
-
-    let productVariant: ProductVariant = {
-      variantCode: this.variantForm.value.code!,
-      variant: this.variantForm.value.title!,
-      images: [],
-      price: this.variantForm.value.price!,
-      discountPrice: this.variantForm.value.price! - (this.variantForm.value.price! * 0.2),
-      maxInterestFreeParcels: 1,
-      subscribersPrice: this.variantForm.value.price! - (this.variantForm.value.price! * 0.15),
-      available: true,
-      code: this.productVariantsList[0].code,
-      favorite: false,
-      title: this.productVariantsList[0].title,
-      littleDescription: this.productVariantsList[0].littleDescription,
-      description: this.productVariantsList[0].description,
-      brand: this.productVariantsList[0].brand,
-      specifications: this.productVariantsList[0].specifications,
-      rating: this.productVariantsList[0].rating,
-      category: this.productVariantsList[0].category
-    }
-
-    if(productVariant.price != 0 && productVariant.code != 0 && productVariant.variant != ''){
-      this.productVariantsList.push(productVariant);
-      this.addVariants();
-    }
-
+  
+  
+  get variants() {
+    return this.variantsForm?.get('variants') as FormArray;
   }
+  
+  getTitle(index: number) {
+    return (<FormGroup>this.variants.controls[index]).get('title');
+  }
+  
+  getCode(index: number) {
+    return (<FormGroup>this.variants.controls[index]).get('code');
+  }
+
+  getStock(index: number) {
+    return (<FormGroup>this.variants.controls[index]).get('stock');
+  }
+  
+  getPrice(index: number) {
+    return (<FormGroup>this.variants.controls[index]).get('price');
+  }
+  
+  getImages(index: number) {
+    
+    if (index == null) {
+      return []
+    }
+    return ((<FormGroup>this.variants.controls[index]).get('images') as FormArray).value;
+    
+  }
+  
+  getImageForms(){
+    return this.variantForm.get("images")
+  }
+
 }

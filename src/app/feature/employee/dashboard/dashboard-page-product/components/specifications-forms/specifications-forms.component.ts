@@ -12,88 +12,85 @@ import { ProductSpecification } from 'src/app/shared/interfaces/product/product-
 })
 export class SpecificationsFormsComponent implements OnInit {
 
-  @Input() specificationForm!: FormGroup
-  @Output() specificationFormChange = new EventEmitter<FormGroup>();
+  @Input() specificationsForm!: FormGroup
+  @Output() specificationsFormChange = new EventEmitter<FormGroup>();
+  @Output() deleteSpecificationForm = new EventEmitter<number>();
+  @Output() addSpecificationForm = new EventEmitter<FormGroup>();
 
   specificationsOpen = false;
-
+  
+  specificationForm!: FormGroup
+  specificationModal?: number | null = null;
+  
   faPlus = faPlus;
   faTrash = faTrash;
   faTimes = faTimes;
 
-  // specificationForm = this.formBuilder.group({
-  //   title: ['',[Validators.required, EmptyValidator]],
-  //   description: [''],
-  // })
-
-  specificationUpdate = 0;
-
-
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.clearInputs();
   }
 
   addSpecifications() {
-    // this.specificationsOpen = true;
-    // this.specificationUpdate = "";
-    // this.specificationForm = this.formBuilder.group({
-    //   title: [''],
-    //   description: [''],
-    // })
-  }
-
-  deleteSpecification(specification: any) {
-    // this.product?.specifications.forEach(specificationProduct => {
-    //   if (specificationProduct.value == specification.value) {
-    //     this.product?.specifications.splice(this.product?.specifications.indexOf(specificationProduct), 1);
-    //     if (this.specificationForm.value.title == specificationProduct.title) {
-    //       this.specificationsOpen = false;
-    //     }
-    //   }
-    // })
-    //ADD NO product update
+    this.specificationsOpen = true;
+    this.specificationModal = null;
+    this.clearInputs();
   }
 
   editSpecification(specification: number) {
-    this.specificationUpdate = specification + 1;
+    this.specificationModal = specification;
     this.specificationsOpen = true;
-    this.specificationForm 
+    this.specificationForm = this.formBuilder.group({
+      title: [this.getTitle(specification)?.value!],
+      description: [this.getDescription(specification)?.value!],
+    })
   }
 
   updateSpecification() {
-    // this.product?.specifications.forEach(specificationProduct => {
-    //   if (specificationProduct.title == this.specificationUpdate) {
-    //     this.product!.specifications[this.product!.specifications.indexOf(specificationProduct)].title = this.specificationForm.value.title!;
-    //     this.product!.specifications[this.product!.specifications.indexOf(specificationProduct)].value = this.specificationForm.value.description!;
-    //     this.specificationUpdate = this.specificationForm.value.title!
-    //   }
-    // })
+    const form = this.formBuilder.group({
+      title: [this.specificationForm.get('title')?.value!],
+      description: [this.specificationForm.get('description')?.value!],
+    });
+    (<FormArray>this.specificationsForm.get("specifications")).setControl(this.specificationModal!, form as FormGroup);
+    this.specificationsFormChange.emit(this.specificationsForm)
   }
 
-  addSpecification(){
-    // let specification: ProductSpecification = {
-    //   title: this.specificationForm.value.title!,
-    //   value: this.specificationForm.value.description!
-    // }
+  addSpecification() {
+    (<FormArray>this.specificationsForm.get("specifications")).push(this.specificationForm)
+    this.addSpecificationForm.emit(this.specificationForm);
+    this.specificationsFormChange.emit(this.specificationsForm)
+    this.clearInputs();
+  }
 
-    // this.product?.specifications.push(specification);
-    // this.addSpecifications();
+  deleteSpecification(specification: number) {
+    (<FormArray>this.specificationsForm.get("specifications")).removeAt(specification);
+    this.deleteSpecificationForm.emit(specification);
+    this.specificationsFormChange.emit(this.specificationsForm)
+
+    if(this.specificationModal! == specification){
+      this.addSpecifications();
+      this.specificationsOpen = false;
+    }
+  }
+
+  clearInputs(){
+    this.specificationForm = this.formBuilder.group({
+      title: [''],
+      description: [''],
+    })
   }
 
   get specifications() {
-    return this.specificationForm?.get('specifications') as FormArray;
+    return this.specificationsForm?.get('specifications') as FormArray;
   }
 
   getTitle(index: number) {
     return (<FormGroup>this.specifications.controls[index]).get('title');
   }
-  getValue(index: number) {
-    return (<FormGroup>this.specifications.controls[index]).get('value');
-  }
 
-  getSpecification(index: number){
-    return (<FormGroup>this.specifications.controls[index]);
+  getDescription(index: number) {
+    return (<FormGroup>this.specifications.controls[index]).get('description');
   }
 
 }

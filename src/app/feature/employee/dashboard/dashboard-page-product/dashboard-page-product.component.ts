@@ -21,27 +21,13 @@ export class DashboardPageProductComponent implements OnInit {
   isOpen: boolean = false;
   titlePage = ""
 
-
-  // ({
-  //   code: [''],
-  //   title: [''],
-  //   littleDescription: [''],
-  //   description: [''],
-  //   // brand: ['']
-  //   // specifications: Array<ProductSpecification>;
-  //   // rating: number;
-  //   // category: Array<Category>;
-  //   // reviews?: Array<ProductReview>;
-  // })
-
-
   productForm!: FormGroup;
 
-  specificationForm = this.formBuilder.group({
+  specificationsForm = this.formBuilder.group({
     specifications: this.formBuilder.array([])
   })
 
-  variantForm = this.formBuilder.group({
+  variantsForm = this.formBuilder.group({
     variants: this.formBuilder.array([])
   })
 
@@ -78,7 +64,7 @@ export class DashboardPageProductComponent implements OnInit {
   }
 
   getSpecificationsForms(evt: any) {
-    this.specificationForm = evt
+    this.specificationsForm = evt
   }
 
   getVariantForms(evt: any) {
@@ -86,15 +72,20 @@ export class DashboardPageProductComponent implements OnInit {
   }
 
   initSpecificationForm() {
-    // for (let specification of this.product!.specifications) {
-    //   this.createNewSpecification(specification);
-    // }
+    if(this.product){
+      for (let specification of this.product!.specifications) {
+        this.createNewSpecification(specification);
+      }
+    }
   }
 
   initVariantForm() {
-    // for (let productVariant of this.productVariantsList) {
-    //   this.createNewVariant(productVariant);
-    // }
+    if(this.product){
+      for (let productVariant of this.productVariantsList) {
+        this.createNewVariant(productVariant);
+      }
+    }
+    
   }
 
   initProductForm() {
@@ -111,25 +102,30 @@ export class DashboardPageProductComponent implements OnInit {
   }
 
   createNewVariant(productVariant: ProductVariant) {
-    (<FormArray>this.variantForm.controls.variants).push(
-      this.formBuilder.group({
-        title: [productVariant.title],
-        code: [productVariant.code],
-        stock: [''],
-        price: [productVariant.price],
-        images: [productVariant.images],
-      })
-    );
+
+    const images = []
+    for(let image of productVariant.images){
+      images.push(image);
+    }
+
+    const variant = this.formBuilder.group({
+      title: [productVariant.variant],
+      code: [productVariant.variantCode],
+      stock: [''],
+      price: [productVariant.price],
+      images: [images],
+    });
+
+    (<FormArray>this.variantsForm.controls.variants).push(variant);
   }
 
   createNewSpecification(specification: ProductSpecification) {
-    (<FormArray>this.specificationForm.controls.specifications).push(
+    (<FormArray>this.specificationsForm.controls.specifications).push(
       this.formBuilder.group({
         title: [specification.title],
         description: [specification.value],
       })
     )
   }
-
 
 }

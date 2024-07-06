@@ -1,30 +1,31 @@
-<form [formGroup]="specificationForm" class="section-specifications">
-    
+<section class="section-specifications">
+
     <div class="header-specifications">
         <h6>Especificações</h6>
         <button class="btn-add" (click)="addSpecifications()">
             <fa-icon [icon]="faPlus"></fa-icon>
         </button>
     </div>
-    
-    <div class="specifications" *ngIf="specifications">
+
+    <div class="specifications" *ngIf="specifications.length > 0">
         <ng-container *ngFor="let specification of specifications.controls; let i = index">
             <div class="select-tag" (click)="editSpecification(i)">
                 <p>{{getTitle(i)?.value}}</p>
-                <button (click)="deleteSpecification(specification)">
+                <button (click)="deleteSpecification(i)">
                     <fa-icon [icon]="faTimes"></fa-icon>
                 </button>
             </div>
         </ng-container>
     </div>
-    
-    
+
+
     <ng-container *ngIf="specificationsOpen">
+
         <div class="specification">
-    
-            <ng-container formArrayName="specifications" *ngIf="specificationUpdate  != 0; else noSpecification"> 
+
+            <ng-container *ngIf="specificationModal != null; else noSpecification">
                 <div class="specification-card">
-                    <p>{{specificationUpdate}}</p>
+                    <p>{{getTitle(specificationModal)?.value}}</p>
                     <button (click)="updateSpecification()" appButton="secondary">Salvar</button>
                 </div>
             </ng-container>
@@ -36,13 +37,14 @@
                 </div>
             </ng-template>
 
-    
-            <form [formGroupName]="specificationUpdate" class="form-specifications">
+
+            <form [formGroup]="specificationForm" class="form-specifications">
                 <label for="title" class="labels" appInput>
                     <p>Título da Especificação*</p>
-                    <input type="title" id="title" formControlName="title" placeholder="Título da especificação" required />
+                    <input type="title" id="title" formControlName="title" placeholder="Título da especificação"
+                        required />
                 </label>
-    
+
                 <label for="description" class="labels" appInput>
                     <p>Descrição da Especificação*</p>
                     <input type="description" id="description" formControlName="description"
@@ -50,5 +52,8 @@
                 </label>
             </form>
         </div>
+
+
+
     </ng-container>
-</form>
+</section>
