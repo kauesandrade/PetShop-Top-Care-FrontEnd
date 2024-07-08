@@ -7,7 +7,7 @@
 
         <label for="code" class="labels" appInput>
             <p>Código*</p>
-            <input type="number" id="code" formControlName="code" placeholder="Código do produto" (change)="changeEmitProductForms()" required />
+            <input type="text" mask="" [dropSpecialCharacters]="true" id="code" formControlName="code" placeholder="Código do produto" (change)="changeEmitProductForms()" required />
         </label>
     </div>
 

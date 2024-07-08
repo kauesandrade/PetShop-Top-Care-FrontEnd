@@ -40,12 +40,12 @@
         <div>
           <label for="title" class="labels" appInput>
             <p>Título da Variação*</p>
-            <input type="title" id="title" formControlName="title" placeholder="Título da variação" required />
+            <input type="text" id="title" formControlName="title" placeholder="Título da variação" required />
           </label>
 
           <label for="code" class="labels" appInput>
             <p>Código*</p>
-            <input type="code" id="code" formControlName="code" placeholder="Código da variação" required />
+            <input type="text" mask="" [dropSpecialCharacters]="true" id="code" formControlName="code" placeholder="Código da variação" required />
           </label>
         </div>
 
@@ -53,13 +53,24 @@
 
           <label for="stock" class="labels" appInput>
             <p>Estoque</p>
-            <input type="stock" id="stock" formControlName="stock" placeholder="Quantidade da variação no estoque"
+            <input type="text" mask="separator" [dropSpecialCharacters]="true" [thousandSeparator]="'.'" id="stock" formControlName="stock" placeholder="Quantidade da variação no estoque"
               required />
           </label>
 
           <label for="price" class="labels" appInput>
             <p>Preço*</p>
-            <input type="price" id="price" formControlName="price" placeholder="Preço da variação" required />
+            <input 
+            type="text"
+            
+            mask="separator.2"
+            [thousandSeparator]="'.'"
+            [decimalMarker]="','"
+            prefix="R$ "
+            [dropSpecialCharacters]="true"
+
+            id="price" formControlName="price" 
+            placeholder="Preço da variação" 
+            required />
           </label>
 
         </div>

@@ -1,9 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { faPlus, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { Image } from 'src/app/shared/interfaces/product/image';
-import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 
 @Component({
   selector: 'app-variant-forms',
