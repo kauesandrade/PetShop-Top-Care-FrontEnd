@@ -1,5 +1,6 @@
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import * as userData from '../../../../assets/JsonFiles/users.json';
+import { Schedule } from '../../interfaces/schedule/schedule';
 import { User } from '../../interfaces/user/user';
 
 @Injectable({
@@ -15,6 +16,18 @@ export class UserService implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(this.loggedUser);
+  }
+
+  getSchedulings() {
+    let schedulings: Schedule[] = [];
+    if (this.loggedUser?.pets) {
+      for (let pet of this.loggedUser?.pets) {
+        for (let scheduling of pet.schedules) {
+          schedulings.push(scheduling);
+        }
+      }
+    }
+    return schedulings;
   }
 
   mainCard() {

@@ -76,7 +76,7 @@ export class CardFormComponent implements OnInit, OnChanges {
 
   updateParcels() {
     this.parcels = this.paymentService.parcels;
-    console.log(this.paymentService);
+    console.log(this.paymentService.parcels);
   }
 
   get name() {

@@ -1,19 +1,28 @@
 <app-header [simple]="true"></app-header>
 <main>
-    <h6 class="title">Compra Realizada</h6>
-    
-    <ng-container>
-        
-        <section class="commonSection">
-            <app-finish-layout [orderInformation]="orderInformation" class="commonSection-primary"></app-finish-layout>
-            <app-finish-information [orderInformation]="orderInformation" class="commonSection-secondary"></app-finish-information>
-        </section>
-        
-    </ng-container>
-    <app-payment-item-section 
+  <h6 class="title">Pagamento Realizado</h6>
+
+  <ng-container>
+    <section class="commonSection">
+      <app-finish-layout
+        [type]="type"
+        [orderInformation]="orderInformation"
+        [schedulingInformation]="schedulingInformation"
+        class="commonSection-primary"
+      ></app-finish-layout>
+      <app-finish-information
+        [type]="type"
+        [orderInformation]="orderInformation"
+        [schedulingInformation]="schedulingInformation"
+        class="commonSection-secondary"
+      ></app-finish-information>
+    </section>
+  </ng-container>
+  <app-payment-item-section
+    [type]="type"
+    [services]="schedulingInformation?.services"
     [items]="orderInformation?.items!"
     [boxShadow]="false"
-    ></app-payment-item-section>
-
+  ></app-payment-item-section>
 </main>
 <app-footer type="copyright"></app-footer>

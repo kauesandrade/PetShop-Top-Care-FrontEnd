@@ -57,15 +57,7 @@ export class ServiceDetailsSectionComponent implements OnInit {
   }
 
   totalServicesSum() {
-    let total = 0;
-
-    if (this.services) {
-      for (let service of this.services) {
-        total += service.price;
-      }
-    }
-
-    return total;
+    return this.schedulingService.servicesTotalSum();
   }
 
   cancelScheduling() {
@@ -75,13 +67,15 @@ export class ServiceDetailsSectionComponent implements OnInit {
   goToPayment() {
     this.paymentService.setParcelsNumber(2);
 
-    let parcels = new Array<number>();
-    for (let i = 1; i <= this.paymentService.parcelsNumber; i++) {
-      parcels.push(this.totalServicesSum() / i);
-    }
-    this.paymentService.setParcels(parcels);
+    this.paymentService.parcels = new Array<number>();
 
-    console.log(this.paymentService);
+    for (let i = 1; i <= this.paymentService.parcelsNumber; i++) {
+      this.paymentService.parcels.push(this.totalServicesSum() / i);
+    }
+
+    this.paymentService.type = 'scheduling';
+
+    console.log(this.paymentService.parcels);
 
     this.router.navigate(['/agendamento/pagamento']);
   }

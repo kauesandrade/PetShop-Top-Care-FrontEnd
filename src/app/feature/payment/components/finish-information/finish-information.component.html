@@ -1,5 +1,6 @@
 <div class="content">
-    <div class="address-info">
+  <div class="address-info">
+    <ng-container *ngIf="type == 'cart'; else petshopAddress">
       <h6>Endereço de entrega</h6>
       <p>
         <strong> {{ orderInformation?.address?.name || "Senai" }}</strong>
@@ -15,7 +16,9 @@
       </p>
       <p>
         CEP:
-        {{ orderInformation?.address?.cep! | mask : "00000-000" || "12345-087" }}
+        {{
+          orderInformation?.address?.cep! | mask : "00000-000" || "12345-087"
+        }}
       </p>
       <h6>
         {{
@@ -23,45 +26,47 @@
             "Entrega de 4 a 6 dias úteis"
         }}
       </h6>
+    </ng-container>
+    <ng-template #petshopAddress>
+      <h6>Endereço do petshop</h6>
+      <p>{{ schedulingInformation?.petshop?.address }}</p>
+    </ng-template>
+  </div>
+  <div class="divider"></div>
+  <div class="order-info">
+    <h6>Resumo do pedido</h6>
+    <div class="info-container">
+      <p>
+        Produtos ({{ orderInformation?.items?.length }} ite{{
+          orderInformation?.items?.length! == 1 ? "m" : "ns"
+        }})
+      </p>
+      <p>{{ orderInformation?.payment?.subtotal | currency : "BRL" }}</p>
     </div>
-    <div class="divider"></div>
-    <div class="order-info">
-      <h6>Resumo do pedido</h6>
-      <div class="info-container">
-        <p>
-          Produtos ({{ orderInformation?.items?.length }} ite{{
-            orderInformation?.items?.length! == 1 ? "m" : "ns"
-          }})
-        </p>
-        <p>{{ orderInformation?.payment?.subtotal | currency : "BRL" }}</p>
-      </div>
-      <div class="info-container">
-        <p>Frete</p>
-        <ng-container
-          *ngIf="orderInformation?.payment?.shippingFee; else freeShipping"
-        >
-          <p>{{ orderInformation?.payment?.shippingFee | currency : "BRL" }}</p>
-        </ng-container>
-        <ng-template #freeShipping>
-          <p class="free-shipping">Grátis</p>
-        </ng-template>
-      </div>
-      <div class="info-container">
-        <p>
-          Pagamento</p>
-        <p>{{getValuePayment()}}</p>
-      </div>
-      <div class="info-container">
-        <p>
-          Quantidade de parcelas</p>
-        <p>{{ orderInformation?.payment?.parcels}}</p>
-      </div>
-      <div class="info-container">
-        <h6>Total</h6>
-        <div class="valor">
-          <p>{{ orderInformation?.payment?.total | currency : "BRL" }}</p>
-        </div>
+    <div class="info-container">
+      <p>Frete</p>
+      <ng-container
+        *ngIf="orderInformation?.payment?.shippingFee; else freeShipping"
+      >
+        <p>{{ orderInformation?.payment?.shippingFee | currency : "BRL" }}</p>
+      </ng-container>
+      <ng-template #freeShipping>
+        <p class="free-shipping">Grátis</p>
+      </ng-template>
+    </div>
+    <div class="info-container">
+      <p>Pagamento</p>
+      <p>{{ getValuePayment() }}</p>
+    </div>
+    <div class="info-container">
+      <p>Quantidade de parcelas</p>
+      <p>{{ orderInformation?.payment?.parcels }}</p>
+    </div>
+    <div class="info-container">
+      <h6>Total</h6>
+      <div class="valor">
+        <p>{{ orderInformation?.payment?.total | currency : "BRL" }}</p>
       </div>
     </div>
   </div>
-  
+</div>
