@@ -54,6 +54,7 @@ export class SpecificationsFormsComponent implements OnInit {
     });
     (<FormArray>this.specificationsForm.get("specifications")).setControl(this.specificationModal!, form as FormGroup);
     this.specificationsFormChange.emit(this.specificationsForm)
+    console.log(this.specificationsForm);
   }
 
   addSpecification() {
