@@ -99,16 +99,25 @@ export class DashboardPageProductComponent implements OnInit {
         }
       }
     }
-        
+
     this.productForm = this.formBuilder.group({
       code: [this.product?.code!, [Validators.required, EmptyValidator]],
       title: [this.product?.title!, [Validators.required, EmptyValidator]],
       littleDescription: [this.product?.littleDescription!, [Validators.required, EmptyValidator]],
       description: [this.product?.description!, [Validators.required, EmptyValidator]],
       brand: [this.product?.brand!, [Validators.required, EmptyValidator]],
-      category: [categoryArray, [Validators.required, EmptyValidator]],
+      category: [categoryArray],
     })
 
+  }
+
+  createNewSpecification(specification: ProductSpecification) {
+    (<FormArray>this.specificationsForm.controls.specifications).push(
+      this.formBuilder.group({
+        title: [specification.title!, [Validators.required, EmptyValidator]],
+        description: [specification.value!, [Validators.required, EmptyValidator]],
+      })
+    )
   }
 
   createNewVariant(productVariant: ProductVariant) {
@@ -119,23 +128,34 @@ export class DashboardPageProductComponent implements OnInit {
     }
 
     const variant = this.formBuilder.group({
-      title: [productVariant.variant],
-      code: [productVariant.variantCode],
-      stock: [''],
-      price: [productVariant.price],
+      title: [productVariant.variant!, [Validators.required, EmptyValidator]],
+      code: [productVariant.variantCode!, [Validators.required, EmptyValidator]],
+      stock: [0],
+      price: [productVariant.price!, [Validators.required, EmptyValidator]],
       images: [images],
     });
 
     (<FormArray>this.variantsForm.controls.variants).push(variant);
   }
 
-  createNewSpecification(specification: ProductSpecification) {
-    (<FormArray>this.specificationsForm.controls.specifications).push(
-      this.formBuilder.group({
-        title: [specification.title],
-        description: [specification.value],
-      })
-    )
+
+  addProduct(){
+    console.log(this.productForm)
+    console.log(this.specificationsForm)
+    console.log(this.variantsForm)
+    
+  }
+
+  updateProduct(){
+    console.log(this.productForm)
+    console.log(this.specificationsForm)
+    console.log(this.variantsForm)
+  }
+
+  areFormsValid() {
+    return (
+      this.productForm.valid && this.specificationsForm.valid && this.variantsForm.valid
+    );
   }
 
 }

@@ -2,8 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faPlus, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
-import { Product } from 'src/app/shared/interfaces/product/product';
-import { ProductSpecification } from 'src/app/shared/interfaces/product/product-specification';
 
 @Component({
   selector: 'app-specifications-forms',
@@ -49,8 +47,8 @@ export class SpecificationsFormsComponent implements OnInit {
 
   updateSpecification() {
     const form = this.formBuilder.group({
-      title: [this.specificationForm.get('title')?.value!],
-      description: [this.specificationForm.get('description')?.value!],
+      title: [this.specificationForm.get('title')?.value!, [Validators.required, EmptyValidator]],
+      description: [this.specificationForm.get('description')?.value!, [Validators.required, EmptyValidator]],
     });
     (<FormArray>this.specificationsForm.get("specifications")).setControl(this.specificationModal!, form as FormGroup);
     this.specificationsFormChange.emit(this.specificationsForm)
@@ -61,6 +59,7 @@ export class SpecificationsFormsComponent implements OnInit {
     (<FormArray>this.specificationsForm.get("specifications")).push(this.specificationForm)
     this.addSpecificationForm.emit(this.specificationForm);
     this.specificationsFormChange.emit(this.specificationsForm)
+    console.log(this.specificationsForm);
     this.clearInputs();
   }
 
@@ -77,8 +76,8 @@ export class SpecificationsFormsComponent implements OnInit {
 
   clearInputs(){
     this.specificationForm = this.formBuilder.group({
-      title: [''],
-      description: [''],
+      title: ['', [Validators.required, EmptyValidator]],
+      description: ['', [Validators.required, EmptyValidator]],
     })
   }
 

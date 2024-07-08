@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faPlus, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { Image } from 'src/app/shared/interfaces/product/image';
 
 @Component({
@@ -31,13 +32,7 @@ export class VariantFormsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.variantForm = this.formBuilder.group({
-      title: [''],
-      code: [0],
-      stock: [''],
-      price: [0],
-      images: [[]]
-    })
+    this.clearInputs()
   }
 
   
@@ -63,10 +58,10 @@ export class VariantFormsComponent implements OnInit {
     this.variantModal = variant
     this.variationsOpen = true;
     this.variantForm = this.formBuilder.group({
-      title: [this.getTitle(this.variantModal!)?.value!],
-      code: [this.getCode(this.variantModal!)?.value!],
-      stock: [this.getStock(this.variantModal!)?.value!],
-      price: [this.getPrice(this.variantModal!)?.value!],
+      title: [this.getTitle(this.variantModal!)?.value!, [Validators.required, EmptyValidator]],
+      code: [this.getCode(this.variantModal!)?.value!, [Validators.required, EmptyValidator]],
+      stock: [this.getStock(this.variantModal!)?.value! || 0],
+      price: [this.getPrice(this.variantModal!)?.value!, [Validators.required, EmptyValidator]],
       images: [this.getImages(this.variantModal!)]
     })
   }
@@ -74,10 +69,10 @@ export class VariantFormsComponent implements OnInit {
   updateVariant() {
     
     const form = this.formBuilder.group({
-      title: [this.variantForm.get("title")?.value],
-      code: [this.variantForm.get("code")?.value],
-      stock: [this.variantForm.get("stock")?.value],
-      price: [this.variantForm.get("price")?.value],
+      title: [this.variantForm.get("title")?.value, [Validators.required, EmptyValidator]],
+      code: [this.variantForm.get("code")?.value, [Validators.required, EmptyValidator]],
+      stock: [this.variantForm.get("stock")?.value || 0],
+      price: [this.variantForm.get("price")?.value, [Validators.required, EmptyValidator]],
       images: [this.variantForm.get("images")?.value]
     });
 
@@ -120,10 +115,10 @@ export class VariantFormsComponent implements OnInit {
       images.push(image)
       
       this.variantForm = this.formBuilder.group({
-        title: [this.variantForm.get("title")?.value],
-        code: [this.variantForm.get("code")?.value],
-        stock: [this.variantForm.get("stock")?.value],
-        price: [this.variantForm.get("price")?.value],
+        title: [this.variantForm.get("title")?.value!, [Validators.required, EmptyValidator]],
+        code: [this.variantForm.get("code")?.value!, [Validators.required, EmptyValidator]],
+        stock: [this.variantForm.get("stock")?.value!],
+        price: [this.variantForm.get("price")?.value!, [Validators.required, EmptyValidator]],
         images: [images]
       });
       
@@ -140,11 +135,11 @@ export class VariantFormsComponent implements OnInit {
     images.splice(id, 1)
 
     this.variantForm = this.formBuilder.group({
-      title: [this.variantForm.get("title")?.value],
-      code: [this.variantForm.get("code")?.value],
-      stock: [this.variantForm.get("stock")?.value],
-      price: [this.variantForm.get("price")?.value],
-      images: [images]
+      title: [this.variantForm.get("title")?.value!, [Validators.required, EmptyValidator]],
+      code: [this.variantForm.get("code")?.value!, [Validators.required, EmptyValidator]],
+      stock: [this.variantForm.get("stock")?.value!],
+      price: [this.variantForm.get("price")?.value!, [Validators.required, EmptyValidator]],
+      images: [images!]
     })
     
   }
@@ -152,10 +147,10 @@ export class VariantFormsComponent implements OnInit {
 
   clearInputs(){
     this.variantForm = this.formBuilder.group({
-      title: [],
-      code: [],
+      title: ['', [Validators.required, EmptyValidator]],
+      code: [, [Validators.required, EmptyValidator]],
       stock: [],
-      price: [],
+      price: [, [Validators.required, EmptyValidator]],
       images: [[]]
     })
   }

@@ -2,7 +2,7 @@
     <div class="title-code">
         <label for="title" class="labels" appInput>
             <p>Título do Produto*</p>
-            <input type="text" id="title" formControlName="title" placeholder="Título do produto" (change)="changeEmitProductForms()" required />
+            <input type="text" [class.has-error]="title?.invalid && title?.touched" id="title" formControlName="title" placeholder="Título do produto" (change)="changeEmitProductForms()" required />
         </label>
 
         <label for="code" class="labels" appInput>
@@ -42,7 +42,7 @@
         </label>
 
         <label for="category" class="labels">
-            <p>Categoria*</p>
+            <p>Categoria</p>
             <p-multiSelect formControlName="category" (onChange)="changeEmitProductForms()" [options]="typesCategories" [(ngModel)]="selectCategories" defaultLabel="Selecione a Categoria"></p-multiSelect>
         </label>
         

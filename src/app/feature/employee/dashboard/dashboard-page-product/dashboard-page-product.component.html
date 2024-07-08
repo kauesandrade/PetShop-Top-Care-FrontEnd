@@ -20,10 +20,10 @@
     <div class="div-btns">
       <button routerLink="/dashboard/produtos" appButton="">Voltar</button>
       <ng-container *ngIf="this.product; else notProduct">
-        <button appButton="secondary">Salvar</button>
+        <button (click)="updateProduct()" [disabled]="!areFormsValid()" appButton="secondary">Salvar</button>
       </ng-container>
       <ng-template #notProduct>
-        <button appButton="secondary">Adicionar</button>
+        <button (click)="addProduct()" [disabled]="!areFormsValid()" appButton="secondary">Adicionar</button>
       </ng-template>
     </div>
 

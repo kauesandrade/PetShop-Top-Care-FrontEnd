@@ -83,3 +83,8 @@
     border: 2px solid $primary !important;
     border-radius: 0.5rem;
 }
+
+.has-error {
+    border-color: $error;
+    color: $error;
+  }
