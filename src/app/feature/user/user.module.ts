@@ -25,7 +25,6 @@ import { ChangePasswordComponent } from './data/components/change-password/chang
 import { ContactFormComponent } from './data/components/contact-form/contact-form.component';
 import { EditCardsComponent } from './data/components/edit-cards/edit-cards.component';
 import { PetProfile } from './pets/pet/pet.component';
-import { PetProfileFormComponent } from './pets/pet/components/pet-profile-form/pet-profile-form.component';
 
 const Components = [
   DataComponent,
@@ -52,7 +51,6 @@ const Components = [
     ReviewProductComponent,
     EditCardsComponent,
     PetProfile,
-    PetProfileFormComponent,
   ],
   imports: [
     CommonModule,

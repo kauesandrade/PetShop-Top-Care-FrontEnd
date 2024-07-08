@@ -1,13 +1,50 @@
 @import "styles";
 
 app-layout {
-    .content {
+    @include subgrid();
+
+    form {
         @include subgrid();
+        grid-column: 2 / -2;
+        gap: 1.5rem;
         
-        app-pet-profile-form {
-            grid-column: 2 / -2;
+        .profilePetImg {
+            img {
+                width: 8.5rem;
+            }
+        }
+
+        .petNameInput {
+            grid-column: 3 / -2;
+            gap: 0.5rem;
+            @include flex(column);
+            align-items: start;
+
+            input {
+                width: 100%;
+            }
+        }
+
+        .downloadButton {
+            @include flex();
+            margin-top: 1.1rem;
+
+            button {
+                width: 100%;
+                aspect-ratio: 1/1;
+            }
+        }
+
+        .petSelect {
+            grid-column: auto / span 5;
+            @include flex(column);
+            gap: 0.5rem;
+            align-items: start;
+
+            select {
+                width: 100%;
+            }
         }
 
     }
-
 }

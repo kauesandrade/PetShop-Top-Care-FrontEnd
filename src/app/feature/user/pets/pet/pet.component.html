@@ -1,5 +1,67 @@
 <app-layout>
-    <div class="content">
-        <app-pet-profile-form></app-pet-profile-form>
-    </div>
+    <form [formGroup]="petProfileForm">
+
+        <label for="image" class="profilePetImg">
+            <img
+                [src]="profileImg"
+                accept="image/png, image/jpeg"
+                alt="Foto do Pet"
+                />
+        </label>
+
+        <label for="name" class="petNameInput">
+            <h6>Nome do Pet</h6>
+
+            <input type="text" appInput
+            id="name"
+            formControlName="name">
+        </label>
+
+        <div class="downloadButton">
+            <button appButton
+            (click)="teste()"
+            ><fa-icon [icon]="faDownloadIcon"></fa-icon></button>
+        </div>
+
+        <label for="sizes" class="petSelect">
+            <h6>Porte</h6>
+
+            <select appInput id="sizes" formControlName="sizes" required>
+                <option *ngFor="let size of sizes; let i = index" value="size">
+                    {{ size }}
+                </option>
+            </select>
+        </label>
+
+        <label for="types" class="petSelect">
+            <h6>Tipo do Pet</h6>
+
+            <select appInput id="types" formControlName="types" required>
+                <option *ngFor="let type of types; let i = index" value="type">
+                    {{ type }}
+                </option>
+            </select>
+        </label>
+
+        <label for="types" class="petSelect">
+            <h6>Tipo do Pet</h6>
+
+            <select appInput id="types" formControlName="types" required>
+                <option *ngFor="let type of types; let i = index" value="type">
+                    {{ type }}
+                </option>
+            </select>
+        </label>
+
+        <label for="genders" class="petSelect">
+            <h6>Sexo???????</h6>
+
+            <select appInput id="genders" formControlName="genders" required>
+                <option *ngFor="let gender of genders; let i = index" value="genders">
+                    {{ gender }}
+                </option>
+            </select>
+        </label>
+
+    </form>
 </app-layout>
