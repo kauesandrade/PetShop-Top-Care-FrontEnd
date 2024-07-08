@@ -90,13 +90,23 @@ export class DashboardPageProductComponent implements OnInit {
 
   initProductForm() {
 
+    const categoryArray = []
+
+    if(this.product?.category){
+      for(let cateogoryName of this.product?.category!){
+        for(let type of cateogoryName.types){
+          categoryArray.push(type)
+        }
+      }
+    }
+        
     this.productForm = this.formBuilder.group({
       code: [this.product?.code!, [Validators.required, EmptyValidator]],
       title: [this.product?.title!, [Validators.required, EmptyValidator]],
       littleDescription: [this.product?.littleDescription!, [Validators.required, EmptyValidator]],
       description: [this.product?.description!, [Validators.required, EmptyValidator]],
       brand: [this.product?.brand!, [Validators.required, EmptyValidator]],
-      category: [this.product?.category!, [Validators.required, EmptyValidator]],
+      category: [categoryArray, [Validators.required, EmptyValidator]],
     })
 
   }

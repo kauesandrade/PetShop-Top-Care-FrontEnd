@@ -30,8 +30,8 @@
             <select id="brand" formControlName="brand" appInput required
             (change)="changeEmitProductForms()"
             >
+              <option value=null selected disabled hidden>Marca do produto</option>
               <option
-                placeholder="Marca do produto" 
                 *ngFor="let brand of brands;"
                 [value]="brand.name"
               >
@@ -43,7 +43,7 @@
 
         <label for="category" class="labels">
             <p>Categoria*</p>
-            <p-multiSelect formControlName="category" (onChange)="changeEmitProductForms()" [options]="typesCategories" [(ngModel)]="selectCategories" optionLabel="type" defaultLabel="Selecione a Categoria"></p-multiSelect>
+            <p-multiSelect formControlName="category" (onChange)="changeEmitProductForms()" [options]="typesCategories" [(ngModel)]="selectCategories" defaultLabel="Selecione a Categoria"></p-multiSelect>
         </label>
         
     </div>

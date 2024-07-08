@@ -19,7 +19,7 @@ export class ProductFormsComponent implements OnInit {
   brands!: Array<Brand>
 
   categories!: Array<Category>
-  typesCategories: Array<{type: string}> = []
+  typesCategories: Array<string> = []
   selectCategories!: Array<string>
 
   constructor() { }
@@ -30,10 +30,12 @@ export class ProductFormsComponent implements OnInit {
     this.categories = categories.category
 
     this.categories.forEach(categories =>{
-      categories.types.forEach( type =>{  
-        this.typesCategories.push({type: type})
+      categories.types.forEach(type =>{  
+        this.typesCategories.push(type)
       })
     })
+
+    this.selectCategories = this.category?.value
   }
 
   changeEmitProductForms(){
@@ -61,8 +63,8 @@ export class ProductFormsComponent implements OnInit {
     return this.productForm.get('brand')
   }
 
-  get categoria(){
-    return this.productForm.get('categoria')
+  get category(){
+    return this.productForm.get('category')
   }
 
 }
