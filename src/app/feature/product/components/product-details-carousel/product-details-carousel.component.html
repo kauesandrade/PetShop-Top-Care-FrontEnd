@@ -17,7 +17,7 @@
         <button *ngIf="images.length > 3" class="embla__button--up" (click)="prevSlide()"><fa-icon [icon]="faAngleRight"></fa-icon></button>
       </section>
     <section class="sectionImage">
-        <img class="selectiongImage" src={{selectImage}}>
+        <img class="selectiongImage" src={{selectImage?.src}} alt={{selectImage?.name}}>
     </section>
 </div>
 
