@@ -20,6 +20,7 @@ export class DashboardPageProductComponent implements OnInit {
 
   isOpen: boolean = false;
   titlePage = ""
+
   productForm!: FormGroup;
 
   specificationsForm = this.formBuilder.group({
@@ -32,7 +33,8 @@ export class DashboardPageProductComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private productService: ProductService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -48,22 +50,25 @@ export class DashboardPageProductComponent implements OnInit {
       console.log("sem objeto");
     }
 
+    this.initSpecificationForm();
+    this.initVariantForm();
+    this.initProductForm();
   }
 
   sideBarOpen(evt: any) {
     this.isOpen = evt;
   }
 
-  getProductForms(evt: any){
-    console.log(evt);
+  getProductForms(evt: any) {
+    this.productForm = evt
   }
 
   getSpecificationsForms(evt: any) {
     this.specificationsForm = evt
   }
-  
-  getVariantForms(evt: any){
-    console.log(evt);
+
+  getVariantForms(evt: any) {
+    this.getVariantForms = evt
   }
 
   initSpecificationForm() {
