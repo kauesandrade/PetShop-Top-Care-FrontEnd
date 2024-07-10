@@ -79,7 +79,11 @@
 
 :host ::ng-deep .p-multiselect{
     margin-top: 0.5rem;
-    width: 100%;
+    width: 95vw;
+    
+    @media(min-width: $tablet){
+        width: 100%;
+    }
     border: 2px solid $primary !important;
     border-radius: 0.5rem;
 }
