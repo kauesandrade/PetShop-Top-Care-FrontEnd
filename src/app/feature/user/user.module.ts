@@ -24,6 +24,7 @@ import { OrderComponent } from './orders/order/order.component';
 import { ChangePasswordComponent } from './data/components/change-password/change-password.component';
 import { ContactFormComponent } from './data/components/contact-form/contact-form.component';
 import { EditCardsComponent } from './data/components/edit-cards/edit-cards.component';
+import { PetProfile } from './pets/pet/pet.component';
 
 const Components = [
   DataComponent,
@@ -49,6 +50,7 @@ const Components = [
     ChooseProductComponent,
     ReviewProductComponent,
     EditCardsComponent,
+    PetProfile,
   ],
   imports: [
     CommonModule,
