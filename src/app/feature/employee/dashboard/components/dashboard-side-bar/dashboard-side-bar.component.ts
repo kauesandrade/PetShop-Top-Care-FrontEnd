@@ -21,7 +21,7 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
   sideBarOpen: boolean | undefined;
   innerWidth: any;
 
-  constructor(private userService: UserService) {}
+  constructor(protected userService: UserService) {}
   
   ngOnChanges(changes: SimpleChanges): void {
     if(this.isOpen){

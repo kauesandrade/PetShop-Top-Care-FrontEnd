@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Service } from 'src/app/shared/interfaces/services/service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import pets from '../../../../../../../assets/JsonFiles/pets.json';
 
 @Component({
   selector: 'app-service-forms',
@@ -9,34 +9,60 @@ import { Service } from 'src/app/shared/interfaces/services/service';
 })
 export class ServiceFormsComponent implements OnInit {
 
-  @Input() service!: Service
+  @Input() serviceForm!: FormGroup
+  @Output() serviceFormChange = new EventEmitter<FormGroup>();
 
-  
-  serviceForm = this.formBuilder.group({
-    code: [0],
-    title: [''],
-    description: [''],
-    category: [''],
-    image: [''],
-    typePets: [''],
-  })
+  categories!: Array<string>
+
+  pets!: Array<string>
+  typePets: Array<string> = []
+  selectPets!: Array<string>
   
   constructor(private formBuilder: FormBuilder) { }
   
   ngOnInit(): void {
 
-    if(this.service){
+    this.categories = [
+      "Clínica",
+      "Higiene"
+    ]
+    this.pets = pets.pets
 
-      this.serviceForm = this.formBuilder.group({
-        code: this.service.code!,
-        title: this.service.title!,
-        description: this.service.description!,
-        category: this.service.category!,
-        image: this.service.image!,
-        typePets: [''],
-      })
-    }
+    this.pets.forEach(pet =>{
+        this.typePets.push(pet);
+    })
 
+    this.selectPets = this.servedPets?.value
+
+  }
+   
+  changeEmitServiceForms(){
+    console.log(this.serviceForm);
+    this.serviceFormChange.emit(this.serviceForm);
+  }
+
+  get image(){
+    return this.serviceForm.get('image');
+  }
+
+  get title(){
+    return this.serviceForm.get('title');
+  }
+
+  get code(){
+    return this.serviceForm.get('code');
+  }
+
+  get description(){
+    return this.serviceForm.get('description');
+  }
+
+  get servedPets(){
+    return this.serviceForm.get('typePets');
+  }
+
+  get category(){
+    return this.serviceForm.get('category');
   }
 
 }

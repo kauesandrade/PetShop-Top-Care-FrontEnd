@@ -9,12 +9,12 @@
         <div class="title-code">
             <label for="title" class="labels" appInput>
                 <p>Título*</p>
-                <input type="title" id="title" formControlName="title" placeholder="Título do serviço" required />
+                <input type="text" id="title" formControlName="title" placeholder="Título do serviço" required />
             </label>
 
             <label for="code" class="labels" appInput>
                 <p>Código do Serviço*</p>
-                <input type="code" id="code" formControlName="code" placeholder="Código do serviço" required />
+                <input type="text" id="code" formControlName="code" placeholder="Código do serviço" required />
             </label>
 
 
@@ -22,22 +22,38 @@
 
         <label for="description" class="labels" appInput>
             <p>Descrição*</p>
-            <textarea type="description" id="description" formControlName="description"
+            <textarea type="text" id="description" formControlName="description"
                 placeholder="Descrição do serviço" required>
               </textarea>
         </label>
 
         <div class="title-code">
-            <label for="typePets" class="labels" appInput>
+            <!-- <label for="typePets" class="labels" appInput>
                 <p>Tipos de pets atendidos*</p>
                 <input type="typePets" id="typePets" formControlName="typePets" placeholder="Tipos de pets atendidos"
                     required />
+            </label> -->
+
+            <label for="typePets" class="labels">
+                <p>Tipos de pets atendidos*</p>
+                <p-multiSelect formControlName="typePets" (onChange)="changeEmitServiceForms()" [options]="pets" [(ngModel)]="selectPets" defaultLabel="Selecione o tipo de pet"></p-multiSelect>
             </label>
+
 
             <label for="category" class="labels" appInput>
                 <p>Categoria*</p>
-                <input type="category" id="category" formControlName="category" placeholder="Categoria do serviço"
-                    required />
+                <select id="category" formControlName="category" appInput required
+                (change)="changeEmitServiceForms()"
+                >
+                  <option value=null selected disabled hidden>Categoria do serviço</option>
+                  <option
+                    *ngFor="let category of categories;"
+                    [value]="category"
+                  >
+                    {{ category }}
+                  </option>
+                </select>
+    
             </label>
         </div>
 
