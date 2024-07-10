@@ -35,7 +35,11 @@
       <p>{{ petshop?.address }}</p>
     </ng-template>
   </div>
-  <button appButton="secondary" (click)="openAddresses = true">
+  <button
+    *ngIf="type == 'cart'"
+    appButton="secondary"
+    (click)="openAddresses = true"
+  >
     Alterar endereço
   </button>
   <div class="divider"></div>
@@ -102,9 +106,7 @@
           <p>{{ servicesTotalSum() | currency : "BRL" }}</p>
           <p *ngIf="servicesPaymentInformation?.parcelsNumber! > 1">
             ou {{ servicesPaymentInformation?.parcelsNumber }}x de
-            {{
-              servicesPaymentInformation?.parcelsPrice | currency : "BRL"
-            }}
+            {{ servicesPaymentInformation?.parcelsPrice | currency : "BRL" }}
             sem juros
           </p>
         </div>
