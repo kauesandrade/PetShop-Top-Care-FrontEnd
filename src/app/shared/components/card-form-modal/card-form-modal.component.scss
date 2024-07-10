@@ -105,6 +105,7 @@ dialog {
 
   button,
   input[type="submit"] {
+    border-radius: 0.5rem;
     place-self: end;
     grid-column: 1 / -1;
     height: 3rem;

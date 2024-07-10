@@ -129,6 +129,7 @@ form {
   }
 
   input[type="submit"] {
+    border-radius: 0.5rem;
     height: 3rem;
     grid-column: 1 / -1;
     @media (min-width: $desktop) {

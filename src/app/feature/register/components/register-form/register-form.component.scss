@@ -58,6 +58,7 @@ form {
     width: 11.25rem;
     height: 3.125rem;
     place-self: center;
+    border-radius: 0.5rem;
     @media (min-width: $tablet) {
       width: 100%;
       grid-column: 2 / span 4;

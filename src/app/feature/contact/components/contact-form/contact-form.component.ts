@@ -21,6 +21,7 @@ export class ContactFormComponent {
     'Sugestão',
     'Reclamação',
     'Agendamento',
+    'Orçamento',
   ];
 
   availableHours = [
@@ -124,6 +125,8 @@ export class ContactFormComponent {
         return 'complaint';
       case 'Agendamento':
         return 'scheduling';
+      case 'Orçamento':
+        return 'budget';
       default:
         return 'question';
     }

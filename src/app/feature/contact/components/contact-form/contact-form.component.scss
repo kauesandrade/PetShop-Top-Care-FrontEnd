@@ -45,6 +45,7 @@ form {
     }
 
     input[type="submit"] {
+      border-radius: 0.5rem;
       grid-column: 3 / span 2 !important;
       grid-row: auto / span 1 !important;
     }
@@ -114,6 +115,7 @@ form {
     }
   }
   input[type="submit"] {
+    border-radius: 0.5rem;
     grid-row: auto / span 1;
     grid-column: 6 / span 2;
     @media (max-width: $mobile) {
