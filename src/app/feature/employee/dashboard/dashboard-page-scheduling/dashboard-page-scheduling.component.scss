@@ -1,47 +1,78 @@
-@import 'styles';
+@import "styles";
 
 main {
   display: flex;
-  
 
   .layout-dashboard {
     @include layoutDashboard;
     @include subgrid();
 
-    .info-title {
-      color: #016FC8; 
-      text-align: left; 
-      grid-column: 1 / -1; 
-      margin: 32px 0; 
+    h2 {
+      color: $primary;
+      grid-column: 1 / -1;
+      @include heading();
+      text-align: center;
+      @media (min-width: $tablet) {
+        text-align: start;
+        @include heading(h3);
+      }
+      @media (min-width: $desktop) {
+        @include heading(h2);
+      }
     }
 
-    .custom-rectangle {
-      background-color: #FEFEFE;
-      border-radius: 20px;
-      grid-column: 1 / -1; 
-      height: 800px; 
-      padding: 20px; 
-      position: relative;
+    .content {
+      @include subgrid();
+      row-gap: 1.5rem;
+      width: 100%;
+      background: $white;
+      border-radius: 1rem;
+      padding: 2rem;
 
-      .inner-rectangle {
-        background-color: #CCDEF5;
-        border-radius: 20px; 
-        height: 400px; 
-        width: calc(5 * (100% / 12) - 32px); // Largura calculada para ocupar 5 espaços da grid
-        position: absolute; 
-        right: 20px; 
-        top: 32px; 
-        grid-column: -5 / -1;
+      app-service-details-section {
+        @include subgrid();
+        grid-column: 2 / -2;
       }
-      .second-inner-rectangle {
-        background-color: #CCDEF5;
-        border-radius: 20px;
-        height: 200px;
-        width: calc(3 * (100% / 12) - 32px);
-        position: absolute;
-        left: calc(4 * (100% / 12) + 20px); // Posicionamento à direita do primeiro retângulo
-        top: 32px; 
-        grid-column: 4 / 6;
+
+      app-petshop-card {
+        grid-column: 2 / -2;
+      }
+
+      .general-info {
+        @include flex(column);
+        gap: 1rem;
+        grid-column: 2 / -2;
+        background-color: $light-primary;
+        padding: 1rem;
+        border-radius: 1rem;
+        width: 100%;
+
+        @media (min-width: $tablet) {
+          @include flex(column, flex-start);
+        }
+        @media (min-width: $desktop) {
+          @include flex(row, $justify: space-between);
+        }
+
+        p {
+          @include text(normal, normal);
+          text-align: center;
+
+          span {
+            @include text(normal, semibold);
+            width: 50%;
+            text-align: center;
+            @media (min-width: $tablet) {
+              text-align: start;
+              @include heading();
+            }
+          }
+
+          @media (min-width: $tablet) {
+            text-align: start;
+            @include text(medium, normal);
+          }
+        }
       }
     }
   }

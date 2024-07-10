@@ -6,9 +6,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
-  exports:[DashboardModule],
-  declarations: [
-  ],
-  imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule]
+  exports: [DashboardModule],
+  declarations: [],
+  imports: [CommonModule, FontAwesomeModule, CoreModule, SharedModule],
 })
-export class EmployeeModule { }
+export class EmployeeModule {}

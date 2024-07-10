@@ -1,5 +1,6 @@
 <label [for]="petshop.id" class="card">
   <input
+    *ngIf="type == 'checkbox'"
     type="radio"
     name="petshop"
     [id]="petshop.id"

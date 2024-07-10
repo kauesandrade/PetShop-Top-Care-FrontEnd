@@ -17,17 +17,15 @@ import { DashboardSchedulingComponent } from './dashboard-scheduling/dashboard-s
 import { SchedulingCardDashboardComponent } from './components/scheduling-card-dashboard/scheduling-card-dashboard.component';
 import { DashboardPageProductComponent } from './dashboard-page-product/dashboard-page-product.component';
 import { NgxMaskModule } from 'ngx-mask';
-import { ProductFormsComponent } from './dashboard-page-product/components/product-forms/product-forms.component';
-import { SpecificationsFormsComponent } from './dashboard-page-product/components/specifications-forms/specifications-forms.component';
-import { ProductVariantFormsComponent } from './dashboard-page-product/components/product-variant-forms/product-variant-forms.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardPageServiceComponent } from './dashboard-page-service/dashboard-page-service.component';
-import { ServiceVariantFormsComponent } from './dashboard-page-service/components/service-variant-forms/service-variant-forms.component';
 import { ServiceFormsComponent } from './dashboard-page-service/components/service-forms/service-forms.component';
 import { DashboardPageSchedulingComponent } from './dashboard-page-scheduling/dashboard-page-scheduling.component';
-
-
+import { ProductFormsComponent } from './dashboard-page-product/components/product-forms/product-forms.component';
+import { ProductVariantFormsComponent } from './dashboard-page-product/components/product-variant-forms/product-variant-forms.component';
+import { SpecificationsFormsComponent } from './dashboard-page-product/components/specifications-forms/specifications-forms.component';
+import { ServiceVariantFormsComponent } from './dashboard-page-service/components/service-variant-forms/service-variant-forms.component';
+import { DashboardPageServiceComponent } from './dashboard-page-service/dashboard-page-service.component';
 
 @NgModule({
   exports: [DashboardComponent],
@@ -49,19 +47,19 @@ import { DashboardPageSchedulingComponent } from './dashboard-page-scheduling/da
     DashboardPageServiceComponent,
     ServiceVariantFormsComponent,
     ServiceFormsComponent,
-    DashboardPageSchedulingComponent
+    DashboardPageSchedulingComponent,
   ],
   imports: [
-    CommonModule, 
-    RouterModule, 
-    FontAwesomeModule, 
+    CommonModule,
+    RouterModule,
+    FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
-    CoreModule, 
+    CoreModule,
     SharedModule,
     MultiSelectModule,
     BrowserAnimationsModule,
-  ]
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}
