@@ -7,6 +7,7 @@ import { Petshop } from '../../interfaces/petshop/petshop';
   styleUrls: ['./petshop-card.component.scss'],
 })
 export class PetshopCardComponent implements OnInit {
+  @Input() type: 'view' | 'checkbox' = 'checkbox';
   @Input() petshop!: Petshop;
 
   @Input() selectedPetshop?: Petshop;

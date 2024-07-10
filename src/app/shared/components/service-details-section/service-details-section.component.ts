@@ -18,8 +18,6 @@ import { SchedulingService } from '../../services/scheduling/scheduling.service'
 export class ServiceDetailsSectionComponent implements OnInit {
   @Input() type: 'scheduling' | 'profile' = 'profile';
   @Input() pet!: Pet;
-  @Input() address!: Address;
-  @Input() petshop!: Petshop;
   @Input() services!: ServiceVariant[];
   @Input() schedule!: Date;
 
@@ -37,8 +35,6 @@ export class ServiceDetailsSectionComponent implements OnInit {
   ngOnInit(): void {
     if (this.type == 'scheduling') {
       this.pet = this.schedulingService.pet!;
-      this.address = this.schedulingService.address!;
-      this.petshop = this.schedulingService.petshop!;
       this.services = this.schedulingService.services!;
       this.schedule = this.schedulingService.schedule!;
     }
