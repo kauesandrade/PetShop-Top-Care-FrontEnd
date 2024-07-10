@@ -77,16 +77,32 @@
     
 }
 
-:host ::ng-deep .p-multiselect{
-    margin-top: 0.5rem;
-    width: 95vw;
+:host ::ng-deep {
     
-    @media(min-width: $tablet){
-        width: 100%;
+    .p-multiselect{
+        margin-top: 0.5rem;
+        width: 95vw;
+        
+        @media(min-width: $tablet){
+            width: 100%;
+        }
+        border: 2px solid $primary !important;
+        border-radius: 0.5rem;
     }
-    border: 2px solid $primary !important;
-    border-radius: 0.5rem;
+
+    .p-multiselect-trigger{
+        width: 1.25rem;
+    }
+
+    .pi:before{
+        font-size: 0.65rem;
+        font-weight: 900;
+    }
+
 }
+    
+
+
 
 .has-error {
     border-color: $error;
