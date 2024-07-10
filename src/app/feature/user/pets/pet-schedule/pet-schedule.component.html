@@ -1,0 +1,20 @@
+<app-layout>
+  <div class="content">
+    <app-service-details-section
+      type="profile"
+      [pet]="pet"
+      [schedule]="schedule"
+      [services]="services"
+    ></app-service-details-section>
+    <div class="actions">
+      <button appButton (click)="goBack()">Voltar</button>
+      <button
+        appButton="secondary"
+        *ngIf="dateIsBefore(schedule)"
+        (click)="cancelSchedule()"
+      >
+        Cancelar agendamento
+      </button>
+    </div>
+  </div>
+</app-layout>

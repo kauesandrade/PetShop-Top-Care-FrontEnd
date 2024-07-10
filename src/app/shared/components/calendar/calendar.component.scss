@@ -90,6 +90,9 @@
         border-width: 2px;
         border-style: solid;
         border-radius: 0.5rem;
+        &:hover {
+          cursor: pointer;
+        }
 
         @media (min-width: $tablet) {
           gap: 0.5rem;

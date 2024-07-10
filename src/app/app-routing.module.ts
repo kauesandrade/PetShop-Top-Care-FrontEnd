@@ -35,6 +35,7 @@ import { DashboardPageServiceComponent } from './feature/employee/dashboard/dash
 import { DashboardComponent } from './feature/employee/dashboard/dashboard.component';
 import { DashboardPageSchedulingComponent } from './feature/employee/dashboard/dashboard-page-scheduling/dashboard-page-scheduling.component';
 import { PetProfile } from './feature/user/pets/pet/pet.component';
+import { PetScheduleComponent } from './feature/user/pets/pet-schedule/pet-schedule.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -159,7 +160,16 @@ const routes: Routes = [
               {
                 path: '',
                 component: PetProfile,
-              }
+              },
+            ],
+          },
+          {
+            path: 'agendamento/:id',
+            children: [
+              {
+                path: '',
+                component: PetScheduleComponent,
+              },
             ],
           },
         ],

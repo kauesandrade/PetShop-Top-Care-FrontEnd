@@ -18,7 +18,11 @@
           <ng-container *ngFor="let schedule of pet.schedules">
             <ng-container *ngIf="isDateSame(schedule.dateTime, selectedDate)">
               <ng-container *ngFor="let service of schedule.services">
-                <div class="pet-schedule" [ngClass]="'border-' + pet.idColor">
+                <div
+                  class="pet-schedule"
+                  [ngClass]="'border-' + pet.idColor"
+                  (click)="openSchedule(schedule.code)"
+                >
                   <div
                     class="color-strip"
                     [ngClass]="'background-' + pet.idColor"
@@ -42,7 +46,6 @@
         </ng-container>
       </ng-template>
     </div>
-    <!-- Faz a lógica aí dos 2 calendários -->
   </div>
   <div class="calendar">
     <div class="calendar-header">

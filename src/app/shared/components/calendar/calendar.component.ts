@@ -9,6 +9,7 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   faAngleDown,
   faAngleLeft,
@@ -65,7 +66,10 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   availableTimes: Array<Date> = [];
 
-  constructor(private schedulingService: SchedulingService) {}
+  constructor(
+    private schedulingService: SchedulingService,
+    private router: Router
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.defineCalendarVariables();
@@ -163,6 +167,10 @@ export class CalendarComponent implements OnInit, OnChanges {
         this.availableTimes.push(openTime);
       }
     });
+  }
+
+  openSchedule(code: number) {
+    this.router.navigate(['/perfil/pets/agendamento/' + code]);
   }
 
   onSelectMonth(event: Event) {
