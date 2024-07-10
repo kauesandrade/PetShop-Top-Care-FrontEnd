@@ -23,9 +23,8 @@ main {
     row-gap: 2rem;
   }
 
-  app-product-item-section,
-  app-payment-layout,
-  app-product-item-section {
+  app-payment-item-section,
+  app-payment-layout {
     @include subgrid();
   }
 }

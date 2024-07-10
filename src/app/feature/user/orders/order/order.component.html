@@ -15,10 +15,10 @@
         class="commonSection-secondary"
       ></app-order-details>
     </div>
-    <app-product-item-section
+    <app-payment-item-section
       [items]="order!.items"
       [boxShadow]="true"
-    ></app-product-item-section>
+    ></app-payment-item-section>
     <button appButton (click)="router.navigate(['/perfil/pedidos'])">
       Voltar
     </button>

@@ -9,6 +9,10 @@
   width: 100%;
   cursor: pointer;
 
+  &.scheduling {
+    cursor: default;
+  }
+
   &.box-shadow {
     box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.25);
   }
@@ -60,7 +64,7 @@
       aspect-ratio: 1 /1;
       width: 5rem;
       height: auto;
-      object-fit: contain;
+      object-fit: cover;
 
       @media (min-width: $desktop) {
         width: auto;

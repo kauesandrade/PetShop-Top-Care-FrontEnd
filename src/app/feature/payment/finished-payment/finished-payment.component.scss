@@ -4,7 +4,7 @@ main {
   @include grid-container();
   row-gap: 2rem;
 
-  app-product-item-section {
+  app-payment-item-section {
     grid-column: 1/ -1;
   }
 

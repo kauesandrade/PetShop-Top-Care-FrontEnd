@@ -7,6 +7,7 @@ import { Schedule } from '../../interfaces/schedule/schedule';
 import { ServiceCategory } from '../../interfaces/services/service-category';
 import { ServiceVariant } from '../../interfaces/services/service-variant';
 import { Address } from '../../interfaces/user/address';
+import { PaymentService } from '../../services/payment/payment.service';
 import { SchedulingService } from '../../services/scheduling/scheduling.service';
 
 @Component({
@@ -29,6 +30,7 @@ export class ServiceDetailsSectionComponent implements OnInit {
 
   constructor(
     private schedulingService: SchedulingService,
+    private paymentService: PaymentService,
     private router: Router
   ) {}
 
@@ -55,15 +57,7 @@ export class ServiceDetailsSectionComponent implements OnInit {
   }
 
   totalServicesSum() {
-    let total = 0;
-
-    if (this.services) {
-      for (let service of this.services) {
-        total += service.price;
-      }
-    }
-
-    return total;
+    return this.schedulingService.servicesTotalSum();
   }
 
   cancelScheduling() {
@@ -71,6 +65,18 @@ export class ServiceDetailsSectionComponent implements OnInit {
   }
 
   goToPayment() {
+    this.paymentService.setParcelsNumber(2);
+
+    this.paymentService.parcels = new Array<number>();
+
+    for (let i = 1; i <= this.paymentService.parcelsNumber; i++) {
+      this.paymentService.parcels.push(this.totalServicesSum() / i);
+    }
+
+    this.paymentService.type = 'scheduling';
+
+    console.log(this.paymentService.parcels);
+
     this.router.navigate(['/agendamento/pagamento']);
   }
 }

@@ -3,7 +3,7 @@ import { Petshop } from '../petshop/petshop';
 import { ServiceVariant } from '../services/service-variant';
 
 export interface Schedule {
-  code: string;
+  code: number;
   dateTime: string;
   services: ServiceVariant[];
   petshop: Petshop;
