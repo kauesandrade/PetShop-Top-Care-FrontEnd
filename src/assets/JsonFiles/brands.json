@@ -1,0 +1,44 @@
+{
+    "brand": [
+      {
+        "code": 1,
+        "name": "Golden"
+      },
+      {
+        "code": 2,
+        "name": "Pedigree"
+      },
+      {
+        "code": 3,
+        "name": "Purina"
+      },
+      {
+        "code": 4,
+        "name": "Zee.dog"
+      },
+      {
+        "code": 5,
+        "name": "Whiskas"
+      },
+      {
+        "code": 6,
+        "name": "Super Secão"
+      },
+      {
+        "code": 7,
+        "name": "N&D Prime"
+      },
+      {
+        "code": 8,
+        "name": "Premier"
+      },
+      {
+        "code": 9,
+        "name": "Pet Iglu"
+      },
+      {
+        "code": 10,
+        "name": "Ideia Store"
+      }
+    ]
+}

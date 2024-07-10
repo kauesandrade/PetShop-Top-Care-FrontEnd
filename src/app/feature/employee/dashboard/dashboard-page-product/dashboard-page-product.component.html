@@ -6,24 +6,24 @@
     <h1>{{titlePage}}</h1>
 
     <section class="sections">
-      <app-product-forms (emitProductForms)="getProductForms($event)" [product]="product"></app-product-forms>
+      <app-product-forms [(productForm)]="productForm"></app-product-forms>
     </section>
 
     <section class="sections">
-      <app-specifications-forms (emitSpecificationForms)="getSpecificationsForms($event)" [product]="product"></app-specifications-forms>
+      <app-specifications-forms [(specificationsForm)]="specificationsForm" ></app-specifications-forms>
     </section>
 
     <section class="sections">
-      <app-product-variant-forms (emitVariantForms)="getVariantForms($event)" [productVariantsList]="productVariantsList"></app-product-variant-forms>
+      <app-variant-forms [(variantsForm)]="variantsForm"></app-variant-forms>
     </section>
 
     <div class="div-btns">
       <button routerLink="/dashboard/produtos" appButton="">Voltar</button>
       <ng-container *ngIf="this.product; else notProduct">
-        <button appButton="secondary">Salvar</button>
+        <button (click)="updateProduct()" [disabled]="!areFormsValid()" appButton="secondary">Salvar</button>
       </ng-container>
       <ng-template #notProduct>
-        <button appButton="secondary">Adicionar</button>
+        <button (click)="addProduct()" [disabled]="!areFormsValid()" appButton="secondary">Adicionar</button>
       </ng-template>
     </div>
 

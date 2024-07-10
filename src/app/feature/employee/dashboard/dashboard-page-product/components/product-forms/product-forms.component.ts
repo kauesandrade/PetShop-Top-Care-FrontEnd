@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { Product } from 'src/app/shared/interfaces/product/product';
+import { FormGroup } from '@angular/forms';
+import { Brand } from 'src/app/shared/interfaces/product/brand';
+import { Category } from 'src/app/shared/interfaces/search/category';
+import brands from '../../../../../../../assets/JsonFiles/brands.json';
+import categories from '../../../../../../../assets/JsonFiles/categories.json';
 
 @Component({
   selector: 'app-product-forms',
@@ -10,41 +13,57 @@ import { Product } from 'src/app/shared/interfaces/product/product';
 export class ProductFormsComponent implements OnInit {
 
 
-  @Input() product?: Product
-  @Output() emitProductForms: EventEmitter<FormBuilder> = new EventEmitter()
+  @Input() productForm!: FormGroup
+  @Output() productFormChange = new EventEmitter<FormGroup>();
 
-  productForm = this.formBuilder.group({
-    code: [0],
-    title: [''],
-    littleDescription: [''],
-    description: [''],
-    brand: [''],
-    // specifications: Array<ProductSpecification>;
-    // rating: number;
-    category: ['']
-    // category: Array<Category>;
-    // reviews?: Array<ProductReview>;
-  })
+  brands!: Array<Brand>
 
-  constructor(private formBuilder: FormBuilder) { }
+  categories!: Array<Category>
+  typesCategories: Array<string> = []
+  selectCategories!: Array<string>
+
+  constructor() { }
 
   ngOnInit(): void {
+    this.brands = brands.brand
+    this.categories = categories.category
 
-    this.productForm = this.formBuilder.group({
-    code: this.product?.code!,
-    title: this.product?.title!,
-    littleDescription: this.product?.littleDescription!,
-    description: this.product?.description!,
-    brand: this.product?.brand!,
-    // specifications: Array<ProductSpecification>;
-    // rating: number;
-    category: ['']
-    // category: Array<Category>;
-    // reviews?: Array<ProductReview>;
+    this.categories.forEach(categories =>{
+      categories.types.forEach(type =>{  
+        this.typesCategories.push(type)
+      })
     })
 
+    this.selectCategories = this.category?.value
   }
 
-  
+  changeEmitProductForms(){
+    console.log(this.productForm);
+    this.productFormChange.emit(this.productForm);
+  }
+
+  get code(){
+    return this.productForm.get('code')
+  }
+
+  get title(){
+    return this.productForm.get('title')
+  }
+
+  get littleDescription(){
+    return this.productForm.get('littleDescription')
+  }
+
+  get description(){
+    return this.productForm.get('description')
+  }
+
+  get brand(){
+    return this.productForm.get('brand')
+  }
+
+  get category(){
+    return this.productForm.get('category')
+  }
 
 }

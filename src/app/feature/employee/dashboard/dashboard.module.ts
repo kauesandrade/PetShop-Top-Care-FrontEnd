@@ -24,6 +24,9 @@ import { DashboardPageServiceComponent } from './dashboard-page-service/dashboar
 import { ServiceFormsComponent } from './dashboard-page-service/components/service-forms/service-forms.component';
 import { ServiceVariantFormsComponent } from './dashboard-page-service/components/service-variant-forms/service-variant-forms.component';
 import { DashboardPageSchedulingComponent } from './dashboard-page-scheduling/dashboard-page-scheduling.component';
+import { VariantFormsComponent } from './dashboard-page-product/components/variant-forms/variant-forms.component';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -57,7 +60,9 @@ import { DashboardPageSchedulingComponent } from './dashboard-page-scheduling/da
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
     CoreModule, 
-    SharedModule
+    SharedModule,
+    MultiSelectModule,
+    BrowserAnimationsModule,
   ]
 })
 export class DashboardModule { }

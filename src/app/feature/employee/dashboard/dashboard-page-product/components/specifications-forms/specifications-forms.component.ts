@@ -1,9 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faPlus, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
-import { Product } from 'src/app/shared/interfaces/product/product';
-import { ProductSpecification } from 'src/app/shared/interfaces/product/product-specification';
 
 @Component({
   selector: 'app-specifications-forms',
@@ -12,78 +10,87 @@ import { ProductSpecification } from 'src/app/shared/interfaces/product/product-
 })
 export class SpecificationsFormsComponent implements OnInit {
 
-  @Input() product?: Product
-  @Output() emitSpecificationForms: EventEmitter<FormBuilder> = new EventEmitter()
+  @Input() specificationsForm!: FormGroup
+  @Output() specificationsFormChange = new EventEmitter<FormGroup>();
+  @Output() deleteSpecificationForm = new EventEmitter<number>();
+  @Output() addSpecificationForm = new EventEmitter<FormGroup>();
 
   specificationsOpen = false;
-
+  
+  specificationForm!: FormGroup
+  specificationModal?: number | null = null;
+  
   faPlus = faPlus;
   faTrash = faTrash;
   faTimes = faTimes;
 
-  specificationForm = this.formBuilder.group({
-    title: ['',[Validators.required, EmptyValidator]],
-    description: [''],
-  })
-
-  specificationUpdate = "";
-
-
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.clearInputs();
   }
 
   addSpecifications() {
     this.specificationsOpen = true;
-    this.specificationUpdate = "";
-    this.specificationForm = this.formBuilder.group({
-      title: [''],
-      description: [''],
-    })
+    this.specificationModal = null;
+    this.clearInputs();
   }
 
-  deleteSpecification(specification: ProductSpecification) {
-    this.product?.specifications.forEach(specificationProduct => {
-      if (specificationProduct.value == specification.value) {
-        this.product?.specifications.splice(this.product?.specifications.indexOf(specificationProduct), 1);
-        if (this.specificationForm.value.title == specificationProduct.title) {
-          this.specificationsOpen = false;
-        }
-      }
-    })
-    //ADD NO product update
-  }
-
-  editSpecification(specification: ProductSpecification) {
-    this.specificationUpdate = specification.title!
+  editSpecification(specification: number) {
+    this.specificationModal = specification;
     this.specificationsOpen = true;
     this.specificationForm = this.formBuilder.group({
-      title: [specification.title],
-      description: [specification.value],
+      title: [this.getTitle(specification)?.value!],
+      description: [this.getDescription(specification)?.value!],
     })
   }
 
   updateSpecification() {
-    this.product?.specifications.forEach(specificationProduct => {
-      if (specificationProduct.title == this.specificationUpdate) {
-        this.product!.specifications[this.product!.specifications.indexOf(specificationProduct)].title = this.specificationForm.value.title!;
-        this.product!.specifications[this.product!.specifications.indexOf(specificationProduct)].value = this.specificationForm.value.description!;
-        this.specificationUpdate = this.specificationForm.value.title!
-      }
+    const form = this.formBuilder.group({
+      title: [this.specificationForm.get('title')?.value!, [Validators.required, EmptyValidator]],
+      description: [this.specificationForm.get('description')?.value!, [Validators.required, EmptyValidator]],
+    });
+    (<FormArray>this.specificationsForm.get("specifications")).setControl(this.specificationModal!, form as FormGroup);
+    this.specificationsFormChange.emit(this.specificationsForm)
+    console.log(this.specificationsForm);
+  }
+
+  addSpecification() {
+    (<FormArray>this.specificationsForm.get("specifications")).push(this.specificationForm)
+    this.addSpecificationForm.emit(this.specificationForm);
+    this.specificationsFormChange.emit(this.specificationsForm)
+    console.log(this.specificationsForm);
+    this.clearInputs();
+  }
+
+  deleteSpecification(specification: number) {
+    (<FormArray>this.specificationsForm.get("specifications")).removeAt(specification);
+    this.deleteSpecificationForm.emit(specification);
+    this.specificationsFormChange.emit(this.specificationsForm)
+
+    if(this.specificationModal! == specification){
+      this.addSpecifications();
+      this.specificationsOpen = false;
+    }
+  }
+
+  clearInputs(){
+    this.specificationForm = this.formBuilder.group({
+      title: ['', [Validators.required, EmptyValidator]],
+      description: ['', [Validators.required, EmptyValidator]],
     })
   }
 
-  addSpecification(){
-    let specification: ProductSpecification = {
-      title: this.specificationForm.value.title!,
-      value: this.specificationForm.value.description!
-    }
+  get specifications() {
+    return this.specificationsForm?.get('specifications') as FormArray;
+  }
 
-    if(specification.title != '' && specification.value != ''){
-      this.product?.specifications.push(specification);
-      this.addSpecifications();
-    }
+  getTitle(index: number) {
+    return (<FormGroup>this.specifications.controls[index]).get('title');
+  }
+
+  getDescription(index: number) {
+    return (<FormGroup>this.specifications.controls[index]).get('description');
   }
 
 }
