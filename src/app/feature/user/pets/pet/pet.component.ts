@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { Pet } from 'src/app/shared/interfaces/pet/pet';
 import { UserService } from 'src/app/shared/services/user/user.service';
@@ -27,7 +27,8 @@ export class PetProfile implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   initProfileForm() {
@@ -79,6 +80,11 @@ export class PetProfile implements OnInit {
     return (
       this.petProfileForm.valid
     );
+  }
+
+  deletePet() {
+    this.userService.deletePet(this.id);
+    this.router.navigate(['/perfil/pets'])
   }
 
 }

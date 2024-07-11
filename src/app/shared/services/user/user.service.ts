@@ -81,4 +81,9 @@ export class UserService implements OnChanges {
 
     return null;
   }
+
+  deletePet(id: number){
+    this.loggedUser!.pets = this.loggedUser?.pets?.filter((pet) => pet.id != id)!;
+    console.log(this.loggedUser!.pets);
+  }
 }
