@@ -6,7 +6,6 @@ import { NgxMaskModule } from 'ngx-mask';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { DataComponent } from './data/data.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PetsComponent } from './pets/pets.component';
