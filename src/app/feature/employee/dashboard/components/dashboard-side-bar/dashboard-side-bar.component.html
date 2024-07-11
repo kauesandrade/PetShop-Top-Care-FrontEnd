@@ -106,14 +106,15 @@
     <div class="container" *ngIf="isOpen">
         <div
         class="accordion"
-        [ngClass]="page == 'perfil' ? 'clicked' : '' " 
         >
-            <button class="accordion-btn" (click)="clickedBtn('perfil')">
+        <!-- [ngClass]="page == 'perfil' ? 'clicked' : '' "  -->
+        <!-- (click)="clickedBtn('perfil')" -->
+            <button class="accordion-btn" >
                 <a class="accordion-btn-header"
                     routerLink="/dashboard/perfil"
                 >
                     <fa-icon [icon]="faUser"></fa-icon>
-                    <span>Perfil</span>
+                    <span>{{userService.loggedUser?.name}}</span>
                 </a>
             </button>
         </div>
