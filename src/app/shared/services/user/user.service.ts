@@ -67,4 +67,18 @@ export class UserService implements OnChanges {
     localStorage.setItem('user', JSON.stringify(this.loggedUser));
     console.log(user);
   }
+
+  getPetById(id: number) {
+    if (this.loggedUser?.pets?.length == 0) {
+      return null;
+    }
+
+    for (let pet of this.loggedUser?.pets!) {
+      if (pet.id == id) {
+        return pet;
+      }
+    }
+
+    return null;
+  }
 }
