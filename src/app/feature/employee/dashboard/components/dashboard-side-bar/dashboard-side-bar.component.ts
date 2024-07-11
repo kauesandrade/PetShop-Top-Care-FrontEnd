@@ -21,7 +21,15 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
   sideBarOpen: boolean | undefined;
   innerWidth: any;
 
-  constructor(private userService: UserService) {}
+  @Input() pageNow: string = '' ;
+  @Input() isOpen:boolean = false;
+
+  isHovered: boolean = false;
+  page: string  = '';
+  size = 'small';
+
+
+  constructor(protected userService: UserService) {}
   
   ngOnChanges(changes: SimpleChanges): void {
     if(this.isOpen){
@@ -37,12 +45,6 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
     this.onResize();
     this.page = this.pageNow;
   }
-
-  isHovered: boolean = false;
-  @Input() pageNow: string = '' ;
-  page: string  = ''
-  size = 'small'
-  @Input() isOpen:boolean = false
 
 
   clickedBtn(evt: string){
