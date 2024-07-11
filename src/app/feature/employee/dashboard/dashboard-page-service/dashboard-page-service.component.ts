@@ -41,7 +41,7 @@ export class DashboardPageServiceComponent implements OnInit {
         title: this.serviceVariantList[0].title,
         description: this.serviceVariantList[0].description,
         category: this.serviceVariantList[0].category,
-        servedPets: [],
+        servedPets: this.serviceVariantList[0].servedPets,
       })
       this.titlePage = 'Editar um Serviço'
     } else {
@@ -50,7 +50,7 @@ export class DashboardPageServiceComponent implements OnInit {
     }
 
     this.initServiceForm();
-
+    this.initVariantsForm();
   }
 
   sideBarOpen(evt: any) {
