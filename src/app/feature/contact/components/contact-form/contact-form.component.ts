@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { DateValidator } from 'src/app/core/validators/date.validator';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { Service } from '../../interfaces/service';
@@ -13,6 +14,10 @@ import { ContactService } from '../../services/contact.service';
 })
 export class ContactFormComponent {
   today = this.getTodayDate();
+
+  @ViewChild('imageDisplay') imageDisplay!: ElementRef<HTMLDivElement>;
+
+  faCamera = faCamera;
 
   serviceTypes = [
     'Compra',
@@ -152,6 +157,18 @@ export class ContactFormComponent {
     this.contactService.addService(newService);
     this.modal.nativeElement.showModal();
     document.body.style.overflow = 'hidden';
+  }
+
+  onFileChange(event: any) {
+    const files = event.target?.files;
+
+    const reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      console.log(reader.result!.toString());
+
+      this.imageDisplay.nativeElement.style.backgroundImage = `url(${reader.result!.toString()})`;
+    };
   }
 
   closeModal() {

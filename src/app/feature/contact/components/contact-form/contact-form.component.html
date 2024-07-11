@@ -114,6 +114,25 @@
       </span>
     </label>
   </ng-container>
+  <ng-container *ngIf="this.type?.value == 'Orçamento'">
+    <label for="image">
+      <p>Adicionar uma foto</p>
+      <div #imageDisplay>
+        <fa-icon
+          *ngIf="!imageDisplay.style.backgroundImage"
+          [icon]="faCamera"
+        ></fa-icon>
+      </div>
+      <input
+        type="file"
+        accept="image/png, image/jpeg, image/gif*"
+        id="image"
+        formControlName="image"
+        placeholder="Digite seu telefone"
+        (input)="onFileChange($event)"
+      />
+    </label>
+  </ng-container>
   <label for="message" appInput>
     <p>Mensagem*</p>
     <textarea
