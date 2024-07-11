@@ -451,7 +451,7 @@
           "weight": 25.5,
           "schedules": [
             {
-              "code": "1",
+              "code": 1,
               "dateTime": "2024-07-02T10:00:00",
               "services": [
                 {
@@ -518,7 +518,7 @@
           "weight": 25.5,
           "schedules": [
             {
-              "code": "1",
+              "code": 1,
               "dateTime": "2024-07-02T10:00:00",
               "services": [
                 {
@@ -585,7 +585,7 @@
           "weight": 25.5,
           "schedules": [
             {
-              "code": "1",
+              "code": 1,
               "dateTime": "2024-07-02T10:00:00",
               "services": [
                 {
@@ -652,7 +652,7 @@
           "weight": 25.5,
           "schedules": [
             {
-              "code": "1",
+              "code": 1,
               "dateTime": "2024-07-02T10:00:00",
               "services": [
                 {
@@ -719,7 +719,7 @@
           "weight": 25.5,
           "schedules": [
             {
-              "code": "1",
+              "code": 1,
               "dateTime": "2024-07-02T10:00:00",
               "services": [
                 {
