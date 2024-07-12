@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import pets from '../../../../../../../assets/JsonFiles/pets.json';
 
 @Component({
@@ -17,6 +18,10 @@ export class ServiceFormsComponent implements OnInit {
   pets!: Array<string>
   typePets: Array<string> = []
   selectPets!: Array<string>
+
+  @ViewChild('imageDisplay') imageDisplay!: ElementRef<HTMLDivElement>;
+
+  faCamera = faCamera
   
   constructor(private formBuilder: FormBuilder) { }
   
@@ -38,6 +43,19 @@ export class ServiceFormsComponent implements OnInit {
     console.log(this.serviceForm);
 
   }
+
+  onFileChange(event: any) {
+    const files = event.target?.files;
+
+    const reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      console.log(reader.result!.toString());
+
+      this.imageDisplay.nativeElement.style.backgroundImage = `url(${reader.result!.toString()})`;
+    };
+  }
+
    
   changeEmitServiceForms(){
     this.serviceFormChange.emit(this.serviceForm);
