@@ -2,18 +2,17 @@
 
     <section class="section-image">
         <label for="image">
-            <p>Adicionar uma foto</p>
             <div #imageDisplay>
               <fa-icon
-                *ngIf="!imageDisplay.style.backgroundImage"
-                [icon]="faCamera"
+                *ngIf="!image?.value"
+                [icon]="faFile"
               ></fa-icon>
+              <p *ngIf="!image?.value">Adicionar Imagem</p>
             </div>
             <input
               type="file"
               accept="image/png, image/jpeg, image/gif*"
               id="image"
-              formControlName="image"
               placeholder="Digite seu telefone"
               (input)="onFileChange($event)"
             />

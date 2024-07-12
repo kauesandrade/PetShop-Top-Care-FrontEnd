@@ -1,6 +1,7 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { faCamera, faFile } from '@fortawesome/free-solid-svg-icons';
+import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import pets from '../../../../../../../assets/JsonFiles/pets.json';
 
 @Component({
@@ -8,7 +9,7 @@ import pets from '../../../../../../../assets/JsonFiles/pets.json';
   templateUrl: './service-forms.component.html',
   styleUrls: ['./service-forms.component.scss']
 })
-export class ServiceFormsComponent implements OnInit {
+export class ServiceFormsComponent implements OnInit, AfterViewInit {
 
   @Input() serviceForm!: FormGroup
   @Output() serviceFormChange = new EventEmitter<FormGroup>();
@@ -21,9 +22,13 @@ export class ServiceFormsComponent implements OnInit {
 
   @ViewChild('imageDisplay') imageDisplay!: ElementRef<HTMLDivElement>;
 
-  faCamera = faCamera
+  faFile = faFile
   
   constructor(private formBuilder: FormBuilder) { }
+
+  ngAfterViewInit(): void {
+    this.imageDisplay.nativeElement.style.backgroundImage = `url(${this.image?.value})`;
+  }
   
   ngOnInit(): void {
 
@@ -31,18 +36,14 @@ export class ServiceFormsComponent implements OnInit {
       "Clínica",
       "Higiene"
     ]
-    this.pets = pets.pets
 
+    this.pets = pets.pets
     this.pets.forEach(pet =>{
         this.typePets.push(pet);
     })
-
     this.selectPets = this.servedPets?.value
-
-    
-    console.log(this.serviceForm);
-
   }
+
 
   onFileChange(event: any) {
     const files = event.target?.files;
@@ -50,9 +51,18 @@ export class ServiceFormsComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
-      console.log(reader.result!.toString());
 
-      this.imageDisplay.nativeElement.style.backgroundImage = `url(${reader.result!.toString()})`;
+      this.serviceForm = this.formBuilder.group({
+        code: [this.code?.value, [Validators.required, EmptyValidator]],
+        image: [reader.result!.toString(), [Validators.required, EmptyValidator]],
+        title: [this.title?.value, [Validators.required, EmptyValidator]],
+        description: [this.description?.value, [Validators.required, EmptyValidator]],
+        category: [this.category?.value, [Validators.required, EmptyValidator]],
+        servedPets: [this.servedPets?.value, [Validators.required, EmptyValidator]],
+      })
+
+      this.imageDisplay.nativeElement.style.backgroundImage = `url(${this.image?.value})`;
+      this.changeEmitServiceForms();
     };
   }
 

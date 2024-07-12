@@ -13,14 +13,14 @@
         row-gap: 2rem;
     }
 
-    .section-image{
+    .section-image {
         @include subgrid();
         grid-column: 1 / -1;
         // background-color: $white;
 
         @include flex($align: start);
 
-        img{
+        img {
             grid-column: 1 / -1;
             max-width: 17rem;
             width: 100%;
@@ -33,17 +33,18 @@
                 width: 100%;
             }
         }
-        
+
         @media(min-width: $tablet) {
             grid-column: 1 / 4;
         }
-        
+
         @media(min-width: $desktop) {
             grid-column: 1 / 5;
         }
 
     }
-    .section-forms{
+
+    .section-forms {
         @include subgrid();
         grid-column: 1 / -1;
         row-gap: 1rem;
@@ -52,7 +53,7 @@
             grid-column: 4 / -1;
             row-gap: 1.5rem;
         }
-    
+
         @media(min-width: $desktop) {
             grid-column: 5 / -1;
             row-gap: 2rem;
@@ -62,61 +63,61 @@
             @include subgrid();
             grid-column: 1 / -1;
             row-gap: 1rem;
-    
+
             @media(min-width: $tablet) {
                 row-gap: 1.5rem;
             }
-    
+
             @media(min-width: $desktop) {
                 row-gap: 2rem;
             }
-    
+
             .labels {
-    
+
                 @media(min-width: $tablet) {
                     &:first-child {
                         grid-column: 1 / -1;
                     }
-    
+
                     &:last-child {
                         grid-column: 1 / -1;
                     }
                 }
-    
+
                 @media(min-width: $desktop) {
-    
+
                     &:first-child {
                         grid-column: 1 / 5;
                     }
-    
+
                     &:last-child {
                         grid-column: 5 / -1;
                     }
                 }
             }
         }
-    
+
         .labels {
             grid-column: 1 / -1;
-    
+
             p {
                 @include text(normal, bold);
                 color: $primary;
-    
+
                 @media(min-width: $desktopHD) {
                     @include heading(h6);
                 }
             }
-    
-            input {
+
+            input, select {
                 width: 100%;
             }
-    
+
             textarea {
                 width: 100%;
                 height: 6.25rem;
             }
-    
+
         }
     }
 
@@ -126,30 +127,66 @@
         width: 100%;
         height: 100%;
         min-height: 10.5rem;
-    
-        input[type="file"] {
-          display: none;
-        }
-    
-        div {
-          @include flex();
-          border-radius: 1rem;
-          border: 3px dashed $gray2;
-          width: 100%;
-          height: 100%;
-          background-color: $gray5;
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: center;
-          background-clip: content-box;
-          fa-icon {
-            font-size: 2rem;
-            @media (min-width: $desktop) {
-              font-size: 4rem;
-            }
-          }
-        }
-      }
 
-    
+        input[type="file"] {
+            display: none;
+        }
+
+        div {
+            @include flex(column);
+            border-radius: 1rem;
+            width: 100%;
+            height: 100%;
+            background-color: $gray5;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-clip: content-box;
+            gap: 0.5rem;
+
+            fa-icon {
+                font-size: 2rem;
+
+                @media (min-width: $desktop) {
+                    font-size: 4rem;
+                }
+            }
+
+            P {
+                @include text(medium, bold);
+            }
+        }
+    }
+
+
+}
+
+:host ::ng-deep {
+
+    .p-multiselect {
+        margin-top: 0.5rem;
+        width: 95vw;
+
+        @media(min-width: $tablet) {
+            width: 100%;
+        }
+
+        border: 2px solid $primary  !important;
+        border-radius: 0.5rem;
+    }
+
+    .p-multiselect-trigger {
+        width: 1.25rem;
+    }
+
+    .pi:before {
+        font-size: 0.65rem;
+        font-weight: 900;
+    }
+
+}
+
+.has-error {
+    border-color: $error;
+    color: $error;
 }
