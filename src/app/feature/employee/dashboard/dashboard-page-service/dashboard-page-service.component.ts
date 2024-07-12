@@ -37,11 +37,11 @@ export class DashboardPageServiceComponent implements OnInit {
       this.serviceVariantList = this.serviceService.getServiceVariants(parseInt(this.id));
       this.service = ({
         code: this.serviceVariantList[0].code,
-        image: this.serviceVariantList[0].image,
         title: this.serviceVariantList[0].title,
         description: this.serviceVariantList[0].description,
         category: this.serviceVariantList[0].category,
         servedPets: this.serviceVariantList[0].servedPets,
+        image: this.serviceVariantList[0].image,
       })
       this.titlePage = 'Editar um Serviço'
     } else {
@@ -81,7 +81,7 @@ export class DashboardPageServiceComponent implements OnInit {
         title: [this.service.title!, [Validators.required, EmptyValidator]],
         description: [this.service.description!, [Validators.required, EmptyValidator]],
         category: [this.service.category!, [Validators.required, EmptyValidator]],
-        typePets: [this.service.servedPets!, [Validators.required, EmptyValidator]],
+        servedPets: [this.service.servedPets!, [Validators.required, EmptyValidator]],
         image: [this.service.image!, [Validators.required, EmptyValidator]]
       })
     }else{
@@ -90,7 +90,7 @@ export class DashboardPageServiceComponent implements OnInit {
         title: [, [Validators.required, EmptyValidator]],
         description: [, [Validators.required, EmptyValidator]],
         category: [, [Validators.required, EmptyValidator]],
-        typePets: [, [Validators.required, EmptyValidator]],
+        servedPets: [, [Validators.required, EmptyValidator]],
         image: [, [Validators.required, EmptyValidator]]
       })
     }

@@ -54,11 +54,11 @@ export class ServiceFormsComponent implements OnInit, AfterViewInit {
 
       this.serviceForm = this.formBuilder.group({
         code: [this.code?.value, [Validators.required, EmptyValidator]],
-        image: [reader.result!.toString(), [Validators.required, EmptyValidator]],
         title: [this.title?.value, [Validators.required, EmptyValidator]],
         description: [this.description?.value, [Validators.required, EmptyValidator]],
         category: [this.category?.value, [Validators.required, EmptyValidator]],
         servedPets: [this.servedPets?.value, [Validators.required, EmptyValidator]],
+        image: [reader.result!.toString(), [Validators.required, EmptyValidator]],
       })
 
       this.imageDisplay.nativeElement.style.backgroundImage = `url(${this.image?.value})`;

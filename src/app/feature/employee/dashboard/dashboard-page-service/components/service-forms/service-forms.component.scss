@@ -16,7 +16,6 @@
     .section-image {
         @include subgrid();
         grid-column: 1 / -1;
-        // background-color: $white;
 
         @include flex($align: start);
 
