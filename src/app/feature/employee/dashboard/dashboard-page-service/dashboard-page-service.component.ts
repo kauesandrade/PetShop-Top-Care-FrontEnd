@@ -57,13 +57,21 @@ export class DashboardPageServiceComponent implements OnInit {
     this.isOpen = evt;
   }
 
-  // getServiceForms(evt: any){
-  //   console.log(evt);
-  // }
+
+  addService(){
+    console.log(this.serviceForm)
+    console.log(this.variantsForm)
+  }
   
-  // getVariantForms(evt: any){
-  //   console.log(evt);
-  // }
+  updateService(){
+    console.log(this.serviceForm)
+    console.log(this.variantsForm)
+  }
+
+  areFormsValid() {
+    return this.serviceForm.valid && this.variantsForm.valid
+  }
+
 
   initServiceForm(){
 
@@ -73,7 +81,8 @@ export class DashboardPageServiceComponent implements OnInit {
         title: [this.service.title!, [Validators.required, EmptyValidator]],
         description: [this.service.description!, [Validators.required, EmptyValidator]],
         category: [this.service.category!, [Validators.required, EmptyValidator]],
-        typePets: [this.service.servedPets!, [Validators.required, EmptyValidator]]
+        typePets: [this.service.servedPets!, [Validators.required, EmptyValidator]],
+        image: [this.service.image!, [Validators.required, EmptyValidator]]
       })
     }else{
       this.serviceForm = this.formBuilder.group({
@@ -81,7 +90,8 @@ export class DashboardPageServiceComponent implements OnInit {
         title: [, [Validators.required, EmptyValidator]],
         description: [, [Validators.required, EmptyValidator]],
         category: [, [Validators.required, EmptyValidator]],
-        typePets: [, [Validators.required, EmptyValidator]]
+        typePets: [, [Validators.required, EmptyValidator]],
+        image: [, [Validators.required, EmptyValidator]]
       })
     }
 
@@ -106,5 +116,4 @@ export class DashboardPageServiceComponent implements OnInit {
       })
     )
   }
-
 }

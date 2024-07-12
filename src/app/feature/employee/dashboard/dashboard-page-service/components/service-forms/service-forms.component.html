@@ -1,7 +1,7 @@
 <form [formGroup]="serviceForm" class="section-product">
 
     <section class="section-image">
-        <img [src]="serviceForm.value.image"/>
+        <img [src]="image?.value"/>
     </section>
 
     <section class="section-forms">
@@ -28,11 +28,6 @@
         </label>
 
         <div class="title-code">
-            <!-- <label for="typePets" class="labels" appInput>
-                <p>Tipos de pets atendidos*</p>
-                <input type="typePets" id="typePets" formControlName="typePets" placeholder="Tipos de pets atendidos"
-                    required />
-            </label> -->
 
             <label for="typePets" class="labels">
                 <p>Tipos de pets atendidos*</p>

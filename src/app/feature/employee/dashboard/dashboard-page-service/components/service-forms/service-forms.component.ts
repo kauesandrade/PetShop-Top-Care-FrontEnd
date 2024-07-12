@@ -34,10 +34,12 @@ export class ServiceFormsComponent implements OnInit {
 
     this.selectPets = this.servedPets?.value
 
+    
+    console.log(this.serviceForm);
+
   }
    
   changeEmitServiceForms(){
-    console.log(this.serviceForm);
     this.serviceFormChange.emit(this.serviceForm);
   }
 

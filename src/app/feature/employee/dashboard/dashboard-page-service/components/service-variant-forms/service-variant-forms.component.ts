@@ -70,8 +70,6 @@ export class ServiceVariantFormsComponent implements OnInit {
       title: [this.getTitle(this.variantModal!)?.value!, [Validators.required, EmptyValidator]],
       price: [this.getPrice(this.variantModal!)?.value!, [Validators.required, EmptyValidator]]
     })
-
-    console.log(this.variantForm);
   }
   
   updateVariant() {
@@ -110,59 +108,5 @@ export class ServiceVariantFormsComponent implements OnInit {
   getPrice(index: number){
     return (<FormGroup>this.variants.controls[index]).get('price');
   }
-
-
-  // deleteVariant(serviceVariant: ServiceVariant) {
-  //   this.serviceVariantsList.forEach(variant => {
-  //     if (variant.variantCode == serviceVariant.variantCode) {
-  //       this.serviceVariantsList.splice(this.serviceVariantsList.indexOf(variant), 1);
-  //       if (this.variantForm.value.code == serviceVariant.variantCode) {
-  //         this.variationsOpen = false;
-  //       }
-  //     }
-  //   })
-  //   //ADD NO product update
-  // }
-
-  // editSpecification(serviceVariant: ServiceVariant) {
-  //   this.variantUpdate = serviceVariant.variantTitle!
-  //   this.variationsOpen = true;
-  //   this.variantForm = this.formBuilder.group({
-  //     title: serviceVariant.variantTitle!,
-  //     code: serviceVariant.variantCode!,
-  //     price: serviceVariant.price!,
-  //   })
-  // }
-
-  // updateVariant() {
-  //   this.serviceVariantsList.forEach(serviceVariant => {
-  //     if (serviceVariant.variantTitle == this.variantUpdate) {
-  //       this.serviceVariantsList[this.serviceVariantsList.indexOf(serviceVariant)].variantTitle = this.variantForm.value.title!
-  //       this.serviceVariantsList[this.serviceVariantsList.indexOf(serviceVariant)].variantCode = this.variantForm.value.code!
-  //       this.serviceVariantsList[this.serviceVariantsList.indexOf(serviceVariant)].price = this.variantForm.value.price!
-  //       this.variantUpdate = this.variantForm.value.title!
-  //     }
-  //   })
-  // }
-
-  // addVariant() {
-  //   let serviceVariant: ServiceVariant = {
-  //     variantCode: this.variantForm.value.code!,
-  //     variantTitle: this.variantForm.value.title!,
-  //     image: this.serviceVariantsList[0].image!,
-  //     price: this.variantForm.value.price!,
-  //     code: this.serviceVariantsList[0].code!,
-  //     title: this.serviceVariantsList[0].title!,
-  //     description: this.serviceVariantsList[0].description!,
-  //     category: this.serviceVariantsList[0].category!,
-  //     servedPets: []
-  //   }
-
-  //   if(serviceVariant.price != 0 && serviceVariant.variantCode != 0 && serviceVariant.variantTitle != ''){
-  //     this.serviceVariantsList.push(serviceVariant);
-  //     this.addVariants();
-  //   }
-
-  // }
 
 }

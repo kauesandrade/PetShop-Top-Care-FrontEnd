@@ -16,10 +16,10 @@
     <div class="div-btns">
       <button routerLink="/dashboard/servicos" appButton="">Voltar</button>
       <ng-container *ngIf="this.serviceVariantList; else notService">
-        <button appButton="secondary">Salvar</button>
+        <button (click)="updateService()" [disabled]="!areFormsValid()" appButton="secondary">Salvar</button>
       </ng-container>
       <ng-template #notService>
-        <button appButton="secondary">Adicionar</button>
+        <button (click)="addService()" [disabled]="!areFormsValid()" appButton="secondary">Adicionar</button>
       </ng-template>
     </div>
 
