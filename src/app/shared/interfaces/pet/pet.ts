@@ -5,10 +5,10 @@ export interface Pet {
   idColor: string;
   image: string;
   name: string;
-  size: string;
   type: string;
-  microchip?: number;
   race: string;
+  size?: string;
+  microchip?: number;
   gender: string;
   color: string;
   birth: string;
