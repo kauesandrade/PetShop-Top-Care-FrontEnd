@@ -45,7 +45,7 @@
   
             <label for="code" class="labels" appInput>
               <p>Código*</p>
-              <input type="text" id="code" formControlName="code" placeholder="Código da variação" required />
+              <input type="text" id="code" mask="0*" [dropSpecialCharacters]="true" formControlName="code" placeholder="Código da variação" required />
             </label>
             
             <label for="price" class="labels" appInput>

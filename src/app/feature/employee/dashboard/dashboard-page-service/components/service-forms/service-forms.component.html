@@ -37,7 +37,7 @@
 
             <label for="code" class="labels" appInput>
                 <p>Código do Serviço*</p>
-                <input type="text" id="code" formControlName="code" placeholder="Código do serviço" required />
+                <input type="text" mask="0*" [dropSpecialCharacters]="true" id="code" formControlName="code" placeholder="Código do serviço" required />
             </label>
 
 
