@@ -1,0 +1,64 @@
+@import "styles";
+
+dialog {
+  &:not([open]) {
+    display: none;
+  }
+  @include grid-container();
+  border: none;
+  outline: none;
+  margin: auto;
+  background-color: transparent;
+
+  .container {
+    @include subgrid();
+    position: relative;
+    row-gap: 1rem;
+    border-radius: 1.25rem;
+    color: $black1;
+    background-color: $white;
+    padding: 1rem;
+    grid-column: 1 / -1;
+
+    @media (min-width: $desktop) {
+      row-gap: 2rem;
+      padding: 1.5rem;
+      grid-column: 2 / span 10;
+    }
+
+    .content {
+      @include subgrid();
+      row-gap: 2rem;
+      grid-column: 2 / -2;
+
+      h2 {
+        color: $primary;
+        grid-column: 1 / -1;
+        text-align: center;
+        @include heading(h5);
+        @media (min-width: $desktop) {
+          @include heading(h2);
+        }
+      }
+
+      p {
+        grid-column: 1 / -1;
+      }
+
+      .buttons {
+        @include subgrid();
+        row-gap: 0.5rem;
+        button {
+          grid-column: 1 / -1;
+          @media (min-width: $tablet) {
+            grid-column: auto / span 2;
+          }
+          @media (min-width: $desktop) {
+            grid-column: auto / span 4;
+          }
+          height: 3rem;
+        }
+      }
+    }
+  }
+}

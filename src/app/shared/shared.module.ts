@@ -26,6 +26,7 @@ import { AddressCardComponent } from './components/address-card/address-card.com
 import { PetshopCardComponent } from './components/petshop-card/petshop-card.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ServiceDetailsSectionComponent } from './components/service-details-section/service-details-section.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 const Components = [
   ProductCardComponent,
@@ -48,6 +49,7 @@ const Components = [
   PetshopCardComponent,
   CalendarComponent,
   ServiceDetailsSectionComponent,
+  ConfirmDialogComponent,
 ];
 
 @NgModule({
