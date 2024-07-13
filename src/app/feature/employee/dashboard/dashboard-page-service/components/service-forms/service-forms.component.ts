@@ -41,7 +41,8 @@ export class ServiceFormsComponent implements OnInit, AfterViewInit {
     this.pets.forEach(pet =>{
         this.typePets.push(pet);
     })
-    this.selectPets = this.servedPets?.value
+    this.selectPets = this.servedPets?.value || []
+    
   }
 
 
@@ -88,7 +89,7 @@ export class ServiceFormsComponent implements OnInit, AfterViewInit {
   }
 
   get servedPets(){
-    return this.serviceForm.get('typePets');
+    return this.serviceForm.get('servedPets');
   }
 
   get category(){

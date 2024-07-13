@@ -131,8 +131,8 @@
             display: none;
         }
 
-        div {
-            @include flex(column);
+        .imageDisplay {
+            @include flex();
             border-radius: 1rem;
             width: 100%;
             height: 100%;
@@ -142,18 +142,26 @@
             background-position: center;
             background-clip: content-box;
             gap: 0.5rem;
+            
+            div{
+                @include flex(column);
+                width: 100%;
+                height: 100%;
+                border-radius: 1rem;
+                background-color: rgba($gray4, 0.4);
 
-            fa-icon {
-                font-size: 2rem;
-
-                @media (min-width: $desktop) {
-                    font-size: 4rem;
+                fa-icon {
+                    font-size: 2rem;
+                    @media (min-width: $desktop) {
+                        font-size: 4rem;
+                    }
+                }
+    
+                P {
+                    @include text(medium, bold);
                 }
             }
 
-            P {
-                @include text(medium, bold);
-            }
         }
     }
 

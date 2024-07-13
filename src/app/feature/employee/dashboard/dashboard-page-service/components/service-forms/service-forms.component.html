@@ -2,12 +2,20 @@
 
     <section class="section-image">
         <label for="image">
-            <div #imageDisplay>
-              <fa-icon
-                *ngIf="!image?.value"
-                [icon]="faFile"
-              ></fa-icon>
-              <p *ngIf="!image?.value">Adicionar Imagem</p>
+            <div #imageDisplay class="imageDisplay">
+              <div>
+                <fa-icon
+                  [icon]="faFile"
+                ></fa-icon>
+                
+                <ng-container *ngIf="this.image?.value; else noImage">
+                  <p>Editar Imagem</p>
+                </ng-container>
+                <ng-template #noImage>
+                  <p>Adicionar Imagem</p>
+                </ng-template>
+
+              </div>
             </div>
             <input
               type="file"
