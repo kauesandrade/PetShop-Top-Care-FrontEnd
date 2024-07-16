@@ -50,7 +50,13 @@
             
             <label for="price" class="labels" appInput>
               <p>Preço*</p>
-              <input type="text" id="price" formControlName="price" placeholder="Preço da variação" required />
+              <input type="text" id="price"
+              mask="separator.2"
+              [thousandSeparator]="'.'"
+              [decimalMarker]="','"
+              prefix="R$ "
+              [dropSpecialCharacters]="true"
+              formControlName="price" placeholder="Preço da variação" required />
             </label>
   
         </form>
