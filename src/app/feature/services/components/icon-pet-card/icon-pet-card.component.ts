@@ -31,7 +31,7 @@ export class IconPetCardComponent implements OnInit {
       case 'Gato':
         this.icon = faCat;
         break;
-      case 'Aves':
+      case 'Pássaros':
         this.icon = faDove;
         break;
       case 'Roedores':
@@ -46,7 +46,7 @@ export class IconPetCardComponent implements OnInit {
         this.iconImage =
           'https://cdn3.iconfinder.com/data/icons/monkey/100/monkey-70-64.png';
         break;
-      default:
+      case 'Peixes':
         this.icon = faFish;
         break;
     }

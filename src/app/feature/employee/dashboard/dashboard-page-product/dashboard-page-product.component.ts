@@ -59,18 +59,6 @@ export class DashboardPageProductComponent implements OnInit {
     this.isOpen = evt;
   }
 
-  getProductForms(evt: any) {
-    this.productForm = evt
-  }
-
-  getSpecificationsForms(evt: any) {
-    this.specificationsForm = evt
-  }
-
-  getVariantForms(evt: any) {
-    this.getVariantForms = evt
-  }
-
   initSpecificationForm() {
     if(this.product){
       for (let specification of this.product!.specifications) {

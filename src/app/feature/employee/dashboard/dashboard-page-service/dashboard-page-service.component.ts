@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { Service } from 'src/app/shared/interfaces/services/service';
 import { ServiceVariant } from 'src/app/shared/interfaces/services/service-variant';
 import { ServicesService } from 'src/app/shared/services/services/services.service';
@@ -19,24 +20,10 @@ export class DashboardPageServiceComponent implements OnInit {
   isOpen: boolean = false;
   titlePage = ""
 
-  serviceForm = this.formBuilder.group({
-    code: [''],
-    title: [''],
-    littleDescription: [''],
-    description: [''],
-    // brand: ['']
-    // specifications: Array<ProductSpecification>;
-    // rating: number;
-    // category: Array<Category>;
-    // reviews?: Array<ProductReview>;
-  })
+  serviceForm!: FormGroup;
 
-  variantForm = this.formBuilder.group({
-    title: [''],
-    code: [''],
-    stock: [''],
-    price: [''],
-    images: [''],
+  variantsForm =  this.formBuilder.group({
+    variants: this.formBuilder.array([])
   })
 
   constructor(private route: ActivatedRoute,
@@ -50,11 +37,11 @@ export class DashboardPageServiceComponent implements OnInit {
       this.serviceVariantList = this.serviceService.getServiceVariants(parseInt(this.id));
       this.service = ({
         code: this.serviceVariantList[0].code,
-        image: this.serviceVariantList[0].image,
         title: this.serviceVariantList[0].title,
         description: this.serviceVariantList[0].description,
         category: this.serviceVariantList[0].category,
-        servedPets: [],
+        servedPets: this.serviceVariantList[0].servedPets,
+        image: this.serviceVariantList[0].image,
       })
       this.titlePage = 'Editar um Serviço'
     } else {
@@ -62,19 +49,71 @@ export class DashboardPageServiceComponent implements OnInit {
       console.log("sem objeto");
     }
 
+    this.initServiceForm();
+    this.initVariantsForm();
   }
 
   sideBarOpen(evt: any) {
     this.isOpen = evt;
   }
 
-  getServiceForms(evt: any){
-    console.log(evt);
+
+  addService(){
+    console.log(this.serviceForm)
+    console.log(this.variantsForm)
   }
   
-  getVariantForms(evt: any){
-    console.log(evt);
+  updateService(){
+    console.log(this.serviceForm)
+    console.log(this.variantsForm)
+  }
+
+  areFormsValid() {
+    return this.serviceForm.valid && this.variantsForm.valid
   }
 
 
+  initServiceForm(){
+
+    if(this.service){
+      this.serviceForm = this.formBuilder.group({
+        code: [this.service.code!, [Validators.required, EmptyValidator]],
+        title: [this.service.title!, [Validators.required, EmptyValidator]],
+        description: [this.service.description!, [Validators.required, EmptyValidator]],
+        category: [this.service.category!, [Validators.required, EmptyValidator]],
+        servedPets: [this.service.servedPets!, [Validators.required, EmptyValidator]],
+        image: [this.service.image!, [Validators.required, EmptyValidator]]
+      })
+    }else{
+      this.serviceForm = this.formBuilder.group({
+        code: [, [Validators.required, EmptyValidator]],
+        title: [, [Validators.required, EmptyValidator]],
+        description: [, [Validators.required, EmptyValidator]],
+        category: [, [Validators.required, EmptyValidator]],
+        servedPets: [, [Validators.required, EmptyValidator]],
+        image: [, [Validators.required, EmptyValidator]]
+      })
+    }
+
+    console.log(this.serviceForm);
+
+  }
+
+  initVariantsForm(){
+    if(this.service){
+      for(let variant of this.serviceVariantList){
+        this.createNewVariant(variant);
+      }
+    }
+  }
+
+  createNewVariant(serviceVariant: ServiceVariant){
+    (<FormArray>this.variantsForm.controls.variants).push(
+      this.formBuilder.group({
+        code: [serviceVariant.variantCode!, [Validators.required, EmptyValidator]],
+        title: [serviceVariant.variantTitle!, [Validators.required, EmptyValidator]],
+        price: [serviceVariant.price!, [Validators.required, EmptyValidator]]
+      })
+    )
+  }
 }

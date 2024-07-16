@@ -7,11 +7,11 @@
       </button>
     </div>
   
-    <div class="variants" *ngIf="serviceVariantsList">
-      <ng-container *ngFor="let service of serviceVariantsList">
-        <div class="select-tag" (click)="editSpecification(service)">
-          <p>{{service.variantTitle}}</p>
-          <button (click)="deleteVariant(service)">
+    <div class="variants" *ngIf="variants.length > 0">
+      <ng-container *ngFor="let variant of variants.controls; let i = index">
+        <div class="select-tag" (click)="editVariant(i)">
+          <p>{{getTitle(i)?.value}}</p>
+          <button (click)="deleteVariant(i)">
             <fa-icon [icon]="faTimes"></fa-icon>
           </button>
         </div>
@@ -21,9 +21,9 @@
     <ng-container *ngIf="variationsOpen">
       <div class="variant">
   
-        <ng-container *ngIf="variantUpdate != ''; else noVariant">
+        <ng-container *ngIf="variantModal != null; else noVariant">
           <div class="variant-card">
-            <p>{{variantUpdate}}</p>
+            <p>{{getTitle(variantModal)?.value}}</p>
             <button (click)="updateVariant()" appButton="secondary">Salvar</button>
           </div>
         </ng-container>
@@ -40,17 +40,17 @@
   
             <label for="title" class="labels" appInput>
               <p>Título da Variação*</p>
-              <input type="title" id="title" formControlName="title" placeholder="Título da variação" required />
+              <input type="text" id="title" formControlName="title" placeholder="Título da variação" required />
             </label>
   
             <label for="code" class="labels" appInput>
               <p>Código*</p>
-              <input type="code" id="code" formControlName="code" placeholder="Código da variação" required />
+              <input type="text" id="code" mask="0*" [dropSpecialCharacters]="true" formControlName="code" placeholder="Código da variação" required />
             </label>
             
             <label for="price" class="labels" appInput>
               <p>Preço*</p>
-              <input type="price" id="price" formControlName="price" placeholder="Preço da variação" required />
+              <input type="text" id="price" formControlName="price" placeholder="Preço da variação" required />
             </label>
   
         </form>

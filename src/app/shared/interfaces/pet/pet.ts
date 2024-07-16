@@ -7,7 +7,7 @@ export interface Pet {
   name: string;
   type: string;
   race: string;
-  size?: string;
+  size: string;
   microchip?: number;
   gender: string;
   color: string;

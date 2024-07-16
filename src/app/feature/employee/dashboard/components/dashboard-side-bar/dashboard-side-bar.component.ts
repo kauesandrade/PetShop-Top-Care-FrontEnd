@@ -28,7 +28,6 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
   page: string  = '';
   size = 'small';
 
-
   constructor(protected userService: UserService) {}
   
   ngOnChanges(changes: SimpleChanges): void {
