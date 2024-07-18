@@ -62,7 +62,8 @@ export class ProductVariantFormsComponent implements OnInit {
       code: [this.getCode(this.variantModal!)?.value!, [Validators.required, EmptyValidator]],
       stock: [this.getStock(this.variantModal!)?.value! || 0],
       price: [this.getPrice(this.variantModal!)?.value!, [Validators.required, EmptyValidator]],
-      images: [this.getImages(this.variantModal!)]
+      images: [this.getImages(this.variantModal!)],
+      discount: [this.getDiscount(this.variantModal!)?.value!]
     })
   }
   
@@ -73,7 +74,8 @@ export class ProductVariantFormsComponent implements OnInit {
       code: [this.variantForm.get("code")?.value, [Validators.required, EmptyValidator]],
       stock: [this.variantForm.get("stock")?.value || 0],
       price: [this.variantForm.get("price")?.value, [Validators.required, EmptyValidator]],
-      images: [this.variantForm.get("images")?.value]
+      images: [this.variantForm.get("images")?.value],
+      discount: [this.variantForm.get("discount")?.value!]
     });
 
     (<FormArray>this.variantsForm.get("variants")).setControl(this.variantModal!, form as FormGroup);
@@ -119,7 +121,8 @@ export class ProductVariantFormsComponent implements OnInit {
         code: [this.variantForm.get("code")?.value!, [Validators.required, EmptyValidator]],
         stock: [this.variantForm.get("stock")?.value!],
         price: [this.variantForm.get("price")?.value!, [Validators.required, EmptyValidator]],
-        images: [images]
+        images: [images],
+        discount: [this.variantForm.get("discount")?.value!]
       });
       
     }
@@ -139,7 +142,8 @@ export class ProductVariantFormsComponent implements OnInit {
       code: [this.variantForm.get("code")?.value!, [Validators.required, EmptyValidator]],
       stock: [this.variantForm.get("stock")?.value!],
       price: [this.variantForm.get("price")?.value!, [Validators.required, EmptyValidator]],
-      images: [images!]
+      images: [images!],
+      discount: [this.variantForm.get("discount")?.value!]
     })
     
   }
@@ -151,7 +155,8 @@ export class ProductVariantFormsComponent implements OnInit {
       code: [, [Validators.required, EmptyValidator]],
       stock: [],
       price: [, [Validators.required, EmptyValidator]],
-      images: [[]]
+      images: [[]],
+      discount: [0]
     })
   }
   
@@ -187,5 +192,9 @@ export class ProductVariantFormsComponent implements OnInit {
   
   getImageForms(){
     return this.variantForm.get("images")
+  }
+
+  getDiscount(index: number){
+    return (<FormGroup>this.variants.controls[index]).get('discount');
   }
 }
