@@ -102,12 +102,12 @@
               <div class="image-angles">
 
                 <div class="div-angles">
-                  <fa-icon class="angles" (click)="passUpImage(i)" [icon]="faAngleUp"></fa-icon>
-                  <fa-icon class="angles" (click)="passDownImage(i)" [icon]="faAngleDown"></fa-icon>
+                  <fa-icon class="angles" [class.disable]="i == 0" (click)="passUpImage(i)" [icon]="faAngleUp"></fa-icon>
+                  <fa-icon class="angles" [class.disable]="i == getImageForms()?.value.length - 1" (click)="passDownImage(i)" [icon]="faAngleDown"></fa-icon>
                 </div>
 
                 <img [src]="image.src" alt="">
-                
+
               </div>
               <p>{{image.name}}</p>
               <fa-icon class="trash" [icon]="faTrash" (click)="removeImage(i)"></fa-icon>

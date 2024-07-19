@@ -154,7 +154,11 @@
                             background-color: $primary;
                             border-radius: 1rem;
                             padding: 0.35rem 0.35rem;
-
+                            
+                            &.disable{
+                                color: $gray4;
+                                background-color: $gray2;
+                            }
                         }
                     }
                     
@@ -166,12 +170,23 @@
 
                 }
                 .image {
-                    @include flex($justify: space-between);
+                    @include flex($justify: space-between, $direction: column);
                     grid-column: 1 / -1;
                     border: 2px solid $primary;
                     border-radius: 0.5rem;
                     padding: 1rem 1.5rem;
                     
+                    @media(min-width: $tablet){
+                        @include flex($justify: space-between, $direction: row);
+                    }
+                    
+                    p{
+                        @include flex();
+                        width: 100%;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
                 }
                 
                 .trash {
