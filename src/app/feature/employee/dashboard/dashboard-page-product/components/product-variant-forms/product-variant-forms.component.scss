@@ -154,11 +154,14 @@
                             background-color: $primary;
                             border-radius: 1rem;
                             padding: 0.35rem 0.35rem;
+                            width: 1.5rem;
+                            height: 1.5rem;
                             
                             &.disable{
                                 color: $gray4;
                                 background-color: $gray2;
                             }
+
                         }
                     }
                     
