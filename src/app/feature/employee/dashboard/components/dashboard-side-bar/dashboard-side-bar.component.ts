@@ -52,6 +52,8 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
 
   handleClickLogout(){
     this.userService.logout();
+    this.isOpen = false;
+    document.body.style.overflow = 'auto';
   }
 
   hoverSideBar(evt: string){
