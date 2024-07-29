@@ -3,7 +3,7 @@
 .card-container {
   @include flex(column);
   width: 16rem;
-  height: 23rem;
+  height: 22rem;
   padding: 1rem;
   background-color: $white;
   gap: 0.5rem;
@@ -79,33 +79,25 @@
       @include flex($align: items-center, $justify: space-between);
       gap: 0.5rem;
 
-      .price {
+      .discount-price {
         @include text();
-        color: $gray2;
-      }
-
-      .before-discount {
         color: $gray4;
         text-decoration: line-through;
       }
     }
-
-    .parcels {
-      @include text(small);
-      color: $gray2;
-    }
   }
 
-  .subscribers-pricing {
+  .pricing {
     @include flex(column, flex-start);
     align-self: flex-start;
     color: $primary;
 
-    .subscribers-price {
+    .price {
       @include text(medium, bold);
     }
-    .subscribers-text {
+    .parcels {
       @include text(small);
+      color: $gray2;
     }
   }
 

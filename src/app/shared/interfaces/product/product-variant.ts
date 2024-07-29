@@ -8,6 +8,5 @@ export interface ProductVariant extends Product {
   price: number;
   discountPrice: number;
   maxInterestFreeParcels: number;
-  subscribersPrice: number;
   available: boolean;
 }
