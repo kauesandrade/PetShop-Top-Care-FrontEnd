@@ -356,86 +356,6 @@
           }
         }
       ],
-      "subscriptions": [
-        {
-          "product": {
-            "code": 100,
-            "favorite": true,
-            "title": "Ração Golden - Cães Filhotes sabor Frango e Arroz",
-            "littleDescription": "Ração Golden - Cães Filhotes sabor Frango e Arroz",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
-            "brand": "Golden",
-            "specifications": [
-              {
-                "title": "Idade",
-                "value": "Filhotes/Adultos"
-              },
-              {
-                "title": "Linha",
-                "value": "Super Premium"
-              },
-              {
-                "title": "Pet",
-                "value": "Cachorro"
-              },
-              {
-                "title": "Tipo",
-                "value": "Ração seca"
-              },
-              {
-                "title": "Apresentação",
-                "value": "Disponível em embalagem de 15kg e 20kg."
-              }
-            ],
-            "rating": 5,
-            "category": [
-              {
-                "title": "Pet",
-                "types": ["Cachorro"]
-              },
-              {
-                "title": "Porte de Raça",
-                "types": ["Pequeno", "Grande"]
-              },
-              {
-                "title": "Idade",
-                "types": ["Filhote", "Adulto"]
-              },
-              {
-                "title": "Linha",
-                "types": ["Super Premium"]
-              }
-            ],
-            "variantCode": 1,
-            "variant": "15Kg",
-            "images": ["https://images.petz.com.br/fotos/1658430805995.jpg"],
-            "price": 99.99,
-            "discountPrice": 120.6,
-            "maxInterestFreeParcels": 2,
-            "subscribersPrice": 80,
-            "available": true
-          },
-          "amount": 1,
-          "subscriptionCode": 111,
-          "interval": "30 dias",
-          "nextShipping": "31052024",
-          "payment": {
-            "subtotal": 100,
-            "shippingFee": 0,
-            "total": 100,
-            "method": {
-              "value": "pix",
-              "pix": {
-                "copyPasteCode": "00000",
-                "qrCode": "00000",
-                "expirationInterval": 100000
-              }
-            },
-            "parcels": 1,
-            "status": "Pago"
-          }
-        }
-      ],
       "pets": [
         {
           "id": 1,
@@ -806,7 +726,6 @@
       ],
       "cards": [],
       "orders": [],
-      "subscriptions": [],
       "pets": [],
       "access": "admin"
     },
@@ -841,7 +760,6 @@
       ],
       "cards": [],
       "orders": [],
-      "subscriptions": [],
       "pets": [],
       "access": "normal"
     },
@@ -876,7 +794,6 @@
       ],
       "cards": [],
       "orders": [],
-      "subscriptions": [],
       "pets": [],
       "access": "normal"
     }

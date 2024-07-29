@@ -49,7 +49,6 @@ export class CartService {
       ) {
         itm.amount = item.amount;
         itm.product = item.product;
-        itm.subscription = item.subscription;
       }
     });
 
