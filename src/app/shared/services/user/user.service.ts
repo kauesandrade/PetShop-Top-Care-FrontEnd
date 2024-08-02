@@ -1,8 +1,7 @@
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import * as userData from '../../../../assets/JsonFiles/users.json';
 import { Schedule } from '../../interfaces/schedule/schedule';
-import { User } from '../../interfaces/user/user';
-import { UserRegister } from './user-register';
+import { User, UserRequestPostDTO } from '../../interfaces/user/user';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -14,7 +13,15 @@ export class UserService implements OnChanges {
 
   constructor(private httpClient: HttpClient) {
     this.getUserById(1).subscribe((data) => {
-      this.loggedUser = data as User;
+      // let user: User = {
+      //   id: data.id,
+      //   profileImage: data.customer_image,
+      //   fullname: data['fullname'],
+      //   email: data['email'],
+      //   cpf: data['cpf'],
+      //   birth: data['birth'],
+      // };
+      // this.loggedUser = user;
     });
   }
 
@@ -63,7 +70,7 @@ export class UserService implements OnChanges {
       }
     }
 
-    if (this.loggedUser?.name) {
+    if (this.loggedUser?.fullname) {
       console.log(this.loggedUser);
       if (remember) {
         localStorage.setItem('user', JSON.stringify(this.loggedUser));
@@ -79,8 +86,8 @@ export class UserService implements OnChanges {
     this.loggedUser = null;
   }
 
-  register(user: UserRegister) {
-    this.httpClient.post('http://localhost:8088/topcare/customer', user);
+  register(user: UserRequestPostDTO) {
+    return this.httpClient.post('http://localhost:8088/topcare/customer', user);
   }
 
   updateUser(user: User) {

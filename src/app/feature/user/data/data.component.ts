@@ -32,6 +32,8 @@ export class DataComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.userService.loggedUser);
+
     this.user = this.userService.loggedUser!;
     this.initProfileForm();
     this.initContactForm();
@@ -42,7 +44,7 @@ export class DataComponent implements OnInit {
   initProfileForm() {
     this.profileForm = this.formBuilder.group({
       image: [''],
-      name: [this.user.name, [Validators.required, EmptyValidator]],
+      name: [this.user.fullname, [Validators.required, EmptyValidator]],
       email: [
         this.user.email,
         [Validators.required, Validators.email, EmptyValidator],
@@ -78,7 +80,7 @@ export class DataComponent implements OnInit {
   }
 
   updateProfileInformation() {
-    this.user.name = this.profileForm.value.name;
+    this.user.fullname = this.profileForm.value.name;
     this.user.email = this.profileForm.value.email;
     this.user.cpf = this.profileForm.value.cpf;
     this.user.birth = this.profileForm.value.birth;

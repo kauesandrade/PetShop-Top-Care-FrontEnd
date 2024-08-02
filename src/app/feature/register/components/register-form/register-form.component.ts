@@ -2,14 +2,14 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
+import { MessageService } from 'primeng/api';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { PasswordValidator } from 'src/app/core/validators/password.validator';
 import { Order } from 'src/app/shared/interfaces/order/order';
 import { Card } from 'src/app/shared/interfaces/payment/card';
 import { Pet } from 'src/app/shared/interfaces/pet/pet';
 import { Address } from 'src/app/shared/interfaces/user/address';
-import { User } from 'src/app/shared/interfaces/user/user';
-import { UserRegister } from 'src/app/shared/services/user/user-register';
+import { User, UserRequestPostDTO } from 'src/app/shared/interfaces/user/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
@@ -44,7 +44,8 @@ export class RegisterFormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private messageService: MessageService
   ) {}
 
   get name() {
@@ -120,7 +121,7 @@ export class RegisterFormComponent {
     let [day, month, year] = dateString.split('/');
     console.log(`${year}-${month}-${day}`);
 
-    let user: UserRegister = {
+    let user: UserRequestPostDTO = {
       fullname: formValues.name!,
       email: formValues.email!,
       cellphone: formValues.cellphone!,
@@ -132,7 +133,23 @@ export class RegisterFormComponent {
       address: address,
     };
 
-    this.userService.register(user);
+    this.userService.register(user).subscribe(
+      (data) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Cadastro realizado com sucesso!',
+          life: 1500,
+        });
+      },
+      (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Erro ao cadastrar!',
+          life: 1500,
+        });
+      }
+    );
+
     this.router.navigate(['/login']);
   }
 }
