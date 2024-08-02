@@ -10,6 +10,7 @@ import { Card } from 'src/app/shared/interfaces/payment/card';
 import { Pet } from 'src/app/shared/interfaces/pet/pet';
 import { Address } from 'src/app/shared/interfaces/user/address';
 import { User } from 'src/app/shared/interfaces/user/user';
+import { UserRegister } from 'src/app/shared/services/user/user-register';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
@@ -116,23 +117,20 @@ export class RegisterFormComponent {
   registerUser(address: Address) {
     let formValues = this.registerForm.value;
 
-    let user: User = {
-      profileImage: '',
-      name: formValues.name!,
+    let dateString = formValues.birth!;
+    let [day, month, year] = dateString.split('/');
+    console.log(`${year}-${month}-${day}`);
+
+    let user: UserRegister = {
+      fullname: formValues.name!,
       email: formValues.email!,
+      cellphone: formValues.cellphone!,
+      telephone: formValues.telephone!,
       cpf: formValues.cpf!,
-      birth: formValues.birth!,
       gender: formValues.gender!,
+      birth: `${year}-${month}-${day}`,
       password: formValues.password!,
-      contactInfo: [
-        { cellphone: formValues.cellphone!, telephone: formValues.telephone! },
-      ],
-      addresses: [address],
-      cards: new Array<Card>(),
-      orders: new Array<Order>(),
-      subscriptions: new Array<Subscription>(),
-      pets: new Array<Pet>(),
-      access: 'normal',
+      address: address,
     };
 
     this.userService.register(user);
