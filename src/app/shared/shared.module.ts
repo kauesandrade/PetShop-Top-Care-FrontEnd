@@ -11,17 +11,22 @@ import { InputAmountComponent } from './components/input-amount/input-amount.com
 import { MainCarouselComponent } from './components/main-carousel/main-carousel.component';
 import { ChooseAddressModalComponent } from './components/choose-address-modal/choose-address-modal.component';
 import { OrderByComponent } from './components/order-by/order-by.component';
-import { ProductItemCardComponent } from './components/product-item-card/product-item-card.component';
+import { PaymentItemCardComponent } from './components/payment-item-card/payment-item-card.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductCarouselComponent } from './components/product-carousel/product-carousel.component';
 import { ProductFilterComponent } from './components/product-filter/product-filter.component';
 import { ProductLayoutComponent } from './components/product-layout/product-layout.component';
 import { ProductSectionComponent } from './components/product-section/product-section.component';
 import { RegisterAddressComponent } from './components/register-address/register-address.component';
-import { ProductItemSectionComponent } from './components/product-item-section/product-item-section.component';
+import { PaymentItemSectionComponent } from './components/payment-item-section/payment-item-section.component';
 import { CardCardComponent } from './components/card-card/card-card.component';
-import { EditCardsComponent } from '../feature/user/data/components/edit-cards/edit-cards.component';
 import { CardFormModalComponent } from './components/card-form-modal/card-form-modal.component';
+import { PetCardComponent } from './components/pet-card/pet-card.component';
+import { AddressCardComponent } from './components/address-card/address-card.component';
+import { PetshopCardComponent } from './components/petshop-card/petshop-card.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { ServiceDetailsSectionComponent } from './components/service-details-section/service-details-section.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 const Components = [
   ProductCardComponent,
@@ -35,10 +40,16 @@ const Components = [
   MainCarouselComponent,
   CardDisplayComponent,
   ChooseAddressModalComponent,
-  ProductItemCardComponent,
-  ProductItemSectionComponent,
+  PaymentItemCardComponent,
+  PaymentItemSectionComponent,
   CardCardComponent,
   CardFormModalComponent,
+  PetCardComponent,
+  AddressCardComponent,
+  PetshopCardComponent,
+  CalendarComponent,
+  ServiceDetailsSectionComponent,
+  ConfirmDialogComponent,
 ];
 
 @NgModule({

@@ -1,0 +1,9 @@
+@import "styles";
+
+.content {
+  @include subgrid();
+
+  app-service-details-section {
+    @include subgrid();
+  }
+}

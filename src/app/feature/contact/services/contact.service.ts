@@ -12,6 +12,7 @@ export class ContactService {
     suggestion: new Array<Service>(),
     complaint: new Array<Service>(),
     scheduling: new Array<Service>(),
+    budget: new Array<Service>(),
   };
 
   constructor() {}

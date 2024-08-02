@@ -1,0 +1,51 @@
+@import "styles";
+
+.content {
+  @include subgrid();
+  grid-auto-rows: min-content;
+  row-gap: 1rem;
+
+  label {
+    grid-column: 1 / -1;
+    @media (min-width: $tablet) {
+      grid-column: 2 / span 3;
+    }
+    @media (min-width: $desktop) {
+      grid-column: 7 / span 4;
+    }
+    div {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  .line {
+    grid-column: 1 / -1;
+    height: 1px;
+    background-color: $gray4;
+  }
+
+  .category-section {
+    @include subgrid();
+    row-gap: 0.5rem;
+    h4 {
+      grid-column: 1 / -1;
+      @include heading(h5);
+      @media (min-width: $desktop) {
+        @include heading(h4);
+      }
+    }
+    .cards {
+      @include subgrid();
+      row-gap: 1rem;
+      app-service-card {
+        grid-column: 1 / -1;
+        @media (min-width: $desktop) {
+          grid-column: auto / span 5;
+        }
+      }
+    }
+  }
+}

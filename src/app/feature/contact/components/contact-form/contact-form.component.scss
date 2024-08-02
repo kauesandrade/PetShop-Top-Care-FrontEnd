@@ -45,6 +45,7 @@ form {
     }
 
     input[type="submit"] {
+      border-radius: 0.5rem;
       grid-column: 3 / span 2 !important;
       grid-row: auto / span 1 !important;
     }
@@ -113,7 +114,39 @@ form {
       grid-row: auto / span 2;
     }
   }
+
+  label[for="image"] {
+    @include flex(column, flex-start);
+    grid-column: 2 / -2;
+    width: 100%;
+    height: 10.5rem;
+
+    input[type="file"] {
+      display: none;
+    }
+
+    div {
+      @include flex();
+      border-radius: 1rem;
+      border: 3px dashed $gray2;
+      width: 100%;
+      height: 100%;
+      background-color: $gray5;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-clip: content-box;
+      fa-icon {
+        font-size: 2rem;
+        @media (min-width: $desktop) {
+          font-size: 4rem;
+        }
+      }
+    }
+  }
+
   input[type="submit"] {
+    border-radius: 0.5rem;
     grid-row: auto / span 1;
     grid-column: 6 / span 2;
     @media (max-width: $mobile) {

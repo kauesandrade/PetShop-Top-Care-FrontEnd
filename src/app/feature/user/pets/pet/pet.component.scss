@@ -1,0 +1,188 @@
+@import "styles";
+
+app-layout {
+    @include subgrid();
+
+    form {
+        @include subgrid();
+        grid-column: 2 / -2;
+        gap: 1.5rem;
+        
+        @media(min-width: $tablet) {
+            hr {
+                grid-column: 1 / -1
+            }
+        }
+
+        @media(min-width: $desktop) {
+            hr {
+                grid-column: auto / span 10
+            }
+        }
+
+        .profilePetImg {
+            text-align: center;
+            img {
+                object-fit: cover;
+                width: 8.125rem;
+                height: 8.125em;
+                border-radius: 100%;
+            }
+
+            @media(min-width: $tablet) {
+                grid-column: 2 / -2;
+                img {
+                    width: 12rem;
+                    height: 12rem;
+                }
+            }
+
+            @media(min-width: $desktop) {
+                grid-column: auto/ span 2;
+                img {
+                    width: 8.5rem;
+                    height: 8.5rem;
+                }
+            }
+
+            @media(min-width: $desktopHD){
+                img {
+                    width: 10rem;
+                    height: 10rem;
+                }
+            }
+        }
+
+        .petNameInput {
+            @include flex(column);
+            gap: 0.5rem;
+            align-items: start;
+
+            input {
+                width: 100%;
+            }
+
+            @media(min-width: $tablet) {
+                grid-column: 1 / -2;
+            }
+
+            @media(min-width: $desktop){
+                grid-column: 3 / -2;
+            }
+        }
+
+        .downloadButton {
+            @include flex($align: flex-end);
+
+            button {
+                width: 100%;
+                aspect-ratio: auto;
+                
+                @media(min-width: $desktop) {
+                    aspect-ratio: 1/1; 
+                }
+            }
+
+            @media(min-width: $desktop) {
+                @include flex();
+                margin-top: 1.1rem;
+            }
+        }
+
+        .petInput {
+            @include flex(column);
+            gap: 0.5rem;
+            align-items: start;
+
+            input {
+                width: 100%;
+            }   
+
+            @media(min-width: $tablet) {
+                grid-column: 1 / -1;
+            }
+            
+            @media(min-width: $desktop) {
+                grid-column: auto / span 5;
+            }
+        }
+
+        .petSelect {
+            @include flex(column);
+            gap: 0.5rem;
+            align-items: start;
+
+            select {
+                width: 100%;
+            }
+            
+            @media(min-width: $tablet) {
+                grid-column: 1 / -1;
+            }
+
+            @media(min-width: $desktop){
+                grid-column: auto / span 5;
+            }
+        }
+
+        .calendar {
+            @include subgrid();
+
+            row-gap: 1rem;
+
+            h5 {
+                grid-column: 1 / -1;
+                text-align: center
+            }
+        
+            app-calendar {
+                @include subgrid();
+            }
+
+            @media(min-width: $tablet){
+                grid-column: 1 / -1;
+
+                h5 {
+                    text-align: start;
+                }
+
+            }
+
+            @media(min-width: $desktop){
+                grid-column: 1 / -1;
+
+                h5 {
+                    text-align: start;
+                }
+            }
+        }
+
+        .pageButtons {
+            @include subgrid();
+            gap: 1rem;
+
+            .editBtn{
+
+                @media (min-width: $tablet) {
+                    grid-column: 2 / -2;
+                }
+
+                @media (min-width: $desktop) {
+                    grid-column: 1 / -8;
+                }
+            }
+
+            .deleteBtn{
+                
+
+                @media (min-width: $tablet) {
+                    grid-column: 2 / -2;
+                }
+
+                @media (min-width: $desktop) {
+                    grid-column: 8 / -1;
+                }
+            }
+        }
+    }
+}

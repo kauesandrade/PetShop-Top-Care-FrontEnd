@@ -1,0 +1,73 @@
+@import "styles";
+
+app-layout {
+    .content{
+            @include subgrid();
+            grid-column: 2 / -2;
+            row-gap: 2rem;
+
+            .line {
+                grid-column: 1 / span -1
+            }
+
+        @media(min-width: $tablet){
+            .line {
+                grid-column: 1 / -1
+            }
+        }
+
+        @media(min-width: $desktop) {
+            .line {
+                grid-column: 1 / -1
+            }
+        }
+
+        .pets {
+            @include subgrid();
+            row-gap: 1rem;
+
+            app-pet-card {
+                grid-column: 1 / 1;
+
+                @media(min-width: $tablet){
+                    grid-column: auto / span 2;
+                }
+
+                @media(min-width: $desktop){
+                    grid-column: auto / span 2;
+                }
+            }
+        }
+
+        .calendar {
+            @include subgrid();
+
+            row-gap: 1rem;
+
+            h5 {
+                grid-column: 1 / -1;
+                text-align: center
+            }
+        
+            app-calendar {
+                @include subgrid();
+            }
+
+            @media(min-width: $tablet){
+                grid-column: 1 / -1;
+
+                h5 {
+                    text-align: start
+                }
+            }
+
+            @media(min-width: $desktop){
+                grid-column: 1 / -1;
+
+                h5 {
+                    text-align: start
+                }
+            }
+        }
+    }
+}

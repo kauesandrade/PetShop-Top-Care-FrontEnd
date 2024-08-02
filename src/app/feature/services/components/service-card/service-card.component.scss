@@ -1,0 +1,144 @@
+@import "styles";
+
+.card {
+  @include flex(column, center, flex-start);
+  row-gap: 1rem;
+
+  @media (min-width: $tablet) {
+    @include subgrid();
+
+    &.invert {
+      img {
+        order: 2;
+      }
+      .content {
+        order: 1;
+        .title-desc {
+          * {
+            justify-self: end;
+            text-align: end;
+          }
+        }
+
+        .served-pets {
+          h5 {
+            justify-self: end;
+            text-align: end;
+          }
+          .pets-cards {
+            @include flex($justify: flex-end);
+          }
+        }
+      }
+    }
+  }
+
+  img {
+    border-radius: 2rem;
+    width: 100%;
+    object-fit: cover;
+    height: 12rem;
+    grid-column: 1 / -1;
+    @media (min-width: $tablet) {
+      grid-column: auto / span 3;
+    }
+    @media (min-width: $desktop) {
+      height: 18rem;
+      grid-column: auto / span 5;
+    }
+  }
+
+  .content {
+    @include flex(column);
+    row-gap: 1rem;
+    grid-column: 1 / -1;
+
+    @media (min-width: $tablet) {
+      @include subgrid();
+      grid-template-rows: min-content;
+      row-gap: 1.5rem;
+      grid-column: auto / span 3;
+    }
+    @media (min-width: $desktop) {
+      grid-column: auto / span 7;
+    }
+
+    h3,
+    h5 {
+      color: $primary;
+    }
+
+    .title-desc {
+      @include flex(column);
+      gap: 0.5rem;
+
+      @media (min-width: $tablet) {
+        @include subgrid();
+        grid-template-rows: min-content;
+        row-gap: 1rem;
+      }
+
+      * {
+        grid-column: 1 / -1;
+      }
+
+      h3 {
+        @include heading();
+        @media (min-width: $desktop) {
+          @include heading(h3);
+        }
+      }
+
+      p {
+        font-weight: bold;
+      }
+    }
+
+    .served-pets {
+      @include flex(column);
+      gap: 0.5rem;
+
+      @media (min-width: $tablet) {
+        @include subgrid();
+        grid-template-rows: min-content;
+        row-gap: 0.5rem;
+      }
+
+      * {
+        grid-column: 1 / -1;
+      }
+
+      h5 {
+        @include text(medium, bold);
+        @media (min-width: $desktop) {
+          @include heading(h5);
+        }
+      }
+
+      .pets-cards {
+        @include flex(row, flex-start, flex-start);
+        flex-wrap: wrap;
+        gap: 2rem;
+        @media (min-width: $tablet) {
+          gap: 1.5rem;
+        }
+        @media (min-width: $desktopHD) {
+          gap: 2rem;
+        }
+
+        * {
+          width: 3.75rem;
+          @media (min-width: $tablet) {
+            width: 5rem;
+          }
+          @media (min-width: $desktop) {
+            width: 3.5rem;
+          }
+          @media (min-width: $desktopHD) {
+            width: 4rem;
+          }
+        }
+      }
+    }
+  }
+}

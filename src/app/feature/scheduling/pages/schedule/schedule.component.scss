@@ -1,0 +1,11 @@
+@import "styles";
+
+.content {
+  @include subgrid();
+  grid-auto-rows: min-content;
+  row-gap: 1rem;
+
+  app-calendar {
+    @include subgrid();
+  }
+}

@@ -1,0 +1,28 @@
+{
+    "category":[
+        {
+            "title": "Pet",
+            "types": ["Cachorro"]
+          },
+          {
+            "title": "Porte de Raça",
+            "types": ["Pequeno", "Grande"]
+          },
+          {
+            "title": "Idade",
+            "types": ["Filhote", "Adulto"]
+          },
+          {
+            "title": "Linha",
+            "types": ["Super Premium"]
+          },
+          {
+            "title": "Avaliação",
+            "types": ["Bom"]
+          },
+          {
+            "title": "Em Oferta",
+            "types": ["Oferta"]
+          }
+    ]
+}

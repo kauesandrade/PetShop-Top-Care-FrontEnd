@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Order } from '../../interfaces/order/order';
-import { Subscription } from '../../interfaces/order/subscription';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 
 @Injectable({
@@ -97,27 +96,6 @@ export class OrderByService {
       case 'Não Entregue': {
         arrayOrder = [...orderList].sort((o1, o2) => {
           return this.orderByDateDesc(o1.expectedDate, o2.expectedDate);
-        });
-        break;
-      }
-    }
-
-    return arrayOrder;
-  }
-
-  orderSubscriptionsBy(order: string, orderList: Array<Subscription>) {
-    let arrayOrder: Array<Subscription> = [];
-
-    switch (order) {
-      case 'Próxima Entrega': {
-        arrayOrder = [...orderList].sort((o1, o2) => {
-          return this.orderByDate(o1.nextShipping, o2.nextShipping);
-        });
-        break;
-      }
-      case 'Última Entrega': {
-        arrayOrder = [...orderList].sort((o1, o2) => {
-          return this.orderByDateDesc(o1.nextShipping, o2.nextShipping);
         });
         break;
       }

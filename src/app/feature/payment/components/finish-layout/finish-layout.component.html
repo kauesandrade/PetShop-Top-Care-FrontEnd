@@ -5,17 +5,28 @@
         Agredeçemos por escolher a Petshop Top Care, {{ user.loggedUser?.name }}
       </h6>
       <p>
-        Enviamos detalhes do seu pedido para seu email:
+        Enviamos detalhes do seu
+        {{ type == "cart" ? "pedido" : "agendamento" }} para seu email:
         <strong>{{ user.loggedUser?.email }}</strong>
       </p>
     </div>
     <p>
-      <strong>Pedido: {{ orderInformation?.orderCode }}</strong>
+      <ng-container *ngIf="type == 'cart'; else scheduleCode">
+        <strong>Pedido: {{ orderInformation?.orderCode }}</strong>
+      </ng-container>
+      <ng-template #scheduleCode>
+        <strong>Agendamento: {{ schedulingInformation?.code }}</strong>
+      </ng-template>
     </p>
   </div>
   <div class="divider"></div>
   <div class="payment-informations">
-    <ng-container *ngIf="orderInformation?.payment?.method?.value == 'pix'">
+    <ng-container
+      *ngIf="
+        orderInformation?.payment?.method?.value == 'pix' ||
+        schedulingInformation?.payment?.method?.value == 'pix'
+      "
+    >
       <div class="informations">
         <div class="input-howPay">
           <label class="div-input" for="login" appInput>
@@ -24,18 +35,52 @@
               <input
                 type="text"
                 readonly
-                [value]="orderInformation?.payment?.method?.pix?.copyPasteCode"
-                (click)="clickToCopie(orderInformation?.payment?.method?.pix?.copyPasteCode)"
-                class="{{isCopy}}"
-                />
+                [value]="
+                  type == 'cart'
+                    ? orderInformation?.payment?.method?.pix?.copyPasteCode
+                    : schedulingInformation?.payment?.method?.pix?.copyPasteCode
+                "
+                (click)="
+                  clickToCopy(
+                    type == 'cart'
+                      ? orderInformation?.payment?.method?.pix?.copyPasteCode
+                      : schedulingInformation?.payment?.method?.pix
+                          ?.copyPasteCode
+                  )
+                "
+                class="{{ isCopy }}"
+              />
 
-                <ng-container *ngIf="isCopy == 'copy'; else isCopied">
-                    <button (click)="clickToCopie(orderInformation?.payment?.method?.pix?.copyPasteCode)"><fa-icon [icon]="faCopy"></fa-icon></button> 
-                  </ng-container>
-                  <ng-template #isCopied>
-                      <button class="{{isCopy}}" (click)="clickToCopie(orderInformation?.payment?.method?.pix?.copyPasteCode)"><fa-icon class="iconCopied" [icon]="faCheck"></fa-icon></button> 
-                </ng-template>
-          </div>
+              <ng-container *ngIf="isCopy == 'copy'; else isCopied">
+                <button
+                  (click)="
+                    clickToCopy(
+                      type == 'cart'
+                        ? orderInformation?.payment?.method?.pix?.copyPasteCode
+                        : schedulingInformation?.payment?.method?.pix
+                            ?.copyPasteCode
+                    )
+                  "
+                >
+                  <fa-icon [icon]="faCopy"></fa-icon>
+                </button>
+              </ng-container>
+              <ng-template #isCopied>
+                <button
+                  class="{{ isCopy }}"
+                  (click)="
+                    clickToCopy(
+                      type == 'cart'
+                        ? orderInformation?.payment?.method?.pix?.copyPasteCode
+                        : schedulingInformation?.payment?.method?.pix
+                            ?.copyPasteCode
+                    )
+                  "
+                >
+                  <fa-icon class="iconCopied" [icon]="faCheck"></fa-icon>
+                </button>
+              </ng-template>
+            </div>
           </label>
           <div class="howPay">
             <p class="title">Como pagar?</p>
@@ -70,7 +115,10 @@
     </ng-container>
 
     <ng-container
-      *ngIf="orderInformation?.payment?.method?.value == 'bankSlip'"
+      *ngIf="
+        orderInformation?.payment?.method?.value == 'bankSlip' ||
+        schedulingInformation?.payment?.method?.value == 'bankSlip'
+      "
     >
       <div class="informations">
         <div class="input-howPay">
@@ -78,7 +126,11 @@
             <h6 class="experation">
               Vencimento do boleto:
               {{
-                orderInformation?.payment?.method?.bankSlip?.expirationInterval
+                type == "cart"
+                  ? orderInformation?.payment?.method?.bankSlip
+                      ?.expirationInterval
+                  : schedulingInformation?.payment?.method?.bankSlip
+                      ?.expirationInterval
               }}
               dias
             </h6>
@@ -113,13 +165,22 @@
       </div>
     </ng-container>
 
-    <ng-container *ngIf="orderInformation?.payment?.method?.value == 'card'">
+    <ng-container
+      *ngIf="
+        orderInformation?.payment?.method?.value == 'card' ||
+        schedulingInformation?.payment?.method?.value == 'card'
+      "
+    >
       <div class="informations">
         <div class="input-howPay">
           <div class="div-cardValue">
             <h6 class="cardValue">
               Cartão de Crédito final
-              {{ orderInformation?.payment?.method?.card?.lastDigits }}
+              {{
+                type == "cart"
+                  ? orderInformation?.payment?.method?.card?.lastDigits
+                  : schedulingInformation?.payment?.method?.card?.lastDigits
+              }}
             </h6>
             <h6 class="cardValue">Nome: {{ user.loggedUser?.name }}</h6>
           </div>
@@ -134,14 +195,21 @@
           </div>
         </div>
         <div class="button underDiv">
-          <button appButton="secondary" (click)="goToProfileOrder()">
-            Ir para meus pedidos
-          </button>
+          <ng-container *ngIf="type == 'cart'; else goToSchedulings">
+            <button appButton="secondary" (click)="goToProfileOrder()">
+              Ir para meus pedidos
+            </button>
+          </ng-container>
+          <ng-template #goToSchedulings>
+            <button appButton="secondary" (click)="goToProfilePets()">
+              Ir para meus pets
+            </button>
+          </ng-template>
         </div>
       </div>
       <div class="card-payment-information">
         <p>
-          O pagemento é confirmado em torno de 1 hora, após a confirmação será
+          O pagamento é confirmado em torno de 1 hora, após a confirmação será
           gerada a nota fiscal.
         </p>
       </div>
@@ -153,6 +221,11 @@
     >
       <button appButton="secondary">Ver boleto</button>
     </ng-container>
-    <button (click)="cancelOrder()" appButton="">Cancelar Compra</button>
+    <button
+      (click)="type == 'cart' ? cancelOrder() : cancelSchedule()"
+      appButton
+    >
+      Cancelar Compra
+    </button>
   </div>
 </div>

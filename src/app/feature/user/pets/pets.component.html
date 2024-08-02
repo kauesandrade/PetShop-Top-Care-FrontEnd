@@ -1,1 +1,27 @@
-<app-layout></app-layout>
+<app-layout>
+
+    <div class="content">
+        <div class="pets">
+
+            <app-pet-card type="add"></app-pet-card>
+            
+            <ng-container *ngFor="let pet of pets; let i = index">
+                <app-pet-card
+                    type="link"
+                    [pet]="pet"
+                ></app-pet-card>
+            </ng-container>
+
+        </div>
+
+        <hr class="line">
+
+        <div class="calendar">
+            <h5>Calendário de agendamentos</h5>
+
+            <app-calendar type="profile" [pets]="pets" ></app-calendar>
+        </div>
+
+    </div>
+
+</app-layout>

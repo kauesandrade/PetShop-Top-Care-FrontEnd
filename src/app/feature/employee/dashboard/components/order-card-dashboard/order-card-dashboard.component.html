@@ -1,0 +1,37 @@
+<div class="card-container">
+    <a class="image" href="">
+        <!-- <img src={{order.items[0].product.images[0]}} alt="product-image"> -->
+        <img src="https://images.petz.com.br/fotos/1658430805995.jpg" alt="product-image">
+    </a>
+    <div class="code">
+        <!-- <p><span>Pedido: </span>#{{order.orderCode}}</p> -->
+        <p><span>Pedido: </span>#1234</p>
+        <p><span>Itens: </span>2</p>
+
+        <!-- <ng-container *ngIf="order.items.length > 1; else items">
+            <p><span>Item: </span>{{order.items.length}}</p>
+        </ng-container>
+        <ng-template #items>
+            <p><span>Itens: </span>{{order.items.length}}</p>
+        </ng-template> -->
+
+    </div>
+    <div class="client">
+        <!-- <p><span>Cliente: </span>{{order.name}}</p> -->
+        <!-- <p><span>CPF: </span>{{order.cpf}}</p> -->
+        <p><span>Cliente: </span>Kauê Schaefer de Andrade</p>
+        <p><span>CPF: </span>000.000.000-00</p>
+    </div>
+    <div class="status">
+        <!-- <p><span>Status: </span>{{order.status}}</p> -->
+        <p><span>Status: </span>Em trânsito</p>
+    </div>
+    <div class="pricing">
+        <!-- <p><span>Total: </span>{{order.payment.total | currency : "BRL" : "symbol" : "1.2-2"}}</p> -->
+        <p><span>Total: </span>R$ 10,00</p>
+    </div>
+    <div class="buttons-container">
+        <button (click)="handleClickBack()" appButton="secondary">Anterior</button>
+        <button (click)="handleClickNext()" appButton>Próxima</button>
+    </div>
+</div>

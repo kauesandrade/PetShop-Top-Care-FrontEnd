@@ -78,7 +78,13 @@ export class LoginFormComponent {
         formValues.remember!
       )
     ) {
-      this.router.navigate(['/']);
+
+      if(this.userService.loggedUser?.access == "admin"){        
+        this.router.navigate(['/dashboard']);
+      }else{
+        this.router.navigate(['/']);
+      }
+
     } else {
       this.login?.setErrors({ incorrect: true });
       this.password?.setErrors({ incorrect: true });

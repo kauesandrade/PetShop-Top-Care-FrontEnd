@@ -1,0 +1,28 @@
+<app-header (sideBarOpenEmitter)="sideBarOpen($event)" [simple]="true" [employee]="true"></app-header>
+<main>
+  <app-dashboard-side-bar pageNow='servico' [isOpen]="isOpen"></app-dashboard-side-bar>
+  <div class="layout-dashboard">
+
+    <h1>{{titlePage}}</h1>
+
+    <section class="sections">
+        <app-service-forms [(serviceForm)]="serviceForm"></app-service-forms>
+    </section>
+
+    <section class="sections">
+        <app-service-variant-forms [(variantsForm)]="variantsForm"></app-service-variant-forms>
+    </section>
+
+    <div class="div-btns">
+      <button routerLink="/dashboard/servicos" appButton="">Voltar</button>
+      <ng-container *ngIf="this.serviceVariantList; else notService">
+        <button (click)="updateService()" [disabled]="!areFormsValid()" appButton="secondary">Salvar</button>
+      </ng-container>
+      <ng-template #notService>
+        <button (click)="addService()" [disabled]="!areFormsValid()" appButton="secondary">Adicionar</button>
+      </ng-template>
+    </div>
+
+  </div>
+
+</main>

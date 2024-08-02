@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Pet } from 'src/app/shared/interfaces/pet/pet';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-pets',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pets.component.scss']
 })
 export class PetsComponent implements OnInit {
+  pets?: Pet[];
 
-  constructor() { }
+  constructor(
+    private userService: UserService
+    ) {}
 
   ngOnInit(): void {
+    this.pets = this.userService.loggedUser?.pets;
   }
 
 }

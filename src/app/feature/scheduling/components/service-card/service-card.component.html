@@ -1,0 +1,14 @@
+<label class="card" [for]="service.variantCode">
+  <input
+    type="checkbox"
+    name="service"
+    [id]="service.variantCode"
+    appInput
+    [checked]="isServiceSelected()"
+    (change)="onClick()"
+  />
+  <div class="text">
+    <p>{{ service.variantTitle }}</p>
+    <p>{{ service.price | currency : "BRL" }}</p>
+  </div>
+</label>

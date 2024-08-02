@@ -1,0 +1,14 @@
+<dialog #modal [open]="open" (cancel)="onCancel()">
+  <div class="container">
+    <div class="content">
+      <h2>{{ title }}</h2>
+      <p *ngIf="message">{{ message }}</p>
+      <div class="buttons">
+        <button appButton="secondary" (click)="onCancel()">
+          {{ cancelText }}
+        </button>
+        <button appButton (click)="onConfirm()">{{ confirmText }}</button>
+      </div>
+    </div>
+  </div>
+</dialog>

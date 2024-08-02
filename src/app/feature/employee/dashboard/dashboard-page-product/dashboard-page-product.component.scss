@@ -1,0 +1,79 @@
+@import 'styles';
+
+main {
+    display: flex;
+
+    .layout-dashboard {
+        @include subgrid();
+        @include layoutDashboard;
+
+        h1 {
+            grid-column: 1 / -1;
+            color: $primary;
+            @include heading(h6);
+
+            @media(min-width: $tablet) {
+                @include heading(h4);
+            }
+
+            @media(min-width: $desktop) {
+                @include heading(h2);
+            }
+
+            @media(min-width: $desktopHD) {
+                @include heading(h1);
+            }
+        }
+
+        .sections {
+            @include subgrid();
+            grid-column: 1 / -1;
+            grid-auto-rows: min-content;
+            row-gap: 1rem;
+
+            @media(min-width: $tablet) {
+                row-gap: 1.5rem;
+            }
+
+            @media(min-width: $desktop) {
+                row-gap: 2rem;
+            }
+
+            app-product-forms, app-specifications-forms, app-product-variant-forms {
+                @include subgrid();
+                grid-column: 1 / -1;
+            }
+
+        }
+
+        .div-btns {
+            @include subgrid();
+            grid-column: 1 / -1;
+            row-gap: 1rem;
+
+            @media(min-width: $tablet) {
+                :first-child {
+                    grid-column: 1 / 4;
+                }
+
+                :last-child {
+                    grid-column: 4 / -1;
+                }
+            }
+
+            @media(min-width: $desktop) {
+
+                :first-child {
+                    grid-column: 3 / 6;
+                }
+
+                :last-child {
+                    grid-column: 8 / -3;
+                }
+            }
+
+        }
+
+    }
+
+}

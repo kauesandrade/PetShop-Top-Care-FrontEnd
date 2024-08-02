@@ -1,0 +1,32 @@
+<app-header (sideBarOpenEmitter)="sideBarOpen($event)" [simple]="true" [employee]="true"></app-header>
+<main>
+  <app-dashboard-side-bar pageNow='produto' [isOpen]="isOpen"></app-dashboard-side-bar>
+  <div class="layout-dashboard">
+
+    <h1>{{titlePage}}</h1>
+
+    <section class="sections">
+      <app-product-forms [(productForm)]="productForm"></app-product-forms>
+    </section>
+
+    <section class="sections">
+      <app-specifications-forms [(specificationsForm)]="specificationsForm" ></app-specifications-forms>
+    </section>
+
+    <section class="sections">
+      <app-product-variant-forms [(variantsForm)]="variantsForm"></app-product-variant-forms>
+    </section>
+
+    <div class="div-btns">
+      <button routerLink="/dashboard/produtos" appButton="">Voltar</button>
+      <ng-container *ngIf="this.product; else notProduct">
+        <button (click)="updateProduct()" [disabled]="!areFormsValid()" appButton="secondary">Salvar</button>
+      </ng-container>
+      <ng-template #notProduct>
+        <button (click)="addProduct()" [disabled]="!areFormsValid()" appButton="secondary">Adicionar</button>
+      </ng-template>
+    </div>
+
+  </div>
+
+</main>

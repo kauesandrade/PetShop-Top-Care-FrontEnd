@@ -1,12 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { PasswordValidator } from 'src/app/core/validators/password.validator';
 import { Order } from 'src/app/shared/interfaces/order/order';
-import { Subscription } from 'src/app/shared/interfaces/order/subscription';
 import { Card } from 'src/app/shared/interfaces/payment/card';
+import { Pet } from 'src/app/shared/interfaces/pet/pet';
 import { Address } from 'src/app/shared/interfaces/user/address';
 import { User } from 'src/app/shared/interfaces/user/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
@@ -129,7 +129,8 @@ export class RegisterFormComponent {
       addresses: [address],
       cards: new Array<Card>(),
       orders: new Array<Order>(),
-      subscriptions: new Array<Subscription>(),
+      pets: new Array<Pet>(),
+      access: 'normal',
     };
 
     this.userService.register(user);

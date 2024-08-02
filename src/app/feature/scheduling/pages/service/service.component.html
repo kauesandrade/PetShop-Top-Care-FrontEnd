@@ -1,0 +1,33 @@
+<app-layout (continue)="onContinue()">
+  <div class="content">
+    <label class="searchbar" for="searchbar" appInput>
+      <div>
+        <input
+          [(ngModel)]="searchValue"
+          type="text"
+          name="searchbar"
+          placeholder="Qual serviço você deseja?"
+        />
+        <button (click)="handleClickSearch()">
+          <fa-icon [icon]="faSearch"></fa-icon>
+        </button>
+      </div>
+    </label>
+    <ng-container *ngFor="let category of categories; let i = index">
+      <ng-container *ngIf="i !== 0"><div class="line"></div></ng-container>
+      <div class="category-section">
+        <h4>{{ category.category }}</h4>
+        <div class="cards">
+          <ng-container
+            *ngFor="let service of category.services; let i = index"
+          >
+            <app-service-card
+              [service]="service"
+              [(servicesSelected)]="servicesSelected"
+            ></app-service-card>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</app-layout>

@@ -1,0 +1,170 @@
+@import "styles";
+
+.card {
+  width: 100%;
+  border-radius: 1.5rem;
+  @include flex(column, $justify: space-between);
+  text-align: center;
+  padding: 0.5rem 1.5rem;
+
+  @media (min-width: $tablet) {
+    aspect-ratio: auto;
+  }
+  @media (min-width: $desktop) {
+    height: 8.5rem;
+  }
+  @media (min-width: $desktopHD) {
+    height: 10rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.add {
+    padding: 1rem 1.5rem;
+    background-color: $gray5;
+    gap: 2rem;
+    height: auto;
+
+    @media (min-width: $tablet) {
+      gap: 0;
+      height: 100%;
+    }
+
+    .add-icon {
+      @include flex();
+      aspect-ratio: 1 / 1;
+      border-radius: 100%;
+      width: 4rem;
+      @media (min-width: $desktop) {
+        width: 3.5rem;
+      }
+      @media (min-width: $desktopHD) {
+        width: 4rem;
+      }
+      background-color: $gray4;
+      fa-icon {
+        color: $gray5;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &.pet {
+    border-width: 2px;
+    border-style: solid;
+    position: relative;
+    overflow: hidden;
+
+    .color-strip {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 20px;
+    }
+
+    .image {
+      z-index: 1;
+      width: 7.5rem;
+      @media (min-width: $desktop) {
+        width: 5rem;
+      }
+      @media (min-width: $desktopHD) {
+        width: 6rem;
+      }
+      position: relative;
+      img {
+        border-radius: 100%;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+      }
+      fa-icon {
+        font-size: 4rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+      }
+    }
+
+    &.selected {
+      &::before {
+        content: "";
+        z-index: 5;
+        top: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(26, 231, 112, 0.2);
+      }
+
+      .image {
+        fa-icon {
+          display: flex;
+        }
+      }
+    }
+  }
+
+  &.confirmation {
+    background-color: $light-primary;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    height: 100%;
+
+    .color-strip {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 20px;
+    }
+
+    .image {
+      z-index: 1;
+      width: 7.5rem;
+      @media (min-width: $desktop) {
+        width: 5rem;
+      }
+      @media (min-width: $desktopHD) {
+        width: 6rem;
+      }
+      position: relative;
+      img {
+        border-radius: 100%;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+      }
+      fa-icon {
+        font-size: 4rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+      }
+    }
+
+    &.selected {
+      &::before {
+        content: "";
+        z-index: 5;
+        top: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(26, 231, 112, 0.2);
+      }
+
+      .image {
+        fa-icon {
+          display: flex;
+        }
+      }
+    }
+  }
+}

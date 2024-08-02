@@ -11,10 +11,10 @@ import { RegisterModule } from './register/register.module';
 import { SearchModule } from './search/search.module';
 import { StoreModule } from './store/store.module';
 import { UserModule } from './user/user.module';
-import { SharedModule } from '../shared/shared.module';
 import { PaymentModule } from './payment/payment.module';
-import { ServicesComponent } from './services/services.component';
 import { ServicesModule } from './services/services.module';
+import { SchedulingModule } from './scheduling/scheduling.module';
+import { EmployeeModule } from './employee/employee.module';
 
 @NgModule({
   exports: [
@@ -29,10 +29,11 @@ import { ServicesModule } from './services/services.module';
     FavoritesModule,
     UserModule,
     PaymentModule,
-    ServicesModule
+    ServicesModule,
+    SchedulingModule,
+    EmployeeModule,
   ],
-  declarations: [
-  ],
-  imports: [CommonModule, SharedModule, FontAwesomeModule],
+  declarations: [],
+  imports: [CommonModule, FontAwesomeModule],
 })
 export class FeatureModule {}

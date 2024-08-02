@@ -1,11 +1,51 @@
-<a routerLink="" class="brand">
-  <img
-    src="../../../../assets/images/TopCareLogo.png"
-    alt="Brand logo image"
-    class="logo"
-  />
-  <div class="brand-name">
-    <h3>Petshop</h3>
-    <p>Top Care</p>
+<ng-container *ngIf="employee; else notIsEmployee">
+
+  <div class="full-content">
+
+    <button class="hamburger-drawer" (click)="toggleDrawer()">
+      <ng-container *ngIf="sideBarOpen == false; else isClose">
+        <fa-icon [icon]="faBars"></fa-icon>
+      </ng-container>
+      
+      <ng-template #isClose>
+        <fa-icon [icon]="faTimes"></fa-icon>
+      </ng-template>
+
+    </button>
+
+    <a routerLink="/dashboard" class="brand">
+      <img src="../../../../assets/images/TopCareLogo.png" alt="Brand logo image" class="logo" />
+      <div class="brand-name">
+        <h3>Petshop</h3>
+        <p>Top Care / Dashboard</p>
+      </div>
+    </a>
+
+    <a class="icon">
+      <fa-icon [icon]="faUser"></fa-icon>
+      <span *ngIf="firstName">
+        Olá,
+        {{ firstName }}
+      </span>
+    </a>
+
+    <a class="logout" routerLink="/" (click)="handleClickLogout()">
+      <fa-icon [icon]="faSignOutAlt"></fa-icon>
+      <span *ngIf="firstName">
+          Sair
+      </span>
+    </a>
+
   </div>
-</a>
+
+</ng-container>
+
+<ng-template #notIsEmployee>
+  <a routerLink="" class="brand">
+    <img src="../../../../assets/images/TopCareLogo.png" alt="Brand logo image" class="logo" />
+    <div class="brand-name">
+      <h3>Petshop</h3>
+      <p>Top Care</p>
+    </div>
+  </a>
+</ng-template>

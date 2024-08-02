@@ -73,6 +73,7 @@ dialog {
     }
 
     input[type="submit"] {
+      border-radius: 0.5rem;
       grid-column: 1 / -1;
       height: 3rem;
 

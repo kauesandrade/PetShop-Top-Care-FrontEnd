@@ -13,13 +13,28 @@ import { CartComponent } from './feature/cart/cart.component';
 import { DataComponent } from './feature/user/data/data.component';
 import { PetsComponent } from './feature/user/pets/pets.component';
 import { OrdersComponent } from './feature/user/orders/orders.component';
-import { SubscriptionsComponent } from './feature/user/subscriptions/subscriptions.component';
 import { OrderComponent } from './feature/user/orders/order/order.component';
 import { FavoritesComponent } from './feature/favorites/favorites.component';
 import { ReviewProductComponent } from './feature/user/orders/order/components/review-product/review-product.component';
 import { PaymentComponent } from './feature/payment/payment.component';
 import { FinishedPaymentComponent } from './feature/payment/finished-payment/finished-payment.component';
 import { ServicesComponent } from './feature/services/services.component';
+import { PetComponent } from './feature/scheduling/pages/pet/pet.component';
+import { AddressComponent } from './feature/scheduling/pages/address/address.component';
+import { PetshopComponent } from './feature/scheduling/pages/petshop/petshop.component';
+import { ServiceComponent } from './feature/scheduling/pages/service/service.component';
+import { ScheduleComponent } from './feature/scheduling/pages/schedule/schedule.component';
+import { ConfirmationComponent } from './feature/scheduling/pages/confirmation/confirmation.component';
+import { DashboardProductComponent } from './feature/employee/dashboard/dashboard-product/dashboard-product.component';
+import { DashboardServiceComponent } from './feature/employee/dashboard/dashboard-service/dashboard-service.component';
+import { DashboardOrderComponent } from './feature/employee/dashboard/dashboard-order/dashboard-order.component';
+import { DashboardSchedulingComponent } from './feature/employee/dashboard/dashboard-scheduling/dashboard-scheduling.component';
+import { DashboardPageProductComponent } from './feature/employee/dashboard/dashboard-page-product/dashboard-page-product.component';
+import { DashboardPageServiceComponent } from './feature/employee/dashboard/dashboard-page-service/dashboard-page-service.component';
+import { DashboardComponent } from './feature/employee/dashboard/dashboard.component';
+import { DashboardPageSchedulingComponent } from './feature/employee/dashboard/dashboard-page-scheduling/dashboard-page-scheduling.component';
+import { PetProfile } from './feature/user/pets/pet/pet.component';
+import { PetScheduleComponent } from './feature/user/pets/pet-schedule/pet-schedule.component';
 
 const routes: Routes = [
   { path: '', title: 'Home | Top Care', component: HomeComponent },
@@ -42,7 +57,58 @@ const routes: Routes = [
   },
   { path: 'login', title: 'Login | Top Care', component: LoginComponent },
 
-  { path: 'servicos', title: 'Serviços | Top Care', component: ServicesComponent },
+  {
+    path: 'servicos',
+    title: 'Serviços | Top Care',
+    component: ServicesComponent,
+  },
+
+  {
+    path: 'agendamento',
+    title: 'Agendamento | Top Care',
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo: 'pet',
+        pathMatch: 'full',
+      },
+      {
+        path: 'pagamento',
+        title: 'Pagamento | Top Care',
+        canActivate: [AuthGuard],
+        children: [
+          { path: '', component: PaymentComponent },
+          { path: 'finalizado/:id', component: FinishedPaymentComponent },
+        ],
+      },
+      {
+        path: 'pet',
+        component: PetComponent,
+      },
+      {
+        path: 'localizacao',
+        component: AddressComponent,
+      },
+      {
+        path: 'petshop',
+        component: PetshopComponent,
+      },
+      {
+        path: 'servicos',
+        component: ServiceComponent,
+      },
+      {
+        path: 'horario',
+        component: ScheduleComponent,
+      },
+      {
+        path: 'confirmacao',
+        component: ConfirmationComponent,
+      },
+    ],
+  },
 
   { path: 'busca', component: SearchComponent },
   {
@@ -82,7 +148,30 @@ const routes: Routes = [
       },
       {
         path: 'pets',
-        component: PetsComponent,
+        children: [
+          {
+            path: '',
+            component: PetsComponent,
+          },
+          {
+            path: ':id',
+            children: [
+              {
+                path: '',
+                component: PetProfile,
+              },
+            ],
+          },
+          {
+            path: 'agendamento/:id',
+            children: [
+              {
+                path: '',
+                component: PetScheduleComponent,
+              },
+            ],
+          },
+        ],
       },
       {
         path: 'pedidos',
@@ -103,10 +192,6 @@ const routes: Routes = [
           },
         ],
       },
-      {
-        path: 'assinaturas',
-        component: SubscriptionsComponent,
-      },
     ],
   },
   {
@@ -114,6 +199,84 @@ const routes: Routes = [
     title: 'Favoritos | Top Care',
     component: FavoritesComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'dashboard',
+    title: 'DashBoard | Top Care',
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    canDeactivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        title: 'Dashboard | Top Care',
+        component: DashboardComponent,
+      },
+
+      {
+        path: 'produtos',
+        title: 'Dashboard Produtos | Top Care',
+        component: DashboardProductComponent,
+      },
+      {
+        path: 'produto',
+        children: [
+          {
+            path: '',
+            title: 'Adicionar Produto | Top Care',
+            component: DashboardPageProductComponent,
+          },
+          {
+            path: ':id',
+            title: 'Produto | Top Care',
+            component: DashboardPageProductComponent,
+          },
+        ],
+      },
+
+      {
+        path: 'servicos',
+        title: 'Dashboard Serviços | Top Care',
+        component: DashboardServiceComponent,
+      },
+      {
+        path: 'servico',
+        children: [
+          {
+            path: '',
+            title: 'Adicionar Serviço | Top Care',
+            component: DashboardPageServiceComponent,
+          },
+          {
+            path: ':id',
+            title: 'Serviço | Top Care',
+            component: DashboardPageServiceComponent,
+          },
+        ],
+      },
+
+      {
+        path: 'pedidos',
+        title: 'Dashboard Pedidos | Top Care',
+        component: DashboardOrderComponent,
+      },
+      {
+        path: 'pedido/:id',
+        title: 'Pedido | Top Care',
+        component: FavoritesComponent,
+      },
+
+      {
+        path: 'agendamentos',
+        title: 'Dashboard Agendamentos | Top Care',
+        component: DashboardSchedulingComponent,
+      },
+      {
+        path: 'agendamento/:id',
+        title: 'Agendamento | Top Care',
+        component: DashboardPageSchedulingComponent,
+      },
+    ],
   },
 ];
 

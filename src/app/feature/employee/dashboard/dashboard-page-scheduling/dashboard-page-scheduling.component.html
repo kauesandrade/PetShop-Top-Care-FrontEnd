@@ -1,0 +1,27 @@
+<app-header
+  (sideBarOpenEmitter)="sideBarOpen($event)"
+  [simple]="true"
+  [employee]="true"
+></app-header>
+<main>
+  <app-dashboard-side-bar
+    pageNow="agendamento"
+    [isOpen]="isOpen"
+  ></app-dashboard-side-bar>
+  <div class="layout-dashboard">
+    <h2 class="info-title">Informações do agendamento</h2>
+    <div class="content">
+      <app-service-details-section
+        type="profile"
+        [pet]="pet"
+        [services]="services"
+        [schedule]="schedule"
+      ></app-service-details-section>
+      <app-petshop-card type="view" [petshop]="petshop"></app-petshop-card>
+      <div class="general-info">
+        <p><span>Nome do usuário:</span> {{ username }}</p>
+        <p><span>Código do agendamento:</span> {{ code }}</p>
+      </div>
+    </div>
+  </div>
+</main>

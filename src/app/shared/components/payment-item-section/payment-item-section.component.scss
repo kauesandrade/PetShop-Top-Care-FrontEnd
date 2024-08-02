@@ -1,0 +1,20 @@
+@import "styles";
+
+.content {
+  @include subgrid();
+  row-gap: 1.5rem;
+
+  h4 {
+    @include heading();
+    color: $primary;
+    grid-column: 1 / -1;
+    @media (min-width: $tablet) {
+      @include heading(h4);
+    }
+  }
+
+  app-payment-item-card {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}

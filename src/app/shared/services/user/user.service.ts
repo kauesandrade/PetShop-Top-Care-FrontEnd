@@ -1,5 +1,6 @@
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import * as userData from '../../../../assets/JsonFiles/users.json';
+import { Schedule } from '../../interfaces/schedule/schedule';
 import { User } from '../../interfaces/user/user';
 
 @Injectable({
@@ -15,6 +16,18 @@ export class UserService implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(this.loggedUser);
+  }
+
+  getSchedulings() {
+    let schedulings: Schedule[] = [];
+    if (this.loggedUser?.pets) {
+      for (let pet of this.loggedUser?.pets) {
+        for (let scheduling of pet.schedules) {
+          schedulings.push(scheduling);
+        }
+      }
+    }
+    return schedulings;
   }
 
   mainCard() {
@@ -49,6 +62,7 @@ export class UserService implements OnChanges {
       }
       return true;
     }
+
     return false;
   }
 
@@ -65,5 +79,24 @@ export class UserService implements OnChanges {
     this.loggedUser = user;
     localStorage.setItem('user', JSON.stringify(this.loggedUser));
     console.log(user);
+  }
+
+  getPetById(id: number) {
+    if (this.loggedUser?.pets?.length == 0) {
+      return null;
+    }
+
+    for (let pet of this.loggedUser?.pets!) {
+      if (pet.id == id) {
+        return pet;
+      }
+    }
+
+    return null;
+  }
+
+  deletePet(id: number){
+    this.loggedUser!.pets = this.loggedUser?.pets?.filter((pet) => pet.id != id)!;
+    console.log(this.loggedUser!.pets);
   }
 }

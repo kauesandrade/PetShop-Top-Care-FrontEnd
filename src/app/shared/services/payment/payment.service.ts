@@ -3,6 +3,7 @@ import { PaymentMethod } from '../../interfaces/payment/payment-method';
 import { Card } from '../../interfaces/payment/card';
 import { UserService } from '../user/user.service';
 import { CartService } from '../cart/cart.service';
+import { SchedulingService } from '../scheduling/scheduling.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,8 @@ export class PaymentService {
   paymentMethod: PaymentMethod = {
     value: 'card',
   };
+
+  type: 'scheduling' | 'cart' = 'cart';
 
   card!: Card;
   saveCard = false;
@@ -24,7 +27,8 @@ export class PaymentService {
 
   constructor(
     private userService: UserService,
-    private cartService: CartService
+    private cartService: CartService,
+    private schedulingService: SchedulingService
   ) {
     this.initCard();
     this.defineParcels();
@@ -42,14 +46,20 @@ export class PaymentService {
     this.parcelsNumber = value;
   }
 
+  setParcels(parcels: Array<number>) {
+    this.parcels = parcels;
+  }
+
   defineParcels() {
     this.parcels = new Array<number>();
-    for (
-      let i = 1;
-      i <= this.cartService.cartInformations.parcelsNumber!;
-      i++
-    ) {
-      this.parcels?.push(this.cartService.cartInformations.totalPrice! / i);
+    if (this.type == 'cart' && this.cartService.cartInformations) {
+      for (let i = 1; i <= this.parcelsNumber; i++) {
+        this.parcels?.push(this.cartService.cartInformations.totalPrice! / i);
+      }
+    } else {
+      for (let i = 1; i <= this.parcelsNumber; i++) {
+        this.parcels?.push(this.schedulingService.servicesTotalSum() / i);
+      }
     }
   }
 

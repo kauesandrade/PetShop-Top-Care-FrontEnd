@@ -1,0 +1,67 @@
+<section class="section-variants">
+
+    <div class="header-variants">
+      <h6>Variantes</h6>
+      <button class="btn-add" (click)="addVariants()">
+        <fa-icon [icon]="faPlus"></fa-icon>
+      </button>
+    </div>
+  
+    <div class="variants" *ngIf="variants.length > 0">
+      <ng-container *ngFor="let variant of variants.controls; let i = index">
+        <div class="select-tag" (click)="editVariant(i)">
+          <p>{{getTitle(i)?.value}}</p>
+          <button (click)="deleteVariant(i)">
+            <fa-icon [icon]="faTimes"></fa-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  
+    <ng-container *ngIf="variationsOpen">
+      <div class="variant">
+  
+        <ng-container *ngIf="variantModal != null; else noVariant">
+          <div class="variant-card">
+            <p>{{getTitle(variantModal)?.value}}</p>
+            <button (click)="updateVariant()" appButton="secondary">Salvar</button>
+          </div>
+        </ng-container>
+  
+        <ng-template #noVariant>
+          <div class="variant-card">
+            <p>Adicionar Variação</p>
+            <button (click)="addVariant()" appButton="secondary">Adicionar</button>
+          </div>
+        </ng-template>
+  
+  
+        <form [formGroup]="variantForm" class="form-variants">
+  
+            <label for="title" class="labels" appInput>
+              <p>Título da Variação*</p>
+              <input type="text" id="title" formControlName="title" placeholder="Título da variação" required />
+            </label>
+  
+            <label for="code" class="labels" appInput>
+              <p>Código*</p>
+              <input type="text" id="code" mask="0*" [dropSpecialCharacters]="true" formControlName="code" placeholder="Código da variação" required />
+            </label>
+            
+            <label for="price" class="labels" appInput>
+              <p>Preço*</p>
+              <input type="text" id="price"
+              mask="separator.2"
+              [thousandSeparator]="'.'"
+              [decimalMarker]="','"
+              prefix="R$ "
+              [dropSpecialCharacters]="true"
+              formControlName="price" placeholder="Preço da variação" required />
+            </label>
+  
+        </form>
+  
+      </div>
+    </ng-container>
+  
+  </section>

@@ -1,0 +1,13 @@
+<div class="card" (click)="openModal = true">
+  <div class="add-icon">
+    <fa-icon [icon]="faPlus"></fa-icon>
+  </div>
+  <p>Adicionar novo endereço</p>
+</div>
+
+<app-register-address
+  (registeredAddress)="registerAddress($event)"
+  [(open)]="openModal"
+  [title]="'Cadastre seu endereço'"
+  [allowClosing]="true"
+></app-register-address>

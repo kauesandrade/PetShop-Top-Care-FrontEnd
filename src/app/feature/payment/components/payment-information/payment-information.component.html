@@ -1,69 +1,117 @@
 <div class="content">
   <div class="address-info">
-    <h6>Endereço de entrega</h6>
-    <p>
-      <strong> {{ paymentInformation.address?.name }}</strong>
-    </p>
-    <p>
-      Rua {{ paymentInformation.address?.street || "Walter Marquardt" }},
-      {{ paymentInformation.address?.number || "2" }}
-    </p>
-    <p>
-      {{ paymentInformation.address?.neighborhood || "Vila Nova" }} -
-      {{ paymentInformation.address?.city || "Jaraguá do Sul" }} -
-      {{ paymentInformation.address?.state || "SC" }}
-    </p>
-    <p>
-      CEP:
-      {{ paymentInformation.address?.cep! | mask : "00000-000" || "12345-087" }}
-    </p>
-    <h6>
-      Entrega
-      {{ paymentInformation.shippingType?.shippingTime }}
-    </h6>
+    <ng-container
+      *ngIf="
+        type == 'cart' && paymentInformation != undefined;
+        else petshopAddress
+      "
+    >
+      <h6>Endereço de entrega</h6>
+      <p>
+        <strong> {{ paymentInformation.address?.name }}</strong>
+      </p>
+      <p>
+        Rua {{ paymentInformation.address?.street || "Walter Marquardt" }},
+        {{ paymentInformation.address?.number || "2" }}
+      </p>
+      <p>
+        {{ paymentInformation.address?.neighborhood || "Vila Nova" }} -
+        {{ paymentInformation.address?.city || "Jaraguá do Sul" }} -
+        {{ paymentInformation.address?.state || "SC" }}
+      </p>
+      <p>
+        CEP:
+        {{
+          paymentInformation.address?.cep! | mask : "00000-000" || "12345-087"
+        }}
+      </p>
+      <h6>
+        Entrega
+        {{ paymentInformation.shippingType?.shippingTime }}
+      </h6>
+    </ng-container>
+    <ng-template #petshopAddress>
+      <h6>Endereço do petshop</h6>
+      <p>{{ petshop?.address }}</p>
+    </ng-template>
   </div>
-  <button appButton="secondary" (click)="openAddresses = true">
+  <button
+    *ngIf="type == 'cart'"
+    appButton="secondary"
+    (click)="openAddresses = true"
+  >
     Alterar endereço
   </button>
   <div class="divider"></div>
   <div class="order-info">
     <h6>Pedido</h6>
-    <div class="info-container">
-      <p>
-        Valor dos produtos ({{ paymentInformation.amountItens }} ite{{
-          paymentInformation.amountItens! == 1 ? "m" : "ns"
-        }})
-      </p>
-      <p>{{ paymentInformation.partialPrice | currency : "BRL" }}</p>
-    </div>
+    <ng-container
+      *ngIf="
+        type == 'cart' && paymentInformation != undefined;
+        else petshopPayment
+      "
+    >
+      <div class="info-container">
+        <p>
+          Valor dos produtos ({{ paymentInformation.amountItens }} ite{{
+            paymentInformation.amountItens! == 1 ? "m" : "ns"
+          }})
+        </p>
+        <p>{{ paymentInformation.partialPrice | currency : "BRL" }}</p>
+      </div>
 
-    <div class="info-container">
-      <p>Valor do frete</p>
-      <ng-container
-        *ngIf="paymentInformation.shippingType?.price; else freeShipping"
-      >
-        <p>{{ paymentInformation.shippingType?.price | currency : "BRL" }}</p>
-      </ng-container>
-      <ng-template #freeShipping>
-        <p class="green">Grátis</p>
-      </ng-template>
-    </div>
-    <div class="info-container" *ngIf="paymentInformation.discountPrice">
-      <p>Desconto</p>
-      <p class="green">
-        {{ paymentInformation.discountPrice | currency : "BRL" }}
-      </p>
-    </div>
-    <div class="info-container">
-      <h6>Total</h6>
-      <div class="valor">
-        <p>{{ paymentInformation.totalPrice | currency : "BRL" }}</p>
-        <p *ngIf="paymentInformation.parcelsNumber! > 1">
-          ou {{ paymentInformation.parcelsNumber }}x de
-          {{ paymentInformation.parcelsPrice | currency : "BRL" }} sem juros
+      <div class="info-container">
+        <p>Valor do frete</p>
+        <ng-container
+          *ngIf="paymentInformation.shippingType?.price; else freeShipping"
+        >
+          <p>
+            {{ paymentInformation.shippingType?.price | currency : "BRL" }}
+          </p>
+        </ng-container>
+        <ng-template #freeShipping>
+          <p class="green">Grátis</p>
+        </ng-template>
+      </div>
+      <div class="info-container" *ngIf="paymentInformation.discountPrice">
+        <p>Desconto</p>
+        <p class="green">
+          {{ paymentInformation.discountPrice | currency : "BRL" }}
         </p>
       </div>
-    </div>
+      <div class="info-container">
+        <h6>Total</h6>
+        <div class="valor">
+          <p>{{ paymentInformation.totalPrice | currency : "BRL" }}</p>
+          <p *ngIf="paymentInformation.parcelsNumber! > 1">
+            ou {{ paymentInformation.parcelsNumber }}x de
+            {{ paymentInformation.parcelsPrice | currency : "BRL" }} sem juros
+          </p>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #petshopPayment>
+      <div class="info-container">
+        <p>
+          Valor dos serviços ({{ services?.length }} ite{{
+            services?.length! == 1 ? "m" : "ns"
+          }})
+        </p>
+        <p>{{ servicesTotalSum() | currency : "BRL" }}</p>
+      </div>
+
+      <div class="info-container">
+        <h6>Total</h6>
+        <div class="valor">
+          <p>{{ servicesTotalSum() | currency : "BRL" }}</p>
+          <p *ngIf="servicesPaymentInformation?.parcelsNumber! > 1">
+            ou {{ servicesPaymentInformation?.parcelsNumber }}x de
+            {{ servicesPaymentInformation?.parcelsPrice | currency : "BRL" }}
+            sem juros
+          </p>
+        </div>
+      </div>
+    </ng-template>
   </div>
   <div class="divider"></div>
   <button appButton (click)="finishPayment()">Finalizar compra</button>

@@ -1,0 +1,79 @@
+@import "styles";
+
+main {
+  display: flex;
+
+  .layout-dashboard {
+    @include layoutDashboard;
+    @include subgrid();
+
+    h2 {
+      color: $primary;
+      grid-column: 1 / -1;
+      @include heading();
+      text-align: center;
+      @media (min-width: $tablet) {
+        text-align: start;
+        @include heading(h3);
+      }
+      @media (min-width: $desktop) {
+        @include heading(h2);
+      }
+    }
+
+    .content {
+      @include subgrid();
+      row-gap: 1.5rem;
+      width: 100%;
+      background: $white;
+      border-radius: 1rem;
+      padding: 2rem;
+
+      app-service-details-section {
+        @include subgrid();
+        grid-column: 2 / -2;
+      }
+
+      app-petshop-card {
+        grid-column: 2 / -2;
+      }
+
+      .general-info {
+        @include flex(column);
+        gap: 1rem;
+        grid-column: 2 / -2;
+        background-color: $light-primary;
+        padding: 1rem;
+        border-radius: 1rem;
+        width: 100%;
+
+        @media (min-width: $tablet) {
+          @include flex(column, flex-start);
+        }
+        @media (min-width: $desktop) {
+          @include flex(row, $justify: space-between);
+        }
+
+        p {
+          @include text(normal, normal);
+          text-align: center;
+
+          span {
+            @include text(normal, semibold);
+            width: 50%;
+            text-align: center;
+            @media (min-width: $tablet) {
+              text-align: start;
+              @include heading();
+            }
+          }
+
+          @media (min-width: $tablet) {
+            text-align: start;
+            @include text(medium, normal);
+          }
+        }
+      }
+    }
+  }
+}

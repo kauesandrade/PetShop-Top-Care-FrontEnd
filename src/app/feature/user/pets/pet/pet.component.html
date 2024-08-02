@@ -1,0 +1,131 @@
+<app-layout>
+    <form [formGroup]="petProfileForm">
+
+        <label for="image" class="profilePetImg">
+            <img
+                [src]="pet.image"
+                accept="image/png, image/jpeg"
+                alt="Foto do Pet"
+                />
+        </label>
+
+        <label for="name" class="petNameInput">
+            <h6>Nome do Pet</h6>
+
+            <input type="text" appInput
+            id="name"
+            formControlName="name">
+        </label>
+
+        <div class="downloadButton">
+            <button appButton
+            (click)="teste()"
+            ><fa-icon [icon]="faDownloadIcon"></fa-icon></button>
+        </div>
+
+        <label for="sizes" class="petSelect">
+            <h6>Porte</h6>
+
+            <select appInput id="sizes" formControlName="sizes" required>
+                <option *ngFor="let size of sizes; let i = index" value="size">
+                    {{ size }}
+                </option>
+            </select>
+        </label>
+
+        <label for="types" class="petSelect">
+            <h6>Tipo do Pet</h6>
+
+            <select appInput id="types" formControlName="types" required>
+                <option *ngFor="let type of types; let i = index" value="type">
+                    {{ type }}
+                </option>
+            </select>
+        </label>
+
+        <label for="microship" class="petInput">
+            <h6>Microchip</h6>
+
+            <input type="text" appInput 
+            id="microship" 
+            formControlName="microship">
+        
+        </label>
+
+        <label for="breeds" class="petSelect">
+            <h6>Raça</h6>
+
+            <select appInput id="brees" formControlName="breeds" required>
+                <option *ngFor="let breed of breeds; let i = index" value="breeds">
+                    {{ breed }}
+                </option>
+            </select>
+        </label>
+
+        <label for="genders" class="petSelect">
+            <h6>Sexo</h6>
+
+            <select appInput id="genders" formControlName="genders" required>
+                <option *ngFor="let gender of genders; let i = index" value="genders">
+                    {{ gender }}
+                </option>
+            </select>
+        </label>
+
+        <label for="color" class="petInput">
+            <h6>Pelagem/Cor</h6>
+
+            <input type="text" appInput 
+            id="color" 
+            formControlName="color">
+        
+        </label>
+
+        <label for="data" class="petInput">
+            <h6>Data de Nascimento</h6>
+
+            <input type="text" appInput 
+            id="data" 
+            mask="d0/M0/0000"
+            formControlName="data">
+        
+        </label>
+
+        <label for="rga" class="petInput">
+            <h6>RGA</h6>
+
+            <input type="text" appInput 
+            id="rga" 
+            formControlName="rga">
+        
+        </label>
+
+        <label for="weight" class="petInput">
+            <h6>Peso (kg)</h6>
+
+            <input type="text" appInput 
+            id="weight" 
+            formControlName="weight">
+        
+        </label>
+
+        <hr class="line">
+
+        <div class="calendar">
+            <h5>Calendário de agendamentos</h5>
+
+            <app-calendar type="profile" [pets]='[pet]'></app-calendar>
+        </div>
+
+        <div class="pageButtons">
+            <button appButton class="editBtn" *ngIf="!editingData; else editing" (click)="enableEditing()">editar dados</button>
+            <ng-template #editing>
+                <button class="editBtn" appButton (click)="saveData()" [disabled]="!areFormsValid()">
+                  Salvar dados
+                </button>
+              </ng-template>
+            <button appButton="secondary" class="deleteBtn" (click)="deletePet()">excluir</button>
+        </div>
+        
+    </form>
+</app-layout>

@@ -356,86 +356,344 @@
           }
         }
       ],
-      "subscriptions": [
+      "pets": [
         {
-          "product": {
-            "code": 100,
-            "favorite": true,
-            "title": "Ração Golden - Cães Filhotes sabor Frango e Arroz",
-            "littleDescription": "Ração Golden - Cães Filhotes sabor Frango e Arroz",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas congue leo sed cursus placerat. Integer pretium ipsum ut nisl congue, sit amet rutrum felis ultricies. Cras auctor tellus tortor, iaculis maximus dui mollis vitae. Donec et lorem hendrerit, blandit est dignissim, luctus tellus. Morbi et enim eros. Curabitur sit amet est massa. Maecenas ut nulla sed ex scelerisque ultrices. Proin nec nibh risus. Sed a leo eget ante pellentesque viverra sed in sem",
-            "brand": "Golden",
-            "specifications": [
-              {
-                "title": "Idade",
-                "value": "Filhotes/Adultos"
+          "id": 1,
+          "idColor": "pet-green",
+          "image": "https://console.kr-asia.com/wp-content/uploads/2019/07/Dog-Shutterstock-Size-2.jpg",
+          "name": "Rex",
+          "size": "Médio",
+          "type": "Cachorro",
+          "race": "Labrador Retriever",
+          "gender": "Macho",
+          "color": "Amarelo",
+          "birth": "15052018",
+          "weight": 25.5,
+          "schedules": [
+            {
+              "code": 1,
+              "dateTime": "2024-07-02T10:00:00",
+              "services": [
+                {
+                  "code": 1,
+                  "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+                  "title": "Banho e Tosa",
+                  "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+                  "category": "Higiene",
+                  "servedPets": ["Cachorro", "Gato", "Aves"],
+                  "variantCode": 101,
+                  "variantTitle": "Banho Simples",
+                  "price": 50.0
+                }
+              ],
+              "petshop": {
+                "id": 1,
+                "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+                "name": "Pet Lovers",
+                "address": "123 Rua Principal, Cidade",
+                "openingHours": [
+                  "Seg-Sex: 9h-18h",
+                  "Sáb: 10h-16h",
+                  "Dom: Fechado"
+                ],
+                "telephone": "+1 (123) 456-7890",
+                "offeredServices": [
+                  "Banho e Tosa",
+                  "Hotel para Pets",
+                  "Treinamento"
+                ],
+                "servedPets": ["Cães", "Gatos", "Pássaros"]
               },
-              {
-                "title": "Linha",
-                "value": "Super Premium"
-              },
-              {
-                "title": "Pet",
-                "value": "Cachorro"
-              },
-              {
-                "title": "Tipo",
-                "value": "Ração seca"
-              },
-              {
-                "title": "Apresentação",
-                "value": "Disponível em embalagem de 15kg e 20kg."
+              "payment": {
+                "subtotal": 50.0,
+                "shippingFee": 0,
+                "total": 50.0,
+                "method": {
+                  "value": "card",
+                  "card": {
+                    "value": "card",
+                    "name": "Bernardo",
+                    "lastDigits": "1234",
+                    "expirationDate": "01/01",
+                    "mainCard": true
+                  }
+                },
+                "parcels": 1,
+                "status": "Pago"
               }
-            ],
-            "rating": 5,
-            "category": [
-              {
-                "title": "Pet",
-                "types": ["Cachorro"]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "idColor": "pet-yellow",
+          "image": "https://console.kr-asia.com/wp-content/uploads/2019/07/Dog-Shutterstock-Size-2.jpg",
+          "name": "Rex",
+          "size": "Médio",
+          "type": "Cachorro",
+          "race": "Labrador Retriever",
+          "gender": "Macho",
+          "color": "Amarelo",
+          "birth": "15052018",
+          "weight": 25.5,
+          "schedules": [
+            {
+              "code": 1,
+              "dateTime": "2024-07-02T10:00:00",
+              "services": [
+                {
+                  "code": 1,
+                  "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+                  "title": "Banho e Tosa",
+                  "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+                  "category": "Higiene",
+                  "servedPets": ["Cachorro", "Gato", "Aves"],
+                  "variantCode": 101,
+                  "variantTitle": "Banho Simples",
+                  "price": 50.0
+                }
+              ],
+              "petshop": {
+                "id": 1,
+                "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+                "name": "Pet Lovers",
+                "address": "123 Rua Principal, Cidade",
+                "openingHours": [
+                  "Seg-Sex: 9h-18h",
+                  "Sáb: 10h-16h",
+                  "Dom: Fechado"
+                ],
+                "telephone": "+1 (123) 456-7890",
+                "offeredServices": [
+                  "Banho e Tosa",
+                  "Hotel para Pets",
+                  "Treinamento"
+                ],
+                "servedPets": ["Cães", "Gatos", "Pássaros"]
               },
-              {
-                "title": "Porte de Raça",
-                "types": ["Pequeno", "Grande"]
-              },
-              {
-                "title": "Idade",
-                "types": ["Filhote", "Adulto"]
-              },
-              {
-                "title": "Linha",
-                "types": ["Super Premium"]
+              "payment": {
+                "subtotal": 50.0,
+                "shippingFee": 0,
+                "total": 50.0,
+                "method": {
+                  "value": "card",
+                  "card": {
+                    "value": "card",
+                    "name": "Bernardo",
+                    "lastDigits": "1234",
+                    "expirationDate": "01/01",
+                    "mainCard": true
+                  }
+                },
+                "parcels": 1,
+                "status": "Pago"
               }
-            ],
-            "variantCode": 1,
-            "variant": "15Kg",
-            "images": ["https://images.petz.com.br/fotos/1658430805995.jpg"],
-            "price": 99.99,
-            "discountPrice": 120.6,
-            "maxInterestFreeParcels": 2,
-            "subscribersPrice": 80,
-            "available": true
-          },
-          "amount": 1,
-          "subscriptionCode": 111,
-          "interval": "30 dias",
-          "nextShipping": "31052024",
-          "payment": {
-            "subtotal": 100,
-            "shippingFee": 0,
-            "total": 100,
-            "method": {
-              "value": "pix",
-              "pix": {
-                "copyPasteCode": "00000",
-                "qrCode": "00000",
-                "expirationInterval": 100000
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "idColor": "pet-blue",
+          "image": "https://console.kr-asia.com/wp-content/uploads/2019/07/Dog-Shutterstock-Size-2.jpg",
+          "name": "Rex",
+          "size": "Médio",
+          "type": "Cachorro",
+          "race": "Labrador Retriever",
+          "gender": "Macho",
+          "color": "Amarelo",
+          "birth": "15052018",
+          "weight": 25.5,
+          "schedules": [
+            {
+              "code": 1,
+              "dateTime": "2024-07-02T10:00:00",
+              "services": [
+                {
+                  "code": 1,
+                  "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+                  "title": "Banho e Tosa",
+                  "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+                  "category": "Higiene",
+                  "servedPets": ["Cachorro", "Gato", "Aves"],
+                  "variantCode": 101,
+                  "variantTitle": "Banho Simples",
+                  "price": 50.0
+                }
+              ],
+              "petshop": {
+                "id": 1,
+                "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+                "name": "Pet Lovers",
+                "address": "123 Rua Principal, Cidade",
+                "openingHours": [
+                  "Seg-Sex: 9h-18h",
+                  "Sáb: 10h-16h",
+                  "Dom: Fechado"
+                ],
+                "telephone": "+1 (123) 456-7890",
+                "offeredServices": [
+                  "Banho e Tosa",
+                  "Hotel para Pets",
+                  "Treinamento"
+                ],
+                "servedPets": ["Cães", "Gatos", "Pássaros"]
+              },
+              "payment": {
+                "subtotal": 50.0,
+                "shippingFee": 0,
+                "total": 50.0,
+                "method": {
+                  "value": "card",
+                  "card": {
+                    "value": "card",
+                    "name": "Bernardo",
+                    "lastDigits": "1234",
+                    "expirationDate": "01/01",
+                    "mainCard": true
+                  }
+                },
+                "parcels": 1,
+                "status": "Pago"
               }
-            },
-            "parcels": 1,
-            "status": "Pago"
-          }
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "idColor": "pet-pink",
+          "image": "https://console.kr-asia.com/wp-content/uploads/2019/07/Dog-Shutterstock-Size-2.jpg",
+          "name": "Rex",
+          "size": "Médio",
+          "type": "Cachorro",
+          "race": "Labrador Retriever",
+          "gender": "Macho",
+          "color": "Amarelo",
+          "birth": "15052018",
+          "weight": 25.5,
+          "schedules": [
+            {
+              "code": 1,
+              "dateTime": "2024-07-02T10:00:00",
+              "services": [
+                {
+                  "code": 1,
+                  "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+                  "title": "Banho e Tosa",
+                  "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+                  "category": "Higiene",
+                  "servedPets": ["Cachorro", "Gato", "Aves"],
+                  "variantCode": 101,
+                  "variantTitle": "Banho Simples",
+                  "price": 50.0
+                }
+              ],
+              "petshop": {
+                "id": 1,
+                "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+                "name": "Pet Lovers",
+                "address": "123 Rua Principal, Cidade",
+                "openingHours": [
+                  "Seg-Sex: 9h-18h",
+                  "Sáb: 10h-16h",
+                  "Dom: Fechado"
+                ],
+                "telephone": "+1 (123) 456-7890",
+                "offeredServices": [
+                  "Banho e Tosa",
+                  "Hotel para Pets",
+                  "Treinamento"
+                ],
+                "servedPets": ["Cães", "Gatos", "Pássaros"]
+              },
+              "payment": {
+                "subtotal": 50.0,
+                "shippingFee": 0,
+                "total": 50.0,
+                "method": {
+                  "value": "card",
+                  "card": {
+                    "value": "card",
+                    "name": "Bernardo",
+                    "lastDigits": "1234",
+                    "expirationDate": "01/01",
+                    "mainCard": true
+                  }
+                },
+                "parcels": 1,
+                "status": "Pago"
+              }
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "idColor": "pet-red",
+          "image": "https://console.kr-asia.com/wp-content/uploads/2019/07/Dog-Shutterstock-Size-2.jpg",
+          "name": "Rex",
+          "size": "Médio",
+          "type": "Cachorro",
+          "race": "Labrador Retriever",
+          "gender": "Macho",
+          "color": "Amarelo",
+          "birth": "15052018",
+          "weight": 25.5,
+          "schedules": [
+            {
+              "code": 1,
+              "dateTime": "2024-07-02T10:00:00",
+              "services": [
+                {
+                  "code": 1,
+                  "image": "https://img.freepik.com/fotos-premium/rosto-de-close-up-de-cachorro-labradoodle-encaracolado-engracado-tosador-feminino-lavando-a-cabeca-com-xampu-na-banheira-no-salao-de-beleza-proprietario-de-mulher-irreconhecivel-lava-cuidadosamente-a-pele-do-animal-de-estimacao-no-banho-em-casa_482921-3961.jpg?w=740",
+                  "title": "Banho e Tosa",
+                  "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
+                  "category": "Higiene",
+                  "servedPets": ["Cachorro", "Gato", "Aves"],
+                  "variantCode": 101,
+                  "variantTitle": "Banho Simples",
+                  "price": 50.0
+                }
+              ],
+              "petshop": {
+                "id": 1,
+                "image": "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
+                "name": "Pet Lovers",
+                "address": "123 Rua Principal, Cidade",
+                "openingHours": [
+                  "Seg-Sex: 9h-18h",
+                  "Sáb: 10h-16h",
+                  "Dom: Fechado"
+                ],
+                "telephone": "+1 (123) 456-7890",
+                "offeredServices": [
+                  "Banho e Tosa",
+                  "Hotel para Pets",
+                  "Treinamento"
+                ],
+                "servedPets": ["Cães", "Gatos", "Pássaros"]
+              },
+              "payment": {
+                "subtotal": 50.0,
+                "shippingFee": 0,
+                "total": 50.0,
+                "method": {
+                  "value": "card",
+                  "card": {
+                    "value": "card",
+                    "name": "Bernardo",
+                    "lastDigits": "1234",
+                    "expirationDate": "01/01",
+                    "mainCard": true
+                  }
+                },
+                "parcels": 1,
+                "status": "Pago"
+              }
+            }
+          ]
         }
-      ]
+      ],
+      "access": "normal"
     },
     {
       "name": "Gabriel Baseggio",
@@ -443,7 +701,7 @@
       "cpf": "00000000000",
       "birth": "30/08/2005",
       "gender": "Masculino",
-      "password": "149378",
+      "password": "123456",
       "contactInfo": [
         {
           "cellphone": "47991572443",
@@ -468,7 +726,8 @@
       ],
       "cards": [],
       "orders": [],
-      "subscriptions": []
+      "pets": [],
+      "access": "admin"
     },
     {
       "name": "Leticia Mafra",
@@ -501,7 +760,8 @@
       ],
       "cards": [],
       "orders": [],
-      "subscriptions": []
+      "pets": [],
+      "access": "normal"
     },
     {
       "name": "Kaue Schaefer de Andrade",
@@ -534,7 +794,8 @@
       ],
       "cards": [],
       "orders": [],
-      "subscriptions": []
+      "pets": [],
+      "access": "normal"
     }
   ]
 }

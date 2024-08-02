@@ -1,0 +1,80 @@
+<form [formGroup]="serviceForm" class="section-product">
+
+    <section class="section-image">
+        <label for="image">
+            <div #imageDisplay class="imageDisplay">
+              <div>
+                <fa-icon
+                  [icon]="faFile"
+                ></fa-icon>
+                
+                <ng-container *ngIf="this.image?.value; else noImage">
+                  <p>Editar Imagem</p>
+                </ng-container>
+                <ng-template #noImage>
+                  <p>Adicionar Imagem</p>
+                </ng-template>
+
+              </div>
+            </div>
+            <input
+              type="file"
+              accept="image/png, image/jpeg, image/gif*"
+              id="image"
+              placeholder="Digite seu telefone"
+              (input)="onFileChange($event)"
+            />
+          </label>
+    </section>
+
+    <section class="section-forms">
+
+        <div class="title-code">
+            <label for="title" class="labels" appInput>
+                <p>Título*</p>
+                <input type="text" id="title" formControlName="title" placeholder="Título do serviço" required />
+            </label>
+
+            <label for="code" class="labels" appInput>
+                <p>Código do Serviço*</p>
+                <input type="text" mask="0*" [dropSpecialCharacters]="true" id="code" formControlName="code" placeholder="Código do serviço" required />
+            </label>
+
+
+        </div>
+
+        <label for="description" class="labels" appInput>
+            <p>Descrição*</p>
+            <textarea type="text" id="description" formControlName="description"
+                placeholder="Descrição do serviço" required>
+              </textarea>
+        </label>
+
+        <div class="title-code">
+
+            <label for="typePets" class="labels">
+                <p>Tipos de pets atendidos*</p>
+                <p-multiSelect formControlName="servedPets" (onChange)="changeEmitServiceForms()" [options]="pets" [(ngModel)]="selectPets" defaultLabel="Selecione o tipo de pet"></p-multiSelect>
+            </label>
+
+
+            <label for="category" class="labels" appInput>
+                <p>Categoria*</p>
+                <select id="category" formControlName="category" appInput required
+                (change)="changeEmitServiceForms()"
+                >
+                  <option value=null selected disabled hidden>Categoria do serviço</option>
+                  <option
+                    *ngFor="let category of categories;"
+                    [value]="category"
+                  >
+                    {{ category }}
+                  </option>
+                </select>
+    
+            </label>
+        </div>
+
+    </section>
+
+</form>

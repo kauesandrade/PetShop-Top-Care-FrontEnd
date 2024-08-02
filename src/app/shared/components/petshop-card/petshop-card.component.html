@@ -1,0 +1,36 @@
+<label [for]="petshop.id" class="card">
+  <input
+    *ngIf="type == 'checkbox'"
+    type="radio"
+    name="petshop"
+    [id]="petshop.id"
+    (change)="changeInputRadio()"
+    [checked]="petshop.id == selectedPetshop?.id"
+    appInput
+  />
+  <div class="content">
+    <img [src]="petshop.image" alt="Petshop image" />
+    <div class="text-content">
+      <div class="title-text name">
+        <p class="title">{{ petshop.name }}</p>
+        <p>{{ petshop.address }}</p>
+      </div>
+      <div class="title-text distance">
+        <p class="title">Distância</p>
+        <p>50 KM</p>
+      </div>
+      <div class="title-text opening-hours">
+        <p class="title">Horários</p>
+        <ng-container *ngFor="let horario of petshop.openingHours">
+          <p>{{ horario }}</p>
+        </ng-container>
+      </div>
+      <div class="title-text offered-services">
+        <p class="title">Serviços Oferecidos</p>
+        <ng-container *ngFor="let servico of petshop.offeredServices">
+          <p>{{ servico }}</p>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</label>

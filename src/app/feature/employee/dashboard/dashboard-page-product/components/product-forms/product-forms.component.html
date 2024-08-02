@@ -1,0 +1,50 @@
+<form [formGroup]="productForm" class="section-product">
+    <div class="title-code">
+        <label for="title" class="labels" appInput>
+            <p>Título do Produto*</p>
+            <input type="text" [class.has-error]="title?.invalid && title?.touched" id="title" formControlName="title" placeholder="Título do produto" (change)="changeEmitProductForms()" required />
+        </label>
+
+        <label for="code" class="labels" appInput>
+            <p>Código*</p>
+            <input type="text" mask="0*" [dropSpecialCharacters]="true" id="code" formControlName="code" placeholder="Código do produto" (change)="changeEmitProductForms()" required />
+        </label>
+    </div>
+
+    <label for="description" class="labels" appInput>
+        <p>Descrição*</p>
+        <textarea type="text" id="description" formControlName="description" placeholder="Descrição do produto" (change)="changeEmitProductForms()"
+            required>
+          </textarea>
+    </label>
+
+    <label for="littleDescription" class="labels" appInput>
+        <p>Descrição Curta*</p>
+        <input type="text" id="littleDescription" formControlName="littleDescription" (change)="changeEmitProductForms()"
+            placeholder="Descrição curta" required />
+    </label>
+
+    <div class="brand-category">
+        <label for="brand" class="labels" appInput>
+            <p>Marca*</p>
+            <select id="brand" formControlName="brand" appInput required
+            (change)="changeEmitProductForms()"
+            >
+              <option value=null selected disabled hidden>Marca do produto</option>
+              <option
+                *ngFor="let brand of brands;"
+                [value]="brand.name"
+              >
+                {{ brand.name }}
+              </option>
+            </select>
+
+        </label>
+
+        <label for="category" class="labels">
+            <p>Categoria</p>
+            <p-multiSelect formControlName="category" (onChange)="changeEmitProductForms()" [options]="typesCategories" [(ngModel)]="selectCategories" defaultLabel="Selecione a Categoria"></p-multiSelect>
+        </label>
+        
+    </div>
+</form>
