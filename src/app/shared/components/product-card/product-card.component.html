@@ -15,24 +15,16 @@
   </div>
   <div class="main-pricing">
     <div class="pricing-values">
-      <ng-container *ngIf="product.discountPrice !== 0">
-        <p class="price">
-          {{ product.price | currency : "BRL" : "symbol" : "1.2-2" }}
-        </p>
-      </ng-container>
-      <p [ngClass]="{ 'before-discount': product.discountPrice !== 0 }">
+      <p class="discount-price">
         {{ product.discountPrice | currency : "BRL" : "symbol" : "1.2-2" }}
       </p>
     </div>
-    <ng-container *ngIf="product!.maxInterestFreeParcels > 1">
-      <p class="parcels">até {{ product.maxInterestFreeParcels }}x sem juros</p>
-    </ng-container>
   </div>
-  <div class="subscribers-pricing">
-    <p class="subscribers-price">
-      {{ product.subscribersPrice | currency : "BRL" : "symbol" : "1.2-2" }}
+  <div class="pricing">
+    <p class="price">
+      {{ product.price | currency : "BRL" : "symbol" : "1.2-2" }}
     </p>
-    <p class="subscribers-text">Apenas para assinantes</p>
+    <p class="parcels">até {{ product.maxInterestFreeParcels }}x sem juros</p>
   </div>
   <div class="buttons-container">
     <button (click)="handleClickBuy()" appButton>Comprar agora</button>

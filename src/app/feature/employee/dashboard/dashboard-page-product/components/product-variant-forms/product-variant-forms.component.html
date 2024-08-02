@@ -75,6 +75,21 @@
 
         </div>
 
+          <label for="price" class="labels" appInput>
+            <p>Desconto</p>
+            <input 
+            type="text"
+            
+            mask="00"
+            [decimalMarker]="','"
+            suffix=" %"
+            [dropSpecialCharacters]="true"
+
+            id="discount" formControlName="discount" 
+            placeholder="Desconto do produto" 
+            required />
+          </label>
+
         <label for="images" class="labels btn-add-img" appButton="">
           Adicionar Imagem
           <input type="file" accept="image/png, image/jpeg" id="images"  multiple
@@ -84,9 +99,18 @@
         <div class="images-list">
           <ng-container *ngFor="let image of getImageForms()?.value; let i = index">
             <div class="image">
-              <img [src]="image.src" alt="">
+              <div class="image-angles">
+
+                <div class="div-angles">
+                  <fa-icon class="angles" [class.disable]="i == 0" (click)="passUpImage(i)" [icon]="faAngleUp"></fa-icon>
+                  <fa-icon class="angles" [class.disable]="i == getImageForms()?.value.length - 1" (click)="passDownImage(i)" [icon]="faAngleDown"></fa-icon>
+                </div>
+
+                <img [src]="image.src" alt="">
+
+              </div>
               <p>{{image.name}}</p>
-              <fa-icon [icon]="faTrash" (click)="removeImage(i)"></fa-icon>
+              <fa-icon class="trash" [icon]="faTrash" (click)="removeImage(i)"></fa-icon>
             </div>
           </ng-container>
         </div>

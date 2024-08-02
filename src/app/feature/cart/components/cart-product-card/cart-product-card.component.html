@@ -33,39 +33,4 @@
 
     </section>
 
-    <div class="divider"></div>
-
-    <section class="section-subscription">
-
-        <div class="div-toggle">
-            <label class="switch">
-                <input type="checkbox" [checked]="isChecked" (change)="checked()">
-                <span class="slider round"></span>
-            </label>
-            <p class="subscription" [class.checked]="isChecked" >Assinar Produto</p>
-        </div>
-
-        <ng-container *ngIf="isChecked">
-            <div class="div-select-days">
-                <fa-icon [icon]="faPercent"></fa-icon>
-                <label appInput>
-                    <select
-                    class="select"
-                      appInput
-                      (change)="changeTypesSubscription($event.target)"
-                    >
-                      <option
-                        [selected]="type == item.subscription"
-                        *ngFor="let type of typesSubscriptions;"
-                        [value]="type"
-                        >
-                        Enviar a cada {{ type }}
-                    </option>
-                    </select>
-                  </label>
-            </div>
-        </ng-container>
-
-    </section>
-
 </div>

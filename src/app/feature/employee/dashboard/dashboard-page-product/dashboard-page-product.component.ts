@@ -121,6 +121,7 @@ export class DashboardPageProductComponent implements OnInit {
       stock: [0],
       price: [productVariant.price!, [Validators.required, EmptyValidator]],
       images: [images],
+      discount: [productVariant.discountPrice!]
     });
 
     (<FormArray>this.variantsForm.controls.variants).push(variant);

@@ -3,7 +3,7 @@
 .card-container {
   @include flex(column, center, start);
   width: 16rem;
-  height: 22rem;
+  height: 20rem;
   padding: 1rem;
   background-color: $white;
   gap: 0.5rem;
