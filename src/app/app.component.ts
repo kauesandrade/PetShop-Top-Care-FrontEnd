@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +6,17 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private toastr: ToastrService) {}
+  constructor() {}
 
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-  }
+  // Tutorial de usar um toast do primeng
+  // constructor(private messageService: MessageService) {}
+
+  // showSuccess() {
+  //   this.messageService.add({
+  //     severity: 'success',
+  //     summary: 'Success',
+  //     life: 1000000,
+  //     closable: false,
+  //   });
+  // }
 }
