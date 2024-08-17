@@ -3,6 +3,9 @@ import productData from '../../../../assets/JsonFiles/products.json';
 import productVariantData from '../../../../assets/JsonFiles/productVariant.json';
 import { Product } from '../../interfaces/product/product';
 import { ProductVariant } from '../../interfaces/product/product-variant';
+import { environment } from './../../../../environments/environment';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +15,31 @@ export class ProductService {
   private productVariant!: ProductVariant;
   private productVariantsList!: Array<ProductVariant>;
 
-  constructor() {}
+  private apiUrl = "localhost:8088/topcare/product";
+
+  constructor(private httpClient: HttpClient) {}
+
+  getProductByCode(code: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}/${code}`);
+  }
+
+  createProduct(product: Product): Observable<Product> {
+    return this.httpClient.post<Product>(this.apiUrl, product);
+  }
+
+  editProduct(id: number, product: Product): Observable<Product> {
+    return this.httpClient.put<Product>(`${this.apiUrl}/${id}`, product);
+  }
+
+  deleteProduct(id: number): Observable<Product> {
+    return this.httpClient.delete<Product>(`${this.apiUrl}/${id}`);
+  }
+
+
+
+
+
+
 
   getProduct() {
     return this.product;

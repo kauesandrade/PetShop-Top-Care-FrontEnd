@@ -14,11 +14,17 @@ export class ProductComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private routing: Router, protected productService: ProductService, private cartService: CartService) { 
     this.id = this.route.snapshot.paramMap.get("id")?.replace("%20", " ");
-    productService.findProduct(this.id);
-    this.verifyProduct();
+    console.log(this.id);
+    
+
+    // this.verifyProduct();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.productService.getProductByCode(this.id).subscribe((data) => {
+      console.log(data);
+    }); 
+  }
 
   getValueAmount(evt: number) {
     this.amount = evt;

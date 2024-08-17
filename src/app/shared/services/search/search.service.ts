@@ -10,7 +10,7 @@ import { ProductService } from '../product/product.service';
 export class SearchService {
   private productList: Array<ProductVariant> = [];
 
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
   searchProducts(searchValue: string) {
     const searchValueList: Array<string> = searchValue.split(' ');
@@ -32,20 +32,19 @@ export class SearchService {
   }
 
   private searchInProductData(searchValueFind: string) {
-    let productService = new ProductService();
     this.productList = [];
 
     productData.product.forEach((product) => {
-      productService.findProduct(product);
+      this.productService.findProduct(product);
 
       if (
         this.getTitleWithTypes(product).includes(
           this.formatString(searchValueFind)
         ) &&
-        !this.productList.includes(productService.getFirstProductVariant()) &&
-        this.verifyProductIsAvailable(productService.getFirstProductVariant())
+        !this.productList.includes(this.productService.getFirstProductVariant()) &&
+        this.verifyProductIsAvailable(this.productService.getFirstProductVariant())
       ) {
-        this.productList.push(productService.getFirstProductVariant());
+        this.productList.push(this.productService.getFirstProductVariant());
       }
     });
   }
@@ -75,11 +74,11 @@ export class SearchService {
   }
 
   private getTitleWithTypes(product: Product) {
-    let productService = new ProductService();
+
     let productTitle = product.title + ' ' + product.brand;
 
-    productService.findProduct(product);
-    productService.getProductVariants().forEach((variant) => {
+    this.productService.findProduct(product);
+    this.productService.getProductVariants().forEach((variant) => {
       productTitle += ' ' + variant.variant;
     });
     return this.formatString(productTitle);

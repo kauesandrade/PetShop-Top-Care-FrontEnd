@@ -10,16 +10,15 @@ import { ProductService } from '../product/product.service';
 export class FavoriteService {
   productList: Array<ProductVariant> = [];
 
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
   getAllProductfavorited() {
     this.productList = [];
     productData.product.forEach((product) => {
-      let productService = new ProductService();
-      productService.findProduct(product);
+      this.productService.findProduct(product);
 
       if (product.favorite == true) {
-        this.productList.push(productService.getFirstProductVariant());
+        this.productList.push(this.productService.getFirstProductVariant());
       }
     });
 
@@ -62,11 +61,10 @@ export class FavoriteService {
   }
 
   private getTitleWithTypes(product: Product) {
-    let productService = new ProductService();
     let productTitle = product.title + ' ' + product.brand;
 
-    productService.findProduct(product);
-    productService.getProductVariants().forEach((variant) => {
+    this.productService.findProduct(product);
+    this.productService.getProductVariants().forEach((variant) => {
       productTitle += ' ' + variant.variant;
     });
     return this.formatString(productTitle);
