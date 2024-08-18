@@ -1,6 +1,7 @@
 import { ProductVariant } from '../product/product-variant';
+import { ProductResponseCard } from '../product/response/product-response-card';
 
 export interface Item {
-  product: ProductVariant;
+  product: ProductResponseCard;
   amount: number;
 }

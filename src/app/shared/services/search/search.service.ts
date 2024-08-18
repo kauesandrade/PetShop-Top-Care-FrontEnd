@@ -3,6 +3,8 @@ import productData from '../../../../assets/JsonFiles/products.json';
 import { Product } from '../../interfaces/product/product';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 import { ProductService } from '../product/product.service';
+import { HttpParams, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,22 +12,32 @@ import { ProductService } from '../product/product.service';
 export class SearchService {
   private productList: Array<ProductVariant> = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private httpClient: HttpClient) {}
 
-  searchProducts(searchValue: string) {
-    const searchValueList: Array<string> = searchValue.split(' ');
+  private apiUrl = "localhost:8088/topcare/search";
 
-    let first = true;
-    searchValueList.forEach((searchValueFind) => {
-      if (first) {
-        this.searchInProductData(searchValueFind);
-        first = false;
-      } else if (!first && this.productList.length > 0) {
-        this.searchInProductList(searchValueFind);
-      }
-    });
-    return this.productList;
+  searchProducts(searchParams: HttpParams, productCategories: Array<number>): Observable<any>{
+    return this.httpClient.put<any>(`${this.apiUrl}/product`, productCategories, {params: searchParams});
   }
+
+  
+
+
+
+  // searchProducts(searchValue: string) {
+  //   const searchValueList: Array<string> = searchValue.split(' ');
+
+  //   let first = true;
+  //   searchValueList.forEach((searchValueFind) => {
+  //     if (first) {
+  //       this.searchInProductData(searchValueFind);
+  //       first = false;
+  //     } else if (!first && this.productList.length > 0) {
+  //       this.searchInProductList(searchValueFind);
+  //     }
+  //   });
+  //   return this.productList;
+  // }
 
   getProductList() {
     return this.productList;

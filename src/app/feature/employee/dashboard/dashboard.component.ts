@@ -64,7 +64,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.searchService.searchProducts('');
+    // this.searchService.searchProducts('');
     this.productList = this.searchService.getProductList();
     this.service = this.serviceService.getServicesVariants()[0];
 

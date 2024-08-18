@@ -14,7 +14,7 @@ export class DashboardProductComponent implements OnInit {
   constructor(private searchService: SearchService, private filterService: FilterService) { }
 
   ngOnInit(): void {
-    this.searchService.searchProducts("");
+    // this.searchService.searchProducts("");
     this.productList = this.searchService.getProductList();
   }
 

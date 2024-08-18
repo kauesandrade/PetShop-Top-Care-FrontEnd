@@ -9,6 +9,7 @@ import EmblaCarousel, { EmblaOptionsType } from 'embla-carousel';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { ProductVariant } from '../../interfaces/product/product-variant';
+import { ProductResponseCard } from '../../interfaces/product/response/product-response-card';
 
 @Component({
   selector: 'app-product-carousel',
@@ -38,7 +39,7 @@ export class ProductCarouselComponent implements AfterViewInit, OnDestroy {
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
 
-  @Input() productList?: Array<ProductVariant>;
+  @Input() productList?: Array<ProductResponseCard>;
 
   ngOnDestroy(): void {
     if (this.embla) {

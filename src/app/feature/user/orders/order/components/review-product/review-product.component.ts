@@ -54,7 +54,7 @@ export class ReviewProductComponent implements OnInit {
 
   ngOnInit(): void {
     let title = this.route.snapshot.paramMap.get('id')!;
-    this.product = this.searchService.searchProducts(title)[0];
+    // this.product = this.searchService.searchProducts(title)[0];
   }
 
   get rating() {

@@ -1,9 +1,9 @@
 <div class="div-container">
     <div class="div-product-pricing">
-        <span class="product-discountPrice">{{productVariant.discountPrice | currency : "BRL" : "symbol" : "1.2-2"}}</span>
-        <h4 class="product-price">{{productVariant.price | currency : "BRL" : "symbol" : "1.2-2"}}</h4>
-        <ng-container *ngIf="productVariant.maxInterestFreeParcels > 1">
-            <p>ou {{productVariant.maxInterestFreeParcels}}x de {{ (productVariant.price / productVariant.maxInterestFreeParcels) | currency :
+        <span class="product-discountPrice">{{discountPrice() | currency : "BRL" : "symbol" : "1.2-2"}}</span>
+        <h4 class="product-price">{{productVariant.price| currency : "BRL" : "symbol" : "1.2-2"}}</h4>
+        <ng-container *ngIf="productVariant.parcels > 1">
+            <p>ou {{productVariant.parcels}}x de {{ (productVariant.price / productVariant.parcels) | currency :
                 "BRL" : "symbol" : "1.2-2" }} sem juros</p>
         </ng-container>
     </div>

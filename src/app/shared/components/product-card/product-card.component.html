@@ -1,9 +1,9 @@
 <div class="card-container">
-  <ng-container *ngIf="product.favorite">
+  <!-- <ng-container *ngIf="product.favorite">
     <fa-icon [icon]="faHeart" class="favorite-heart"></fa-icon>
-  </ng-container>
+  </ng-container> -->
   <a href="/produto/{{product.code}}" class="redirect-product">
-    <img [src]="product.images[0].src" alt="Product image" class="product-image" />
+    <img [src]="product.image.file" alt="Product image" class="product-image" />
     <p class="product-title">{{ product.title }}</p>
   </a>
   <div class="brand-rating">
@@ -24,7 +24,7 @@
     <p class="price">
       {{ product.price | currency : "BRL" : "symbol" : "1.2-2" }}
     </p>
-    <p class="parcels">até {{ product.maxInterestFreeParcels }}x sem juros</p>
+    <p class="parcels">até {{ product.parcels }}x sem juros</p>
   </div>
   <div class="buttons-container">
     <button (click)="handleClickBuy()" appButton>Comprar agora</button>

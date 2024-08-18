@@ -106,7 +106,7 @@ export class HomeComponent {
     },
   ];
 
-  category1: Array<string> = ['Oferta'];
+  category1: Array<number> = [1];
 
   brands: Array<RoundCard> = [
     {
@@ -144,7 +144,7 @@ export class HomeComponent {
     },
   ];
 
-  category2: Array<string> = ['Legal'];
+  category2: Array<number> = [2];
 
   constructor() {}
 }

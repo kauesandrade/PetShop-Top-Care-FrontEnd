@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '../../interfaces/product/product';
-import { ProductVariant } from '../../interfaces/product/product-variant';
-import { FilterService } from '../../services/filter/filter.service';
 import { ProductService } from '../../services/product/product.service';
-import productData from '../../../../assets/JsonFiles/products.json';
+import { ProductResponseCard } from '../../interfaces/product/response/product-response-card';
+import { ProductCategoryResponse } from '../../interfaces/product/response/product-category-response';
 
 @Component({
   selector: 'app-product-section',
@@ -12,36 +10,24 @@ import productData from '../../../../assets/JsonFiles/products.json';
 })
 export class ProductSectionComponent implements OnInit {
   @Input() title: string = '';
-  @Input() category?: Array<string>;
-  @Input() product?: Product | ProductVariant;
+  @Input() category?: Array<number> | Array<ProductCategoryResponse>;
   @Input() divider: boolean = false;
-  productList: Array<ProductVariant> = [];
+  productList: Array<ProductResponseCard> = [];
 
   constructor(
-    private filterService: FilterService,
     private productService: ProductService
   ) {}
 
   ngOnInit(): void {
     if (this.category?.length) {
-      this.productList = this.filterService.filterProducts(
-        this.category,
-        productData.product
-      );
-      this.format();
-    } else if (this.product) {
-      this.productList = this.filterService.getSimilarProducts(this.product);
-      this.format();
+      typeof this.category[0] === 'number' ? 
+      this.productService.getProductsByCategories(this.category as Array<number>).subscribe((data) => {this.productList = [data]}) :
+      this.productService.getProductsByCategories(this.convertToIds(this.category as Array<ProductCategoryResponse>)).subscribe((data) => {this.productList = [data]});
     }
   }
 
-  format() {
-    const a = [...this.productList];
-    this.productList = [];
-    a.forEach((pro) => {
-      if (this.productList.length < 10) {
-        this.productList.push(pro);
-      }
-    });
+  convertToIds(categoires: Array<ProductCategoryResponse>) {
+    return categoires.map(categori=> categori.id);
   }
+
 }

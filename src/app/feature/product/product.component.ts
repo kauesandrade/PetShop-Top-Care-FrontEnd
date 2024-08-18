@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductResponsePage } from 'src/app/shared/interfaces/product/response/product-response-page';
+import { ProductVariantResponse } from 'src/app/shared/interfaces/product/response/product-variant-response';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
@@ -12,17 +14,18 @@ export class ProductComponent implements OnInit {
   amount: number = 1;
   id?: any;
 
+  productPage?: ProductResponsePage;
+  productVariant!: ProductVariantResponse;
+
   constructor(private route: ActivatedRoute, private routing: Router, protected productService: ProductService, private cartService: CartService) { 
     this.id = this.route.snapshot.paramMap.get("id")?.replace("%20", " ");
     console.log(this.id);
-    
-
     // this.verifyProduct();
   }
 
   ngOnInit(): void {
     this.productService.getProductByCode(this.id).subscribe((data) => {
-      console.log(data);
+      this.productPage = data;
     }); 
   }
 
@@ -31,10 +34,10 @@ export class ProductComponent implements OnInit {
   }
 
   getHandleClickCart() {
-    this.cartService.addItemCart(this.productService.getProductVariant(), this.amount);
+    // this.cartService.addItemCart(this.productService.getProductVariant(), this.amount);
   }
   getHandleClickBuy() {
-    this.cartService.addItemCart(this.productService.getProductVariant(), this.amount);
+    // this.cartService.addItemCart(this.productService.getProductVariant(), this.amount);
     this.routing.navigate(['/carrinho']);
   }
 

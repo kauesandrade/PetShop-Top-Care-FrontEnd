@@ -6,40 +6,50 @@ import { ProductVariant } from '../../interfaces/product/product-variant';
 import { environment } from './../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { ProductResponsePage } from '../../interfaces/product/response/product-response-page';
+import { ProductResponseCard } from '../../interfaces/product/response/product-response-card';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  private product?: Product;
-  private productVariant!: ProductVariant;
-  private productVariantsList!: Array<ProductVariant>;
-
+  
   private apiUrl = "localhost:8088/topcare/product";
-
+  
   constructor(private httpClient: HttpClient) {}
-
-  getProductByCode(code: number): Observable<any> {
-    return this.httpClient.get<any>(`${this.apiUrl}/${code}`);
+  
+  getProductByCode(code: number): Observable<ProductResponsePage> {
+    return this.httpClient.get<ProductResponsePage>(`${this.apiUrl}/${code}`);
   }
 
+  getSimilarProductsByCode(code: number): Observable<ProductResponseCard>{
+    return this.httpClient.get<ProductResponseCard>(`${this.apiUrl}/similar/${code}`);
+  }
+
+  getProductsByCategories(categories: Array<number>): Observable<ProductResponseCard>{
+    return this.httpClient.put<ProductResponseCard>(`${this.apiUrl}/categories`, categories);
+  }
+  
   createProduct(product: Product): Observable<Product> {
     return this.httpClient.post<Product>(this.apiUrl, product);
   }
-
+  
   editProduct(id: number, product: Product): Observable<Product> {
     return this.httpClient.put<Product>(`${this.apiUrl}/${id}`, product);
   }
-
+  
   deleteProduct(id: number): Observable<Product> {
     return this.httpClient.delete<Product>(`${this.apiUrl}/${id}`);
   }
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  private product?: Product;
+  private productVariant!: ProductVariant;
+  private productVariantsList!: Array<ProductVariant>;
 
   getProduct() {
     return this.product;

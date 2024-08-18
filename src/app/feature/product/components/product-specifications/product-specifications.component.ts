@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductSpecification } from 'src/app/shared/interfaces/product/product-specification';
+import { ProductSpecificationsResponse } from 'src/app/shared/interfaces/product/response/product-specifications-response';
 
 @Component({
   selector: 'app-product-specifications',
@@ -9,7 +10,7 @@ import { ProductSpecification } from 'src/app/shared/interfaces/product/product-
 export class ProductSpecificationsComponent implements OnInit {
   constructor() {}
 
-  @Input() specifications?: Array<ProductSpecification>;
+  @Input() specifications?: Array<ProductSpecificationsResponse>;
 
   ngOnInit(): void {}
 }
