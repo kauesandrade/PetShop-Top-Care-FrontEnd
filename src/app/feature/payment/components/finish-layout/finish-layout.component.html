@@ -2,7 +2,8 @@
   <div class="acknowledgment">
     <div class="acknowledgment-send">
       <h6>
-        Agredeçemos por escolher a Petshop Top Care, {{ user.loggedUser?.name }}
+        Agredeçemos por escolher a Petshop Top Care,
+        {{ user.loggedUser?.fullname }}
       </h6>
       <p>
         Enviamos detalhes do seu
@@ -182,7 +183,7 @@
                   : schedulingInformation?.payment?.method?.card?.lastDigits
               }}
             </h6>
-            <h6 class="cardValue">Nome: {{ user.loggedUser?.name }}</h6>
+            <h6 class="cardValue">Nome: {{ user.loggedUser?.fullname }}</h6>
           </div>
           <div class="howPay">
             <p class="title">Confirme seu pagamento:</p>
