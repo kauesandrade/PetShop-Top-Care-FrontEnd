@@ -1,30 +1,19 @@
-import {
-  Component,
-  EventEmitter,
-  HostListener,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { User } from 'src/app/shared/interfaces/user/user';
-import {
-  faBars,
-  faUser,
-  faTimes,
-  faSignOutAlt,
-} from '@fortawesome/free-solid-svg-icons';
+import { faBars, faUser, faTimes, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header-main-simple',
   templateUrl: './header-main-simple.component.html',
-  styleUrls: ['./header-main-simple.component.scss'],
+  styleUrls: ['./header-main-simple.component.scss']
 })
 export class HeaderMainSimpleComponent implements OnInit {
+
   faBars = faBars;
   faUser = faUser;
   faTimes = faTimes;
-  faSignOutAlt = faSignOutAlt;
+  faSignOutAlt = faSignOutAlt
 
   @Input() employee: boolean = false;
   user!: User | null;
@@ -32,25 +21,27 @@ export class HeaderMainSimpleComponent implements OnInit {
 
   sideBarOpen: boolean = false;
 
-  @Output() sideBarOpenEmitter = new EventEmitter<boolean>();
+  @Output() sideBarOpenEmitter = new EventEmitter<boolean>()
 
   private innerWidth: any;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit(): void {
     this.user = this.userService.loggedUser;
     if (this.user) {
-      this.firstName = this.user?.fullname?.split(' ')[0];
+      this.firstName = this.user?.name?.split(' ')[0];
     }
 
     this.innerWidth = window.innerWidth;
   }
 
+
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.innerWidth = window.innerWidth;
-    if (this.innerWidth > 1023 && this.sideBarOpen) {
+    if(this.innerWidth > 1023 && this.sideBarOpen){
       this.toggleDrawer();
     }
   }
@@ -60,7 +51,11 @@ export class HeaderMainSimpleComponent implements OnInit {
     this.sideBarOpenEmitter.emit(this.sideBarOpen);
   }
 
-  handleClickLogout() {
+  handleClickLogout(){
     this.userService.logout();
   }
+
+  
+
+
 }

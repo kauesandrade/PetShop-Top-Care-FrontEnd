@@ -33,7 +33,7 @@ export class HeaderMainFullComponent implements OnInit {
   ngOnInit() {
     this.user = this.userService.loggedUser;
     if (this.user) {
-      this.firstName = this.user?.fullname?.split(' ')[0];
+      this.firstName = this.user?.name?.split(' ')[0];
     }
   }
 

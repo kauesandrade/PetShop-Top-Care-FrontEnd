@@ -123,7 +123,6 @@
       placeholder="Data de nascimento"
       [class.has-error]="birth?.touched && birth?.invalid"
       mask="d0/M0/0000"
-      [dropSpecialCharacters]="false"
       required
     />
     <ng-container *ngIf="birth?.touched && birth?.invalid">

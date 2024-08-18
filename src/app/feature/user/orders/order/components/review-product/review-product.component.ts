@@ -98,7 +98,7 @@ export class ReviewProductComponent implements OnInit {
 
   onSubmit() {
     let review: ProductReview = {
-      user: this.userService.loggedUser!.fullname,
+      user: this.userService.loggedUser!.name,
       icon: this.userService.loggedUser!.profileImage,
       rating: this.rating?.value!,
       title: this.title?.value!,

@@ -1,36 +1,21 @@
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import * as userData from '../../../../assets/JsonFiles/users.json';
 import { Schedule } from '../../interfaces/schedule/schedule';
-import { User, UserRequestPostDTO } from '../../interfaces/user/user';
-import { HttpClient } from '@angular/common/http';
+import { User } from '../../interfaces/user/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService implements OnChanges {
-  loggedUser: User | null = null;
+  loggedUser: User | null;
   users: any = userData;
 
-  constructor(private httpClient: HttpClient) {
-    this.getUserById(1).subscribe((data) => {
-      // let user: User = {
-      //   id: data.id,
-      //   profileImage: data.customer_image,
-      //   fullname: data['fullname'],
-      //   email: data['email'],
-      //   cpf: data['cpf'],
-      //   birth: data['birth'],
-      // };
-      // this.loggedUser = user;
-    });
+  constructor() {
+    this.loggedUser = JSON.parse(localStorage.getItem('user') || '""');
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(this.loggedUser);
-  }
-
-  getUserById(id: number) {
-    return this.httpClient.get('http://localhost:8088/topcare/customer/1');
   }
 
   getSchedulings() {
@@ -70,7 +55,7 @@ export class UserService implements OnChanges {
       }
     }
 
-    if (this.loggedUser?.fullname) {
+    if (this.loggedUser?.name) {
       console.log(this.loggedUser);
       if (remember) {
         localStorage.setItem('user', JSON.stringify(this.loggedUser));
@@ -86,8 +71,8 @@ export class UserService implements OnChanges {
     this.loggedUser = null;
   }
 
-  register(user: UserRequestPostDTO) {
-    return this.httpClient.post('http://localhost:8088/topcare/customer', user);
+  register(user: User) {
+    console.log(user);
   }
 
   updateUser(user: User) {
@@ -110,10 +95,8 @@ export class UserService implements OnChanges {
     return null;
   }
 
-  deletePet(id: number) {
-    this.loggedUser!.pets = this.loggedUser?.pets?.filter(
-      (pet) => pet.id != id
-    )!;
+  deletePet(id: number){
+    this.loggedUser!.pets = this.loggedUser?.pets?.filter((pet) => pet.id != id)!;
     console.log(this.loggedUser!.pets);
   }
 }
