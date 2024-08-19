@@ -14,7 +14,7 @@ import { ProductResponseCard } from '../../interfaces/product/response/product-r
 })
 export class ProductService {
   
-  private apiUrl = "localhost:8088/topcare/product";
+  private apiUrl = "http://localhost:8088/topcare/product";
   
   constructor(private httpClient: HttpClient) {}
   

@@ -14,7 +14,7 @@ export class SearchService {
 
   constructor(private productService: ProductService, private httpClient: HttpClient) {}
 
-  private apiUrl = "localhost:8088/topcare/search";
+  private apiUrl = "http://localhost:8088/topcare/search";
 
   searchProducts(searchParams: HttpParams, productCategories: Array<number>): Observable<any>{
     return this.httpClient.put<any>(`${this.apiUrl}/product`, productCategories, {params: searchParams});

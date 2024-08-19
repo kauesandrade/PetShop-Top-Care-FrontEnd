@@ -9,7 +9,6 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { faCheck, faPercent } from '@fortawesome/free-solid-svg-icons';
-import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 import { ProductVariantResponse } from 'src/app/shared/interfaces/product/response/product-variant-response';
 
 @Component({

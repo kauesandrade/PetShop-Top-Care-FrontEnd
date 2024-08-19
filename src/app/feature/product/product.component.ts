@@ -14,18 +14,19 @@ export class ProductComponent implements OnInit {
   amount: number = 1;
   id?: any;
 
-  productPage?: ProductResponsePage;
+  productPage!: ProductResponsePage;
   productVariant!: ProductVariantResponse;
 
   constructor(private route: ActivatedRoute, private routing: Router, protected productService: ProductService, private cartService: CartService) { 
     this.id = this.route.snapshot.paramMap.get("id")?.replace("%20", " ");
-    console.log(this.id);
     // this.verifyProduct();
   }
 
   ngOnInit(): void {
     this.productService.getProductByCode(this.id).subscribe((data) => {
       this.productPage = data;
+      console.log(this.productPage);
+      this.productVariant = data.variants[0];
     }); 
   }
 
