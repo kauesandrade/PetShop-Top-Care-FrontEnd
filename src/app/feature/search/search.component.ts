@@ -47,19 +47,7 @@ export class SearchComponent implements OnInit {
     //     this.productsList
     //   );
 
-      const searchParams: HttpParams = new HttpParams().set(
-        'search', this.searchBy
-      ).set(
-        'sortBy', this.sortBy
-      ).set(
-        'page', 0
-      ).set(
-        'size', 10
-      );
-
-      this.searchService.searchProducts(searchParams, [1]).subscribe((response) => {
-        this.productsList = response;
-      });
+    this.searchProducts();
       
     });
 
@@ -67,9 +55,13 @@ export class SearchComponent implements OnInit {
 
   getOrderBy(evt: string) {
     this.sortBy = evt;
+    this.searchProducts();
   }
 
   getFilters(evt: Array<string>) {
+
+    this.searchProducts();
+
     // if (this.filterBy) {
     //   this.productsList = this.filterService.filterProducts(
     //     evt,
@@ -86,4 +78,23 @@ export class SearchComponent implements OnInit {
   getFiltersProducts() {
     return this.productFilters;
   }
+
+
+  searchProducts() {
+    const searchParams: HttpParams = new HttpParams().set(
+      'searchValue', this.searchBy
+    ).set(
+      'sortBy', this.sortBy
+    ).set(
+      'page', 0
+    ).set(
+      'size', 10
+    );
+
+    this.searchService.searchProducts(searchParams, [1]).subscribe((response) => {
+      console.log(response);
+      this.productsList = response.content;
+    });
+  }
+
 }

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit } from '
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import emblaCarousel, { EmblaOptionsType } from 'embla-carousel';
 import { Image } from 'src/app/shared/interfaces/product/image';
+import { ImageResponse } from 'src/app/shared/interfaces/product/response/image-response';
 
 @Component({
   selector: 'app-product-details-carousel',
@@ -10,8 +11,8 @@ import { Image } from 'src/app/shared/interfaces/product/image';
 })
 export class ProductDetailsCarouselComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @Input() images!: Array<Image>;
-  selectImage?: Image; 
+  @Input() images!: Array<ImageResponse>;
+  selectImage?: ImageResponse; 
 
   constructor(private elementRef: ElementRef) { }
 
@@ -48,7 +49,7 @@ export class ProductDetailsCarouselComponent implements OnInit, AfterViewInit, O
     }
   }
 
-  getIdImage(id: Image){
+  getIdImage(id: ImageResponse){
     this.selectImage = id;
   }
 
