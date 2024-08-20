@@ -1,30 +1,29 @@
 <app-header></app-header>
-<main>
+<main *ngIf="productPage">
     <section class="commonSection">
-        <!-- (productVariantstEmit)="productService.changeVariableProduct($event)"   -->
-        <app-product-details
-        [product]="productPage"
-        class="commonSection-primary">
+        
+        
+        <app-product-details 
+        (productVariantstEmit)="changeVariableProduct($event)"  
+        [product]="productPage" class="commonSection-primary">
         </app-product-details>
-<!-- 
-        <app-product-pricing 
-            (handleClickButtonBuyEmitter)="getHandleClickBuy()"
-            (handleClickButtonCartEmitter)="getHandleClickCart()" 
-            (valueAmountEmitter)="getValueAmount($event)"
+
+        <app-product-pricing (handleClickButtonBuyEmitter)="getHandleClickBuy()"
+            (handleClickButtonCartEmitter)="getHandleClickCart()" (valueAmountEmitter)="getValueAmount($event)"
             class="commonSection-secondary" [productVariant]="productVariant">
-        </app-product-pricing> -->
+        </app-product-pricing>
 
     </section>
 
-    <!-- <app-product-section title="Itens Semelhantes" [category]="productPage.categories"></app-product-section> -->
+    <app-product-section title="Itens Semelhantes" [category]="productPage.categories"></app-product-section>
 
-    <!-- <app-product-description [description]="productPage.description"></app-product-description> -->
+    <app-product-description [description]="productPage.description"></app-product-description>
 
-    <!-- <app-product-specifications [specifications]="productPage.specifications"></app-product-specifications> -->
+    <app-product-specifications [specifications]="productPage.specifications"></app-product-specifications>
 
-    <!-- <ng-container *ngIf="productPage?.reviews?.length">
+    <ng-container *ngIf="productPage?.reviews?.length">
         <app-product-review-section [reviews]="productPage.reviews"></app-product-review-section>
-    </ng-container>     -->
+    </ng-container>    
 
 </main>
 <app-footer></app-footer>

@@ -21,8 +21,15 @@ export class ProductSectionComponent implements OnInit {
   ngOnInit(): void {
     if (this.category?.length) {
       typeof this.category[0] === 'number' ? 
-      this.productService.getProductsByCategories(this.category as Array<number>).subscribe((data) => {this.productList = [data]}) :
-      this.productService.getProductsByCategories(this.convertToIds(this.category as Array<ProductCategoryResponse>)).subscribe((data) => {this.productList = [data]});
+      this.productService.getProductsByCategories(this.category as Array<number>).subscribe((data) => {
+        if(Array.isArray(data)){
+          this.productList = data;
+        }}) :
+      this.productService.getProductsByCategories(this.convertToIds(this.category as Array<ProductCategoryResponse>)).subscribe((data) => {
+        if(Array.isArray(data)){
+          this.productList = data;
+        }
+      });
     }
   }
 

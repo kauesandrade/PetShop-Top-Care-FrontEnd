@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import {
   faStar,
   faComment,
@@ -6,7 +6,6 @@ import {
   faShareAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartR } from '@fortawesome/free-regular-svg-icons';
-import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 import { ProductVariantResponse } from 'src/app/shared/interfaces/product/response/product-variant-response';
 import { ProductResponsePage } from 'src/app/shared/interfaces/product/response/product-response-page';
 

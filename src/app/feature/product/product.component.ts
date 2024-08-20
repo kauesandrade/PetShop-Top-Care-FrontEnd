@@ -42,6 +42,10 @@ export class ProductComponent implements OnInit {
     this.routing.navigate(['/carrinho']);
   }
 
+  changeVariableProduct(evt: ProductVariantResponse){
+    this.productVariant = evt;
+  }
+
   private verifyProduct() {
     if (!this.productService.getProduct()) {
       this.routing.navigate(['/']);

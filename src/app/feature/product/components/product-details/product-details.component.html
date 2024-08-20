@@ -39,11 +39,11 @@
                     <ng-container *ngIf="variant === productVariant; then ifBlock else elseBlock"></ng-container>
 
                     <ng-template #ifBlock>
-                        <!-- <button class="btnVariant choose" (click)="chooseVariant(variant)">{{variant.variant}}</button> -->
+                        <button class="btnVariant choose" (click)="chooseVariant(variant)">{{variant.variantTitle}}</button>
                     </ng-template>
 
                     <ng-template #elseBlock>
-                        <!-- <button class="btnVariant" (click)="chooseVariant(variant)">{{variant.variant}}</button> -->
+                        <button class="btnVariant" (click)="chooseVariant(variant)">{{variant.variantTitle}}</button>
                     </ng-template>
 
                 </ng-container>

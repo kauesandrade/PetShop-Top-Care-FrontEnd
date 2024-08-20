@@ -4,6 +4,7 @@ import {
   AfterViewInit,
   OnDestroy,
   Input,
+  OnInit,
 } from '@angular/core';
 import EmblaCarousel, { EmblaOptionsType } from 'embla-carousel';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -16,8 +17,12 @@ import { ProductResponseCard } from '../../interfaces/product/response/product-r
   templateUrl: './product-carousel.component.html',
   styleUrls: ['./product-carousel.component.scss'],
 })
-export class ProductCarouselComponent implements AfterViewInit, OnDestroy {
+export class ProductCarouselComponent implements AfterViewInit, OnDestroy, OnInit {
   constructor(private elementRef: ElementRef) {}
+
+  ngOnInit(): void {
+    console.log(this.productList);
+  }
 
   ngAfterViewInit(): void {
     const viewportNode =
