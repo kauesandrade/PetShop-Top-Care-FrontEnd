@@ -1,8 +1,15 @@
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import * as userData from '../../../../assets/JsonFiles/users.json';
 import { Schedule } from '../../interfaces/schedule/schedule';
-import { User, UserRequestPostDTO } from '../../interfaces/user/user';
-import { HttpClient } from '@angular/common/http';
+import {
+  CustomerPasswordRequestPatchDTO,
+  CustomerRequestPutDTO,
+  CustomerWoImageRequestPutDTO,
+  User,
+  UserRequestPostDTO,
+} from '../../interfaces/user/user';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,15 +20,8 @@ export class UserService implements OnChanges {
 
   constructor(private httpClient: HttpClient) {
     this.getUserById(1).subscribe((data) => {
-      // let user: User = {
-      //   id: data.id,
-      //   profileImage: data.customer_image,
-      //   fullname: data['fullname'],
-      //   email: data['email'],
-      //   cpf: data['cpf'],
-      //   birth: data['birth'],
-      // };
-      // this.loggedUser = user;
+      console.log(data);
+      this.loggedUser = data;
     });
   }
 
@@ -29,8 +29,10 @@ export class UserService implements OnChanges {
     console.log(this.loggedUser);
   }
 
-  getUserById(id: number) {
-    return this.httpClient.get('http://localhost:8088/topcare/customer/1');
+  getUserById(id: number): Observable<User> {
+    return this.httpClient.get<User>(
+      'http://localhost:8088/topcare/customer/1'
+    );
   }
 
   getSchedulings() {
@@ -94,6 +96,43 @@ export class UserService implements OnChanges {
     this.loggedUser = user;
     localStorage.setItem('user', JSON.stringify(this.loggedUser));
     console.log(user);
+  }
+
+  updateUserRequest(userId: number, user: CustomerRequestPutDTO) {
+    let formData = new FormData();
+
+    formData.append('profileImage', user.profileImage);
+
+    let userWoImage: CustomerWoImageRequestPutDTO = {
+      fullname: user.fullname,
+      cpf: user.cpf,
+      birth: user.birth,
+      email: user.email,
+      gender: user.gender,
+      contacts: user.contacts,
+      addresses: user.addresses,
+    };
+
+    let dto = new Blob([JSON.stringify(userWoImage)], {
+      type: 'application/json',
+    });
+    formData.append('customer', dto);
+
+    formData.forEach((value, key) => {
+      console.log(key, value);
+    });
+
+    return this.httpClient.put(
+      'http://localhost:8088/topcare/customer/' + userId,
+      formData
+    );
+  }
+
+  updatePassword(userId: number, passwords: CustomerPasswordRequestPatchDTO) {
+    return this.httpClient.patch(
+      'http://localhost:8088/topcare/customer/' + userId,
+      passwords
+    );
   }
 
   getPetById(id: number) {

@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
 import { MessageService } from 'primeng/api';
+import convertDateFrontToBack from 'src/app/core/utils/date-converters/front-to-back';
+import convertFrontToBack from 'src/app/core/utils/date-converters/front-to-back';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { PasswordValidator } from 'src/app/core/validators/password.validator';
 import { Order } from 'src/app/shared/interfaces/order/order';
@@ -117,10 +119,6 @@ export class RegisterFormComponent {
   registerUser(address: Address) {
     let formValues = this.registerForm.value;
 
-    let dateString = formValues.birth!;
-    let [day, month, year] = dateString.split('/');
-    console.log(`${year}-${month}-${day}`);
-
     let user: UserRequestPostDTO = {
       fullname: formValues.name!,
       email: formValues.email!,
@@ -128,27 +126,27 @@ export class RegisterFormComponent {
       telephone: formValues.telephone!,
       cpf: formValues.cpf!,
       gender: formValues.gender!,
-      birth: `${year}-${month}-${day}`,
+      birth: convertDateFrontToBack(formValues.birth!),
       password: formValues.password!,
       address: address,
     };
 
-    this.userService.register(user).subscribe(
-      (data) => {
+    this.userService.register(user).subscribe({
+      next: () => {
         this.messageService.add({
           severity: 'success',
           summary: 'Cadastro realizado com sucesso!',
           life: 1500,
         });
       },
-      (error) => {
+      error: () => {
         this.messageService.add({
           severity: 'error',
           summary: 'Erro ao cadastrar!',
           life: 1500,
         });
-      }
-    );
+      },
+    });
 
     this.router.navigate(['/login']);
   }

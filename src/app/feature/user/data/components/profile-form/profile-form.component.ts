@@ -38,6 +38,8 @@ export class ProfileFormComponent {
     reader.onload = (_event) => {
       this.profileImg = reader.result!;
     };
+
+    this.image!.setValue(files[0]);
   }
 
   isDisabled() {

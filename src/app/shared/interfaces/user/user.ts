@@ -44,3 +44,29 @@ export interface UserRequestPostDTO {
   password: string;
   address: Address;
 }
+
+export interface CustomerPasswordRequestPatchDTO {
+  oldPassword: string;
+  newPassword: string;
+}
+
+export interface CustomerRequestPutDTO {
+  profileImage: File;
+  fullname: string;
+  email: string;
+  cpf: string;
+  birth: string;
+  gender: string;
+  contacts: [Contact, Contact?];
+  addresses: Address[];
+}
+
+export interface CustomerWoImageRequestPutDTO {
+  fullname: string;
+  email: string;
+  cpf: string;
+  birth: string;
+  gender: string;
+  contacts: [Contact, Contact?];
+  addresses: Address[];
+}

@@ -5,12 +5,7 @@
       accept="image/png, image/jpeg"
       alt="Foto de perfil"
     />
-    <input
-      type="file"
-      id="image"
-      formControlName="image"
-      (change)="changeImg($event)"
-    />
+    <input type="file" id="image" (change)="changeImg($event)" />
     <span class="placeholder">
       <fa-icon [icon]="faFileImage"></fa-icon>
       <span>Alterar imagem</span>
