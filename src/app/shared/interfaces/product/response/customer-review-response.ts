@@ -1,4 +1,4 @@
-import { ImageResponse } from "./image-response";
+import { ImageResponse } from "../image";
 
 export interface CustomerReviewResponse {
     fullname: string,

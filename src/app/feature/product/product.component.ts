@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductResponsePage } from 'src/app/shared/interfaces/product/response/product-response-page';
-import { ProductVariantResponse } from 'src/app/shared/interfaces/product/response/product-variant-response';
+import { ProductResponsePage } from 'src/app/shared/interfaces/product/product';
+import { ProductVariantResponse } from 'src/app/shared/interfaces/product/product-variant';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 

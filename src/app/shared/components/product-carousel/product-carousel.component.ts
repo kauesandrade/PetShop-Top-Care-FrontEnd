@@ -10,7 +10,7 @@ import EmblaCarousel, { EmblaOptionsType } from 'embla-carousel';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { ProductVariant } from '../../interfaces/product/product-variant';
-import { ProductResponseCard } from '../../interfaces/product/response/product-response-card';
+import { ProductResponseCard } from '../../interfaces/product/product';
 
 @Component({
   selector: 'app-product-carousel',

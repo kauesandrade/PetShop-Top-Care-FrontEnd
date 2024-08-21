@@ -1,5 +1,4 @@
-import { User } from '../user/user';
-
+import { CustomerReviewResponse } from './response/customer-review-response';
 export interface ProductReview {
   user: string;
   icon: string;
@@ -8,4 +7,10 @@ export interface ProductReview {
   rating: number;
   image: string;
   datePost: string;
+}
+export interface ProductReviewResponse {
+    customer: CustomerReviewResponse,
+    review: string,
+    rating: number,
+    reviewDate: Date
 }

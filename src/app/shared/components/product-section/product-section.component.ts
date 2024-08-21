@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product/product.service';
-import { ProductResponseCard } from '../../interfaces/product/response/product-response-card';
 import { ProductCategoryResponse } from '../../interfaces/product/response/product-category-response';
+import { ProductResponseCard } from '../../interfaces/product/product';
 
 @Component({
   selector: 'app-product-section',

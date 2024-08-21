@@ -1,8 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import emblaCarousel, { EmblaOptionsType } from 'embla-carousel';
-import { Image } from 'src/app/shared/interfaces/product/image';
-import { ImageResponse } from 'src/app/shared/interfaces/product/response/image-response';
+import { Image, ImageResponse } from 'src/app/shared/interfaces/product/image';
 
 @Component({
   selector: 'app-product-details-carousel',

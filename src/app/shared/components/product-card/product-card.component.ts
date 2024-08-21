@@ -7,7 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 import { CartService } from '../../services/cart/cart.service';
-import { ProductResponseCard } from '../../interfaces/product/response/product-response-card';
+import { ProductResponseCard } from '../../interfaces/product/product';
 
 @Component({
   selector: 'app-product-card',

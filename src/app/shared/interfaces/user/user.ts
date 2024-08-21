@@ -19,3 +19,4 @@ export interface User {
   pets: Pet[];
   access: string;
 }
+

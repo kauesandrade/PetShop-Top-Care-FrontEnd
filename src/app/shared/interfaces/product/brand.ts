@@ -3,3 +3,7 @@ export interface Brand {
     name: string;
     //image
 }
+export interface BrandResponse {
+    id: number,
+    name: string;
+}

@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import productData from '../../../../assets/JsonFiles/products.json';
 import productVariantData from '../../../../assets/JsonFiles/productVariant.json';
-import { Product } from '../../interfaces/product/product';
+import { Product, ProductResponseCard, ProductResponsePage } from '../../interfaces/product/product';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 import { environment } from './../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ProductResponsePage } from '../../interfaces/product/response/product-response-page';
-import { ProductResponseCard } from '../../interfaces/product/response/product-response-card';
 
 @Injectable({
   providedIn: 'root',

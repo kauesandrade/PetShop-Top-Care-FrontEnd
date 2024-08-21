@@ -9,7 +9,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { faCheck, faPercent } from '@fortawesome/free-solid-svg-icons';
-import { ProductVariantResponse } from 'src/app/shared/interfaces/product/response/product-variant-response';
+import { ProductVariantResponse } from 'src/app/shared/interfaces/product/product-variant';
 
 @Component({
   selector: 'app-product-pricing',

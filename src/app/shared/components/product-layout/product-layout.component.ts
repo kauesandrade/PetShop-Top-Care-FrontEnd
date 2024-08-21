@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductVariant } from '../../interfaces/product/product-variant';
-import { ProductResponseCard } from '../../interfaces/product/response/product-response-card';
+import { ProductResponseCard } from '../../interfaces/product/product';
 
 @Component({
   selector: 'app-product-layout',

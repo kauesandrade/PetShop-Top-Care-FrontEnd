@@ -6,8 +6,8 @@ import {
   faShareAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartR } from '@fortawesome/free-regular-svg-icons';
-import { ProductVariantResponse } from 'src/app/shared/interfaces/product/response/product-variant-response';
-import { ProductResponsePage } from 'src/app/shared/interfaces/product/response/product-response-page';
+import { ProductVariantResponse } from 'src/app/shared/interfaces/product/product-variant';
+import { ProductResponsePage } from 'src/app/shared/interfaces/product/product';
 
 @Component({
   selector: 'app-product-details',

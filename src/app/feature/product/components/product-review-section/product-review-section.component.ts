@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductReviewResponse } from 'src/app/shared/interfaces/product/response/product-review-response';
+import { ProductReviewResponse } from 'src/app/shared/interfaces/product/product-review';
 
 @Component({
   selector: 'app-product-review-section',
