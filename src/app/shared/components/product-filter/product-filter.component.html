@@ -4,9 +4,9 @@
     Filtro
   </li>
   <ng-container *ngFor="let filter of applyFilters">
-    <li class="li-filters" (click)="takeOffFilter(filter)">
+    <li class="li-filters" (click)="takeOffFilter(filter.id)">
       <fa-icon [icon]="faTimes"></fa-icon>
-      {{ filter }}
+      {{ filter.title }}
     </li>
   </ng-container>
 </ul>
@@ -29,12 +29,12 @@
         </ul>
       </div>
 
-      <ng-container *ngFor="let typeFilter of productFiltersWihtChecked">
+      <ng-container *ngFor="let typeFilter of productFilters">
         <div class="div-typeFilter">
           <span class="title-typeFilter">{{ typeFilter.title }}</span>
           <div class="divider"></div>
           <ul class="ul-variablesFilter">
-            <ng-container *ngFor="let type of typeFilter.types">
+            <ng-container *ngFor="let type of typeFilter.categories">
               <li class="li-variableFilter">
                 <input
                   type="checkbox"
@@ -42,7 +42,7 @@
                   [checked]="type.isChecked"
                   (change)="changeChecked(type)"
                 />
-                {{ type.type }}
+                {{ type.title }}
               </li>
             </ng-container>
           </ul>

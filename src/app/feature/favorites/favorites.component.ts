@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { ProductResponseCard } from 'src/app/shared/interfaces/product/product';
-import { Filter } from 'src/app/shared/interfaces/search/filter';
+import { ProductCategoryResponse } from 'src/app/shared/interfaces/product/response/product-category-response';
+import { CategoryGroupFiltersResponse, Filter } from 'src/app/shared/interfaces/search/filter';
 import { FavoriteService } from 'src/app/shared/services/favorite/favorite.service';
 import { FilterService } from 'src/app/shared/services/filter/filter.service';
 import { OrderByService } from 'src/app/shared/services/orderBy/order-by.service';
@@ -16,8 +17,8 @@ export class FavoritesComponent implements OnInit {
   faSearch = faSearch;
 
   productsList!: Array<ProductResponseCard>;
-  productFilters!: Array<Filter>;
-  applyFilters: Array<string> = [];
+  productFilters!: Array<CategoryGroupFiltersResponse>;
+  applyFilters: Array<number> = [];
   seachValue: string = '';
 
   constructor(
@@ -38,7 +39,7 @@ export class FavoritesComponent implements OnInit {
     // this.productsList = this.orderbyService.orderOf(evt, this.productsList);
   }
 
-  getFilters(evt: Array<string>) {
+  getFilters(evt: Array<number>) {
     // this.applyFilters = evt;
     // if (!this.seachValue) {
     //   this.productsList = this.filterService.filterProducts(

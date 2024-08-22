@@ -1,4 +1,5 @@
 export interface ProductCategoryResponse {
     id: number,
-    title: string
+    title: string,
+    isChecked: boolean
 }
