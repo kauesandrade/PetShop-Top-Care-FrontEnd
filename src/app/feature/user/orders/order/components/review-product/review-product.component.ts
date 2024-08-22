@@ -32,15 +32,15 @@ export class ReviewProductComponent implements OnInit {
 
   faCamera = faCamera;
 
+  
+
   stars = [fasStar, fasStar, fasStar, fasStar, fasStar];
 
   @ViewChild('imageDisplay') imageDisplay!: ElementRef<HTMLDivElement>;
 
   reviewForm = this.formBuilder.group({
     rating: [5, [Validators.required]],
-    title: ['', [Validators.required, EmptyValidator]],
     review: ['', [Validators.required, EmptyValidator]],
-    image: [],
   });
 
   constructor(
@@ -60,14 +60,8 @@ export class ReviewProductComponent implements OnInit {
   get rating() {
     return this.reviewForm.get('rating');
   }
-  get title() {
-    return this.reviewForm.get('title');
-  }
   get review() {
     return this.reviewForm.get('review');
-  }
-  get image() {
-    return this.reviewForm.get('image');
   }
 
   updateStars(i: number) {
@@ -101,11 +95,11 @@ export class ReviewProductComponent implements OnInit {
       user: this.userService.loggedUser!.name,
       icon: this.userService.loggedUser!.profileImage,
       rating: this.rating?.value!,
-      title: this.title?.value!,
       review: this.review?.value!,
-      image: this.image?.value!,
       datePost: new Date().toDateString(),
     };
+
+    console.log(review);
 
     this.reviewService.addReview(review, this.product!);
     this.router.navigate(['../../'], { relativeTo: this.route });
