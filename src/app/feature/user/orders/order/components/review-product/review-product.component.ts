@@ -18,6 +18,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { ReviewService } from 'src/app/shared/services/review/review.service';
 import { ProductReview } from 'src/app/shared/interfaces/product/product-review';
 import { UserService } from 'src/app/shared/services/user/user.service';
+import { HttpClient } from '@angular/common/http';
 
 library.add(fasStar);
 library.add(farStar);
@@ -31,8 +32,6 @@ export class ReviewProductComponent implements OnInit {
   product?: ProductVariant;
 
   faCamera = faCamera;
-
-  
 
   stars = [fasStar, fasStar, fasStar, fasStar, fasStar];
 
@@ -49,12 +48,19 @@ export class ReviewProductComponent implements OnInit {
     private searchService: SearchService,
     private formBuilder: FormBuilder,
     private reviewService: ReviewService,
-    private userService: UserService
+    private userService: UserService,
+    private httpClient: HttpClient
   ) {}
 
   ngOnInit(): void {
     let title = this.route.snapshot.paramMap.get('id')!;
     this.product = this.searchService.searchProducts(title)[0];
+  }
+
+  // tira o undefined do loggedUserId no merge
+  postProductReview(loggedUserId: number | undefined, review: string, rating: number) {
+    return this.httpClient.post('http://localhost:8088/topcare/productReview', 
+    { customerId: loggedUserId, review: review, rating: rating });
   }
 
   get rating() {
@@ -99,7 +105,14 @@ export class ReviewProductComponent implements OnInit {
       datePost: new Date().toDateString(),
     };
 
-    console.log(review);
+    this.postProductReview(this.userService.loggedUser?.id, review.review, review.rating).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
 
     this.reviewService.addReview(review, this.product!);
     this.router.navigate(['../../'], { relativeTo: this.route });

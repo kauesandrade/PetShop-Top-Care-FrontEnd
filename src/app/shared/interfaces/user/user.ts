@@ -6,6 +6,7 @@ import { Pet } from '../pet/pet';
 import { Address } from './address';
 
 export interface User {
+  id: number;
   profileImage: string;
   name: string;
   email: string;
