@@ -6,4 +6,5 @@ export interface Contact {
 export interface ContactResponseDTO {
   cellphone: string;
   telephone: string;
+  meupenis: string;
 }
