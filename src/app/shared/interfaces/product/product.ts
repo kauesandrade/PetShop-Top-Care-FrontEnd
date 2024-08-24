@@ -32,7 +32,20 @@ export interface ProductResponseCard {
   image: ImageResponse,
 }
 
-export interface ProductResponsePage {
+export interface ProductResponsePageDTO {
+  code: number,
+  title: string,
+  description: string,
+  shortDescription: string,
+  brand: BrandResponse,
+  specifications: Array<ProductSpecificationsResponse>
+  rating: number,
+  categories: Array<ProductCategoryResponse>,
+  reviews: Array<ProductReviewResponse>,
+  variants: Array<ProductVariantResponse>
+}
+
+export interface ProductResponseEditDTO{
   code: number,
   title: string,
   description: string,

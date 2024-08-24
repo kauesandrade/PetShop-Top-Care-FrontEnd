@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import productData from '../../../../assets/JsonFiles/products.json';
 import productVariantData from '../../../../assets/JsonFiles/productVariant.json';
-import { Product, ProductResponseCard, ProductResponsePage } from '../../interfaces/product/product';
+import { Product, ProductResponseCard, ProductResponsePageDTO } from '../../interfaces/product/product';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 import { environment } from './../../../../environments/environment';
 import { Observable } from 'rxjs';
@@ -16,8 +16,8 @@ export class ProductService {
   
   constructor(private httpClient: HttpClient) {}
   
-  getProductByCode(code: number): Observable<ProductResponsePage> {
-    return this.httpClient.get<ProductResponsePage>(`${this.apiUrl}/${code}`);
+  getProductByCode(code: number): Observable<ProductResponsePageDTO> {
+    return this.httpClient.get<ProductResponsePageDTO>(`${this.apiUrl}/${code}`);
   }
 
   getSimilarProductsByCode(code: number): Observable<ProductResponseCard>{
@@ -45,73 +45,73 @@ export class ProductService {
   
   
   
-  private product?: Product;
-  private productVariant!: ProductVariant;
-  private productVariantsList!: Array<ProductVariant>;
+  // private product?: Product;
+  // private productVariant!: ProductVariant;
+  // private productVariantsList!: Array<ProductVariant>;
 
-  getProduct() {
-    return this.product;
-  }
+  // getProduct() {
+  //   return this.product;
+  // }
 
-  getProductData(){
-    return productData.product;
-  }
+  // getProductData(){
+  //   return productData.product;
+  // }
 
-  getProductVariants() {
-    return this.productVariantsList;
-  }
+  // getProductVariants() {
+  //   return this.productVariantsList;
+  // }
 
-  getProductVariant() {
-    return this.productVariant;
-  }
+  // getProductVariant() {
+  //   return this.productVariant;
+  // }
 
-  changeVariableProduct(productVariant: ProductVariant) {
-    this.productVariant = productVariant;
-  }
-  getFirstProductVariant() {
-    return this.getProductVariants()[0];
-  }
+  // changeVariableProduct(productVariant: ProductVariant) {
+  //   this.productVariant = productVariant;
+  // }
+  // getFirstProductVariant() {
+  //   return this.getProductVariants()[0];
+  // }
 
-  findProduct(id: number | string | Product | ProductVariant) {
-    if (typeof id == 'number' || typeof id == 'string') {
-      for (const productFind of productData.product) {
-        if (productFind.title == id || productFind.code == id) {
-          this.product = productFind;
-          break;
-        }
-      }
-    } else {
-      this.product = id;
-    }
+  // findProduct(id: number | string | Product | ProductVariant) {
+  //   if (typeof id == 'number' || typeof id == 'string') {
+  //     for (const productFind of productData.product) {
+  //       if (productFind.title == id || productFind.code == id) {
+  //         this.product = productFind;
+  //         break;
+  //       }
+  //     }
+  //   } else {
+  //     this.product = id;
+  //   }
 
-    if (this.product) {
-      this.getAllProductVariants();
-      this.changeVariableProduct(this.getFirstProductVariant());
-    }
-  }
+  //   if (this.product) {
+  //     this.getAllProductVariants();
+  //     this.changeVariableProduct(this.getFirstProductVariant());
+  //   }
+  // }
 
-  private getAllProductVariants() {
-    this.productVariantsList = [];
-    for (const variant of productVariantData.variant as ProductVariant[]) {
-      if (
-        this.product?.code == variant.code &&
-        this.verifyProductIsAvailable(variant)
-      ) {
-        this.productVariantsList.push(variant);
-      }
-    }
+  // private getAllProductVariants() {
+  //   this.productVariantsList = [];
+  //   for (const variant of productVariantData.variant as ProductVariant[]) {
+  //     if (
+  //       this.product?.code == variant.code &&
+  //       this.verifyProductIsAvailable(variant)
+  //     ) {
+  //       this.productVariantsList.push(variant);
+  //     }
+  //   }
 
-    this.productVariantsList = this.productVariantsList.sort((p1, p2) => {
-      return p1.variant.localeCompare(p2.variant);
-    });
+  //   this.productVariantsList = this.productVariantsList.sort((p1, p2) => {
+  //     return p1.variant.localeCompare(p2.variant);
+  //   });
 
-    return this.productVariantsList;
-  }
+  //   return this.productVariantsList;
+  // }
 
-  private verifyProductIsAvailable(product: ProductVariant) {
-    if (product.available) {
-      return true;
-    }
-    return false;
-  }
+  // private verifyProductIsAvailable(product: ProductVariant) {
+  //   if (product.available) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 }

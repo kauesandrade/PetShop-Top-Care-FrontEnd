@@ -4,6 +4,7 @@ import { Brand } from 'src/app/shared/interfaces/product/brand';
 import { Category } from 'src/app/shared/interfaces/search/category';
 import brands from '../../../../../../../assets/JsonFiles/brands.json';
 import categories from '../../../../../../../assets/JsonFiles/categories.json';
+import { ProductCategoryResponse } from 'src/app/shared/interfaces/product/response/product-category-response';
 
 @Component({
   selector: 'app-product-forms',
@@ -18,20 +19,17 @@ export class ProductFormsComponent implements OnInit {
 
   brands!: Array<Brand>
 
-  categories!: Array<Category>
-  typesCategories: Array<string> = []
-  selectCategories!: Array<string>
+  categories!: Array<ProductCategoryResponse>
+  typesCategories: Array<ProductCategoryResponse> = []
+  selectCategories!: Array<ProductCategoryResponse>
 
   constructor() { }
 
   ngOnInit(): void {
     this.brands = brands.brand
-    this.categories = categories.category
-
-    this.categories.forEach(categories =>{
-      categories.types.forEach(type =>{  
-        this.typesCategories.push(type)
-      })
+    this.categories = this.productForm.get('category')?.value.categories
+    this.categories.forEach(category =>{
+        this.typesCategories.push(category)
     })
 
     this.selectCategories = this.category?.value

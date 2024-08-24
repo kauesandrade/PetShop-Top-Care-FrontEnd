@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductResponsePage } from 'src/app/shared/interfaces/product/product';
+import { ProductResponsePageDTO } from 'src/app/shared/interfaces/product/product';
 import { ProductVariantResponse } from 'src/app/shared/interfaces/product/product-variant';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
@@ -14,7 +14,7 @@ export class ProductComponent implements OnInit {
   amount: number = 1;
   id?: any;
 
-  productPage!: ProductResponsePage;
+  productPage!: ProductResponsePageDTO;
   productVariant!: ProductVariantResponse;
 
   constructor(private route: ActivatedRoute, private routing: Router, protected productService: ProductService, private cartService: CartService) { 
@@ -47,7 +47,7 @@ export class ProductComponent implements OnInit {
   }
 
   private verifyProduct() {
-    if (!this.productService.getProduct()) {
+    if (!this.productPage) {
       this.routing.navigate(['/']);
     }
   }

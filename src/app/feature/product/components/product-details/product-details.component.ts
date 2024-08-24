@@ -7,7 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartR } from '@fortawesome/free-regular-svg-icons';
 import { ProductVariantResponse } from 'src/app/shared/interfaces/product/product-variant';
-import { ProductResponsePage } from 'src/app/shared/interfaces/product/product';
+import { ProductResponsePageDTO } from 'src/app/shared/interfaces/product/product';
 
 @Component({
   selector: 'app-product-details',
@@ -15,7 +15,7 @@ import { ProductResponsePage } from 'src/app/shared/interfaces/product/product';
   styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit {
-  @Input() product!: ProductResponsePage;
+  @Input() product!: ProductResponsePageDTO;
   @Output() productVariantstEmit = new EventEmitter<ProductVariantResponse>();
 
   productVariant!: ProductVariantResponse;

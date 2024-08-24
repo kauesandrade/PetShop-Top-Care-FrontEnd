@@ -39,67 +39,67 @@ export class SearchService {
   //   return this.productList;
   // }
 
-  getProductList() {
-    return this.productList;
-  }
+  // getProductList() {
+  //   return this.productList;
+  // }
 
-  private searchInProductData(searchValueFind: string) {
-    this.productList = [];
+  // private searchInProductData(searchValueFind: string) {
+  //   this.productList = [];
 
-    productData.product.forEach((product) => {
-      this.productService.findProduct(product);
+  //   productData.product.forEach((product) => {
+  //     this.productService.findProduct(product);
 
-      if (
-        this.getTitleWithTypes(product).includes(
-          this.formatString(searchValueFind)
-        ) &&
-        !this.productList.includes(this.productService.getFirstProductVariant()) &&
-        this.verifyProductIsAvailable(this.productService.getFirstProductVariant())
-      ) {
-        this.productList.push(this.productService.getFirstProductVariant());
-      }
-    });
-  }
+  //     if (
+  //       this.getTitleWithTypes(product).includes(
+  //         this.formatString(searchValueFind)
+  //       ) &&
+  //       !this.productList.includes(this.productService.getFirstProductVariant()) &&
+  //       this.verifyProductIsAvailable(this.productService.getFirstProductVariant())
+  //     ) {
+  //       this.productList.push(this.productService.getFirstProductVariant());
+  //     }
+  //   });
+  // }
 
-  private searchInProductList(searchValueFind: string) {
-    const productListFilter: Array<ProductVariant> = [];
+  // private searchInProductList(searchValueFind: string) {
+  //   const productListFilter: Array<ProductVariant> = [];
 
-    this.productList.forEach((product) => {
-      if (
-        this.getTitleWithTypes(product).includes(
-          this.formatString(searchValueFind)
-        ) &&
-        this.productList.includes(product) &&
-        this.verifyProductIsAvailable(product)
-      ) {
-        productListFilter.push(product);
-      }
-    });
-    this.productList = productListFilter;
-  }
+  //   this.productList.forEach((product) => {
+  //     if (
+  //       this.getTitleWithTypes(product).includes(
+  //         this.formatString(searchValueFind)
+  //       ) &&
+  //       this.productList.includes(product) &&
+  //       this.verifyProductIsAvailable(product)
+  //     ) {
+  //       productListFilter.push(product);
+  //     }
+  //   });
+  //   this.productList = productListFilter;
+  // }
 
-  private verifyProductIsAvailable(product: ProductVariant) {
-    if (product.available) {
-      return true;
-    }
-    return false;
-  }
+  // private verifyProductIsAvailable(product: ProductVariant) {
+  //   if (product.available) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
-  private getTitleWithTypes(product: Product) {
+  // private getTitleWithTypes(product: Product) {
 
-    let productTitle = product.title + ' ' + product.brand;
+  //   let productTitle = product.title + ' ' + product.brand;
 
-    this.productService.findProduct(product);
-    this.productService.getProductVariants().forEach((variant) => {
-      productTitle += ' ' + variant.variant;
-    });
-    return this.formatString(productTitle);
-  }
+  //   this.productService.findProduct(product);
+  //   this.productService.getProductVariants().forEach((variant) => {
+  //     productTitle += ' ' + variant.variant;
+  //   });
+  //   return this.formatString(productTitle);
+  // }
 
-  private formatString(value: string) {
-    return value
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase();
-  }
+  // private formatString(value: string) {
+  //   return value
+  //     .normalize('NFD')
+  //     .replace(/[\u0300-\u036f]/g, '')
+  //     .toLowerCase();
+  // }
 }
