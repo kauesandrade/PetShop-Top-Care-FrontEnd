@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import {
   Component,
   ElementRef,
@@ -26,15 +27,22 @@ export class ForgotPasswordCodeComponent implements OnChanges {
   @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
 
   randomCode!: number;
+  data!: any;
 
   codeForm = this.formBuilder.group({
     code: ['', [Validators.required, EmptyValidator]],
   });
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private httpClient: HttpClient
+    ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isOpen();
-    this.generateRandomCode();
+  }
+
+  getCodeRequest() {
+    return this.httpClient.get('http://localhost:8088/topcare/user/forgotPassword/code');
   }
 
   get code() {
@@ -43,14 +51,21 @@ export class ForgotPasswordCodeComponent implements OnChanges {
 
   isOpen() {
     if (this.open) {
+      this.generateRandomCode();
       document.body.style.overflow = 'hidden';
       this.modal.nativeElement.showModal();
     }
   }
 
   generateRandomCode() {
-    this.randomCode = Math.floor(Math.random() * 899999 + 100000);
-    console.log(this.randomCode);
+    this.getCodeRequest().subscribe(
+      (response) => {
+        this.data = response;
+        this.randomCode = this.data.code;
+        console.log(this.randomCode);
+      }
+    );
+    
   }
 
   resendCode(e: Event) {
