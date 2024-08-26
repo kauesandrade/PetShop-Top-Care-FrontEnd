@@ -10,6 +10,7 @@ import { ProductResponseCard } from '../../interfaces/product/product';
 })
 export class ProductSectionComponent implements OnInit {
   @Input() title: string = '';
+  @Input() productCode?: number;
   @Input() category?: Array<number> | Array<ProductCategoryResponse>;
   @Input() divider: boolean = false;
   productList: Array<ProductResponseCard> = [];
@@ -23,9 +24,16 @@ export class ProductSectionComponent implements OnInit {
       typeof this.category[0] === 'number' ? 
       this.productService.getProductsByCategories(this.category as Array<number>).subscribe((data) => {
         if(Array.isArray(data)){
-          this.productList = data;
+          this.productList = data;  
         }}) :
       this.productService.getProductsByCategories(this.convertToIds(this.category as Array<ProductCategoryResponse>)).subscribe((data) => {
+        if(Array.isArray(data)){
+          this.productList = data;
+        }
+      });
+    }
+    else if (this.productCode) {
+      this.productService.getSimilarProductsByCode(this.productCode).subscribe((data) => {
         if(Array.isArray(data)){
           this.productList = data;
         }
