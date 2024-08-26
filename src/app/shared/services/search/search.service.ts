@@ -3,6 +3,8 @@ import productData from '../../../../assets/JsonFiles/products.json';
 import { Product } from '../../interfaces/product/product';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 import { ProductService } from '../product/product.service';
+import { HttpParams, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,85 +12,94 @@ import { ProductService } from '../product/product.service';
 export class SearchService {
   private productList: Array<ProductVariant> = [];
 
-  constructor() {}
+  constructor(private productService: ProductService, private httpClient: HttpClient) {}
 
-  searchProducts(searchValue: string) {
-    const searchValueList: Array<string> = searchValue.split(' ');
+  private apiUrl = "http://localhost:8088/topcare/search";
 
-    let first = true;
-    searchValueList.forEach((searchValueFind) => {
-      if (first) {
-        this.searchInProductData(searchValueFind);
-        first = false;
-      } else if (!first && this.productList.length > 0) {
-        this.searchInProductList(searchValueFind);
-      }
-    });
-    return this.productList;
+  searchProducts(searchParams: HttpParams, productCategories: Array<number>): Observable<any>{
+    return this.httpClient.put<any>(`${this.apiUrl}/product`, productCategories, {params: searchParams});
   }
 
-  getProductList() {
-    return this.productList;
-  }
+  
 
-  private searchInProductData(searchValueFind: string) {
-    let productService = new ProductService();
-    this.productList = [];
 
-    productData.product.forEach((product) => {
-      productService.findProduct(product);
 
-      if (
-        this.getTitleWithTypes(product).includes(
-          this.formatString(searchValueFind)
-        ) &&
-        !this.productList.includes(productService.getFirstProductVariant()) &&
-        this.verifyProductIsAvailable(productService.getFirstProductVariant())
-      ) {
-        this.productList.push(productService.getFirstProductVariant());
-      }
-    });
-  }
+  // searchProducts(searchValue: string) {
+  //   const searchValueList: Array<string> = searchValue.split(' ');
 
-  private searchInProductList(searchValueFind: string) {
-    const productListFilter: Array<ProductVariant> = [];
+  //   let first = true;
+  //   searchValueList.forEach((searchValueFind) => {
+  //     if (first) {
+  //       this.searchInProductData(searchValueFind);
+  //       first = false;
+  //     } else if (!first && this.productList.length > 0) {
+  //       this.searchInProductList(searchValueFind);
+  //     }
+  //   });
+  //   return this.productList;
+  // }
 
-    this.productList.forEach((product) => {
-      if (
-        this.getTitleWithTypes(product).includes(
-          this.formatString(searchValueFind)
-        ) &&
-        this.productList.includes(product) &&
-        this.verifyProductIsAvailable(product)
-      ) {
-        productListFilter.push(product);
-      }
-    });
-    this.productList = productListFilter;
-  }
+  // getProductList() {
+  //   return this.productList;
+  // }
 
-  private verifyProductIsAvailable(product: ProductVariant) {
-    if (product.available) {
-      return true;
-    }
-    return false;
-  }
+  // private searchInProductData(searchValueFind: string) {
+  //   this.productList = [];
 
-  private getTitleWithTypes(product: Product) {
-    let productService = new ProductService();
-    let productTitle = product.title + ' ' + product.brand;
+  //   productData.product.forEach((product) => {
+  //     this.productService.findProduct(product);
 
-    productService.findProduct(product);
-    productService.getProductVariants().forEach((variant) => {
-      productTitle += ' ' + variant.variant;
-    });
-    return this.formatString(productTitle);
-  }
+  //     if (
+  //       this.getTitleWithTypes(product).includes(
+  //         this.formatString(searchValueFind)
+  //       ) &&
+  //       !this.productList.includes(this.productService.getFirstProductVariant()) &&
+  //       this.verifyProductIsAvailable(this.productService.getFirstProductVariant())
+  //     ) {
+  //       this.productList.push(this.productService.getFirstProductVariant());
+  //     }
+  //   });
+  // }
 
-  private formatString(value: string) {
-    return value
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase();
-  }
+  // private searchInProductList(searchValueFind: string) {
+  //   const productListFilter: Array<ProductVariant> = [];
+
+  //   this.productList.forEach((product) => {
+  //     if (
+  //       this.getTitleWithTypes(product).includes(
+  //         this.formatString(searchValueFind)
+  //       ) &&
+  //       this.productList.includes(product) &&
+  //       this.verifyProductIsAvailable(product)
+  //     ) {
+  //       productListFilter.push(product);
+  //     }
+  //   });
+  //   this.productList = productListFilter;
+  // }
+
+  // private verifyProductIsAvailable(product: ProductVariant) {
+  //   if (product.available) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
+
+  // private getTitleWithTypes(product: Product) {
+
+  //   let productTitle = product.title + ' ' + product.brand;
+
+  //   this.productService.findProduct(product);
+  //   this.productService.getProductVariants().forEach((variant) => {
+  //     productTitle += ' ' + variant.variant;
+  //   });
+  //   return this.formatString(productTitle);
+  // }
+
+  // private formatString(value: string) {
+  //   return value
+  //     .normalize('NFD')
+  //     .replace(/[\u0300-\u036f]/g, '')
+  //     .toLowerCase();
+  // }
 }

@@ -3,7 +3,7 @@
 
         <div class="div-primary-informations">
             <div class="div-image">
-                <img src={{item.product.images[0].src}} alt="">
+                <img src={{item.product.image.file}} alt="">
             </div>
     
             <div class="div-name-pricing">
@@ -12,7 +12,7 @@
                     <span class="item-price">{{item.product.price | currency : "BRL" : "symbol" : "1.2-2"}}</span>
                     <span class="item-discountPrice">{{item.product.discountPrice | currency : "BRL" : "symbol" : "1.2-2"}}</span>
                 </div>
-                <span class="item-variant">Tamanho: {{item.product.variant}}</span>
+                <span class="item-variant">Tamanho: {{item.product.title}}</span>
             </div>
         </div>
         <div class="div-secondary-informations">

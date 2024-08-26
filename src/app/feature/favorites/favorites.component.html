@@ -14,7 +14,7 @@
             <app-order-by (emitOrderBy)="getOrderBy($event)"></app-order-by>
         </div>
     </div>
-    <app-product-filter [productFiltersWihtChecked]="productFilters" (emitFilters)="getFilters($event)"></app-product-filter>
+    <app-product-filter [productFilters]="productFilters" (emitFilters)="getFilters($event)"></app-product-filter>
     <app-product-layout [products]="productsList"></app-product-layout>
 </main>
 <app-footer></app-footer>

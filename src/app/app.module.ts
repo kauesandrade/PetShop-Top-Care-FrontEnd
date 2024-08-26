@@ -27,7 +27,6 @@ registerLocaleData(ptBr);
     FeatureModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
-    ToastModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }, MessageService],
   bootstrap: [AppComponent],

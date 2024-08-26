@@ -6,13 +6,13 @@
 >
   <div class="product">
     <img
-      [src]="service?.image || item!.product.images[0]"
+      [src]="service?.image || item!.product.title[0]"
       alt="Imagem do produto"
     />
     <div class="title-variant">
       <p class="title">{{ service?.variantTitle || item!.product.title }}</p>
       <p class="variant" *ngIf="type == 'cart' && item != undefined">
-        {{ defineVariant() }}: {{ item.product.variant }}
+        {{ defineVariant() }}: {{ item.product.title }}
       </p>
     </div>
   </div>

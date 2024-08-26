@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductVariant } from '../../interfaces/product/product-variant';
+import { ProductResponseCard } from '../../interfaces/product/product';
 
 @Component({
   selector: 'app-product-layout',
@@ -7,7 +8,7 @@ import { ProductVariant } from '../../interfaces/product/product-variant';
   styleUrls: ['./product-layout.component.scss'],
 })
 export class ProductLayoutComponent implements OnInit {
-  @Input() products?: Array<ProductVariant>;
+  @Input() products?: Array<ProductResponseCard>;
 
   constructor() {}
 
