@@ -15,7 +15,7 @@
   </div>
   <div class="main-pricing">
     <div class="pricing-values">
-      <p class="discount-price">
+      <p *ngIf="product.discountPrice < product.price" class="discount-price">
         {{ product.discountPrice | currency : "BRL" : "symbol" : "1.2-2" }}
       </p>
     </div>
