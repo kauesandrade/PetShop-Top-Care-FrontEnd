@@ -1,11 +1,16 @@
 <form [formGroup]="profileForm" (input)="onInput()">
   <label for="image" [class.disabled]="isDisabled()">
     <img
-      [src]="profileImg"
+      [src]="this.image?.value.url"
       accept="image/png, image/jpeg"
       alt="Foto de perfil"
     />
-    <input type="file" id="image" (change)="changeImg($event)" />
+    <input
+      type="file"
+      id="image"
+      [disabled]="isDisabled()"
+      (change)="changeImg($event)"
+    />
     <span class="placeholder">
       <fa-icon [icon]="faFileImage"></fa-icon>
       <span>Alterar imagem</span>

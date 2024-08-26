@@ -1,7 +1,7 @@
 <dialog #modal [open]="open" (cancel)="onCancel()">
   <div class="container">
     <div class="content">
-      <h2>{{ title }}</h2>
+      <h3>{{ title }}</h3>
       <p *ngIf="message">{{ message }}</p>
       <div class="buttons">
         <button appButton="secondary" (click)="onCancel()">

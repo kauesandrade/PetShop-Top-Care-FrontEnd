@@ -27,6 +27,7 @@ export class DataComponent implements OnInit {
   editingData = false;
   openPasswordModal = false;
   openCardsModal = false;
+  openLogoutModal = false;
 
   profileForm!: FormGroup;
   contactForm!: FormGroup;
@@ -54,7 +55,7 @@ export class DataComponent implements OnInit {
 
   initProfileForm() {
     this.profileForm = this.formBuilder.group({
-      image: [''],
+      image: [this.user.profileImage],
       name: [this.user.fullname, [Validators.required, EmptyValidator]],
       email: [
         this.user.email,
@@ -222,9 +223,15 @@ export class DataComponent implements OnInit {
     this.addressForm.disable();
   }
 
-  logout() {
-    this.userService.logout();
-    this.router.navigate(['/']);
+  confirmLogout() {
+    this.openLogoutModal = true;
+  }
+
+  logout(logout: boolean) {
+    if (logout) {
+      this.userService.logout();
+      this.router.navigate(['/']);
+    }
   }
 
   areFormsValid() {

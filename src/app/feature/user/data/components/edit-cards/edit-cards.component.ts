@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { addMonths, format } from 'date-fns';
+import { MessageService } from 'primeng/api';
 import convertDateBackToFront from 'src/app/core/utils/date-converters/back-to-front';
 import { Card } from 'src/app/shared/interfaces/payment/card';
 import { CardService } from 'src/app/shared/services/card/card.service';
@@ -35,7 +36,10 @@ export class EditCardsComponent implements OnInit, OnChanges {
   editingCard!: Card;
   cardIndex!: number;
 
-  constructor(private cardService: CardService) {}
+  constructor(
+    private cardService: CardService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
     this.getUserCards();
@@ -88,7 +92,15 @@ export class EditCardsComponent implements OnInit, OnChanges {
   }
 
   updateUserCards() {
-    this.cardService.updateCards(1, this.userCards);
+    try {
+      this.cardService.updateCards(1, this.userCards);
+    } catch (e) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Erro',
+        detail: 'Erro ao salvar cartões',
+      });
+    }
   }
 
   editCard(card: Card, index: number) {

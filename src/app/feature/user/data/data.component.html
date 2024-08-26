@@ -29,7 +29,9 @@
         Salvar dados
       </button>
     </ng-template>
-    <button appButton="secondary" (click)="logout()">Sair da conta</button>
+    <button appButton="secondary" (click)="confirmLogout()">
+      Sair da conta
+    </button>
   </div>
 </app-layout>
 
@@ -38,3 +40,8 @@
   (changedPassword)="updatePassword($event)"
 ></app-change-password>
 <app-edit-cards [(open)]="openCardsModal"></app-edit-cards>
+<app-confirm-dialog
+  title="Você tem certeza?"
+  [(open)]="openLogoutModal"
+  (action)="logout($event)"
+></app-confirm-dialog>
