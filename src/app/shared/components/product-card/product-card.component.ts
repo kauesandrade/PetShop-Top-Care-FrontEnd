@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 import { CartService } from '../../services/cart/cart.service';
+import { ProductResponseCard } from '../../interfaces/product/product';
 
 @Component({
   selector: 'app-product-card',
@@ -18,7 +19,7 @@ export class ProductCardComponent {
   faStar = faStar;
   faShoppingCart = faShoppingCart;
 
-  @Input() product!: ProductVariant;
+  @Input() product!: ProductResponseCard;
 
   constructor(private cartService: CartService, private router: Router) {}
 

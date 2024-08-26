@@ -7,7 +7,7 @@ const convertDateFrontToBack = (frontDate: string): string => {
 };
 
 const convertFullDate = (frontDate: string) => {
-  let [day, month, year] = ['1', '1', '1'];
+  let [day, month, year] = ['01', '01', '01'];
   if (frontDate.includes('/')) {
     [day, month, year] = frontDate.split('/');
   } else {
@@ -19,7 +19,7 @@ const convertFullDate = (frontDate: string) => {
 };
 
 const convertMonthYear = (frontDate: string) => {
-  let [month, year] = ['1', '1'];
+  let [month, year] = ['01', '01'];
   if (frontDate.includes('/')) {
     [month, year] = frontDate.split('/');
   } else {

@@ -18,7 +18,8 @@ export class OrderByComponent implements OnInit {
     'Nome (Z-A)'
   ]
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.emitOrderBy.emit(this.typesOrderBy[0])

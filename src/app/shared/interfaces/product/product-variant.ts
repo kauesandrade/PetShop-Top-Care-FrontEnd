@@ -10,3 +10,14 @@ export interface ProductVariant extends Product {
   maxInterestFreeParcels: number;
   available: boolean;
 }
+
+export interface ProductVariantResponse {
+  variantTitle: string,
+  variantCode: number,
+  price: number,
+  discountPrice: number,
+  parcels: number,
+  stock: number,
+  images: Array<any>
+}
+
