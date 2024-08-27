@@ -101,6 +101,7 @@ export class ChangePasswordComponent implements OnChanges {
   }
 
   onSubmit() {
+    console.log(this.password?.value);
     this.userService.changePassword(this.password?.value!).subscribe();
     this.closeModal();
   }

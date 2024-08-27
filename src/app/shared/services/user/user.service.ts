@@ -17,6 +17,7 @@ import { api } from '../api/api';
 })
 export class UserService implements OnChanges {
   loggedUser: User | null = null;
+  changePasswordUser: any | null = null;
   users: any = userData;
   customerEndpoint = `${api}/customer`;
 
@@ -152,12 +153,13 @@ export class UserService implements OnChanges {
     console.log(this.loggedUser!.pets);
   }
 
-  changePassword(password: string | undefined | null) {
-    return this.httpClient.patch('http://localhost:8088/topcare/user/forgotPassword',
-     {password : password }); 
+  changePassword(password: string) {
+    return this.httpClient.patch(`http://localhost:8088/topcare/user/forgotPassword/
+    ${this.changePasswordUser.id}`,
+     {newPassword : password }); 
   }
 
-  verifyEmail(email: string | undefined | null) {
+  verifyEmail(email: string) {
     return this.httpClient.post('http://localhost:8088/topcare/user/forgotPassword',
      { email : email });
   }

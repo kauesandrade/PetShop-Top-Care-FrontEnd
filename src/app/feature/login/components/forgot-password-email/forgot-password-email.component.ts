@@ -66,10 +66,11 @@ export class ForgotPasswordEmailComponent implements OnChanges {
   }
 
   onSubmit() {
-    this.userService.verifyEmail(this.email?.value).subscribe(
+    this.userService.verifyEmail(this.email?.value!).subscribe(
       {
         next: (response) => {
           console.log(response);
+          this.userService.changePasswordUser = response;
           this.submittedEmail.emit(response);
           this.closeModal();
         },
