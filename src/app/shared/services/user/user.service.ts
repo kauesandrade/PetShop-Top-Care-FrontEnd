@@ -151,4 +151,18 @@ export class UserService implements OnChanges {
     )!;
     console.log(this.loggedUser!.pets);
   }
+
+  changePassword(password: string | undefined | null) {
+    return this.httpClient.patch('http://localhost:8088/topcare/user/forgotPassword',
+     {password : password }); 
+  }
+
+  verifyEmail(email: string | undefined | null) {
+    return this.httpClient.post('http://localhost:8088/topcare/user/forgotPassword',
+     { email : email });
+  }
+
+  getCodeRequest() {
+    return this.httpClient.get('http://localhost:8088/topcare/user/forgotPassword/code');
+  }
 }

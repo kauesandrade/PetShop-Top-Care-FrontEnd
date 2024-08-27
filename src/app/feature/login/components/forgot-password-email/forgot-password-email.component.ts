@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-forgot-password-email',
@@ -29,16 +30,11 @@ export class ForgotPasswordEmailComponent implements OnChanges {
   });
   constructor(
     private formBuilder: FormBuilder,
-    private httpsClient: HttpClient
+    private userService: UserService
     ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isOpen();
-  }
-
-  verifyEmail(email: string | undefined | null) {
-    return this.httpsClient.post('http://localhost:8088/topcare/user/forgotPassword',
-     { email : email });
   }
 
   get email() {
@@ -70,7 +66,7 @@ export class ForgotPasswordEmailComponent implements OnChanges {
   }
 
   onSubmit() {
-    this.verifyEmail(this.email?.value).subscribe(
+    this.userService.verifyEmail(this.email?.value).subscribe(
       {
         next: (response) => {
           console.log(response);

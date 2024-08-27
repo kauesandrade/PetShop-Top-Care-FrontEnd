@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-forgot-password-code',
@@ -34,15 +35,11 @@ export class ForgotPasswordCodeComponent implements OnChanges {
   });
   constructor(
     private formBuilder: FormBuilder,
-    private httpClient: HttpClient
+    private userService: UserService
     ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isOpen();
-  }
-
-  getCodeRequest() {
-    return this.httpClient.get('http://localhost:8088/topcare/user/forgotPassword/code');
   }
 
   get code() {
@@ -58,7 +55,7 @@ export class ForgotPasswordCodeComponent implements OnChanges {
   }
 
   generateRandomCode() {
-    this.getCodeRequest().subscribe(
+    this.userService.getCodeRequest().subscribe(
       (response) => {
         this.data = response;
         this.randomCode = this.data.code;

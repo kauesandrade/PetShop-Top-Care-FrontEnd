@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import {
   Component,
   ElementRef,
@@ -13,6 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { PasswordValidator } from 'src/app/core/validators/password.validator';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-change-password',
@@ -22,8 +24,6 @@ import { PasswordValidator } from 'src/app/core/validators/password.validator';
 export class ChangePasswordComponent implements OnChanges {
   @Input() open = false;
   @Output() openChange = new EventEmitter<boolean>();
-
-  @Output() changedPassword = new EventEmitter<string>();
 
   showPassword = false;
   showPasswordConf = false;
@@ -37,7 +37,10 @@ export class ChangePasswordComponent implements OnChanges {
     password: ['', [Validators.required, EmptyValidator, PasswordValidator]],
     passwordConf: ['', [Validators.required, EmptyValidator]],
   });
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService
+    ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isOpen();
@@ -98,7 +101,7 @@ export class ChangePasswordComponent implements OnChanges {
   }
 
   onSubmit() {
-    this.changedPassword.emit(this.password?.value!);
+    this.userService.changePassword(this.password?.value!).subscribe();
     this.closeModal();
   }
 }
