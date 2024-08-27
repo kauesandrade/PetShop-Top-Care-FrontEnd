@@ -9,11 +9,12 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { EmptyValidator } from 'src/app/core/validators/empty.validator';
+import { addMonths, format } from 'date-fns';
+import { MessageService } from 'primeng/api';
+import convertDateBackToFront from 'src/app/core/utils/date-converters/back-to-front';
 import { Card } from 'src/app/shared/interfaces/payment/card';
-import { UserService } from 'src/app/shared/services/user/user.service';
+import { CardService } from 'src/app/shared/services/card/card.service';
 
 @Component({
   selector: 'app-edit-cards',
@@ -35,13 +36,17 @@ export class EditCardsComponent implements OnInit, OnChanges {
   editingCard!: Card;
   cardIndex!: number;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private cardService: CardService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
-    this.userCards = [...this.userService.loggedUser?.cards!];
+    this.getUserCards();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.getUserCards();
     this.isOpen();
   }
 
@@ -65,6 +70,7 @@ export class EditCardsComponent implements OnInit, OnChanges {
 
   addNewCard() {
     let card = {
+      id: null,
       name: '',
       lastDigits: '',
       expirationDate: '',
@@ -86,9 +92,15 @@ export class EditCardsComponent implements OnInit, OnChanges {
   }
 
   updateUserCards() {
-    let user = this.userService.loggedUser!;
-    user.cards = this.userCards;
-    this.userService.updateUser(user);
+    try {
+      this.cardService.updateCards(1, this.userCards);
+    } catch (e) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Erro',
+        detail: 'Erro ao salvar cartões',
+      });
+    }
   }
 
   editCard(card: Card, index: number) {
@@ -102,8 +114,19 @@ export class EditCardsComponent implements OnInit, OnChanges {
     }
   }
 
+  getUserCards() {
+    this.cardService.getCardsOfUser(1).subscribe((data) => {
+      data.forEach((card) => {
+        let date = new Date(card.expirationDate);
+        date = addMonths(date, 1);
+        card.expirationDate = format(date, 'MM/yy');
+      });
+      this.userCards = data;
+    });
+  }
+
   onClose() {
-    this.userCards = [...this.userService.loggedUser?.cards!];
+    this.getUserCards();
     this.closeModal();
   }
 

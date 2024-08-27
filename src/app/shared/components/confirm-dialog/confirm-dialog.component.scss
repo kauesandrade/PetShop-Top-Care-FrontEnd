@@ -31,13 +31,13 @@ dialog {
       row-gap: 2rem;
       grid-column: 2 / -2;
 
-      h2 {
+      h3 {
         color: $primary;
         grid-column: 1 / -1;
         text-align: center;
         @include heading(h5);
         @media (min-width: $desktop) {
-          @include heading(h2);
+          @include heading(h3);
         }
       }
 

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
-import { Filter } from 'src/app/shared/interfaces/search/filter';
+import { ProductResponseCard } from 'src/app/shared/interfaces/product/product';
+import { ProductCategoryResponse } from 'src/app/shared/interfaces/product/response/product-category-response';
+import { CategoryGroupFiltersResponse, Filter } from 'src/app/shared/interfaces/search/filter';
 import { FavoriteService } from 'src/app/shared/services/favorite/favorite.service';
 import { FilterService } from 'src/app/shared/services/filter/filter.service';
 import { OrderByService } from 'src/app/shared/services/orderBy/order-by.service';
@@ -15,9 +16,9 @@ import { OrderByService } from 'src/app/shared/services/orderBy/order-by.service
 export class FavoritesComponent implements OnInit {
   faSearch = faSearch;
 
-  productsList!: Array<ProductVariant>;
-  productFilters!: Array<Filter>;
-  applyFilters: Array<string> = [];
+  productsList!: Array<ProductResponseCard>;
+  productFilters!: Array<CategoryGroupFiltersResponse>;
+  applyFilters: Array<number> = [];
   seachValue: string = '';
 
   constructor(
@@ -28,42 +29,42 @@ export class FavoritesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productsList = this.favoriteService.getAllProductfavorited();
-    this.productFilters = this.filterService.getListFilterWithChecked(
-      this.productsList
-    );
+    // this.productsList = this.favoriteService.getAllProductfavorited();
+    // this.productFilters = this.filterService.getListFilterWithChecked(
+    //   this.productsList
+    // );
   }
 
   getOrderBy(evt: string) {
-    this.productsList = this.orderbyService.orderOf(evt, this.productsList);
+    // this.productsList = this.orderbyService.orderOf(evt, this.productsList);
   }
 
-  getFilters(evt: Array<string>) {
-    this.applyFilters = evt;
-    if (!this.seachValue) {
-      this.productsList = this.filterService.filterProducts(
-        evt,
-        this.favoriteService.getAllProductfavorited()
-      );
-    } else {
-      this.productsList = this.filterService.filterProducts(
-        evt,
-        this.favoriteService.searchProducts(
-          this.seachValue,
-          this.favoriteService.getAllProductfavorited()
-        )
-      );
-    }
+  getFilters(evt: Array<number>) {
+    // this.applyFilters = evt;
+    // if (!this.seachValue) {
+    //   this.productsList = this.filterService.filterProducts(
+    //     evt,
+    //     this.favoriteService.getAllProductfavorited()
+    //   );
+    // } else {
+    //   this.productsList = this.filterService.filterProducts(
+    //     evt,
+    //     this.favoriteService.searchProducts(
+    //       this.seachValue,
+    //       this.favoriteService.getAllProductfavorited()
+    //     )
+    //   );
+    // }
   }
 
   handleClickSeach() {
-    this.productsList = this.filterService.filterProducts(
-      this.applyFilters,
-      this.favoriteService.searchProducts(
-        this.seachValue,
-        this.favoriteService.getAllProductfavorited()
-      )
-    );
+    // this.productsList = this.filterService.filterProducts(
+    //   this.applyFilters,
+    //   this.favoriteService.searchProducts(
+    //     this.seachValue,
+    //     this.favoriteService.getAllProductfavorited()
+    //   )
+    // );
   }
 
   verifyChar(evt: any) {

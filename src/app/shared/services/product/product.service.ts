@@ -1,82 +1,117 @@
 import { Injectable } from '@angular/core';
 import productData from '../../../../assets/JsonFiles/products.json';
 import productVariantData from '../../../../assets/JsonFiles/productVariant.json';
-import { Product } from '../../interfaces/product/product';
+import { Product, ProductResponseCard, ProductResponsePageDTO } from '../../interfaces/product/product';
 import { ProductVariant } from '../../interfaces/product/product-variant';
+import { environment } from './../../../../environments/environment';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  private product?: Product;
-  private productVariant!: ProductVariant;
-  private productVariantsList!: Array<ProductVariant>;
-
-  constructor() {}
-
-  getProduct() {
-    return this.product;
+  
+  private apiUrl = "http://localhost:8088/topcare/product";
+  
+  constructor(private httpClient: HttpClient) {}
+  
+  getProductByCode(code: number): Observable<ProductResponsePageDTO> {
+    return this.httpClient.get<ProductResponsePageDTO>(`${this.apiUrl}/${code}`);
   }
 
-  getProductData(){
-    return productData.product;
+  getSimilarProductsByCode(code: number): Observable<ProductResponseCard>{
+    return this.httpClient.get<ProductResponseCard>(`${this.apiUrl}/similar/${code}`);
   }
 
-  getProductVariants() {
-    return this.productVariantsList;
+  getProductsByCategories(categories: Array<number>): Observable<ProductResponseCard>{
+    return this.httpClient.put<ProductResponseCard>(`${this.apiUrl}/categories`, categories);
   }
-
-  getProductVariant() {
-    return this.productVariant;
+  
+  createProduct(product: Product): Observable<Product> {
+    return this.httpClient.post<Product>(this.apiUrl, product);
   }
-
-  changeVariableProduct(productVariant: ProductVariant) {
-    this.productVariant = productVariant;
+  
+  editProduct(id: number, product: Product): Observable<Product> {
+    return this.httpClient.put<Product>(`${this.apiUrl}/${id}`, product);
   }
-  getFirstProductVariant() {
-    return this.getProductVariants()[0];
+  
+  deleteProduct(id: number): Observable<Product> {
+    return this.httpClient.delete<Product>(`${this.apiUrl}/${id}`);
   }
+  
+  
+  
+  
+  
+  
+  // private product?: Product;
+  // private productVariant!: ProductVariant;
+  // private productVariantsList!: Array<ProductVariant>;
 
-  findProduct(id: number | string | Product | ProductVariant) {
-    if (typeof id == 'number' || typeof id == 'string') {
-      for (const productFind of productData.product) {
-        if (productFind.title == id || productFind.code == id) {
-          this.product = productFind;
-          break;
-        }
-      }
-    } else {
-      this.product = id;
-    }
+  // getProduct() {
+  //   return this.product;
+  // }
 
-    if (this.product) {
-      this.getAllProductVariants();
-      this.changeVariableProduct(this.getFirstProductVariant());
-    }
-  }
+  // getProductData(){
+  //   return productData.product;
+  // }
 
-  private getAllProductVariants() {
-    this.productVariantsList = [];
-    for (const variant of productVariantData.variant as ProductVariant[]) {
-      if (
-        this.product?.code == variant.code &&
-        this.verifyProductIsAvailable(variant)
-      ) {
-        this.productVariantsList.push(variant);
-      }
-    }
+  // getProductVariants() {
+  //   return this.productVariantsList;
+  // }
 
-    this.productVariantsList = this.productVariantsList.sort((p1, p2) => {
-      return p1.variant.localeCompare(p2.variant);
-    });
+  // getProductVariant() {
+  //   return this.productVariant;
+  // }
 
-    return this.productVariantsList;
-  }
+  // changeVariableProduct(productVariant: ProductVariant) {
+  //   this.productVariant = productVariant;
+  // }
+  // getFirstProductVariant() {
+  //   return this.getProductVariants()[0];
+  // }
 
-  private verifyProductIsAvailable(product: ProductVariant) {
-    if (product.available) {
-      return true;
-    }
-    return false;
-  }
+  // findProduct(id: number | string | Product | ProductVariant) {
+  //   if (typeof id == 'number' || typeof id == 'string') {
+  //     for (const productFind of productData.product) {
+  //       if (productFind.title == id || productFind.code == id) {
+  //         this.product = productFind;
+  //         break;
+  //       }
+  //     }
+  //   } else {
+  //     this.product = id;
+  //   }
+
+  //   if (this.product) {
+  //     this.getAllProductVariants();
+  //     this.changeVariableProduct(this.getFirstProductVariant());
+  //   }
+  // }
+
+  // private getAllProductVariants() {
+  //   this.productVariantsList = [];
+  //   for (const variant of productVariantData.variant as ProductVariant[]) {
+  //     if (
+  //       this.product?.code == variant.code &&
+  //       this.verifyProductIsAvailable(variant)
+  //     ) {
+  //       this.productVariantsList.push(variant);
+  //     }
+  //   }
+
+  //   this.productVariantsList = this.productVariantsList.sort((p1, p2) => {
+  //     return p1.variant.localeCompare(p2.variant);
+  //   });
+
+  //   return this.productVariantsList;
+  // }
+
+  // private verifyProductIsAvailable(product: ProductVariant) {
+  //   if (product.available) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 }

@@ -16,13 +16,12 @@ import { faFile, faFileImage } from '@fortawesome/free-solid-svg-icons';
 })
 export class ProfileFormComponent {
   @Input() profileForm!: FormGroup;
+  @Input() profileImg: string | ArrayBuffer = '';
   @Output() profileFormChange = new EventEmitter<FormGroup>();
 
   genders = ['Masculino', 'Feminino', 'Outro'];
 
   faFileImage = faFileImage;
-
-  profileImg: string | ArrayBuffer = 'assets/images/ProfileImage.png';
 
   constructor() {}
 

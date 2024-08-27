@@ -43,7 +43,7 @@
 
         <label for="category" class="labels">
             <p>Categoria</p>
-            <p-multiSelect formControlName="category" (onChange)="changeEmitProductForms()" [options]="typesCategories" [(ngModel)]="selectCategories" defaultLabel="Selecione a Categoria"></p-multiSelect>
+            <p-multiSelect formControlName="category" (onChange)="changeEmitProductForms()" [options]="typesCategories" [(ngModel)]="selectCategories" optionLabel="title" defaultLabel="Selecione a Categoria"></p-multiSelect>
         </label>
         
     </div>

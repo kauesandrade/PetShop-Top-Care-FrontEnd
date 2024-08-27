@@ -21,7 +21,7 @@ export interface User {
   access: string;
 }
 
-export interface UserResponsetDTO {
+export interface UserResponseDTO {
   id: number;
   profileImage: string;
   fullname: string;

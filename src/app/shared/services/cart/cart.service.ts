@@ -5,7 +5,7 @@ import { Item } from '../../interfaces/order/item';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 import { ShippingType } from '../../interfaces/shipping/shipping-type';
 import { Address } from '../../interfaces/user/address';
-
+import { ProductResponseCard } from '../../interfaces/product/product';
 @Injectable({
   providedIn: 'any',
 })
@@ -55,7 +55,7 @@ export class CartService {
     this.addLocalStorage();
   }
 
-  addItemCart(product: ProductVariant, amount: number) {
+  addItemCart(product: ProductResponseCard, amount: number) {
     const newItem: Item = {
       product,
       amount,

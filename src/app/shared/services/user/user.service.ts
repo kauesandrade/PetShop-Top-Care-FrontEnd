@@ -10,6 +10,7 @@ import {
 } from '../../interfaces/user/user';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, tap, throwError } from 'rxjs';
+import { api } from '../api/api';
 
 @Injectable({
   providedIn: 'root',
@@ -17,10 +18,10 @@ import { Observable, catchError, tap, throwError } from 'rxjs';
 export class UserService implements OnChanges {
   loggedUser: User | null = null;
   users: any = userData;
+  customerEndpoint = `${api}/customer`;
 
   constructor(private httpClient: HttpClient) {
     this.getUserById(1).subscribe((data) => {
-      console.log(data);
       this.loggedUser = data;
     });
   }
@@ -30,9 +31,7 @@ export class UserService implements OnChanges {
   }
 
   getUserById(id: number): Observable<User> {
-    return this.httpClient.get<User>(
-      'http://localhost:8088/topcare/customer/1'
-    );
+    return this.httpClient.get<User>(`${this.customerEndpoint}/1`);
   }
 
   getSchedulings() {
@@ -89,7 +88,7 @@ export class UserService implements OnChanges {
   }
 
   register(user: UserRequestPostDTO) {
-    return this.httpClient.post('http://localhost:8088/topcare/customer', user);
+    return this.httpClient.post(`${this.customerEndpoint}`, user);
   }
 
   updateUser(user: User) {
@@ -122,15 +121,12 @@ export class UserService implements OnChanges {
       console.log(key, value);
     });
 
-    return this.httpClient.put(
-      'http://localhost:8088/topcare/customer/' + userId,
-      formData
-    );
+    return this.httpClient.put(`${this.customerEndpoint}/${userId}`, formData);
   }
 
   updatePassword(userId: number, passwords: CustomerPasswordRequestPatchDTO) {
     return this.httpClient.patch(
-      'http://localhost:8088/topcare/customer/' + userId,
+      `${this.customerEndpoint}/${userId}`,
       passwords
     );
   }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductReview } from 'src/app/shared/interfaces/product/product-review';
+import { ProductReviewResponse } from 'src/app/shared/interfaces/product/product-review';
 
 @Component({
   selector: 'app-product-review-section',
@@ -7,7 +7,7 @@ import { ProductReview } from 'src/app/shared/interfaces/product/product-review'
   styleUrls: ['./product-review-section.component.scss'],
 })
 export class ProductReviewSectionComponent implements OnInit {
-  @Input() reviews?: Array<ProductReview>;
+  @Input() reviews?: Array<ProductReviewResponse>;
 
   constructor() {}
 

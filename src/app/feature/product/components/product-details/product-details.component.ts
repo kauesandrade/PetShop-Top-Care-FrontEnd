@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import {
   faStar,
   faComment,
@@ -6,7 +6,8 @@ import {
   faShareAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartR } from '@fortawesome/free-regular-svg-icons';
-import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
+import { ProductVariantResponse } from 'src/app/shared/interfaces/product/product-variant';
+import { ProductResponsePageDTO } from 'src/app/shared/interfaces/product/product';
 
 @Component({
   selector: 'app-product-details',
@@ -14,10 +15,11 @@ import { ProductVariant } from 'src/app/shared/interfaces/product/product-varian
   styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit {
-  @Input() productVariants!: Array<ProductVariant>;
-  @Output() productVariantstEmit = new EventEmitter<ProductVariant>();
+  @Input() product!: ProductResponsePageDTO;
+  @Output() productVariantstEmit = new EventEmitter<ProductVariantResponse>();
 
-  productVariant!: ProductVariant;
+  productVariant!: ProductVariantResponse;
+  
 
   faStar = faStar;
   faComment = faComment;
@@ -27,13 +29,13 @@ export class ProductDetailsComponent implements OnInit {
   like!: boolean;
 
   typeOfProducts?: string = 'Selecione o Tamanho: ';
-  typesDivider?: Array<Array<ProductVariant>> = [];
+  typesDivider?: Array<Array<ProductVariantResponse>> = [];
 
   constructor() {}
 
   ngOnInit(): void {
-    this.productVariant = this.productVariants[0];
-    this.like = this.productVariants[0].favorite;
+    this.productVariant = this.product.variants[0];
+    this.like = true;
     this.like == true ? (this.faHeart = faHeart) : (this.faHeart = faHeartR);
     this.productVariantstEmit.emit(this.productVariant);
   }
@@ -48,7 +50,7 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  chooseVariant(variant: ProductVariant) {
+  chooseVariant(variant: ProductVariantResponse) {
     if (variant != this.productVariant) {
       this.productVariant = variant;
       this.productVariantstEmit.emit(this.productVariant);

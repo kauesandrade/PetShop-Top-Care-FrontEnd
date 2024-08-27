@@ -25,11 +25,7 @@ import { EditCardsComponent } from './data/components/edit-cards/edit-cards.comp
 import { PetProfile } from './pets/pet/pet.component';
 import { PetScheduleComponent } from './pets/pet-schedule/pet-schedule.component';
 
-const Components = [
-  DataComponent,
-  OrdersComponent,
-  PetsComponent,
-];
+const Components = [DataComponent, OrdersComponent, PetsComponent];
 
 @NgModule({
   exports: [...Components],

@@ -3,23 +3,23 @@
 </div>
 <div class="divDetails">
     <div class="divTitle">
-        <h6>{{productVariant.title}}</h6>
+        <h6>{{product.title}}</h6>
         <span>Código {{productVariant.variantCode}}</span>
-        <p>{{productVariant.littleDescription}}</p>
+        <p>{{product.shortDescription}}</p>
     </div>
     <div class="divBrands">
-        <a href="">{{productVariant.brand}}</a>
+        <a href="">{{product.brand.name}}</a>
         <div class="divider"></div>
-        <ng-container *ngIf="productVariant.available">
+        <!-- <ng-container *ngIf="productVariant.available"> -->
             <span class="inStock">Em estoque</span>
-        </ng-container>
-        <ng-container *ngIf="!productVariant.available">
-            <span class="noStock">Sem estoque</span>
-        </ng-container>
+        <!-- </ng-container> -->
+        <!-- <ng-container *ngIf="!productVariant.available"> -->
+            <!-- <span class="noStock">Sem estoque</span> -->
+        <!-- </ng-container> -->
     </div>
     <div class="divButtonsProduct">
         <button class="btnRating">
-            <fa-icon [icon]="faStar"></fa-icon>{{productVariant.rating}}
+            <fa-icon [icon]="faStar"></fa-icon>{{product.rating}}
         </button>
         <button class="btnReviews">
             <fa-icon [icon]="faComment"></fa-icon>128
@@ -34,16 +34,16 @@
         <div class="divVariantsOfProducts">
             <p>{{typeOfProducts}}</p>
             <div class="divVariants">
-                <ng-container *ngFor="let variant of productVariants">
+                <ng-container *ngFor="let variant of product.variants">
 
                     <ng-container *ngIf="variant === productVariant; then ifBlock else elseBlock"></ng-container>
 
                     <ng-template #ifBlock>
-                        <button class="btnVariant choose" (click)="chooseVariant(variant)">{{variant.variant}}</button>
+                        <button class="btnVariant choose" (click)="chooseVariant(variant)">{{variant.variantTitle}}</button>
                     </ng-template>
 
                     <ng-template #elseBlock>
-                        <button class="btnVariant" (click)="chooseVariant(variant)">{{variant.variant}}</button>
+                        <button class="btnVariant" (click)="chooseVariant(variant)">{{variant.variantTitle}}</button>
                     </ng-template>
 
                 </ng-container>
