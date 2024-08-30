@@ -18,7 +18,7 @@ export interface User {
   cards: Card[];
   orders: Order[];
   pets: Pet[];
-  access: string;
+  role: string;
 }
 
 export interface UserResponseDTO {

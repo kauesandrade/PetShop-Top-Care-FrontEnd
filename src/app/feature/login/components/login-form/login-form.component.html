@@ -4,12 +4,12 @@
   (ngSubmit)="onSubmit()"
 >
   <label for="login" appInput>
-    <p>E-mail ou CPF</p>
+    <p>E-mail</p>
     <input
-      type="text"
+      type="email"
       id="login"
       formControlName="login"
-      placeholder="Digite seu e-mail ou cpf"
+      placeholder="Digite seu e-mail"
       [class.has-error]="login?.touched && login?.invalid"
       (change)="resetLoginError()"
       required
@@ -17,6 +17,9 @@
     <ng-container *ngIf="login?.touched && login?.invalid">
       <span *ngIf="login?.getError('isEmpty')" class="error-message">
         Você deve preencher esse campo!
+      </span>
+      <span *ngIf="login?.getError('email')" class="error-message">
+        Deve ser um e-mail!
       </span>
       <span *ngIf="login?.getError('incorrect')" class="error-message">
         Login inválido!
@@ -79,6 +82,4 @@
   [(open)]="openCodeModal"
   (submittedCode)="this.openChangePassword = true"
 ></app-forgot-password-code>
-<app-change-password
-  [(open)]="openChangePassword"
-></app-change-password>
+<app-change-password [(open)]="openChangePassword"></app-change-password>

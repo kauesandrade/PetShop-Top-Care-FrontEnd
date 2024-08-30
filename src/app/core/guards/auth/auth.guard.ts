@@ -26,41 +26,42 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanActivate {
     return this.isLogged();
   }
 
-  canDeactivate(): boolean{
-    if(this.isFunctionary()) {
-      return false
+  canDeactivate(): boolean {
+    if (this.isFunctionary()) {
+      return false;
     }
-    return true
+    return true;
   }
 
   canActivate(
-    route: ActivatedRouteSnapshot,
+    route: ActivatedRouteSnapshot
     // state: RouterStateSnapshot
-    ): boolean {
-
-      if(this.isLogged()){
-        if(this.isFunctionary()) {
-          if(route.routeConfig?.path == 'dashboard'){
-            return true
-          }
-          this.router.navigate(['/dashboard']);
+  ): boolean {
+    if (this.isLogged()) {
+      if (this.isFunctionary()) {
+        if (route.routeConfig?.path == 'dashboard') {
+          return true;
         }
-        if(!this.isFunctionary() && route.routeConfig?.path != 'dashboard'){
-          return true
-        }else{
-          this.router.navigate(['/']);
-          // this.router.navigate(['/nao-encontrada']);
-        }
+        this.router.navigate(['/dashboard']);
       }
-      
-      return false;
-  }
-
-  private isFunctionary(): boolean{
-    if(this.userService.loggedUser?.access == "admin"){
-      return true
+      if (!this.isFunctionary() && route.routeConfig?.path != 'dashboard') {
+        return true;
+      } else {
+        this.router.navigate(['/']);
+        // this.router.navigate(['/nao-encontrada']);
+      }
     }
-    return false
+
+    return false;
   }
 
+  private isFunctionary(): boolean {
+    if (
+      this.userService.loggedUser != null &&
+      this.userService.loggedUser?.role != 'CUSTOMER'
+    ) {
+      return true;
+    }
+    return false;
+  }
 }

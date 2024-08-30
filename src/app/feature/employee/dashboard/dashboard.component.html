@@ -1,43 +1,47 @@
-<app-header (sideBarOpenEmitter)="sideBarOpen($event)" [simple]="true" [employee]="true"></app-header>
+<app-header
+  (sideBarOpenEmitter)="sideBarOpen($event)"
+  [simple]="true"
+  [employee]="true"
+></app-header>
 <main>
-    <app-dashboard-side-bar pageNow='dashboard' [isOpen]="isOpen"></app-dashboard-side-bar>
+  <app-dashboard-side-bar
+    pageNow="dashboard"
+    [isOpen]="isOpen"
+  ></app-dashboard-side-bar>
 
-    <div class="layout-dashboard">
-        <h1>Dashboard</h1>
+  <div class="layout-dashboard">
+    <h1>Dashboard</h1>
 
-        <div class="informations">
-            <div class="graphic">
-                <div class="header-graphic">
-                    <h5>Produtos vendidos neste mês:</h5>
-                    <h4>1000</h4>
-                </div>
-                <canvas id="canvas">{{chart}}</canvas>
-            </div>
-            <div class="service-invoicing">
-                
-                <div class="service">
-                    <h5>Serviço mais agendado: </h5>
-                    <app-service-card-dashboard [service]="service"></app-service-card-dashboard>
-                </div>
-                
-                <div class="invoicing">
-                    <h5>Faturamento: </h5>
-                    <p>{{20000000000 |  currency : "BRL" : "symbol" : "1.2-2"}}</p>
-                </div>
-
-            </div>
-
+    <div class="informations">
+      <div class="graphic">
+        <div class="header-graphic">
+          <h5>Produtos vendidos neste mês:</h5>
+          <h4>1000</h4>
+        </div>
+        <canvas id="canvas">{{ chart }}</canvas>
+      </div>
+      <div class="service-invoicing">
+        <div class="service">
+          <h5>Serviço mais agendado:</h5>
+          <app-service-card-dashboard
+            [service]="service"
+          ></app-service-card-dashboard>
         </div>
 
-
-
-
-        <h3>Produtos mais vendidos</h3>
-        <div class="cards">
-            <ng-container *ngFor="let product of productList">
-                <app-product-card-dashboard [product]="product"></app-product-card-dashboard>
-            </ng-container>
+        <div class="invoicing">
+          <h5>Faturamento:</h5>
+          <p>{{ 20000000000 | currency : "BRL" : "symbol" : "1.2-2" }}</p>
         </div>
-
+      </div>
     </div>
+
+    <h3>Produtos mais vendidos</h3>
+    <div class="cards">
+      <ng-container *ngFor="let product of productList">
+        <app-product-card-dashboard
+          [product]="product"
+        ></app-product-card-dashboard>
+      </ng-container>
+    </div>
+  </div>
 </main>

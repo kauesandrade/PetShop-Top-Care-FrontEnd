@@ -1,7 +1,8 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { MessageService } from 'primeng/api';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
@@ -20,7 +21,7 @@ export class LoginFormComponent {
   openChangePassword = false;
 
   loginForm = this.formBuilder.group({
-    login: ['', [Validators.required, EmptyValidator]],
+    login: ['', [Validators.required, Validators.email, EmptyValidator]],
     password: ['', [Validators.required, EmptyValidator]],
     remember: [false],
   });
@@ -28,7 +29,8 @@ export class LoginFormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   get login() {
@@ -45,11 +47,15 @@ export class LoginFormComponent {
     event.preventDefault();
     this.showPassword = !this.showPassword;
   }
+
   resetLoginError() {
-    this.login?.setErrors(null);
-    this.password?.setErrors(null);
-    console.log(this.login?.errors);
-    console.log(this.password?.errors);
+    if (
+      this.login?.getError('incorrect') ||
+      this.password?.getError('incorrect')
+    ) {
+      this.login?.setErrors(null);
+      this.password?.setErrors(null);
+    }
   }
 
   isFormValid() {
@@ -63,31 +69,31 @@ export class LoginFormComponent {
 
     const formValues = this.loginForm.value;
 
-    console.log(formValues);
-
-    if (formValues.login?.match('[0-9]{3}.[0-9]{3}.[0-9]{2}')) {
-      formValues.login = formValues.login.replace('.', '');
-      formValues.login = formValues.login.replace('.', '');
-      formValues.login = formValues.login.replace('-', '');
-    }
-
-    if (
-      this.userService.login(
-        formValues.login!,
-        formValues.password!,
-        formValues.remember!
-      )
-    ) {
-
-      if(this.userService.loggedUser?.access == "admin"){        
-        this.router.navigate(['/dashboard']);
-      }else{
-        this.router.navigate(['/']);
-      }
-
-    } else {
-      this.login?.setErrors({ incorrect: true });
-      this.password?.setErrors({ incorrect: true });
-    }
+    this.userService
+      .login(formValues.login!, formValues.password!, formValues.remember!)
+      .subscribe((validLogin) => {
+        if (validLogin) {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Login efetuado com sucesso',
+            closable: true,
+            life: 1500,
+          });
+          if (this.userService.loggedUser?.role != 'CUSTOMER') {
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.router.navigate(['/']);
+          }
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Dados de login incorretos',
+            closable: true,
+            life: 1500,
+          });
+          this.login?.setErrors({ incorrect: true });
+          this.password?.setErrors({ incorrect: true });
+        }
+      });
   }
 }

@@ -43,14 +43,18 @@ export class DataComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getUserById(1).subscribe((data) => {
-      this.user = data;
-      this.user.birth = convertDateBackToFront(this.user.birth);
-      this.initProfileForm();
-      this.initContactForm();
-      this.initAddressForm();
-      this.disableAllForms();
-    });
+    if (this.userService.loggedUser != null) {
+      this.userService
+        .getUserById(this.userService.loggedUser.id)
+        .subscribe((data) => {
+          this.user = data;
+          this.user.birth = convertDateBackToFront(this.user.birth);
+          this.initProfileForm();
+          this.initContactForm();
+          this.initAddressForm();
+          this.disableAllForms();
+        });
+    }
   }
 
   initProfileForm() {

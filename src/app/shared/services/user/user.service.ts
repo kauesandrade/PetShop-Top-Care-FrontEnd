@@ -8,9 +8,10 @@ import {
   User,
   UserRequestPostDTO,
 } from '../../interfaces/user/user';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, tap, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
 import { api } from '../api/api';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -20,19 +21,25 @@ export class UserService implements OnChanges {
   changePasswordUser: any | null = null;
   users: any = userData;
   customerEndpoint = `${api}/customer`;
+  userEndpoint = `${api}/user`;
 
-  constructor(private httpClient: HttpClient) {
-    this.getUserById(1).subscribe((data) => {
-      this.loggedUser = data;
-    });
-  }
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.loggedUser);
+    this.updateLoggedUser();
+  }
+
+  updateLoggedUser() {
+    if (localStorage.getItem('user') && this.loggedUser == null) {
+      this.loggedUser = JSON.parse(localStorage.getItem('user')!) || null;
+    }
+    if (this.loggedUser != null && this.loggedUser.role != 'CUSTOMER') {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   getUserById(id: number): Observable<User> {
-    return this.httpClient.get<User>(`${this.customerEndpoint}/1`);
+    return this.httpClient.get<User>(`${this.customerEndpoint}/${id}`);
   }
 
   getSchedulings() {
@@ -58,34 +65,40 @@ export class UserService implements OnChanges {
     return null;
   }
 
-  login(login: string, password: string, remember: boolean): boolean {
-    console.log(this.users.user);
-    console.log(login);
-    console.log(password);
+  login(
+    login: string,
+    password: string,
+    remember: boolean
+  ): Observable<boolean> {
+    let validLogin: Subject<boolean> = new Subject<boolean>();
+    let loginData = {
+      email: login,
+      password: password,
+    };
+    this.httpClient.post(this.userEndpoint, loginData).subscribe({
+      next: (user) => {
+        this.loggedUser = user as User;
+        console.log(this.loggedUser);
 
-    for (const user of this.users.user) {
-      if (user.cpf == login || user.email == login) {
-        if (user.password == password) {
-          this.loggedUser = user;
-          break;
+        if (this.loggedUser?.fullname) {
+          if (remember) {
+            localStorage.setItem('user', JSON.stringify(this.loggedUser));
+          }
+          validLogin.next(true);
         }
-      }
-    }
-
-    if (this.loggedUser?.fullname) {
-      console.log(this.loggedUser);
-      if (remember) {
-        localStorage.setItem('user', JSON.stringify(this.loggedUser));
-      }
-      return true;
-    }
-
-    return false;
+      },
+      error: () => {
+        validLogin.next(false);
+      },
+    });
+    return validLogin.asObservable();
   }
 
   logout() {
-    localStorage.setItem('user', JSON.stringify({}));
+    localStorage.setItem('user', '');
     this.loggedUser = null;
+    this.updateLoggedUser();
+    console.log(this.loggedUser);
   }
 
   register(user: UserRequestPostDTO) {
@@ -154,17 +167,23 @@ export class UserService implements OnChanges {
   }
 
   changePassword(password: string) {
-    return this.httpClient.patch(`http://localhost:8088/topcare/user/forgotPassword/
+    return this.httpClient.patch(
+      `http://localhost:8088/topcare/user/forgotPassword/
     ${this.changePasswordUser.id}`,
-     {newPassword : password }); 
+      { newPassword: password }
+    );
   }
 
   verifyEmail(email: string) {
-    return this.httpClient.post('http://localhost:8088/topcare/user/forgotPassword',
-     { email : email });
+    return this.httpClient.post(
+      'http://localhost:8088/topcare/user/forgotPassword',
+      { email: email }
+    );
   }
 
   getCodeRequest() {
-    return this.httpClient.get('http://localhost:8088/topcare/user/forgotPassword/code');
+    return this.httpClient.get(
+      'http://localhost:8088/topcare/user/forgotPassword/code'
+    );
   }
 }
