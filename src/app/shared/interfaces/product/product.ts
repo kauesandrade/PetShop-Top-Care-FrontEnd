@@ -3,7 +3,7 @@ import { BrandResponse } from "./brand";
 import { ImageResponse } from "./image";
 import { ProductReview, ProductReviewResponse } from "./product-review";
 import { ProductSpecification, ProductSpecificationsResponse } from "./product-specification";
-import { ProductVariantResponse } from "./product-variant";
+import { ProductVariantResponse, ProductVariantResponseEditDTO } from "./product-variant";
 import { ProductCategoryResponse } from "./response/product-category-response";
 
 
@@ -45,17 +45,49 @@ export interface ProductResponsePageDTO {
   variants: Array<ProductVariantResponse>
 }
 
-export interface ProductResponseEditDTO{
+export interface ProductResponsePageEditDTO {
   code: number,
   title: string,
   description: string,
   shortDescription: string,
   brand: BrandResponse,
   specifications: Array<ProductSpecificationsResponse>
-  rating: number,
   categories: Array<ProductCategoryResponse>,
-  reviews: Array<ProductReviewResponse>,
-  variants: Array<ProductVariantResponse>
+  variants: Array<ProductVariantResponseEditDTO>
+}
+
+// export interface ProductResponseEditDTO{
+//   code: number,
+//   title: string,
+//   description: string,
+//   shortDescription: string,
+//   brand: BrandResponse,
+//   specifications: Array<ProductSpecificationsResponse>
+//   rating: number,
+//   categories: Array<ProductCategoryResponse>,
+//   reviews: Array<ProductReviewResponse>,
+//   variants: Array<ProductVariantResponse>
+// }
+
+export interface ProductRequestEditDTO{
+  title: string,
+  description: string,
+  shortDescription: string,
+  idBrand: number,
+  specifications: Array<ProductSpecificationsResponse>
+  idsCategories: Array<number>,
+  variants: Array<ProductVariantResponseEditDTO>
+}
+
+export interface ProductRequestCreateDTO{
+  code: number,
+  title: string,
+  description: string,
+  shortDescription: string,
+  idBrand: number,
+  specifications: Array<ProductSpecificationsResponse>
+  idsCategories: Array<number>,
+  variants: Array<ProductVariantResponseEditDTO>
 }
 
 export interface ProductResponseSearchPageableDTO{

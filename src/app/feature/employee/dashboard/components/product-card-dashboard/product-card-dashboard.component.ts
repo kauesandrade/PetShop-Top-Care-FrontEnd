@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { ProductResponseCard } from 'src/app/shared/interfaces/product/product';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 
 @Component({
@@ -11,7 +12,7 @@ export class ProductCardDashboardComponent implements OnInit {
 
   faTrash = faTrash
 
-  @Input() product!: ProductVariant;
+  @Input() product!: ProductResponseCard;
 
   constructor() { }
 

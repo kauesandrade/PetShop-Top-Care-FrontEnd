@@ -21,3 +21,13 @@ export interface ProductVariantResponse {
   images: Array<any>
 }
 
+export interface ProductVariantResponseEditDTO {
+  variantId: number,
+  variantTitle: string,
+  variantCode: number,
+  price: number,
+  discountPrice: number,
+  stock: number,
+  images: Array<any>
+}
+

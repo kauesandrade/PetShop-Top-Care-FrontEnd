@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ca, tr } from 'date-fns/locale';
 import { Brand } from 'src/app/shared/interfaces/product/brand';
-import { Category } from 'src/app/shared/interfaces/search/category';
-import brands from '../../../../../../../assets/JsonFiles/brands.json';
-import categories from '../../../../../../../assets/JsonFiles/categories.json';
 import { ProductCategoryResponse } from 'src/app/shared/interfaces/product/response/product-category-response';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
   selector: 'app-product-forms',
@@ -18,22 +17,23 @@ export class ProductFormsComponent implements OnInit {
   @Output() productFormChange = new EventEmitter<FormGroup>();
 
   brands!: Array<Brand>
-
-  categories!: Array<ProductCategoryResponse>
   typesCategories: Array<ProductCategoryResponse> = []
-  selectCategories!: Array<ProductCategoryResponse>
+  selectCategories: Array<ProductCategoryResponse> = []
 
   constructor() { }
 
   ngOnInit(): void {
-    this.brands = brands.brand
-    this.categories = this.productForm.get('category')?.value.categories
-    this.categories.forEach(category =>{
-        this.typesCategories.push(category)
-    })
-
-    this.selectCategories = this.category?.value
+    this.brands = [];
+    this.selectCategories = [];
   }
+
+  // verifyCode(){
+  //   if(this.productForm.get('code')!.value != null){
+  //     this.productForm.controls['code'].setErrors({'incorrect': true});
+  //   }else{
+  //     this.productForm.controls['code'].setErrors({'incorrect': false});
+  //   }
+  // }
 
   changeEmitProductForms(){
     console.log(this.productForm);
@@ -48,8 +48,8 @@ export class ProductFormsComponent implements OnInit {
     return this.productForm.get('title')
   }
 
-  get littleDescription(){
-    return this.productForm.get('littleDescription')
+  get shortDescription(){
+    return this.productForm.get('shortDescription')
   }
 
   get description(){

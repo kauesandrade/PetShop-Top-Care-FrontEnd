@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-import productData from '../../../../assets/JsonFiles/products.json';
-import productVariantData from '../../../../assets/JsonFiles/productVariant.json';
-import { Product, ProductResponseCard, ProductResponsePageDTO } from '../../interfaces/product/product';
-import { ProductVariant } from '../../interfaces/product/product-variant';
-import { environment } from './../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { ProductRequestCreateDTO, ProductRequestEditDTO, ProductResponseCard, ProductResponsePageDTO, ProductResponsePageEditDTO } from '../../interfaces/product/product';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +16,10 @@ export class ProductService {
     return this.httpClient.get<ProductResponsePageDTO>(`${this.apiUrl}/${code}`);
   }
 
+  getProductByCodeToEdit(code: number): Observable<ProductResponsePageEditDTO> {
+    return this.httpClient.get<ProductResponsePageEditDTO>(`${this.apiUrl}/edit/${code}`);
+  }
+
   getSimilarProductsByCode(code: number): Observable<ProductResponseCard>{
     return this.httpClient.get<ProductResponseCard>(`${this.apiUrl}/similar/${code}`);
   }
@@ -28,16 +28,16 @@ export class ProductService {
     return this.httpClient.put<ProductResponseCard>(`${this.apiUrl}/categories`, categories);
   }
   
-  createProduct(product: Product): Observable<Product> {
-    return this.httpClient.post<Product>(this.apiUrl, product);
+  createProduct(product: ProductRequestCreateDTO): Observable<ProductResponsePageDTO> {
+    return this.httpClient.post<ProductResponsePageDTO>(this.apiUrl, product);
   }
   
-  editProduct(id: number, product: Product): Observable<Product> {
-    return this.httpClient.put<Product>(`${this.apiUrl}/${id}`, product);
+  editProduct(id: number, product: ProductRequestEditDTO): Observable<ProductResponsePageDTO> {
+    return this.httpClient.put<ProductResponsePageDTO>(`${this.apiUrl}/${id}`, product);
   }
   
-  deleteProduct(id: number): Observable<Product> {
-    return this.httpClient.delete<Product>(`${this.apiUrl}/${id}`);
+  deleteProduct(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
   }
   
   

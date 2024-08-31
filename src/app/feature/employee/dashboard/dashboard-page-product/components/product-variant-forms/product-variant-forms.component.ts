@@ -71,6 +71,7 @@ export class ProductVariantFormsComponent implements OnInit {
   updateVariant() {
 
     const form = this.formBuilder.group({
+      id: [this.variantForm.get("id")?.value || null],
       title: [this.variantForm.get("title")?.value, [Validators.required, EmptyValidator]],
       code: [this.variantForm.get("code")?.value, [Validators.required, EmptyValidator]],
       stock: [this.variantForm.get("stock")?.value || 0],

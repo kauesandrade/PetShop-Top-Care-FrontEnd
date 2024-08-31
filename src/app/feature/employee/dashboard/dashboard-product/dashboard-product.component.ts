@@ -1,6 +1,9 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
+import { th } from 'date-fns/locale';
+import { ProductResponseCard, ProductResponseSearchPageableDTO } from 'src/app/shared/interfaces/product/product';
+import { ProductVariant, ProductVariantResponse } from 'src/app/shared/interfaces/product/product-variant';
 import { FilterService } from 'src/app/shared/services/filter/filter.service';
 import { SearchService } from 'src/app/shared/services/search/search.service';
 
@@ -11,19 +14,14 @@ import { SearchService } from 'src/app/shared/services/search/search.service';
 })
 export class DashboardProductComponent implements OnInit {
 
-  constructor(private searchService: SearchService, private filterService: FilterService) { }
+  constructor(private searchService: SearchService) { }
 
-  ngOnInit(): void {
-    // this.searchService.searchProducts("");
-    // this.productList = this.searchService.getProductList();
-  }
-
-  productList: Array<ProductVariant> = []
+  isOpen: boolean = false;
+  searchValue: string = '';
+  sortBy: string = 'popularidade';
+  productsList: Array<ProductResponseCard> = [];
 
   faSearch = faSearch;
-  
-  isOpen: boolean = false;
-  seachValue: string = '';
 
   typesOrderBy = [
     'Popularidade',
@@ -35,21 +33,45 @@ export class DashboardProductComponent implements OnInit {
     'Nome (A-Z)',
     'Nome (Z-A)'
   ]
+  
+  ngOnInit(): void {
+    this.searchProducts();
+  }
 
   sideBarOpen(evt: any){
     this.isOpen = evt;
   }
 
   handleClickSeach(){
-
+    this.searchProducts();
   }
 
-  getOrderBy(evt: any){
-    console.log(evt);
+  getSortBy(evt: any){
+    this.sortBy = evt;
+    this.searchProducts();
   }
 
   verifyChar(evt: any){
     console.log(evt);
+  }
+
+
+  searchProducts(){
+    const searchParams: HttpParams = new HttpParams().set(
+      'searchValue', this.searchValue
+    ).set(
+      'sortBy', this.sortBy
+    ).set(
+      'page', 0
+    ).set(
+      'size', 10
+    );
+
+    this.searchService.searchProducts(searchParams, []).subscribe((response) => {
+      this.productsList = response.content.map((product: ProductResponseSearchPageableDTO) => {
+        return product;
+      });
+    });
   }
   
 
