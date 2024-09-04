@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ProductRequestCreateDTO, ProductRequestEditDTO, ProductResponsePageDTO, ProductResponsePageEditDTO } from 'src/app/shared/interfaces/product/product';
-import { ProductVariantResponse, ProductVariantResponseEditDTO } from 'src/app/shared/interfaces/product/product-variant';
+import { ProductRequestPostDTO, ProductRequestPutDTO, ProductResponsePageDTO, ProductResponsePageEditDTO } from 'src/app/shared/interfaces/product/product';
+import { ProductVariantResponsePostDTO, ProductVariantResponsePutDTO } from 'src/app/shared/interfaces/product/product-variant';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 import { ProductSpecificationsResponse } from 'src/app/shared/interfaces/product/product-specification';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
@@ -16,7 +16,7 @@ import { ProductCategoryResponse } from 'src/app/shared/interfaces/product/respo
 export class DashboardPageProductComponent implements OnInit {
 
   product?: ProductResponsePageEditDTO;
-  productVariantsList: Array<ProductVariantResponseEditDTO> = [];
+  productVariantsList: Array<ProductVariantResponsePutDTO> = [];
   id!: number;
 
   isOpen: boolean = false;
@@ -29,7 +29,7 @@ export class DashboardPageProductComponent implements OnInit {
   })
 
   variantsForm = this.formBuilder.group({
-    variants: this.formBuilder.array([] as ProductVariantResponseEditDTO[])
+    variants: this.formBuilder.array([] as ProductVariantResponsePutDTO[])
   })
 
   constructor(private route: ActivatedRoute,
@@ -111,7 +111,7 @@ export class DashboardPageProductComponent implements OnInit {
     )
   }
 
-  createNewVariant(productVariant: ProductVariantResponseEditDTO) {
+  createNewVariant(productVariant: ProductVariantResponsePutDTO) {
 
     const images = []
     for (let image of productVariant.images) {
@@ -119,13 +119,13 @@ export class DashboardPageProductComponent implements OnInit {
     }
 
     const variant = this.formBuilder.group({
-      id: [productVariant.variantId || 0],
-      title: [productVariant.variantTitle || "", [Validators.required, EmptyValidator]],
-      code: [productVariant.variantCode || 0, [Validators.required, EmptyValidator]],
-      stock: [productVariant.stock || 0, [Validators.required, EmptyValidator]],
-      price: [productVariant.price || 0.0, [Validators.required, EmptyValidator]],
+      variantId: [productVariant.variantId || 0],
+      variantTitle: [productVariant.variantTitle || "", [Validators.required, EmptyValidator]],
+      variantCode: [productVariant.variantCode || 0, [Validators.required, EmptyValidator]],
+      stock: [productVariant.stock || 0,],
+      price: [productVariant.price || 0.0, ],
       images: [images],
-      discount: [productVariant.discountPrice || 0]
+      discount: [productVariant?.discount|| 0]
     });
 
     (<FormArray>this.variantsForm.controls.variants).push(variant);
@@ -142,14 +142,27 @@ export class DashboardPageProductComponent implements OnInit {
       }
     }
 
-    var variantsList: Array<ProductVariantResponseEditDTO> = [];
+    var variantsList: Array<ProductVariantResponsePostDTO> = [];
+
     if (this.variantsForm.value.variants) {
       for (let variant of this.variantsForm.value.variants) {
-        variantsList.push(variant!);
+        
+        const variantDTO: ProductVariantResponsePostDTO = {
+          variantTitle: variant!.variantTitle,
+          variantCode: variant!.variantCode,
+          price: variant!.price,
+          discount: variant!.discount,
+          stock: variant!.stock,
+          images: variant!.images
+        }
+        
+        console.log(variant);
+
+        variantsList.push(variantDTO);
       }
     }
 
-    const productCreateDTO: ProductRequestCreateDTO = {
+    const productCreateDTO: ProductRequestPostDTO = {
       code: this.productForm.value.code,
       title: this.productForm.value.title,
       description: this.productForm.value.description,
@@ -160,10 +173,8 @@ export class DashboardPageProductComponent implements OnInit {
       variants: variantsList
     }
 
-    console.log(productCreateDTO);
-
     this.productService.createProduct(productCreateDTO).subscribe((response) => {
-      console.log(response + "criado");
+      console.log(response.title + "criado");
     });
 
   }
@@ -177,14 +188,14 @@ export class DashboardPageProductComponent implements OnInit {
       }
     }
 
-    var variantsList: Array<ProductVariantResponseEditDTO> = [];
+    var variantsList: Array<ProductVariantResponsePutDTO> = [];
     if (this.variantsForm.value.variants) {
       for (let variant of this.variantsForm.value.variants) {
         variantsList.push(variant!);
       }
     }
 
-    const productEditDTO: ProductRequestEditDTO = {
+    const productPutDTO: ProductRequestPutDTO = {
       title: this.productForm.value.title,
       description: this.productForm.value.description,
       shortDescription: this.productForm.value.shortDescription,
@@ -194,9 +205,9 @@ export class DashboardPageProductComponent implements OnInit {
       variants: variantsList
     }
 
-    console.log(productEditDTO);
+    console.log(productPutDTO);
 
-    this.productService.editProduct(this.id, productEditDTO).subscribe((response) => {
+    this.productService.editProduct(this.id, productPutDTO).subscribe((response) => {
       console.log(response + "editado");
     });
   }

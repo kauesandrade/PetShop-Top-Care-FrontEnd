@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { ProductRequestCreateDTO, ProductRequestEditDTO, ProductResponseCard, ProductResponsePageDTO, ProductResponsePageEditDTO } from '../../interfaces/product/product';
+import { ProductRequestPostDTO, ProductRequestPutDTO, ProductResponseCard, ProductResponsePageDTO, ProductResponsePageEditDTO } from '../../interfaces/product/product';
 
 @Injectable({
   providedIn: 'root',
@@ -28,11 +28,11 @@ export class ProductService {
     return this.httpClient.put<ProductResponseCard>(`${this.apiUrl}/categories`, categories);
   }
   
-  createProduct(product: ProductRequestCreateDTO): Observable<ProductResponsePageDTO> {
+  createProduct(product: ProductRequestPostDTO): Observable<ProductResponsePageDTO> {
     return this.httpClient.post<ProductResponsePageDTO>(this.apiUrl, product);
   }
   
-  editProduct(id: number, product: ProductRequestEditDTO): Observable<ProductResponsePageDTO> {
+  editProduct(id: number, product: ProductRequestPutDTO): Observable<ProductResponsePageDTO> {
     return this.httpClient.put<ProductResponsePageDTO>(`${this.apiUrl}/${id}`, product);
   }
   

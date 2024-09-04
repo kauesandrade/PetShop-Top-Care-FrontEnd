@@ -7,3 +7,16 @@ export interface ImageResponse {
     id: number,
     file: string,
 }
+
+export interface ImageRequestPost {
+    file: File,
+}
+
+export interface ImageResponsePutDTO {
+    id: number,
+    name: string,
+    type: string,
+    size: number,
+    url: string,
+    file: File
+}

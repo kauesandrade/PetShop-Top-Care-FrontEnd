@@ -1,4 +1,4 @@
-import { Image } from './image';
+import { Image, ImageRequestPost } from './image';
 import { Product } from './product';
 
 export interface ProductVariant extends Product {
@@ -21,13 +21,22 @@ export interface ProductVariantResponse {
   images: Array<any>
 }
 
-export interface ProductVariantResponseEditDTO {
+export interface ProductVariantResponsePostDTO {
+  variantTitle: string,
+  variantCode: number,
+  price: number,
+  stock: number,
+  discount: number,
+  images: Array<ImageRequestPost>
+}
+
+export interface ProductVariantResponsePutDTO {
   variantId: number,
   variantTitle: string,
   variantCode: number,
   price: number,
-  discountPrice: number,
+  discount: number,
   stock: number,
-  images: Array<any>
+  images: Array<ImageRequestPost>
 }
 
