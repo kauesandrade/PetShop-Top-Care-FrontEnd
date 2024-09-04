@@ -2,8 +2,8 @@
   <!-- <ng-container *ngIf="product.favorite">
     <fa-icon [icon]="faHeart" class="favorite-heart"></fa-icon>
   </ng-container> -->
-  <a href="/produto/{{product.code}}" class="redirect-product">
-    <img [src]="product.image.file" alt="Product image" class="product-image" />
+  <a href="/produto/{{ product.code }}" class="redirect-product">
+    <img [src]="product.image.url" alt="Product image" class="product-image" />
     <p class="product-title">{{ product.title }}</p>
   </a>
   <div class="brand-rating">
@@ -28,7 +28,11 @@
   </div>
   <div class="buttons-container">
     <button (click)="handleClickBuy()" appButton>Comprar agora</button>
-    <button class="icon-button" appButton="secondary" (click)="handleClickCart()">
+    <button
+      class="icon-button"
+      appButton="secondary"
+      (click)="handleClickCart()"
+    >
       <fa-icon [icon]="faShoppingCart" class="shopping-cart-icon"></fa-icon>
     </button>
   </div>

@@ -1,36 +1,39 @@
 <div class="div-container">
-    <section class="section-informations">
+  <section class="section-informations">
+    <div class="div-primary-informations">
+      <div class="div-image">
+        <img src="{{ item.product.image.url }}" alt="" />
+      </div>
 
-        <div class="div-primary-informations">
-            <div class="div-image">
-                <img src={{item.product.image.file}} alt="">
-            </div>
-    
-            <div class="div-name-pricing">
-                <span class="item-name">{{item.product.title}}</span>
-                <div class="div-pricing">
-                    <span class="item-price">{{item.product.price | currency : "BRL" : "symbol" : "1.2-2"}}</span>
-                    <span class="item-discountPrice">{{item.product.discountPrice | currency : "BRL" : "symbol" : "1.2-2"}}</span>
-                </div>
-                <span class="item-variant">Tamanho: {{item.product.title}}</span>
-            </div>
+      <div class="div-name-pricing">
+        <span class="item-name">{{ item.product.title }}</span>
+        <div class="div-pricing">
+          <span class="item-price">{{
+            item.product.price | currency : "BRL" : "symbol" : "1.2-2"
+          }}</span>
+          <span class="item-discountPrice">{{
+            item.product.discountPrice | currency : "BRL" : "symbol" : "1.2-2"
+          }}</span>
         </div>
-        <div class="div-secondary-informations">
-            <div class="div-amount">
-                <app-input-amount [value]="item.amount" (valueEmitter)="getAmount($event)"></app-input-amount>
-            </div>
-    
-            <div class="div-subtotal">
-                <span class="title">Subtotal</span>
-                <span>{{subtotal | currency : "BRL" : "symbol" : "1.2-2"}}</span>
-            </div>
-    
-            <div class="div-trash" (click)="removeItem()">
-                <fa-icon [icon]="faTrash"></fa-icon>
-            </div>
-        </div>
+        <span class="item-variant">Tamanho: {{ item.product.title }}</span>
+      </div>
+    </div>
+    <div class="div-secondary-informations">
+      <div class="div-amount">
+        <app-input-amount
+          [value]="item.amount"
+          (valueEmitter)="getAmount($event)"
+        ></app-input-amount>
+      </div>
 
+      <div class="div-subtotal">
+        <span class="title">Subtotal</span>
+        <span>{{ subtotal | currency : "BRL" : "symbol" : "1.2-2" }}</span>
+      </div>
 
-    </section>
-
+      <div class="div-trash" (click)="removeItem()">
+        <fa-icon [icon]="faTrash"></fa-icon>
+      </div>
+    </div>
+  </section>
 </div>

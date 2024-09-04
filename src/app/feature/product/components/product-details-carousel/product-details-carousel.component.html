@@ -1,24 +1,48 @@
 <div class="divCarouselImage">
-    <section class="embla">
-        <button *ngIf="images.length > 3" class="embla__button--down" (click)="nextSlide()"><fa-icon [icon]="faAngleLeft"></fa-icon></button>
-        <div class="embla__viewport">
-            <div class="embla__container">
-                <div class="embla__slide" *ngFor="let image of images">
-                    <ng-container *ngIf="image.file === selectImage?.file; then ifBlock else elseBlock"></ng-container>
-                    <ng-template #ifBlock>
-                        <img class="slide" (click)="getIdImage(image)" src={{image.file}}>
-                    </ng-template>
-                    <ng-template #elseBlock>
-                        <img class="slide blur" (click)="getIdImage(image)" src={{image.file}}>
-                    </ng-template>
-                </div>
-            </div>
+  <section class="embla">
+    <button
+      *ngIf="images.length > 3"
+      class="embla__button--down"
+      (click)="nextSlide()"
+    >
+      <fa-icon [icon]="faAngleLeft"></fa-icon>
+    </button>
+    <div class="embla__viewport">
+      <div class="embla__container">
+        <div class="embla__slide" *ngFor="let image of images">
+          <ng-container
+            *ngIf="image.url === selectImage?.url; then ifBlock; else elseBlock"
+          ></ng-container>
+          <ng-template #ifBlock>
+            <img
+              class="slide"
+              (click)="getIdImage(image)"
+              src="{{ image.url }}"
+            />
+          </ng-template>
+          <ng-template #elseBlock>
+            <img
+              class="slide blur"
+              (click)="getIdImage(image)"
+              src="{{ image.url }}"
+            />
+          </ng-template>
         </div>
-        <button *ngIf="images.length > 3" class="embla__button--up" (click)="prevSlide()"><fa-icon [icon]="faAngleRight"></fa-icon></button>
-      </section>
-    <section class="sectionImage">
-        <img class="selectiongImage" src={{selectImage?.file}} alt={{selectImage?.id}}>
-    </section>
+      </div>
+    </div>
+    <button
+      *ngIf="images.length > 3"
+      class="embla__button--up"
+      (click)="prevSlide()"
+    >
+      <fa-icon [icon]="faAngleRight"></fa-icon>
+    </button>
+  </section>
+  <section class="sectionImage">
+    <img
+      class="selectiongImage"
+      src="{{ selectImage?.url }}"
+      alt="{{ selectImage?.id }}"
+    />
+  </section>
 </div>
-
-

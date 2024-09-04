@@ -1,9 +1,9 @@
 export interface Image {
-    name: string;
-    src: string | ArrayBuffer;
+  name: string;
+  src: string | ArrayBuffer;
 }
 
 export interface ImageResponse {
-    id: number,
-    file: string,
+  id: number;
+  url: string;
 }
