@@ -19,15 +19,21 @@ export class ProductFormsComponent implements OnInit, OnChanges {
   typesCategories: Array<ProductCategoryResponse> = []
   selectCategories: Array<ProductCategoryResponse> = []
 
-  constructor(private categoryService: CategoryService) { 
+  constructor(private categoryService: CategoryService) {
   }
   ngOnChanges(changes: SimpleChanges): void {
+
     this.selectCategories = this.productForm.get('category')!.value;
     console.log(this.selectCategories);
+
     this.categoryService.getAllCategoriesGroup().subscribe((response) => {
-      this.typesCategories = response;
-      console.log(this.typesCategories);
+      response.forEach((groupCategory: any) => {
+        groupCategory.categories.forEach((category: any) => {
+          this.typesCategories.push(category);
+        })
+      });
     });
+
   }
 
   ngOnInit(): void {
@@ -35,40 +41,32 @@ export class ProductFormsComponent implements OnInit, OnChanges {
     this.selectCategories = this.productForm.get('category')!.value;
   }
 
-  // verifyCode(){
-  //   if(this.productForm.get('code')!.value != null){
-  //     this.productForm.controls['code'].setErrors({'incorrect': true});
-  //   }else{
-  //     this.productForm.controls['code'].setErrors({'incorrect': false});
-  //   }
-  // }
-
-  changeEmitProductForms(){
+  changeEmitProductForms() {
     console.log(this.productForm);
     this.productFormChange.emit(this.productForm);
   }
 
-  get code(){
+  get code() {
     return this.productForm.get('code')
   }
 
-  get title(){
+  get title() {
     return this.productForm.get('title')
   }
 
-  get shortDescription(){
+  get shortDescription() {
     return this.productForm.get('shortDescription')
   }
 
-  get description(){
+  get description() {
     return this.productForm.get('description')
   }
 
-  get brand(){
+  get brand() {
     return this.productForm.get('brand')
   }
 
-  get category(){
+  get category() {
     return this.productForm.get('category')
   }
 
