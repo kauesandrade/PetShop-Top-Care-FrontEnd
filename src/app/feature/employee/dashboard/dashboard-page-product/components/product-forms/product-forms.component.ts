@@ -23,7 +23,9 @@ export class ProductFormsComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void {
 
-    this.selectCategories = this.productForm.get('category')!.value;
+    this.productForm.get('category')!.value.forEach((category: any) => {
+      this.selectCategories.push(category.id);
+    });
     console.log(this.selectCategories);
 
     this.categoryService.getAllCategoriesGroup().subscribe((response) => {
@@ -34,15 +36,15 @@ export class ProductFormsComponent implements OnInit, OnChanges {
       });
     });
 
+
   }
 
   ngOnInit(): void {
-    this.brands = [];
-    this.selectCategories = this.productForm.get('category')!.value;
   }
 
   changeEmitProductForms() {
     console.log(this.productForm);
+    console.log(this.selectCategories);
     this.productFormChange.emit(this.productForm);
   }
 
