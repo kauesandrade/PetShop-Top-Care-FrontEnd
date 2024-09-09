@@ -6,7 +6,7 @@
     <h1>{{titlePage}}</h1>
 
     <section class="sections">
-      <app-product-forms [(productForm)]="productForm"></app-product-forms>
+      <app-product-forms [selectCategories]="this.productForm.get('category')!.value" [(productForm)]="productForm"></app-product-forms>
     </section>
 
     <section class="sections">

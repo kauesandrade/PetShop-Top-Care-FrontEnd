@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductRequestPostDTO, ProductRequestPutDTO, ProductResponsePageDTO, ProductResponsePageEditDTO } from 'src/app/shared/interfaces/product/product';
 import { ProductVariantResponsePostDTO, ProductVariantResponsePutDTO } from 'src/app/shared/interfaces/product/product-variant';
 import { ProductService } from 'src/app/shared/services/product/product.service';
@@ -33,6 +33,7 @@ export class DashboardPageProductComponent implements OnInit {
   })
 
   constructor(private route: ActivatedRoute,
+    private router: Router,
     private productService: ProductService,
     private formBuilder: FormBuilder) {
   }
@@ -155,9 +156,6 @@ export class DashboardPageProductComponent implements OnInit {
           stock: variant!.stock,
           images: variant!.images
         }
-        
-        console.log(variant);
-
         variantsList.push(variantDTO);
       }
     }
@@ -167,14 +165,16 @@ export class DashboardPageProductComponent implements OnInit {
       title: this.productForm.value.title,
       description: this.productForm.value.description,
       shortDescription: this.productForm.value.shortDescription,
-      idBrand: 1,
+      idBrand: this.productForm.value.brand.id,
       specifications: specificationsList,
-      idsCategories: [1],
+      idsCategories: this.productForm.value.category.map((category: ProductCategoryResponse) => category.id),
       variants: variantsList
     }
+    console.log(productCreateDTO);
 
     this.productService.createProduct(productCreateDTO).subscribe((response) => {
-      console.log(response.title + "criado");
+      console.log(response.title + " criado");
+      this.router.navigate(['/dashboard/produtos']);
     });
 
   }
@@ -208,14 +208,15 @@ export class DashboardPageProductComponent implements OnInit {
     console.log(productPutDTO);
 
     this.productService.editProduct(this.id, productPutDTO).subscribe((response) => {
-      console.log(response + "editado");
+      console.log(response.code + " editado");
+      this.router.navigate(['/dashboard/products']);
     });
   }
 
   areFormsValid() {
     return (
-      // this.productForm.valid && this.specificationsForm.valid && this.variantsForm.valid
-      true
+      this.productForm.valid && this.specificationsForm.valid && this.variantsForm.valid
+      // true
     );
   }
 

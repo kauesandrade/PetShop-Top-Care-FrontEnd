@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ca, tr } from 'date-fns/locale';
-import { Brand } from 'src/app/shared/interfaces/product/brand';
+import { BrandResponse } from 'src/app/shared/interfaces/product/brand';
 import { ProductCategoryResponse } from 'src/app/shared/interfaces/product/response/product-category-response';
+import { BrandService } from 'src/app/shared/services/brand/brand.service';
 import { CategoryService } from 'src/app/shared/services/category/category.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
 
@@ -11,23 +12,18 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
   templateUrl: './product-forms.component.html',
   styleUrls: ['./product-forms.component.scss']
 })
-export class ProductFormsComponent implements OnInit, OnChanges {
+export class ProductFormsComponent implements OnInit {
   @Input() productForm!: FormGroup
   @Output() productFormChange = new EventEmitter<FormGroup>();
 
-  brands!: Array<Brand>
+  brands: Array<BrandResponse> = []
   typesCategories: Array<ProductCategoryResponse> = []
-  selectCategories: Array<ProductCategoryResponse> = []
+  @Input() selectCategories: Array<ProductCategoryResponse> = []
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, private brandService: BrandService) {
   }
-  ngOnChanges(changes: SimpleChanges): void {
-
-    this.productForm.get('category')!.value.forEach((category: any) => {
-      this.selectCategories.push(category.id);
-    });
-    console.log(this.selectCategories);
-
+  
+  ngOnInit(): void {
     this.categoryService.getAllCategoriesGroup().subscribe((response) => {
       response.forEach((groupCategory: any) => {
         groupCategory.categories.forEach((category: any) => {
@@ -35,16 +31,16 @@ export class ProductFormsComponent implements OnInit, OnChanges {
         })
       });
     });
-
-
-  }
-
-  ngOnInit(): void {
+    
+    this.brandService.getAllBrands().subscribe((response) => {
+      this.brands = response;
+    });
   }
 
   changeEmitProductForms() {
-    console.log(this.productForm);
-    console.log(this.selectCategories);
+    // console.log(this.productForm);
+    // console.log(this.brand?.value);
+    // console.log(this.selectCategories);
     this.productFormChange.emit(this.productForm);
   }
 

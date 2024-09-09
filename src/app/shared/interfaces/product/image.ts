@@ -13,7 +13,7 @@ export interface ImageRequestPost {
 }
 
 export interface ImageResponsePutDTO {
-    id: number,
+    id: number | null,
     name: string,
     type: string,
     size: number,

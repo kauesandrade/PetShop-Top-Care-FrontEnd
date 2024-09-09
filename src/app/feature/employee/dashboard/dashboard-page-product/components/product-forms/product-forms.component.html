@@ -33,7 +33,7 @@
               <option value=null selected disabled hidden>Marca do produto</option>
               <option
                 *ngFor="let brand of brands;"
-                [value]="brand.name"
+                [ngValue]="brand"
               >
                 {{ brand.name }}
               </option>
@@ -43,13 +43,12 @@
 
         <label for="category" class="labels">
             <p>Categoria</p>
-            <p-multiSelect formControlName="category" 
+            <p-multiSelect id="category" formControlName="category" 
 
             (onChange)="changeEmitProductForms()" 
             [options]="typesCategories" 
             [(ngModel)]="selectCategories" 
             optionLabel="title" 
-            optionValue="id"
 
             defaultLabel="Selecione a Categoria"></p-multiSelect>
         </label>
