@@ -115,7 +115,7 @@ export class ProductVariantFormsComponent implements OnInit {
         type: img.type,
         size: img.size,
         url: reader.result as string,
-        file: img
+        // file: img
       }
 
       const images: Array<ImageResponsePutDTO> = []

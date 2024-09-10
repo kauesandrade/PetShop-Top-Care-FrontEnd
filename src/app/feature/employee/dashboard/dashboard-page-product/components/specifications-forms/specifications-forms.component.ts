@@ -40,6 +40,7 @@ export class SpecificationsFormsComponent implements OnInit {
     this.specificationModal = specification;
     this.specificationsOpen = true;
     this.specificationForm = this.formBuilder.group({
+      id: [specification + 1],
       title: [this.getTitle(specification)?.value!],
       description: [this.getDescription(specification)?.value!],
     })
@@ -47,6 +48,7 @@ export class SpecificationsFormsComponent implements OnInit {
 
   updateSpecification() {
     const form = this.formBuilder.group({
+      id: [this.specificationsForm.get('id')?.value!],
       title: [this.specificationForm.get('title')?.value!, [Validators.required, EmptyValidator]],
       description: [this.specificationForm.get('description')?.value!, [Validators.required, EmptyValidator]],
     });
@@ -76,6 +78,7 @@ export class SpecificationsFormsComponent implements OnInit {
 
   clearInputs(){
     this.specificationForm = this.formBuilder.group({
+      id: [''],
       title: ['', [Validators.required, EmptyValidator]],
       description: ['', [Validators.required, EmptyValidator]],
     })
@@ -84,6 +87,10 @@ export class SpecificationsFormsComponent implements OnInit {
   get specifications() {
     return this.specificationsForm?.get('specifications') as FormArray;
   }
+
+  getId(index: number) {
+  return (<FormGroup>this.specifications.controls[index]).get('id');
+}
 
   getTitle(index: number) {
     return (<FormGroup>this.specifications.controls[index]).get('title');

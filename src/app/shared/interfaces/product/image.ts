@@ -18,5 +18,5 @@ export interface ImageResponsePutDTO {
     type: string,
     size: number,
     url: string,
-    file: File
+    // file: File
 }

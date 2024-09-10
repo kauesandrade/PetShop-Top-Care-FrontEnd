@@ -199,7 +199,7 @@ export class DashboardPageProductComponent implements OnInit {
       title: this.productForm.value.title,
       description: this.productForm.value.description,
       shortDescription: this.productForm.value.shortDescription,
-      idBrand: this.productForm.value.brand.code || 1,
+      idBrand: this.productForm.value.brand.id,
       specifications: specificationsList,
       idsCategories: this.productForm.value.category.map((category: ProductCategoryResponse) => category.id),
       variants: variantsList
@@ -209,7 +209,7 @@ export class DashboardPageProductComponent implements OnInit {
 
     this.productService.editProduct(this.id, productPutDTO).subscribe((response) => {
       console.log(response.code + " editado");
-      this.router.navigate(['/dashboard/products']);
+      this.router.navigate(['/dashboard/produtos']);
     });
   }
 
