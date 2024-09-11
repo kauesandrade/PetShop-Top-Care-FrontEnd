@@ -19,6 +19,7 @@ export class SpecificationsFormsComponent implements OnInit {
   
   specificationForm!: FormGroup
   specificationModal?: number | null = null;
+  idSpecification!: number;
   
   faPlus = faPlus;
   faTrash = faTrash;
@@ -38,9 +39,12 @@ export class SpecificationsFormsComponent implements OnInit {
 
   editSpecification(specification: number) {
     this.specificationModal = specification;
+    this.idSpecification = this.getId(specification)?.value! + 1;
+    console.log(this.idSpecification);
+    
     this.specificationsOpen = true;
     this.specificationForm = this.formBuilder.group({
-      id: [specification + 1],
+      id: [this.idSpecification],
       title: [this.getTitle(specification)?.value!],
       description: [this.getDescription(specification)?.value!],
     })
@@ -48,7 +52,7 @@ export class SpecificationsFormsComponent implements OnInit {
 
   updateSpecification() {
     const form = this.formBuilder.group({
-      id: [this.specificationsForm.get('id')?.value!],
+      id: [this.specificationModal],
       title: [this.specificationForm.get('title')?.value!, [Validators.required, EmptyValidator]],
       description: [this.specificationForm.get('description')?.value!, [Validators.required, EmptyValidator]],
     });
