@@ -67,7 +67,7 @@ export class DashboardProductComponent implements OnInit {
       'size', 10
     );
 
-    this.searchService.searchProducts(searchParams, []).subscribe((response) => {
+    this.searchService.searchProductsDashboard(searchParams, []).subscribe((response) => {
       this.productsList = response.content.map((product: ProductResponseSearchPageableDTO) => {
         return product;
       });

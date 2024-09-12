@@ -206,7 +206,7 @@ export class DashboardPageProductComponent implements OnInit {
     }
 
     console.log(productPutDTO);
-
+    console.log("tentando editar");
     this.productService.editProduct(this.id, productPutDTO).subscribe((response) => {
       console.log(response.code + " editado");
       this.router.navigate(['/dashboard/produtos']);

@@ -39,12 +39,11 @@ export class SpecificationsFormsComponent implements OnInit {
 
   editSpecification(specification: number) {
     this.specificationModal = specification;
-    this.idSpecification = this.getId(specification)?.value! + 1;
-    console.log(this.idSpecification);
+    console.log(this.getId(specification)?.value!);
     
     this.specificationsOpen = true;
     this.specificationForm = this.formBuilder.group({
-      id: [this.idSpecification],
+      id: [this.getId(specification)?.value!],
       title: [this.getTitle(specification)?.value!],
       description: [this.getDescription(specification)?.value!],
     })
@@ -52,7 +51,7 @@ export class SpecificationsFormsComponent implements OnInit {
 
   updateSpecification() {
     const form = this.formBuilder.group({
-      id: [this.specificationModal],
+      id: [this.specificationForm.get('id')?.value!],
       title: [this.specificationForm.get('title')?.value!, [Validators.required, EmptyValidator]],
       description: [this.specificationForm.get('description')?.value!, [Validators.required, EmptyValidator]],
     });
@@ -82,7 +81,7 @@ export class SpecificationsFormsComponent implements OnInit {
 
   clearInputs(){
     this.specificationForm = this.formBuilder.group({
-      id: [''],
+      id: [null],
       title: ['', [Validators.required, EmptyValidator]],
       description: ['', [Validators.required, EmptyValidator]],
     })

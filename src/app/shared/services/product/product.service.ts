@@ -16,10 +16,6 @@ export class ProductService {
     return this.httpClient.get<ProductResponsePageDTO>(`${this.apiUrl}/${code}`);
   }
 
-  getProductByCodeToEdit(code: number): Observable<ProductResponsePageEditDTO> {
-    return this.httpClient.get<ProductResponsePageEditDTO>(`${this.apiUrl}/edit/${code}`);
-  }
-
   getSimilarProductsByCode(code: number): Observable<ProductResponseCard>{
     return this.httpClient.get<ProductResponseCard>(`${this.apiUrl}/similar/${code}`);
   }
@@ -27,91 +23,20 @@ export class ProductService {
   getProductsByCategories(categories: Array<number>): Observable<ProductResponseCard>{
     return this.httpClient.put<ProductResponseCard>(`${this.apiUrl}/categories`, categories);
   }
+
+  getProductByCodeToEdit(code: number): Observable<ProductResponsePageEditDTO> {
+    return this.httpClient.get<ProductResponsePageEditDTO>(`${this.apiUrl}/dashboard/${code}`);
+  }
   
   createProduct(product: ProductRequestPostDTO): Observable<ProductResponsePageDTO> {
-    return this.httpClient.post<ProductResponsePageDTO>(this.apiUrl, product);
+    return this.httpClient.post<ProductResponsePageDTO>(`${this.apiUrl}/dashboard`, product);
   }
   
   editProduct(id: number, product: ProductRequestPutDTO): Observable<ProductResponsePageDTO> {
-    return this.httpClient.put<ProductResponsePageDTO>(`${this.apiUrl}/${id}`, product);
+    return this.httpClient.put<ProductResponsePageDTO>(`${this.apiUrl}/dashboard/${id}`, product);
   }
   
   deleteProduct(id: number): Observable<void> {
-    return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
+    return this.httpClient.delete<void>(`${this.apiUrl}/dashboard/${id}`);
   }
-  
-  
-  
-  
-  
-  
-  // private product?: Product;
-  // private productVariant!: ProductVariant;
-  // private productVariantsList!: Array<ProductVariant>;
-
-  // getProduct() {
-  //   return this.product;
-  // }
-
-  // getProductData(){
-  //   return productData.product;
-  // }
-
-  // getProductVariants() {
-  //   return this.productVariantsList;
-  // }
-
-  // getProductVariant() {
-  //   return this.productVariant;
-  // }
-
-  // changeVariableProduct(productVariant: ProductVariant) {
-  //   this.productVariant = productVariant;
-  // }
-  // getFirstProductVariant() {
-  //   return this.getProductVariants()[0];
-  // }
-
-  // findProduct(id: number | string | Product | ProductVariant) {
-  //   if (typeof id == 'number' || typeof id == 'string') {
-  //     for (const productFind of productData.product) {
-  //       if (productFind.title == id || productFind.code == id) {
-  //         this.product = productFind;
-  //         break;
-  //       }
-  //     }
-  //   } else {
-  //     this.product = id;
-  //   }
-
-  //   if (this.product) {
-  //     this.getAllProductVariants();
-  //     this.changeVariableProduct(this.getFirstProductVariant());
-  //   }
-  // }
-
-  // private getAllProductVariants() {
-  //   this.productVariantsList = [];
-  //   for (const variant of productVariantData.variant as ProductVariant[]) {
-  //     if (
-  //       this.product?.code == variant.code &&
-  //       this.verifyProductIsAvailable(variant)
-  //     ) {
-  //       this.productVariantsList.push(variant);
-  //     }
-  //   }
-
-  //   this.productVariantsList = this.productVariantsList.sort((p1, p2) => {
-  //     return p1.variant.localeCompare(p2.variant);
-  //   });
-
-  //   return this.productVariantsList;
-  // }
-
-  // private verifyProductIsAvailable(product: ProductVariant) {
-  //   if (product.available) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
 }
