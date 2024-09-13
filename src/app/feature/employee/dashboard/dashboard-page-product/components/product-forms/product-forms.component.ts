@@ -38,9 +38,6 @@ export class ProductFormsComponent implements OnInit {
   }
 
   changeEmitProductForms() {
-    // console.log(this.productForm);
-    // console.log(this.brand?.value);
-    // console.log(this.selectCategories);
     this.productFormChange.emit(this.productForm);
   }
 

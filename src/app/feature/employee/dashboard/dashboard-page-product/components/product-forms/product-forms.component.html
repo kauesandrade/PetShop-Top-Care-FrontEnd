@@ -27,7 +27,7 @@
     <div class="brand-category">
         <label for="brand" class="labels" appInput>
             <p>Marca*</p>
-            <select id="brand" formControlName="brand" appInput required
+            <select type="number" id="brand"  formControlName="brand" appInput required
             (change)="changeEmitProductForms()"
             >
               <option value=null selected disabled hidden>Marca do produto</option>
@@ -44,12 +44,10 @@
         <label for="category" class="labels">
             <p>Categoria</p>
             <p-multiSelect id="category" formControlName="category" 
-
             (onChange)="changeEmitProductForms()" 
             [options]="typesCategories" 
             [(ngModel)]="selectCategories" 
             optionLabel="title" 
-
             defaultLabel="Selecione a Categoria"></p-multiSelect>
         </label>
         
