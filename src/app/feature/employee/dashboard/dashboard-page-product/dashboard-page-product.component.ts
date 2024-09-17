@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Product, ProductResponsePageDTO } from 'src/app/shared/interfaces/product/product';
-import { ProductVariant, ProductVariantResponse } from 'src/app/shared/interfaces/product/product-variant';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductRequestPostDTO, ProductRequestPutDTO, ProductResponsePageDTO, ProductResponsePageEditDTO } from 'src/app/shared/interfaces/product/product';
+import { ProductVariantResponsePostDTO, ProductVariantResponsePutDTO } from 'src/app/shared/interfaces/product/product-variant';
 import { ProductService } from 'src/app/shared/services/product/product.service';
-import { ProductSpecification, ProductSpecificationsResponse } from 'src/app/shared/interfaces/product/product-specification';
+import { ProductSpecificationsResponse } from 'src/app/shared/interfaces/product/product-specification';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
+import { ProductCategoryResponse } from 'src/app/shared/interfaces/product/response/product-category-response';
 
 @Component({
   selector: 'app-dashboard-page-product',
@@ -14,8 +15,8 @@ import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 })
 export class DashboardPageProductComponent implements OnInit {
 
-  product?: ProductResponsePageDTO;
-  productVariantsList: Array<ProductVariantResponse> = [];
+  product?: ProductResponsePageEditDTO;
+  productVariantsList: Array<ProductVariantResponsePutDTO> = [];
   id!: number;
 
   isOpen: boolean = false;
@@ -24,45 +25,40 @@ export class DashboardPageProductComponent implements OnInit {
   productForm!: FormGroup;
 
   specificationsForm = this.formBuilder.group({
-    specifications: this.formBuilder.array([])
+    specifications: this.formBuilder.array([] as ProductSpecificationsResponse[])
   })
 
   variantsForm = this.formBuilder.group({
-    variants: this.formBuilder.array([])
+    variants: this.formBuilder.array([] as ProductVariantResponsePutDTO[])
   })
 
   constructor(private route: ActivatedRoute,
+    private router: Router,
     private productService: ProductService,
     private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-    // this.productService.get
 
-    if (typeof this.productService.getProductByCode(this.id).subscribe((response) =>{ return response}) != 'undefined') {
-
-      this.productService.getProductByCode(this.id).subscribe((response) => {
+    if (this.id == undefined) {
+      this.titlePage = 'Adicionar um Produto'
+      console.log("sem objeto");
+      this.initProductForm();
+      this.initVariantForm();
+      this.initSpecificationForm();
+    } else {
+      this.productService.getProductByCodeToEdit(this.id).subscribe((response) => {
         this.product = response;
         this.productVariantsList = response.variants;
         console.log(this.product);
+        this.titlePage = 'Editar um Produto';
 
-        this.initSpecificationForm();
-        this.initVariantForm();
         this.initProductForm();
+        this.initVariantForm();
+        this.initSpecificationForm();
       });
-
-      this.titlePage = 'Editar um Produto';
-
-    } else {
-      this.titlePage = 'Adicionar um Produto'
-      console.log("sem objeto");
-      this.initSpecificationForm();
-      this.initVariantForm();
-      this.initProductForm();
     }
-
-
   }
 
   sideBarOpen(evt: any) {
@@ -88,37 +84,35 @@ export class DashboardPageProductComponent implements OnInit {
 
   initProductForm() {
 
-    const categoryArray = []
+    let categoryArray: Array<ProductCategoryResponse> = [];
 
     if (this.product?.categories) {
-      for (let cateogoryName of this.product?.categories!) {
-        for (let type of cateogoryName.title) {
-          categoryArray.push(type)
-        }
-      }
+      categoryArray = this.product.categories;
     }
 
     this.productForm = this.formBuilder.group({
-      code: [this.product?.code!, [Validators.required, EmptyValidator]],
-      title: [this.product?.title!, [Validators.required, EmptyValidator]],
-      littleDescription: [this.product?.shortDescription!, [Validators.required, EmptyValidator]],
-      description: [this.product?.description!, [Validators.required, EmptyValidator]],
-      brand: [this.product?.brand!, [Validators.required, EmptyValidator]],
-      category: [categoryArray],
+      code: [this.product?.code || ""],
+      title: [this.product?.title || "", [Validators.required, EmptyValidator]],
+      shortDescription: [this.product?.shortDescription || "", [Validators.required, EmptyValidator]],
+      description: [this.product?.description || "", [Validators.required, EmptyValidator]],
+      brand: [this.product?.brand || null, [Validators.required, EmptyValidator]],
+      category: [categoryArray!],
     })
+    this.productForm.get('code')?.value > 0 ? this.productForm.get('code')?.disable() : this.productForm.get('code')?.enable();
 
   }
 
   createNewSpecification(specification: ProductSpecificationsResponse) {
     (<FormArray>this.specificationsForm.controls.specifications).push(
       this.formBuilder.group({
-        title: [specification.title!, [Validators.required, EmptyValidator]],
-        description: [specification.description!, [Validators.required, EmptyValidator]],
+        id: [specification.id || 0],
+        title: [specification.title || "", [Validators.required, EmptyValidator]],
+        description: [specification.description || "", [Validators.required, EmptyValidator]],
       })
     )
   }
 
-  createNewVariant(productVariant: ProductVariantResponse) {
+  createNewVariant(productVariant: ProductVariantResponsePutDTO) {
 
     const images = []
     for (let image of productVariant.images) {
@@ -126,12 +120,13 @@ export class DashboardPageProductComponent implements OnInit {
     }
 
     const variant = this.formBuilder.group({
-      title: [productVariant.variantTitle!, [Validators.required, EmptyValidator]],
-      code: [productVariant.variantCode!, [Validators.required, EmptyValidator]],
-      stock: [0],
-      price: [productVariant.price!, [Validators.required, EmptyValidator]],
+      variantId: [productVariant.variantId || 0],
+      variantTitle: [productVariant.variantTitle || "", [Validators.required, EmptyValidator]],
+      variantCode: [productVariant.variantCode || 0, [Validators.required, EmptyValidator]],
+      stock: [productVariant.stock || 0,],
+      price: [productVariant.price || 0.0, ],
       images: [images],
-      discount: [productVariant.discountPrice!]
+      discount: [productVariant?.discount|| 0]
     });
 
     (<FormArray>this.variantsForm.controls.variants).push(variant);
@@ -139,21 +134,89 @@ export class DashboardPageProductComponent implements OnInit {
 
 
   addProduct() {
-    console.log(this.productForm)
-    console.log(this.specificationsForm)
-    console.log(this.variantsForm)
+
+    var specificationsList: Array<ProductSpecificationsResponse> = [];
+
+    if (this.specificationsForm.value.specifications) {
+      for (let specification of this.specificationsForm.value.specifications) {
+        specificationsList.push(specification!);
+      }
+    }
+
+    var variantsList: Array<ProductVariantResponsePostDTO> = [];
+
+    if (this.variantsForm.value.variants) {
+      for (let variant of this.variantsForm.value.variants) {
+        
+        const variantDTO: ProductVariantResponsePostDTO = {
+          variantTitle: variant!.variantTitle,
+          variantCode: variant!.variantCode,
+          price: variant!.price,
+          discount: variant!.discount,
+          stock: variant!.stock,
+          images: variant!.images
+        }
+        variantsList.push(variantDTO);
+      }
+    }
+
+    const productCreateDTO: ProductRequestPostDTO = {
+      code: this.productForm.value.code,
+      title: this.productForm.value.title,
+      description: this.productForm.value.description,
+      shortDescription: this.productForm.value.shortDescription,
+      idBrand: this.productForm.value.brand.id,
+      specifications: specificationsList,
+      idsCategories: this.productForm.value.category.map((category: ProductCategoryResponse) => category.id),
+      variants: variantsList
+    }
+    console.log(productCreateDTO);
+
+    this.productService.createProduct(productCreateDTO).subscribe((response) => {
+      console.log(response.title + " criado");
+      this.router.navigate(['/dashboard/produtos']);
+    });
 
   }
 
   updateProduct() {
-    console.log(this.productForm)
-    console.log(this.specificationsForm)
-    console.log(this.variantsForm)
+    var specificationsList: Array<ProductSpecificationsResponse> = [];
+
+    if (this.specificationsForm.value.specifications) {
+      for (let specification of this.specificationsForm.value.specifications) {
+        specificationsList.push(specification!);
+      }
+    }
+
+    var variantsList: Array<ProductVariantResponsePutDTO> = [];
+    if (this.variantsForm.value.variants) {
+      for (let variant of this.variantsForm.value.variants) {
+        variantsList.push(variant!);
+      }
+    }
+
+    const productPutDTO: ProductRequestPutDTO = {
+      title: this.productForm.value.title,
+      description: this.productForm.value.description,
+      shortDescription: this.productForm.value.shortDescription,
+      idBrand: this.productForm.value.brand.id,
+      specifications: specificationsList,
+      idsCategories: this.productForm.value.category.map((category: ProductCategoryResponse) => category.id),
+      variants: variantsList
+    }
+
+    console.log(productPutDTO);
+    console.log("tentando editar");
+    this.productService.editProduct(this.id, productPutDTO).subscribe((response) => {
+      console.log(response.code + " editado");
+      this.router.navigate(['/dashboard/produtos']);
+    });
   }
 
   areFormsValid() {
     return (
       this.productForm.valid && this.specificationsForm.valid && this.variantsForm.valid
+      // true
     );
   }
 

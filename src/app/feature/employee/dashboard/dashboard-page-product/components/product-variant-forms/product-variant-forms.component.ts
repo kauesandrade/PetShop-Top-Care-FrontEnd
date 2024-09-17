@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faPlus, faTimes, faTrash, faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
-import { Image } from 'src/app/shared/interfaces/product/image';
+import { Image, ImageResponsePutDTO } from 'src/app/shared/interfaces/product/image';
 
 @Component({
   selector: 'app-product-variant-forms',
@@ -59,8 +59,8 @@ export class ProductVariantFormsComponent implements OnInit {
     this.variantModal = variant
     this.variationsOpen = true;
     this.variantForm = this.formBuilder.group({
-      title: [this.getTitle(this.variantModal!)?.value!, [Validators.required, EmptyValidator]],
-      code: [this.getCode(this.variantModal!)?.value!, [Validators.required, EmptyValidator]],
+      variantTitle: [this.getVariantTitle(this.variantModal!)?.value!, [Validators.required, EmptyValidator]],
+      variantCode: [this.getVariantCode(this.variantModal!)?.value!, [Validators.required, EmptyValidator]],
       stock: [this.getStock(this.variantModal!)?.value! || 0],
       price: [this.getPrice(this.variantModal!)?.value!, [Validators.required, EmptyValidator]],
       images: [this.getImages(this.variantModal!)],
@@ -71,13 +71,16 @@ export class ProductVariantFormsComponent implements OnInit {
   updateVariant() {
 
     const form = this.formBuilder.group({
-      title: [this.variantForm.get("title")?.value, [Validators.required, EmptyValidator]],
-      code: [this.variantForm.get("code")?.value, [Validators.required, EmptyValidator]],
+      variantId: [this.variantForm.get("variantId")?.value || null],
+      variantTitle: [this.variantForm.get("variantTitle")?.value, [Validators.required, EmptyValidator]],
+      variantCode: [this.variantForm.get("variantCode")?.value, [Validators.required, EmptyValidator]],
       stock: [this.variantForm.get("stock")?.value || 0],
       price: [this.variantForm.get("price")?.value, [Validators.required, EmptyValidator]],
       images: [this.variantForm.get("images")?.value],
       discount: [this.variantForm.get("discount")?.value!]
     });
+
+    console.log(form.value);
 
     (<FormArray>this.variantsForm.get("variants")).setControl(this.variantModal!, form as FormGroup);
   }
@@ -88,6 +91,7 @@ export class ProductVariantFormsComponent implements OnInit {
     this.variantModal = null
     this.variationsOpen = true;
     (<FormArray>this.variantsForm.get("variants")).push(this.variantForm)
+    console.log(this.variantsForm.value);
     this.clearInputs()
   }
 
@@ -98,7 +102,6 @@ export class ProductVariantFormsComponent implements OnInit {
     for (let i = 0; i < files.length; i++) {
       this.setImages(files[i]);
     }
-
   }
 
   setImages(img: File) {
@@ -106,12 +109,16 @@ export class ProductVariantFormsComponent implements OnInit {
     reader.readAsDataURL(img);
 
     reader.onload = () => {
-      const image: Image = {
+      const image: ImageResponsePutDTO = {
+        id: null,
         name: img.name,
-        src: reader.result!
+        type: img.type,
+        size: img.size,
+        url: reader.result as string,
+        // file: img
       }
 
-      const images: Array<Image> = []
+      const images: Array<ImageResponsePutDTO> = []
       for (let img of this.variantForm.get("images")?.value) {
         images.push(img)
       }
@@ -124,7 +131,7 @@ export class ProductVariantFormsComponent implements OnInit {
 
   removeImage(id: number) {
 
-    const images: Array<Image> = []
+    const images: Array<ImageResponsePutDTO> = []
     for (let img of this.variantForm.get("images")?.value) {
       images.push(img)
     }
@@ -136,8 +143,8 @@ export class ProductVariantFormsComponent implements OnInit {
 
   clearInputs() {
     this.variantForm = this.formBuilder.group({
-      title: ['', [Validators.required, EmptyValidator]],
-      code: [, [Validators.required, EmptyValidator]],
+      variantTitle: ['', [Validators.required, EmptyValidator]],
+      variantCode: [, [Validators.required, EmptyValidator]],
       stock: [],
       price: [, [Validators.required, EmptyValidator]],
       images: [[]],
@@ -146,15 +153,15 @@ export class ProductVariantFormsComponent implements OnInit {
   }
 
   passUpImage(index: number) {
-    const images: Array<Image> = []
+    const images: Array<ImageResponsePutDTO> = []
     for (let img of this.variantForm.get("images")?.value) {
       images.push(img)
     }
-    
-    let img: Image = images[index]
+
+    let img: ImageResponsePutDTO = images[index]
 
 
-    if((index - 1) != -1 ){
+    if ((index - 1) != -1) {
       images.splice(index, 1);
       images.splice((index - 1), 0, img);
     }
@@ -162,15 +169,15 @@ export class ProductVariantFormsComponent implements OnInit {
     this.saveImagesForms(images)
   }
 
-  passDownImage(index: number){
-    const images: Array<Image> = []
+  passDownImage(index: number) {
+    const images: Array<ImageResponsePutDTO> = []
     for (let img of this.variantForm.get("images")?.value) {
       images.push(img)
     }
-    
-    let img: Image = images[index]
 
-    if((index + 1) != images.length + 1 ){
+    let img: ImageResponsePutDTO = images[index]
+
+    if ((index + 1) != images.length + 1) {
       images.splice(index, 1);
       images.splice((index + 1), 0, img);
     }
@@ -178,10 +185,10 @@ export class ProductVariantFormsComponent implements OnInit {
     this.saveImagesForms(images)
   }
 
-  saveImagesForms(images: Array<Image>){
+  saveImagesForms(images: Array<ImageResponsePutDTO>) {
     this.variantForm = this.formBuilder.group({
-      title: [this.variantForm.get("title")?.value!, [Validators.required, EmptyValidator]],
-      code: [this.variantForm.get("code")?.value!, [Validators.required, EmptyValidator]],
+      variantTitle: [this.variantForm.get("variantTitle")?.value!, [Validators.required, EmptyValidator]],
+      variantCode: [this.variantForm.get("variantCode")?.value!, [Validators.required, EmptyValidator]],
       stock: [this.variantForm.get("stock")?.value!],
       price: [this.variantForm.get("price")?.value!, [Validators.required, EmptyValidator]],
       images: [images!],
@@ -194,12 +201,12 @@ export class ProductVariantFormsComponent implements OnInit {
     return this.variantsForm?.get('variants') as FormArray;
   }
 
-  getTitle(index: number) {
-    return (<FormGroup>this.variants.controls[index]).get('title');
+  getVariantTitle(index: number) {
+    return (<FormGroup>this.variants.controls[index]).get('variantTitle');
   }
 
-  getCode(index: number) {
-    return (<FormGroup>this.variants.controls[index]).get('code');
+  getVariantCode(index: number) {
+    return (<FormGroup>this.variants.controls[index]).get('variantCode');
   }
 
   getStock(index: number) {

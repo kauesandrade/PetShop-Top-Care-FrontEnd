@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import {
   Component,
   HostListener,
@@ -7,6 +8,7 @@ import {
 } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import Chart from 'chart.js/auto';
+import { ProductResponseCard, ProductResponseSearchPageableDTO } from 'src/app/shared/interfaces/product/product';
 import { ProductVariant } from 'src/app/shared/interfaces/product/product-variant';
 import { ServiceVariant } from 'src/app/shared/interfaces/services/service-variant';
 import { SearchService } from 'src/app/shared/services/search/search.service';
@@ -19,7 +21,7 @@ import { ServicesService } from 'src/app/shared/services/services/services.servi
 })
 export class DashboardComponent implements OnInit {
   chart: any = [];
-  productList: Array<ProductVariant> = [];
+  productList: Array<ProductResponseCard> = [];
   service!: ServiceVariant;
 
   faSearch = faSearch;
@@ -66,7 +68,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     // this.searchService.searchProducts('');
     // this.productList = this.searchService.getProductList();
-    this.service = this.serviceService.getServicesVariants()[0];
+    // this.service = this.serviceService.getServicesVariants()[0];
+
+    this.searchProducts();
 
     this.chart = new Chart('canvas', {
       type: 'line',
@@ -84,5 +88,23 @@ export class DashboardComponent implements OnInit {
 
   sideBarOpen(evt: any) {
     this.isOpen = evt;
+  }
+
+  searchProducts(){
+    const searchParams: HttpParams = new HttpParams().set(
+      'searchValue', ""
+    ).set(
+      'sortBy', "Popularidade"
+    ).set(
+      'page', 0
+    ).set(
+      'size', 10
+    );
+
+    this.searchService.searchProductsDashboard(searchParams, []).subscribe((response) => {
+      this.productList = response.content.map((product: ProductResponseSearchPageableDTO) => {
+        return product;
+      });
+    });
   }
 }

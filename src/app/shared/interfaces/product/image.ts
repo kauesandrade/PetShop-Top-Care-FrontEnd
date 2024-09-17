@@ -4,6 +4,20 @@ export interface Image {
 }
 
 export interface ImageResponse {
-  id: number;
-  url: string;
+    id: number,
+    file: string,
 }
+
+export interface ImageRequestPost {
+    file: File,
+}
+
+export interface ImageResponsePutDTO {
+    id: number | null,
+    name: string,
+    type: string,
+    size: number,
+    url: string,
+    // file: File
+}
+

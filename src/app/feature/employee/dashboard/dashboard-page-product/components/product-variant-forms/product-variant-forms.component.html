@@ -10,7 +10,7 @@
   <div class="variants" *ngIf="variants.length > 0">
     <ng-container *ngFor="let variant of variants.controls; let i = index">
       <div class="select-tag" (click)="editVariant(i)">
-        <p>{{getTitle(i)?.value}}</p>
+        <p>{{getVariantTitle(i)?.value}}</p>
         <button (click)="deleteVariant(i)">
           <fa-icon [icon]="faTimes"></fa-icon>
         </button>
@@ -23,7 +23,7 @@
 
       <ng-container *ngIf="variantModal != null; else noVariant">
         <div class="variant-card">
-          <p>{{getTitle(variantModal)?.value}}</p>
+          <p>{{getVariantTitle(variantModal)?.value}}</p>
           <button (click)="updateVariant()" appButton="secondary">Salvar</button>
         </div>
       </ng-container>
@@ -38,14 +38,14 @@
       <form [formGroup]="variantForm" class="form-variants">
 
         <div>
-          <label for="title" class="labels" appInput>
+          <label for="variantTitle" class="labels" appInput>
             <p>Título da Variação*</p>
-            <input type="text" id="title" formControlName="title" placeholder="Título da variação" required />
+            <input type="text" id="variantTitle" formControlName="variantTitle" placeholder="Título da variação" required />
           </label>
 
-          <label for="code" class="labels" appInput>
+          <label for="variantCode" class="labels" appInput>
             <p>Código*</p>
-            <input type="text" mask="0*" [dropSpecialCharacters]="true" id="code" formControlName="code" placeholder="Código da variação" required />
+            <input type="text" mask="0*" [dropSpecialCharacters]="true" id="variantCode" formControlName="variantCode" placeholder="Código da variação" required />
           </label>
         </div>
 

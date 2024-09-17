@@ -1,9 +1,7 @@
-export interface Brand {
-    code: number;
-    name: string;
-    //image
-}
+import { ImageResponse } from "./image";
+
 export interface BrandResponse {
     id: number,
-    name: string;
+    name: string,
+    image: ImageResponse
 }
