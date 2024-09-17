@@ -20,6 +20,10 @@ export class SearchService {
     return this.httpClient.put<any>(`${this.apiUrl}/product`, productCategories, {params: searchParams});
   }
 
+  searchProductsDashboard(searchParams: HttpParams, productCategories: Array<number>): Observable<any>{
+    return this.httpClient.put<any>(`${this.apiUrl}/dashboard/product`, productCategories, {params: searchParams});
+  }
+
   
 
 

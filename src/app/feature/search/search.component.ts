@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit {
   productsList: Array<ProductResponseCard> = [];
   productFilters: Array<CategoryGroupFiltersResponse> = [];
   productCategoriesChecked: Array<number> = [];
-  searchValue!: string;
+  searchValue: string = '';
   sortBy!: string;
 
   constructor(
@@ -31,7 +31,16 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      this.searchValue = params['q'].replace('%20', ' ');
+      
+      console.log(params);
+      
+      
+      if(params['q']) {
+        this.searchValue = params['q'].replace('%20', ' ');
+      }else if(params['categoria']) {
+        this.searchValue = params['categoria'].replace('%20', ' ');
+      }
+
       this.searchProducts();
       this.filterService.getFilters(this.searchValue).subscribe((response) => {
         this.productFilters = response;

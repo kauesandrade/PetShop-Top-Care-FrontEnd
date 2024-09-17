@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Brand } from 'src/app/shared/interfaces/product/brand';
-import { Category } from 'src/app/shared/interfaces/search/category';
-import brands from '../../../../../../../assets/JsonFiles/brands.json';
-import categories from '../../../../../../../assets/JsonFiles/categories.json';
+import { ca, tr } from 'date-fns/locale';
+import { BrandResponse } from 'src/app/shared/interfaces/product/brand';
 import { ProductCategoryResponse } from 'src/app/shared/interfaces/product/response/product-category-response';
+import { BrandService } from 'src/app/shared/services/brand/brand.service';
+import { CategoryService } from 'src/app/shared/services/category/category.service';
+import { ProductService } from 'src/app/shared/services/product/product.service';
 
 @Component({
   selector: 'app-product-forms',
@@ -12,55 +13,55 @@ import { ProductCategoryResponse } from 'src/app/shared/interfaces/product/respo
   styleUrls: ['./product-forms.component.scss']
 })
 export class ProductFormsComponent implements OnInit {
-
-
   @Input() productForm!: FormGroup
   @Output() productFormChange = new EventEmitter<FormGroup>();
 
-  brands!: Array<Brand>
-
-  categories!: Array<ProductCategoryResponse>
+  brands: Array<BrandResponse> = []
   typesCategories: Array<ProductCategoryResponse> = []
-  selectCategories!: Array<ProductCategoryResponse>
+  @Input() selectCategories: Array<ProductCategoryResponse> = []
 
-  constructor() { }
-
+  constructor(private categoryService: CategoryService, private brandService: BrandService) {
+  }
+  
   ngOnInit(): void {
-    this.brands = brands.brand
-    this.categories = this.productForm.get('category')?.value.categories
-    this.categories.forEach(category =>{
-        this.typesCategories.push(category)
-    })
-
-    this.selectCategories = this.category?.value
+    this.categoryService.getAllCategoriesGroup().subscribe((response) => {
+      response.forEach((groupCategory: any) => {
+        groupCategory.categories.forEach((category: any) => {
+          this.typesCategories.push(category);
+        })
+      });
+    });
+    
+    this.brandService.getAllBrands().subscribe((response) => {
+      this.brands = response;
+    });
   }
 
-  changeEmitProductForms(){
-    console.log(this.productForm);
+  changeEmitProductForms() {
     this.productFormChange.emit(this.productForm);
   }
 
-  get code(){
+  get code() {
     return this.productForm.get('code')
   }
 
-  get title(){
+  get title() {
     return this.productForm.get('title')
   }
 
-  get littleDescription(){
-    return this.productForm.get('littleDescription')
+  get shortDescription() {
+    return this.productForm.get('shortDescription')
   }
 
-  get description(){
+  get description() {
     return this.productForm.get('description')
   }
 
-  get brand(){
+  get brand() {
     return this.productForm.get('brand')
   }
 
-  get category(){
+  get category() {
     return this.productForm.get('category')
   }
 
