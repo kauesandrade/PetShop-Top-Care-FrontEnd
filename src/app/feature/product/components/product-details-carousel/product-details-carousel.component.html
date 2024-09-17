@@ -11,20 +11,20 @@
       <div class="embla__container">
         <div class="embla__slide" *ngFor="let image of images">
           <ng-container
-            *ngIf="image.url === selectImage?.url; then ifBlock; else elseBlock"
+            *ngIf="image.file === selectImage?.file; then ifBlock; else elseBlock"
           ></ng-container>
           <ng-template #ifBlock>
             <img
               class="slide"
               (click)="getIdImage(image)"
-              src="{{ image.url }}"
+              src="{{ image.file }}"
             />
           </ng-template>
           <ng-template #elseBlock>
             <img
               class="slide blur"
               (click)="getIdImage(image)"
-              src="{{ image.url }}"
+              src="{{ image.file }}"
             />
           </ng-template>
         </div>
@@ -41,7 +41,7 @@
   <section class="sectionImage">
     <img
       class="selectiongImage"
-      src="{{ selectImage?.url }}"
+      src="{{ selectImage?.file }}"
       alt="{{ selectImage?.id }}"
     />
   </section>
