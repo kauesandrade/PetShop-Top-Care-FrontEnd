@@ -1,6 +1,6 @@
 <div class="card" (click)="openPage()">
   <div class="products">
-    <img [src]="order.items[0].product.image.file" alt="Imagem do produto" />
+    <img [src]="order.items[0].product.image.url" alt="Imagem do produto" />
     <p>#{{ order.orderCode }}</p>
   </div>
   <div class="dates">

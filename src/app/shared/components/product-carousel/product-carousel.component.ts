@@ -21,7 +21,6 @@ export class ProductCarouselComponent implements AfterViewInit, OnDestroy, OnIni
   constructor(private elementRef: ElementRef) {}
 
   ngOnInit(): void {
-    console.log(this.productList);
   }
 
   ngAfterViewInit(): void {

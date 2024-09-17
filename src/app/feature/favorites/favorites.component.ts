@@ -16,8 +16,8 @@ import { OrderByService } from 'src/app/shared/services/orderBy/order-by.service
 export class FavoritesComponent implements OnInit {
   faSearch = faSearch;
 
-  productsList!: Array<ProductResponseCard>;
-  productFilters!: Array<CategoryGroupFiltersResponse>;
+  productsList: Array<ProductResponseCard> = [];
+  productFilters: Array<CategoryGroupFiltersResponse> = [];
   applyFilters: Array<number> = [];
   seachValue: string = '';
 

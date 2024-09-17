@@ -3,7 +3,7 @@
     <fa-icon [icon]="faHeart" class="favorite-heart"></fa-icon>
   </ng-container> -->
   <a href="/produto/{{ product.code }}" class="redirect-product">
-    <img [src]="product.image.file" alt="Product image" class="product-image" />
+    <img [src]="product.image.url" alt="Product image" class="product-image" />
     <p class="product-title">{{ product.title }}</p>
   </a>
   <div class="brand-rating">

@@ -1,4 +1,4 @@
-import { Image, ImageRequestPost } from './image';
+import { Image, ImageRequestPost, ImageResponsePutDTO } from './image';
 import { Product } from './product';
 
 export interface ProductVariant extends Product {
@@ -18,7 +18,7 @@ export interface ProductVariantResponse {
   discountPrice: number,
   parcels: number,
   stock: number,
-  images: Array<any>
+  images: Array<ImageResponsePutDTO>
 }
 
 export interface ProductVariantResponsePostDTO {

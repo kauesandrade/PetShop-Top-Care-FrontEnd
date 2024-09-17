@@ -1,6 +1,6 @@
 import { Category } from "../search/category";
 import { BrandResponse } from "./brand";
-import { ImageResponse } from "./image";
+import { ImageResponse, ImageResponsePutDTO } from "./image";
 import { ProductReview, ProductReviewResponse } from "./product-review";
 import { ProductSpecification, ProductSpecificationsResponse } from "./product-specification";
 import { ProductVariantResponse, ProductVariantResponsePostDTO, ProductVariantResponsePutDTO } from "./product-variant";
@@ -29,7 +29,7 @@ export interface ProductResponseCard {
   discountPrice: number,
   parcels: number,
   rating: number,
-  image: ImageResponse,
+  image: ImageResponsePutDTO,
 }
 
 export interface ProductResponsePageDTO {
