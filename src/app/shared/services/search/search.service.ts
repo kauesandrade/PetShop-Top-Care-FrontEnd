@@ -10,9 +10,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class SearchService {
-  private productList: Array<ProductVariant> = [];
-
-  constructor(private productService: ProductService, private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
   private apiUrl = "http://localhost:8088/topcare/search";
 
