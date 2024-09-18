@@ -35,8 +35,6 @@ export class ProductSectionComponent implements OnInit {
     else if (this.productCode) {
       this.productService.getSimilarProductsByCode(this.productCode).subscribe((data) => {
         if(Array.isArray(data)){
-          console.log(data);
-          
           this.productList = data;
         }
       });

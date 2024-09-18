@@ -20,13 +20,12 @@ export class ProductDetailsComponent implements OnInit {
 
   productVariant!: ProductVariantResponse;
   
-
   faStar = faStar;
   faComment = faComment;
   faHeart = faHeartR;
   faShare = faShareAlt;
 
-  like!: boolean;
+  like: boolean = false;
 
   typeOfProducts?: string = 'Selecione o Tamanho: ';
   typesDivider?: Array<Array<ProductVariantResponse>> = [];
@@ -35,9 +34,9 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.productVariant = this.product.variants[0];
-    this.like = true;
     this.like == true ? (this.faHeart = faHeart) : (this.faHeart = faHeartR);
     this.productVariantstEmit.emit(this.productVariant);
+    console.log(this.product);
   }
 
   likeProduct() {

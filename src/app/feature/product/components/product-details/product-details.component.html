@@ -10,19 +10,19 @@
     <div class="divBrands">
         <a href="">{{product.brand.name}}</a>
         <div class="divider"></div>
-        <!-- <ng-container *ngIf="productVariant.available"> -->
+        <ng-container *ngIf="productVariant.stock">
             <span class="inStock">Em estoque</span>
-        <!-- </ng-container> -->
-        <!-- <ng-container *ngIf="!productVariant.available"> -->
-            <!-- <span class="noStock">Sem estoque</span> -->
-        <!-- </ng-container> -->
+        </ng-container>
+        <ng-container *ngIf="!productVariant.stock">
+            <span class="noStock">Sem estoque</span>
+        </ng-container>
     </div>
     <div class="divButtonsProduct">
         <button class="btnRating">
             <fa-icon [icon]="faStar"></fa-icon>{{product.rating}}
         </button>
         <button class="btnReviews">
-            <fa-icon [icon]="faComment"></fa-icon>128
+            <fa-icon [icon]="faComment"></fa-icon>{{product.reviews.length}}
         </button>
         <button class="noClasseBtn">
             <fa-icon class="icon like" [icon]="faHeart" (click)="likeProduct()"></fa-icon>
