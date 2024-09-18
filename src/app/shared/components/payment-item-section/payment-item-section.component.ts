@@ -18,5 +18,6 @@ export class PaymentItemSectionComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.services);
+    console.log(this.items);
   }
 }

@@ -193,6 +193,9 @@ export class DataComponent implements OnInit {
       addresses: this.user.addresses,
     };
 
+    if (dto.profileImage) {
+    }
+
     this.userService.updateUserRequest(this.user.id, dto).subscribe({
       next: () => {
         this.messageService.add({

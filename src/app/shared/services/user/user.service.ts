@@ -146,7 +146,7 @@ export class UserService implements OnChanges {
   }
 
   getPetById(id: number) {
-    if (this.loggedUser?.pets?.length == 0) {
+    if (!this.loggedUser?.pets || this.loggedUser?.pets?.length == 0) {
       return null;
     }
 

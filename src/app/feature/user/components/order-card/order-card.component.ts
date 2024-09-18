@@ -14,9 +14,7 @@ export class OrderCardComponent implements OnInit {
   faClock = faClock;
   faTrash = faTrashAlt;
 
-  constructor(
-    private router: Router,
-  ) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -25,5 +23,4 @@ export class OrderCardComponent implements OnInit {
       this.router.navigate([`${this.router.url}/${this.order.orderCode}`]);
     }
   }
-
 }

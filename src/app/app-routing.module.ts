@@ -203,9 +203,9 @@ const routes: Routes = [
   {
     path: 'dashboard',
     title: 'DashBoard | Top Care',
-    // canActivate: [AuthGuard],
-    // canActivateChild: [AuthGuard],
-    // canDeactivate: [AuthGuard],
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    canDeactivate: [AuthGuard],
     children: [
       {
         path: '',

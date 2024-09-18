@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from 'src/app/shared/interfaces/order/order';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
+import { staticOrder } from 'src/assets/JsonFiles/staticData/order';
 
 @Component({
   selector: 'app-order',
@@ -27,7 +28,8 @@ export class OrderComponent implements OnInit {
   private verifyOrder(code: number) {
     let orderValue = this.orderService.getOrder(this.code);
     if (orderValue == null) {
-      this.router.navigate(['/perfil/pedidos']);
+      // this.router.navigate(['/perfil/pedidos']);
+      this.order = staticOrder;
     } else {
       this.order = orderValue;
     }
