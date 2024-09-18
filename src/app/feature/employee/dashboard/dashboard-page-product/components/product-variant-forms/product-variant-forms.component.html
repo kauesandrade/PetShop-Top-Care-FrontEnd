@@ -106,8 +106,7 @@
                   <fa-icon class="angles" [class.disable]="i == getImageForms()?.value.length - 1" (click)="passDownImage(i)" [icon]="faAngleDown"></fa-icon>
                 </div>
 
-                <img [src]="image.src" alt="">
-
+                <img [src]="'data:image/png;base64,'+image.file" alt="">
               </div>
               <p>{{image.name}}</p>
               <fa-icon class="trash" [icon]="faTrash" (click)="removeImage(i)"></fa-icon>

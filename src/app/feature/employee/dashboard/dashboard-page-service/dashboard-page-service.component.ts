@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { Service } from 'src/app/shared/interfaces/services/service';
 import { ServiceVariant } from 'src/app/shared/interfaces/services/service-variant';
@@ -27,6 +27,7 @@ export class DashboardPageServiceComponent implements OnInit {
   })
 
   constructor(private route: ActivatedRoute,
+    private router: Router,
     private serviceService: ServicesService,
     private formBuilder: FormBuilder) { }
 
@@ -61,11 +62,13 @@ export class DashboardPageServiceComponent implements OnInit {
   addService(){
     console.log(this.serviceForm)
     console.log(this.variantsForm)
+    this.router.navigate(['/dashboard/servicos']);
   }
   
   updateService(){
     console.log(this.serviceForm)
     console.log(this.variantsForm)
+    this.router.navigate(['/dashboard/servicos']);
   }
 
   areFormsValid() {

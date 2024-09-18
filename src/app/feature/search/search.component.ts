@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
   productFilters: Array<CategoryGroupFiltersResponse> = [];
   productCategoriesChecked: Array<number> = [];
   searchValue: string = '';
-  sortBy!: string;
+  sortBy: string = "Popularidade";
 
   constructor(
     private route: ActivatedRoute,
@@ -31,10 +31,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      
-      console.log(params);
-      
-      
       if(params['q']) {
         this.searchValue = params['q'].replace('%20', ' ');
       }else if(params['categoria']) {
@@ -67,8 +63,10 @@ export class SearchComponent implements OnInit {
     ).set(
       'page', 0
     ).set(
-      'size', 10
+      'size', 100
     );
+
+    console.log(searchParams);
 
     this.searchService.searchProducts(searchParams, this.productCategoriesChecked).subscribe((response) => {
       this.productsList = response.content.map((product: ProductResponseSearchPageableDTO) => {
