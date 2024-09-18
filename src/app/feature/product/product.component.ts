@@ -25,7 +25,6 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProductByCode(this.id).subscribe((data) => {
       this.productPage = data;
-      console.log(this.productPage);
       this.productVariant = data.variants[0];
     }); 
   }
