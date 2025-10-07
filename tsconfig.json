@@ -6,6 +6,7 @@
     "paths": {
       "@assets/*": ["src/assets/*"] 
     },
+    "ignoreDeprecations": "6.0",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
