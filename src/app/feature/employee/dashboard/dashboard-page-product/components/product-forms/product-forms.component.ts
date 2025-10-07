@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Brand } from 'src/app/shared/interfaces/product/brand';
 import { Category } from 'src/app/shared/interfaces/search/category';
-import brands from '/src/assets/jsonFiles/brands.json';
-import categories from '/src/assets/jsonFiles/categories.json';
+import brands from 'src/assets/jsonFiles/brands.json';
+import categories from 'src/assets/jsonFiles/categories.json';
 
 @Component({
   selector: 'app-product-forms',

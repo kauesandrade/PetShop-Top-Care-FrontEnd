@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import productData from '/src/assets/products.json';
+import productData from 'src/assets/products.json';
 import { Product } from '../../interfaces/product/product';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 import { ProductService } from '../product/product.service';

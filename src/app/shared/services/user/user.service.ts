@@ -1,5 +1,5 @@
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
-import * as userData from '/src/assets/users.json';
+import * as userData from 'src/assets/users.json';
 import { Schedule } from '../../interfaces/schedule/schedule';
 import { User } from '../../interfaces/user/user';
 
