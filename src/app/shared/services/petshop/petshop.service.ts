@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Petshop } from '../../interfaces/petshop/petshop';
-import petshops from '../../../../../assets/jsonFiles/petshops.json';
+import petshops from '@assets//petshops.json';
 
 @Injectable({
   providedIn: 'root',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import productData from '../../../../../assets/jsonFiles/products.json';
-import productVariantData from '../../../../../assets/jsonFiles/productVariant.json';
+import productData from '@assets//products.json';
+import productVariantData from '@assets//productVariant.json';
 import { Product } from '../../interfaces/product/product';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 

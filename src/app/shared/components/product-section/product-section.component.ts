@@ -3,7 +3,7 @@ import { Product } from '../../interfaces/product/product';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 import { FilterService } from '../../services/filter/filter.service';
 import { ProductService } from '../../services/product/product.service';
-import productData from '../../../../../assets/jsonFiles/products.json';
+import productData from '@assets/jsonFiles/products.json';
 
 @Component({
   selector: 'app-product-section',
