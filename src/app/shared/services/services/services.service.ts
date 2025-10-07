@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import services from '../../../../../assets/JsonFiles/services.json';
-import servicesVariants from '../../../../../assets/JsonFiles/servicesVariants.json';
-import servicesCategories from '../../../../../assets/JsonFiles/servicesCategories.json';
+import services from '../../../../../assets/jsonFiles/services.json';
+import servicesVariants from '../../../../../assets/jsonFiles/servicesVariants.json';
+import servicesCategories from '../../../../../assets/jsonFiles/servicesCategories.json';
 import { Service } from '../../interfaces/services/service';
 import { ServiceVariant } from '../../interfaces/services/service-variant';
 
