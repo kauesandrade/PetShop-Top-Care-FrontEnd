@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import services from '@assets//services.json';
-import servicesVariants from '@assets//servicesVariants.json';
-import servicesCategories from '@assets//servicesCategories.json';
+import services from '@assets/services.json';
+import servicesVariants from '@assets/servicesVariants.json';
+import servicesCategories from '@assets/servicesCategories.json';
 import { Service } from '../../interfaces/services/service';
 import { ServiceVariant } from '../../interfaces/services/service-variant';
 
@@ -25,7 +25,7 @@ export class ServicesService {
 
   getServiceVariants(code: number) {
     let serviceList: Array<ServiceVariant> = [];
-    servicesVariants.forEach((variant) => {
+    servicesVariants.forEach((variant: any) => {
 
       if (variant.code == code) {
         serviceList.push(variant);
@@ -38,7 +38,7 @@ export class ServicesService {
   getServicesFirtVariant() {
     let serviceList: Array<ServiceVariant> = [];
 
-    servicesVariants.forEach((variant) => {
+    servicesVariants.forEach((variant: any) => {
       if (!serviceList.includes(this.getServiceVariants(variant.code)[0])) {
         serviceList.push(this.getServiceVariants(variant.code)[0]);
       }

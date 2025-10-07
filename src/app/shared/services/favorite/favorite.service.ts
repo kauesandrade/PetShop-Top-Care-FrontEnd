@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import productData from '@assets//products.json';
+import productData from '@assets/products.json';
 import { Product } from '../../interfaces/product/product';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 import { ProductService } from '../product/product.service';
@@ -14,7 +14,7 @@ export class FavoriteService {
 
   getAllProductfavorited() {
     this.productList = [];
-    productData.product.forEach((product) => {
+    productData.product.forEach((product: any) => {
       let productService = new ProductService();
       productService.findProduct(product);
 

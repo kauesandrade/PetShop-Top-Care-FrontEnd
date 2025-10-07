@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import productData from '@assets//products.json';
+import productData from '@assets/products.json';
 import { Product } from '../../interfaces/product/product';
 import { ProductVariant } from '../../interfaces/product/product-variant';
 import { Category } from '../../interfaces/search/category';
@@ -27,7 +27,7 @@ export class FilterService {
 
         productService.findProduct(productFind);
 
-        productFind.category.forEach((categoryProduct) => {
+        productFind.category.forEach((categoryProduct: any) => {
           filters.sort().forEach((filter) => {
             if (
               categoryProduct.types.includes(filter) &&
@@ -43,7 +43,7 @@ export class FilterService {
         });
       }
     } else {
-      productList.forEach((product) => {
+      productList.forEach((product: any) => {
         let productService = new ProductService();
         productService.findProduct(product);
 
@@ -63,7 +63,7 @@ export class FilterService {
       
       productService.findProduct(productFind);
 
-      productFind.category.forEach((categoryProduct) => {
+      productFind.category.forEach((categoryProduct: any) => {
         categoryArray.sort().forEach((category) => {
           if (categoryProduct.types.includes(category)) {
             isAll++;
