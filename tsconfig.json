@@ -6,7 +6,6 @@
     "paths": {
       "@assets/*": ["src/assets/*"] 
     },
-    "ignoreDeprecations": "6.0",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -28,6 +27,7 @@
     "lib": ["es2020", "dom"]
   },
   "angularCompilerOptions": {
+    "ignoreDeprecations": "6.0",
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
