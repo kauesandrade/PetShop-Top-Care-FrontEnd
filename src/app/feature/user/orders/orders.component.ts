@@ -2,7 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Order } from 'src/app/shared/interfaces/order/order';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { OrderByService } from 'src/app/shared/services/orderBy/order-by.service';
-import { staticOrder } from 'src/assets/JsonFiles/staticData/order';
+import { staticOrder } from 'src/assets/jsonFiles/staticData/order';
 
 @Component({
   selector: 'app-orders',

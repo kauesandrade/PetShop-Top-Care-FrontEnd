@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from 'src/app/shared/interfaces/order/order';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { UserService } from 'src/app/shared/services/user/user.service';
-import { staticOrder } from 'src/assets/JsonFiles/staticData/order';
+import { staticOrder } from 'src/assets/jsonFiles/staticData/order';
 
 @Component({
   selector: 'app-order',

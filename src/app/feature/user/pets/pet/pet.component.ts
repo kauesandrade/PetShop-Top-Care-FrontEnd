@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { Pet } from 'src/app/shared/interfaces/pet/pet';
 import { UserService } from 'src/app/shared/services/user/user.service';
-import { staticPet } from 'src/assets/JsonFiles/staticData/pet';
+import { staticPet } from 'src/assets/jsonFiles/staticData/pet';
 
 @Component({
   selector: 'app-pet',

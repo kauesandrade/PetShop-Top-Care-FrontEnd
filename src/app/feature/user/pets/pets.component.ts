@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Pet } from 'src/app/shared/interfaces/pet/pet';
 import { UserService } from 'src/app/shared/services/user/user.service';
-import { staticImage } from 'src/assets/JsonFiles/staticData/image';
-import { staticPet } from 'src/assets/JsonFiles/staticData/pet';
+import { staticImage } from 'src/assets/jsonFiles/staticData/image';
+import { staticPet } from 'src/assets/jsonFiles/staticData/pet';
 
 @Component({
   selector: 'app-pets',

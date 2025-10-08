@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { faCamera, faFile } from '@fortawesome/free-solid-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
-import pets from '../../../../../../../assets/JsonFiles/pets.json';
+import pets from '../../../../../../../assets/jsonFiles/pets.json';
 
 @Component({
   selector: 'app-service-forms',
