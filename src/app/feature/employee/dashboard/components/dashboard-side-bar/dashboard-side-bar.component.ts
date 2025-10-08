@@ -28,7 +28,6 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
   page: string  = '';
   size = 'small';
 
-
   constructor(protected userService: UserService) {}
   
   ngOnChanges(changes: SimpleChanges): void {
@@ -53,6 +52,8 @@ export class DashboardSideBarComponent implements OnInit, OnChanges {
 
   handleClickLogout(){
     this.userService.logout();
+    this.isOpen = false;
+    document.body.style.overflow = 'auto';
   }
 
   hoverSideBar(evt: string){

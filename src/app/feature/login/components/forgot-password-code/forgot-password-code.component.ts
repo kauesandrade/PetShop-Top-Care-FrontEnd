@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import {
   Component,
   ElementRef,
@@ -11,6 +12,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-forgot-password-code',
@@ -26,15 +28,18 @@ export class ForgotPasswordCodeComponent implements OnChanges {
   @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
 
   randomCode!: number;
+  data!: any;
 
   codeForm = this.formBuilder.group({
     code: ['', [Validators.required, EmptyValidator]],
   });
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService
+    ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isOpen();
-    this.generateRandomCode();
   }
 
   get code() {
@@ -43,14 +48,21 @@ export class ForgotPasswordCodeComponent implements OnChanges {
 
   isOpen() {
     if (this.open) {
+      this.generateRandomCode();
       document.body.style.overflow = 'hidden';
       this.modal.nativeElement.showModal();
     }
   }
 
   generateRandomCode() {
-    this.randomCode = Math.floor(Math.random() * 899999 + 100000);
-    console.log(this.randomCode);
+    this.userService.getCodeRequest().subscribe(
+      (response) => {
+        this.data = response;
+        this.randomCode = this.data.code;
+        console.log(this.randomCode);
+      }
+    );
+    
   }
 
   resendCode(e: Event) {

@@ -1,15 +1,17 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
+import { MessageService } from 'primeng/api';
+import convertDateFrontToBack from 'src/app/core/utils/date-converters/front-to-back';
+import convertFrontToBack from 'src/app/core/utils/date-converters/front-to-back';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { PasswordValidator } from 'src/app/core/validators/password.validator';
 import { Order } from 'src/app/shared/interfaces/order/order';
-import { Subscription } from 'src/app/shared/interfaces/order/subscription';
 import { Card } from 'src/app/shared/interfaces/payment/card';
 import { Pet } from 'src/app/shared/interfaces/pet/pet';
 import { Address } from 'src/app/shared/interfaces/user/address';
-import { User } from 'src/app/shared/interfaces/user/user';
+import { User, UserRequestPostDTO } from 'src/app/shared/interfaces/user/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
@@ -44,7 +46,8 @@ export class RegisterFormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private messageService: MessageService
   ) {}
 
   get name() {
@@ -116,26 +119,35 @@ export class RegisterFormComponent {
   registerUser(address: Address) {
     let formValues = this.registerForm.value;
 
-    let user: User = {
-      profileImage: '',
-      name: formValues.name!,
+    let user: UserRequestPostDTO = {
+      fullname: formValues.name!,
       email: formValues.email!,
+      cellphone: formValues.cellphone!,
+      telephone: formValues.telephone!,
       cpf: formValues.cpf!,
-      birth: formValues.birth!,
       gender: formValues.gender!,
+      birth: convertDateFrontToBack(formValues.birth!),
       password: formValues.password!,
-      contactInfo: [
-        { cellphone: formValues.cellphone!, telephone: formValues.telephone! },
-      ],
-      addresses: [address],
-      cards: new Array<Card>(),
-      orders: new Array<Order>(),
-      subscriptions: new Array<Subscription>(),
-      pets: new Array<Pet>(),
-      access: 'normal',
+      address: address,
     };
 
-    this.userService.register(user);
+    this.userService.register(user).subscribe({
+      next: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Cadastro realizado com sucesso!',
+          life: 1500,
+        });
+      },
+      error: () => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Erro ao cadastrar!',
+          life: 1500,
+        });
+      },
+    });
+
     this.router.navigate(['/login']);
   }
 }

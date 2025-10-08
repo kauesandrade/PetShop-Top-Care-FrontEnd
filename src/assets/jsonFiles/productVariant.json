@@ -81,7 +81,6 @@
             "price": 99.99,
             "discountPrice": 120.60,
             "maxInterestFreeParcels": 2,
-            "subscribersPrice": 80,
             "available": true
         },
         {
@@ -165,7 +164,6 @@
             "price": 120.99,
             "discountPrice": 150.60,
             "maxInterestFreeParcels": 2,
-            "subscribersPrice": 100,
             "available": true
         },
         {
@@ -249,7 +247,6 @@
             "price": 80,
             "discountPrice": 100.60,
             "maxInterestFreeParcels": 2,
-            "subscribersPrice": 65,
             "available": true
         },
         {
@@ -358,7 +355,6 @@
             "price": 70.4,
             "discountPrice": 100.4,
             "maxInterestFreeParcels": 3,
-            "subscribersPrice": 60.99,
             "available": true
         },
         {
@@ -437,7 +433,6 @@
             "price": 149.9,
             "discountPrice": 170.4,
             "maxInterestFreeParcels": 2,
-            "subscribersPrice": 100.2,
             "available": true
         },
         {
@@ -516,7 +511,6 @@
             "price": 10.4,
             "discountPrice": 20.4,
             "maxInterestFreeParcels": 1,
-            "subscribersPrice": 8.70,
             "available": true
         },
         {
@@ -595,7 +589,6 @@
             "price": 12.4,
             "discountPrice": 22.4,
             "maxInterestFreeParcels": 1,
-            "subscribersPrice": 8.70,
             "available": true
         },
         {
@@ -674,7 +667,6 @@
             "price": 17.3,
             "discountPrice": 29.4,
             "maxInterestFreeParcels": 1,
-            "subscribersPrice": 15.90,
             "available": true
         }
     ]

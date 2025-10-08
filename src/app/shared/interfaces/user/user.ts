@@ -1,13 +1,13 @@
-import { Contact } from '../contact';
+import { Contact, ContactResponseDTO } from './contact';
 import { Order } from '../order/order';
-import { Subscription } from '../order/subscription';
 import { Card } from '../payment/card';
 import { Pet } from '../pet/pet';
-import { Address } from './address';
+import { Address, AddressResponseDTO } from './address';
 
 export interface User {
+  id: number;
   profileImage: string;
-  name: string;
+  fullname: string;
   email: string;
   cpf: string;
   birth: string;
@@ -17,7 +17,56 @@ export interface User {
   addresses: Address[];
   cards: Card[];
   orders: Order[];
-  subscriptions: Subscription[];
   pets: Pet[];
-  access: string;
+  role: string;
+}
+
+export interface UserResponseDTO {
+  id: number;
+  profileImage: string;
+  fullname: string;
+  email: string;
+  cpf: string;
+  birth: Date;
+  gender: string;
+  contactInfo: [ContactResponseDTO, ContactResponseDTO?];
+  addresses: AddressResponseDTO[];
+}
+
+export interface UserRequestPostDTO {
+  fullname: string;
+  email: string;
+  cellphone: string;
+  telephone: string;
+  cpf: string;
+  gender: string;
+  birth: string;
+  password: string;
+  address: Address;
+}
+
+export interface CustomerPasswordRequestPatchDTO {
+  oldPassword: string;
+  newPassword: string;
+}
+
+export interface CustomerRequestPutDTO {
+  profileImage: File;
+  fullname: string;
+  email: string;
+  cpf: string;
+  birth: string;
+  gender: string;
+  contacts: [Contact, Contact?];
+  addresses: Address[];
+}
+
+export interface CustomerWoImageRequestPutDTO {
+  fullname: string;
+  email: string;
+  cpf: string;
+  birth: string;
+  gender: string;
+  contacts: [Contact, Contact?];
+  addresses: Address[];
 }

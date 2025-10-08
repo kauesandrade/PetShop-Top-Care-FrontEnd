@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import {
   Component,
   ElementRef,
@@ -10,6 +11,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-forgot-password-email',
@@ -26,7 +28,10 @@ export class ForgotPasswordEmailComponent implements OnChanges {
   accountEmail = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email, EmptyValidator]],
   });
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService
+    ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.isOpen();
@@ -61,7 +66,20 @@ export class ForgotPasswordEmailComponent implements OnChanges {
   }
 
   onSubmit() {
-    this.submittedEmail.emit();
-    this.closeModal();
+    this.userService.verifyEmail(this.email?.value!).subscribe(
+      {
+        next: (response) => {
+          console.log(response);
+          this.userService.changePasswordUser = response;
+          this.submittedEmail.emit(response);
+          this.closeModal();
+        },
+        error: (error) => {
+          console.log(error);
+          this.email?.setErrors({ IncorrectEmail: true });
+          return;
+        },
+      }
+    );
   }
 }

@@ -1,82 +1,56 @@
 import { Injectable } from '@angular/core';
-import productData from '../../../../assets/jsonFiles/products.json';
-import productVariantData from '../../../../assets/jsonFiles/productVariant.json';
-import { Product } from '../../interfaces/product/product';
-import { ProductVariant } from '../../interfaces/product/product-variant';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { ProductRequestPostDTO, ProductRequestPutDTO, ProductResponseCard, ProductResponsePageDTO, ProductResponsePageEditDTO } from '../../interfaces/product/product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  private product?: Product;
-  private productVariant!: ProductVariant;
-  private productVariantsList!: Array<ProductVariant>;
 
-  constructor() {}
+  private apiUrl = "http://localhost:8088/topcare/product";
 
-  getProduct() {
-    return this.product;
+  constructor(private httpClient: HttpClient) { }
+
+  getProductByCode(code: number): Observable<ProductResponsePageDTO> {
+    return this.httpClient.get<ProductResponsePageDTO>(`${this.apiUrl}/${code}`);
   }
 
-  getProductData(){
-    return productData.product;
+  getSimilarProductsByCode(code: number): Observable<ProductResponseCard> {
+    return this.httpClient.get<ProductResponseCard>(`${this.apiUrl}/similar/${code}`);
   }
 
-  getProductVariants() {
-    return this.productVariantsList;
+  getProductsByCategories(categories: Array<number>): Observable<ProductResponseCard> {
+    return this.httpClient.put<ProductResponseCard>(`${this.apiUrl}/categories`, categories);
   }
 
-  getProductVariant() {
-    return this.productVariant;
+  getProductByCodeToEdit(code: number): Observable<ProductResponsePageEditDTO> {
+    return this.httpClient.get<ProductResponsePageEditDTO>(`${this.apiUrl}/dashboard/${code}`);
   }
 
-  changeVariableProduct(productVariant: ProductVariant) {
-    this.productVariant = productVariant;
-  }
-  getFirstProductVariant() {
-    return this.getProductVariants()[0];
+  createProduct(product: ProductRequestPostDTO): Observable<ProductResponsePageDTO> {
+    return this.httpClient.post<ProductResponsePageDTO>(`${this.apiUrl}/dashboard`, product);
   }
 
-  findProduct(id: number | string | Product | ProductVariant) {
-    if (typeof id == 'number' || typeof id == 'string') {
-      for (const productFind of productData.product) {
-        if (productFind.title == id || productFind.code == id) {
-          this.product = productFind;
-          break;
-        }
-      }
-    } else {
-      this.product = id;
+  editProduct(id: number, product: ProductRequestPutDTO): Observable<ProductResponsePageDTO> {
+    return this.httpClient.put<ProductResponsePageDTO>(`${this.apiUrl}/dashboard/${id}`, product);
+  }
+
+  deleteProduct(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.apiUrl}/dashboard/${id}`);
+  }
+
+
+  dataURLtoFile(dataurl: any, filename: any): File {
+    console.log(dataurl);
+    var arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[arr.length - 1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
     }
-
-    if (this.product) {
-      this.getAllProductVariants();
-      this.changeVariableProduct(this.getFirstProductVariant());
-    }
-  }
-
-  private getAllProductVariants() {
-    this.productVariantsList = [];
-    for (const variant of productVariantData.variant as ProductVariant[]) {
-      if (
-        this.product?.code == variant.code &&
-        this.verifyProductIsAvailable(variant)
-      ) {
-        this.productVariantsList.push(variant);
-      }
-    }
-
-    this.productVariantsList = this.productVariantsList.sort((p1, p2) => {
-      return p1.variant.localeCompare(p2.variant);
-    });
-
-    return this.productVariantsList;
-  }
-
-  private verifyProductIsAvailable(product: ProductVariant) {
-    if (product.available) {
-      return true;
-    }
-    return false;
+    return new File([u8arr], filename, { type: mime });
   }
 }

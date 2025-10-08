@@ -34,6 +34,7 @@ export class ChooseCardComponent implements OnInit {
 
   addNewCard() {
     let card = {
+      id: null,
       value: 'card',
       name: '',
       lastDigits: '',

@@ -13,7 +13,6 @@ import { CartComponent } from './feature/cart/cart.component';
 import { DataComponent } from './feature/user/data/data.component';
 import { PetsComponent } from './feature/user/pets/pets.component';
 import { OrdersComponent } from './feature/user/orders/orders.component';
-import { SubscriptionsComponent } from './feature/user/subscriptions/subscriptions.component';
 import { OrderComponent } from './feature/user/orders/order/order.component';
 import { FavoritesComponent } from './feature/favorites/favorites.component';
 import { ReviewProductComponent } from './feature/user/orders/order/components/review-product/review-product.component';
@@ -192,10 +191,6 @@ const routes: Routes = [
             ],
           },
         ],
-      },
-      {
-        path: 'assinaturas',
-        component: SubscriptionsComponent,
       },
     ],
   },

@@ -139,26 +139,65 @@
                 grid-column: 1 / -1;
                 gap: 0.5rem;
 
-                .image {
-                    @include flex($justify: space-between);
+                .image-angles{
+                    @include subgrid();
+                    @include flex();
                     grid-column: 1 / -1;
-                    border: 2px solid $primary;
-                    border-radius: 0.5rem;
-                    padding: 1rem 1.5rem;
+                    
+                    gap: 1rem;
+                    .div-angles{
+                        @include flex();
+                        @include flex(column);
+                        .angles {
+                            @include flex();
+                            color: $white;
+                            background-color: $primary;
+                            border-radius: 1rem;
+                            padding: 0.35rem 0.35rem;
+                            width: 1.5rem;
+                            height: 1.5rem;
+                            
+                            &.disable{
+                                color: $gray4;
+                                background-color: $gray2;
+                            }
 
+                        }
+                    }
+                    
                     img {
                         width: 4.5rem;
                         height: 4.5rem;
                         border-radius: 0.5rem;
                     }
 
-                    fa-icon {
-                        @include flex();
-                        color: $white;
-                        background-color: $primary;
-                        border-radius: 0.5rem;
-                        padding: 1rem;
+                }
+                .image {
+                    @include flex($justify: space-between, $direction: column);
+                    grid-column: 1 / -1;
+                    border: 2px solid $primary;
+                    border-radius: 0.5rem;
+                    padding: 1rem 1.5rem;
+                    
+                    @media(min-width: $tablet){
+                        @include flex($justify: space-between, $direction: row);
                     }
+                    
+                    p{
+                        @include flex();
+                        width: 100%;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                    }
+                }
+                
+                .trash {
+                    @include flex();
+                    color: $white;
+                    background-color: $primary;
+                    border-radius: 0.5rem;
+                    padding: 1rem;
                 }
             }
 

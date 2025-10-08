@@ -62,19 +62,6 @@
     p {
       color: $gray3;
       text-align: center;
-
-      &.subscription-interval {
-        @include flex();
-        gap: 0.5rem;
-
-        @include text($weight: bold);
-        color: $primary;
-
-        fa-icon {
-          @include text(large, bold);
-          color: $black1;
-        }
-      }
     }
   }
 

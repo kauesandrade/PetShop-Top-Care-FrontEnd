@@ -42,11 +42,11 @@ export class PaymentItemCardComponent implements OnInit {
   }
 
   variantIs(value: string) {
-    return this.item!.product.variant.toLowerCase() == value;
+    return this.item!.product.title.toLowerCase() == value;
   }
 
   variantIncludes(value: string) {
-    return this.item!.product.variant.toLowerCase().includes(value);
+    return this.item!.product.title.toLowerCase().includes(value);
   }
 
   openCard() {

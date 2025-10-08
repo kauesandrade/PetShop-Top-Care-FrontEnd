@@ -25,7 +25,8 @@ export class PetCardComponent implements OnInit {
   onClick() {
     switch (this.type) {
       case 'add':
-        this.router.navigate(['/perfil/pets/add']);
+        this.router.navigate(['/perfil/pets/1']);
+        // this.router.navigate(['/perfil/pets/add']);
         break;
       case 'link':
         this.router.navigate(['/perfil/pets/' + this.pet.id]);

@@ -12,6 +12,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { EmptyValidator } from 'src/app/core/validators/empty.validator';
 import { PasswordValidator } from 'src/app/core/validators/password.validator';
+import { CustomerPasswordRequestPatchDTO } from 'src/app/shared/interfaces/user/user';
 import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
@@ -23,18 +24,19 @@ export class ChangePasswordComponent implements OnChanges {
   @Input() open = false;
   @Output() openChange = new EventEmitter<boolean>();
 
-  showLastPassword = false;
+  showOldPassword = false;
   showPassword = false;
   showPasswordConf = false;
   faEye = faEye;
   faEyeSlash = faEyeSlash;
 
-  @Output() changedPassword = new EventEmitter<string>();
+  @Output() changedPassword =
+    new EventEmitter<CustomerPasswordRequestPatchDTO>();
 
   @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
 
   changePasswordForm = this.formBuilder.group({
-    lastPassword: ['', [Validators.required, EmptyValidator]],
+    oldPassword: ['', [Validators.required, EmptyValidator]],
     newPassword: ['', [Validators.required, EmptyValidator, PasswordValidator]],
     passwordConf: [
       '',
@@ -51,8 +53,8 @@ export class ChangePasswordComponent implements OnChanges {
     this.isOpen();
   }
 
-  get lastPassword() {
-    return this.changePasswordForm.get('lastPassword');
+  get oldPassword() {
+    return this.changePasswordForm.get('oldPassword');
   }
   get newPassword() {
     return this.changePasswordForm.get('newPassword');
@@ -78,15 +80,15 @@ export class ChangePasswordComponent implements OnChanges {
     this.open = false;
     this.openChange.emit(this.open);
     this.changePasswordForm.reset();
-    this.showLastPassword = false;
+    this.showOldPassword = false;
     this.showPassword = false;
     this.showPasswordConf = false;
     document.body.style.overflow = 'auto';
   }
 
-  changeShowLastPassword(event: Event) {
+  changeShowOldPassword(event: Event) {
     event.preventDefault();
-    this.showLastPassword = !this.showLastPassword;
+    this.showOldPassword = !this.showOldPassword;
   }
 
   changeShowPassword(event: Event) {
@@ -119,17 +121,12 @@ export class ChangePasswordComponent implements OnChanges {
   onSubmit() {
     let formValues = this.changePasswordForm.value;
 
-    if (this.userService.loggedUser?.password != formValues.lastPassword) {
-      this.lastPassword?.setErrors({ wrongPassword: true });
-      return;
-    } else if (
-      this.userService.loggedUser?.password == formValues.newPassword
-    ) {
-      this.newPassword?.setErrors({ samePassword: true });
-      return;
-    }
+    let passwords: CustomerPasswordRequestPatchDTO = {
+      oldPassword: formValues.oldPassword!,
+      newPassword: formValues.newPassword!,
+    };
 
-    this.changedPassword.emit(formValues.newPassword!);
+    this.changedPassword.emit(passwords);
     this.closeModal();
   }
 }

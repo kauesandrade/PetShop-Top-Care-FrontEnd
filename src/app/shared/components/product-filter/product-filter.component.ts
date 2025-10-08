@@ -9,7 +9,8 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { faFilter, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Filter } from '../../interfaces/search/filter';
+import { CategoryGroupFiltersResponse, Filter } from '../../interfaces/search/filter';
+import { ProductCategoryResponse } from '../../interfaces/product/response/product-category-response';
 
 @Component({
   selector: 'app-product-filter',
@@ -21,22 +22,22 @@ export class ProductFilterComponent implements OnChanges {
   faTimes = faTimes;
   faTrash = faTrash;
 
-  @Input() productFiltersWihtChecked: Array<Filter> = [];
-  @Output() emitFilters = new EventEmitter<Array<string>>();
+  @Input() productFilters: Array<CategoryGroupFiltersResponse> = [];
+  @Output() emitFilters = new EventEmitter<Array<number>>();
 
   openFilter: boolean = false;
-  applyFilters: Array<string> = [];
+  applyFilters: Array<ProductCategoryResponse> = [];
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.applyFilters = [];
   }
 
   takeOffFilter(variableFilter: any) {
-    this.productFiltersWihtChecked.forEach((filter) => {
-      filter.types.forEach((type) => {
-        if (type.type == variableFilter) {
+    this.productFilters.forEach((filter) => {
+      filter.categories.forEach((type) => {
+        if (type.id == variableFilter) {
           type.isChecked = false;
         }
       });
@@ -63,8 +64,8 @@ export class ProductFilterComponent implements OnChanges {
   }
 
   clearAllFilters() {
-    this.productFiltersWihtChecked.forEach((filter) => {
-      filter.types.forEach((type) => {
+    this.productFilters.forEach((filter) => {
+      filter.categories.forEach((type) => {
         type.isChecked = false;
       });
     });
@@ -73,15 +74,24 @@ export class ProductFilterComponent implements OnChanges {
 
   applyFilter() {
     this.applyFilters = [];
-    this.productFiltersWihtChecked.forEach((filter) => {
-      filter.types.forEach((type) => {
+    this.productFilters.forEach((filter) => {
+      filter.categories.forEach((type) => {
         if (type.isChecked) {
-          this.applyFilters.push(type.type);
+          this.applyFilters.push(type);
         }
       });
     });
     this.openFilter = false;
     this.elementRef.nativeElement.ownerDocument.body.style.overflowY = 'scroll';
-    this.emitFilters.emit(this.applyFilters);
+    this.emitFilters.emit(this.getIdsFilterCategories());
   }
+
+  getIdsFilterCategories() {
+    let idsFilterCategories: number[] = [];
+    this.applyFilters.forEach((filter) => {
+      idsFilterCategories.push(filter.id);
+    });
+    return idsFilterCategories;
+  }
+
 }

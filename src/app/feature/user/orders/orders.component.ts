@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Order } from 'src/app/shared/interfaces/order/order';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { OrderByService } from 'src/app/shared/services/orderBy/order-by.service';
+import { staticOrder } from 'src/assets/JsonFiles/staticData/order';
 
 @Component({
   selector: 'app-orders',
@@ -29,6 +30,10 @@ export class OrdersComponent implements OnInit, OnChanges {
   updateOrders() {
     if (this.orderService.orders) {
       this.userOrders = this.orderService.getOrders();
+    }
+
+    if (this.userOrders.length == 0) {
+      this.userOrders = [staticOrder];
     }
   }
 

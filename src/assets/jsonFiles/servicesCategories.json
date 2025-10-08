@@ -9,7 +9,7 @@
           "title": "Banho e Tosa",
           "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
           "category": "Higiene",
-          "servedPets": ["Cachorro", "Gato", "Aves"],
+          "servedPets": ["Cachorro", "Gato", "Pássaros"],
           "variantCode": 101,
           "variantTitle": "Banho Simples",
           "price": 50.0
@@ -20,7 +20,7 @@
           "title": "Banho e Tosa",
           "description": "Deixe seu pequeno ou grandinho bem cheirosinho",
           "category": "Higiene",
-          "servedPets": ["Cachorro", "Gato", "Aves"],
+          "servedPets": ["Cachorro", "Gato", "Pássaros"],
           "variantCode": 102,
           "variantTitle": "Tosa Completa",
           "price": 80.0

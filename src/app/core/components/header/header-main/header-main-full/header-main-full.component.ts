@@ -23,7 +23,6 @@ export class HeaderMainFullComponent implements OnInit {
   faHeart = faHeart;
 
   drawerIsOpen: boolean = false;
-  user!: User | null;
   firstName!: string | undefined;
 
   seachValue: string = '';
@@ -31,16 +30,13 @@ export class HeaderMainFullComponent implements OnInit {
   constructor(private userService: UserService, private routing: Router) {}
 
   ngOnInit() {
-    this.user = this.userService.loggedUser;
-    if (this.user) {
-      this.firstName = this.user?.name?.split(' ')[0];
+    if (this.userService.loggedUser == null) {
+      this.userService.updateLoggedUser();
+    }
+    if (this.userService.loggedUser != null) {
+      this.firstName = this.userService.loggedUser?.fullname.split(' ')[0];
     }
   }
-
-  //https://stackblitz.com/edit/how-to-trigger-an-event-in-input-text-after-i-stop-typingwritin?file=src%2Fapp%2Fapp.component.ts see this before when will do the seachBar
-  // changeSearchValue() {
-  //   console.log(this.seachValue);
-  // }
 
   handleClickSeach() {
     if (this.seachValue != '') {

@@ -9,7 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DataComponent } from './data/data.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PetsComponent } from './pets/pets.component';
-import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { OrderCardComponent } from './components/order-card/order-card.component';
 import { AddressFormComponent } from './data/components/address-form/address-form.component';
@@ -26,12 +25,7 @@ import { EditCardsComponent } from './data/components/edit-cards/edit-cards.comp
 import { PetProfile } from './pets/pet/pet.component';
 import { PetScheduleComponent } from './pets/pet-schedule/pet-schedule.component';
 
-const Components = [
-  DataComponent,
-  OrdersComponent,
-  PetsComponent,
-  SubscriptionsComponent,
-];
+const Components = [DataComponent, OrdersComponent, PetsComponent];
 
 @NgModule({
   exports: [...Components],

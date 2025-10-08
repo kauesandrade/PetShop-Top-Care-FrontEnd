@@ -109,12 +109,12 @@
         >
         <!-- [ngClass]="page == 'perfil' ? 'clicked' : '' "  -->
         <!-- (click)="clickedBtn('perfil')" -->
-            <button class="accordion-btn" >
+            <button class="accordion-btn">
                 <a class="accordion-btn-header"
                     routerLink="/dashboard/perfil"
                 >
                     <fa-icon [icon]="faUser"></fa-icon>
-                    <span>{{userService.loggedUser?.name}}</span>
+                    <span>{{userService.loggedUser?.fullname}}</span>
                 </a>
             </button>
         </div>

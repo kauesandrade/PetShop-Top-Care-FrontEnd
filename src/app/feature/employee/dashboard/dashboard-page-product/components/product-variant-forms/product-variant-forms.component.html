@@ -10,7 +10,7 @@
   <div class="variants" *ngIf="variants.length > 0">
     <ng-container *ngFor="let variant of variants.controls; let i = index">
       <div class="select-tag" (click)="editVariant(i)">
-        <p>{{getTitle(i)?.value}}</p>
+        <p>{{getVariantTitle(i)?.value}}</p>
         <button (click)="deleteVariant(i)">
           <fa-icon [icon]="faTimes"></fa-icon>
         </button>
@@ -23,7 +23,7 @@
 
       <ng-container *ngIf="variantModal != null; else noVariant">
         <div class="variant-card">
-          <p>{{getTitle(variantModal)?.value}}</p>
+          <p>{{getVariantTitle(variantModal)?.value}}</p>
           <button (click)="updateVariant()" appButton="secondary">Salvar</button>
         </div>
       </ng-container>
@@ -38,14 +38,14 @@
       <form [formGroup]="variantForm" class="form-variants">
 
         <div>
-          <label for="title" class="labels" appInput>
+          <label for="variantTitle" class="labels" appInput>
             <p>Título da Variação*</p>
-            <input type="text" id="title" formControlName="title" placeholder="Título da variação" required />
+            <input type="text" id="variantTitle" formControlName="variantTitle" placeholder="Título da variação" required />
           </label>
 
-          <label for="code" class="labels" appInput>
+          <label for="variantCode" class="labels" appInput>
             <p>Código*</p>
-            <input type="text" mask="" [dropSpecialCharacters]="true" id="code" formControlName="code" placeholder="Código da variação" required />
+            <input type="text" mask="0*" [dropSpecialCharacters]="true" id="variantCode" formControlName="variantCode" placeholder="Código da variação" required />
           </label>
         </div>
 
@@ -75,6 +75,21 @@
 
         </div>
 
+          <label for="price" class="labels" appInput>
+            <p>Desconto</p>
+            <input 
+            type="text"
+            
+            mask="00"
+            [decimalMarker]="','"
+            suffix=" %"
+            [dropSpecialCharacters]="true"
+
+            id="discount" formControlName="discount" 
+            placeholder="Desconto do produto" 
+            required />
+          </label>
+
         <label for="images" class="labels btn-add-img" appButton="">
           Adicionar Imagem
           <input type="file" accept="image/png, image/jpeg" id="images"  multiple
@@ -84,9 +99,17 @@
         <div class="images-list">
           <ng-container *ngFor="let image of getImageForms()?.value; let i = index">
             <div class="image">
-              <img [src]="image.src" alt="">
+              <div class="image-angles">
+
+                <div class="div-angles">
+                  <fa-icon class="angles" [class.disable]="i == 0" (click)="passUpImage(i)" [icon]="faAngleUp"></fa-icon>
+                  <fa-icon class="angles" [class.disable]="i == getImageForms()?.value.length - 1" (click)="passDownImage(i)" [icon]="faAngleDown"></fa-icon>
+                </div>
+
+                <img [src]="'data:image/png;base64,'+image.file" alt="">
+              </div>
               <p>{{image.name}}</p>
-              <fa-icon [icon]="faTrash" (click)="removeImage(i)"></fa-icon>
+              <fa-icon class="trash" [icon]="faTrash" (click)="removeImage(i)"></fa-icon>
             </div>
           </ng-container>
         </div>

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
-import { ProductReview } from 'src/app/shared/interfaces/product/product-review';
+import { ProductReview, ProductReviewResponse } from 'src/app/shared/interfaces/product/product-review';
 
 @Component({
   selector: 'app-product-review',
@@ -12,7 +12,7 @@ export class ProductReviewComponent implements OnInit {
   faStarSolid = faStarSolid;
   faStarRegular = faStarRegular;
 
-  @Input() review!: ProductReview;
+  @Input() review!: ProductReviewResponse;
   starsValue: Array<boolean> = new Array<boolean>(5);
 
   constructor() {}
