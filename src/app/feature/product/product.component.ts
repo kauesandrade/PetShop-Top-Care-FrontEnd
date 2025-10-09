@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { catchError } from 'rxjs';
 import { ProductResponseCard, ProductResponsePageDTO } from 'src/app/shared/interfaces/product/product';
 import { ProductVariantResponse } from 'src/app/shared/interfaces/product/product-variant';
 import { CartService } from 'src/app/shared/services/cart/cart.service';
@@ -17,16 +18,24 @@ export class ProductComponent implements OnInit {
   productPage!: ProductResponsePageDTO;
   productVariant!: ProductVariantResponse;
 
-  constructor(private route: ActivatedRoute, private routing: Router, protected productService: ProductService, private cartService: CartService) { 
+  constructor(private route: ActivatedRoute, private routing: Router, protected productService: ProductService, private cartService: CartService) {
     this.id = this.route.snapshot.paramMap.get("id")?.replace("%20", " ");
   }
-  
+
   ngOnInit(): void {
-    this.productService.getProductByCode(this.id).subscribe((data) => {
-      this.productPage = data;
-      this.productVariant = data.variants[0];
-    }); 
-    this.verifyProduct();
+    this.productService.getProductByCode(this.id).pipe(
+      catchError(err => {
+        if (err.status === 404) {
+          this.verifyProduct();
+        }
+        throw err;
+      })
+    ).subscribe((data) => {
+      if (data) {
+        this.productPage = data || {} ;
+        this.productVariant = data.variants[0];
+      }
+    });
   }
 
   getValueAmount(evt: number) {
@@ -66,7 +75,7 @@ export class ProductComponent implements OnInit {
     this.routing.navigate(['/carrinho']);
   }
 
-  changeVariableProduct(evt: ProductVariantResponse){
+  changeVariableProduct(evt: ProductVariantResponse) {
     this.productVariant = evt;
   }
 

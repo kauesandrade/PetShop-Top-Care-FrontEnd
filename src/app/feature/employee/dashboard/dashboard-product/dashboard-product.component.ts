@@ -64,7 +64,7 @@ export class DashboardProductComponent implements OnInit {
     ).set(
       'page', 0
     ).set(
-      'size', 10
+      'size', 100
     );
 
     this.searchService.searchProductsDashboard(searchParams, []).subscribe((response) => {
